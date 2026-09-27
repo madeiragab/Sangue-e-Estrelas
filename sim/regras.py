@@ -94,8 +94,8 @@ def dado_de_queima(nivel: int) -> int:
     return 4
 
 
-def caixas_extras_por_nivel(nivel: int) -> int:
-    """+1 caixa nos níveis 5, 7, 13 e 17."""
+def resistencia_por_nivel(nivel: int) -> int:
+    """+1 de Resistência nos níveis 5, 7, 13 e 17 (é sua, não da armadura)."""
     return sum(1 for n in (5, 7, 13, 17) if n <= nivel)
 
 
@@ -104,14 +104,31 @@ def caixas_extras_por_nivel(nivel: int) -> int:
 # ---------------------------------------------------------------------------
 
 POSTO = {
-    # posto: (bônus de DEF, caixas por peça)
-    "bronze": (2, 1),
-    "prata": (4, 2),
-    "ouro": (6, 3),
-    "divina": (7, 4),
+    # posto: (bônus de DEF, Resistência)
+    "bronze": (2, 3),
+    "prata": (4, 4),
+    "ouro": (6, 5),
+    "divina": (7, 6),
 }
 
-PECAS = ("acessorio", "pernas", "bracos", "elmo", "peitoral")
+# A Hierarquia: um Prata diante de um Bronze soma isto nas rolagens contra
+# ele, e o Bronze perde isto nas rolagens contra o Prata. A elite não usa a
+# Hierarquia: ela tem o Sétimo quando quer e o domínio.
+HIERARQUIA = 2
+
+# A forma nova: cada vez que a armadura revive, o sangue deixa um bônus
+# permanente (DEF, Resistência). Quanto mais forte o sangue, maior o bônus.
+FORMA = {
+    "guerreiro": (1, 1),
+    "elite": (2, 2),
+    "deus": (3, 3),
+}
+REVIVIDAS_MAX = {"guerreiro": 3, "elite": 1, "deus": 1}
+
+
+def bonus_das_formas(formas: tuple) -> tuple[int, int]:
+    """(DEF, Resistência) somados de todas as formas que a armadura já teve."""
+    return (sum(FORMA[f][0] for f in formas), sum(FORMA[f][1] for f in formas))
 
 # Requisito de nível para subir de Posto (o momento vem da história)
 NIVEL_PRATA = 9

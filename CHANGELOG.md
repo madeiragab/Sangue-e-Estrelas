@@ -3,6 +3,39 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.3.0] - 2026-09-27
+
+### Adicionado
+
+- **A Hierarquia:** um Prata tem +2 em todas as rolagens contra um Bronze, e o Bronze
+  tem −2 contra ele. A elite não usa a Hierarquia. Medido: do mesmo nível, o Bronze
+  vence o Prata de 12% a 19% das vezes (era cerca de 40%) e o Ouro de 1% a 4%.
+- **Cada forma nova da armadura é mais forte:** a cada revivida, o sangue deixa um
+  bônus permanente. Guerreiro: +1 DEF e +1 de Resistência. Elite: +2 e +2. Deus: +3 e
+  +3. Os bônus somam. A tabela da escada do sangue sai do simulador no build.
+  Medido: a V4 vence a original de 64% a 69%; com a forma de elite, de 73% a 81%; a
+  armadura de Bronze com as cinco formas vence um Ouro de 19% a 25%.
+
+### Mudado
+
+- **A armadura agora tem Resistência, um número só**, no lugar das caixas em cada
+  peça. Bronze 3, Prata 4, Ouro 5, forma Divina 6; +1 sem acessório; +1 nos níveis 5,
+  7, 13 e 17. Aparar gasta 1. A 0, a armadura está em pedaços: sem DEF, Bloquear,
+  Elmo, Pernas nem acessório até se refazer. As caixas por peça quase nunca acabavam
+  numa luta simulada: davam trabalho sem mudar o resultado.
+- O Elmo segura o primeiro crítico uma vez por luta. Quebrar a armadura tira 1 de
+  Resistência por acerto.
+- Melhorias, remédios, a Escama dos Marinas, a ficha pronta, o modelo de ficha e as
+  fichas de inimigos passaram para a Resistência.
+- A dourada no Sétimo virou só o traço do sangue de elite; o ganho de números está no
+  bônus da forma.
+- Tabela de dificuldade medida de novo: o Prata do mesmo nível virou linha própria,
+  "Muito difícil" (o Bronze vence de 11% a 19%). O Cavaleiro de Prata pronto foi
+  medido de novo: um Bronze do mesmo nível vence uma vez em cinco.
+- Metas novas em `test.py`: o Bronze normalmente perde para o Prata; perde mais para
+  o Ouro que para o Prata; cada forma nova ajuda; nem com sangue de deus a armadura
+  de Bronze iguala o Ouro.
+
 ## [0.2.2] - 2026-09-27
 
 ### Mudado

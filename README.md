@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.2.2-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.3.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.2.2 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.3.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em seis linhas
 
@@ -44,7 +44,7 @@ build. O livro e o simulador não têm como discordar.
 | ✨ **O Cosmo** | Começa baixo e sobe a cada rodada e a cada golpe que entra. Paga as técnicas. Perder PV nunca dá Cosmo. |
 | 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção. |
 | 👁️ **Os cinco sentidos** | Ninguém fecha um sentido porque quer. O inimigo arranca, ou você se mutila — e cada um que vai embora sobe o seu Cosmo. |
-| 🛡️ **A armadura** | Cinco peças com caixas. Aparar corta um golpe pela metade. Ela morre, e só revive com sangue, pago em terços. |
+| 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
 | 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e um Bronze levanta desperto. |
 
 ## O que o simulador mediu
@@ -55,14 +55,18 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 | Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
 |---|---:|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 47% | 47% | 48% | 49% |
-| Prata contra Bronze | — | 58% | 59% | 62% |
-| Bronze sozinho contra Ouro | — | — | 3% | 1% |
-| Bronze com a Centelha de um amigo contra Ouro | — | — | 3% | 4% |
-| Quem nunca apara a armadura | 38% | 34% | 45% | 27% |
-| Quem nunca levanta do chão | 7% | 4% | 1% | 0% |
+| Espelho, Bronze contra Bronze | 48% | 48% | 47% | 49% |
+| Bronze contra Prata | — | 19% | 15% | 12% |
+| Bronze sozinho contra Ouro | — | — | 3% | 3% |
+| Bronze com a Centelha de um amigo contra Ouro | — | — | 3% | 3% |
+| Armadura revivida três vezes contra a original | 68% | 66% | 67% | 69% |
+| Bronze com as cinco formas, até a de deus, contra Ouro | — | — | 25% | 19% |
+| Quem nunca apara a armadura | 41% | 34% | 45% | 27% |
+| Quem nunca levanta do chão | 8% | 4% | 1% | 0% |
 
-Das raras vitórias de um Bronze sobre um Ouro, mais de 95% vieram depois de levantar do
+O Bronze perde para o Prata e perde muito mais para o Ouro. Uma armadura que morreu e
+voltou fica mais forte a cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
+Das raras vitórias de um Bronze sobre um Ouro, mais de 90% vieram depois de levantar do
 chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um Ouro
 por um milagre, com ajuda, e quase morrendo.
 
@@ -91,7 +95,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | IV | Cosmo e Sentidos | O Cosmo que cresce, queimar, o Sétimo dominado, a Guerra dos Mil Dias, o Oitavo, o Nono, os cinco sentidos e as Centelhas |
 | V | Combate | Ações, reações, "o mesmo golpe não funciona duas vezes", cair e levantar, condições |
 | VI | Técnicas | O motor para criar as suas, evolução e o Golpe do Assento |
-| VII | Armaduras | Peças, caixas, morte, a escada do sangue e a forma Divina |
+| VII | Armaduras | Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
 | VIII | Itens e relíquias | Raridade, Sintonia, remédios, os três metais, melhorias e relíquias — nenhuma arma |
 | IX | Exércitos | O molde e quatro exércitos de exemplo |
 | X | Inimigos | Como montar, a dificuldade medida e sete fichas prontas |

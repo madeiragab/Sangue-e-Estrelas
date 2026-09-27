@@ -92,10 +92,13 @@ def testar_livro() -> None:
         print(r.stdout, r.stderr)
         return
     html = (RAIZ / "livro.html").read_text(encoding="utf-8")
-    for posto, (bonus, caixas) in R.POSTO.items():
+    for posto, (bonus, res) in R.POSTO.items():
         nome = {"bronze": "Bronze", "prata": "Prata", "ouro": "Ouro", "divina": "Forma Divina"}[posto]
-        linha = f'<tr><td>{nome}</td><td class="num">+{bonus}</td><td class="num">{caixas}</td></tr>'
-        confere(linha in html, f"tabela de Posto: {nome} +{bonus} DEF, {caixas} caixas")
+        linha = f'<tr><td>{nome}</td><td class="num">+{bonus}</td><td class="num">{res}</td></tr>'
+        confere(linha in html, f"tabela de Posto: {nome} +{bonus} DEF, Resistência {res}")
+    for sangue, (dbonus, rbonus) in R.FORMA.items():
+        trecho = f"<strong>+{dbonus} DEF</strong> e <strong>+{rbonus} de Resistência</strong>"
+        confere(trecho in html, f"escada do sangue: {sangue} dá +{dbonus} DEF e +{rbonus} de Resistência")
     for n in (1, 5, 9, 13, 17, 20):
         trecho = f'<td class="num">{n}</td><td class="num">+{R.prof(n)}</td><td class="num">{R.grau(n)}</td><td class="num">{R.teto_base(n)}</td>'
         confere(trecho in html, f"tabela de níveis: nível {n}")
@@ -155,11 +158,23 @@ def testar_equilibrio() -> None:
         # Prata e Ouro só são medidos onde existem: o Posto tem requisito de nível
         if R.posto_existe("prata", n):
             p = taxa(lambda k: montar("A", k, "prata"), lambda k: montar("B", k), n, 61 + n)
-            confere(0.52 <= p["a"] <= 0.72, f"nível {n}: Prata vence Bronze na maioria ({p['a']:.0%})")
+            confere(0.70 <= p["a"] <= 0.92,
+                    f"nível {n}: o Bronze normalmente perde para o Prata ({p['a']:.0%} do Prata)")
+            g = ("guerreiro",) * 3
+            f4 = taxa(lambda k: montar("A", k, formas=g), lambda k: montar("B", k), n, 66 + n)
+            fe = taxa(lambda k: montar("A", k, formas=g + ("elite",)), lambda k: montar("B", k), n, 67 + n)
+            confere(0.55 <= f4["a"] <= 0.80 and fe["a"] > f4["a"],
+                    f"nível {n}: cada forma nova ajuda (V4 {f4['a']:.0%}, com sangue de elite {fe['a']:.0%})")
         if not R.posto_existe("ouro", n):
             continue
         o = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 71 + n)
         confere(o["a"] <= 0.07, f"nível {n}: Bronze sozinho quase nunca vence um Ouro ({o['a']:.0%})")
+        confere(p["b"] >= o["a"] + 0.05,
+                f"nível {n}: o Bronze perde mais para o Ouro que para o Prata ({o['a']:.0%} × {p['b']:.0%})")
+        tudo = ("guerreiro",) * 3 + ("elite", "deus")
+        fd = taxa(lambda k: montar("A", k, formas=tudo), lambda k: montar("B", k, "ouro"), n, 87 + n)
+        confere(fd["a"] <= 0.30,
+                f"nível {n}: nem com sangue de deus a armadura de Bronze iguala o Ouro ({fd['a']:.0%})")
         oc = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 81 + n, centelhas_a=1)
         # do 15 em diante a Centelha vale cerca de 1 ponto: a margem cobre o acaso de 500 duelos
         confere(o["a"] - 0.03 <= oc["a"] <= 0.18,

@@ -1046,8 +1046,8 @@ pre.bloco-codigo {
     <li><strong>Ir além tem preço.</strong> Você pode queimar o próprio Cosmo, levantar
       quando deveria ter ficado no chão e ficar mais forte a cada sentido que um inimigo
       arranca de você. Tudo isso funciona, e tudo isso cobra.</li>
-    <li><strong>A armadura é quase um personagem.</strong> Ela quebra peça por peça, pode
-      morrer, e só volta com sangue — e cada vez que volta, volta diferente.</li>
+    <li><strong>A armadura é quase um personagem.</strong> Ela racha a cada golpe que segura,
+      se despedaça, pode morrer, e só volta com sangue — e cada vez que volta, volta diferente e mais forte.</li>
   </ul>
 
   <h3>O que você precisa para jogar</h3>
@@ -1595,15 +1595,15 @@ function rolar(modo) {
     <thead><tr><th>O quê</th><th>Como calcular</th></tr></thead>
     <tbody>
       <tr><td>PV máximos</td><td>A coluna PV da tabela de níveis (<a href="#cap12">Capítulo Doze</a>) + CON × nível · 18 + CON no nível 1</td></tr>
-      <tr><td>DEF</td><td>10 + DES + armadura (Bronze +2, com o Peitoral inteiro)</td></tr>
+      <tr><td>DEF</td><td>10 + DES + armadura (Bronze +2, enquanto ela não estiver em pedaços)</td></tr>
       <tr><td>Fortitude · Reflexos · Vontade</td><td>14 + CON · DES · SAB, e + proficiência nas treinadas</td></tr>
       <tr><td>Iniciativa</td><td>1d20 + DES</td></tr>
-      <tr><td>Movimento</td><td>9 metros; +3 metros com as Pernas da armadura inteiras</td></tr>
+      <tr><td>Movimento</td><td>9 metros; +3 metros com a armadura no corpo</td></tr>
       <tr><td>Golpe comum</td><td>FOR ou DES + proficiência para acertar; 1d8 + o mesmo atributo de dano (dois golpes a partir do nível 9)</td></tr>
       <tr><td>Bônus de técnica</td><td>Golpe: FOR ou DES + proficiência · Cosmo: Atributo do Cosmo + proficiência</td></tr>
       <tr><td>Teto de Cosmo</td><td>3 + proficiência — 5 no nível 1</td></tr>
       <tr><td>Cosmo inicial</td><td>Modificador do Atributo do Cosmo, mínimo 1</td></tr>
-      <tr><td>Armadura</td><td>Bronze: 1 caixa em cada peça — Elmo, Peitoral, Braços, Pernas e acessório</td></tr>
+      <tr><td>Armadura</td><td>Bronze: DEF +2 e Resistência 3 (4 sem acessório)</td></tr>
       <tr><td>Convicções · Centelhas</td><td>3 Convicções · 3 Centelhas por sessão</td></tr>
       <tr><td>Glória</td><td>0. Você sobe de nível com 3 de Glória nos níveis 1 a 4</td></tr>
       <tr><td>Técnicas</td><td>2 no nível 1</td></tr>
@@ -1711,7 +1711,8 @@ function rolar(modo) {
       Efeito contra ele, e ele tem Desvantagem contra você.</li>
     <li><strong>Dois degraus acima:</strong> além disso, os ataques dele contra você só
       acertam num 20 natural.</li>
-    <li><strong>Mesmo degrau:</strong> nada — a não ser o domínio da elite, abaixo.</li>
+    <li><strong>Mesmo degrau:</strong> nada — a não ser o domínio da elite, abaixo, e a
+      Hierarquia do Prata sobre o Bronze (<a href="#cap7">Capítulo Sete</a>).</li>
   </ul>
 
   <h3 id="setimo">O Sétimo Sentido</h3>
@@ -1752,7 +1753,7 @@ function rolar(modo) {
     <p><strong>O que o simulador diz sobre Bronze contra Ouro.</strong> Do mesmo nível — e o
     Ouro só existe do 15 em diante —, um Bronze sozinho vence um Ouro de 1% a 4% das vezes;
     um Prata, de 4% a 6%. Um amigo mandando uma Centelha por rodada quase não muda a conta:
-    de 3% a 5%. E, das poucas vitórias, mais de 95% vieram depois de levantar do chão, e o
+    de 3% a 5%. E, das poucas vitórias, mais de 90% vieram depois de levantar do chão, e o
     Bronze terminou a luta com um quinto
     dos PV. É o anime: um Bronze vence um Ouro por um milagre, com a ajuda de alguém, e quase
     morrendo.</p>
@@ -2024,10 +2025,10 @@ function rolar(modo) {
   <p>Você tem uma reação por rodada, e ela volta no começo do seu turno. Três coisas
   disputam essa reação — e escolher é a decisão defensiva mais importante da luta:</p>
   <ul>
-    <li><strong>Bloquear.</strong> Com os Braços da armadura inteiros, quando um ataque é
-      declarado contra você e antes da rolagem: +2 na DEF contra ele.</li>
-    <li><strong>Aparar.</strong> Depois de ser acertado e de ver o dano: marque uma caixa de
-      uma peça da armadura e sofra metade. Está no <a href="#armadura-na-luta">Capítulo
+    <li><strong>Bloquear.</strong> Com a armadura no corpo, quando um ataque é declarado
+      contra você e antes da rolagem: +2 na DEF contra ele.</li>
+    <li><strong>Aparar.</strong> Depois de ser acertado e de ver o dano: gaste 1 de
+      Resistência da armadura e sofra metade. Está no <a href="#armadura-na-luta">Capítulo
       Sete</a>.</li>
     <li><strong>Ataque de oportunidade.</strong> Quando alguém ao seu alcance sai dele sem
       Desengajar, você dá um golpe comum.</li>
@@ -2171,7 +2172,7 @@ function rolar(modo) {
       <h5>Descanso longo</h5>
       <p class="etiqueta">Uma noite</p>
       <p>Recupera metade dos PV máximos e um sentido arrancado. A armadura, se estiver
-      viva, se regenera: todas as caixas voltam. As Cicatrizes somem.</p>
+      viva, se regenera: a Resistência volta toda. As Cicatrizes somem.</p>
     </div>
     <div class="cartao">
       <h5>Interlúdio</h5>
@@ -2368,8 +2369,8 @@ function rolar(modo) {
       <p>Ação bônus · reação · ignora cobertura · não precisa ver o alvo · afeta vários
       aliados um por um.</p>
       <p><strong>Atravessa a armadura:</strong> o alvo não pode Aparar esse dano.</p>
-      <p><strong>Quebra a armadura:</strong> um acerto marca uma caixa numa peça que você
-      escolhe.</p>
+      <p><strong>Quebra a armadura:</strong> um acerto tira 1 de Resistência da armadura do
+      alvo, além do dano.</p>
     </div>
     <div class="cartao">
       <h5>Custam −1</h5>
@@ -2550,7 +2551,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </div>
 
   <p class="abre">A armadura é quase um personagem. Ela tem a forma da sua constelação,
-  escolheu você, quebra peça por peça no meio da luta e se refaz sozinha depois. E pode
+  escolheu você, racha a cada golpe que segura, se despedaça e se refaz sozinha depois. E pode
   morrer. Quando morre, só volta com sangue — e cada vez que volta, volta diferente.</p>
 
   <p>Guardada, a armadura fica montada como a estátua da criatura dela, dentro de uma
@@ -2559,15 +2560,16 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   pescoço. A diferença é só de aparência: as regras são as mesmas. Com a urna ou a pedra ao
   lado, vestir a armadura é uma interação simples; ela se desmonta e se monta sobre você.</p>
 
-  <h3>As peças</h3>
-  <p>Toda armadura tem cinco peças, e cada uma dá uma coisa enquanto estiver inteira.</p>
+  <h3>O que a armadura dá</h3>
+  <p>Toda armadura tem cinco peças. Enquanto ela estiver no seu corpo, cada peça dá uma
+  coisa:</p>
 
   <div class="rolagem"><table>
-    <thead><tr><th>Peça</th><th>Enquanto estiver inteira</th></tr></thead>
+    <thead><tr><th>Peça</th><th>O que dá</th></tr></thead>
     <tbody>
-      <tr><td>Elmo</td><td>O primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe, quebrado.</td></tr>
-      <tr><td>Peitoral</td><td>Dá o bônus de armadura na sua DEF.</td></tr>
-      <tr><td>Braços</td><td>Permitem Bloquear: como reação, +2 na DEF contra um ataque declarado.</td></tr>
+      <tr><td>Peitoral</td><td>O bônus de armadura na sua DEF.</td></tr>
+      <tr><td>Braços</td><td>Bloquear: como reação, +2 na DEF contra um ataque declarado.</td></tr>
+      <tr><td>Elmo</td><td>Uma vez por luta, o primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe.</td></tr>
       <tr><td>Pernas</td><td>+3 metros de movimento.</td></tr>
       <tr><td>Acessório</td><td>O que a sua constelação der: veja abaixo.</td></tr>
     </tbody>
@@ -2577,66 +2579,90 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <p>Escolhido na criação, junto com a constelação. Uma armadura sem acessório é mais
   sólida no lugar dele.</p>
   <div class="rolagem"><table>
-    <thead><tr><th>Acessório</th><th>Enquanto estiver inteiro</th></tr></thead>
+    <thead><tr><th>Acessório</th><th>O que dá</th></tr></thead>
     <tbody>
-      <tr><td>Escudo</td><td>Bloquear dá +3 em vez de +2, e funciona mesmo sem os Braços.</td></tr>
+      <tr><td>Escudo</td><td>Bloquear dá +3 em vez de +2.</td></tr>
       <tr><td>Correntes</td><td>Seus golpes comuns e o Agarrar alcançam 6 metros.</td></tr>
       <tr><td>Asas</td><td>+3 metros de movimento, e você pode voar durante o turno (precisa terminá-lo no chão).</td></tr>
       <tr><td>Garras ou chifres</td><td>O dano do golpe comum é <span class="dado">1d10</span>.</td></tr>
-      <tr><td>Nenhum</td><td>O Peitoral ganha uma caixa a mais.</td></tr>
+      <tr><td>Nenhum</td><td>+1 de Resistência.</td></tr>
     </tbody>
   </table></div>
 
+  <h3 id="resistencia">A Resistência</h3>
+  <p>A armadura tem um número só para acompanhar na luta: a
+  <em class="termo">Resistência</em>. É quanto ela aguenta antes de se despedaçar. Na ficha,
+  é uma fileira de quadrados; cada golpe que ela segura risca um.</p>
+  <p>A sua Resistência é a soma de:</p>
+  <ul>
+    <li>a Resistência do Posto da armadura, na tabela abaixo;</li>
+    <li>+1 se a armadura não tem acessório;</li>
+    <li>+1 nos níveis 5, 7, 13 e 17 (<a href="#cap12">Capítulo Doze</a>);</li>
+    <li>o bônus de cada forma nova, se a armadura já reviveu (<a href="#reviver">mais
+      abaixo</a>), e as melhorias do <a href="#cap8">Capítulo Oito</a>.</li>
+  </ul>
+
   <h3>O Posto na armadura</h3>
-  <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e quantas
-  <em class="termo">caixas</em> cada peça tem.</p>
+  <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e qual é a Resistência
+  dela.</p>
   <div class="rolagem"><table>
-<thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Caixas por peça</th></tr></thead><tbody>
-<tr><td>Bronze</td><td class="num">+2</td><td class="num">1</td></tr>
-<tr><td>Prata</td><td class="num">+4</td><td class="num">2</td></tr>
-<tr><td>Ouro</td><td class="num">+6</td><td class="num">3</td></tr>
-<tr><td>Forma Divina</td><td class="num">+7</td><td class="num">4</td></tr>
+<thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Resistência</th></tr></thead><tbody>
+<tr><td>Bronze</td><td class="num">+2</td><td class="num">3</td></tr>
+<tr><td>Prata</td><td class="num">+4</td><td class="num">4</td></tr>
+<tr><td>Ouro</td><td class="num">+6</td><td class="num">5</td></tr>
+<tr><td>Forma Divina</td><td class="num">+7</td><td class="num">6</td></tr>
 </tbody></table></div>
   <p>A elite dos outros exércitos — General Marina, Juiz do Inferno, Guerreiro Deus — usa
-  a linha do Ouro. A distância entre as linhas foi medida: Prata vence Bronze do mesmo
-  nível cerca de 60% das vezes.</p>
+  a linha do Ouro.</p>
+
+  <div class="destaque">
+    <span class="rotulo">A Hierarquia</span>
+    <p>Um Prata diante de um Bronze soma <strong>+2 em todas as rolagens contra ele</strong>
+    — ataques e Rolagens de Efeito —, e o Bronze soma <strong>−2 em todas as rolagens
+    contra o Prata</strong>. O Prata tem mais anos de treino, mais lutas e uma armadura mais
+    dura, e o Bronze sente isso em cada golpe.</p>
+  </div>
+  <p>A elite não usa a Hierarquia: o que ela tem é maior — o Sétimo quando quer, e o domínio
+  do <a href="#setimo">Capítulo Quatro</a>. Medido, do mesmo nível: o Bronze vence o Prata
+  de 12% a 19% das vezes, e vence o Ouro de 1% a 4%. Perde para os dois — e muito mais
+  para o Ouro.</p>
 
   <h3 id="armadura-na-luta">A armadura na luta</h3>
   <div class="destaque">
     <span class="rotulo">Aparar</span>
-    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e marcar
-    uma caixa de uma peça inteira para sofrer <strong>metade do dano</strong>, arredondado
-    para baixo. Você decide depois de ver o dano.</p>
+    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e
+    <strong>gastar 1 de Resistência</strong> para sofrer <strong>metade do dano</strong>,
+    arredondado para baixo. Você decide depois de ver o dano. Diga qual peça rachou.</p>
   </div>
   <ul>
-    <li>Quando a última caixa de uma peça é marcada, a peça <strong>quebra</strong>: você
-      perde o que ela dava até ela se refazer. O Peitoral quebrado leva embora o bônus de
-      DEF.</li>
+    <li><strong>Resistência 0: a armadura está em pedaços.</strong> As peças caem pelo chão
+      e você perde tudo o que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e o acessório —
+      até ela se refazer.</li>
     <li>Técnicas que <strong>atravessam a armadura</strong> não podem ser aparadas.
-      Técnicas que <strong>quebram a armadura</strong> marcam uma caixa na peça que o
-      atacante escolher, a cada acerto.</li>
-    <li>O Elmo é sempre o primeiro a ir: é por isso que, no anime, quase todo Cavaleiro
+      Técnicas que <strong>quebram a armadura</strong> tiram 1 de Resistência a cada acerto,
+      além do dano.</li>
+    <li>O Elmo é sempre o primeiro a voar: é por isso que, no anime, quase todo Cavaleiro
       termina a luta sem ele.</li>
   </ul>
 
-  <p>Aparar é a escolha mais constante da luta. Cada caixa marcada é metade de um golpe que
-  não entrou — e uma peça a menos para o próximo. Como Aparar e Bloquear usam a mesma
-  reação, você só faz um dos dois por rodada: bloquear o golpe comum que vem agora ou guardar
-  a reação para aparar a técnica que talvez venha depois.</p>
+  <p>Aparar é a escolha mais constante da luta. Cada ponto de Resistência é metade de um
+  golpe que não entrou — e um passo mais perto de lutar sem armadura. Como Aparar e
+  Bloquear usam a mesma reação, você só faz um dos dois por rodada: bloquear o golpe comum
+  que vem agora ou guardar a reação para aparar a técnica que talvez venha depois.</p>
   <div class="nota">
     <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de
-    graça, quantas vezes houvesse caixas. O simulador mostrou o efeito: toda técnica era
-    cortada pela metade, as lutas passavam de dez rodadas e dar só golpes comuns rendia tanto
-    quanto usar técnicas. Com a reação, a armadura continua decisiva — quem nunca apara vence
-    só de 34% a 46% dos duelos — sem apagar as técnicas.</p>
+    graça. O simulador mostrou o efeito: toda técnica era cortada pela metade, as lutas
+    passavam de dez rodadas e dar só golpes comuns rendia tanto quanto usar técnicas. Com a
+    reação, a armadura continua decisiva — quem nunca apara vence bem menos da metade dos
+    duelos — sem apagar as técnicas.</p>
   </div>
 
   <h4>Regeneração</h4>
-  <p>A armadura viva se refaz sozinha. Num descanso longo, todas as caixas voltam e as peças
-  quebradas se remontam. Só uma armadura morta não volta sozinha.</p>
+  <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
+  peças se remontam. Só uma armadura morta não volta sozinha.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas,
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela em pedaços,
   na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
   de um deus, uma relíquia. Uma armadura morta perde o brilho, fica cinza e fria: não dá
   nada, não atende ao chamado e não se regenera.</p>
@@ -2663,8 +2689,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </div>
 
   <h4>O sangue se paga em terços</h4>
-  <p>Quem doa marca caixas na trilha de <em class="termo">Sangue</em> da ficha: três
-  caixas, uma para cada terço.</p>
+  <p>Quem doa risca a trilha de <em class="termo">Sangue</em> da ficha: três quadrados, um
+  para cada terço.</p>
   <div class="rolagem"><table>
     <thead><tr><th>Terços doados</th><th>O que acontece com quem doou</th></tr></thead>
     <tbody>
@@ -2679,36 +2705,48 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 
   <h4>A escada do sangue</h4>
   <p>Uma armadura só aceita sangue <strong>igual ou mais forte</strong> que o último que
-  recebeu. Cada degrau tem um limite.</p>
+  recebeu. Cada degrau tem um limite — e cada revivida deixa a armadura mais forte que antes.
+  Quanto mais forte o sangue, maior o bônus.</p>
   <div class="rolagem"><table>
-    <thead><tr><th>Sangue</th><th>De quem</th><th class="num">Revividas</th><th>O traço que deixa</th></tr></thead>
-    <tbody>
-      <tr><td>De guerreiro</td><td>O dono ou um companheiro do mesmo exército</td><td class="num">até 3</td><td>A armadura muda de forma a cada vez</td></tr>
-      <tr><td>De elite</td><td>Um Ouro, General, Juiz ou Guerreiro Deus</td><td class="num">1</td><td>A armadura fica <strong>dourada no Sétimo</strong></td></tr>
-      <tr><td>De deus</td><td>O deus patrono do exército</td><td class="num">1</td><td>O <strong>elo de sangue</strong>: a forma Divina no Nono</td></tr>
-    </tbody>
-  </table></div>
-  <p>Depois do sangue de um deus não existe sangue mais forte. Se a armadura morrer de
-  novo, é para sempre.</p>
+<thead><tr><th>Sangue</th><th class="num">Vezes</th><th>Cada forma nova dá</th></tr></thead><tbody>
+<tr><td><strong>De guerreiro</strong>: o dono ou um companheiro do mesmo exército</td><td class="num">até 3</td><td><strong>+1 DEF</strong> e <strong>+1 de Resistência</strong></td></tr>
+<tr><td><strong>De elite</strong>: um Ouro, General, Juiz ou Guerreiro Deus</td><td class="num">1</td><td><strong>+2 DEF</strong> e <strong>+2 de Resistência</strong></td></tr>
+<tr><td><strong>De deus</strong>: o deus patrono do exército</td><td class="num">1</td><td><strong>+3 DEF</strong> e <strong>+3 de Resistência</strong></td></tr>
+</tbody></table></div>
+  <p>Uma armadura de elite começa no segundo degrau: o sangue do próprio dono já é de elite.
+  Depois do sangue de um deus não existe sangue mais forte. Se a armadura morrer de novo, é
+  para sempre.</p>
 
-  <h4>Cada revivida é uma versão nova</h4>
+  <h4>Cada revivida é uma forma nova</h4>
   <p>Toda vez que revive, a armadura sobe uma <em class="termo">Versão</em>: a V1 é a
   original, a V2 a primeira revivida, e assim por diante. A cada Versão:</p>
   <ul>
     <li>ela <strong>muda de forma</strong> — descreva como ficou;</li>
-    <li>duas peças diferentes, à sua escolha, ganham <strong>uma caixa a mais</strong> para
-      sempre.</li>
+    <li>ela ganha o <strong>bônus do sangue</strong> que a trouxe de volta, na tabela acima,
+      para sempre. Os bônus somam.</li>
   </ul>
+  <div class="nota">
+    <p><strong>Exemplo.</strong> A armadura de Bronze do Téo morreu três vezes e voltou com o sangue dele e dos
+    companheiros; na quarta, voltou com o sangue de um Cavaleiro de Ouro. Ela está na V5:
+    DEF +2 do Bronze, +3 das três formas de guerreiro e +2 da forma de elite, <strong>DEF
+    +7</strong>. Resistência 3 do Bronze, +3 e +2: <strong>8</strong>, mais o que vier do
+    acessório e dos níveis. E ela fica dourada quando o Téo desperta o Sétimo.</p>
+  </div>
   <p>No mangá, a armadura de Pégaso tem cinco versões, e no anime três: ela muda de forma a
-  cada conserto. É esse o espírito.</p>
+  cada conserto e fica mais forte a cada vez. É esse o espírito.</p>
+  <div class="nota">
+    <p><strong>Medido.</strong> Do mesmo nível, uma armadura de Bronze revivida três vezes
+    vence uma original de 64% a 69% das vezes; somando a forma de elite, de 73% a 81%. Contra
+    um Ouro, a revivida três vezes com sangue de elite vence de 9% a 12%; com o sangue de um
+    deus também, de 19% a 25% — e isso sem a forma Divina. As armaduras de Bronze que morreram
+    e voltaram chegam perto do Ouro. Não chegam a ele.</p>
+  </div>
 
   <h4>O traço do sangue</h4>
-  <p>Todo sangue forte fica adormecido na armadura, esperando o Sentido certo:</p>
+  <p>Além do bônus, o sangue forte deixa um traço, que acorda com o Sentido certo:</p>
   <ul>
     <li><strong>Dourada no Sétimo.</strong> Uma armadura que recebeu sangue de elite fica
-      dourada quando você desperta o Sétimo. Enquanto você estiver nele, ela usa a linha do
-      Ouro da tabela de Posto, somando as caixas das Versões. As caixas já marcadas
-      continuam marcadas.</li>
+      dourada quando você desperta o Sétimo, até o fim da luta.</li>
     <li><strong>Divina no Nono.</strong> Uma armadura com sangue de deus é o elo de sangue do
       <a href="#nono">Capítulo Quatro</a>.</li>
   </ul>
@@ -2718,10 +2756,11 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   adormecido até o portador elevar o Cosmo ao nível de um deus. Quando você desperta o
   Nono, a armadura assume a <em class="termo">forma Divina</em>:</p>
   <ul>
-    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto;</li>
-    <li>todas as caixas se limpam e todas as peças quebradas se refazem na hora;</li>
-    <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com as caixas como
-      estavam antes da transformação.</li>
+    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto no
+      lugar da linha do Posto dela, somando os bônus das formas;</li>
+    <li>a Resistência volta toda e as peças se remontam na hora;</li>
+    <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com a Resistência como
+      estava antes da transformação.</li>
   </ul>
   <p>Com um elo de ligação em vez de sangue, a forma Divina aparece do mesmo jeito — mas some
   na hora em que o elo for cortado. Foi o que aconteceu a um Cavaleiro de Pégaso de outra
@@ -2734,7 +2773,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><strong>Requisito:</strong> Prata a partir do nível 9; Ouro, a partir do nível 15 e
       com uma vaga vazia. O momento da promoção é da história; o requisito é da regra.</li>
     <li><strong>De Bronze a Prata:</strong> a sua armadura sobe junto, na mesma constelação.
-      Ela passa a usar a linha da Prata e mantém as caixas das Versões. Não é invenção: a
+      Ela passa a usar a linha da Prata e mantém os bônus das formas. Não é invenção: a
       armadura de Órion já foi Prata numa história e Bronze em outra.</li>
     <li><strong>De Prata a Ouro:</strong> as armaduras de Ouro são as doze do zodíaco, e elas
       não se criam. Você assume uma vaga vazia e recebe a armadura dela, com o Golpe do
@@ -2842,8 +2881,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Unguento de Pó de Estrelas</h5>
       <p class="etiqueta">Raro · interação simples</p>
-      <p>Passado numa peça da armadura, limpa uma caixa marcada — mesmo de uma peça
-      quebrada, que volta a funcionar. Não revive armadura morta.</p>
+      <p>Passado na armadura, devolve 1 de Resistência — mesmo a uma armadura em pedaços,
+      que volta ao corpo. Não revive armadura morta.</p>
     </div>
     <div class="cartao">
       <h5>Água do Santuário</h5>
@@ -2927,42 +2966,42 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li>Uma armadura aceita <strong>tantas melhorias quanto a sua Versão</strong>: uma na V1,
       duas na V2, e assim por diante. Reviver a armadura é também o que abre espaço para
       melhorá-la.</li>
-    <li>Cada peça recebe no máximo uma melhoria.</li>
+    <li>Cada melhoria entra uma vez só em cada armadura.</li>
     <li>Quando a armadura morre, as melhorias morrem com ela, e não voltam na revivida.</li>
   </ul>
 
   <div class="grade">
     <div class="cartao">
       <h5>Reforço de Gamânio</h5>
-      <p class="etiqueta">1 Gamânio · uma peça</p>
-      <p>A peça ganha +1 caixa.</p>
+      <p class="etiqueta">1 Gamânio</p>
+      <p>+1 de Resistência.</p>
     </div>
     <div class="cartao">
       <h5>Liga de Oricalco</h5>
-      <p class="etiqueta">1 Oricalco · Peitoral · Prata ou acima</p>
-      <p>+1 na DEF enquanto o Peitoral estiver inteiro. Não soma na forma Divina.</p>
+      <p class="etiqueta">1 Oricalco · Prata ou acima</p>
+      <p>+1 na DEF da armadura. Não soma na forma Divina.</p>
     </div>
     <div class="cartao">
       <h5>Polimento de Pó de Estrelas</h5>
-      <p class="etiqueta">1 Pó de Estrelas · uma peça</p>
-      <p>A primeira vez que você apara com esta peça em cada luta, sofre um quarto do dano em
-      vez de metade.</p>
+      <p class="etiqueta">1 Pó de Estrelas</p>
+      <p>A primeira vez que você apara em cada luta, sofre um quarto do dano em vez de
+      metade.</p>
     </div>
     <div class="cartao">
       <h5>Elmo de duas camadas</h5>
-      <p class="etiqueta">1 Gamânio · Elmo</p>
-      <p>O Elmo segura dois críticos antes de voar longe, em vez de um.</p>
+      <p class="etiqueta">1 Gamânio</p>
+      <p>O Elmo segura dois críticos por luta antes de voar longe, em vez de um.</p>
     </div>
     <div class="cartao">
       <h5>Gravação da constelação</h5>
-      <p class="etiqueta">1 Pó de Estrelas · acessório</p>
-      <p>O acessório ganha +1 caixa, e uma técnica que quebra a armadura não pode escolhê-lo.</p>
+      <p class="etiqueta">1 Pó de Estrelas</p>
+      <p>Uma técnica que quebra a armadura não tira Resistência da sua: só o dano entra.</p>
     </div>
     <div class="cartao">
       <h5>Urna marcada</h5>
       <p class="etiqueta">1 Pó de Estrelas · a urna</p>
       <p>Chamar a armadura funciona a qualquer distância, e ela chega no mesmo turno em vez
-      do seguinte. Não ocupa uma peça.</p>
+      do seguinte. Não conta no limite de melhorias.</p>
     </div>
   </div>
 
@@ -3095,8 +3134,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <p>Todo exército tem três degraus de Posto. Os nomes mudam, mas o peso é o mesmo:</p>
   <ul>
     <li><strong>Base, o Bronze:</strong> onde todo personagem começa. Armadura de Bronze.</li>
-    <li><strong>Intermediário, a Prata:</strong> armadura de Prata, e o respeito que vem
-      com ela.</li>
+    <li><strong>Intermediário, a Prata:</strong> armadura de Prata, o respeito que vem com
+      ela e a Hierarquia: +2 em tudo contra um Bronze, que tem −2 contra ele.</li>
     <li><strong>Elite, o Ouro:</strong> um número fechado de vagas. Armadura de Ouro, o
       Sétimo Sentido quando quiser — dominado, com +3 contra quem só o despertou — e o Golpe
       do Assento de cada vaga.</li>
@@ -3139,8 +3178,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>A armadura viva</h5>
       <p>Chamar a armadura não custa Cosmo. E, uma vez por nível, quando você cai a 0 PV com
-      a armadura viva por perto, ela vem sozinha, se monta sobre você e todas as caixas dela
-      voltam.</p>
+      a armadura viva por perto, ela vem sozinha, se monta sobre você e a Resistência dela
+      volta toda.</p>
     </div>
   </div>
 
@@ -3179,8 +3218,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="grade">
     <div class="cartao">
       <h5>Escama de oricalco</h5>
-      <p>Toda Escama tem uma caixa a mais em cada peça. As Escamas são tão duras quanto
-      uma armadura de Ouro, e os Marinas lutam como quem sabe disso.</p>
+      <p>Toda Escama tem +1 de Resistência. As Escamas são tão duras quanto uma armadura
+      de Ouro, e os Marinas lutam como quem sabe disso.</p>
     </div>
     <div class="cartao">
       <h5>Filhos do mar</h5>
@@ -3256,7 +3295,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </div>
 
   <p class="abre">Todo inimigo que importa usa as mesmas regras de um personagem: nível,
-  Posto, armadura com caixas, Cosmo que sobe, técnicas montadas com o motor, Sentidos e —
+  Posto, armadura com Resistência, Cosmo que sobe, técnicas montadas com o motor, Sentidos e —
   se for alguém de verdade — Convicções. Isso tem uma vantagem enorme: o inimigo reage às
   mesmas coisas que o jogador. Ele também desperta, também levanta, também lê o golpe que
   já viu.</p>
@@ -3287,8 +3326,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <ol class="passos">
     <li><b>Nível</b> Escolha na tabela rápida abaixo. Ela já traz PV, DEF por Posto,
       ataque, golpe comum, a técnica grande e as defesas.</li>
-    <li><b>Posto</b> Bronze, Prata ou elite. A elite entra no Sétimo quando quer, com o
-      domínio de +3, e tem um Golpe do Assento.</li>
+    <li><b>Posto</b> Bronze, Prata ou elite. O Prata tem a Hierarquia contra Bronzes (+2 e
+      −2). A elite entra no Sétimo quando quer, com o domínio de +3, e tem um Golpe do
+      Assento.</li>
     <li><b>Técnicas</b> Uma grande, no tamanho máximo do Grau, e uma pequena, de 2 pontos. A
       partir do nível 4, uma média. Dê nome e tema a elas; a conta já está na tabela.</li>
     <li><b>Convicções</b> Figurante e nomeado: 0. Rival: 1. Chefe: 2 ou 3.</li>
@@ -3350,11 +3390,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="rolagem"><table>
     <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>O personagem vence</th></tr></thead>
     <tbody>
-      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>87% a 99%</td></tr>
-      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>46% a 51%</td></tr>
-      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção, ou um Prata do mesmo nível com uma</td><td>33% a 42%</td></tr>
+      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>84% a 100%</td></tr>
+      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>47% a 49%</td></tr>
+      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção</td><td>35% a 45%</td></tr>
+      <tr><td>Muito difícil</td><td>Um Prata do mesmo nível com uma Convicção, contra um Bronze</td><td>11% a 19%</td></tr>
       <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>2% a 6% sozinho, Bronze ou Prata</td></tr>
-      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>6% a 20%</td></tr>
+      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>7% a 21%</td></tr>
     </tbody>
   </table></div>
   <p>A lição da tabela: <strong>o que torna um inimigo perigoso são as Convicções e o
@@ -3387,20 +3428,20 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro Negro<span class="kleos">Nível 2 · Bronze</span></h3>
 <p class="tipo">Renegado</p>
-<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · Elmo 1 · Peitoral 1 · Braços 1 · Pernas 1 · acessório 1<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · <b>Resistência</b> 3 · garras<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+4 contra a DEF, <span class="dado">1d10 + 2</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Punho das Sombras</strong> · 5 de Cosmo · +4 contra a DEF · <span class="dado">5d8 + 2</span>.</li><li><strong>Chama Negra</strong> · 2 de Cosmo · +4 contra a DEF · <span class="dado">2d8 + 2</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
-<ul><li><strong>Armadura falsa.</strong> A Armadura Negra não se regenera: as caixas marcadas ficam marcadas até alguém consertá-la.</li></ul>
+<ul><li><strong>Armadura falsa.</strong> A Armadura Negra não se regenera: a Resistência gasta fica gasta até alguém consertá-la.</li></ul>
 <p class="morte"><span class="rotulo-bloco">Quando usar</span>O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence um desses sozinho na maioria das vezes.</p>
 </div>
 
   <div class="criatura">
 <h3>Espectro de Estrela Terrestre<span class="kleos">Nível 4 · Bronze</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 29 <span class="sep">·</span> <b>DEF</b> 15 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 19 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · Elmo 1 · Peitoral 1 · Braços 1 · Pernas 1 · acessório 1<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 29 <span class="sep">·</span> <b>DEF</b> 15 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 19 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · <b>Resistência</b> 3 · asas<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+5 contra a DEF, <span class="dado">1d8 + 3</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3413,20 +3454,20 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro de Prata<span class="kleos">Nível 9 · Prata</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 76 <span class="sep">·</span> <b>DEF</b> 18 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · Elmo 2 · Peitoral 4 · Braços 2 · Pernas 2 · acessório 2<br><b>Convicções</b> 1</div>
+<div class="status"><b>PV</b> 76 <span class="sep">·</span> <b>DEF</b> 18 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · <b>Resistência</b> 6 · correntes<br><b>Convicções</b> 1</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+8 contra a DEF, <span class="dado">1d8 + 4</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Correntes do Cão Infernal</strong> · 6 de Cosmo · +8 contra a DEF · <span class="dado">18d8 + 4</span>.</li><li><strong>Chicote de Cosmo</strong> · 4 de Cosmo · +8 contra a DEF · <span class="dado">12d8 + 4</span>.</li><li><strong>Laço de Aço</strong> · 2 de Cosmo · +8 contra a DEF · <span class="dado">6d8 + 4</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.</li><li><strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do mesmo nível vence pouco mais de uma vez em três; um de nível 8, quase nunca, porque o Grau muda no 9. É luta para dois ou três Bronzes juntos.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do mesmo nível vence uma vez em cinco; um de nível 8, quase nunca; só um Bronze de nível 13 vence metade das vezes. É luta para dois ou três Bronzes juntos, ou para outro Prata.</p>
 </div>
 
   <div class="criatura">
 <h3>Guerreiro Deus<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Asgard</p>
-<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 9 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · Elmo 3 · Peitoral 7 · Braços 3 · Pernas 3<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 9 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3439,20 +3480,20 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>General Marina<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Poseidon</p>
-<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · Elmo 4 · Peitoral 7 · Braços 4 · Pernas 4 · acessório 4<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · <b>Resistência</b> 9 · escudo<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Triângulo das Ondas</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>. Atravessa a armadura.</li><li><strong>Maré Devastadora</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>.</li><li><strong>Garra do Kraken</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">16d8 + 5</span>.</li><li><strong>Redemoinho</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">8d8 + 5</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
-<ul><li><strong>Escama de oricalco.</strong> Uma caixa a mais em cada peça (já somada).</li><li><strong>Sétimo dominado.</strong> Como todo guerreiro de elite.</li></ul>
+<ul><li><strong>Escama de oricalco.</strong> +1 de Resistência (já somada).</li><li><strong>Sétimo dominado.</strong> Como todo guerreiro de elite.</li></ul>
 <p class="morte"><span class="rotulo-bloco">Quando usar</span>O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer Cavaleiro.</p>
 </div>
 
   <div class="criatura">
 <h3>Cavaleiro de Ouro<span class="kleos">Nível 16 · Elite</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 129 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 22 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · Elmo 3 · Peitoral 7 · Braços 3 · Pernas 3<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 129 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 22 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3465,7 +3506,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Juiz do Inferno<span class="kleos">Nível 18 · Elite</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 153 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 3, Teto 10 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · Elmo 3 · Peitoral 7 · Braços 3 · Pernas 3 · acessório 3<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 153 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 3, Teto 10 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · <b>Resistência</b> 9 · asas<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+11 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3726,7 +3767,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     história a traz — uma armadura que te escolhe, um mestre que passa o lugar, uma vaga que
     abre porque alguém morreu.</p>
   </div>
-  <p>Subir para Prata dá a linha da Prata na armadura. Subir para a elite dá a armadura da
+  <p>Subir para Prata dá a linha da Prata na armadura e a Hierarquia sobre os Bronzes. Subir para a elite dá a armadura da
   vaga, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
   ele não vem com o nível: vem com ele e com a história.</p>
 
@@ -3742,27 +3783,27 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <tr><td class="num">2</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">19</td><td class="num">3</td><td>Leitura de Combate</td></tr>
 <tr><td class="num">3</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">20</td><td class="num">3</td><td>Cosmo Desperto</td></tr>
 <tr><td class="num">4</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">21</td><td class="num">3</td><td>Terceira técnica · +2 pontos de atributo</td></tr>
-<tr><td class="num">5</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">38</td><td class="num">4</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">5</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">38</td><td class="num">4</td><td>+1 de Resistência</td></tr>
 <tr><td class="num">6</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">39</td><td class="num">4</td><td>Segunda Lição</td></tr>
-<tr><td class="num">7</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">40</td><td class="num">4</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">7</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">40</td><td class="num">4</td><td>+1 de Resistência</td></tr>
 <tr><td class="num">8</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">41</td><td class="num">4</td><td>Quarta técnica · +2 pontos de atributo</td></tr>
 <tr><td class="num">9</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">58</td><td class="num">4</td><td>Ataque Extra</td></tr>
 <tr><td class="num">10</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">59</td><td class="num">4</td><td>Terceira defesa treinada</td></tr>
 <tr><td class="num">11</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">60</td><td class="num">4</td><td>Golpe Certeiro</td></tr>
 <tr><td class="num">12</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">61</td><td class="num">4</td><td>Quinta técnica · +2 pontos de atributo</td></tr>
-<tr><td class="num">13</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">78</td><td class="num">5</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">13</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">78</td><td class="num">5</td><td>+1 de Resistência</td></tr>
 <tr><td class="num">14</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">79</td><td class="num">5</td><td>Quarta Convicção</td></tr>
 <tr><td class="num">15</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">80</td><td class="num">5</td><td>Cosmo Sereno</td></tr>
 <tr><td class="num">16</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">81</td><td class="num">5</td><td>Sexta técnica · +2 pontos de atributo</td></tr>
-<tr><td class="num">17</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">98</td><td class="num">5</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">17</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">98</td><td class="num">5</td><td>+1 de Resistência</td></tr>
 <tr><td class="num">18</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">99</td><td class="num">5</td><td>Segunda técnica assinatura</td></tr>
 <tr><td class="num">19</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">100</td><td class="num">5</td><td>+2 pontos de atributo</td></tr>
 <tr><td class="num">20</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">101</td><td class="num">—</td><td>Sétima técnica · Lenda</td></tr>
 </tbody></table></div>
 
   <p>Nenhum atributo passa de 20. Se a Constituição subir, recalcule os PV como se ela sempre
-  tivesse sido aquela. As caixas ganhas nos níveis são suas, não da armadura: se você trocar
-  de armadura, elas passam para a nova.</p>
+  tivesse sido aquela. A Resistência ganha nos níveis é sua, não da armadura: se você trocar
+  de armadura, ela passa para a nova.</p>
 
   <div class="nota">
     <p><strong>Por que os PV sobem por Grau.</strong> O dano das técnicas cresce de quatro em
@@ -3786,9 +3827,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <p>Você começa toda luta com +1 de Cosmo.</p>
     </div>
     <div class="cartao">
-      <h5>Caixas de armadura</h5>
+      <h5>Resistência</h5>
       <p class="etiqueta">Níveis 5, 7, 13 e 17</p>
-      <p>+1 caixa numa peça da sua armadura, à sua escolha.</p>
+      <p>+1 de Resistência na armadura que você vestir.</p>
     </div>
     <div class="cartao">
       <h5>Segunda Lição</h5>
@@ -3894,16 +3935,16 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       e Vontade 18, treinadas; Fortitude 15.</p>
 
       <p><strong>Golpe comum:</strong> <span class="dado">1d20 + 4</span> contra a DEF,
-      <span class="dado">1d10 + 2</span> de dano. <strong>Movimento:</strong> 12 metros, com as
-      Pernas inteiras.</p>
+      <span class="dado">1d10 + 2</span> de dano. <strong>Movimento:</strong> 12 metros, com a
+      armadura no corpo.</p>
 
-      <p><strong>Armadura de Lince</strong> · Bronze, Versão 1 · DEF +2. Elmo ☐ · Peitoral ☐ ·
-      Braços ☐ · Pernas ☐ · Garras ☐.</p>
+      <p><strong>Armadura de Lince</strong> · Bronze, Versão 1 · DEF +2 · Resistência ☐ ☐ ☐ ·
+      acessório: garras.</p>
 
       <p><strong>Técnica · Garra que Rasga o Céu</strong> (assinatura). Golpe (DES),
       instantânea, dois pontos de dano em alvo único (2), quebra a armadura (+1). Tamanho 3,
       custo 3 de Cosmo. Ataque <span class="dado">1d20 + 4</span> contra a DEF,
-      <span class="dado">2d8 + 2</span>, e marca uma caixa na peça que o Téo escolher.</p>
+      <span class="dado">2d8 + 2</span>, e tira 1 de Resistência da armadura do alvo.</p>
 
       <p><strong>Técnica · Olhos do Lince.</strong> Cosmo (SAB), reação (+1), instantânea,
       Desvantagem numa rolagem (1). Gatilho: um inimigo a até 6 metros declara um ataque.
@@ -3963,7 +4004,7 @@ SANGUE    ☐ ☐ ☐           CENTELHAS  ☐ ☐ ☐       CICATRIZES ___
 GLÓRIA    ___ de ___       RELÍQUIAS EM SINTONIA ______________________
 
 ARMADURA ______________  Versão __   DEF +__   Traço do sangue: ________
-  Elmo ☐☐☐  Peitoral ☐☐☐  Braços ☐☐☐  Pernas ☐☐☐  Acessório ☐☐☐
+  RESISTÊNCIA ☐☐☐☐☐☐☐☐☐☐☐☐     Formas: ________________   Elmo ☐
 
 TREINO ____________   Lição: ____________________________________
 CONVICÇÕES  1. ______________________________________________  ☐ gasta
@@ -4022,9 +4063,10 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
     </div>
     <div class="cartao">
       <h5>A armadura</h5>
-      <p>Aparar (reação): marque uma caixa, sofra metade. Bloquear (reação): +2 DEF antes da
-      rolagem. Um dos dois por rodada. Peça sem caixa quebra. O Elmo segura o primeiro
-      crítico. Tudo volta no descanso longo — menos a morte.</p>
+      <p>Aparar (reação): gaste 1 de Resistência, sofra metade. Bloquear (reação): +2 DEF
+      antes da rolagem. Um dos dois por rodada. Resistência 0: em pedaços, sem nada da
+      armadura. O Elmo segura o primeiro crítico. Prata contra Bronze: +2 e −2. Tudo volta no
+      descanso longo — menos a morte.</p>
     </div>
     <div class="cartao">
       <h5>O mesmo golpe</h5>
@@ -4043,7 +4085,7 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.2.2</strong>, de 27/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.3.0</strong>, de 27/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que
