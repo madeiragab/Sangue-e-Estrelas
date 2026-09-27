@@ -42,7 +42,7 @@ INIMIGOS = {
         quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um grupo de três "
                "Bronzes de nível 5 dá conta; um só, raramente."),
     "guerreiro-deus": dict(
-        nome="Guerreiro Deus", nivel=10, posto="ouro", acessorio="nenhum", conviccoes=2,
+        nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         exercito="Asgard", armadura="Veste Divina", teto_extra=1,
         tecnicas=("Presas do Lobo do Norte", "Ventania Gelada", "Tempestade de Cristal"),
         assento="Golpe da Estrela da Ursa Maior",
@@ -50,9 +50,10 @@ INIMIGOS = {
                 "estiver na Veste (já somado).",
                 "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
                 "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
-        quando="Um dos sete. Precisa de um grupo inteiro de nível 9 ou 10, com Centelhas."),
+        quando="Um dos sete. É luta para um grupo inteiro de nível 12 ou mais, com Centelhas; "
+               "um personagem sozinho, mesmo do nível dele, perde quase sempre."),
     "general-marina": dict(
-        nome="General Marina", nivel=11, posto="ouro", acessorio="escudo", conviccoes=2,
+        nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
         exercito="Poseidon", armadura="Escama", caixa_extra=1,
         tecnicas=("Maré Devastadora", "Redemoinho", "Garra do Kraken"),
         assento="Triângulo das Ondas",
@@ -62,7 +63,7 @@ INIMIGOS = {
         quando="O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer "
                "Cavaleiro."),
     "cavaleiro-de-ouro": dict(
-        nome="Cavaleiro de Ouro", nivel=12, posto="ouro", acessorio="nenhum", conviccoes=3,
+        nome="Cavaleiro de Ouro", nivel=16, posto="ouro", acessorio="nenhum", conviccoes=3,
         exercito="Atena", armadura="Armadura de Ouro",
         tecnicas=("Impacto do Zodíaco", "Chama Dourada", "Muralha de Luz"),
         assento="o Golpe do Assento da vaga",
@@ -70,9 +71,9 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "dez; com o grupo mandando Centelhas, um pouco mais."),
+               "vinte, mesmo no nível dele; com o grupo mandando Centelhas, um pouco mais."),
     "juiz-do-inferno": dict(
-        nome="Juiz do Inferno", nivel=15, posto="ouro", acessorio="asas", conviccoes=3,
+        nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         exercito="Hades", armadura="Súplice", teto_extra=1,
         tecnicas=("Garras do Grifo", "Marionete Cósmica", "Grande Chifre do Wyvern"),
         assento="Golpe do Juízo",
