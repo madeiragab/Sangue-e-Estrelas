@@ -104,6 +104,11 @@ class Lutador:
         self.sentidos_perdidos = []
         self.levantou = 0
         self.reacao = True
+        self.condicoes: dict = {}      # condição -> {"de": quem impôs, "tec": a técnica}
+        self.usadas: set = set()       # técnicas "uma vez por luta" já usadas
+        self.carregado = ""            # técnica "exige carregar" já preparada
+        self.desprevenido = False
+        self.imune: set = set()        # técnicas cuja condição forte já acabou
         self.lido_por: set = set()     # nomes das minhas técnicas que o oponente já leu
         self.vantagem_proxima = False  # Centelha: Vantagem no próximo ataque
         bonus, res = R.POSTO[self.posto]
@@ -137,7 +142,7 @@ class Lutador:
 
     @property
     def defesa(self) -> int:
-        d_ = 10 + self.mods["des"]
+        d_ = 10 + max(self.mods["des"], self.mods[self.atr_cosmo])
         if self.armada:
             d_ += self.armadura_def
         if "visao" in self.sentidos_perdidos:
@@ -171,6 +176,20 @@ class Lutador:
             self.teto_extra += R.TETO_SETIMO
             self.despertou = True
             self.lido_por.clear()      # o golpe conhecido volta na velocidade da luz
+
+    def pode_usar(self, t: Tecnica) -> bool:
+        """As limitações que proíbem: uma vez por luta, só com o Cosmo no Teto."""
+        if "uma_vez" in t.limites and t.nome in self.usadas:
+            return False
+        if "teto" in t.limites and self.cosmo < self.teto:
+            return False
+        return True
+
+    def defesas_passivas(self) -> dict:
+        """14 + atributo, + proficiência nas treinadas (DES e SAB; CON a partir do 10)."""
+        treinadas = {"des", "sab"} | ({"con"} if self.nivel >= 10 else set())
+        return {a: 14 + self.mods[a] + (self.prof if a in treinadas else 0)
+                for a in ("con", "des", "sab")}
 
     def perder_sentido(self, qual: str):
         self.sentidos_perdidos.append(qual)
@@ -216,6 +235,15 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
 
 
 # ---------------------------------------------------------------------------
+# Condições (Capítulo Cinco)
+# ---------------------------------------------------------------------------
+
+PERDE_O_TURNO = ("atordoado", "paralisado")
+CONTRA_COM_VANTAGEM = ("cego", "preso")
+ATACA_COM_DESVANTAGEM = ("cego", "amedrontado")
+
+
+# ---------------------------------------------------------------------------
 # A luta
 # ---------------------------------------------------------------------------
 
@@ -247,8 +275,12 @@ class Luta:
 
     def vantagem(self, atacante: Lutador, alvo: Lutador) -> int:
         dif = atacante.degrau - alvo.degrau
-        v = 1 if dif >= 1 else (-1 if dif <= -1 else 0)
-        return v
+        tem = (dif >= 1 or alvo.desprevenido
+               or any(c in alvo.condicoes for c in CONTRA_COM_VANTAGEM))
+        sofre = dif <= -1 or any(c in atacante.condicoes for c in ATACA_COM_DESVANTAGEM)
+        if tem and sofre:
+            return 0
+        return 1 if tem else (-1 if sofre else 0)
 
     def travados(self) -> bool:
         return self.travado
@@ -298,14 +330,17 @@ class Luta:
 
     # ------------------------------------------------------------------
     def rolar_ataque(self, atacante: Lutador, alvo: Lutador, bonus: int,
-                     def_extra: int = 0) -> tuple[bool, bool]:
-        """Devolve (acertou, crítico). O alvo pode Bloquear antes da rolagem."""
+                     def_extra: int = 0, passiva: int | None = None) -> tuple[bool, bool]:
+        """Devolve (acertou, crítico). O alvo pode Bloquear antes da rolagem.
+        Com `passiva`, é uma Rolagem de Efeito: contra a defesa passiva, sem
+        Bloquear e sem crítico."""
         v = self.vantagem(atacante, alvo)
+        alvo.desprevenido = False
         if atacante.vantagem_proxima:
             atacante.vantagem_proxima = False
             v = 1 if v == 0 else (0 if v < 0 else v)
         bloqueio = 0
-        pode_bloquear = (alvo.armada
+        pode_bloquear = (passiva is None and alvo.armada
                          and alvo.reacao and "tato" not in alvo.sentidos_perdidos
                          and not alvo.caido and alvo.politica["bloquear"]
                          and not (R.APARAR_USA_REACAO and alvo.politica["aparar"]))
@@ -330,10 +365,19 @@ class Luta:
         if nat == 1:
             return False, False
         if dois_degraus:
-            return (nat == 20), (nat == 20)
+            return (nat == 20), (nat == 20 and passiva is None)
+        if passiva is not None:
+            return nat + bonus >= passiva + def_extra, False
         if nat == 20:
             return True, True
         return nat + bonus >= alvo.defesa + bloqueio + def_extra, False
+
+    def rolar_efeito(self, x: Lutador, y: Lutador, t: Tecnica, def_extra: int = 0) -> bool:
+        """Rolagem de Efeito contra a defesa passiva mais fraca do alvo."""
+        passiva = min(y.defesas_passivas().values())
+        ok, _ = self.rolar_ataque(x, y, x.bonus_ataque(t.natureza), def_extra=def_extra,
+                                  passiva=passiva)
+        return ok
 
     def critico_vs_elmo(self, alvo: Lutador, critico: bool) -> bool:
         if critico and alvo.elmo and alvo.armada:
@@ -349,6 +393,7 @@ class Luta:
                 break
             acertou, crit = self.rolar_ataque(x, y, x.bonus_ataque("golpe"))
             if acertou:
+                crit = crit or "paralisado" in y.condicoes
                 crit = self.critico_vs_elmo(y, crit)
                 self.aplicar_dano(y, x.dano_golpe_comum(self.rng, crit), atravessa=False,
                                   fonte="golpe", atacante=x, quebra=False)
@@ -357,6 +402,17 @@ class Luta:
             x.subir_cosmo(R.COSMO_ACERTO * (ganhou if R.COSMO_POR_CADA_ACERTO else 1))
 
     def usar_tecnica(self, x: Lutador, y: Lutador, t: Tecnica, queima: int):
+        if "carregar" in t.limites and x.carregado != t.nome:
+            # carregar: neste turno, nenhuma técnica — só o golpe comum
+            x.carregado = t.nome
+            self.golpe(x, y)
+            return
+        x.carregado = ""
+        x.usadas.add(t.nome)
+        if "fere" in t.limites:
+            x.pv = max(1, x.pv - rolar(self.rng, t.grau, 6))
+        if "desprevenido" in t.limites:
+            x.desprevenido = True
         x.tecnicas_usadas += 1
         custo = t.custo()
         pago = min(x.cosmo, custo)
@@ -367,11 +423,19 @@ class Luta:
             x.queimas += 1
             x.pv = max(1, x.pv - rolar(self.rng, queima * t.grau, R.dado_de_queima(x.nivel)))
         lido = (t.nome in x.lido_por) and queima == 0
-        acertou, crit = self.rolar_ataque(x, y, x.bonus_ataque(t.natureza),
-                                          def_extra=R.BONUS_LIDO if lido else 0)
+        if t.condicao:
+            acertou = self.rolar_efeito(x, y, t, def_extra=R.BONUS_LIDO if lido else 0)
+            crit = False
+            if acertou and t.nome not in y.imune:
+                y.condicoes[t.condicao] = {"de": x, "tec": t}
+        else:
+            acertou, crit = self.rolar_ataque(x, y, x.bonus_ataque(t.natureza),
+                                              def_extra=R.BONUS_LIDO if lido else 0)
         x.lido_por.add(t.nome)
         self.choque(x, y, self.ultimo_natural)
-        if acertou:
+        if acertou and t.dados_de_dano:
+            if t.natureza == "golpe" and "paralisado" in y.condicoes and not t.condicao:
+                crit = True
             crit = self.critico_vs_elmo(y, crit)
             ndados = t.dados_de_dano + extra * t.grau + (t.grau if crit else 0)
             dano = rolar(self.rng, ndados, t.lado) + x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo]
@@ -386,10 +450,12 @@ class Luta:
 
     def escolher_e_agir(self, x: Lutador, y: Lutador):
         pol = x.politica
-        tecs = sorted(x.tecnicas, key=lambda t: t.dados_de_dano, reverse=True) if pol["tecnicas"] else []
-        grande = tecs[0] if tecs else None
+        tecs = (sorted((t for t in x.tecnicas if not t.condicao), key=lambda t: t.dados_de_dano,
+                       reverse=True) if pol["tecnicas"] else [])
 
-        # 1) a maior técnica que o Cosmo paga
+        # 1) a maior técnica que o Cosmo paga (e que as limitações deixam usar)
+        tecs = [t for t in tecs if x.pode_usar(t)]
+        grande = tecs[0] if tecs else None
         pagaveis = [t for t in tecs if t.custo() <= x.cosmo]
 
         # Diante de um Sentido acima, o Bronze guarda o Cosmo até o Teto para
@@ -399,6 +465,14 @@ class Luta:
                     and x.cosmo < x.teto)
         if poupando:
             pagaveis = []
+
+        # 1b) uma técnica de condição, se o alvo ainda não está com ela
+        if pol.get("condicoes", True):
+            for t in x.tecnicas:
+                if (t.condicao and t.condicao not in y.condicoes and t.custo() <= x.cosmo
+                        and not y.caido and x.pode_usar(t) and t.nome not in y.imune):
+                    self.usar_tecnica(x, y, t, queima=0)
+                    return
 
         # 2) despertar o Sétimo (Bronze e Prata): Cosmo no Teto + um sacrifício.
         #    Queimar é o sacrifício mais comum; cegar-se é opcional.
@@ -490,7 +564,23 @@ class Luta:
             n -= 1
             if self.travado:
                 self.destravar()         # Cosmo de fora quebra a igualdade
-        self.escolher_e_agir(x, y)
+        if any(c in x.condicoes for c in PERDE_O_TURNO):
+            x.reacao = False
+        else:
+            self.escolher_e_agir(x, y)
+        self.fim_do_turno(x)
+
+    def fim_do_turno(self, x: Lutador):
+        """Queimando fere; quem impôs cada condição rola de novo para mantê-la."""
+        for nome, c in list(x.condicoes.items()):
+            if nome == "queimando":
+                x.pv = max(0, x.pv - rolar(self.rng, c["tec"].grau, 6))
+                if x.pv == 0:
+                    x.caido = True
+            if c["de"].fora or not self.rolar_efeito(c["de"], x, c["tec"]):
+                del x.condicoes[nome]
+                if nome in R.CONDICOES_FORTES:
+                    x.imune.add(c["tec"].nome)
 
     def lutar(self) -> Resultado:
         a, b, rng = self.a, self.b, self.rng
@@ -537,6 +627,92 @@ class Luta:
                 "armadura_morta": z.armadura_morta,
             }
         return out
+
+
+# ---------------------------------------------------------------------------
+# Um grupo contra um
+# ---------------------------------------------------------------------------
+
+
+class LutaGrupo(Luta):
+    """Um grupo contra um lutador só. O grupo inteiro ataca o chefe; o chefe bate
+    sempre no mais ferido de pé. Sem Guerra dos Mil Dias (ela é de duelo)."""
+
+    def __init__(self, grupo: list, chefe: Lutador, rng: random.Random,
+                 centelhas_grupo: int = 0, max_rodadas: int = 40,
+                 pv_chefe: float = 1.0, acoes_chefe: int = 0):
+        super().__init__(grupo[0], chefe, rng, max_rodadas=max_rodadas)
+        self.grupo, self.chefe = grupo, chefe
+        self.centelhas = {z.nome: centelhas_grupo for z in grupo}
+        self.centelhas[chefe.nome] = 0
+        # Sozinho contra muitos: PV multiplicados e ações a mais por rodada
+        if not hasattr(chefe, "pv_base"):
+            chefe.pv_base = chefe.pv_max
+        chefe.pv_max = round(chefe.pv_base * pv_chefe)
+        self.acoes_chefe = acoes_chefe
+
+    def oponente(self, x: Lutador) -> Lutador:
+        if x is not self.chefe:
+            return self.chefe
+        de_pe = [z for z in self.grupo if not z.fora and not z.caido]
+        return min(de_pe or [z for z in self.grupo if not z.fora] or self.grupo,
+                   key=lambda z: z.pv)
+
+    def choque(self, x: Lutador, y: Lutador, natural: int):
+        pass
+
+    @staticmethod
+    def pode_levantar(z: Lutador) -> bool:
+        return z.politica["levantar"] and z.conviccoes > 0 and z.levantou < R.LEVANTAR_POR_LUTA
+
+    def lutar(self) -> Resultado:
+        todos = self.grupo + [self.chefe]
+        for z in todos:
+            z.reiniciar()
+        ordem = sorted(todos, key=lambda z: (self.rng.randint(1, 20) + z.mods["des"],
+                                             z.mods["des"], self.rng.random()), reverse=True)
+        for rodada in range(1, self.max_rodadas + 1):
+            self.rodada = rodada
+            extras = self.acoes_chefe
+            for x in ordem:
+                if x.fora:
+                    continue
+                self.turno(x, rodada)
+                # a ação a mais do chefe vem logo depois do turno de alguém do grupo
+                c = self.chefe
+                if (x is not c and extras > 0 and not c.fora and not c.caido
+                        and not any(k in c.condicoes for k in PERDE_O_TURNO)):
+                    extras -= 1
+                    self.escolher_e_agir(c, self.oponente(c))
+                for z in todos:
+                    if z.caido and not z.fora and not self.pode_levantar(z):
+                        z.fora = True
+                if self.chefe.fora:
+                    return Resultado("grupo", rodada, False, {})
+                if all(z.fora for z in self.grupo):
+                    return Resultado(self.chefe.nome, rodada, False, {})
+        return Resultado(None, self.max_rodadas, False, {})
+
+
+def grupo_contra_um(fabrica_grupo, fabrica_chefe, n: int = 1000, semente: int = 1,
+                    sozinho_contra_muitos: bool = True, **kw) -> dict:
+    """Roda n lutas de grupo e resume: quanto o grupo vence, quantos caem. Um chefe
+    com Convicções usa a regra Sozinho contra muitos, a não ser que se peça o contrário."""
+    rng = random.Random(semente)
+    g, c = fabrica_grupo(), fabrica_chefe()
+    if sozinho_contra_muitos and c.conviccoes_max > 0:
+        kw.setdefault("pv_chefe", R.chefe_pv(len(g)))
+        kw.setdefault("acoes_chefe", R.chefe_acoes(len(g)))
+    vit = emp = 0
+    rodadas = caidos = 0
+    for _ in range(n):
+        r = LutaGrupo(g, c, rng, **kw).lutar()
+        vit += r.vencedor == "grupo"
+        emp += r.vencedor is None
+        rodadas += r.rodadas
+        caidos += sum(z.fora or z.caido for z in g)
+    return {"grupo": vit / n, "empate": emp / n, "rodadas_media": rodadas / n,
+            "caidos_media": caidos / n}
 
 
 # ---------------------------------------------------------------------------

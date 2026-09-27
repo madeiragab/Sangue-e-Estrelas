@@ -111,6 +111,20 @@ POSTO = {
     "divina": (7, 6),
 }
 
+# Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um
+# grupo multiplica os PV e ganha ações a mais por rodada.
+def chefe_pv(oponentes: int) -> float:
+    return (oponentes + 1) / 2 if oponentes >= 2 else 1.0
+
+
+def chefe_acoes(oponentes: int) -> int:
+    return oponentes // 2 if oponentes >= 2 else 0
+
+
+# Uma condição forte, quando acaba, não volta com a mesma técnica no mesmo alvo
+# naquela luta: o mesmo golpe não funciona duas vezes.
+CONDICOES_FORTES = ("atordoado", "paralisado")
+
 # A Hierarquia: um Prata diante de um Bronze soma isto nas rolagens contra
 # ele, e o Bronze perde isto nas rolagens contra o Prata. A elite não usa a
 # Hierarquia: ela tem o Sétimo quando quer e o domínio.
