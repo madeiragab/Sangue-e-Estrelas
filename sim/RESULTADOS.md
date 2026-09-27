@@ -41,9 +41,9 @@ Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%;
 | V4 com a forma de elite contra a original | 66% | 63% | 64% | 65% | 67% | 66% | 71% |
 | Bronze V4 com a forma de elite contra Ouro | — | — | — | — | 9% (6% emp.) | 9% (7% emp.) | 5% (9% emp.) |
 | Bronze com as cinco formas, até a de deus, contra Ouro | — | — | — | — | 14% (7% emp.) | 16% (8% emp.) | 11% (10% emp.) |
-| Prata revivida seis vezes contra a original | — | — | 62% (5% emp.) | 65% | 67% | 70% | 70% |
-| Prata com a escada inteira (seis, elite, deus) contra Ouro | — | — | — | — | 26% (7% emp.) | 29% (8% emp.) | 22% (10% emp.) |
-| Ouro revivido nove vezes contra o original | — | — | — | — | 69% (13% emp.) | 71% (11% emp.) | 71% (13% emp.) |
+| Prata revivida quatro vezes contra a original | — | — | 58% (6% emp.) | 58% | 61% | 60% | 61% |
+| Prata com a escada inteira (quatro, elite, deus) contra Ouro | — | — | — | — | 21% (7% emp.) | 23% (8% emp.) | 16% (9% emp.) |
+| Ouro revivido seis vezes contra o original | — | — | — | — | 58% (13% emp.) | 60% (11% emp.) | 60% (15% emp.) |
 | Garras contra nenhum acessório | 45% | 45% (5% emp.) | 49% (5% emp.) | 51% | 50% | 52% | 51% |
 | Escudo contra nenhum acessório | 41% | 47% (5% emp.) | 46% (5% emp.) | 49% | 51% | 50% | 51% |
 

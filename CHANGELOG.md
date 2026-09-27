@@ -3,6 +3,16 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.3.2] - 2026-09-27
+
+### Mudado
+
+- **Menos vidas:** o sangue de guerreiro revive a armadura de Bronze até 3 vezes, a de
+  Prata até 4 e a de elite até 6 (eram 3, 6 e 9). Com nove, uma armadura de Ouro quase
+  nunca morria de vez. Medido: a Prata revivida quatro vezes vence a original 58% a
+  61%; o Ouro revivido seis vezes, 58% a 60%; a Prata com a escada inteira vence um
+  Ouro 16% a 23%.
+
 ## [0.3.1] - 2026-09-27
 
 ### Mudado

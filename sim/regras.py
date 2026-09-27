@@ -128,7 +128,7 @@ FORMA = {
 # mais vidas. A armadura de elite não tem o degrau de elite: para ela, o sangue
 # de elite é o sangue normal, e conta como de guerreiro.
 REVIVIDAS_MAX = {
-    "guerreiro": {"bronze": 3, "prata": 6, "ouro": 9},
+    "guerreiro": {"bronze": 3, "prata": 4, "ouro": 6},
     "elite": {"bronze": 1, "prata": 1, "ouro": 0},
     "deus": {"bronze": 1, "prata": 1, "ouro": 1},
 }
