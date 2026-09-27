@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.6.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.7.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.6.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.7.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -45,7 +45,7 @@ build. O livro e o simulador não têm como discordar.
 | 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção. |
 | 👁️ **Os cinco sentidos** | Ninguém fecha um sentido porque quer. O inimigo arranca, ou você se mutila — e cada um que vai embora sobe o seu Cosmo. |
 | 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
-| 📈 **A progressão** | A cada nível você escolhe: Vida ou Cosmo; técnica nova ou atributo; perícia ou defesa. A luta é curta no começo e longa no fim. |
+| 📈 **A progressão** | A cada nível você escolhe: Vida ou Cosmo; técnica nova ou atributo; perícia ou defesa. Tudo sobe um pouco a cada nível, sem salto; o salto é o do Posto. A luta é curta no começo e longa no fim. |
 | 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e um Bronze levanta desperto. |
 
 ## O que o simulador mediu
@@ -56,18 +56,19 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 | Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
 |---|---:|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 50% | 51% | 48% | 49% |
-| Duração com Convicções (rodadas) | 4,7 | 7,7 | — | 10,8 |
-| Bronze contra Prata | — | 12% | 12% | 7% |
+| Espelho, Bronze contra Bronze | 50% | 51% | 50% | 49% |
+| Duração com Convicções (rodadas) | 4,7 | 7,6 | — | 11,1 |
+| Um nível acima | 70% | 76% | 71% | — |
+| Bronze contra Prata | — | 11% | 8% | 6% |
 | Bronze sozinho contra Ouro | — | — | 0% | 0% |
-| Armadura de Bronze revivida três vezes contra a original | 59% | 65% | 64% | 68% |
-| Bronze com a escada do sangue inteira contra Ouro | — | — | 4% | 0% |
-| Quem nunca apara a armadura | 54% | 40% | 24% | 13% |
-| Quem nunca levanta do chão | 6% | 13% | 10% | 1% |
+| Armadura de Bronze revivida três vezes contra a original | 59% | 64% | 66% | 67% |
+| Bronze com a escada do sangue inteira contra Ouro | — | — | 3% | 0% |
+| Quem nunca apara a armadura | 54% | 40% | 16% | 12% |
+| Quem nunca levanta do chão | 6% | 14% | 3% | 1% |
 
-A luta é curta e decisiva no começo e longa no fim. O Bronze perde para o Prata e, no duelo
-justo, não vence o Ouro: o milagre vem do grupo inteiro contra ele (quatro Bronzes vencem
-de 43% a 51%) ou da história. Uma armadura que morreu e voltou fica um pouco mais forte a
+A luta é curta e decisiva no começo e longa no fim, e um nível a mais pesa parecido em
+toda a campanha. O Bronze perde para o Prata e, no duelo justo, não vence o Ouro: o milagre
+vem do grupo inteiro contra ele (quatro Bronzes vencem de 37% a 64%) ou da história. Uma armadura que morreu e voltou fica um pouco mais forte a
 cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
 
 ### As vezes em que o simulador contrariou o rascunho
@@ -75,12 +76,19 @@ cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
 1. **A Guerra dos Mil Dias travava 95% das lutas equilibradas.** A condição era "o mesmo
    Teto de Cosmo", e dois guerreiros do mesmo nível sempre têm o mesmo Teto. Agora ela
    começa num choque de técnicas — o mesmo número natural na mesma rodada — e acontece em
-   14% a 17% das lutas entre Ouros.
+   11% a 17% das lutas entre Ouros.
 2. **Queimar o Cosmo vencia 80% dos duelos nos níveis altos.** O preço era fixo e o ganho
-   crescia com o Grau. Agora o preço cresce junto, e quem nunca queima vence de 42% a 52%.
+   crescia com o Grau. Agora o preço cresce junto, e quem nunca queima vence de 34% a 51%.
 3. **No nível 5, dar só golpes comuns rendia tanto quanto usar técnicas.** Era o Ataque
    Extra chegando junto com uma armadura que cortava toda técnica pela metade. O Ataque
    Extra foi para o nível 9, e aparar passou a gastar a reação.
+4. **Um nível a mais valia até 97% nas trocas de Grau.** O dano de cada ponto era 1d8 por
+   Grau e os PV vinham por Grau: nos níveis 5, 9, 13 e 17 os dois saltavam juntos. Agora os
+   dois sobem a cada nível (cada ponto rola 1d8 + nível − 1), e um nível acima vence de 55%
+   a 91%. O salto do Posto ficou, de propósito.
+5. **Seis figurantes derrubavam um personagem de nível 1 em 94% das vezes.** A tabela do
+   bando era de outra época dos PV. Agora ela é nível a nível, o golpe derruba dois e a
+   técnica três: seis figurantes custam de 15% a 30% dos PV, e quase ninguém cai.
 
 ### O teste de estresse
 
@@ -92,12 +100,14 @@ lutas de grupo contra um só. O relatório completo está em
 
 | Achado | Antes | Depois |
 |---|---:|---:|
-| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 43% a 51% |
-| Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 47% a 52% |
-| Quem tem uma técnica de atordoar | até 89% | 50% a 67% |
-| Quem tem uma técnica com limitação | — | 16% a 51% (nenhuma é brecha) |
-| Cada característica de armadura, sozinha | — | 47% a 60% |
-| Quem escolhe só Vida contra quem escolhe só Cosmo | — | 41% a 61% |
+| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 37% a 64% |
+| Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 44% a 52% |
+| Quem tem uma técnica de atordoar | até 89% | 49% a 69% |
+| Quem tem uma técnica com limitação | — | 13% a 46% (nenhuma é brecha) |
+| Cada característica de armadura, sozinha | — | 47% a 59% |
+| Quem escolhe só Vida contra quem escolhe só Cosmo | — | 35% a 72% |
+| Um nível acima, no pior nível | 97% | 91% |
+| Um personagem com um aliado de luta, contra um rival que ele venceria na metade | 96% | 68% a 72% |
 
 ## O livro
 
@@ -115,7 +125,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | VII | Armaduras | Características, Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
 | VIII | Itens e relíquias | Raridade, Sintonia, remédios, os três metais, melhorias e relíquias — nenhuma arma |
 | IX | Exércitos | O molde e quatro exércitos de exemplo |
-| X | Inimigos | Como montar, a dificuldade medida e sete fichas prontas |
+| X | Inimigos | Como montar, a tabela rápida de 1 a 20, figurantes, a dificuldade medida e sete fichas prontas |
 | XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
 | XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |
 | XIII | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
@@ -133,6 +143,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | `sim/inimigos.py` | Os inimigos prontos e as tabelas que o build imprime no livro |
 | `sim/cenarios.py` | Os experimentos; gera `sim/RESULTADOS.md` |
 | `sim/extremos.py` | O teste de estresse; gera `sim/EXTREMOS.md` |
+| `sim/mestre.py` | As ferramentas do Mestre medidas: dificuldade, figurantes, aliado, fichas prontas; gera `sim/MESTRE.md` |
 | `test.py` | Contas das técnicas, build do livro e metas de equilíbrio |
 | `build.py` | Monta o `livro.html` final, com CSS, capa e tabelas embutidos |
 | `regras/decisoes.md` | Cada decisão de design e de onde ela veio |
@@ -144,9 +155,10 @@ Nada para instalar: é Python puro, da biblioteca padrão.
 
 ```bash
 python build.py          # monta o livro.html
-python test.py           # tudo: técnicas, livro e equilíbrio (alguns segundos)
+python test.py           # tudo: técnicas, livro, equilíbrio, estresse e Mestre
 python sim/cenarios.py   # regenera sim/RESULTADOS.md (menos de um minuto)
 python sim/extremos.py   # o teste de estresse; regenera sim/EXTREMOS.md (alguns minutos)
+python sim/mestre.py     # as ferramentas do Mestre; regenera sim/MESTRE.md (menos de um minuto)
 ```
 
 O `test.py` falha se uma técnica impressa não bater com o motor, se um link interno

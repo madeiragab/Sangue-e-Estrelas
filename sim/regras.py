@@ -31,17 +31,39 @@ def teto_base(nivel: int) -> int:
 
 TAMANHO_MAXIMO = {1: 5, 2: 6, 3: 6, 4: 6, 5: 6}
 
-# PV: cada Grau tem uma base, e a Constituição soma a cada nível. A base cresce
-# mais rápido que o dano das técnicas: a luta é curta e decisiva no começo e
-# longa e destrutiva no fim (pedido do usuário, 0.6.0).
-PV_POR_GRAU = {1: 14, 2: 40, 3: 80, 4: 135, 5: 205}
-# Cada escolha de Vida soma VIGOR_PV por Grau — e cresce junto quando o Grau sobe.
-VIGOR_PV = 2
+# O dano de cada ponto de técnica: o dado + o bônus do ponto, que é o nível − 1 (0.7.0;
+# até a 0.6.0 era 1d8 por Grau). Cresce um pouco a cada nível em vez de saltar na
+# fronteira do Grau. A técnica soma no máximo o último nível do Grau dela − 1: a que
+# ficou para trás para de crescer até ser evoluída.
+
+
+def bonus_do_ponto(nivel: int, grau_tecnica: int | None = None) -> int:
+    g = grau(nivel) if grau_tecnica is None else grau_tecnica
+    return min(nivel, 4 * g) - 1
+
+
+def dano_do_ponto(nivel: int, grau_tecnica: int | None = None) -> tuple[int, int]:
+    """(dados, bônus fixo) de um ponto de dano."""
+    return 1, bonus_do_ponto(nivel, grau_tecnica)
+
+
+# PV: uma base que sobe a cada nível, e a Constituição soma a cada nível. A base
+# cresce mais rápido que o dano das técnicas: a luta é curta e decisiva no começo e
+# longa e destrutiva no fim (0.6.0). Desde a 0.7.0 ela sobe nível a nível, sem o
+# salto na fronteira do Grau.
+PV_BASE = {1: 14, 2: 18, 3: 23, 4: 30, 5: 38, 6: 46, 7: 55, 8: 65, 9: 76, 10: 88,
+           11: 101, 12: 115, 13: 130, 14: 146, 15: 163, 16: 181, 17: 200, 18: 220,
+           19: 240, 20: 260}
+
+
+def pv_da_vida(nivel: int) -> int:
+    """Quanto cada escolha de Vida soma: metade do nível, arredondada para cima.
+    É recalculada quando você sobe — as escolhas antigas crescem junto."""
+    return -(-nivel // 2)
 
 
 def pv_maximo(nivel: int, con: int, vigor: int = 0, extra_por_nivel: int = 0) -> int:
-    g = grau(nivel)
-    return PV_POR_GRAU[g] + con * nivel + round(vigor * VIGOR_PV * g) + extra_por_nivel * nivel
+    return PV_BASE[nivel] + con * nivel + vigor * pv_da_vida(nivel) + extra_por_nivel * nivel
 
 
 # ---------------------------------------------------------------------------
@@ -117,9 +139,23 @@ def ataques_por_golpe(nivel: int) -> int:
     return 2 if nivel >= NIVEL_ATAQUE_EXTRA else 1
 
 
-def dado_de_queima(nivel: int) -> int:
-    """Queimar custa 1d4 por ponto, vezes o Grau da técnica."""
-    return 4
+# O preço em vida de cada ponto que o Cosmo não paga (ou que você queima além do
+# custo). "grau": 1d4 × o Grau da técnica (o do livro). "nivel": 1d4 + metade do seu
+# nível — testado na 0.7.0 e descartado: sem o degrau do preço, o pico de um nível acima
+# no nível 13 subia de 86% para 92%.
+PRECO_POR_PONTO = "grau"
+
+
+def preco_do_ponto(nivel: int, grau_tecnica: int) -> tuple[int, int, int]:
+    """(dados, lados, bônus fixo) do preço de um ponto."""
+    if PRECO_POR_PONTO == "nivel":
+        return 1, 4, nivel // 2
+    return grau_tecnica, 4, 0
+
+
+def media_preco(nivel: int, grau_tecnica: int) -> float:
+    dados, lados, fixo = preco_do_ponto(nivel, grau_tecnica)
+    return dados * (lados + 1) / 2 + fixo
 
 
 def resistencia_por_nivel(nivel: int) -> int:
@@ -152,6 +188,33 @@ CHEFE_ACAO_SO_GOLPE = True    # a ação a mais do chefe é só um golpe comum
 def chefe_acoes(oponentes: int) -> int:
     """0, 1, 2, 3, 4 golpes comuns a mais por rodada para 2 a 6 oponentes."""
     return max(0, oponentes - 2)
+
+
+# O aliado de luta (Capítulo Onze): um inimigo da tabela rápida na metade do nível do
+# grupo, com metade dos PV e sem Convicção. Não é personagem: não conta para Sozinho
+# contra muitos. (0.7.0: dois níveis abaixo e com os PV inteiros, ele virava um segundo
+# personagem nos níveis altos — 96% contra um rival que o grupo venceria na metade.)
+ALIADO_PV = 0.5
+
+
+def nivel_do_aliado(nivel_do_grupo: int) -> int:
+    return -(-nivel_do_grupo // 2)
+
+# ---------------------------------------------------------------------------
+# Figurantes (Capítulo Dez)
+# ---------------------------------------------------------------------------
+
+# Quantos figurantes caem com um acerto: o golpe comum derruba dois; a técnica de
+# alvo único, três; a técnica em área, o bando inteiro.
+FIGURANTES_POR_GOLPE = 2
+FIGURANTES_POR_TECNICA = 3
+
+
+def figurante(nivel: int) -> tuple[int, int, int]:
+    """(DEF, ataque do bando, dano por acerto) do bando no nível do grupo. O dano é
+    fixo e acompanha a base de PV: um bando de seis custa de 16% a 30% dos PV de quem
+    luta sozinho (medido em sim/mestre.py)."""
+    return 11 + nivel // 3, prof(nivel) + 2, PV_BASE[nivel] // 5
 
 
 # Características da armadura: quantas por Posto, e as que o simulador dá aos

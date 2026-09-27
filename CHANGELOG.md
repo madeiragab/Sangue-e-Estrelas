@@ -3,6 +3,45 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.7.0] - 2026-09-27
+
+### Mudado
+
+- **Sem salto de nível** (Capítulos Seis e Doze): cada ponto de dano, de PV temporários ou
+  de cura rola o dado + o **bônus do ponto**, que é o nível − 1, até o máximo do Grau da
+  técnica (+3, +7, +11, +15, +19). Antes, 1d8 por Grau. A tabela de níveis ganhou a coluna
+  Ponto.
+- **PV base nível a nível** (14, 18, 23, 30 … 260), e **Vida** soma metade do nível (para
+  cima) por escolha. Um nível acima vence de 55% a 91% (antes, 50% a 97%); os saltos de
+  Posto — Bronze, Prata, elite — continuam.
+- Crítico de técnica e ponto queimado: um ponto a mais (dado + bônus do ponto).
+- **Figurantes** (Capítulo Dez): uma linha por nível, dano fixo; o golpe comum derruba
+  dois, a técnica de alvo único três, a de área o bando inteiro. Seis figurantes custam de
+  15% a 30% dos PV em 2 a 4 rodadas. Antes, derrubavam um personagem de nível 1 em 94% das
+  vezes.
+- **Aliado de luta** (Capítulo Onze): metade do nível do grupo, metade dos PV, e não conta
+  para Sozinho contra muitos. Leva um duelo de 50% para 68% a 72%.
+- **Tabela rápida de inimigos**: nível 1 a 20, com o Cosmo (começa, piso, Teto), sem
+  características. **Montar um inimigo** ganhou o passo das escolhas de nível.
+- Tabela de dificuldade medida de novo, com o rival um nível acima como "difícil"; o aviso
+  da fronteira de Grau virou o da fronteira de Posto. Textos das fichas prontas, do grupo
+  contra um Ouro (quatro Bronzes vencem de quatro a seis vezes em dez, em 13 a 18 rodadas)
+  e todos os números medidos do livro, de novo.
+- Os exemplos de Golpe do Assento estão no Grau 4 (a elite começa no nível 15).
+
+### Adicionado
+
+- `sim/mestre.py` e `sim/MESTRE.md`: dificuldade, figurantes, aliado de luta e fichas
+  prontas, medidos. `test.py mestre` confere o nível sem salto, o bando, o aliado e cada
+  frase das fichas prontas; `test.py extremos` confere que nem só Vida nem só Cosmo domina.
+
+### Corrigido
+
+- As fichas prontas davam a terceira defesa treinada a partir do nível 10; ela vem da
+  escolha de nível (no lutador de referência, no 11).
+- As fichas prontas mostravam o bônus de ataque de Golpe em técnicas de Cosmo.
+- A tabela de duração do teste de estresse podia mostrar empate negativo.
+
 ## [0.6.0] - 2026-09-27
 
 ### Adicionado

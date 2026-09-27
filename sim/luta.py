@@ -476,7 +476,8 @@ class Luta:
         cai_depois = False
         if falta or extra:
             x.queimas += 1
-            preco = rolar(self.rng, (falta + extra) * t.grau, R.dado_de_queima(x.nivel))
+            dados, lados, fixo = R.preco_do_ponto(x.nivel, t.grau)
+            preco = rolar(self.rng, (falta + extra) * dados, lados) + (falta + extra) * fixo
             if preco >= x.pv:
                 x.pv = 1
                 cai_depois = True                # o golpe sai; você cai depois
@@ -493,12 +494,14 @@ class Luta:
                                               def_extra=R.BONUS_LIDO if lido else 0, tecnica=True)
         x.lido_por.add(t.nome)
         self.choque(x, y, self.ultimo_natural)
-        if acertou and t.dados_de_dano:
+        if acertou and t.pontos_de_dano:
             if t.natureza == "golpe" and "paralisado" in y.condicoes and not t.condicao:
                 crit = True
             crit = self.critico_vs_elmo(y, crit)
-            ndados = t.dados_de_dano + extra * t.grau + (t.grau if crit else 0)
-            dano = rolar(self.rng, ndados, t.lado) + x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo]
+            pontos = t.pontos_de_dano + extra + (1 if crit else 0)
+            dados, fixo = R.dano_do_ponto(x.nivel, t.grau)
+            dano = (rolar(self.rng, pontos * dados, t.lado) + pontos * fixo
+                    + x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo])
             self.aplicar_dano(y, dano, atravessa=t.atravessa, fonte="tecnica",
                               atacante=x, quebra=t.quebra)
         if falta or extra:
@@ -509,11 +512,12 @@ class Luta:
 
     # ------------------------------------------------------------------
     def dano_esperado(self, x: Lutador, t: Tecnica, extra: int = 0) -> float:
-        return (t.dados_de_dano + extra * t.grau) * R.media_dado(t.lado) + x.mods[x.atr_golpe]
+        dados, fixo = R.dano_do_ponto(x.nivel, t.grau)
+        return (t.pontos_de_dano + extra) * (dados * R.media_dado(t.lado) + fixo) + x.mods[x.atr_golpe]
 
     def escolher_e_agir(self, x: Lutador, y: Lutador):
         pol = x.politica
-        tecs = (sorted((t for t in x.tecnicas if not t.condicao), key=lambda t: t.dados_de_dano,
+        tecs = (sorted((t for t in x.tecnicas if not t.condicao), key=lambda t: t.pontos_de_dano,
                        reverse=True) if pol["tecnicas"] else [])
 
         # 1) a maior técnica que o Cosmo paga (e que as limitações deixam usar)
@@ -560,7 +564,7 @@ class Luta:
         if pol["queimar"] and grande is not None:
             qmax = x.queima_maxima()
             custo = x.custo(grande)
-            por_ponto = R.media_dado(R.dado_de_queima(x.nivel)) * grande.grau
+            por_ponto = R.media_preco(x.nivel, grande.grau)
             apara = 0.5 if (not grande.atravessa and y.armada) else 1.0
             if x.cosmo < custo and pol.get("vida_paga", True):
                 # A vida paga o que falta, sem limite. Vale quando derruba (mesmo que

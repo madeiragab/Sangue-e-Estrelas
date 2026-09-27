@@ -73,9 +73,10 @@ class Tecnica:
 
     # ------------------------------------------------------------------
     @property
-    def dados_de_dano(self) -> int:
-        """Quantos dados a técnica rola: pontos de dano × Grau."""
-        return (self.efeitos.get("dano", 0) + self.efeitos.get("area", 0)) * self.grau
+    def pontos_de_dano(self) -> int:
+        """Cada ponto rola 1d8 + nível − 1 (regras.dano_do_ponto)."""
+        return self.efeitos.get("dano", 0) + self.efeitos.get("area", 0)
+
 
     @property
     def lado(self) -> int:

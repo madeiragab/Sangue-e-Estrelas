@@ -104,8 +104,8 @@
     <div class="cartao">
       <h5>Vida</h5>
       <p class="etiqueta">Todo nível · ou Cosmo</p>
-      <p>+2 PV por Grau, e ela cresce junto: quando o Grau sobe, toda escolha de Vida que você
-      já fez passa a valer o Grau novo.</p>
+      <p>+ metade do seu nível em PV (arredondada para cima), e ela cresce junto: a cada
+      nível, toda escolha de Vida que você já fez passa a valer a metade do nível novo.</p>
     </div>
     <div class="cartao">
       <h5>Cosmo</h5>
@@ -128,14 +128,20 @@
   </div>
   <div class="nota">
     <p><strong>Medido.</strong> Quem escolhe só Vida contra quem escolhe só Cosmo, do mesmo
-    nível, vence de 41% a 61%: os dois caminhos se equivalem. Vida deixa a luta mais longa e
-    dá mais sangue para a vida pagar; Cosmo solta a técnica grande mais cedo e mais vezes.</p>
+    nível, vence de 35% a 72%: nenhum dos dois caminhos domina o jogo inteiro. A Vida pesa
+    mais do nível 9 ao 17, quando as lutas ficam longas; o Cosmo, no começo e no nível 20,
+    quando o piso alto já paga a técnica grande toda rodada. Vida deixa a luta mais longa e
+    dá mais sangue para a vida pagar; Cosmo solta a técnica grande mais cedo e mais vezes. O
+    lutador de referência do livro alterna os dois.</p>
   </div>
 
   <h3>A tabela</h3>
-  <p>A coluna <strong>PV</strong> é a base do Grau: some a sua CON uma vez por nível e 2 PV
-  por Grau por escolha de Vida. Um personagem com CON +2 no nível 5, que escolheu Vida duas
-  vezes, tem 40 + 10 + 8 = 58 PV. O <strong>Teto</strong> é o Teto de Cosmo sem nada somado.
+  <p>A coluna <strong>PV</strong> é a base do nível: some a sua CON uma vez por nível e
+  metade do nível (para cima) por escolha de Vida. Um personagem com CON +2 no nível 5, que
+  escolheu Vida duas vezes, tem 38 + 10 + 6 = 54 PV. A base sobe um pouco a cada nível, sem
+  salto na troca de Grau. O <strong>Teto</strong> é o Teto de Cosmo sem nada somado. A
+  coluna <strong>Ponto</strong> é o bônus do ponto: cada ponto de dano de uma técnica rola
+  <span class="dado">1d8</span> + esse número (<a href="#grau">Capítulo Seis</a>).
   A coluna <strong>Glória</strong> é quanto você precisa para sair daquele nível.</p>
 
   {{TABELA_NIVEIS}}
@@ -146,10 +152,15 @@
 
   <div class="nota">
     <p><strong>Curta no começo, longa no fim.</strong> A base de PV cresce mais depressa que o
-    dano das técnicas, e as escolhas de Vida crescem com o Grau. No nível 1 a luta é decidida
-    em 3 rodadas (4, com as Convicções); no nível 20, dura 7 (11, com as Convicções) e as
+    dano das técnicas, e as escolhas de Vida crescem com o nível. No nível 1 a luta é decidida
+    em 3 rodadas (5, com as Convicções); no nível 20, dura 8 (11, com as Convicções) e as
     técnicas grandes saem quase toda rodada. Medido, espelho de Bronzes. Numa versão anterior
     a luta durava de 4 a 7 rodadas do começo ao fim.</p>
+    <p><strong>Sem salto de nível.</strong> Até a 0.6.0 o dano de cada ponto era
+    <span class="dado">1d8</span> por Grau e os PV vinham por Grau: nos níveis 5, 9, 13 e 17
+    os dois saltavam juntos, e quem tinha um nível a mais vencia até 97% das vezes. Agora
+    os dois sobem a cada nível, e um nível acima vence de 55% a 91%. O salto que ficou é o do
+    Posto — Bronze, Prata, elite —, e esse é de propósito.</p>
   </div>
 
   <h3>O que cada ganho fixo faz</h3>
