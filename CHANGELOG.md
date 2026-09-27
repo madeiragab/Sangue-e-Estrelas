@@ -3,6 +3,19 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.2.1] - 2026-09-27
+
+### Mudado
+
+- **A elite só a partir do nível 15** (era 9): Ouro, General Marina, Juiz do
+  Inferno e Guerreiro Deus. O Prata continua a partir do nível 5.
+- As fichas prontas de elite subiram junto: Guerreiro Deus e General Marina no
+  15, Cavaleiro de Ouro no 16, Juiz do Inferno no 18.
+- A tabela "Quanto pesa um inimigo" foi medida de novo com elites do 15 ao 20:
+  elite do mesmo nível, 2% a 6%; elite três níveis abaixo (personagem no 18 ou
+  mais), 6% a 20%. A 0.2.0 dizia 22% a 36%, medido com elites de nível baixo que
+  agora não existem.
+
 ## [0.2.0] - 2026-09-27
 
 O sistema passou pelo simulador, ficou mais mecânico e ganhou os capítulos do

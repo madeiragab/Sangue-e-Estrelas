@@ -24,7 +24,7 @@ aqui primeiro.
 - **Postos: Bronze, Prata, Ouro.** Todo personagem começa Bronze, em qualquer
   exército.
 - **Subir de Posto é narrativo, com requisito de nível** (0.2.0): Prata a partir do
-  nível 5, elite a partir do 9 e com vaga vazia. O momento vem da história.
+  nível 5, elite a partir do 15 e com vaga vazia (o 9 da 0.2.0 era cedo demais). O momento vem da história.
 - **A armadura sobe de Bronze a Prata na mesma constelação.** Precedente: Órion
   é Prata na obra do Kurumada e Bronze no Ômega.
 - **Ouro é um conjunto fechado de vagas** (as 12 do zodíaco), e cada vaga tem um
