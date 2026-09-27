@@ -1,0 +1,355 @@
+<!-- ==================== VI ==================== -->
+<section class="capitulo" id="cap6">
+  <div class="abertura">
+    <span class="alg">Capítulo Seis</span>
+    <h2>Técnicas</h2>
+    <p>Como criar a sua, ponto por ponto</p>
+  </div>
+
+  <p class="abre">Este jogo não tem lista de golpes. Você constrói cada técnica sua,
+  comprando efeitos com pontos, e leva pronta para o Mestre aprovar. É a parte do sistema
+  em que o personagem deixa de ser uma ficha e passa a ser o guerreiro que grita o nome do
+  golpe antes de soltar.</p>
+
+  <div class="destaque">
+    <span class="rotulo">A regra central</span>
+    <p>O tema determina como a técnica aparece. O motor determina o que ela faz. Uma chuva
+    de meteoros, um dragão de água, uma rajada de gelo e cem lâminas de ar podem ter
+    exatamente o mesmo perfil de regra — e devem, se custarem o mesmo.</p>
+  </div>
+
+  <h3>Primeiro: a natureza</h3>
+  <p>Toda técnica é de uma de duas naturezas. As duas se pagam em Cosmo; o que muda é o
+  atributo e o alcance de partida.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>Natureza</th><th>Atributo</th><th>Alcance sem custo</th><th>O que é</th></tr></thead>
+    <tbody>
+      <tr><td>Golpe</td><td>FOR ou DES</td><td>Toque</td><td>O corpo levado ao limite: cem socos por segundo, o chute que parte a montanha, o salto impossível</td></tr>
+      <tr><td>Cosmo</td><td>Atributo do Cosmo</td><td>Curto (6 m)</td><td>A energia solta do corpo: o ar que congela, a ilusão, a corrente que se move sozinha, o escudo de luz</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>As duas formas de resolver</h4>
+  <div class="destaque">
+    <span class="rotulo">Rolagens</span>
+    <p class="formula">Ataque de técnica = 1d20 + atributo + proficiência contra DEF</p>
+    <p class="formula">Rolagem de Efeito = 1d20 + atributo + proficiência contra defesa passiva</p>
+  </div>
+  <p>Uma técnica ofensiva usa uma das duas, nunca as duas. Escolha na criação e deixe
+  escrito, com a defesa: DEF, Fortitude, Reflexos ou Vontade.</p>
+  <p>Efeitos combinados usam a mesma rolagem. Se a técnica usa Ataque, o acerto aplica o
+  dano e também um efeito fraco junto — derrubar, empurrar — sem segunda rolagem. Se usa
+  Efeito, o mesmo resultado decide todo o pacote. Condições médias e fortes sempre obrigam
+  a técnica a usar Efeito. Salvo quando a técnica disser outra coisa, errar um Efeito
+  evita a condição e reduz o dano à metade.</p>
+
+  <h3>Ativação</h3>
+  <p>Toda técnica declara como é ativada. Em branco, ela não está pronta.</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>Ativação</th><th class="num">Ajuste</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr><td>Ação</td><td class="num">+0</td><td>O padrão; ocupa a sua ação</td></tr>
+      <tr><td>Ação bônus</td><td class="num">+1</td><td>Pode acompanhar a sua ação</td></tr>
+      <tr><td>Reação</td><td class="num">+1</td><td>Precisa de um gatilho escrito</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="ornamento">❖</div>
+
+  <h3>A conta</h3>
+  <div class="destaque">
+    <span class="rotulo">A conta, em duas linhas</span>
+    <p class="formula">TAMANHO = duração + efeitos + alcance + modificadores que aumentam</p>
+    <p class="formula">CUSTO em Cosmo = tamanho − os −1</p>
+  </div>
+  <p>Você começa pela duração, e ela já vem com o primeiro ponto de efeito incluído.
+  Depois soma os pontos de efeito extras que quiser, o alcance e a área se passarem do
+  normal, e a ativação. Esse total é o <em class="termo">tamanho</em>, e ele não pode
+  passar do tamanho máximo do seu Grau. Só então aplique as limitações, que reduzem o
+  custo mas não o tamanho.</p>
+
+  <h4>Duração</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Duração</th><th class="num">Pontos</th><th>Como funciona</th></tr></thead>
+    <tbody>
+      <tr><td>Instantânea</td><td class="num">1</td><td>Resolve e acaba. O dano é o dano, o empurrão é o empurrão. Uma condição imposta dura até o alvo se livrar dela.</td></tr>
+      <tr><td>Sustentada</td><td class="num">2</td><td>Dura até o começo do seu próximo turno. Para manter, pague metade do custo, arredondada para baixo e no mínimo 1, no começo de cada turno seu. Exige concentração.</td></tr>
+      <tr><td>Cena</td><td class="num">4</td><td>Até a luta terminar. Sem concentração — mas só para efeitos que se gastam sozinhos, como PV temporários.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Você sustenta uma técnica de cada vez. Ao sofrer dano enquanto sustenta, o impacto faz
+  uma Rolagem de Efeito contra a sua Fortitude, com bônus +2 ou metade do dano menos 8, o
+  que for maior. Se acertar, você perde a concentração.</p>
+
+  <h4>Alcance e área</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Alcance</th><th>Distância</th><th class="num">Pontos</th></tr></thead>
+    <tbody>
+      <tr><td>Pessoal · Toque</td><td>Você, ou quem você tocar</td><td class="num">0</td></tr>
+      <tr><td>Curto</td><td>6 metros</td><td class="num">0 no Cosmo · 1 no Golpe</td></tr>
+      <tr><td>Médio</td><td>12 metros</td><td class="num">+1 · +2 no Golpe</td></tr>
+      <tr><td>Longo</td><td>18 metros</td><td class="num">+2 · +3 no Golpe</td></tr>
+      <tr><td>Até onde a vista alcança</td><td>Qualquer ponto que você veja</td><td class="num">+3 · +4 no Golpe</td></tr>
+    </tbody>
+  </table></div>
+  <p>Se o efeito for em área, a forma vem incluída no custo do efeito. Escolha uma:
+  <strong>explosão</strong> (raio de 3 m), <strong>cone</strong> (3 m),
+  <strong>linha</strong> (6 m por 1,5 m) ou <strong>zona</strong> (raio de 3 m, que fica
+  no lugar e é sustentada). Dobrar o tamanho da área custa +2. A área atinge aliados; torná-la
+  seletiva, poupando quem você escolher, custa +1.</p>
+
+  <h3 id="grau">O Grau</h3>
+  <p>O <em class="termo">Grau</em> é a faixa de nível em que você está. Ele não se compra:
+  chega com o nível, e diz o quanto cada ponto de uma técnica entrega. Cada técnica tem o
+  Grau dela, gravado quando ela nasce.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th class="num">Grau</th><th>Níveis</th><th class="num">Tamanho máximo</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>1 a 4</td><td class="num">5 pontos</td></tr>
+      <tr><td class="num">2</td><td>5 a 8</td><td class="num">6 pontos</td></tr>
+      <tr><td class="num">3</td><td>9 a 12</td><td class="num">6 pontos</td></tr>
+      <tr><td class="num">4</td><td>13 a 16</td><td class="num">6 pontos</td></tr>
+      <tr><td class="num">5</td><td>17 a 20</td><td class="num">6 pontos</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>O tamanho quase não cresce. O que cresce é o que cada ponto compra: um ponto de dano
+  do Grau 3 rola três vezes os dados de um ponto do Grau 1 — e custa o mesmo Cosmo. A
+  técnica que você escreveu no nível 1 continua no Grau 1 até ser
+  <a href="#evolucao">evoluída</a>.</p>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>O que cada ponto compra</h3>
+  <p>Uma tabela por tipo de efeito. Some quantos pontos quiser, misture efeitos diferentes,
+  e lembre que o primeiro ponto já veio na duração.</p>
+
+  <h4>Dano</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Efeito</th><th>Por ponto</th><th>Rolagem</th></tr></thead>
+    <tbody>
+      <tr><td>Alvo único</td><td><span class="dado">1d8</span> por Grau</td><td>Ataque contra DEF</td></tr>
+      <tr><td>Em área</td><td><span class="dado">1d6</span> por Grau</td><td>Efeito contra Reflexos; o erro ainda causa metade</td></tr>
+      <tr><td>Contínuo</td><td><span class="dado">1d6</span> por Grau, no fim do turno do alvo</td><td>A mesma do dano que o acompanha; não permite nova defesa</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Vida e proteção</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Efeito</th><th>Por ponto</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr><td>PV temporários</td><td><span class="dado">1d8</span> por Grau</td><td>Somem no fim da luta</td></tr>
+      <tr><td>Cura</td><td><span class="dado">1d8</span> por Grau</td><td>Só técnicas de Cosmo; cada pessoa recebe cura de técnica uma vez por luta</td></tr>
+      <tr><td>Defesa</td><td>+2 na DEF, para tantos alvos quanto o Grau</td><td>Duas fontes não somam. Como reação, vale contra todos os ataques até o seu próximo turno</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Movimento</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Efeito</th><th>Por ponto</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr><td>Movimento</td><td>+3 metros por Grau</td><td>No seu turno</td></tr>
+      <tr><td>Empurrar ou puxar</td><td>3 metros por Grau</td><td>Efeito contra Fortitude</td></tr>
+      <tr><td>Teletransporte</td><td>9 metros por Grau, por 2 pontos</td><td>Para um lugar que você veja</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Vantagem, Desvantagem e condições</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Efeito</th><th>Pontos</th><th>Alcança</th></tr></thead>
+    <tbody>
+      <tr><td>Vantagem ou Desvantagem numa rolagem</td><td>1</td><td>Tantos alvos quanto o Grau</td></tr>
+      <tr><td>Condição fraca</td><td>1</td><td>Tantos alvos quanto o Grau</td></tr>
+      <tr><td>Condição média</td><td>2</td><td>Tantos alvos quanto o Grau</td></tr>
+      <tr><td>Condição forte</td><td>4</td><td>Tantos alvos quanto o Grau</td></tr>
+    </tbody>
+  </table></div>
+  <p>O Grau alto espalha o efeito por mais gente; nunca aumenta o quanto ele pesa. A lista
+  de condições e os graus delas estão no <a href="#condicoes">Capítulo Cinco</a>.</p>
+
+  <div class="nota">
+    <p><strong>O modificador entra uma vez.</strong> Some o modificador do atributo da
+    técnica uma única vez ao total de dano, PV temporários ou cura — não uma vez por ponto.
+    Uma técnica de 3 pontos de dano no Grau 2 causa <span class="dado">6d8 + mod</span>.</p>
+  </div>
+
+  <h3>Modificadores</h3>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Custam +1</h5>
+      <p class="etiqueta">Conveniência e força</p>
+      <p>Ação bônus · reação · ignora cobertura · não precisa ver o alvo · afeta vários
+      aliados um por um.</p>
+      <p><strong>Atravessa a armadura:</strong> o alvo não pode Aparar esse dano.</p>
+      <p><strong>Quebra a armadura:</strong> um acerto marca uma caixa numa peça que você
+      escolhe.</p>
+    </div>
+    <div class="cartao">
+      <h5>Custam −1</h5>
+      <p class="etiqueta">A limitação tem que ser real</p>
+      <p>Só uma vez por luta · só com o Cosmo no Teto · causa <span class="dado">1d6</span>
+      em você · te deixa Caído ou Desprevenido · exige carregar: você gasta a ação do
+      turno anterior preparando o golpe · só funciona sob uma condição difícil, como estar
+      no Sétimo ou ter um sentido perdido.</p>
+    </div>
+  </div>
+  <p>As limitações nunca levam o custo abaixo da <strong>metade do tamanho</strong>,
+  arredondada para cima, e o mínimo absoluto é 1. Uma limitação que não muda nada na prática
+  vale zero: "só funciona no Sétimo" numa ficha de Ouro, que entra no Sétimo quando quer,
+  não é limitação. O Mestre é o juiz disso, e deve ser chato nessa hora.</p>
+
+  <h3>Três limites que valem sempre</h3>
+  <ul>
+    <li><strong>Ataque ou Efeito, nunca os dois.</strong> Você rola contra a DEF ou contra
+      uma defesa passiva. O alvo não faz uma segunda rolagem.</li>
+    <li><strong>O motor não compra destino.</strong> Selar um deus, abrir o caminho do mundo
+      dos mortos, petrificar, matar de uma vez: nada disso tem preço em pontos. Vem da
+      história, de relíquias e dos Sentidos mais altos.</li>
+    <li><strong>A aparência é de graça.</strong> A constelação que brilha, o ar que esfria,
+      a pena que cai: tudo isso acontece sem custo. No instante em que der uma vantagem de
+      regra, virou técnica e tem preço.</li>
+  </ul>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>Quantas técnicas você sabe</h3>
+  <p>Você começa com <strong>duas</strong> e aprende mais uma nos níveis 4, 8, 12, 16 e 20
+  — sete ao todo. Uma técnica nova aprendida depois da criação é desenvolvida num
+  Interlúdio, com o mesmo teste da evolução. O Golpe do Assento de um Ouro não conta nesse
+  limite.</p>
+
+  <h3 id="evolucao">Evoluir uma técnica</h3>
+  <p>O golpe que um inimigo já leu precisa mudar, e o golpe que você escreveu no nível 1
+  precisa crescer com você. As duas coisas são a mesma ação: <em class="termo">evoluir</em>.</p>
+
+  <div class="destaque">
+    <span class="rotulo">Desenvolver ou evoluir</span>
+    <p class="formula">1d20 + atributo da técnica + proficiência</p>
+    <p class="formula">contra CD 10 + tamanho + 1 por Grau acima do primeiro</p>
+  </div>
+
+  <p>É uma ação de Interlúdio. No sucesso, a técnica passa para o Grau que você escolher,
+  até o seu, e pode ser remontada dentro do tamanho máximo novo. Ela ganha um nome novo, se
+  você quiser — o punho de meteoros que vira um cometa —, e conta como uma técnica nova:
+  <strong>ninguém a leu ainda</strong>. Na falha, ela continua como estava, e a próxima
+  tentativa tem Vantagem.</p>
+
+  <p><strong>A técnica assinatura.</strong> Escolha uma das suas técnicas no nível 1: ela
+  sobe de Grau sozinha, sem teste, cada vez que você chega a um Grau novo. É o golpe pelo
+  qual as pessoas te reconhecem. Mas crescer sozinha não é evoluir — quem já a leu continua
+  lendo.</p>
+
+  <h3 id="assento">O Golpe do Assento</h3>
+  <p>Cada vaga de elite — as doze de Ouro, os sete Generais, os três Juízes, os sete
+  Guerreiros Deuses — tem um golpe que vem com a armadura. Quem assume a vaga aprende o
+  golpe dela, e continua usando todos os que já tinha.</p>
+  <ul>
+    <li>O Golpe do Assento é montado com o motor, no Grau de quem veste a armadura, e pode
+      passar <strong>um ponto</strong> do tamanho máximo.</li>
+    <li>Ele não conta no limite de técnicas conhecidas.</li>
+    <li>Só funciona vestindo aquela armadura. Quem deixa a vaga deixa o golpe.</li>
+    <li>Ele se paga em Cosmo como qualquer técnica — e cabe quase inteiro no Teto de um Ouro
+      no Sétimo.</li>
+  </ul>
+
+  <p>Três exemplos, montados no Grau 3, com tamanho máximo 7:</p>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Excalibur</h5>
+      <p class="etiqueta">Capricórnio · Golpe (FOR) · Ataque contra DEF</p>
+      <p>O braço vira uma lâmina que corta qualquer coisa.</p>
+      <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e quatro pontos de dano
+      em alvo único (4), alcance médio (+2), atravessa a armadura (+1). No Grau 3:
+      <span class="dado">12d8 + FOR</span>.</div>
+    </div>
+    <div class="cartao">
+      <h5>Cólera dos Cem Dragões</h5>
+      <p class="etiqueta">Libra · Cosmo · Efeito contra Reflexos</p>
+      <p>Cem dragões de Cosmo saem de uma vez.</p>
+      <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e quatro pontos de dano
+      em área (4), área dobrada numa explosão de 6 m (+2), alcance médio (+1). No Grau 3:
+      <span class="dado">12d6 + mod</span>, metade no erro.</div>
+    </div>
+    <div class="cartao">
+      <h5>Trovão Atômico</h5>
+      <p class="etiqueta">Sagitário · Golpe (DES) · Ataque contra DEF</p>
+      <p>Milhões de golpes de luz num instante, de longe.</p>
+      <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e três pontos de dano em
+      alvo único (3), alcance longo (+3), ignora cobertura (+1). No Grau 3:
+      <span class="dado">9d8 + DES</span>.</div>
+    </div>
+  </div>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="exemplos">Oito técnicas de nível 1</h3>
+  <p>Confira as contas. Todas estão no Grau 1 e nenhuma passa de 5 pontos. Troque os nomes
+  e o tema pelos da sua constelação.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>Técnica</th><th>Natureza</th><th>Efeito</th><th>Rolagem</th><th class="num">Tamanho</th><th class="num">Custo</th></tr></thead>
+    <tbody>
+      <tr><td>Punho de Meteoros</td><td>Golpe</td><td><span class="dado">2d8 + mod</span>, alvo único, toque</td><td>Ataque · DEF</td><td class="num">2</td><td class="num">2</td></tr>
+      <tr><td>Poeira de Gelo</td><td>Cosmo</td><td><span class="dado">2d6 + mod</span> num cone de 3 m, e Lento</td><td>Efeito · Reflexos</td><td class="num">3</td><td class="num">3</td></tr>
+      <tr><td>Corrente Circular</td><td>Cosmo</td><td>+2 DEF para você ou um aliado a até 6 m; reação quando um ataque é declarado</td><td>—</td><td class="num">2</td><td class="num">2</td></tr>
+      <tr><td>Asas Flamejantes</td><td>Cosmo</td><td><span class="dado">3d8 + mod</span>, alvo único, 12 m, quebra a armadura</td><td>Ataque · DEF</td><td class="num">5</td><td class="num">5</td></tr>
+      <tr><td>Dragão Ascendente</td><td>Golpe</td><td><span class="dado">2d8 + mod</span> e o alvo cai; você fica Desprevenido</td><td>Ataque · DEF</td><td class="num">3</td><td class="num">2</td></tr>
+      <tr><td>Golpe Fantasma</td><td>Cosmo</td><td>Amedrontado, toque</td><td>Efeito · Vontade</td><td class="num">2</td><td class="num">2</td></tr>
+      <tr><td>Muralha de Cosmo</td><td>Cosmo</td><td><span class="dado">2d8 + mod</span> em PV temporários até o fim da luta</td><td>—</td><td class="num">5</td><td class="num">5</td></tr>
+      <tr><td>Passo de Luz</td><td>Golpe</td><td>+3 m de movimento, como ação bônus</td><td>—</td><td class="num">2</td><td class="num">2</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Como a conta de duas delas foi feita</h4>
+  <p><strong>Poeira de Gelo.</strong> Instantânea (1, e vem com o primeiro ponto de dano em
+  área) + um segundo ponto de área (1) + Lento, condição fraca (1) = 3. No alcance curto, que
+  para o Cosmo não custa nada. Dois pontos de área são <span class="dado">2d6</span>, mais o
+  modificador uma vez. A Rolagem de Efeito decide tudo: no acerto, dano e Lento; no erro,
+  metade do dano e nada de Lento.</p>
+  <p><strong>Dragão Ascendente.</strong> Instantânea (1) + um segundo ponto de dano (1) +
+  Caído, condição fraca (1) = tamanho 3. A limitação "te deixa Desprevenido" — o golpe abre a
+  guarda por um instante — tira 1 do custo, que fica em 2. Não pode tirar mais: o piso é a
+  metade de 3, arredondada para cima.</p>
+
+  <div class="nota">
+    <p><strong>Os números ainda vão ao simulador.</strong> O motor veio da Ascensão dos
+    Semideuses, onde foi medido. Aqui ele mudou num ponto que importa: o custo é pago em
+    Cosmo, que enche durante a luta, e não numa reserva do dia. Quanto dano uma luta aguenta
+    e quantas técnicas cabem nela são as primeiras contas da próxima versão.</p>
+  </div>
+
+  <h3>Modelo para registrar</h3>
+  <p>Toda técnica criada entra na ficha assim. Se algum campo estiver em branco, ela não
+  está pronta.</p>
+  <pre class="bloco-codigo">Nome:
+Natureza:          Golpe (FOR ou DES) · Cosmo (Atributo do Cosmo)
+Ativação:          ação · ação bônus · reação (gatilho: ...)
+Duração:           instantânea · sustentada · cena
+Alcance e área:
+Efeitos e pontos:
+Modificadores:
+Tamanho:           (não passa do máximo do Grau)
+Limitações:
+Custo em Cosmo:    (tamanho − limitações; nunca abaixo da metade)
+Grau:              o Grau em que ela nasceu
+Rolagem:           Ataque contra DEF · Efeito contra Fortitude, Reflexos ou Vontade
+Lida por:          (nomes de quem já viu)
+Descrição:         como ela aparece, e o nome que você grita</pre>
+
+  <h4>As etapas, em ordem</h4>
+  <ol class="passos">
+    <li><b>Conceito</b> O que você quer que aconteça na mesa, em uma frase.</li>
+    <li><b>Natureza</b> Golpe ou Cosmo. Isso fixa o atributo e o alcance de partida.</li>
+    <li><b>Ativação</b> Ação, ação bônus ou reação. Aplique o ajuste.</li>
+    <li><b>Duração</b> Instantânea, sustentada ou cena. Ela já traz o primeiro ponto.</li>
+    <li><b>Efeitos</b> Compre os pontos extras nas tabelas. Misture o que quiser.</li>
+    <li><b>Alcance e área</b> Só pague se passar do normal.</li>
+    <li><b>Rolagem</b> Ataque contra DEF ou Efeito contra uma defesa passiva. Uma só.</li>
+    <li><b>Some o tamanho</b> Confira o máximo do Grau, e só então aplique as limitações.</li>
+    <li><b>Grave o Grau</b> O Grau em que ela nasce, até o seu.</li>
+    <li><b>Dê um nome</b> E diga como ela fica quando acontece.</li>
+    <li><b>Aprove</b> Leve ao Mestre. Ele pode pedir mudança, e é para isso que ele existe.</li>
+  </ol>
+</section>

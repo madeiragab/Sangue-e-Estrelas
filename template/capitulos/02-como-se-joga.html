@@ -1,0 +1,199 @@
+<!-- ==================== II ==================== -->
+<section class="capitulo" id="cap2">
+  <div class="abertura">
+    <span class="alg">Capítulo Dois</span>
+    <h2>Como se joga</h2>
+    <p>O d20, a dificuldade e os cinco números da sua ficha</p>
+  </div>
+
+  <p class="abre">Quase tudo neste jogo se resolve do mesmo jeito. Você quer fazer alguma
+  coisa que pode dar errado. Você rola um dado de vinte lados, soma um número da sua ficha,
+  e compara com um alvo.</p>
+
+  <div class="destaque">
+    <span class="rotulo">A rolagem básica</span>
+    <p class="formula">1d20 + modificador (+ proficiência)</p>
+  </div>
+
+  <p>Se o resultado for <strong>igual ou maior</strong> que o alvo, você conseguiu. Se for
+  menor, não conseguiu — e o Mestre te diz o que aconteceu no lugar. O modificador vem de
+  um atributo; a <em class="termo">proficiência</em> entra quando você é treinado no que
+  está fazendo. As duas coisas estão no <a href="#cap3">Capítulo Três</a>.</p>
+
+  <p>O alvo tem três nomes, conforme quem está do outro lado:</p>
+  <ul>
+    <li><strong>CD</strong>, a dificuldade, quando é o mundo que resiste: um muro, uma
+      correnteza, uma mentira ensaiada.</li>
+    <li><strong>DEF</strong>, a defesa, quando você ataca alguém.</li>
+    <li><strong>Fortitude, Reflexos ou Vontade</strong>, as defesas passivas, quando você
+      tenta impor um efeito — congelar, empurrar, apavorar, arrancar um sentido.</li>
+  </ul>
+  <p>Quem causa é quem rola. Ninguém rola para se defender: a defesa é um número fixo na
+  ficha, e o atacante tenta alcançá-lo.</p>
+
+  <h3>Experimente</h3>
+  <p>Este é um Cavaleiro de Bronze de nível 1 tentando escalar a encosta de pedra do
+  Santuário sem usar a escadaria. Ele tem Atletismo +5, e a encosta é CD 13.</p>
+
+  <div class="rolador">
+    <div class="rolador-topo">Teste de Atletismo · CD 13 · bônus +5</div>
+    <div class="rolador-linha">
+      <div class="rolador-visor" id="visor">—</div>
+      <p class="rolador-detalhe" id="detalhe">Role o dado para ver como funciona.</p>
+    </div>
+    <div class="botoes">
+      <button class="principal" onclick="rolar('normal')">Rolar 1d20</button>
+      <button onclick="rolar('vantagem')">Com Vantagem</button>
+      <button onclick="rolar('desvantagem')">Com Desvantagem</button>
+    </div>
+  </div>
+
+  <h3>Vantagem e Desvantagem</h3>
+  <p>São as duas palavras que você mais vai ouvir na mesa, e substituem uma pilha de
+  modificadores pequenos.</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Vantagem</h5>
+      <p class="etiqueta">A situação está a seu favor</p>
+      <p>Role dois d20 e use o maior. Você tem Vantagem quando ataca alguém caído, quando
+      um aliado te ajuda, quando está num Sentido acima do inimigo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Desvantagem</h5>
+      <p class="etiqueta">A situação está contra você</p>
+      <p>Role dois d20 e use o menor. Você tem Desvantagem sem enxergar o alvo, lutando
+      contra alguém num Sentido acima do seu, ou tentando algo com um sentido que perdeu.</p>
+    </div>
+  </div>
+
+  <p>Elas não se acumulam. Duas fontes de Vantagem ainda são dois dados. E se você tem
+  Vantagem e Desvantagem ao mesmo tempo, as duas somem e você rola um dado só — não
+  importa quantas fontes existam de cada lado.</p>
+
+  <h3>Quanto é difícil</h3>
+  <p>O Mestre escolhe a CD antes de você rolar.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>Dificuldade</th><th class="num">CD</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Fácil</td><td class="num">10</td><td>Pular de um telhado para outro, convencer quem já queria ser convencido</td></tr>
+      <tr><td>Média</td><td class="num">13</td><td>Escalar pedra nua, perceber que alguém esconde o Cosmo</td></tr>
+      <tr><td>Difícil</td><td class="num">16</td><td>Atravessar uma nevasca, reconhecer uma armadura pelo desenho da urna</td></tr>
+      <tr><td>Muito difícil</td><td class="num">19</td><td>Nadar contra o redemoinho de um templo submarino</td></tr>
+      <tr><td>Quase impossível</td><td class="num">22</td><td>Feitos que entram para a lenda</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>O Mestre não pede rolagem para tudo. Se não há como falhar de um jeito interessante,
+  você simplesmente consegue. Se não há como ter sucesso, ele diz isso na cara e você
+  tenta outra coisa. Dado só entra quando os dois lados são possíveis.</p>
+
+  <h3>Crítico e falha crítica</h3>
+  <p>Num <strong>20 natural</strong> — o dado mostrando 20, antes de somar nada — um ataque
+  acerta e vira <em class="termo">Acerto Crítico</em>. Um golpe comum rola os dados de dano
+  duas vezes. Uma técnica soma tantos dados extras quanto o Grau dela (o Grau está no
+  <a href="#cap6">Capítulo Seis</a>). Num <strong>1 natural</strong>, o ataque erra, não
+  importa o bônus.</p>
+  <p>Num teste de perícia, o 20 natural não garante o impossível, mas acrescenta algo
+  excepcional: mais informação, menos tempo, uma impressão que fica. O 1 natural usa o
+  total normalmente e pode trazer uma complicação — nunca um ferimento de graça.
+  Rolagens de Efeito e Iniciativa não têm crítico.</p>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>Os cinco números da sua ficha</h3>
+  <p>A sua ficha tem cinco reservas. Cada uma anda num ritmo diferente, e é o jeito como
+  elas se cruzam que decide as lutas.</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>PV · Pontos de Vida</h5>
+      <p class="etiqueta">Quanto você aguenta</p>
+      <p>Chegar a 0 derruba você, mas não mata. Um descanso longo devolve metade.</p>
+    </div>
+    <div class="cartao">
+      <h5>Cosmo</h5>
+      <p class="etiqueta">Cresce durante a luta</p>
+      <p>Começa baixo, sobe a cada rodada e a cada golpe que entra, e paga as técnicas.
+      Tem um limite, o <em class="termo">Teto</em>. Quando a luta acaba, volta ao começo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Os cinco sentidos</h5>
+      <p class="etiqueta">O que você pode sacrificar</p>
+      <p>Visão, audição, olfato, paladar e tato. Cada um que você perde enfraquece o corpo
+      e sobe o Cosmo. Voltam um por noite de descanso.</p>
+    </div>
+    <div class="cartao">
+      <h5>Convicções</h5>
+      <p class="etiqueta">Por que você levanta</p>
+      <p>Três frases: aquilo por que você luta. Cada vez que você levanta do chão, gasta
+      uma. Voltam no fim de cada arco da história.</p>
+    </div>
+    <div class="cartao">
+      <h5>Centelhas</h5>
+      <p class="etiqueta">O Cosmo que você manda</p>
+      <p>Três por sessão. Mande para um amigo que está lutando, esteja você onde estiver.
+      É assim que ninguém fica parado quando o duelo é de outro.</p>
+    </div>
+  </div>
+
+  <h3>Posto e Sentido, as duas escadas</h3>
+  <p>Duas palavras vão aparecer o livro inteiro, e vale separar uma da outra desde já.</p>
+  <ul>
+    <li>O <em class="termo">Posto</em> — Bronze, Prata ou Ouro — é o seu lugar no exército e
+      a qualidade da sua armadura. Todo personagem começa Bronze. Subir de Posto acontece
+      na história, quando o Mestre decide que chegou a hora; não existe conta que leve até
+      lá.</li>
+    <li>O <em class="termo">Sentido</em> é o patamar do seu poder naquele momento. Todo
+      guerreiro luta no Sexto Sentido. O Sétimo é a velocidade da luz: o Bronze só chega
+      lá no limite, e só por uma luta; o Ouro chega quando quer. O Oitavo e o Nono são
+      outra história, contada no <a href="#cap4">Capítulo Quatro</a>.</li>
+  </ul>
+  <p>É por isso que um Bronze pode vencer um Ouro. O Posto diz quem você é. O Sentido
+  diz até onde você foi hoje.</p>
+
+<script>
+var visor = document.getElementById('visor');
+var detalhe = document.getElementById('detalhe');
+var BONUS = 5, CD = 13;
+
+function d20() { return Math.floor(Math.random() * 20) + 1; }
+
+function rolar(modo) {
+  var a = d20(), b = d20(), nat, explicacao;
+
+  if (modo === 'vantagem') {
+    nat = Math.max(a, b);
+    explicacao = 'Vantagem: dois dados, <b>' + a + '</b> e <b>' + b + '</b>, fica o maior. ';
+  } else if (modo === 'desvantagem') {
+    nat = Math.min(a, b);
+    explicacao = 'Desvantagem: dois dados, <b>' + a + '</b> e <b>' + b + '</b>, fica o menor. ';
+  } else {
+    nat = a;
+    explicacao = 'Um dado: <b>' + a + '</b>. ';
+  }
+
+  var total = nat + BONUS;
+  visor.textContent = total;
+  visor.className = 'rolador-visor';
+
+  var veredito;
+  if (nat === 20) {
+    visor.classList.add('critico');
+    veredito = '<b>20 natural.</b> Você chega ao topo antes de quem foi pela escada.';
+  } else if (nat === 1) {
+    visor.classList.add('falha');
+    veredito = '<b>1 natural.</b> A pedra solta na sua mão, e você volta ao pé da encosta.';
+  } else if (total >= CD) {
+    veredito = '<b>' + total + '</b> contra CD 13: <b>passou</b>. Você está lá em cima.';
+  } else {
+    visor.classList.add('falha');
+    veredito = '<b>' + total + '</b> contra CD 13: <b>faltou ' + (CD - total) + '</b>. ' +
+               'Você escorrega — e o guarda da primeira casa já viu.';
+  }
+
+  detalhe.innerHTML = explicacao + 'Somando o bônus de +5, deu <b>' + total + '</b>.<br>' + veredito;
+}
+</script>
+</section>
