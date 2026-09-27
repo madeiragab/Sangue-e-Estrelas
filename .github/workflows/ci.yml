@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Nada de pip install: o simulador e o build são biblioteca padrão pura.
+      - name: técnicas, livro e equilíbrio
+        run: python test.py
+
+      # O livro publicado precisa ser exatamente o que o build gera a partir
+      # dos templates e do simulador.
+      - name: o livro commitado está atualizado
+        run: git diff --exit-code livro.html index.html

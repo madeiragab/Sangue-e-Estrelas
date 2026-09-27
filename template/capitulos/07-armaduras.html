@@ -2,7 +2,7 @@
 <section class="capitulo" id="cap7">
   <div class="abertura">
     <span class="alg">Capítulo Sete</span>
-    <h2>Armaduras e itens</h2>
+    <h2>Armaduras</h2>
     <p>Peças que quebram, uma vida que acaba e o sangue que traz de volta</p>
   </div>
 
@@ -47,22 +47,17 @@
   <h3>O Posto na armadura</h3>
   <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e quantas
   <em class="termo">caixas</em> cada peça tem.</p>
-  <div class="rolagem"><table>
-    <thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Caixas por peça</th></tr></thead>
-    <tbody>
-      <tr><td>Bronze</td><td class="num">+2</td><td class="num">1</td></tr>
-      <tr><td>Prata</td><td class="num">+3</td><td class="num">2</td></tr>
-      <tr><td>Ouro</td><td class="num">+4</td><td class="num">3</td></tr>
-      <tr><td>Forma Divina</td><td class="num">+5</td><td class="num">4</td></tr>
-    </tbody>
-  </table></div>
+  {{TABELA_POSTO}}
+  <p>A elite dos outros exércitos — General Marina, Juiz do Inferno, Guerreiro Deus — usa
+  a linha do Ouro. A distância entre as linhas foi medida: Prata vence Bronze do mesmo
+  nível cerca de 60% das vezes.</p>
 
   <h3 id="armadura-na-luta">A armadura na luta</h3>
   <div class="destaque">
     <span class="rotulo">Aparar</span>
-    <p>Quando um ataque ou uma técnica te causa dano, você pode marcar uma caixa de uma
-    peça inteira para sofrer <strong>metade do dano</strong>, arredondado para baixo. Uma
-    caixa por acerto. Não gasta ação nem reação.</p>
+    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e marcar
+    uma caixa de uma peça inteira para sofrer <strong>metade do dano</strong>, arredondado
+    para baixo. Você decide depois de ver o dano.</p>
   </div>
   <ul>
     <li>Quando a última caixa de uma peça é marcada, a peça <strong>quebra</strong>: você
@@ -76,31 +71,47 @@
   </ul>
 
   <p>Aparar é a escolha mais constante da luta. Cada caixa marcada é metade de um golpe que
-  não entrou — e uma peça a menos para o próximo.</p>
+  não entrou — e uma peça a menos para o próximo. Como Aparar e Bloquear usam a mesma
+  reação, você só faz um dos dois por rodada: bloquear o golpe comum que vem agora ou guardar
+  a reação para aparar a técnica que talvez venha depois.</p>
+  <div class="nota">
+    <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de
+    graça, quantas vezes houvesse caixas. O simulador mostrou o efeito: toda técnica era
+    cortada pela metade, as lutas passavam de dez rodadas e dar só golpes comuns rendia tanto
+    quanto usar técnicas. Com a reação, a armadura continua decisiva — quem nunca apara vence
+    só de 34% a 46% dos duelos — sem apagar as técnicas.</p>
+  </div>
 
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, todas as caixas voltam e as peças
   quebradas se remontam. Só uma armadura morta não volta sozinha.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas.
-  Também morre na destruição mútua da Guerra dos Mil Dias, e quando um deus ou a história
-  decide que sim. Uma armadura morta perde o brilho, fica cinza e fria: não dá nada, não
-  atende ao chamado e não se regenera.</p>
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas,
+  na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
+  de um deus, uma relíquia. Uma armadura morta perde o brilho, fica cinza e fria: não dá
+  nada, não atende ao chamado e não se regenera.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="reviver">Reviver com sangue</h3>
   <p>Uma armadura morta só volta com três coisas juntas:</p>
   <ul>
-    <li><strong>Um restaurador.</strong> Pouquíssimas pessoas no mundo sabem fazer isso, e
-      normalmente vivem em lugares aonde não se chega fácil. Um personagem pode aprender,
-      com anos de treino e a bênção de um mestre restaurador — é uma história, não uma
-      perícia.</li>
-    <li><strong>Material.</strong> Pó de Estrelas, Gamânio e Oricalco, os três metais de que
-      as armaduras são feitas. Não se compram: se acham, se ganham, se herdam.</li>
+    <li><strong>Um restaurador.</strong> Um personagem do Mestre — quase sempre alguém que
+      mora num lugar aonde não se chega fácil — ou um personagem de jogador que aprendeu o
+      ofício (<a href="#cap12">Capítulo Doze</a>).</li>
+    <li><strong>Material</strong>, pelo Posto da armadura: Bronze pede 1 Pó de Estrelas;
+      Prata, 1 Pó de Estrelas e 1 Gamânio; Ouro e elite, os três — Pó de Estrelas, Gamânio e
+      Oricalco. Como achar cada um está no <a href="#cap8">Capítulo Oito</a>.</li>
     <li><strong>Sangue.</strong> Um terço do sangue de uma pessoa por armadura.</li>
   </ul>
+  <div class="destaque">
+    <span class="rotulo">Restaurar</span>
+    <p>O restaurador faz um teste de <strong>Ofício contra CD 14 + 2 × a Versão atual</strong>
+    da armadura e trabalha um dia por Versão. No sucesso, a armadura revive. Na falha, o
+    material se perde e o dia também; o sangue só é doado quando o teste passa, e ele pode
+    tentar de novo.</p>
+  </div>
 
   <h4>O sangue se paga em terços</h4>
   <p>Quem doa marca caixas na trilha de <em class="termo">Sangue</em> da ficha: três
@@ -147,7 +158,7 @@
   <ul>
     <li><strong>Dourada no Sétimo.</strong> Uma armadura que recebeu sangue de elite fica
       dourada quando você desperta o Sétimo. Enquanto você estiver nele, ela usa a linha do
-      Ouro: +4 na DEF e 3 caixas por peça, somadas às das Versões. As caixas já marcadas
+      Ouro da tabela de Posto, somando as caixas das Versões. As caixas já marcadas
       continuam marcadas.</li>
     <li><strong>Divina no Nono.</strong> Uma armadura com sangue de deus é o elo de sangue do
       <a href="#nono">Capítulo Quatro</a>.</li>
@@ -158,8 +169,7 @@
   adormecido até o portador elevar o Cosmo ao nível de um deus. Quando você desperta o
   Nono, a armadura assume a <em class="termo">forma Divina</em>:</p>
   <ul>
-    <li>ela cobre quase o corpo inteiro e usa a linha Divina: +5 na DEF e 4 caixas por
-      peça;</li>
+    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto;</li>
     <li>todas as caixas se limpam e todas as peças quebradas se refazem na hora;</li>
     <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com as caixas como
       estavam antes da transformação.</li>
@@ -172,6 +182,8 @@
   <h3>Subir de Posto</h3>
   <p>Quando a história faz você subir de Posto, a armadura acompanha.</p>
   <ul>
+    <li><strong>Requisito:</strong> Prata a partir do nível 5; Ouro, a partir do nível 9 e
+      com uma vaga vazia. O momento da promoção é da história; o requisito é da regra.</li>
     <li><strong>De Bronze a Prata:</strong> a sua armadura sobe junto, na mesma constelação.
       Ela passa a usar a linha da Prata e mantém as caixas das Versões. Não é invenção: a
       armadura de Órion já foi Prata numa história e Bronze em outra.</li>
@@ -184,50 +196,6 @@
 
   <div class="ornamento">❖ ❖ ❖</div>
 
-  <h3>Itens</h3>
-  <p>Neste jogo não há regras de armas. Os Cavaleiros de Atena juram lutar só com o corpo e
-  o Cosmo. Quando uma armadura tem uma arma — as doze armas de Libra, a lança de um General
-  Marina —, ela entra como o acessório da armadura ou como o Golpe do Assento, nunca como um
-  item separado.</p>
-
-  <p>O que existe são relíquias e alguns objetos úteis.</p>
-
-  <div class="grade">
-    <div class="cartao">
-      <h5>Pó de Estrelas, Gamânio e Oricalco</h5>
-      <p class="etiqueta">Material de restauração</p>
-      <p>Os três metais das armaduras. Toda revivida pede um pouco dos três. Achar os
-      metais pode ser uma aventura inteira.</p>
-    </div>
-    <div class="cartao">
-      <h5>Objeto de um deus</h5>
-      <p class="etiqueta">Elo de ligação</p>
-      <p>Uma pulseira de flores, um rosário, um colar — qualquer coisa que carregue o Cosmo
-      de um deus e tenha sido dada a você. Abre o Nono enquanto estiver com você. Um inimigo
-      pode tomá-lo com Agarrar.</p>
-    </div>
-    <div class="cartao">
-      <h5>Rosário de 108 contas</h5>
-      <p class="etiqueta">Relíquia</p>
-      <p>Cada conta sela a alma de um Espectro abatido, e ele não volta mais. Criar um exige
-      o Oitavo Sentido e, quase sempre, a vida de quem o cria.</p>
-    </div>
-    <div class="cartao">
-      <h5>Safira de Odin</h5>
-      <p class="etiqueta">Relíquia de Asgard</p>
-      <p>Encravada em cada Veste Divina de Guerreiro Deus. As regras estão no exército de
-      Asgard, no <a href="#cap8">Capítulo Oito</a>.</p>
-    </div>
-    <div class="cartao">
-      <h5>Escudo da Medusa</h5>
-      <p class="etiqueta">Relíquia · destino</p>
-      <p>Quem olha para ele vira pedra: é uma condição de destino, sem rolagem. A única
-      defesa conhecida é não ver — quem perdeu a Visão está imune.</p>
-    </div>
-    <div class="cartao">
-      <h5>Kit de medicina</h5>
-      <p class="etiqueta">Objeto comum</p>
-      <p>Faixas, ervas, agulhas. Dá Vantagem nos testes de Medicina.</p>
-    </div>
-  </div>
+  <p>Relíquias, remédios, materiais e as melhorias que um restaurador faz numa armadura
+  viva estão no <a href="#cap8">Capítulo Oito</a>.</p>
 </section>

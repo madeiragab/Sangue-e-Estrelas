@@ -540,6 +540,9 @@ th {
   font-weight: 600;
 }
 td.num, th.num { text-align: right; }
+/* Tabelas densas de números (a tabela rápida de inimigos): nada quebra linha. */
+table.compacta { font-size: .8rem; }
+table.compacta td, table.compacta th { white-space: nowrap; padding: .45rem .5rem; }
 
 
 /* ============ CAIXA DE DADOS ============ */
@@ -886,7 +889,7 @@ button.principal:hover { background: var(--sangue-vivo); border-color: var(--san
   border-top: 1px dashed var(--borda-forte);
   padding-top: .8rem;
 }
-.criatura .morte .rotulo-bloco { border: none; padding: 0; margin-bottom: .2rem; }
+.criatura .morte .rotulo-bloco { display: block; border: none; padding: 0; margin-bottom: .2rem; }
 
 /* Aviso de efeito perigoso (Medusa) */
 .aviso {
