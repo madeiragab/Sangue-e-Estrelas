@@ -31,17 +31,45 @@ def teto_base(nivel: int) -> int:
 
 TAMANHO_MAXIMO = {1: 5, 2: 6, 3: 6, 4: 6, 5: 6}
 
-# PV: cada Grau tem uma base, e a Constituição soma a cada nível. A base sobe
-# junto com o dano das técnicas, que também cresce por Grau — assim a luta
-# dura parecido do começo ao fim de cada faixa, sem o dente de serra de uma
-# vida que cresce todo nível contra um dano que só cresce de quatro em quatro.
-PV_POR_GRAU = {1: 18, 2: 38, 3: 58, 4: 78, 5: 98}
-PV_POR_NIVEL = 1   # além da CON, dentro da faixa
+# PV: cada Grau tem uma base, e a Constituição soma a cada nível. A base cresce
+# mais rápido que o dano das técnicas: a luta é curta e decisiva no começo e
+# longa e destrutiva no fim (pedido do usuário, 0.6.0).
+PV_POR_GRAU = {1: 14, 2: 40, 3: 80, 4: 135, 5: 205}
+# Cada escolha de Vida soma VIGOR_PV por Grau — e cresce junto quando o Grau sobe.
+VIGOR_PV = 2
 
 
-def pv_maximo(nivel: int, con: int, extra_por_nivel: int = 0) -> int:
-    return (PV_POR_GRAU[grau(nivel)] + PV_POR_NIVEL * (nivel - 1 - 4 * (grau(nivel) - 1))
-            + con * nivel + extra_por_nivel * nivel)
+def pv_maximo(nivel: int, con: int, vigor: int = 0, extra_por_nivel: int = 0) -> int:
+    g = grau(nivel)
+    return PV_POR_GRAU[g] + con * nivel + round(vigor * VIGOR_PV * g) + extra_por_nivel * nivel
+
+
+# ---------------------------------------------------------------------------
+# Progressão por escolha
+# ---------------------------------------------------------------------------
+
+# Todo nível do 2 ao 20: Vida ou Cosmo. Nestes níveis, também: uma técnica nova
+# ou +2 num atributo; e nestes outros, uma perícia ou uma defesa treinada.
+NIVEIS_TECNICA_OU_ATRIBUTO = (4, 6, 8, 10, 12, 14, 16, 18, 20)
+NIVEIS_PERICIA_OU_DEFESA = (3, 7, 11, 15, 19)
+
+
+def escolhas_padrao(nivel: int) -> dict:
+    """As escolhas do lutador de referência: Vida e Cosmo alternados (Vida no 2),
+    técnica nova nos níveis 4, 8, 12, 16 e 20 e atributo nos outros, e a terceira
+    defesa treinada no 11."""
+    vc = "".join("v" if n % 2 == 0 else "c" for n in range(2, nivel + 1))
+    ta = "".join("t" if n % 4 == 0 else "a" for n in NIVEIS_TECNICA_OU_ATRIBUTO if n <= nivel)
+    pd = "".join("d" if n == 11 else "p" for n in NIVEIS_PERICIA_OU_DEFESA if n <= nivel)
+    return {"vida_cosmo": vc, "tecnica_atributo": ta, "pericia_defesa": pd}
+
+
+def atributos_das_escolhas(escolhas: dict, principal: int = 15, segundo: int = 14) -> tuple[int, int]:
+    """Cada 'a' dá +2: no principal até 20, o resto no segundo."""
+    pontos = 2 * escolhas["tecnica_atributo"].count("a")
+    p = min(20, principal + pontos)
+    s = min(20, segundo + max(0, principal + pontos - 20))
+    return p, s
 
 
 def mod(valor: int) -> int:
@@ -77,9 +105,9 @@ def conviccoes(nivel: int) -> int:
     return 4 if nivel >= 14 else 3
 
 
-def cosmo_inicial(mod_cosmo: int, nivel: int) -> int:
-    extra = (1 if nivel >= 3 else 0) + (1 if nivel >= 15 else 0)
-    return max(1, mod_cosmo) + extra
+def cosmo_inicial(mod_cosmo: int, escolhas_de_cosmo: int, teto: int) -> int:
+    """O modificador (mínimo 1), +1 por escolha de Cosmo, até o Teto."""
+    return min(teto, max(1, mod_cosmo) + escolhas_de_cosmo)
 
 
 NIVEL_ATAQUE_EXTRA = 9
@@ -114,11 +142,16 @@ POSTO = {
 # Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um
 # grupo multiplica os PV e ganha ações a mais por rodada.
 def chefe_pv(oponentes: int) -> float:
-    return oponentes / 2 + 0.25 if oponentes >= 2 else 1.0
+    """× 1¼, 1½, 1¾, 2, 2¼ para 2 a 6 oponentes."""
+    return (oponentes + 3) / 4 if oponentes >= 2 else 1.0
+
+
+CHEFE_ACAO_SO_GOLPE = True    # a ação a mais do chefe é só um golpe comum
 
 
 def chefe_acoes(oponentes: int) -> int:
-    return oponentes // 2 if oponentes >= 2 else 0
+    """0, 1, 2, 3, 4 golpes comuns a mais por rodada para 2 a 6 oponentes."""
+    return max(0, oponentes - 2)
 
 
 # Características da armadura: quantas por Posto, e as que o simulador dá aos
@@ -197,6 +230,21 @@ TETO_NONO = 2
 # Cosmo
 # ---------------------------------------------------------------------------
 
+# O Cosmo não acaba: gastar nunca o leva abaixo do piso. O piso é o modificador do
+# Atributo do Cosmo (mínimo 1). PISO_COSMO muda a regra para medir alternativas:
+# "mod" (o modificador), "um" (sempre 1), "metade" (metade do modificador, mínimo 1).
+PISO_COSMO = "um"
+PISO_POR_COSMO = 0.5   # cada escolha de Cosmo sobe o piso meio ponto: +1 a cada duas
+
+
+def piso_cosmo(mod_cosmo: int) -> int:
+    if PISO_COSMO == "um":
+        return 1
+    if PISO_COSMO == "metade":
+        return max(1, mod_cosmo // 2)
+    return max(1, mod_cosmo)
+
+
 COSMO_RELOGIO = 1          # por turno, a partir da segunda rodada
 COSMO_ACERTO = 1           # golpe comum que acerta
 COSMO_POR_CADA_ACERTO = False  # True: +1 por golpe que acerta; False: uma vez por turno
@@ -207,6 +255,7 @@ TETO_CENTELHA_MAX = 3
 BONUS_LIDO = 2
 LEVANTAR_POR_LUTA = 1      # quantas vezes se levanta numa mesma luta
 MIL_DIAS_SEGMENTOS = 6
+CHOQUE_MINIMO = 16     # o natural igual do choque: de 16 a 20 (com técnica toda rodada, 1 a 20 travava metade das lutas)
 APARAR_USA_REACAO = True
 
 

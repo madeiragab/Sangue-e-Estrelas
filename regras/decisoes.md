@@ -153,6 +153,39 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## O Cosmo não acaba, e a progressão é escolhida (0.6.0)
+
+- **O Cosmo não acaba** (pedido do usuário: "diferente de ASD, o cosmo simplesmente não
+  pode acabar; Seiya e os outros podem lançar seus ataques mesmo muito debilitados").
+  Escolhido entre três opções: piso + a vida paga. Gastar nunca leva o Cosmo abaixo do
+  piso; o que falta de uma técnica a vida paga, sem limite (1d4 por ponto × Grau); se o
+  preço passar da vida que resta, o golpe sai — derrubou, você fica com 1 PV; não
+  derrubou, você cai. Queimar deixa o Cosmo no piso, não em zero.
+- **O piso é 1, não o Atributo do Cosmo.** A opção escolhida falava no Atributo do Cosmo,
+  mas medido assim a técnica média saía de graça toda rodada para quem tinha SAB alta, e a
+  build de Cosmo vencia 72% a 77%. Com piso 1 (+1 a cada duas escolhas de Cosmo), 47% a 52%.
+- **O último golpe que derruba deixa você de pé.** Na primeira versão, os dois caíam juntos
+  e 16% das lutas do nível 1 terminavam empatadas; agora, nenhuma.
+- **Só PV e Cosmo** — como já era; nada de SP e MP como na Ascensão.
+- **Progressão por escolha** (pedido do usuário): todo nível, Vida (+2 PV por Grau) ou Cosmo
+  (+1 Teto, +1 Cosmo inicial, +1 piso a cada duas); nos níveis pares a partir do 4,
+  técnica nova ou +2 num atributo; nos 3, 7, 11, 15 e 19, perícia ou defesa. Saíram os
+  ganhos fixos Cosmo Desperto, Cosmo Sereno e Terceira defesa treinada, e os aumentos de
+  atributo fixos. Medido: só Vida contra só Cosmo, 41% a 61%.
+- **Curta no começo, longa no fim** (pedido do usuário): PV base por Grau de 14, 40, 80,
+  135 e 205. A luta com Convicções vai de 4,7 rodadas no nível 1 a 10,8 no nível 20. Custo:
+  o salto de Grau cresceu (um nível acima nas fronteiras vence 92% a 97%), e em luta longa o
+  favorito vence mais — no duelo justo, o Bronze não vence mais o Ouro.
+- **Guerra dos Mil Dias com 16 a 20.** Com técnica quase toda rodada, qualquer natural
+  igual travava metade das lutas entre Ouros; com 16 a 20, 9% a 15%.
+- **Sozinho contra muitos, de novo:** PV × 1¼ a 2¼ e golpes comuns a mais (não ações
+  livres — com o Cosmo que não acaba, uma ação livre é uma técnica a mais e o chefe não
+  perdia). Quatro Bronzes contra um Ouro: 43% a 51%. A luta é longa: 12 a 17 rodadas.
+- **Constelação viva e Coração de estrela mudaram de efeito.** Curar PV na hora de levantar
+  valia demais no nível 13 (64%), mesmo pouca cura: +1 no acerto no Sétimo e Vantagem no
+  ataque depois de levantar. O simulador ainda dava à Constelação +1 de Teto que o livro
+  não tinha; corrigido.
+
 ## Características da armadura (0.5.0)
 
 - **Pedido do usuário:** "quero mais características de armaduras". Onze características
@@ -212,7 +245,8 @@ aqui primeiro.
 ## Pendências
 
 - Grupo contra grupo (hoje: duelo e grupo contra um).
-- Suavizar a fronteira de Grau, se a mesa sentir o salto.
+- Suavizar a fronteira de Grau, se a mesa sentir o salto (ficou maior na 0.6.0).
+- Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
 - Nome do sistema: **Sangue e Estrelas** (decidido).

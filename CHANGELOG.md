@@ -3,6 +3,40 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.6.0] - 2026-09-27
+
+### Adicionado
+
+- **O Cosmo não acaba** (Capítulo Quatro): o piso (1, +1 a cada duas escolhas de Cosmo);
+  a vida paga o que falta de uma técnica, sem limite, a 1d4 por ponto × Grau; o último
+  golpe — se o preço passar da vida que resta, o golpe sai; se derrubar o inimigo, você
+  fica com 1 PV; se não, você cai.
+- **Progressão por escolha** (Capítulo Doze): todo nível, Vida (+2 PV por Grau) ou Cosmo
+  (+1 Teto, +1 Cosmo inicial, piso +1 a cada duas); nos níveis 4, 6, 8, 10, 12, 14, 16, 18
+  e 20, técnica nova ou +2 num atributo; nos 3, 7, 11, 15 e 19, perícia ou defesa. A tabela
+  de níveis mostra o que se ganha e o que se escolhe.
+
+### Mudado
+
+- **PV por Grau: 14, 40, 80, 135, 205.** A luta é curta e decisiva no começo e longa no
+  fim: com Convicções, de 4,7 rodadas no nível 1 a 10,8 no nível 20 (sem, de 2,9 a 7,4).
+- Queimar: só os pontos além do custo têm limite; depois, o Cosmo volta ao piso, não a zero.
+- Guerra dos Mil Dias: o choque pede o mesmo natural de 16 a 20 (com técnica toda rodada,
+  qualquer número igual travava metade das lutas entre Ouros). Agora 9% a 15%.
+- Sozinho contra muitos: PV × 1¼, 1½, 1¾, 2, 2¼ para 2 a 6 oponentes, e 0 a 4 golpes comuns
+  a mais por rodada (não ações livres). Quatro Bronzes contra um Ouro: 43% a 51%.
+- Constelação viva: +1 no acerto no Sétimo. Coração de estrela: Vantagem no ataque depois
+  de levantar. (Curar na hora de levantar valia até 64% no nível 13.)
+- Saíram Cosmo Desperto, Cosmo Sereno, a Terceira defesa treinada e os aumentos de
+  atributo fixos: tudo isso virou escolha.
+- Téo tem 15 PV no nível 1. Tabelas de dificuldade, de grupo, de fronteira de Grau e as
+  fichas prontas medidas de novo. No duelo justo, o Bronze não vence mais o Ouro (menos de
+  1%); quatro Bronzes juntos, sim.
+
+### Corrigido
+
+- O simulador dava à Constelação viva +1 de Teto que o livro não tinha (0.5.0).
+
 ## [0.5.0] - 2026-09-27
 
 ### Adicionado

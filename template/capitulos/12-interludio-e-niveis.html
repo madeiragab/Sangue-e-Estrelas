@@ -43,7 +43,7 @@
     <div class="cartao">
       <h5>Evoluir uma técnica</h5>
       <p>O teste do <a href="#evolucao">Capítulo Seis</a>. Também serve para desenvolver
-      uma técnica nova, quando a tabela abre uma vaga.</p>
+      uma técnica nova, quando você a escolheu ao subir de nível.</p>
     </div>
     <div class="cartao">
       <h5>Restaurar uma armadura</h5>
@@ -97,11 +97,46 @@
   características dela, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
   ele não vem com o nível: vem com ele e com a história.</p>
 
+  <h3 id="escolhas">Subir de nível: você escolhe</h3>
+  <p>Não existe um caminho só. A cada nível, do 2 ao 20, você escolhe no que o seu guerreiro
+  cresce — e dois personagens do mesmo nível podem ser bem diferentes.</p>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Vida</h5>
+      <p class="etiqueta">Todo nível · ou Cosmo</p>
+      <p>+2 PV por Grau, e ela cresce junto: quando o Grau sobe, toda escolha de Vida que você
+      já fez passa a valer o Grau novo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Cosmo</h5>
+      <p class="etiqueta">Todo nível · ou Vida</p>
+      <p>+1 no Teto de Cosmo e +1 no Cosmo com que você começa a luta. A cada duas escolhas de
+      Cosmo, o piso sobe 1 (<a href="#cosmo">Capítulo Quatro</a>).</p>
+    </div>
+    <div class="cartao">
+      <h5>Técnica nova ou atributo</h5>
+      <p class="etiqueta">Níveis 4, 6, 8, 10, 12, 14, 16, 18 e 20</p>
+      <p>Uma técnica nova (<a href="#cap6">Capítulo Seis</a>), ou +2 num atributo. Nenhum
+      atributo passa de 20.</p>
+    </div>
+    <div class="cartao">
+      <h5>Perícia ou defesa</h5>
+      <p class="etiqueta">Níveis 3, 7, 11, 15 e 19</p>
+      <p>Uma perícia nova, ou a defesa passiva que faltava passa a somar a proficiência. Quem
+      já é treinado nas três defesas ganha +2 na Iniciativa.</p>
+    </div>
+  </div>
+  <div class="nota">
+    <p><strong>Medido.</strong> Quem escolhe só Vida contra quem escolhe só Cosmo, do mesmo
+    nível, vence de 41% a 61%: os dois caminhos se equivalem. Vida deixa a luta mais longa e
+    dá mais sangue para a vida pagar; Cosmo solta a técnica grande mais cedo e mais vezes.</p>
+  </div>
+
   <h3>A tabela</h3>
-  <p>A coluna <strong>PV</strong> é a base: some a sua CON uma vez por nível. Um personagem
-  com CON +2 no nível 5 tem 38 + 10 = 48 PV. O <strong>Teto</strong> é o Teto de Cosmo sem
-  nada somado. A coluna <strong>Glória</strong> é quanto você precisa para sair daquele
-  nível.</p>
+  <p>A coluna <strong>PV</strong> é a base do Grau: some a sua CON uma vez por nível e 2 PV
+  por Grau por escolha de Vida. Um personagem com CON +2 no nível 5, que escolheu Vida duas
+  vezes, tem 40 + 10 + 8 = 58 PV. O <strong>Teto</strong> é o Teto de Cosmo sem nada somado.
+  A coluna <strong>Glória</strong> é quanto você precisa para sair daquele nível.</p>
 
   {{TABELA_NIVEIS}}
 
@@ -110,25 +145,20 @@
   de armadura, ela passa para a nova.</p>
 
   <div class="nota">
-    <p><strong>Por que os PV sobem por Grau.</strong> O dano das técnicas cresce de quatro em
-    quatro níveis, junto com o Grau. Com PV subindo todo nível, as lutas ficavam cada vez mais
-    longas dentro de cada faixa — no nível 4, um duelo passava de 12 rodadas. Com a base por
-    Grau, a luta dura parecido do começo ao fim de cada faixa: de 4 a 7 rodadas sem
-    Convicções, medido.</p>
+    <p><strong>Curta no começo, longa no fim.</strong> A base de PV cresce mais depressa que o
+    dano das técnicas, e as escolhas de Vida crescem com o Grau. No nível 1 a luta é decidida
+    em 3 rodadas (4, com as Convicções); no nível 20, dura 7 (11, com as Convicções) e as
+    técnicas grandes saem quase toda rodada. Medido, espelho de Bronzes. Numa versão anterior
+    a luta durava de 4 a 7 rodadas do começo ao fim.</p>
   </div>
 
-  <h3>O que cada ganho faz</h3>
+  <h3>O que cada ganho fixo faz</h3>
   <div class="grade">
     <div class="cartao">
       <h5>Leitura de Combate</h5>
       <p class="etiqueta">Nível 2</p>
       <p>Uma vez por luta, quando uma técnica que você nunca viu é usada contra você, você a
       lê na hora: ela já conta como Lida por você nessa rolagem.</p>
-    </div>
-    <div class="cartao">
-      <h5>Cosmo Desperto</h5>
-      <p class="etiqueta">Nível 3</p>
-      <p>Você começa toda luta com +1 de Cosmo.</p>
     </div>
     <div class="cartao">
       <h5>Resistência</h5>
@@ -147,12 +177,6 @@
       por turno.</p>
     </div>
     <div class="cartao">
-      <h5>Terceira defesa treinada</h5>
-      <p class="etiqueta">Nível 10</p>
-      <p>A defesa passiva que faltava passa a somar a proficiência. Quem já era treinado nas
-      três, pela lição Disciplina, ganha +2 na Iniciativa.</p>
-    </div>
-    <div class="cartao">
       <h5>Golpe Certeiro</h5>
       <p class="etiqueta">Nível 11</p>
       <p>Uma vez por luta, um golpe comum seu que erraria acerta. Decida depois de ver o
@@ -162,11 +186,6 @@
       <h5>Quarta Convicção</h5>
       <p class="etiqueta">Nível 14</p>
       <p>Escreva mais uma frase.</p>
-    </div>
-    <div class="cartao">
-      <h5>Cosmo Sereno</h5>
-      <p class="etiqueta">Nível 15</p>
-      <p>Você começa toda luta com +1 de Cosmo a mais — +2 somando o Cosmo Desperto.</p>
     </div>
     <div class="cartao">
       <h5>Segunda técnica assinatura</h5>
