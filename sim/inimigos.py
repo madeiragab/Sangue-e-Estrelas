@@ -238,18 +238,31 @@ ESCADA = {
 }
 
 
+def descricao_forma(sangue: str) -> str:
+    """O bônus de cada forma nova, em texto, tirado de sim/regras.py."""
+    if sangue == "guerreiro":
+        return ("<strong>+1 no acerto</strong> na 1ª, 3ª, 5ª… · "
+                "<strong>+1 de Resistência</strong> na 2ª, 4ª, 6ª…")
+    nomes = {"def": "DEF", "acerto": "no acerto", "res": "de Resistência"}
+    return " e ".join(f"<strong>+{v} {nomes[k]}</strong>" for k, v in R.FORMA[sangue].items())
+
+
 def tabela_formas() -> str:
-    """A escada do sangue, com o bônus de cada forma nova (de sim/regras.py)."""
+    """A escada do sangue em duas tabelas: quantas vezes revive e o bônus de cada
+    forma nova (de sim/regras.py)."""
     linhas = ['<div class="rolagem"><table>',
-              '<thead><tr><th>Sangue</th><th class="num">Vezes</th>'
-              '<th>Cada forma nova dá</th></tr></thead><tbody>']
-    for s, (dbonus, rbonus) in R.FORMA.items():
+              '<thead><tr><th>Quantas vezes revive</th><th class="num">Bronze</th>'
+              '<th class="num">Prata</th><th class="num">Elite</th></tr></thead><tbody>']
+    for s in R.FORMA:
+        vezes = "".join(f'<td class="num">{R.REVIVIDAS_MAX[s][p] or "—"}</td>'
+                        for p in ("bronze", "prata", "ouro"))
+        linhas.append(f'<tr><td>Sangue {ESCADA[s][0].lower()}</td>{vezes}</tr>')
+    linhas += ["</tbody></table></div>", '<div class="rolagem"><table>',
+               '<thead><tr><th>Sangue</th><th>Cada forma nova dá</th></tr></thead><tbody>']
+    for s in R.FORMA:
         nome, quem = ESCADA[s]
-        vezes = R.REVIVIDAS_MAX[s]
-        linhas.append(
-            f'<tr><td><strong>{nome}</strong>: {quem}</td>'
-            f'<td class="num">{"até " if vezes > 1 else ""}{vezes}</td>'
-            f'<td><strong>+{dbonus} DEF</strong> e <strong>+{rbonus} de Resistência</strong></td></tr>')
+        linhas.append(f'<tr><td><strong>{nome}</strong>: {quem}</td>'
+                      f'<td>{descricao_forma(s)}</td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
 

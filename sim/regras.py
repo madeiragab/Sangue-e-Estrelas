@@ -117,18 +117,42 @@ POSTO = {
 HIERARQUIA = 2
 
 # A forma nova: cada vez que a armadura revive, o sangue deixa um bônus
-# permanente (DEF, Resistência). Quanto mais forte o sangue, maior o bônus.
+# permanente, pequeno. As formas de guerreiro alternam: a 1ª, 3ª, 5ª… dão +1 no
+# acerto; a 2ª, 4ª, 6ª… dão +1 de Resistência.
 FORMA = {
-    "guerreiro": (1, 1),
-    "elite": (2, 2),
-    "deus": (3, 3),
+    "guerreiro": {},
+    "elite": {"def": 1},
+    "deus": {"def": 1, "acerto": 1},
 }
-REVIVIDAS_MAX = {"guerreiro": 3, "elite": 1, "deus": 1}
+# Quantas vezes cada armadura revive com cada sangue. Quanto mais alto o Posto,
+# mais vidas. A armadura de elite não tem o degrau de elite: para ela, o sangue
+# de elite é o sangue normal, e conta como de guerreiro.
+REVIVIDAS_MAX = {
+    "guerreiro": {"bronze": 3, "prata": 6, "ouro": 9},
+    "elite": {"bronze": 1, "prata": 1, "ouro": 0},
+    "deus": {"bronze": 1, "prata": 1, "ouro": 1},
+}
+FORCA_DO_SANGUE = {"guerreiro": 0, "elite": 1, "deus": 2}
 
 
-def bonus_das_formas(formas: tuple) -> tuple[int, int]:
-    """(DEF, Resistência) somados de todas as formas que a armadura já teve."""
-    return (sum(FORMA[f][0] for f in formas), sum(FORMA[f][1] for f in formas))
+def formas_validas(posto: str, formas: tuple) -> bool:
+    """A escada: cada sangue igual ou mais forte que o anterior, dentro do limite."""
+    if posto not in REVIVIDAS_MAX["guerreiro"]:
+        return not formas
+    forcas = [FORCA_DO_SANGUE[f] for f in formas]
+    if forcas != sorted(forcas):
+        return False
+    return all(formas.count(s) <= REVIVIDAS_MAX[s][posto] for s in FORMA)
+
+
+def bonus_das_formas(formas: tuple) -> dict:
+    """DEF, Resistência e acerto somados de todas as formas que a armadura já teve."""
+    g = formas.count("guerreiro")
+    total = {"def": 0, "res": g // 2, "acerto": (g + 1) // 2}
+    for f in formas:
+        for k, v in FORMA[f].items():
+            total[k] += v
+    return total
 
 # Requisito de nível para subir de Posto (o momento vem da história)
 NIVEL_PRATA = 9

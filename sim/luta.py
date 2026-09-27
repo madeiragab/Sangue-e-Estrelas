@@ -107,9 +107,12 @@ class Lutador:
         self.lido_por: set = set()     # nomes das minhas técnicas que o oponente já leu
         self.vantagem_proxima = False  # Centelha: Vantagem no próximo ataque
         bonus, res = R.POSTO[self.posto]
-        forma_def, forma_res = R.bonus_das_formas(self.formas)
-        self.armadura_def = bonus + forma_def
-        self.resistencia_max = (res + forma_res + self.resistencia_extra
+        if not R.formas_validas(self.posto, self.formas):
+            raise ValueError(f"{self.nome}: a armadura de {self.posto} não aceita {self.formas}")
+        forma = R.bonus_das_formas(self.formas)
+        self.armadura_def = bonus + forma["def"]
+        self.acerto_forma = forma["acerto"]
+        self.resistencia_max = (res + forma["res"] + self.resistencia_extra
                                 + (1 if self.acessorio == "nenhum" else 0)
                                 + R.resistencia_por_nivel(self.nivel))
         self.resistencia = self.resistencia_max
@@ -147,7 +150,8 @@ class Lutador:
 
     def bonus_ataque(self, natureza: str) -> int:
         atr = self.atr_golpe if natureza == "golpe" else self.atr_cosmo
-        return self.mods[atr] + self.prof
+        # o acerto das formas só vale com a armadura no corpo
+        return self.mods[atr] + self.prof + (self.acerto_forma if self.armada else 0)
 
     def dano_golpe_comum(self, rng, critico: bool) -> int:
         lados = 10 if self.acessorio == "garras" and self.armada else 8

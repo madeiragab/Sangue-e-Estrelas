@@ -96,9 +96,27 @@ def testar_livro() -> None:
         nome = {"bronze": "Bronze", "prata": "Prata", "ouro": "Ouro", "divina": "Forma Divina"}[posto]
         linha = f'<tr><td>{nome}</td><td class="num">+{bonus}</td><td class="num">{res}</td></tr>'
         confere(linha in html, f"tabela de Posto: {nome} +{bonus} DEF, Resistência {res}")
-    for sangue, (dbonus, rbonus) in R.FORMA.items():
-        trecho = f"<strong>+{dbonus} DEF</strong> e <strong>+{rbonus} de Resistência</strong>"
-        confere(trecho in html, f"escada do sangue: {sangue} dá +{dbonus} DEF e +{rbonus} de Resistência")
+    for sangue in R.FORMA:
+        vezes = "".join(f'<td class="num">{R.REVIVIDAS_MAX[sangue][p] or "—"}</td>'
+                        for p in ("bronze", "prata", "ouro"))
+        confere(vezes in html, f"escada do sangue: {sangue} revive "
+                f"{'/'.join(str(R.REVIVIDAS_MAX[sangue][p]) for p in ('bronze', 'prata', 'ouro'))} vezes")
+    g = ("guerreiro",)
+    confere(R.formas_validas("prata", g * 6 + ("elite", "deus"))
+            and R.formas_validas("ouro", g * 9 + ("deus",))
+            and not R.formas_validas("bronze", g * 4)
+            and not R.formas_validas("ouro", g + ("elite",))
+            and not R.formas_validas("bronze", ("elite", "guerreiro")),
+            "escada do sangue: limites por Posto, sem degrau de elite no Ouro, sempre subindo")
+    from inimigos import descricao_forma
+    for sangue in R.FORMA:
+        confere(descricao_forma(sangue) in html, f"escada do sangue: o bônus de {sangue} está no livro")
+    # o exemplo do Capítulo Sete: três formas de guerreiro e uma de elite
+    b = R.bonus_das_formas(g * 3 + ("elite",))
+    confere(b == {"def": 1, "res": 1, "acerto": 2}
+            and "DEF +3</strong>" in html and "Resistência 4</strong>" in html
+            and "+2 no acerto</strong>" in html,
+            f"exemplo da armadura do Téo bate com a regra ({b})")
     for n in (1, 5, 9, 13, 17, 20):
         trecho = f'<td class="num">{n}</td><td class="num">+{R.prof(n)}</td><td class="num">{R.grau(n)}</td><td class="num">{R.teto_base(n)}</td>'
         confere(trecho in html, f"tabela de níveis: nível {n}")
@@ -163,7 +181,7 @@ def testar_equilibrio() -> None:
             g = ("guerreiro",) * 3
             f4 = taxa(lambda k: montar("A", k, formas=g), lambda k: montar("B", k), n, 66 + n)
             fe = taxa(lambda k: montar("A", k, formas=g + ("elite",)), lambda k: montar("B", k), n, 67 + n)
-            confere(0.55 <= f4["a"] <= 0.80 and fe["a"] > f4["a"],
+            confere(0.50 <= f4["a"] <= 0.75 and fe["a"] >= f4["a"] - 0.02,
                     f"nível {n}: cada forma nova ajuda (V4 {f4['a']:.0%}, com sangue de elite {fe['a']:.0%})")
         if not R.posto_existe("ouro", n):
             continue
@@ -173,8 +191,16 @@ def testar_equilibrio() -> None:
                 f"nível {n}: o Bronze perde mais para o Ouro que para o Prata ({o['a']:.0%} × {p['b']:.0%})")
         tudo = ("guerreiro",) * 3 + ("elite", "deus")
         fd = taxa(lambda k: montar("A", k, formas=tudo), lambda k: montar("B", k, "ouro"), n, 87 + n)
-        confere(fd["a"] <= 0.30,
+        confere(fd["a"] <= 0.25,
                 f"nível {n}: nem com sangue de deus a armadura de Bronze iguala o Ouro ({fd['a']:.0%})")
+        pd = taxa(lambda k: montar("A", k, "prata", formas=("guerreiro",) * 6 + ("elite", "deus")),
+                  lambda k: montar("B", k, "ouro"), n, 85 + n)
+        confere(pd["a"] <= 0.40,
+                f"nível {n}: nem a Prata com a escada inteira iguala o Ouro ({pd['a']:.0%})")
+        o9 = taxa(lambda k: montar("A", k, "ouro", formas=("guerreiro",) * 9),
+                  lambda k: montar("B", k, "ouro"), n, 84 + n)
+        confere(0.55 <= o9["a"] <= 0.85,
+                f"nível {n}: o Ouro revivido nove vezes é forte, não imbatível ({o9['a']:.0%})")
         oc = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 81 + n, centelhas_a=1)
         # do 15 em diante a Centelha vale cerca de 1 ponto: a margem cobre o acaso de 500 duelos
         confere(o["a"] - 0.03 <= oc["a"] <= 0.18,

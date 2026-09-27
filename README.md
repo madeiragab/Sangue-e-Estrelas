@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.3.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.3.1-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.3.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.3.1 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em seis linhas
 
@@ -59,13 +59,14 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 | Bronze contra Prata | — | 19% | 15% | 12% |
 | Bronze sozinho contra Ouro | — | — | 3% | 3% |
 | Bronze com a Centelha de um amigo contra Ouro | — | — | 3% | 3% |
-| Armadura revivida três vezes contra a original | 68% | 66% | 67% | 69% |
-| Bronze com as cinco formas, até a de deus, contra Ouro | — | — | 25% | 19% |
+| Armadura de Bronze revivida três vezes contra a original | 60% | 57% | 63% | 63% |
+| Bronze com a escada do sangue inteira contra Ouro | — | — | 14% | 11% |
 | Quem nunca apara a armadura | 41% | 34% | 45% | 27% |
 | Quem nunca levanta do chão | 8% | 4% | 1% | 0% |
 
 O Bronze perde para o Prata e perde muito mais para o Ouro. Uma armadura que morreu e
-voltou fica mais forte a cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
+voltou fica um pouco mais forte a cada forma nova, mas nem com o sangue de um deus iguala
+o Ouro.
 Das raras vitórias de um Bronze sobre um Ouro, mais de 90% vieram depois de levantar do
 chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um Ouro
 por um milagre, com ajuda, e quase morrendo.
