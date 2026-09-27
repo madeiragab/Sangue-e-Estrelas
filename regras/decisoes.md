@@ -91,8 +91,17 @@ aqui primeiro.
 
 ## Armadura
 
-- **Duas coisas separadas:** as peças quebram e se regeneram; a vida da armadura
-  pode acabar.
+- **Duas coisas separadas:** a Resistência se gasta e se regenera; a vida da
+  armadura pode acabar.
+- **Resistência, um número só** (0.3.0). Antes eram caixas em cada uma das cinco
+  peças, e o usuário achou confuso. Medido: as caixas por peça quase nunca acabavam
+  numa luta, então não mudavam o resultado — eram só conta. Agora Aparar gasta 1 de
+  Resistência e, a 0, a armadura está em pedaços e não dá mais nada.
+- **A Hierarquia** (0.3.0): o Prata tem +2 em tudo contra um Bronze, e o Bronze −2
+  contra ele. O usuário apontou que o Bronze também perde para o Prata, não tanto
+  quanto para o Ouro. Subir a DEF do Prata não bastava: com +6, igual à do Ouro, ele
+  vencia só ~70% e passava a vencer o Ouro mais vezes. A Hierarquia só vale para baixo,
+  e não mexe no Prata contra o Ouro. Medido: o Bronze vence o Prata de 12% a 19%.
 - **Aparar gasta a reação** e disputa com Bloquear (0.2.0). De graça, cortava toda
   técnica pela metade e as lutas passavam de dez rodadas.
 - **Restaurar tem teste** (Ofício CD 14 + 2 × Versão), tempo e metal por Posto.
@@ -103,6 +112,10 @@ aqui primeiro.
 - **A escada do sangue segue o mangá:** primeiro sangue de Cavaleiro (até três
   vezes, e a armadura muda de forma a cada uma — a de Pégaso tem 5 versões no
   mangá e 3 no anime), depois sangue de Ouro, depois sangue de deus.
+- **Cada forma nova é mais forte** (0.3.0): pedido do usuário, com bônus maior
+  para o sangue de elite e maior ainda para o de deus. Guerreiro +1 DEF e +1 de
+  Resistência; elite +2 e +2; deus +3 e +3. Medido: a armadura de Bronze com as cinco
+  formas vence um Ouro de 19% a 25% — chega perto, não iguala.
 - **Sangue de Ouro:** a armadura fica dourada no Sétimo (a New Cloth do Seiya,
   com o sangue do Aiolia).
 - **Sangue de deus não vira Divina direto.** A Divina é um estado: sangue de deus

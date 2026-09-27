@@ -49,6 +49,8 @@ def varredura_de_niveis() -> list[str]:
     return linhas
 
 
+GUERREIRO = ("guerreiro",) * 3
+
 CONFRONTOS = [
     ("Espelho: Bronze contra Bronze", lambda n: montar("A", n), lambda n: montar("B", n), {}),
     ("Quem não apara a armadura", lambda n: montar("A", n, politica={"aparar": False}),
@@ -58,6 +60,8 @@ CONFRONTOS = [
     ("Quem nunca levanta", lambda n: montar("A", n, politica={"levantar": False}),
      lambda n: montar("B", n), {}),
     ("Prata contra Bronze", lambda n: montar("A", n, "prata"), lambda n: montar("B", n), {}),
+    ("Bronze contra Prata", lambda n: montar("A", n), lambda n: montar("B", n, "prata"), {}),
+    ("Prata contra Ouro", lambda n: montar("A", n, "prata"), lambda n: montar("B", n, "ouro"), {}),
     ("Um nível acima", lambda n: montar("A", n + 1), lambda n: montar("B", n), {}),
     ("Dois níveis acima", lambda n: montar("A", n + 2), lambda n: montar("B", n), {}),
     ("Bronze sozinho contra Ouro", lambda n: montar("A", n), lambda n: montar("B", n, "ouro"), {}),
@@ -65,6 +69,14 @@ CONFRONTOS = [
      lambda n: montar("B", n, "ouro"), {"centelhas_a": 1}),
     ("Bronze que se cega contra Ouro", lambda n: montar("A", n, politica={"cegar_se": True}),
      lambda n: montar("B", n, "ouro"), {}),
+    ("Armadura revivida três vezes (V4) contra a original",
+     lambda n: montar("A", n, formas=GUERREIRO), lambda n: montar("B", n), {}),
+    ("V4 com a forma de elite contra a original",
+     lambda n: montar("A", n, formas=GUERREIRO + ("elite",)), lambda n: montar("B", n), {}),
+    ("Bronze V4 com a forma de elite contra Ouro",
+     lambda n: montar("A", n, formas=GUERREIRO + ("elite",)), lambda n: montar("B", n, "ouro"), {}),
+    ("Bronze com as cinco formas, até a de deus, contra Ouro",
+     lambda n: montar("A", n, formas=GUERREIRO + ("elite", "deus")), lambda n: montar("B", n, "ouro"), {}),
     ("Garras contra nenhum acessório", lambda n: montar("A", n, acessorio="garras"),
      lambda n: montar("B", n), {}),
     ("Escudo contra nenhum acessório", lambda n: montar("A", n, acessorio="escudo"),

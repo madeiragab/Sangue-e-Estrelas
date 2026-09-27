@@ -21,8 +21,8 @@ INIMIGOS = {
         nome="Cavaleiro Negro", nivel=2, posto="bronze", acessorio="garras", conviccoes=0,
         exercito="Renegado", armadura="Armadura Negra, cópia de uma de Bronze",
         tecnicas=("Punho das Sombras", "Chama Negra", None),
-        tracos=["<strong>Armadura falsa.</strong> A Armadura Negra não se regenera: as "
-                "caixas marcadas ficam marcadas até alguém consertá-la."],
+        tracos=["<strong>Armadura falsa.</strong> A Armadura Negra não se regenera: a "
+                "Resistência gasta fica gasta até alguém consertá-la."],
         quando="O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence "
                "um desses sozinho na maioria das vezes."),
     "espectro-terrestre": dict(
@@ -40,8 +40,9 @@ INIMIGOS = {
         tracos=["<strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.",
                 "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
         quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do "
-               "mesmo nível vence pouco mais de uma vez em três; um de nível 8, quase nunca, "
-               "porque o Grau muda no 9. É luta para dois ou três Bronzes juntos."),
+               "mesmo nível vence uma vez em cinco; um de nível 8, quase nunca; só um Bronze "
+               "de nível 13 vence metade das vezes. É luta para dois ou três Bronzes juntos, "
+               "ou para outro Prata."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         exercito="Asgard", armadura="Veste Divina", teto_extra=1,
@@ -55,11 +56,10 @@ INIMIGOS = {
                "um personagem sozinho, mesmo do nível dele, perde quase sempre."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
-        exercito="Poseidon", armadura="Escama", caixa_extra=1,
+        exercito="Poseidon", armadura="Escama", resistencia_extra=1,
         tecnicas=("Maré Devastadora", "Redemoinho", "Garra do Kraken"),
         assento="Triângulo das Ondas",
-        tracos=["<strong>Escama de oricalco.</strong> Uma caixa a mais em cada peça (já "
-                "somada).",
+        tracos=["<strong>Escama de oricalco.</strong> +1 de Resistência (já somada).",
                 "<strong>Sétimo dominado.</strong> Como todo guerreiro de elite."],
         quando="O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer "
                "Cavaleiro."),
@@ -96,7 +96,7 @@ def lutador(chave: str) -> Lutador:
     x = montar(e["nome"], e["nivel"], e["posto"], acessorio=e["acessorio"],
                conviccoes=e["conviccoes"])
     x.teto_fixo = e.get("teto_extra", 0)
-    x.caixa_extra = e.get("caixa_extra", 0)
+    x.resistencia_extra = e.get("resistencia_extra", 0)
     x.reiniciar()
     return x
 
@@ -108,16 +108,9 @@ def _defesas(x: Lutador) -> tuple[int, int, int]:
     return d_("con"), d_("des"), d_("sab")
 
 
-def _caixas(x: Lutador, extra: int) -> str:
-    x.reiniciar()
-    partes = []
-    nomes = {"elmo": "Elmo", "peitoral": "Peitoral", "bracos": "Braços", "pernas": "Pernas",
-             "acessorio": "acessório"}
-    for p in ("elmo", "peitoral", "bracos", "pernas", "acessorio"):
-        if p == "acessorio" and x.acessorio == "nenhum":
-            continue
-        partes.append(f"{nomes[p]} {x.caixas[p]}")
-    return " · ".join(partes)
+def _acessorio(x: Lutador) -> str:
+    return {"nenhum": "sem acessório", "garras": "garras", "escudo": "escudo",
+            "correntes": "correntes", "asas": "asas"}[x.acessorio]
 
 
 def _golpe(x: Lutador) -> str:
@@ -160,8 +153,8 @@ def bloco(chave: str) -> str:
         f"<span class=\"sep\">·</span> <b>Vontade</b> {vont}<br>"
         f"<b>Cosmo</b> começa em {x.cosmo}, Teto {teto} <span class=\"sep\">·</span> "
         f"<b>Sentido</b> {sentido}<br>"
-        f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{R.POSTO[x.posto][0]} · "
-        f"{_caixas(x, e.get('caixa_extra', 0))}<br>"
+        f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{x.armadura_def} · "
+        f"<b>Resistência</b> {x.resistencia_max} · {_acessorio(x)}<br>"
         f"<b>Convicções</b> {e['conviccoes']}"
     )
     posto_nome = {"bronze": "Bronze", "prata": "Prata", "ouro": "Elite"}[x.posto]
@@ -191,19 +184,19 @@ GANHOS = {
     2: "Leitura de Combate",
     3: "Cosmo Desperto",
     4: "Terceira técnica · +2 pontos de atributo",
-    5: "+1 caixa numa peça da armadura",
+    5: "+1 de Resistência",
     6: "Segunda Lição",
-    7: "+1 caixa numa peça da armadura",
+    7: "+1 de Resistência",
     8: "Quarta técnica · +2 pontos de atributo",
     9: "Ataque Extra",
     10: "Terceira defesa treinada",
     11: "Golpe Certeiro",
     12: "Quinta técnica · +2 pontos de atributo",
-    13: "+1 caixa numa peça da armadura",
+    13: "+1 de Resistência",
     14: "Quarta Convicção",
     15: "Cosmo Sereno",
     16: "Sexta técnica · +2 pontos de atributo",
-    17: "+1 caixa numa peça da armadura",
+    17: "+1 de Resistência",
     18: "Segunda técnica assinatura",
     19: "+2 pontos de atributo",
     20: "Sétima técnica · Lenda",
@@ -229,10 +222,34 @@ def tabela_niveis() -> str:
 def tabela_posto() -> str:
     nomes = {"bronze": "Bronze", "prata": "Prata", "ouro": "Ouro", "divina": "Forma Divina"}
     linhas = ['<div class="rolagem"><table>',
-              '<thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Caixas por peça</th>'
+              '<thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Resistência</th>'
               '</tr></thead><tbody>']
-    for p, (bonus, caixas) in R.POSTO.items():
-        linhas.append(f'<tr><td>{nomes[p]}</td><td class="num">+{bonus}</td><td class="num">{caixas}</td></tr>')
+    for p, (bonus, res) in R.POSTO.items():
+        linhas.append(f'<tr><td>{nomes[p]}</td><td class="num">+{bonus}</td><td class="num">{res}</td></tr>')
+    linhas.append("</tbody></table></div>")
+    return "\n".join(linhas)
+
+
+ESCADA = {
+    # sangue: (nome, de quem)
+    "guerreiro": ("De guerreiro", "o dono ou um companheiro do mesmo exército"),
+    "elite": ("De elite", "um Ouro, General, Juiz ou Guerreiro Deus"),
+    "deus": ("De deus", "o deus patrono do exército"),
+}
+
+
+def tabela_formas() -> str:
+    """A escada do sangue, com o bônus de cada forma nova (de sim/regras.py)."""
+    linhas = ['<div class="rolagem"><table>',
+              '<thead><tr><th>Sangue</th><th class="num">Vezes</th>'
+              '<th>Cada forma nova dá</th></tr></thead><tbody>']
+    for s, (dbonus, rbonus) in R.FORMA.items():
+        nome, quem = ESCADA[s]
+        vezes = R.REVIVIDAS_MAX[s]
+        linhas.append(
+            f'<tr><td><strong>{nome}</strong>: {quem}</td>'
+            f'<td class="num">{"até " if vezes > 1 else ""}{vezes}</td>'
+            f'<td><strong>+{dbonus} DEF</strong> e <strong>+{rbonus} de Resistência</strong></td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
 

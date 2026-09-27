@@ -7,7 +7,7 @@
   </div>
 
   <p class="abre">A armadura é quase um personagem. Ela tem a forma da sua constelação,
-  escolheu você, quebra peça por peça no meio da luta e se refaz sozinha depois. E pode
+  escolheu você, racha a cada golpe que segura, se despedaça e se refaz sozinha depois. E pode
   morrer. Quando morre, só volta com sangue — e cada vez que volta, volta diferente.</p>
 
   <p>Guardada, a armadura fica montada como a estátua da criatura dela, dentro de uma
@@ -16,15 +16,16 @@
   pescoço. A diferença é só de aparência: as regras são as mesmas. Com a urna ou a pedra ao
   lado, vestir a armadura é uma interação simples; ela se desmonta e se monta sobre você.</p>
 
-  <h3>As peças</h3>
-  <p>Toda armadura tem cinco peças, e cada uma dá uma coisa enquanto estiver inteira.</p>
+  <h3>O que a armadura dá</h3>
+  <p>Toda armadura tem cinco peças. Enquanto ela estiver no seu corpo, cada peça dá uma
+  coisa:</p>
 
   <div class="rolagem"><table>
-    <thead><tr><th>Peça</th><th>Enquanto estiver inteira</th></tr></thead>
+    <thead><tr><th>Peça</th><th>O que dá</th></tr></thead>
     <tbody>
-      <tr><td>Elmo</td><td>O primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe, quebrado.</td></tr>
-      <tr><td>Peitoral</td><td>Dá o bônus de armadura na sua DEF.</td></tr>
-      <tr><td>Braços</td><td>Permitem Bloquear: como reação, +2 na DEF contra um ataque declarado.</td></tr>
+      <tr><td>Peitoral</td><td>O bônus de armadura na sua DEF.</td></tr>
+      <tr><td>Braços</td><td>Bloquear: como reação, +2 na DEF contra um ataque declarado.</td></tr>
+      <tr><td>Elmo</td><td>Uma vez por luta, o primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe.</td></tr>
       <tr><td>Pernas</td><td>+3 metros de movimento.</td></tr>
       <tr><td>Acessório</td><td>O que a sua constelação der: veja abaixo.</td></tr>
     </tbody>
@@ -34,60 +35,84 @@
   <p>Escolhido na criação, junto com a constelação. Uma armadura sem acessório é mais
   sólida no lugar dele.</p>
   <div class="rolagem"><table>
-    <thead><tr><th>Acessório</th><th>Enquanto estiver inteiro</th></tr></thead>
+    <thead><tr><th>Acessório</th><th>O que dá</th></tr></thead>
     <tbody>
-      <tr><td>Escudo</td><td>Bloquear dá +3 em vez de +2, e funciona mesmo sem os Braços.</td></tr>
+      <tr><td>Escudo</td><td>Bloquear dá +3 em vez de +2.</td></tr>
       <tr><td>Correntes</td><td>Seus golpes comuns e o Agarrar alcançam 6 metros.</td></tr>
       <tr><td>Asas</td><td>+3 metros de movimento, e você pode voar durante o turno (precisa terminá-lo no chão).</td></tr>
       <tr><td>Garras ou chifres</td><td>O dano do golpe comum é <span class="dado">1d10</span>.</td></tr>
-      <tr><td>Nenhum</td><td>O Peitoral ganha uma caixa a mais.</td></tr>
+      <tr><td>Nenhum</td><td>+1 de Resistência.</td></tr>
     </tbody>
   </table></div>
 
+  <h3 id="resistencia">A Resistência</h3>
+  <p>A armadura tem um número só para acompanhar na luta: a
+  <em class="termo">Resistência</em>. É quanto ela aguenta antes de se despedaçar. Na ficha,
+  é uma fileira de quadrados; cada golpe que ela segura risca um.</p>
+  <p>A sua Resistência é a soma de:</p>
+  <ul>
+    <li>a Resistência do Posto da armadura, na tabela abaixo;</li>
+    <li>+1 se a armadura não tem acessório;</li>
+    <li>+1 nos níveis 5, 7, 13 e 17 (<a href="#cap12">Capítulo Doze</a>);</li>
+    <li>o bônus de cada forma nova, se a armadura já reviveu (<a href="#reviver">mais
+      abaixo</a>), e as melhorias do <a href="#cap8">Capítulo Oito</a>.</li>
+  </ul>
+
   <h3>O Posto na armadura</h3>
-  <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e quantas
-  <em class="termo">caixas</em> cada peça tem.</p>
+  <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e qual é a Resistência
+  dela.</p>
   {{TABELA_POSTO}}
   <p>A elite dos outros exércitos — General Marina, Juiz do Inferno, Guerreiro Deus — usa
-  a linha do Ouro. A distância entre as linhas foi medida: Prata vence Bronze do mesmo
-  nível cerca de 60% das vezes.</p>
+  a linha do Ouro.</p>
+
+  <div class="destaque">
+    <span class="rotulo">A Hierarquia</span>
+    <p>Um Prata diante de um Bronze soma <strong>+2 em todas as rolagens contra ele</strong>
+    — ataques e Rolagens de Efeito —, e o Bronze soma <strong>−2 em todas as rolagens
+    contra o Prata</strong>. O Prata tem mais anos de treino, mais lutas e uma armadura mais
+    dura, e o Bronze sente isso em cada golpe.</p>
+  </div>
+  <p>A elite não usa a Hierarquia: o que ela tem é maior — o Sétimo quando quer, e o domínio
+  do <a href="#setimo">Capítulo Quatro</a>. Medido, do mesmo nível: o Bronze vence o Prata
+  de 12% a 19% das vezes, e vence o Ouro de 1% a 4%. Perde para os dois — e muito mais
+  para o Ouro.</p>
 
   <h3 id="armadura-na-luta">A armadura na luta</h3>
   <div class="destaque">
     <span class="rotulo">Aparar</span>
-    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e marcar
-    uma caixa de uma peça inteira para sofrer <strong>metade do dano</strong>, arredondado
-    para baixo. Você decide depois de ver o dano.</p>
+    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e
+    <strong>gastar 1 de Resistência</strong> para sofrer <strong>metade do dano</strong>,
+    arredondado para baixo. Você decide depois de ver o dano. Diga qual peça rachou.</p>
   </div>
   <ul>
-    <li>Quando a última caixa de uma peça é marcada, a peça <strong>quebra</strong>: você
-      perde o que ela dava até ela se refazer. O Peitoral quebrado leva embora o bônus de
-      DEF.</li>
+    <li><strong>Resistência 0: a armadura está em pedaços.</strong> As peças caem pelo chão
+      e você perde tudo o que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e o acessório —
+      até ela se refazer.</li>
     <li>Técnicas que <strong>atravessam a armadura</strong> não podem ser aparadas.
-      Técnicas que <strong>quebram a armadura</strong> marcam uma caixa na peça que o
-      atacante escolher, a cada acerto.</li>
-    <li>O Elmo é sempre o primeiro a ir: é por isso que, no anime, quase todo Cavaleiro
+      Técnicas que <strong>quebram a armadura</strong> tiram 1 de Resistência a cada acerto,
+      além do dano.</li>
+    <li>O Elmo é sempre o primeiro a voar: é por isso que, no anime, quase todo Cavaleiro
       termina a luta sem ele.</li>
   </ul>
 
-  <p>Aparar é a escolha mais constante da luta. Cada caixa marcada é metade de um golpe que
-  não entrou — e uma peça a menos para o próximo. Como Aparar e Bloquear usam a mesma
-  reação, você só faz um dos dois por rodada: bloquear o golpe comum que vem agora ou guardar
-  a reação para aparar a técnica que talvez venha depois.</p>
+  <p>Aparar é a escolha mais constante da luta. Cada ponto de Resistência é metade de um
+  golpe que não entrou — e um passo mais perto de lutar sem armadura. Como Aparar e
+  Bloquear usam a mesma reação, você só faz um dos dois por rodada: bloquear o golpe comum
+  que vem agora ou guardar a reação para aparar a técnica que talvez venha depois.</p>
   <div class="nota">
     <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de
-    graça, quantas vezes houvesse caixas. O simulador mostrou o efeito: toda técnica era
-    cortada pela metade, as lutas passavam de dez rodadas e dar só golpes comuns rendia tanto
-    quanto usar técnicas. Com a reação, a armadura continua decisiva — quem nunca apara vence
-    só de 34% a 46% dos duelos — sem apagar as técnicas.</p>
+    graça. O simulador mostrou o efeito: toda técnica era cortada pela metade, as lutas
+    passavam de dez rodadas e dar só golpes comuns rendia tanto quanto usar técnicas. Com a
+    reação, a armadura continua decisiva — quem nunca apara vence bem menos da metade dos
+    duelos — sem apagar as técnicas.</p>
   </div>
 
   <h4>Regeneração</h4>
-  <p>A armadura viva se refaz sozinha. Num descanso longo, todas as caixas voltam e as peças
-  quebradas se remontam. Só uma armadura morta não volta sozinha.</p>
+  <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
+  peças se remontam. Só uma armadura morta não volta sozinha.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas,
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela em pedaços,
   na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
   de um deus, uma relíquia. Uma armadura morta perde o brilho, fica cinza e fria: não dá
   nada, não atende ao chamado e não se regenera.</p>
@@ -114,8 +139,8 @@
   </div>
 
   <h4>O sangue se paga em terços</h4>
-  <p>Quem doa marca caixas na trilha de <em class="termo">Sangue</em> da ficha: três
-  caixas, uma para cada terço.</p>
+  <p>Quem doa risca a trilha de <em class="termo">Sangue</em> da ficha: três quadrados, um
+  para cada terço.</p>
   <div class="rolagem"><table>
     <thead><tr><th>Terços doados</th><th>O que acontece com quem doou</th></tr></thead>
     <tbody>
@@ -130,36 +155,43 @@
 
   <h4>A escada do sangue</h4>
   <p>Uma armadura só aceita sangue <strong>igual ou mais forte</strong> que o último que
-  recebeu. Cada degrau tem um limite.</p>
-  <div class="rolagem"><table>
-    <thead><tr><th>Sangue</th><th>De quem</th><th class="num">Revividas</th><th>O traço que deixa</th></tr></thead>
-    <tbody>
-      <tr><td>De guerreiro</td><td>O dono ou um companheiro do mesmo exército</td><td class="num">até 3</td><td>A armadura muda de forma a cada vez</td></tr>
-      <tr><td>De elite</td><td>Um Ouro, General, Juiz ou Guerreiro Deus</td><td class="num">1</td><td>A armadura fica <strong>dourada no Sétimo</strong></td></tr>
-      <tr><td>De deus</td><td>O deus patrono do exército</td><td class="num">1</td><td>O <strong>elo de sangue</strong>: a forma Divina no Nono</td></tr>
-    </tbody>
-  </table></div>
-  <p>Depois do sangue de um deus não existe sangue mais forte. Se a armadura morrer de
-  novo, é para sempre.</p>
+  recebeu. Cada degrau tem um limite — e cada revivida deixa a armadura mais forte que antes.
+  Quanto mais forte o sangue, maior o bônus.</p>
+  {{TABELA_FORMAS}}
+  <p>Uma armadura de elite começa no segundo degrau: o sangue do próprio dono já é de elite.
+  Depois do sangue de um deus não existe sangue mais forte. Se a armadura morrer de novo, é
+  para sempre.</p>
 
-  <h4>Cada revivida é uma versão nova</h4>
+  <h4>Cada revivida é uma forma nova</h4>
   <p>Toda vez que revive, a armadura sobe uma <em class="termo">Versão</em>: a V1 é a
   original, a V2 a primeira revivida, e assim por diante. A cada Versão:</p>
   <ul>
     <li>ela <strong>muda de forma</strong> — descreva como ficou;</li>
-    <li>duas peças diferentes, à sua escolha, ganham <strong>uma caixa a mais</strong> para
-      sempre.</li>
+    <li>ela ganha o <strong>bônus do sangue</strong> que a trouxe de volta, na tabela acima,
+      para sempre. Os bônus somam.</li>
   </ul>
+  <div class="nota">
+    <p><strong>Exemplo.</strong> A armadura de Bronze do Téo morreu três vezes e voltou com o sangue dele e dos
+    companheiros; na quarta, voltou com o sangue de um Cavaleiro de Ouro. Ela está na V5:
+    DEF +2 do Bronze, +3 das três formas de guerreiro e +2 da forma de elite, <strong>DEF
+    +7</strong>. Resistência 3 do Bronze, +3 e +2: <strong>8</strong>, mais o que vier do
+    acessório e dos níveis. E ela fica dourada quando o Téo desperta o Sétimo.</p>
+  </div>
   <p>No mangá, a armadura de Pégaso tem cinco versões, e no anime três: ela muda de forma a
-  cada conserto. É esse o espírito.</p>
+  cada conserto e fica mais forte a cada vez. É esse o espírito.</p>
+  <div class="nota">
+    <p><strong>Medido.</strong> Do mesmo nível, uma armadura de Bronze revivida três vezes
+    vence uma original de 64% a 69% das vezes; somando a forma de elite, de 73% a 81%. Contra
+    um Ouro, a revivida três vezes com sangue de elite vence de 9% a 12%; com o sangue de um
+    deus também, de 19% a 25% — e isso sem a forma Divina. As armaduras de Bronze que morreram
+    e voltaram chegam perto do Ouro. Não chegam a ele.</p>
+  </div>
 
   <h4>O traço do sangue</h4>
-  <p>Todo sangue forte fica adormecido na armadura, esperando o Sentido certo:</p>
+  <p>Além do bônus, o sangue forte deixa um traço, que acorda com o Sentido certo:</p>
   <ul>
     <li><strong>Dourada no Sétimo.</strong> Uma armadura que recebeu sangue de elite fica
-      dourada quando você desperta o Sétimo. Enquanto você estiver nele, ela usa a linha do
-      Ouro da tabela de Posto, somando as caixas das Versões. As caixas já marcadas
-      continuam marcadas.</li>
+      dourada quando você desperta o Sétimo, até o fim da luta.</li>
     <li><strong>Divina no Nono.</strong> Uma armadura com sangue de deus é o elo de sangue do
       <a href="#nono">Capítulo Quatro</a>.</li>
   </ul>
@@ -169,10 +201,11 @@
   adormecido até o portador elevar o Cosmo ao nível de um deus. Quando você desperta o
   Nono, a armadura assume a <em class="termo">forma Divina</em>:</p>
   <ul>
-    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto;</li>
-    <li>todas as caixas se limpam e todas as peças quebradas se refazem na hora;</li>
-    <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com as caixas como
-      estavam antes da transformação.</li>
+    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto no
+      lugar da linha do Posto dela, somando os bônus das formas;</li>
+    <li>a Resistência volta toda e as peças se remontam na hora;</li>
+    <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com a Resistência como
+      estava antes da transformação.</li>
   </ul>
   <p>Com um elo de ligação em vez de sangue, a forma Divina aparece do mesmo jeito — mas some
   na hora em que o elo for cortado. Foi o que aconteceu a um Cavaleiro de Pégaso de outra
@@ -185,7 +218,7 @@
     <li><strong>Requisito:</strong> Prata a partir do nível 9; Ouro, a partir do nível 15 e
       com uma vaga vazia. O momento da promoção é da história; o requisito é da regra.</li>
     <li><strong>De Bronze a Prata:</strong> a sua armadura sobe junto, na mesma constelação.
-      Ela passa a usar a linha da Prata e mantém as caixas das Versões. Não é invenção: a
+      Ela passa a usar a linha da Prata e mantém os bônus das formas. Não é invenção: a
       armadura de Órion já foi Prata numa história e Bronze em outra.</li>
     <li><strong>De Prata a Ouro:</strong> as armaduras de Ouro são as doze do zodíaco, e elas
       não se criam. Você assume uma vaga vazia e recebe a armadura dela, com o Golpe do

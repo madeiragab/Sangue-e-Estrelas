@@ -46,7 +46,7 @@ def d20(rng: random.Random, vantagem: int) -> int:
 # ---------------------------------------------------------------------------
 
 POLITICA_PADRAO = {
-    "aparar": True,          # usa as caixas da armadura
+    "aparar": True,          # gasta a Resistência da armadura
     "aparar_limiar": 0.20,   # apara golpes de pelo menos 20% dos PV máximos
     "bloquear": True,
     "concentrar": True,      # Concentra quando isso fecha o custo da técnica grande
@@ -77,7 +77,8 @@ class Lutador:
     politica: dict = field(default_factory=lambda: dict(POLITICA_PADRAO))
     treino_extra_pv: int = 0
     teto_fixo: int = 0                 # Safira de Odin, Juiz do Inferno
-    caixa_extra: int = 0               # Escama de oricalco: +1 em cada peça
+    resistencia_extra: int = 0         # Escama de oricalco: +1
+    formas: tuple = ()                 # o sangue de cada revivida, em ordem
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -105,14 +106,14 @@ class Lutador:
         self.reacao = True
         self.lido_por: set = set()     # nomes das minhas técnicas que o oponente já leu
         self.vantagem_proxima = False  # Centelha: Vantagem no próximo ataque
-        bonus, caixas = R.POSTO[self.posto]
-        self.armadura_def = bonus
-        self.caixas = {p: caixas + self.caixa_extra for p in R.PECAS}
-        if self.acessorio == "nenhum":
-            self.caixas["peitoral"] += 1
-        for _ in range(R.caixas_extras_por_nivel(self.nivel)):
-            self.caixas["peitoral"] += 1
-        self.marcadas = {p: 0 for p in R.PECAS}
+        bonus, res = R.POSTO[self.posto]
+        forma_def, forma_res = R.bonus_das_formas(self.formas)
+        self.armadura_def = bonus + forma_def
+        self.resistencia_max = (res + forma_res + self.resistencia_extra
+                                + (1 if self.acessorio == "nenhum" else 0)
+                                + R.resistencia_por_nivel(self.nivel))
+        self.resistencia = self.resistencia_max
+        self.elmo = True
         self.armadura_morta = False
         # estatística
         self.dano_golpe = 0
@@ -126,13 +127,15 @@ class Lutador:
     def teto(self) -> int:
         return R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo
 
-    def inteira(self, peca: str) -> bool:
-        return not self.armadura_morta and self.marcadas[peca] < self.caixas[peca]
+    @property
+    def armada(self) -> bool:
+        """A armadura ainda está no corpo: nem morta, nem em pedaços."""
+        return not self.armadura_morta and self.resistencia > 0
 
     @property
     def defesa(self) -> int:
         d_ = 10 + self.mods["des"]
-        if self.inteira("peitoral"):
+        if self.armada:
             d_ += self.armadura_def
         if "visao" in self.sentidos_perdidos:
             d_ -= 2                    # não vê o golpe vindo
@@ -147,7 +150,7 @@ class Lutador:
         return self.mods[atr] + self.prof
 
     def dano_golpe_comum(self, rng, critico: bool) -> int:
-        lados = 10 if self.acessorio == "garras" and self.inteira("acessorio") else 8
+        lados = 10 if self.acessorio == "garras" and self.armada else 8
         n = 2 if critico else 1
         return rolar(rng, n, lados) + self.mods[self.atr_golpe]
 
@@ -178,7 +181,7 @@ class Lutador:
 
 def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "nenhum",
            conviccoes: int | None = None, politica: dict | None = None,
-           kit: str = "padrao") -> Lutador:
+           kit: str = "padrao", formas: tuple = ()) -> Lutador:
     """Um lutador de Golpe (DES) com o Cosmo em SAB, construído pelo livro.
 
     Distribuição 15/14/13/12/10/8: DES 15, CON 14, SAB 13, FOR 12, INT 10,
@@ -205,7 +208,7 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
     if politica:
         pol.update(politica)
     return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio,
-                   conviccoes=conviccoes, politica=pol)
+                   conviccoes=conviccoes, politica=pol, formas=tuple(formas))
 
 
 # ---------------------------------------------------------------------------
@@ -268,22 +271,17 @@ class Luta:
             return
         if self.travados():
             return                      # Guerra dos Mil Dias: ninguém fere ninguém
-        if quebra:
-            for p in ("peitoral", "bracos", "elmo", "pernas", "acessorio"):
-                if alvo.inteira(p):
-                    alvo.marcadas[p] += 1
-                    break
+        if quebra and alvo.armada:
+            alvo.resistencia -= 1
         pol = alvo.politica
         reacao_ok = alvo.reacao or not R.APARAR_USA_REACAO
         if (not atravessa and pol["aparar"] and reacao_ok
                 and (dano >= pol["aparar_limiar"] * alvo.pv_max or dano >= alvo.pv)):
-            for p in R.PECAS:           # acessório e pernas primeiro, peitoral por último
-                if alvo.inteira(p):
-                    alvo.marcadas[p] += 1
-                    dano //= 2
-                    if R.APARAR_USA_REACAO:
-                        alvo.reacao = False
-                    break
+            if alvo.armada:
+                alvo.resistencia -= 1
+                dano //= 2
+                if R.APARAR_USA_REACAO:
+                    alvo.reacao = False
         alvo.pv = max(0, alvo.pv - dano)
         if fonte == "golpe":
             atacante.dano_golpe += dano
@@ -291,7 +289,7 @@ class Luta:
             atacante.dano_tecnica += dano
         if alvo.pv == 0:
             alvo.caido = True
-            if all(not alvo.inteira(p) for p in R.PECAS):
+            if not alvo.armada:
                 alvo.armadura_morta = True
 
     # ------------------------------------------------------------------
@@ -303,13 +301,18 @@ class Luta:
             atacante.vantagem_proxima = False
             v = 1 if v == 0 else (0 if v < 0 else v)
         bloqueio = 0
-        pode_bloquear = ((alvo.inteira("bracos") or (alvo.acessorio == "escudo" and alvo.inteira("acessorio")))
+        pode_bloquear = (alvo.armada
                          and alvo.reacao and "tato" not in alvo.sentidos_perdidos
                          and not alvo.caido and alvo.politica["bloquear"]
                          and not (R.APARAR_USA_REACAO and alvo.politica["aparar"]))
         if pode_bloquear:
             alvo.reacao = False
-            bloqueio = 3 if (alvo.acessorio == "escudo" and alvo.inteira("acessorio")) else 2
+            bloqueio = 3 if alvo.acessorio == "escudo" else 2
+        # A Hierarquia: o Prata diante de um Bronze.
+        if atacante.posto == "prata" and alvo.posto == "bronze":
+            bonus += R.HIERARQUIA
+        elif alvo.posto == "prata" and atacante.posto == "bronze":
+            bonus -= R.HIERARQUIA
         # O Sétimo dominado do Ouro: diante de um Sétimo recém-despertado,
         # ele ainda luta um pouco acima.
         if atacante.degrau >= 1 and alvo.degrau >= 1:
@@ -329,8 +332,8 @@ class Luta:
         return nat + bonus >= alvo.defesa + bloqueio + def_extra, False
 
     def critico_vs_elmo(self, alvo: Lutador, critico: bool) -> bool:
-        if critico and alvo.inteira("elmo"):
-            alvo.marcadas["elmo"] = alvo.caixas["elmo"]
+        if critico and alvo.elmo and alvo.armada:
+            alvo.elmo = False
             return False
         return critico
 
@@ -417,7 +420,7 @@ class Luta:
             qmax = x.queima_maxima()
             custo = grande.custo()
             por_ponto = R.media_dado(R.dado_de_queima(x.nivel)) * grande.grau
-            apara = 0.5 if (not grande.atravessa and any(y.inteira(p) for p in R.PECAS)) else 1.0
+            apara = 0.5 if (not grande.atravessa and y.armada) else 1.0
             if x.cosmo < custo <= x.cosmo + qmax:
                 falta = custo - x.cosmo
                 if (y.pv <= apara * self.dano_esperado(x, grande) or x.pv <= 0.35 * x.pv_max) \
