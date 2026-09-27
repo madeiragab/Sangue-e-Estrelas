@@ -21,28 +21,28 @@ Espelho de Bronze contra Bronze. *Rodadas* é a duração média da luta; *com C
 
 ## Regra por regra
 
-Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%; o resto mostra quanto cada escolha vale.
+Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%; o resto mostra quanto cada escolha vale. O traço é um Posto que não existe naquele nível: Prata só a partir do 9, elite só a partir do 15.
 
-| Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
-|---|---:|---:|---:|---:|---:|
-| Espelho: Bronze contra Bronze | 47% | 49% (5% emp.) | 47% (5% emp.) | 49% | 49% |
-| Quem não apara a armadura | 38% (5% emp.) | 35% (5% emp.) | 34% | 46% | 39% |
-| Quem nunca queima | 44% | 42% | 42% (5% emp.) | 52% | 50% |
-| Quem nunca levanta | 7% | 5% | 4% | 1% | 0% |
-| Prata contra Bronze | 60% (5% emp.) | 57% (5% emp.) | 58% (5% emp.) | 58% | 62% |
-| Um nível acima | 57% | 50% (5% emp.) | 50% | 51% | 53% |
-| Dois níveis acima | 61% (5% emp.) | 54% | 52% (5% emp.) | 59% | 63% |
-| Bronze sozinho contra Ouro | 3% (8% emp.) | 3% (8% emp.) | 4% (9% emp.) | 4% (6% emp.) | 3% (5% emp.) |
-| Bronze com uma Centelha por rodada contra Ouro | 5% (8% emp.) | 9% (7% emp.) | 9% (7% emp.) | 12% (8% emp.) | 5% (7% emp.) |
-| Bronze que se cega contra Ouro | 1% (7% emp.) | 3% (7% emp.) | 2% (6% emp.) | 3% | 3% (7% emp.) |
-| Garras contra nenhum acessório | 47% | 47% | 50% | 47% | 51% |
-| Escudo contra nenhum acessório | 47% | 48% (5% emp.) | 46% | 48% | 46% |
+| Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 15 | Nível 17 | Nível 20 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Espelho: Bronze contra Bronze | 47% | 49% (5% emp.) | 47% (5% emp.) | 49% | 48% | 49% | 49% |
+| Quem não apara a armadura | 38% (5% emp.) | 35% (5% emp.) | 34% | 46% | 45% | 39% | 27% |
+| Quem nunca queima | 44% | 42% | 42% (5% emp.) | 52% | 47% | 50% | 48% |
+| Quem nunca levanta | 7% | 5% | 4% | 1% | 1% | 0% | 0% |
+| Prata contra Bronze | — | — | 58% (5% emp.) | 58% | 59% | 62% | 62% |
+| Um nível acima | 57% | 50% (5% emp.) | 50% | 51% | 58% | 53% | — |
+| Dois níveis acima | 61% (5% emp.) | 54% | 52% (5% emp.) | 59% | 78% | 63% | — |
+| Bronze sozinho contra Ouro | — | — | — | — | 3% (6% emp.) | 3% (5% emp.) | 1% (8% emp.) |
+| Bronze com uma Centelha por rodada contra Ouro | — | — | — | — | 3% (8% emp.) | 5% (7% emp.) | 4% (8% emp.) |
+| Bronze que se cega contra Ouro | — | — | — | — | 2% (6% emp.) | 3% (7% emp.) | 2% (9% emp.) |
+| Garras contra nenhum acessório | 47% | 47% | 50% | 47% | 52% | 51% | 51% |
+| Escudo contra nenhum acessório | 47% | 48% (5% emp.) | 46% | 48% | 49% | 46% | 50% |
 
 ## Guerra dos Mil Dias
 
 Em quantas lutas os Cosmos travam num choque de técnicas.
 
-| Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
-|---|---:|---:|---:|---:|---:|
-| Ouro contra Ouro | 14% | 15% | 10% | 13% | 14% |
-| Bronze contra Bronze | 5% | 5% | 6% | 3% | 3% |
+| Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 15 | Nível 17 | Nível 20 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Ouro contra Ouro | — | — | — | — | 14% | 14% | 15% |
+| Bronze contra Bronze | 5% | 5% | 6% | 3% | 3% | 3% | 4% |

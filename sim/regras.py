@@ -113,6 +113,16 @@ POSTO = {
 
 PECAS = ("acessorio", "pernas", "bracos", "elmo", "peitoral")
 
+# Requisito de nível para subir de Posto (o momento vem da história)
+NIVEL_PRATA = 9
+NIVEL_ELITE = 15
+
+
+def posto_existe(posto: str, nivel: int) -> bool:
+    """Se alguém desse Posto pode ter esse nível."""
+    minimo = {"prata": NIVEL_PRATA, "ouro": NIVEL_ELITE, "divina": NIVEL_ELITE}.get(posto, 1)
+    return nivel >= minimo
+
 # ---------------------------------------------------------------------------
 # Sentidos
 # ---------------------------------------------------------------------------
