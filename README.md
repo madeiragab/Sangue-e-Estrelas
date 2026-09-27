@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.4.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.5.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.4.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.5.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em seis linhas
 
@@ -55,19 +55,19 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 | Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
 |---|---:|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 48% | 48% | 47% | 49% |
-| Bronze contra Prata | — | 19% | 15% | 12% |
-| Bronze sozinho contra Ouro | — | — | 3% | 3% |
-| Bronze com a Centelha de um amigo contra Ouro | — | — | 3% | 3% |
-| Armadura de Bronze revivida três vezes contra a original | 60% | 57% | 63% | 63% |
-| Bronze com a escada do sangue inteira contra Ouro | — | — | 14% | 11% |
-| Quem nunca apara a armadura | 41% | 34% | 45% | 27% |
-| Quem nunca levanta do chão | 8% | 4% | 1% | 0% |
+| Espelho, Bronze contra Bronze | 49% | 49% | 49% | 47% |
+| Bronze contra Prata | — | 13% | 11% | 9% |
+| Bronze sozinho contra Ouro | — | — | 2% | 0% |
+| Bronze com a Centelha de um amigo contra Ouro | — | — | 7% | 1% |
+| Armadura de Bronze revivida três vezes contra a original | 63% | 60% | 61% | 65% |
+| Bronze com a escada do sangue inteira contra Ouro | — | — | 9% | 5% |
+| Quem nunca apara a armadura | 40% | 35% | 35% | 27% |
+| Quem nunca levanta do chão | 9% | 3% | 1% | 0% |
 
 O Bronze perde para o Prata e perde muito mais para o Ouro. Uma armadura que morreu e
 voltou fica um pouco mais forte a cada forma nova, mas nem com o sangue de um deus iguala
 o Ouro.
-Das raras vitórias de um Bronze sobre um Ouro, mais de 90% vieram depois de levantar do
+Das raras vitórias de um Bronze sobre um Ouro, mais de 95% vieram depois de levantar do
 chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um Ouro
 por um milagre, com ajuda, e quase morrendo.
 
@@ -93,10 +93,11 @@ lutas de grupo contra um só. O relatório completo está em
 
 | Achado | Antes | Depois |
 |---|---:|---:|
-| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 47% a 48% |
+| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 38% a 42% |
 | Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 39% a 59% |
 | Quem tem uma técnica de atordoar | até 89% | 48% a 60% |
 | Quem tem uma técnica com limitação | — | 28% a 56% (nenhuma é brecha) |
+| Cada característica de armadura, sozinha | — | 45% a 62% |
 
 ## O livro
 
@@ -111,7 +112,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | IV | Cosmo e Sentidos | O Cosmo que cresce, queimar, o Sétimo dominado, a Guerra dos Mil Dias, o Oitavo, o Nono, os cinco sentidos e as Centelhas |
 | V | Combate | Ações, reações, "o mesmo golpe não funciona duas vezes", cair e levantar, condições |
 | VI | Técnicas | O motor para criar as suas, evolução e o Golpe do Assento |
-| VII | Armaduras | Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
+| VII | Armaduras | Características, Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
 | VIII | Itens e relíquias | Raridade, Sintonia, remédios, os três metais, melhorias e relíquias — nenhuma arma |
 | IX | Exércitos | O molde e quatro exércitos de exemplo |
 | X | Inimigos | Como montar, a dificuldade medida e sete fichas prontas |

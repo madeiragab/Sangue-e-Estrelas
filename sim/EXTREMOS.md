@@ -6,8 +6,8 @@ Gerado por `python sim/extremos.py`. 800 duelos por célula (500 nas lutas de gr
 
 | | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Um nível acima | 56% | 50% | 71% | 84% | 50% | 50% | 66% | 84% | 46% | 51% | 63% | 69% | 50% | 61% | 59% | 75% | 50% | 57% | 50% |
-| Dois níveis acima | — | 58% | 71% | 92% | 88% | 53% | 67% | 93% | 89% | 51% | 63% | 81% | 70% | 60% | 66% | 78% | 76% | 64% | 66% |
+| Um nível acima | 55% | 41% | 68% | 85% | 53% | 54% | 65% | 84% | 47% | 50% | 62% | 67% | 52% | 47% | 58% | 74% | 48% | 60% | 52% |
+| Dois níveis acima | — | 48% | 64% | 92% | 86% | 51% | 69% | 92% | 86% | 51% | 62% | 81% | 73% | 49% | 59% | 78% | 70% | 63% | 63% |
 
 ## Builds
 
@@ -18,9 +18,9 @@ Gerado por `python sim/extremos.py`. 800 duelos por célula (500 nas lutas de gr
 | Canhão de vidro, CON 8 | 42% | 35% | 30% | 32% | 20% |
 | Só a técnica grande | 48% | 43% | 48% | 39% | 43% |
 | Só técnicas pequenas | 35% | 37% | 38% | 37% | 21% |
-| Acessório: garras | 40% | 46% | 49% | 50% | 51% |
-| Acessório: escudo | 42% | 46% | 48% | 50% | 47% |
-| Acessório: asas | 43% | 48% | 47% | 48% | 50% |
+| Acessório: garras | 44% | 47% | 49% | 50% | 51% |
+| Acessório: escudo | 42% | 48% | 47% | 50% | 46% |
+| Acessório: asas | 42% | 43% | 49% | 46% | 47% |
 
 ## Limitações
 
@@ -50,32 +50,32 @@ Gerado por `python sim/extremos.py`. 800 duelos por célula (500 nas lutas de gr
 
 | Política extrema contra a padrão | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Apara tudo o que puder | 47% | 47% | 50% | 54% | 55% |
-| Nunca bloqueia | 47% | 50% | 49% | 48% | 50% |
-| Nunca concentra | 54% | 52% | 52% | 58% | 50% |
-| Se cega para despertar | 44% | 44% | 42% | 49% | 48% |
-| Nunca desperta o Sétimo | 43% | 41% | 42% | 48% | 49% |
+| Apara tudo o que puder | 49% | 49% | 53% | 52% | 54% |
+| Nunca bloqueia | 48% | 47% | 48% | 46% | 48% |
+| Nunca concentra | 50% | 47% | 49% | 49% | 54% |
+| Se cega para despertar | 42% | 46% | 42% | 48% | 50% |
+| Nunca desperta o Sétimo | 44% | 44% | 40% | 50% | 44% |
 
 ## Recursos
 
 | Recursos no extremo | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Zero Convicções contra três | 8% | 4% | 3% | 0% | 0% |
-| Quatro Convicções contra três | 45% | 46% | 52% | 49% | 50% |
-| 1 Centelha(s) por rodada, espelho | 59% | 64% | 71% | 75% | 64% |
-| 2 Centelha(s) por rodada, espelho | 46% | 60% | 50% | 60% | 61% |
-| 3 Centelha(s) por rodada, espelho | 50% | 53% | 58% | 58% | 64% |
-| Bronze com 1 Centelha(s) por rodada contra Prata | 34% | 38% | 25% |
-| Bronze com 3 Centelha(s) por rodada contra Prata | 24% | 23% | 25% |
+| Zero Convicções contra três | 10% | 3% | 4% | 1% | 1% |
+| Quatro Convicções contra três | 46% | 48% | 47% | 50% | 47% |
+| 1 Centelha(s) por rodada, espelho | 55% | 60% | 57% | 62% | 74% |
+| 2 Centelha(s) por rodada, espelho | 49% | 60% | 62% | 60% | 64% |
+| 3 Centelha(s) por rodada, espelho | 48% | 52% | 55% | 51% | 62% |
+| Bronze com 1 Centelha(s) por rodada contra Prata | 22% | 23% | 27% |
+| Bronze com 3 Centelha(s) por rodada contra Prata | 18% | 16% | 21% |
 
 ## Posto e nível
 
 | Quantos níveis acima | +0 | +1 | +2 | +3 | +4 | +5 |
 |---|---:|---:|---:|---:|---:|---:|
-| Bronze contra Prata do nível 9 | 22% | 21% | 21% | 36% | 54% | 53% |
-| Bronze contra Prata do nível 13 | 19% | 21% | 26% | 29% | 49% | 49% |
-| Bronze contra Ouro do nível 15 | 2% | 5% | 15% | 16% | 28% | 22% |
-| Prata contra Ouro do nível 15 | 4% | 7% | 20% | 24% | 28% | 29% |
+| Bronze contra Prata do nível 9 | 12% | 12% | 13% | 25% | 49% | 51% |
+| Bronze contra Prata do nível 13 | 10% | 11% | 13% | 19% | 33% | 35% |
+| Bronze contra Ouro do nível 15 | 2% | 1% | 11% | 15% | 17% | 18% |
+| Prata contra Ouro do nível 15 | 5% | 3% | 20% | 19% | 21% | 22% |
 
 ## Grupo contra um
 
@@ -83,38 +83,38 @@ O grupo inteiro bate no inimigo; o inimigo bate sempre no mais ferido de pé.
 
 | Grupo contra um chefe do mesmo nível | 2 | 3 | 4 | 5 |
 |---|---:|---:|---:|---:|
-| Bronzes contra um Bronze, nível 5, sem a regra | 99% (0.2 caem) | 100% (0.2 caem) | 100% (0.2 caem) | 100% (0.2 caem) |
-| Bronzes contra um Bronze, nível 5, com Sozinho contra muitos | 80% (0.8 caem) | 98% (0.7 caem) | 100% (1.0 caem) | 100% (1.0 caem) |
-| Bronzes contra um Prata, nível 9, sem a regra | 85% (0.7 caem) | 99% (0.4 caem) | 100% (0.3 caem) | 100% (0.3 caem) |
-| Bronzes contra um Prata, nível 9, com Sozinho contra muitos | 46% (1.4 caem) | 77% (1.6 caem) | 85% (2.1 caem) | 95% (2.2 caem) |
-| Bronzes contra um Prata, nível 13, sem a regra | 91% (0.7 caem) | 99% (0.5 caem) | 100% (0.4 caem) | 100% (0.4 caem) |
-| Bronzes contra um Prata, nível 13, com Sozinho contra muitos | 60% (1.3 caem) | 85% (1.4 caem) | 91% (1.9 caem) | 97% (2.0 caem) |
-| Bronzes contra um Ouro, nível 15, sem a regra | 51% (1.3 caem) | 92% (1.0 caem) | 99% (0.7 caem) | 100% (0.6 caem) |
-| Bronzes contra um Ouro, nível 15, com Sozinho contra muitos | 18% (1.8 caem) | 36% (2.4 caem) | 47% (3.1 caem) | 65% (3.5 caem) |
-| Bronzes contra um Ouro, nível 20, sem a regra | 61% (1.2 caem) | 96% (0.8 caem) | 100% (0.6 caem) | 100% (0.5 caem) |
-| Bronzes contra um Ouro, nível 20, com Sozinho contra muitos | 17% (1.8 caem) | 38% (2.4 caem) | 48% (3.2 caem) | 74% (3.3 caem) |
-| Pratas contra um Ouro, nível 17, sem a regra | 66% (1.1 caem) | 97% (0.7 caem) | 100% (0.5 caem) | 100% (0.5 caem) |
-| Pratas contra um Ouro, nível 17, com Sozinho contra muitos | 22% (1.7 caem) | 55% (2.1 caem) | 62% (2.8 caem) | 83% (2.8 caem) |
+| Bronzes contra um Bronze, nível 5, sem a regra | 98% (0.3 caem) | 100% (0.2 caem) | 100% (0.2 caem) | 100% (0.2 caem) |
+| Bronzes contra um Bronze, nível 5, com Sozinho contra muitos | 89% (0.6 caem) | 99% (0.6 caem) | 100% (0.9 caem) | 100% (0.9 caem) |
+| Bronzes contra um Prata, nível 9, sem a regra | 80% (0.8 caem) | 99% (0.5 caem) | 100% (0.3 caem) | 100% (0.2 caem) |
+| Bronzes contra um Prata, nível 9, com Sozinho contra muitos | 51% (1.4 caem) | 80% (1.5 caem) | 89% (1.9 caem) | 96% (1.9 caem) |
+| Bronzes contra um Prata, nível 13, sem a regra | 87% (0.8 caem) | 100% (0.5 caem) | 100% (0.4 caem) | 100% (0.3 caem) |
+| Bronzes contra um Prata, nível 13, com Sozinho contra muitos | 66% (1.2 caem) | 90% (1.2 caem) | 94% (1.7 caem) | 98% (1.9 caem) |
+| Bronzes contra um Ouro, nível 15, sem a regra | 45% (1.4 caem) | 86% (1.3 caem) | 99% (0.9 caem) | 100% (0.8 caem) |
+| Bronzes contra um Ouro, nível 15, com Sozinho contra muitos | 17% (1.8 caem) | 40% (2.3 caem) | 42% (3.2 caem) | 59% (3.6 caem) |
+| Bronzes contra um Ouro, nível 20, sem a regra | 41% (1.5 caem) | 93% (1.1 caem) | 100% (0.8 caem) | 100% (0.7 caem) |
+| Bronzes contra um Ouro, nível 20, com Sozinho contra muitos | 14% (1.9 caem) | 33% (2.5 caem) | 38% (3.3 caem) | 61% (3.5 caem) |
+| Pratas contra um Ouro, nível 17, sem a regra | 58% (1.2 caem) | 95% (0.8 caem) | 100% (0.6 caem) | 100% (0.5 caem) |
+| Pratas contra um Ouro, nível 17, com Sozinho contra muitos | 34% (1.6 caem) | 59% (2.0 caem) | 60% (2.8 caem) | 78% (3.0 caem) |
 
 | Quatro Bronzes, um deles com Atordoar, contra um Ouro | Nível 15 | Nível 20 |
 |---|---:|---:|
-| Com a regra | 49% | 50% |
+| Com a regra | 44% | 45% |
 
 | Ficha pronta contra quatro Bronzes | Nível do grupo | O grupo vence | Caem |
 |---|---:|---:|---:|
-| Cavaleiro de Prata | 9 | 84% | 2.2 |
-| Guerreiro Deus | 12 | 14% | 3.8 |
-| Guerreiro Deus | 15 | 46% | 3.1 |
-| Cavaleiro de Ouro | 15 | 28% | 3.5 |
-| Juiz do Inferno | 17 | 54% | 3.0 |
+| Cavaleiro de Prata | 9 | 89% | 1.9 |
+| Guerreiro Deus | 12 | 12% | 3.8 |
+| Guerreiro Deus | 15 | 49% | 3.0 |
+| Cavaleiro de Ouro | 15 | 22% | 3.6 |
+| Juiz do Inferno | 17 | 48% | 3.1 |
 
 ## Duração
 
 | Confronto | Rodadas (média) | Empates por tempo |
 |---|---:|---:|
 | Tanque contra tanque, nível 17 | 9.3 | 0% |
-| Ouro revivido seis vezes e com sangue de deus, espelho, nível 20 | 8.8 | 0% |
-| Apara tudo, espelho, nível 13 | 5.7 | 0% |
+| Ouro revivido seis vezes e com sangue de deus, espelho, nível 20 | 11.2 | 0% |
+| Apara tudo, espelho, nível 13 | 5.8 | 0% |
 
 ## Condições médias, usadas uma vez
 
@@ -132,5 +132,20 @@ Nos níveis 5, 9, 13 e 17 o Grau sobe: o dano por ponto e os PV saltam juntos. D
 
 | Personagem contra inimigo dois níveis acima | Dentro da faixa | Cruzando o Grau |
 |---|---:|---:|
-| Nomeado sem Convicção | 85% a 99% | 47% a 92% |
-| Rival com uma Convicção | 33% a 43% | 4% a 20% |
+| Nomeado sem Convicção | 87% a 99% | 47% a 91% |
+| Rival com uma Convicção | 33% a 53% | 3% a 19% |
+
+## Características da armadura
+
+| Com a característica, contra a mesma armadura sem nenhuma | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
+|---|---:|---:|---:|---:|---:|
+| Couraça grossa | 50% | 49% | 52% | 55% | 59% |
+| Espinhos | 60% | 55% | 52% | 56% | 62% |
+| Espelhada | 51% | 54% | 53% | 56% | 54% |
+| Pesada | 50% | 52% | 54% | 52% | 57% |
+| Leve | 48% | 47% | 46% | 48% | 50% |
+| Ressonante | 50% | 45% | 54% | 57% | 48% |
+| Constelação viva | 53% | 56% | 58% | 55% | 54% |
+| Coração de estrela | 53% | 54% | 51% | 50% | 52% |
+| Cortante | 55% | 47% | 48% | 48% | 50% |
+| Ofuscante | 50% | 50% | 53% | 55% | 53% |
