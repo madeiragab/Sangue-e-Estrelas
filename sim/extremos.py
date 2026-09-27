@@ -74,7 +74,9 @@ DISTRIBUICOES = {
 def montar_build(nome: str, nivel: int, build: str = "golpe", posto: str = "bronze",
                  kit: str = "padrao", **kw) -> Lutador:
     p1, p2, p3, natureza = DISTRIBUICOES[build]
-    valores = {p1: R.atributo_no_nivel(15, nivel, 0), p2: R.atributo_no_nivel(14, nivel, 1), p3: 13}
+    esc = kw.pop("escolhas", None) or R.escolhas_padrao(nivel)
+    a1, a2 = R.atributos_das_escolhas(esc)
+    valores = {p1: a1, p2: a2, p3: 13}
     resto = [a for a in ("for", "des", "con", "int", "sab", "car") if a not in valores]
     for a, v in zip(resto, (12, 10, 8)):
         valores[a] = v
@@ -90,7 +92,9 @@ def montar_build(nome: str, nivel: int, build: str = "golpe", posto: str = "bron
     pol.update(kw.pop("politica", {}))
     # a build de Cosmo dá o golpe comum com o Atributo do Cosmo
     return Lutador(nome, nivel, posto, valores, tecs, atr_golpe="sab" if build == "cosmo" else "des",
-                   atr_cosmo="sab", politica=pol, **kw)
+                   atr_cosmo="sab", politica=pol, vigor=esc["vida_cosmo"].count("v"),
+                   cosmo_escolhas=esc["vida_cosmo"].count("c"),
+                   defesas_extra=esc["pericia_defesa"].count("d"), **kw)
 
 
 def kit_de_tecnicas(kit: str, tam: int, g: int, natureza: str, nivel: int) -> list:

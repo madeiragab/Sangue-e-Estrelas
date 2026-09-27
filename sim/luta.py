@@ -78,13 +78,16 @@ class Lutador:
     treino_extra_pv: int = 0
     teto_fixo: int = 0                 # Safira de Odin, Juiz do Inferno
     resistencia_extra: int = 0         # Escama de oricalco: +1
+    vigor: int = 0                     # escolhas de Vida
+    cosmo_escolhas: int = 0            # escolhas de Cosmo: +1 Teto e +1 Cosmo inicial cada
+    defesas_extra: int = 0             # defesas treinadas escolhidas
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
     caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
         self.prof = R.prof(self.nivel)
-        self.pv_max = R.pv_maximo(self.nivel, self.mods["con"], self.treino_extra_pv)
+        self.pv_max = R.pv_maximo(self.nivel, self.mods["con"], self.vigor, self.treino_extra_pv)
         if self.conviccoes is None:
             self.conviccoes = R.conviccoes(self.nivel)
         self.conviccoes_max = self.conviccoes
@@ -98,7 +101,8 @@ class Lutador:
         self.pv = self.pv_max
         self.caido = False
         self.fora = False
-        self.cosmo = R.cosmo_inicial(self.mods[self.atr_cosmo], self.nivel)
+        self.teto_extra = 0
+        self.cosmo = R.cosmo_inicial(self.mods[self.atr_cosmo], self.cosmo_escolhas, self.teto)
         self.sentido = "sexto"
         self.teto_extra = 0            # Sétimo, Nono, sentidos, Centelhas
         self.centelhas_recebidas = 0
@@ -141,8 +145,7 @@ class Lutador:
     # ------------------------------------------------------------------
     @property
     def teto(self) -> int:
-        return (R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo
-                + (1 if "estrelada" in self.caracteristicas else 0))
+        return R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo + self.cosmo_escolhas
 
     @property
     def armada(self) -> bool:
@@ -164,13 +167,19 @@ class Lutador:
 
     def bonus_ataque(self, natureza: str) -> int:
         atr = self.atr_golpe if natureza == "golpe" else self.atr_cosmo
-        # o acerto das formas só vale com a armadura no corpo
-        return self.mods[atr] + self.prof + (self.acerto_forma if self.armada else 0)
+        # o acerto das formas só vale com a armadura no corpo; a Constelação viva, no Sétimo
+        return (self.mods[atr] + self.prof + (self.acerto_forma if self.armada else 0)
+                + (1 if "estrelada" in self.caracteristicas and self.degrau >= 1 else 0))
 
     def dano_golpe_comum(self, rng, critico: bool) -> int:
         lados = 10 if self.acessorio == "garras" and self.armada else 8
         n = 2 if critico else 1
         return rolar(rng, n, lados) + self.mods[self.atr_golpe]
+
+    @property
+    def piso(self) -> int:
+        return min(self.teto, R.piso_cosmo(self.mods[self.atr_cosmo])
+                   + int(self.cosmo_escolhas * R.PISO_POR_COSMO))
 
     def queima_maxima(self) -> int:
         return self.prof + (2 if self.degrau >= 1 else 0)
@@ -187,9 +196,7 @@ class Lutador:
             self.sentido = "setimo"
             self.teto_extra += R.TETO_SETIMO
             self.despertou = True
-            if "estrelada" in self.caracteristicas and rng is not None:
-                # a constelação acende no despertar: 1d8 de PV por Grau
-                self.pv = min(self.pv_max, self.pv + rolar(rng, R.grau(self.nivel), 8))
+
             self.lido_por.clear()      # o golpe conhecido volta na velocidade da luz
 
     def iniciativa(self, rng) -> int:
@@ -206,7 +213,7 @@ class Lutador:
 
     def defesas_passivas(self) -> dict:
         """14 + atributo, + proficiência nas treinadas (DES e SAB; CON a partir do 10)."""
-        treinadas = {"des", "sab"} | ({"con"} if self.nivel >= 10 else set())
+        treinadas = {"des", "sab"} | ({"con"} if self.defesas_extra else set())
         return {a: 14 + self.mods[a] + (self.prof if a in treinadas else 0)
                 for a in ("con", "des", "sab")}
 
@@ -223,23 +230,23 @@ class Lutador:
 
 def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "nenhum",
            conviccoes: int | None = None, politica: dict | None = None,
-           kit: str = "padrao", formas: tuple = (), caracteristicas: tuple | None = None) -> Lutador:
+           kit: str = "padrao", formas: tuple = (), caracteristicas: tuple | None = None,
+           escolhas: dict | None = None) -> Lutador:
     """Um lutador de Golpe (DES) com o Cosmo em SAB, construído pelo livro.
 
     Distribuição 15/14/13/12/10/8: DES 15, CON 14, SAB 13, FOR 12, INT 10,
-    CAR 8. Os aumentos vão para a DES até 20 e depois para a CON.
+    CAR 8. Os aumentos de atributo vão para a DES até 20 e depois para a CON.
+    `escolhas` são as escolhas de nível (R.escolhas_padrao, se não vier nada).
     """
-    atr = {
-        "des": R.atributo_no_nivel(15, nivel, 0),
-        "con": R.atributo_no_nivel(14, nivel, 1),
-        "sab": 13, "for": 12, "int": 10, "car": 8,
-    }
+    esc = escolhas or R.escolhas_padrao(nivel)
+    des, con = R.atributos_das_escolhas(esc)
+    atr = {"des": des, "con": con, "sab": 13, "for": 12, "int": 10, "car": 8}
     g = R.grau(nivel)
     tam = R.TAMANHO_MAXIMO[g]
     # O kit padrão: a técnica grande (todo o tamanho em dano) e uma pequena, de
     # 2 pontos, para usar quando o Cosmo não fecha a grande.
     tecs = [tecnica_de_dano(tam, g, nome="grande"), tecnica_de_dano(2, g, nome="pequena")]
-    if kit == "tres" or R.tecnicas_conhecidas(nivel) >= 3:
+    if kit == "tres" or 2 + esc["tecnica_atributo"].count("t") >= 3:
         tecs.append(tecnica_de_dano(max(3, tam - 2), g, nome="media"))
     if posto == "ouro":
         # Golpe do Assento: tamanho máximo + 1, com atravessa
@@ -253,7 +260,9 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
         caracteristicas = R.CARACTERISTICAS_PADRAO[:R.CARACTERISTICAS_POR_POSTO[posto]]
     return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio,
                    conviccoes=conviccoes, politica=pol, formas=tuple(formas),
-                   caracteristicas=tuple(caracteristicas))
+                   caracteristicas=tuple(caracteristicas),
+                   vigor=esc["vida_cosmo"].count("v"), cosmo_escolhas=esc["vida_cosmo"].count("c"),
+                   defesas_extra=esc["pericia_defesa"].count("d"))
 
 
 # ---------------------------------------------------------------------------
@@ -314,7 +323,7 @@ class Luta:
         self.ultimo_natural_tecnica[x.nome] = (self.rodada, natural)
         if (not self.travado and x.degrau >= 1 and x.degrau == y.degrau
                 and anterior is not None and anterior[0] == self.rodada
-                and anterior[1] == natural):
+                and anterior[1] == natural and natural >= R.CHOQUE_MINIMO):
             self.travado = True
             self.mil_dias_travou = True
 
@@ -460,13 +469,20 @@ class Luta:
         custo = x.custo(t)
         x.tecnicas_usadas += 1
         pago = min(x.cosmo, custo)
-        falta = custo - pago
-        extra = max(0, queima - falta)          # pontos queimados além do custo
-        x.cosmo -= pago
-        if queima:
+        falta = custo - pago                     # o que o Cosmo não pagou, a vida paga
+        extra = max(0, queima)                   # pontos queimados além do custo
+        # O Cosmo não acaba: gastar nunca o leva abaixo do piso
+        x.cosmo = max(x.piso, x.cosmo - pago)
+        cai_depois = False
+        if falta or extra:
             x.queimas += 1
-            x.pv = max(1, x.pv - rolar(self.rng, queima * t.grau, R.dado_de_queima(x.nivel)))
-        lido = (t.nome in x.lido_por) and queima == 0
+            preco = rolar(self.rng, (falta + extra) * t.grau, R.dado_de_queima(x.nivel))
+            if preco >= x.pv:
+                x.pv = 1
+                cai_depois = True                # o golpe sai; você cai depois
+            else:
+                x.pv -= preco
+        lido = (t.nome in x.lido_por) and not (falta or extra)
         if t.condicao:
             acertou = self.rolar_efeito(x, y, t, def_extra=R.BONUS_LIDO if lido else 0)
             crit = False
@@ -485,8 +501,11 @@ class Luta:
             dano = rolar(self.rng, ndados, t.lado) + x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo]
             self.aplicar_dano(y, dano, atravessa=t.atravessa, fonte="tecnica",
                               atacante=x, quebra=t.quebra)
-        if queima:
-            x.cosmo = 0
+        if falta or extra:
+            x.cosmo = x.piso                     # queimou: o Cosmo volta ao piso, não a zero
+        if cai_depois and not y.caido:
+            x.pv = 0                             # o último golpe não derrubou: você cai
+            x.caido = True
 
     # ------------------------------------------------------------------
     def dano_esperado(self, x: Lutador, t: Tecnica, extra: int = 0) -> float:
@@ -543,11 +562,21 @@ class Luta:
             custo = x.custo(grande)
             por_ponto = R.media_dado(R.dado_de_queima(x.nivel)) * grande.grau
             apara = 0.5 if (not grande.atravessa and y.armada) else 1.0
-            if x.cosmo < custo <= x.cosmo + qmax:
+            if x.cosmo < custo and pol.get("vida_paga", True):
+                # A vida paga o que falta, sem limite. Vale quando derruba (mesmo que
+                # você caia depois: o último golpe), ou quando rende bem mais dano
+                # do que custa de vida.
                 falta = custo - x.cosmo
-                if (y.pv <= apara * self.dano_esperado(x, grande) or x.pv <= 0.35 * x.pv_max) \
-                        and x.pv - falta * por_ponto > 0.25 * x.pv_max:
-                    self.usar_tecnica(x, y, grande, queima=falta)
+                preco = falta * por_ponto
+                # o último golpe (cair depois) só vale no fim, ou com Convicção para levantar
+                pode_cair = (x.pv <= 0.15 * x.pv_max
+                             or (x.conviccoes > 0 and x.levantou < R.LEVANTAR_POR_LUTA))
+                derruba = (y.pv <= apara * self.dano_esperado(x, grande)
+                           and (x.pv > preco or pode_cair))
+                rende = (apara * self.dano_esperado(x, grande) >= pol.get("rende", 3.0) * preco
+                         and x.pv - preco > pol.get("reserva", 0.15) * x.pv_max)
+                if derruba or rende:
+                    self.usar_tecnica(x, y, grande, queima=0)
                     return
             if x.cosmo >= custo and y.pv > apara * self.dano_esperado(x, grande):
                 for extra in range(1, qmax + 1):
@@ -589,7 +618,9 @@ class Luta:
             x.conviccoes -= 1
             x.levantou += 1
             x.caido = False
-            x.pv = R.ceil_div(x.pv_max, 3 if "coracao" in x.caracteristicas else 4)
+            x.pv = R.ceil_div(x.pv_max, 4)
+            if "coracao" in x.caracteristicas:
+                x.vantagem_proxima = True        # o coração de estrela: levanta atacando
             x.cosmo = x.teto
             if x.posto in ("bronze", "prata"):
                 x.entrar_no_setimo(self.rng)     # levantar é o sacrifício; a Convicção foi dita
@@ -727,7 +758,10 @@ class LutaGrupo(Luta):
                 if (x is not c and extras > 0 and not c.fora and not c.caido
                         and not any(k in c.condicoes for k in PERDE_O_TURNO)):
                     extras -= 1
-                    self.escolher_e_agir(c, self.oponente(c))
+                    if R.CHEFE_ACAO_SO_GOLPE:
+                        self.golpe(c, self.oponente(c))
+                    else:
+                        self.escolher_e_agir(c, self.oponente(c))
                 for z in todos:
                     if z.caido and not z.fora and not self.pode_levantar(z):
                         z.fora = True

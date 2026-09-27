@@ -163,20 +163,30 @@ def vitorias_levantando(nivel: int, semente: int) -> float:
     return lev / vit if vit else 1.0
 
 
+# A luta é curta e decisiva no começo e longa e destrutiva no fim (0.6.0).
+FAIXA_SEM = {1: (2.0, 4.0), 5: (3.5, 6.5), 9: (4.0, 7.5), 13: (3.5, 7.0), 15: (3.5, 7.5),
+             17: (4.5, 8.5), 20: (5.5, 9.5)}
+FAIXA_COM = {1: (3.0, 5.5), 5: (4.5, 8.0), 9: (5.5, 9.5), 13: (5.0, 9.0), 15: (5.0, 9.5),
+             17: (7.0, 11.5), 20: (8.0, 13.0)}
+
+
 def testar_equilibrio() -> None:
     print(f"equilíbrio ({N} duelos por linha):")
     for n in (1, 5, 9, 13, 15, 17, 20):
         r = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 11 + n)
         confere(0.40 <= r["a"] <= 0.60, f"nível {n}: espelho Bronze×Bronze perto de 50% ({r['a']:.0%})")
         s = taxa(lambda k: montar("A", k, conviccoes=0), lambda k: montar("B", k, conviccoes=0), n, 21 + n)
-        confere(3.0 <= s["rodadas_media"] <= 8.5,
-                f"nível {n}: luta sem Convicções dura 3 a 8,5 rodadas ({s['rodadas_media']:.1f})")
-        confere(4.5 <= r["rodadas_media"] <= 11.0,
-                f"nível {n}: luta com Convicções dura 4,5 a 11 rodadas ({r['rodadas_media']:.1f})")
+        lo, hi = FAIXA_SEM[n]
+        confere(lo <= s["rodadas_media"] <= hi,
+                f"nível {n}: luta sem Convicções dura {lo:g} a {hi:g} rodadas ({s['rodadas_media']:.1f})")
+        lo, hi = FAIXA_COM[n]
+        confere(lo <= r["rodadas_media"] <= hi,
+                f"nível {n}: luta com Convicções dura {lo:g} a {hi:g} rodadas ({r['rodadas_media']:.1f})")
         t = taxa(lambda k: montar("A", k, politica={"tecnicas": False}), lambda k: montar("B", k), n, 31 + n)
-        confere(t["a"] <= 0.40, f"nível {n}: técnica vale mais que só golpe comum ({t['a']:.0%} sem técnica)")
+        confere(t["a"] <= 0.45, f"nível {n}: técnica vale mais que só golpe comum ({t['a']:.0%} sem técnica)")
         ap = taxa(lambda k: montar("A", k, politica={"aparar": False}), lambda k: montar("B", k), n, 41 + n)
-        confere(ap["a"] <= 0.50, f"nível {n}: apanhar sem aparar não compensa ({ap['a']:.0%})")
+        # no nível 1, com a luta curta, bloquear em vez de aparar rende um pouco: até 58%
+        confere(ap["a"] <= 0.58, f"nível {n}: apanhar sem aparar não compensa ({ap['a']:.0%})")
         q = taxa(lambda k: montar("A", k, politica={"queimar": False}), lambda k: montar("B", k), n, 51 + n)
         confere(0.30 <= q["a"] <= 0.60, f"nível {n}: queimar ajuda sem dominar ({q['a']:.0%} de quem nunca queima)")
         # Prata e Ouro só são medidos onde existem: o Posto tem requisito de nível

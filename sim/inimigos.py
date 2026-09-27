@@ -43,9 +43,9 @@ INIMIGOS = {
         tracos=["<strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.",
                 "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
         quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do "
-               "mesmo nível vence uma vez em cinco; um de nível 8, quase nunca; só um Bronze "
-               "de nível 13 vence metade das vezes. É luta para dois ou três Bronzes juntos, "
-               "ou para outro Prata."),
+               "mesmo nível vence uma vez em oito; um de nível 8, quase nunca; só um Bronze de "
+               "nível 13 vence com folga. É luta para dois ou três Bronzes juntos, ou para "
+               "outro Prata."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -56,9 +56,8 @@ INIMIGOS = {
                 "estiver na Veste (já somado).",
                 "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
                 "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
-        quando="Um dos sete. Quatro Bronzes do nível dele vencem menos da metade das vezes, e "
-               "uns três caem; três níveis abaixo, quase nunca. Sozinho, um personagem perde "
-               "quase sempre."),
+        quando="Um dos sete. Quatro Bronzes do nível dele vencem seis vezes em dez, e uns três "
+               "caem; três níveis abaixo, nunca. Sozinho, um personagem não vence."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
         caracteristicas=("pesada", "espelhada", "couraca"),
@@ -79,8 +78,8 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem uma vez em "
-               "cinco."),
+               "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco menos da "
+               "metade das vezes."),
     "juiz-do-inferno": dict(
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         caracteristicas=("leve", "cortante", "coracao"),
@@ -91,8 +90,8 @@ INIMIGOS = {
                 "semanas enquanto Hades existir.",
                 "<strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).",
                 "<strong>Sétimo dominado.</strong>"],
-        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e uns "
-               "três caem. É a luta de um arco inteiro."),
+        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem pouco mais da metade das "
+               "vezes, e uns três caem. É a luta de um arco inteiro."),
 }
 
 
@@ -198,39 +197,49 @@ def bloco(chave: str) -> str:
 GANHOS = {
     1: "Tudo da criação · duas técnicas · técnica assinatura",
     2: "Leitura de Combate",
-    3: "Cosmo Desperto",
-    4: "Terceira técnica · +2 pontos de atributo",
     5: "+1 de Resistência",
     6: "Segunda Lição",
     7: "+1 de Resistência",
-    8: "Quarta técnica · +2 pontos de atributo",
     9: "Ataque Extra",
-    10: "Terceira defesa treinada",
     11: "Golpe Certeiro",
-    12: "Quinta técnica · +2 pontos de atributo",
     13: "+1 de Resistência",
     14: "Quarta Convicção",
-    15: "Cosmo Sereno",
-    16: "Sexta técnica · +2 pontos de atributo",
     17: "+1 de Resistência",
     18: "Segunda técnica assinatura",
-    19: "+2 pontos de atributo",
-    20: "Sétima técnica · Lenda",
+    20: "Lenda",
 }
 
 
+def escolhas_do_nivel(n: int) -> str:
+    """O que o jogador escolhe ao chegar neste nível."""
+    if n == 1:
+        return "—"
+    partes = ["Vida ou Cosmo"]
+    if n in R.NIVEIS_TECNICA_OU_ATRIBUTO:
+        partes.append("técnica nova ou atributo")
+    if n in R.NIVEIS_PERICIA_OU_DEFESA:
+        partes.append("perícia ou defesa")
+    return " · ".join(partes)
+
+
 def tabela_niveis() -> str:
+    """Duas tabelas: os números de cada nível, e o que se ganha e se escolhe."""
     linhas = ['<div class="rolagem"><table>',
               '<thead><tr><th class="num">Nível</th><th class="num">Prof.</th>'
               '<th class="num">Grau</th><th class="num">Teto</th><th class="num">PV</th>'
-              '<th class="num">Glória</th><th>O que você ganha</th></tr></thead><tbody>']
+              '<th class="num">Glória</th></tr></thead><tbody>']
     for n in range(1, 21):
         gloria = "—" if n == 20 else str(R.gloria_para_subir(n))
         linhas.append(
             f'<tr><td class="num">{n}</td><td class="num">+{R.prof(n)}</td>'
             f'<td class="num">{R.grau(n)}</td><td class="num">{R.teto_base(n)}</td>'
-            f'<td class="num">{R.pv_maximo(n, 0)}</td><td class="num">{gloria}</td>'
-            f'<td>{GANHOS[n]}</td></tr>')
+            f'<td class="num">{R.pv_maximo(n, 0)}</td><td class="num">{gloria}</td></tr>')
+    linhas += ["</tbody></table></div>", '<div class="rolagem"><table>',
+               '<thead><tr><th class="num">Nível</th><th>O que você ganha</th>'
+               '<th>O que você escolhe</th></tr></thead><tbody>']
+    for n in range(1, 21):
+        linhas.append(f'<tr><td class="num">{n}</td><td>{GANHOS.get(n, "—")}</td>'
+                      f'<td>{escolhas_do_nivel(n)}</td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
 
@@ -256,9 +265,10 @@ CARACTERISTICAS = {
     "pesada": ("Pesada", "+1 na DEF, −2 na Iniciativa e −3 metros de movimento."),
     "leve": ("Leve", "+2 na Iniciativa e +3 metros de movimento."),
     "ressonante": ("Ressonante", "Você começa toda luta com +1 de Cosmo."),
-    "estrelada": ("Constelação viva", "Quando você desperta o Sétimo, recupera 1d8 de PV por Grau."),
-    "coracao": ("Coração de estrela", "Quando você levanta com uma Convicção, volta com um terço "
-                "dos PV em vez de um quarto."),
+    "estrelada": ("Constelação viva", "Enquanto você estiver no Sétimo, +1 no acerto: a sua "
+                  "constelação acende atrás de você."),
+    "coracao": ("Coração de estrela", "Quando você levanta com uma Convicção, o seu próximo "
+                "ataque tem Vantagem."),
     "cortante": ("Cortante", "Os seus golpes comuns não podem ser aparados."),
     "ofuscante": ("Ofuscante", "Uma vez por luta, a primeira técnica usada contra você rola com "
                   "Desvantagem: a armadura brilha na hora do golpe."),

@@ -13,12 +13,13 @@
 
   <h3 id="cosmo">O Cosmo</h3>
   <p>O Cosmo é um número que só existe durante a luta. Ele começa baixo, sobe, e é gasto
-  nas técnicas. Quando a luta acaba, ele volta ao começo.</p>
+  nas técnicas. Quando a luta acaba, ele volta ao começo. E ele <strong>não acaba</strong>:
+  um Cavaleiro quebrado, no chão, ainda solta o golpe dele.</p>
 
   <div class="rolagem"><table>
     <thead><tr><th>Quando</th><th>Cosmo</th></tr></thead>
     <tbody>
-      <tr><td>A luta começa</td><td>Modificador do Atributo do Cosmo, mínimo 1 (+1 no nível 3, +2 no nível 15)</td></tr>
+      <tr><td>A luta começa</td><td>Modificador do Atributo do Cosmo, mínimo 1, +1 por escolha de Cosmo (até o Teto)</td></tr>
       <tr><td>Começo de cada turno seu, a partir da segunda rodada</td><td>+1</td></tr>
       <tr><td>Um golpe comum seu acerta (uma vez por turno)</td><td>+1</td></tr>
       <tr><td>Você usa a ação Concentrar</td><td>+2</td></tr>
@@ -28,13 +29,26 @@
     </tbody>
   </table></div>
 
-  <p>O Cosmo nunca passa do seu <em class="termo">Teto de Cosmo</em>: 3 + proficiência,
-  ou seja, 5 no nível 1 e 9 no nível 17. O Teto sobe com o Sétimo Sentido (+2), com os
-  sentidos perdidos (+1 cada) e com as Centelhas recebidas (+1 cada, no máximo +3 por luta).
-  A única coisa que passa por cima dele é queimar.</p>
+  <p>O Cosmo nunca passa do seu <em class="termo">Teto de Cosmo</em>: 3 + proficiência, +1
+  por escolha de Cosmo (<a href="#cap12">Capítulo Doze</a>). O Teto sobe também com o Sétimo
+  Sentido (+2), com os sentidos perdidos (+1 cada) e com as Centelhas recebidas (+1 cada, no
+  máximo +3 por luta). A única coisa que passa por cima dele é queimar.</p>
 
   <p>Você gasta Cosmo para usar técnicas: cada técnica custa tantos pontos de Cosmo quanto
   o tamanho dela. O golpe comum não custa nada — é ele que enche o Cosmo para a técnica.</p>
+
+  <div class="destaque">
+    <span class="rotulo">O Cosmo não acaba</span>
+    <p><strong>O piso.</strong> Gastar nunca leva o seu Cosmo abaixo do
+    <em class="termo">piso</em>: 1, e +1 a cada duas escolhas de Cosmo. O que a técnica
+    custaria abaixo do piso sai de graça.</p>
+    <p><strong>A vida paga.</strong> Se o Cosmo não basta para uma técnica, pague o que falta
+    com vida: <span class="dado">1d4</span> por ponto, vezes o Grau da técnica. Não há limite
+    de pontos, e a armadura não reduz esse preço.</p>
+    <p><strong>O último golpe.</strong> Se o preço passar da vida que você tem, o golpe sai
+    assim mesmo. Se ele derrubar o inimigo, você fica de pé com 1 PV, por um fio. Se não
+    derrubar, você cai logo depois dele.</p>
+  </div>
 
   <div class="nota">
     <p><strong>Por que perder PV não dá Cosmo.</strong> Seria o jeito mais óbvio de fazer
@@ -53,23 +67,23 @@
   contra a Furtividade de quem esconde.</p>
 
   <h4 id="queimar">Queimar o Cosmo</h4>
-  <p>Queimar é ir além do que você tem. Antes de rolar uma técnica, declare quantos pontos
-  vai queimar — no máximo a sua proficiência, ou proficiência + 2 no Sétimo Sentido.</p>
+  <p>Queimar é ir além do que você tem. Pagar com a vida o que falta de uma técnica já é
+  queimar; e dá para ir mais longe. Antes de rolar, declare quantos pontos a mais vai
+  queimar — no máximo a sua proficiência, ou proficiência + 2 no Sétimo Sentido.</p>
   <ul>
-    <li>Os pontos queimados <strong>pagam a técnica</strong> como se fossem Cosmo, mesmo que
-      você não tenha esse Cosmo e mesmo passando do Teto.</li>
     <li>Cada ponto queimado <strong>além do custo</strong> soma um ponto de dano à técnica,
       do mesmo dado dela — mesmo que isso passe do tamanho máximo.</li>
-    <li>O preço: <span class="dado">1d4</span> de dano em você <strong>por ponto, vezes o
-      Grau da técnica</strong>. A armadura não reduz esse dano, e ele nunca te leva abaixo de
-      1 PV. Depois da técnica, <strong>o seu Cosmo vai a zero</strong>.</li>
+    <li>O preço é o mesmo da vida que paga: <span class="dado">1d4</span> por ponto, vezes o
+      Grau da técnica, e a regra do último golpe vale.</li>
+    <li>Depois de queimar, <strong>o seu Cosmo volta ao piso</strong>: você deu tudo o que
+      tinha, mas o Cosmo não acaba.</li>
     <li>Uma técnica queimada ignora a marca de <em class="termo">Lida</em>: o inimigo já viu
       o golpe, mas não com essa força.</li>
   </ul>
 
   <div class="nota">
-    <p><strong>Medido:</strong> quem nunca queima vence de 42% a 52% dos duelos contra quem
-    queima com juízo — queimar ajuda a fechar a luta, mas não decide sozinho. Numa versão
+    <p><strong>Medido:</strong> quem nunca queima nem paga com a vida vence de 33% a 49% dos
+    duelos contra quem faz isso com juízo — ajuda a fechar a luta, mas não decide sozinho. Numa versão
     anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes. É por
     isso que o custo cresce com o Grau.</p>
   </div>
@@ -138,12 +152,12 @@
 
   <div class="nota">
     <p><strong>O que o simulador diz sobre Bronze contra Ouro.</strong> Do mesmo nível — e o
-    Ouro só existe do 15 em diante —, um Bronze sozinho vence um Ouro de 0% a 2% das vezes;
-    um Prata, de 2% a 5%. Um amigo mandando uma Centelha por rodada quase não muda a conta:
-    de 1% a 8%. E, das poucas vitórias, mais de 95% vieram depois de levantar do chão, e o
-    Bronze terminou a luta com um quinto
-    dos PV. É o anime: um Bronze vence um Ouro por um milagre, com a ajuda de alguém, e quase
-    morrendo.</p>
+    Ouro só existe do 15 em diante —, um Bronze sozinho não vence um Ouro: menos de 1% das
+    vezes, e nem uma Centelha por rodada muda isso. Um Prata, também não. Nem cinco níveis
+    acima o Bronze passa de 6%. No duelo justo, o Ouro não perde. O milagre vem de outro
+    lugar: do grupo inteiro contra ele (quatro Bronzes vencem de 40% a 48%, no
+    <a href="#sozinho-contra-muitos">Capítulo Dez</a>), ou da história — o Ouro que se deixa
+    vencer, a armadura que outro Ouro empresta.</p>
   </div>
 
   <h3 id="mil-dias">A Guerra dos Mil Dias</h3>
@@ -152,7 +166,8 @@
   <div class="destaque">
     <span class="rotulo">O choque</span>
     <p>Dois guerreiros no mesmo Sentido — o Sétimo ou acima — usam técnicas um contra o
-    outro na mesma rodada, e os dois d20 naturais dão <strong>o mesmo número</strong>. Os
+    outro na mesma rodada, e os dois d20 naturais dão <strong>o mesmo número, de 16 a
+    20</strong>. Os
     Cosmos se travam: começa a Guerra dos Mil Dias.</p>
   </div>
   <ul>
@@ -184,10 +199,11 @@
       armaduras morrem.</p>
     </div>
   </div>
-  <p><strong>Medido:</strong> a Guerra acontece em 14% a 17% das lutas entre dois Ouros
-  e em 3% a 6% das lutas entre Bronzes despertos. Numa versão anterior, a condição era "o
-  mesmo Teto de Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela
-  travava 95% das lutas. O choque de números iguais a mantém rara.</p>
+  <p><strong>Medido:</strong> a Guerra acontece em 9% a 15% das lutas entre dois Ouros
+  e em até 2% das lutas entre Bronzes. Numa versão anterior, a condição era "o mesmo Teto de
+  Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela travava 95%
+  das lutas. Depois que o Cosmo passou a não acabar, os dois usam técnica quase toda rodada,
+  e qualquer número igual travava metade das lutas: por isso o choque pede de 16 a 20.</p>
 
   <h3 id="oitavo">O Oitavo Sentido</h3>
   <p>O Oitavo, o <em class="termo">Arayashiki</em>, não é um degrau de poder. Ele não

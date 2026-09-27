@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.5.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.6.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,17 +34,18 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.5.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.6.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
-## O jogo em seis linhas
+## O jogo em sete linhas
 
 | | |
 |---|---|
 | 🎲 **A rolagem** | `1d20 + modificador (+ proficiência)` contra um alvo. Quem causa rola; a defesa é um número fixo. |
-| ✨ **O Cosmo** | Começa baixo e sobe a cada rodada e a cada golpe que entra. Paga as técnicas. Perder PV nunca dá Cosmo. |
+| ✨ **O Cosmo** | Começa baixo e sobe a cada rodada e a cada golpe que entra. Paga as técnicas, e não acaba: quando falta, a vida paga. Perder PV nunca dá Cosmo. |
 | 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção. |
 | 👁️ **Os cinco sentidos** | Ninguém fecha um sentido porque quer. O inimigo arranca, ou você se mutila — e cada um que vai embora sobe o seu Cosmo. |
 | 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
+| 📈 **A progressão** | A cada nível você escolhe: Vida ou Cosmo; técnica nova ou atributo; perícia ou defesa. A luta é curta no começo e longa no fim. |
 | 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e um Bronze levanta desperto. |
 
 ## O que o simulador mediu
@@ -55,21 +56,19 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 | Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
 |---|---:|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 49% | 49% | 49% | 47% |
-| Bronze contra Prata | — | 13% | 11% | 9% |
-| Bronze sozinho contra Ouro | — | — | 2% | 0% |
-| Bronze com a Centelha de um amigo contra Ouro | — | — | 7% | 1% |
-| Armadura de Bronze revivida três vezes contra a original | 63% | 60% | 61% | 65% |
-| Bronze com a escada do sangue inteira contra Ouro | — | — | 9% | 5% |
-| Quem nunca apara a armadura | 40% | 35% | 35% | 27% |
-| Quem nunca levanta do chão | 9% | 3% | 1% | 0% |
+| Espelho, Bronze contra Bronze | 50% | 51% | 48% | 49% |
+| Duração com Convicções (rodadas) | 4,7 | 7,7 | — | 10,8 |
+| Bronze contra Prata | — | 12% | 12% | 7% |
+| Bronze sozinho contra Ouro | — | — | 0% | 0% |
+| Armadura de Bronze revivida três vezes contra a original | 59% | 65% | 64% | 68% |
+| Bronze com a escada do sangue inteira contra Ouro | — | — | 4% | 0% |
+| Quem nunca apara a armadura | 54% | 40% | 24% | 13% |
+| Quem nunca levanta do chão | 6% | 13% | 10% | 1% |
 
-O Bronze perde para o Prata e perde muito mais para o Ouro. Uma armadura que morreu e
-voltou fica um pouco mais forte a cada forma nova, mas nem com o sangue de um deus iguala
-o Ouro.
-Das raras vitórias de um Bronze sobre um Ouro, mais de 95% vieram depois de levantar do
-chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um Ouro
-por um milagre, com ajuda, e quase morrendo.
+A luta é curta e decisiva no começo e longa no fim. O Bronze perde para o Prata e, no duelo
+justo, não vence o Ouro: o milagre vem do grupo inteiro contra ele (quatro Bronzes vencem
+de 43% a 51%) ou da história. Uma armadura que morreu e voltou fica um pouco mais forte a
+cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
 
 ### As vezes em que o simulador contrariou o rascunho
 
@@ -93,11 +92,12 @@ lutas de grupo contra um só. O relatório completo está em
 
 | Achado | Antes | Depois |
 |---|---:|---:|
-| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 38% a 42% |
-| Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 39% a 59% |
-| Quem tem uma técnica de atordoar | até 89% | 48% a 60% |
-| Quem tem uma técnica com limitação | — | 28% a 56% (nenhuma é brecha) |
-| Cada característica de armadura, sozinha | — | 45% a 62% |
+| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 43% a 51% |
+| Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 47% a 52% |
+| Quem tem uma técnica de atordoar | até 89% | 50% a 67% |
+| Quem tem uma técnica com limitação | — | 16% a 51% (nenhuma é brecha) |
+| Cada característica de armadura, sozinha | — | 47% a 60% |
+| Quem escolhe só Vida contra quem escolhe só Cosmo | — | 41% a 61% |
 
 ## O livro
 
@@ -117,7 +117,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | IX | Exércitos | O molde e quatro exércitos de exemplo |
 | X | Inimigos | Como montar, a dificuldade medida e sete fichas prontas |
 | XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
-| XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto e a tabela de 1 a 20 |
+| XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |
 | XIII | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
 
 ## Estrutura do repositório
