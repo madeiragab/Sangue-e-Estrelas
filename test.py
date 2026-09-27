@@ -1,6 +1,6 @@
 """Toda a conferência do sistema, sem dependências externas.
 
-    python test.py            tudo (leva uns dois minutos)
+    python test.py            tudo (leva uns segundos)
     python test.py motor      só as contas das técnicas
     python test.py livro      só o build e a coerência do livro
     python test.py equilibrio só as metas de equilíbrio
@@ -101,6 +101,13 @@ def testar_livro() -> None:
         confere(trecho in html, f"tabela de níveis: nível {n}")
     confere(f"nível {R.NIVEL_ATAQUE_EXTRA}" in html.lower() or f"nível {R.NIVEL_ATAQUE_EXTRA}" in html,
             f"o Ataque Extra está no nível {R.NIVEL_ATAQUE_EXTRA}")
+    confere(f"<strong>Prata:</strong> a partir do nível {R.NIVEL_PRATA}." in html
+            and f"<strong>Elite:</strong> a partir do nível {R.NIVEL_ELITE}," in html,
+            f"o livro dá o requisito de Posto: Prata no {R.NIVEL_PRATA}, elite no {R.NIVEL_ELITE}")
+    from inimigos import INIMIGOS
+    for slug, ficha in INIMIGOS.items():
+        confere(R.posto_existe(ficha["posto"], ficha["nivel"]),
+                f"ficha pronta {slug}: nível {ficha['nivel']} cabe no Posto {ficha['posto']}")
 
 
 # ---------------------------------------------------------------------------
@@ -131,7 +138,7 @@ def vitorias_levantando(nivel: int, semente: int) -> float:
 
 def testar_equilibrio() -> None:
     print(f"equilíbrio ({N} duelos por linha):")
-    for n in (1, 5, 9, 13, 17):
+    for n in (1, 5, 9, 13, 15, 17, 20):
         r = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 11 + n)
         confere(0.40 <= r["a"] <= 0.60, f"nível {n}: espelho Bronze×Bronze perto de 50% ({r['a']:.0%})")
         s = taxa(lambda k: montar("A", k, conviccoes=0), lambda k: montar("B", k, conviccoes=0), n, 21 + n)
@@ -145,13 +152,18 @@ def testar_equilibrio() -> None:
         confere(ap["a"] <= 0.50, f"nível {n}: apanhar sem aparar não compensa ({ap['a']:.0%})")
         q = taxa(lambda k: montar("A", k, politica={"queimar": False}), lambda k: montar("B", k), n, 51 + n)
         confere(0.30 <= q["a"] <= 0.60, f"nível {n}: queimar ajuda sem dominar ({q['a']:.0%} de quem nunca queima)")
-        p = taxa(lambda k: montar("A", k, "prata"), lambda k: montar("B", k), n, 61 + n)
-        confere(0.52 <= p["a"] <= 0.72, f"nível {n}: Prata vence Bronze na maioria ({p['a']:.0%})")
+        # Prata e Ouro só são medidos onde existem: o Posto tem requisito de nível
+        if R.posto_existe("prata", n):
+            p = taxa(lambda k: montar("A", k, "prata"), lambda k: montar("B", k), n, 61 + n)
+            confere(0.52 <= p["a"] <= 0.72, f"nível {n}: Prata vence Bronze na maioria ({p['a']:.0%})")
+        if not R.posto_existe("ouro", n):
+            continue
         o = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 71 + n)
         confere(o["a"] <= 0.07, f"nível {n}: Bronze sozinho quase nunca vence um Ouro ({o['a']:.0%})")
         oc = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 81 + n, centelhas_a=1)
-        confere(o["a"] - 0.02 <= oc["a"] <= 0.18,
-                f"nível {n}: Centelhas dão ao Bronze uma chance pequena ({o['a']:.0%} → {oc['a']:.0%})")
+        # do 15 em diante a Centelha vale cerca de 1 ponto: a margem cobre o acaso de 500 duelos
+        confere(o["a"] - 0.03 <= oc["a"] <= 0.18,
+                f"nível {n}: Centelhas não tiram o Ouro do lugar ({o['a']:.0%} → {oc['a']:.0%})")
         po = taxa(lambda k: montar("A", k, "prata"), lambda k: montar("B", k, "ouro"), n, 86 + n)
         confere(po["a"] <= 0.12, f"nível {n}: Prata sozinho quase nunca vence um Ouro ({po['a']:.0%})")
         lev = vitorias_levantando(n, 88 + n)

@@ -3,6 +3,26 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.2.2] - 2026-09-27
+
+### Mudado
+
+- **O Prata só a partir do nível 9** (era 5). A elite continua no 15.
+- O Cavaleiro de Prata pronto subiu do nível 6 para o 9. Medido: um Bronze do mesmo
+  nível vence 36% das vezes; um de nível 8, 6%, porque o Grau muda no 9.
+- A tabela rápida de inimigos mostra um traço na DEF de Prata e de elite nos níveis em
+  que esses Postos ainda não existem, e ganhou as linhas dos níveis 9 e 15.
+- O simulador e os testes só medem Prata e Ouro onde eles existem, e passaram a medir
+  também os níveis 15 e 20. Os números de Bronze contra Ouro foram refeitos com o Ouro do
+  15 ao 20: sozinho, de 1% a 4%; com uma Centelha por rodada, de 3% a 5% (a 0.2.0 dizia
+  até 13%, medido com um Ouro de nível 9); das vitórias, mais de 95% depois de levantar.
+  A Guerra dos Mil Dias entre Ouros ficou em 14% a 17%.
+- A meta "Centelhas dão uma chance pequena" virou "Centelhas não tiram o Ouro do lugar",
+  com margem de 3 pontos para o acaso: do 15 em diante, a Centelha vale cerca de 1 ponto
+  contra um Ouro.
+- O livro e as fichas prontas passaram a ser conferidos contra o requisito de Posto:
+  `test.py` falha se o texto disser outro nível ou se uma ficha estiver abaixo dele.
+
 ## [0.2.1] - 2026-09-27
 
 ### Mudado

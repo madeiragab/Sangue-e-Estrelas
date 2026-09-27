@@ -34,13 +34,14 @@ INIMIGOS = {
         quando="Vem em grupos de dois ou três. Um só é uma luta difícil para um Bronze de "
                "nível 3."),
     "cavaleiro-de-prata": dict(
-        nome="Cavaleiro de Prata", nivel=6, posto="prata", acessorio="correntes",
+        nome="Cavaleiro de Prata", nivel=9, posto="prata", acessorio="correntes",
         conviccoes=1, exercito="Atena", armadura="Armadura de Prata",
         tecnicas=("Correntes do Cão Infernal", "Laço de Aço", "Chicote de Cosmo"),
         tracos=["<strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.",
                 "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
-        quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um grupo de três "
-               "Bronzes de nível 5 dá conta; um só, raramente."),
+        quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do "
+               "mesmo nível vence pouco mais de uma vez em três; um de nível 8, quase nunca, "
+               "porque o Grau muda no 9. É luta para dois ou três Bronzes juntos."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         exercito="Asgard", armadura="Veste Divina", teto_extra=1,
@@ -243,7 +244,7 @@ def tabela_rapida() -> str:
               '<th class="num">DEF B/P/E</th><th class="num">Atq.</th>'
               '<th>Golpe</th><th>Técnica (custo)</th>'
               '<th class="num">Defesas</th></tr></thead><tbody>']
-    for n in (1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20):
+    for n in (1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20):
         b, p, o = (montar("x", n, posto) for posto in ("bronze", "prata", "ouro"))
         for z in (b, p, o):
             z.reiniciar()
@@ -251,9 +252,12 @@ def tabela_rapida() -> str:
         mod = b.mods["des"]
         fort, refl, vont = _defesas(b)
         golpes = "2×" if R.ataques_por_golpe(n) == 2 else ""
+        # o traço é um Posto que ainda não existe nesse nível
+        def_p = p.defesa if R.posto_existe("prata", n) else "—"
+        def_o = o.defesa if R.posto_existe("ouro", n) else "—"
         linhas.append(
             f'<tr><td class="num">{n}</td><td class="num">{b.pv_max}</td>'
-            f'<td class="num">{b.defesa}/{p.defesa}/{o.defesa}</td>'
+            f'<td class="num">{b.defesa}/{def_p}/{def_o}</td>'
             f'<td class="num">+{b.bonus_ataque("golpe")}</td>'
             f'<td>{golpes}1d8+{mod}</td>'
             f'<td>{grande.dados_de_dano}d8+{mod} ({grande.custo()})</td>'

@@ -25,7 +25,7 @@ if hasattr(sys.stdout, "reconfigure"):
 RAPIDO = "--rapido" in sys.argv
 N = 400 if RAPIDO else 1500
 NIVEIS = (1, 4, 5, 8, 9, 12, 13, 16, 17, 20)
-NIVEIS_CURTOS = (1, 5, 9, 13, 17)
+NIVEIS_CURTOS = (1, 5, 9, 13, 15, 17, 20)
 
 
 def pct(x: float) -> str:
@@ -72,6 +72,17 @@ CONFRONTOS = [
 ]
 
 
+def existe(nome: str, n: int) -> bool:
+    """Um confronto só é medido nos níveis em que os Postos dele existem."""
+    if nome in ("Um nível acima", "Dois níveis acima"):
+        return n + (1 if nome.startswith("Um") else 2) <= 20
+    if "Ouro" in nome:
+        return R.posto_existe("ouro", n)
+    if "Prata" in nome:
+        return R.posto_existe("prata", n)
+    return True
+
+
 def confrontos() -> list[str]:
     cab = "| Confronto | " + " | ".join(f"Nível {n}" for n in NIVEIS_CURTOS) + " |"
     sep = "|---|" + "---:|" * len(NIVEIS_CURTOS)
@@ -79,6 +90,9 @@ def confrontos() -> list[str]:
     for i, (nome, fa, fb, kw) in enumerate(CONFRONTOS):
         celulas = []
         for n in NIVEIS_CURTOS:
+            if not existe(nome, n):
+                celulas.append("—")
+                continue
             r = duelos(lambda: fa(n), lambda: fb(n), n=N, semente=1000 * (i + 1) + n, **kw)
             cel = pct(r["a"])
             if r["empate"] >= 0.05:
@@ -97,6 +111,9 @@ def mil_dias() -> list[str]:
     ):
         cel = []
         for n in NIVEIS_CURTOS:
+            if not existe(nome, n):
+                cel.append("—")
+                continue
             r = duelos(lambda: fa(n), lambda: fb(n), n=N, semente=7000 + n)
             cel.append(pct(r["mil_dias"]))
         linhas.append(f"| {nome} | " + " | ".join(cel) + " |")
@@ -122,7 +139,8 @@ def main() -> None:
         "## Regra por regra",
         "",
         "Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%; "
-        "o resto mostra quanto cada escolha vale.",
+        "o resto mostra quanto cada escolha vale. O traço é um Posto que não existe "
+        f"naquele nível: Prata só a partir do {R.NIVEL_PRATA}, elite só a partir do {R.NIVEL_ELITE}.",
         "",
         *confrontos(),
         "",

@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.2.1-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.2.2-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.2.1 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.2.2 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em seis linhas
 
@@ -49,28 +49,29 @@ build. O livro e o simulador não têm como discordar.
 
 ## O que o simulador mediu
 
-Duelos do mesmo nível, 1500 por célula, sementes fixas. A tabela completa está em
-[`sim/RESULTADOS.md`](sim/RESULTADOS.md).
+Duelos do mesmo nível, 1500 por célula, sementes fixas. O traço é um Posto que ainda
+não existe naquele nível: Prata só a partir do 9, Ouro só a partir do 15. A tabela
+completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
-| Confronto | Nível 1 | Nível 9 | Nível 17 |
-|---|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 47% | 47% | 49% |
-| Prata contra Bronze | 60% | 58% | 62% |
-| Bronze sozinho contra Ouro | 3% | 4% | 3% |
-| Bronze com a Centelha de um amigo contra Ouro | 5% | 9% | 5% |
-| Quem nunca apara a armadura | 38% | 34% | 39% |
-| Quem nunca levanta do chão | 7% | 4% | 0% |
+| Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
+|---|---:|---:|---:|---:|
+| Espelho, Bronze contra Bronze | 47% | 47% | 48% | 49% |
+| Prata contra Bronze | — | 58% | 59% | 62% |
+| Bronze sozinho contra Ouro | — | — | 3% | 1% |
+| Bronze com a Centelha de um amigo contra Ouro | — | — | 3% | 4% |
+| Quem nunca apara a armadura | 38% | 34% | 45% | 27% |
+| Quem nunca levanta do chão | 7% | 4% | 1% | 0% |
 
-Das raras vitórias de um Bronze sobre um Ouro, de 80% a 100% vieram depois de levantar
-do chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um
-Ouro por um milagre, com ajuda, e quase morrendo.
+Das raras vitórias de um Bronze sobre um Ouro, mais de 95% vieram depois de levantar do
+chão, e o Bronze terminou a luta com um quinto dos PV. É o anime: um Bronze vence um Ouro
+por um milagre, com ajuda, e quase morrendo.
 
 ### As vezes em que o simulador contrariou o rascunho
 
 1. **A Guerra dos Mil Dias travava 95% das lutas equilibradas.** A condição era "o mesmo
    Teto de Cosmo", e dois guerreiros do mesmo nível sempre têm o mesmo Teto. Agora ela
    começa num choque de técnicas — o mesmo número natural na mesma rodada — e acontece em
-   cerca de 13% das lutas entre Ouros.
+   14% a 17% das lutas entre Ouros.
 2. **Queimar o Cosmo vencia 80% dos duelos nos níveis altos.** O preço era fixo e o ganho
    crescia com o Grau. Agora o preço cresce junto, e quem nunca queima vence de 42% a 52%.
 3. **No nível 5, dar só golpes comuns rendia tanto quanto usar técnicas.** Era o Ataque
