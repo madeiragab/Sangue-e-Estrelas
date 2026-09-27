@@ -3,6 +3,26 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.3.1] - 2026-09-27
+
+### Mudado
+
+- **Mais vidas para Posto mais alto.** O sangue de guerreiro revive a armadura de
+  Bronze até 3 vezes, a de Prata até 6 e a de elite até 9. A armadura de elite não tem
+  o degrau de elite: para ela, o sangue de elite é o normal, com o bônus normal. Elite
+  e deus continuam uma vez cada (a elite, só para Bronze e Prata).
+- **Bônus das formas menores.** Com mais vidas, os bônus da 0.3.0 somavam demais: a
+  Prata com a escada inteira vencia um Ouro 58% a 66%. Agora cada forma de guerreiro
+  alterna +1 no acerto (1ª, 3ª, 5ª…) e +1 de Resistência (2ª, 4ª…); a de elite dá +1
+  na DEF; a de deus, +1 na DEF e +1 no acerto. O acerto e a DEF das formas só valem com
+  a armadura no corpo. Medido: a V4 de Bronze vence a original 57% a 63%; a Prata com a
+  escada inteira vence um Ouro 22% a 29%; o Ouro revivido nove vezes vence o original
+  69% a 71%.
+- **Restaurar: Ofício contra CD 14 + a Versão** (era 14 + 2 × a Versão, que passava de
+  30 numa armadura de Ouro revivida nove vezes).
+- Metas novas em `test.py`: a escada por Posto, o exemplo do Capítulo Sete, a Prata com
+  a escada inteira abaixo do Ouro, o Ouro revivido nove vezes forte sem ser imbatível.
+
 ## [0.3.0] - 2026-09-27
 
 ### Adicionado
