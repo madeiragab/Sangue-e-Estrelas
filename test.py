@@ -102,8 +102,10 @@ def testar_livro() -> None:
         confere(vezes in html, f"escada do sangue: {sangue} revive "
                 f"{'/'.join(str(R.REVIVIDAS_MAX[sangue][p]) for p in ('bronze', 'prata', 'ouro'))} vezes")
     g = ("guerreiro",)
-    confere(R.formas_validas("prata", g * 6 + ("elite", "deus"))
-            and R.formas_validas("ouro", g * 9 + ("deus",))
+    confere(R.formas_validas("prata", g * 4 + ("elite", "deus"))
+            and R.formas_validas("ouro", g * 6 + ("deus",))
+            and not R.formas_validas("prata", g * 5)
+            and not R.formas_validas("ouro", g * 7)
             and not R.formas_validas("bronze", g * 4)
             and not R.formas_validas("ouro", g + ("elite",))
             and not R.formas_validas("bronze", ("elite", "guerreiro")),
@@ -193,14 +195,14 @@ def testar_equilibrio() -> None:
         fd = taxa(lambda k: montar("A", k, formas=tudo), lambda k: montar("B", k, "ouro"), n, 87 + n)
         confere(fd["a"] <= 0.25,
                 f"nível {n}: nem com sangue de deus a armadura de Bronze iguala o Ouro ({fd['a']:.0%})")
-        pd = taxa(lambda k: montar("A", k, "prata", formas=("guerreiro",) * 6 + ("elite", "deus")),
+        pd = taxa(lambda k: montar("A", k, "prata", formas=("guerreiro",) * 4 + ("elite", "deus")),
                   lambda k: montar("B", k, "ouro"), n, 85 + n)
         confere(pd["a"] <= 0.40,
                 f"nível {n}: nem a Prata com a escada inteira iguala o Ouro ({pd['a']:.0%})")
-        o9 = taxa(lambda k: montar("A", k, "ouro", formas=("guerreiro",) * 9),
+        o6 = taxa(lambda k: montar("A", k, "ouro", formas=("guerreiro",) * 6),
                   lambda k: montar("B", k, "ouro"), n, 84 + n)
-        confere(0.55 <= o9["a"] <= 0.85,
-                f"nível {n}: o Ouro revivido nove vezes é forte, não imbatível ({o9['a']:.0%})")
+        confere(0.55 <= o6["a"] <= 0.80,
+                f"nível {n}: o Ouro revivido seis vezes é forte, não imbatível ({o6['a']:.0%})")
         oc = taxa(lambda k: montar("A", k), lambda k: montar("B", k, "ouro"), n, 81 + n, centelhas_a=1)
         # do 15 em diante a Centelha vale cerca de 1 ponto: a margem cobre o acaso de 500 duelos
         confere(o["a"] - 0.03 <= oc["a"] <= 0.18,

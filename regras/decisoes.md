@@ -105,7 +105,7 @@ aqui primeiro.
 - **Aparar gasta a reação** e disputa com Bloquear (0.2.0). De graça, cortava toda
   técnica pela metade e as lutas passavam de dez rodadas.
 - **Restaurar tem teste** (Ofício CD 14 + Versão), tempo e metal por Posto. Era
-  14 + 2 × Versão; com a armadura de Ouro revivendo nove vezes, a CD passava de 30.
+  14 + 2 × Versão; com a armadura de Ouro revivendo muitas vezes, a CD passava de 30.
 - **Estilo clássico (urna) ou Ômega (pedra):** só visual. **Sem sistema
   elemental** do Ômega (a própria série abandonou na segunda metade).
 - **Reviver com sangue, em terços:** 1/3 do sangue de uma pessoa por armadura; o
@@ -113,17 +113,20 @@ aqui primeiro.
 - **A escada do sangue segue o mangá:** primeiro sangue de Cavaleiro (até três
   vezes no Bronze, e a armadura muda de forma a cada uma — a de Pégaso tem 5 versões no
   mangá e 3 no anime), depois sangue de Ouro, depois sangue de deus.
-- **Mais vidas para Posto mais alto** (0.3.1): pedido do usuário. Sangue de guerreiro
-  revive a de Bronze 3 vezes, a de Prata 6, a de Ouro 9. A de Ouro não tem o degrau de
-  elite: o sangue de elite é o normal dela, com o bônus normal.
+- **Mais vidas para Posto mais alto** (0.3.1, ajustado na 0.3.2): pedido do usuário.
+  Sangue de guerreiro revive a de Bronze 3 vezes, a de Prata 4, a de Ouro 6. Na 0.3.1
+  eram 3, 6 e 9; o usuário achou 9 demais — com tantas vidas, uma armadura de Ouro
+  quase nunca morreria de vez. A de Ouro não tem o degrau de elite: o sangue de elite é
+  o normal dela, com o bônus normal.
 - **Cada forma nova é um pouco mais forte** (0.3.0, rebalanceado na 0.3.1): pedido do
   usuário. Os bônus da 0.3.0 (guerreiro +1 DEF e +1 de Resistência, elite +2 e +2, deus
   +3 e +3) somados às novas vidas faziam a Prata com a escada inteira vencer um Ouro 58%
   a 66%. O usuário pediu bônus menores ("+1 no acerto por evolução, +1 na DEF quando é
   de Ouro"). Agora: guerreiro alterna +1 no acerto (1ª, 3ª, 5ª…) e +1 de Resistência
   (2ª, 4ª…); elite +1 DEF; deus +1 DEF e +1 no acerto. Só Resistência não bastava: +1 de
-  Resistência sozinho não mudava a luta (48% a 51%). Medido: a Prata com a escada
-  inteira vence um Ouro 22% a 29%; o Ouro revivido nove vezes vence o original 69% a 71%.
+  Resistência sozinho não mudava a luta (48% a 51%). Medido (0.3.2): a Prata com a
+  escada inteira vence um Ouro 16% a 23%; o Ouro revivido seis vezes vence o original 58%
+  a 60%.
 - **Sangue de Ouro:** a armadura fica dourada no Sétimo (a New Cloth do Seiya,
   com o sangue do Aiolia).
 - **Sangue de deus não vira Divina direto.** A Divina é um estado: sangue de deus
