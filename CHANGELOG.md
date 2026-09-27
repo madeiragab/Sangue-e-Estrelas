@@ -3,6 +3,31 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.5.0] - 2026-09-27
+
+### Adicionado
+
+- **Características da armadura** (Capítulo Sete): 1 no Bronze, 2 na Prata, 3 na elite,
+  escolhidas numa lista de onze — Couraça grossa, Espinhos, Espelhada, Pesada, Leve,
+  Ressonante, Constelação viva, Coração de estrela, Cortante, Ofuscante e Elmo fechado. A
+  cada forma nova, dá para trocar uma. A tabela sai do simulador no build. Mais o traço
+  de origem, de graça, que não mexe na luta.
+- Medido: cada característica, sozinha, vence 45% a 62% dos duelos contra a mesma
+  armadura sem ela.
+- As fichas prontas de inimigos têm as características delas; a criação (Capítulo Três),
+  a ficha pronta do Téo (Cortante) e o modelo de ficha ganharam o campo.
+- Metas novas em `test.py`: cada característica na faixa; as dos lutadores de referência
+  estão na tabela do livro.
+
+### Mudado
+
+- **Sozinho contra muitos:** PV × 1¼, 1¾, 2¼, 2¾, 3¼ para 2 a 6 oponentes (eram × 1,5 a
+  3,5). Com as características, o chefe ficava duro demais: quatro Bronzes venciam um Ouro
+  25% a 32%. Agora, 38% a 42%.
+- O simulador monta os lutadores de referência com as características típicas do Posto.
+  Os números do livro foram medidos de novo: o Bronze vence o Prata 9% a 13%, o Ouro 0% a
+  2%; a tabela de dificuldade e a de grupo contra um foram refeitas.
+
 ## [0.4.0] - 2026-09-27
 
 O sistema passou por um teste de estresse: `sim/extremos.py` tenta quebrá-lo e escreve

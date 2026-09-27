@@ -1375,13 +1375,16 @@ function rolar(modo) {
     <li><strong>Hades:</strong> uma das 72 Estrelas Terrestres, com a criatura dela.</li>
     <li><strong>Asgard:</strong> uma estrela do céu do norte ou uma criatura das sagas.</li>
   </ul>
-  <p>A constelação decide três coisas:</p>
+  <p>A constelação decide quatro coisas:</p>
   <ul>
     <li><strong>A forma da armadura.</strong> Quando está guardada, a armadura fica montada
       como uma estátua da criatura dela. Quando você a veste, cada parte da estátua vira uma
       peça.</li>
     <li><strong>O acessório.</strong> Escolha um: escudo, correntes, asas, garras ou chifres,
       ou nenhum. Cada um tem uma regra, no <a href="#cap7">Capítulo Sete</a>.</li>
+    <li><strong>A característica.</strong> Uma, da lista do
+      <a href="#caracteristicas">Capítulo Sete</a>: o que o metal da sua armadura faz de
+      diferente. Uma Baleia tem Couraça grossa; um Lince é Cortante ou Leve.</li>
     <li><strong>O tema dos golpes.</strong> Um Lince ataca com garras e saltos; um Cisne,
       com gelo; uma Fênix, com fogo e ilusão. O tema não custa nada nem dá nada: ele diz
       como os seus golpes aparecem na mesa.</li>
@@ -1614,7 +1617,7 @@ function rolar(modo) {
       <tr><td>Bônus de técnica</td><td>Golpe: FOR ou DES + proficiência · Cosmo: Atributo do Cosmo + proficiência</td></tr>
       <tr><td>Teto de Cosmo</td><td>3 + proficiência — 5 no nível 1</td></tr>
       <tr><td>Cosmo inicial</td><td>Modificador do Atributo do Cosmo, mínimo 1</td></tr>
-      <tr><td>Armadura</td><td>Bronze: DEF +2 e Resistência 3 (4 sem acessório)</td></tr>
+      <tr><td>Armadura</td><td>Bronze: DEF +2 e Resistência 3 (4 sem acessório), e uma característica</td></tr>
       <tr><td>Convicções · Centelhas</td><td>3 Convicções · 3 Centelhas por sessão</td></tr>
       <tr><td>Glória</td><td>0. Você sobe de nível com 3 de Glória nos níveis 1 a 4</td></tr>
       <tr><td>Técnicas</td><td>2 no nível 1</td></tr>
@@ -1762,9 +1765,9 @@ function rolar(modo) {
 
   <div class="nota">
     <p><strong>O que o simulador diz sobre Bronze contra Ouro.</strong> Do mesmo nível — e o
-    Ouro só existe do 15 em diante —, um Bronze sozinho vence um Ouro de 1% a 4% das vezes;
-    um Prata, de 4% a 6%. Um amigo mandando uma Centelha por rodada quase não muda a conta:
-    de 3% a 5%. E, das poucas vitórias, mais de 90% vieram depois de levantar do chão, e o
+    Ouro só existe do 15 em diante —, um Bronze sozinho vence um Ouro de 0% a 2% das vezes;
+    um Prata, de 2% a 5%. Um amigo mandando uma Centelha por rodada quase não muda a conta:
+    de 1% a 8%. E, das poucas vitórias, mais de 95% vieram depois de levantar do chão, e o
     Bronze terminou a luta com um quinto
     dos PV. É o anime: um Bronze vence um Ouro por um milagre, com a ajuda de alguém, e quase
     morrendo.</p>
@@ -2619,6 +2622,44 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     </tbody>
   </table></div>
 
+  <h3 id="caracteristicas">As características</h3>
+  <p>Duas armaduras de Bronze nunca são iguais. Além do acessório, toda armadura tem
+  <em class="termo">características</em>: o que o metal dela faz de diferente. Escolha na
+  criação, pensando na constelação — a Couraça grossa de uma Baleia, a Leveza de um Lince,
+  o brilho Ofuscante de uma Cruz do Sul.</p>
+  <ul>
+    <li><strong>Quantas:</strong> 1 no Bronze, 2 na Prata, 3 na elite.</li>
+    <li>Quando a armadura sobe de Bronze a Prata, ganha a segunda. A armadura de elite vem
+      com as três dela: as da vaga, que o Mestre define.</li>
+    <li>A cada forma nova, você pode trocar uma característica: a armadura voltou diferente.</li>
+    <li>Cada uma entra uma vez só por armadura, e só funciona com a armadura no corpo.</li>
+  </ul>
+  <div class="rolagem"><table>
+<thead><tr><th>Característica</th><th>O que faz</th></tr></thead><tbody>
+<tr><td>Couraça grossa</td><td>Todo golpe comum que te acerta causa o seu Grau a menos de dano.</td></tr>
+<tr><td>Espinhos</td><td>Uma vez por turno, quem te acerta com um golpe comum sofre <span class="dado">1d4</span> + o seu Grau de dano.</td></tr>
+<tr><td>Espelhada</td><td>Uma vez por luta, quando você apara uma técnica, quem a usou sofre <span class="dado">1d6</span> por Grau.</td></tr>
+<tr><td>Pesada</td><td>+1 na DEF, −2 na Iniciativa e −3 metros de movimento.</td></tr>
+<tr><td>Leve</td><td>+2 na Iniciativa e +3 metros de movimento.</td></tr>
+<tr><td>Ressonante</td><td>Você começa toda luta com +1 de Cosmo.</td></tr>
+<tr><td>Constelação viva</td><td>Quando você desperta o Sétimo, recupera <span class="dado">1d8</span> de PV por Grau.</td></tr>
+<tr><td>Coração de estrela</td><td>Quando você levanta com uma Convicção, volta com um terço dos PV em vez de um quarto.</td></tr>
+<tr><td>Cortante</td><td>Os seus golpes comuns não podem ser aparados.</td></tr>
+<tr><td>Ofuscante</td><td>Uma vez por luta, a primeira técnica usada contra você rola com Desvantagem: a armadura brilha na hora do golpe.</td></tr>
+<tr><td>Elmo fechado</td><td>Enquanto o Elmo estiver no lugar, nenhuma técnica arranca a sua visão ou a sua audição.</td></tr>
+</tbody></table></div>
+  <p><strong>Traço de origem.</strong> Além das características, a armadura pode ter, de
+  graça, um traço que venha da constelação ou do exército e que não mexa na luta: respirar
+  debaixo d'água, ignorar o frio da Sibéria ou o calor de um vulcão, não fazer barulho,
+  brilhar no escuro. Se o traço começar a dar vantagem de regra, virou característica.</p>
+  <div class="nota">
+    <p><strong>Medido.</strong> Cada característica, sozinha, vence de 45% a 62% dos duelos
+    contra a mesma armadura sem ela: um empurrão, nunca a luta. O Elmo fechado não foi medido
+    porque o simulador não arranca sentidos. Diante de um grupo, as que protegem pesam mais: um
+    chefe com Couraça, Espinhos e Espelhada é mais duro que um com Leve, Cortante e
+    Constelação viva.</p>
+  </div>
+
   <h3 id="resistencia">A Resistência</h3>
   <p>A armadura tem um número só para acompanhar na luta: a
   <em class="termo">Resistência</em>. É quanto ela aguenta antes de se despedaçar. Na ficha,
@@ -2654,7 +2695,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </div>
   <p>A elite não usa a Hierarquia: o que ela tem é maior — o Sétimo quando quer, e o domínio
   do <a href="#setimo">Capítulo Quatro</a>. Medido, do mesmo nível: o Bronze vence o Prata
-  de 12% a 19% das vezes, e vence o Ouro de 1% a 4%. Perde para os dois — e muito mais
+  de 9% a 13% das vezes, e vence o Ouro de 0% a 2%. Perde para os dois — e muito mais
   para o Ouro.</p>
 
   <h3 id="armadura-na-luta">A armadura na luta</h3>
@@ -2783,12 +2824,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   cada conserto e fica mais forte a cada vez. É esse o espírito.</p>
   <div class="nota">
     <p><strong>Medido</strong>, sempre do mesmo nível. Uma armadura de Bronze revivida três
-    vezes vence a original de 57% a 63% das vezes; somando a forma de elite, de 63% a 71%.
-    Uma de Prata revivida quatro vezes vence a original de 58% a 61%; uma de Ouro revivida
+    vezes vence a original de 57% a 65% das vezes; somando a forma de elite, de 63% a 68%.
+    Uma de Prata revivida quatro vezes vence a original de 59% a 64%; uma de Ouro revivida
     seis vezes, de 58% a 60%.</p>
     <p>Contra um Ouro original, a armadura de Bronze com a escada inteira — três formas, a de
-    elite e a de deus — vence de 11% a 16%; a de Prata com a escada inteira, seis mortes, de
-    16% a 23%. E isso sem a forma Divina. As armaduras que morreram e voltaram chegam mais
+    elite e a de deus — vence de 5% a 9%; a de Prata com a escada inteira, seis mortes, de
+    11% a 20%. E isso sem a forma Divina. As armaduras que morreram e voltaram chegam mais
     perto do Ouro. Não chegam a ele.</p>
   </div>
 
@@ -3379,6 +3420,10 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><b>Posto</b> Bronze, Prata ou elite. O Prata tem a Hierarquia contra Bronzes (+2 e
       −2). A elite entra no Sétimo quando quer, com o domínio de +3, e tem um Golpe do
       Assento.</li>
+    <li><b>Características</b> 1 no Bronze, 2 na Prata, 3 na elite, do
+      <a href="#caracteristicas">Capítulo Sete</a>. Para um chefe que vai lutar contra o grupo
+      inteiro, as que protegem (Couraça, Espinhos, Espelhada, Pesada) o deixam bem mais
+      duro.</li>
     <li><b>Técnicas</b> Uma grande, no tamanho máximo do Grau, e uma pequena, de 2 pontos. A
       partir do nível 4, uma média. Dê nome e tema a elas; a conta já está na tabela.</li>
     <li><b>Convicções</b> Figurante e nomeado: 0. Rival: 1. Chefe: 2 ou 3.</li>
@@ -3404,10 +3449,10 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <tr><td class="num">10</td><td class="num">79</td><td class="num">16/18/—</td><td class="num">+8</td><td>2×1d8+4</td><td>18d8+4 (6)</td><td class="num">19/22</td></tr>
 <tr><td class="num">12</td><td class="num">85</td><td class="num">17/19/—</td><td class="num">+9</td><td>2×1d8+5</td><td>18d8+5 (6)</td><td class="num">19/23</td></tr>
 <tr><td class="num">14</td><td class="num">107</td><td class="num">17/19/—</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
-<tr><td class="num">15</td><td class="num">110</td><td class="num">17/19/21</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
-<tr><td class="num">16</td><td class="num">129</td><td class="num">17/19/21</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
-<tr><td class="num">18</td><td class="num">153</td><td class="num">17/19/21</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
-<tr><td class="num">20</td><td class="num">181</td><td class="num">17/19/21</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
+<tr><td class="num">15</td><td class="num">110</td><td class="num">17/19/22</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
+<tr><td class="num">16</td><td class="num">129</td><td class="num">17/19/22</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
+<tr><td class="num">18</td><td class="num">153</td><td class="num">17/19/22</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
+<tr><td class="num">20</td><td class="num">181</td><td class="num">17/19/22</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
 </tbody></table></div>
 
   <h3>Figurantes</h3>
@@ -3440,12 +3485,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="rolagem"><table>
     <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>O personagem vence</th></tr></thead>
     <tbody>
-      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>84% a 100%</td></tr>
-      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>47% a 49%</td></tr>
-      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção</td><td>35% a 45%</td></tr>
-      <tr><td>Muito difícil</td><td>Um Prata do mesmo nível com uma Convicção, contra um Bronze</td><td>11% a 19%</td></tr>
-      <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>2% a 6% sozinho, Bronze ou Prata</td></tr>
-      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>7% a 21%</td></tr>
+      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>87% a 99%</td></tr>
+      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>47% a 50%</td></tr>
+      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção</td><td>36% a 48%</td></tr>
+      <tr><td>Muito difícil</td><td>Um Prata do mesmo nível com uma Convicção, contra um Bronze</td><td>9% a 11%</td></tr>
+      <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>0% a 5% sozinho, Bronze ou Prata</td></tr>
+      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>1% a 19%</td></tr>
     </tbody>
   </table></div>
   <p>A lição da tabela: <strong>o que torna um inimigo perigoso são as Convicções e o
@@ -3456,24 +3501,24 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <span class="rotulo">Cuidado com a fronteira de Grau</span>
     <p>Nos níveis 5, 9, 13 e 17 o Grau sobe, e o dano e os PV saltam juntos. Um inimigo
     que já cruzou a fronteira e o personagem ainda não pesa como se estivesse muitos níveis
-    acima. Medido, dois níveis acima: um nomeado sem Convicção cai de 85%–99% para 47%–92%;
-    um rival com uma Convicção, de 33%–43% para 4%–20%. Nessas fronteiras, conte o inimigo
+    acima. Medido, dois níveis acima: um nomeado sem Convicção cai de 87%–99% para 47%–91%;
+    um rival com uma Convicção, de 33%–53% para 3%–19%. Nessas fronteiras, conte o inimigo
     como <strong>dois degraus mais difícil</strong> na tabela.</p>
   </div>
 
   <h3 id="sozinho-contra-muitos">Sozinho contra muitos</h3>
   <p>Na mesa, o grupo quase sempre luta junto — e quatro contra um é uma conta cruel. Sem
-  ajuda, dois Bronzes vencem um Prata do mesmo nível 85% das vezes, e três Bronzes vencem
-  um Ouro 92%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
+  ajuda, dois Bronzes vencem um Prata do mesmo nível 80% a 87% das vezes, e três Bronzes vencem
+  um Ouro 86% a 93%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
   sozinho contra dois ou mais personagens usa esta regra:</p>
   <div class="rolagem"><table>
     <thead><tr><th class="num">Oponentes</th><th class="num">PV do inimigo</th><th class="num">Ações a mais por rodada</th></tr></thead>
     <tbody>
-      <tr><td class="num">2</td><td class="num">× 1,5</td><td class="num">1</td></tr>
-      <tr><td class="num">3</td><td class="num">× 2</td><td class="num">1</td></tr>
-      <tr><td class="num">4</td><td class="num">× 2,5</td><td class="num">2</td></tr>
-      <tr><td class="num">5</td><td class="num">× 3</td><td class="num">2</td></tr>
-      <tr><td class="num">6</td><td class="num">× 3,5</td><td class="num">3</td></tr>
+      <tr><td class="num">2</td><td class="num">× 1¼</td><td class="num">1</td></tr>
+      <tr><td class="num">3</td><td class="num">× 1¾</td><td class="num">1</td></tr>
+      <tr><td class="num">4</td><td class="num">× 2¼</td><td class="num">2</td></tr>
+      <tr><td class="num">5</td><td class="num">× 2¾</td><td class="num">2</td></tr>
+      <tr><td class="num">6</td><td class="num">× 3¼</td><td class="num">3</td></tr>
     </tbody>
   </table></div>
   <ul>
@@ -3486,12 +3531,14 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="rolagem"><table>
     <thead><tr><th>Grupo de Bronzes do mesmo nível, com a regra</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
     <tbody>
-      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">46–60%</td><td class="num">77–85%</td><td class="num">85–91%</td><td class="num">95–97%</td></tr>
-      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">17–18%</td><td class="num">36–38%</td><td class="num">47–48%</td><td class="num">65–74%</td></tr>
+      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">51–66%</td><td class="num">80–90%</td><td class="num">89–94%</td><td class="num">96–98%</td></tr>
+      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">14–17%</td><td class="num">33–40%</td><td class="num">38–42%</td><td class="num">59–61%</td></tr>
     </tbody>
   </table></div>
-  <p>Quatro Bronzes contra um Ouro do mesmo nível é meio a meio, e uns três deles caem no
-  caminho. Com um atordoador no grupo, o mesmo meio a meio. A luta dura de 7 a 11 rodadas.
+  <p>Quatro Bronzes contra um Ouro do mesmo nível vencem umas quatro vezes em dez, e uns
+  três deles caem no caminho; cinco Bronzes vencem seis em dez. Com um atordoador no grupo,
+  quase o mesmo (44% a 45%). A luta dura de 7 a 11 rodadas. Medido com características
+  típicas dos dois lados: 1 no Bronze, 3 no Ouro.
   É o que a elite deve ser para um grupo: a luta da sessão.</p>
 
   <h3>Deuses</h3>
@@ -3517,7 +3564,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro Negro<span class="kleos">Nível 2 · Bronze</span></h3>
 <p class="tipo">Renegado</p>
-<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · <b>Resistência</b> 3 · garras<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · <b>Resistência</b> 3 · garras<br><b>Características</b> Cortante<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+4 contra a DEF, <span class="dado">1d10 + 2</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3530,7 +3577,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Espectro de Estrela Terrestre<span class="kleos">Nível 4 · Bronze</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 29 <span class="sep">·</span> <b>DEF</b> 15 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 19 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · <b>Resistência</b> 3 · asas<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 29 <span class="sep">·</span> <b>DEF</b> 15 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 19 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · <b>Resistência</b> 3 · asas<br><b>Características</b> Leve<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+5 contra a DEF, <span class="dado">1d8 + 3</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3543,7 +3590,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro de Prata<span class="kleos">Nível 9 · Prata</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 76 <span class="sep">·</span> <b>DEF</b> 18 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · <b>Resistência</b> 6 · correntes<br><b>Convicções</b> 1</div>
+<div class="status"><b>PV</b> 76 <span class="sep">·</span> <b>DEF</b> 18 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 3, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · <b>Resistência</b> 6 · correntes<br><b>Características</b> Ressonante · Ofuscante<br><b>Convicções</b> 1</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+8 contra a DEF, <span class="dado">1d8 + 4</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3556,7 +3603,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Guerreiro Deus<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Asgard</p>
-<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 9 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 4, Teto 10 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Características</b> Couraça grossa · Ressonante · Constelação viva<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3569,7 +3616,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>General Marina<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Poseidon</p>
-<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · <b>Resistência</b> 9 · escudo<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · <b>Resistência</b> 9 · escudo<br><b>Características</b> Pesada · Espelhada · Couraça grossa<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3582,20 +3629,20 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro de Ouro<span class="kleos">Nível 16 · Elite</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 129 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 22 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 129 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 22 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 4, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Características</b> Ressonante · Ofuscante · Pesada<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>o Golpe do Assento da vaga</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>. Atravessa a armadura.</li><li><strong>Impacto do Zodíaco</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>.</li><li><strong>Muralha de Luz</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">16d8 + 5</span>.</li><li><strong>Chama Dourada</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">8d8 + 5</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Sétimo dominado.</strong> Entra no Sétimo no primeiro turno e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li><li><strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco mais de uma vez em quatro.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem uma vez em cinco.</p>
 </div>
 
   <div class="criatura">
 <h3>Juiz do Inferno<span class="kleos">Nível 18 · Elite</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 153 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 3, Teto 10 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · <b>Resistência</b> 9 · asas<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 153 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +7<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 3, Teto 10 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · <b>Resistência</b> 9 · asas<br><b>Características</b> Leve · Cortante · Coração de estrela<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+11 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3856,8 +3903,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     história a traz — uma armadura que te escolhe, um mestre que passa o lugar, uma vaga que
     abre porque alguém morreu.</p>
   </div>
-  <p>Subir para Prata dá a linha da Prata na armadura e a Hierarquia sobre os Bronzes. Subir para a elite dá a armadura da
-  vaga, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
+  <p>Subir para Prata dá a linha da Prata na armadura, a segunda característica e a
+  Hierarquia sobre os Bronzes. Subir para a elite dá a armadura da vaga, com as três
+  características dela, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
   ele não vem com o nível: vem com ele e com a história.</p>
 
   <h3>A tabela</h3>
@@ -4028,7 +4076,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       armadura no corpo.</p>
 
       <p><strong>Armadura de Lince</strong> · Bronze, Versão 1 · DEF +2 · Resistência ☐ ☐ ☐ ·
-      acessório: garras.</p>
+      acessório: garras · característica: Cortante (os golpes comuns do Téo não podem ser
+      aparados).</p>
 
       <p><strong>Técnica · Garra que Rasga o Céu</strong> (assinatura). Golpe (DES),
       instantânea, dois pontos de dano em alvo único (2), quebra a armadura (+1). Tamanho 3,
@@ -4094,6 +4143,7 @@ GLÓRIA    ___ de ___       RELÍQUIAS EM SINTONIA ______________________
 
 ARMADURA ______________  Versão __   DEF +__   Acerto +__   Traço: ________
   RESISTÊNCIA ☐☐☐☐☐☐☐☐☐☐☐☐     Formas: ________________   Elmo ☐
+  CARACTERÍSTICAS ______________________________________________________
 
 TREINO ____________   Lição: ____________________________________
 CONVICÇÕES  1. ______________________________________________  ☐ gasta
@@ -4176,7 +4226,7 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.4.0</strong>, de 27/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.5.0</strong>, de 27/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que

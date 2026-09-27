@@ -324,6 +324,17 @@ def fronteiras_de_grau() -> list[str]:
     return out
 
 
+def caracteristicas() -> list[str]:
+    import inimigos as I
+    out = cabecalho("Com a característica, contra a mesma armadura sem nenhuma")
+    for c, (nome, _) in I.CARACTERISTICAS.items():
+        if c == "elmo_fechado":
+            continue                    # o simulador não arranca sentidos
+        out.append(linha_por_nivel(nome, lambda n, c=c: montar("A", n, caracteristicas=(c,)),
+                                   lambda n: montar("B", n, caracteristicas=())))
+    return out
+
+
 def main() -> None:
     partes = [
         "# O sistema em condições extremas",
@@ -351,6 +362,7 @@ def main() -> None:
         "Dentro da faixa: personagem de nível 1, 5, 9, 13, 17. Cruzando: 3, 7, 11, 15 "
         "(o inimigo já está no Grau seguinte).", "",
         *fronteiras_de_grau(), "",
+        "## Características da armadura", "", *caracteristicas(), "",
     ]
     texto = "\n".join(partes)
     (pathlib.Path(__file__).parent / "EXTREMOS.md").write_text(texto, encoding="utf-8")

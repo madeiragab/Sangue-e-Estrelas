@@ -141,6 +141,7 @@ def main() -> None:
     s = s.replace("{{TABELA_NIVEIS}}", inimigos.tabela_niveis())
     s = s.replace("{{TABELA_POSTO}}", inimigos.tabela_posto())
     s = s.replace("{{TABELA_FORMAS}}", inimigos.tabela_formas())
+    s = s.replace("{{TABELA_CARACTERISTICAS}}", inimigos.tabela_caracteristicas())
     s = s.replace("{{TABELA_INIMIGOS}}", inimigos.tabela_rapida())
     s = re.sub(r"\{\{INIMIGO:([a-z-]+)\}\}", lambda m: inimigos.bloco(m.group(1)), s)
 

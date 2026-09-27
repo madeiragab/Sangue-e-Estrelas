@@ -79,6 +79,7 @@ class Lutador:
     teto_fixo: int = 0                 # Safira de Odin, Juiz do Inferno
     resistencia_extra: int = 0         # Escama de oricalco: +1
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
+    caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -117,9 +118,16 @@ class Lutador:
         forma = R.bonus_das_formas(self.formas)
         self.armadura_def = bonus + forma["def"]
         self.acerto_forma = forma["acerto"]
+        car = self.caracteristicas
         self.resistencia_max = (res + forma["res"] + self.resistencia_extra
                                 + (1 if self.acessorio == "nenhum" else 0)
-                                + R.resistencia_por_nivel(self.nivel))
+                                + R.resistencia_por_nivel(self.nivel)
+                                )
+        if "ressonante" in car:
+            self.cosmo += 1
+        self.espelho_usado = False
+        self.ofuscar_usado = False
+        self.espinhos_turno = 0
         self.resistencia = self.resistencia_max
         self.elmo = True
         self.armadura_morta = False
@@ -133,7 +141,8 @@ class Lutador:
     # ------------------------------------------------------------------
     @property
     def teto(self) -> int:
-        return R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo
+        return (R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo
+                + (1 if "estrelada" in self.caracteristicas else 0))
 
     @property
     def armada(self) -> bool:
@@ -144,7 +153,7 @@ class Lutador:
     def defesa(self) -> int:
         d_ = 10 + max(self.mods["des"], self.mods[self.atr_cosmo])
         if self.armada:
-            d_ += self.armadura_def
+            d_ += self.armadura_def + (1 if "pesada" in self.caracteristicas else 0)
         if "visao" in self.sentidos_perdidos:
             d_ -= 2                    # não vê o golpe vindo
         return d_
@@ -166,16 +175,26 @@ class Lutador:
     def queima_maxima(self) -> int:
         return self.prof + (2 if self.degrau >= 1 else 0)
 
+    def custo(self, t: Tecnica) -> int:
+        return t.custo()
+
     # ------------------------------------------------------------------
     def subir_cosmo(self, n: int):
         self.cosmo = min(self.teto, self.cosmo + n)
 
-    def entrar_no_setimo(self):
+    def entrar_no_setimo(self, rng=None):
         if self.sentido == "sexto":
             self.sentido = "setimo"
             self.teto_extra += R.TETO_SETIMO
             self.despertou = True
+            if "estrelada" in self.caracteristicas and rng is not None:
+                # a constelação acende no despertar: 1d8 de PV por Grau
+                self.pv = min(self.pv_max, self.pv + rolar(rng, R.grau(self.nivel), 8))
             self.lido_por.clear()      # o golpe conhecido volta na velocidade da luz
+
+    def iniciativa(self, rng) -> int:
+        car = self.caracteristicas
+        return rng.randint(1, 20) + self.mods["des"] + (2 if "leve" in car else 0) - (2 if "pesada" in car else 0)
 
     def pode_usar(self, t: Tecnica) -> bool:
         """As limitações que proíbem: uma vez por luta, só com o Cosmo no Teto."""
@@ -204,7 +223,7 @@ class Lutador:
 
 def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "nenhum",
            conviccoes: int | None = None, politica: dict | None = None,
-           kit: str = "padrao", formas: tuple = ()) -> Lutador:
+           kit: str = "padrao", formas: tuple = (), caracteristicas: tuple | None = None) -> Lutador:
     """Um lutador de Golpe (DES) com o Cosmo em SAB, construído pelo livro.
 
     Distribuição 15/14/13/12/10/8: DES 15, CON 14, SAB 13, FOR 12, INT 10,
@@ -230,8 +249,11 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
     pol = dict(POLITICA_PADRAO)
     if politica:
         pol.update(politica)
+    if caracteristicas is None:     # as típicas do Posto: 1 no Bronze, 2 na Prata, 3 na elite
+        caracteristicas = R.CARACTERISTICAS_PADRAO[:R.CARACTERISTICAS_POR_POSTO[posto]]
     return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio,
-                   conviccoes=conviccoes, politica=pol, formas=tuple(formas))
+                   conviccoes=conviccoes, politica=pol, formas=tuple(formas),
+                   caracteristicas=tuple(caracteristicas))
 
 
 # ---------------------------------------------------------------------------
@@ -309,6 +331,17 @@ class Luta:
             return                      # Guerra dos Mil Dias: ninguém fere ninguém
         if quebra and alvo.armada:
             alvo.resistencia -= 1
+        if fonte == "golpe" and "cortante" in atacante.caracteristicas and atacante.armada:
+            atravessa = True            # a lâmina da armadura: o golpe comum não se apara
+        if (fonte == "golpe" and "espinhos" in alvo.caracteristicas and alvo.armada
+                and atacante.espinhos_turno != self.rodada):
+            atacante.espinhos_turno = self.rodada   # uma vez por turno de quem bate
+            atacante.pv = max(0, atacante.pv - d(self.rng, 4) - R.grau(alvo.nivel))
+            if atacante.pv == 0:
+                atacante.caido = True
+        if fonte == "golpe" and "couraca" in alvo.caracteristicas and alvo.armada:
+            dano = max(0, dano - R.grau(alvo.nivel))   # o golpe comum bate na couraça
+        antes = dano
         pol = alvo.politica
         reacao_ok = alvo.reacao or not R.APARAR_USA_REACAO
         if (not atravessa and pol["aparar"] and reacao_ok
@@ -318,6 +351,12 @@ class Luta:
                 dano //= 2
                 if R.APARAR_USA_REACAO:
                     alvo.reacao = False
+                if (fonte == "tecnica" and "espelhada" in alvo.caracteristicas
+                        and not alvo.espelho_usado):
+                    alvo.espelho_usado = True   # o espelho devolve o que não entrou
+                    atacante.pv = max(0, atacante.pv - rolar(self.rng, R.grau(alvo.nivel), 6))
+                    if atacante.pv == 0:
+                        atacante.caido = True
         alvo.pv = max(0, alvo.pv - dano)
         if fonte == "golpe":
             atacante.dano_golpe += dano
@@ -330,12 +369,17 @@ class Luta:
 
     # ------------------------------------------------------------------
     def rolar_ataque(self, atacante: Lutador, alvo: Lutador, bonus: int,
-                     def_extra: int = 0, passiva: int | None = None) -> tuple[bool, bool]:
+                     def_extra: int = 0, passiva: int | None = None,
+                     tecnica: bool = False) -> tuple[bool, bool]:
         """Devolve (acertou, crítico). O alvo pode Bloquear antes da rolagem.
         Com `passiva`, é uma Rolagem de Efeito: contra a defesa passiva, sem
         Bloquear e sem crítico."""
         v = self.vantagem(atacante, alvo)
         alvo.desprevenido = False
+        if (tecnica and "ofuscante" in alvo.caracteristicas and not alvo.ofuscar_usado
+                and alvo.armada and not alvo.caido):
+            alvo.ofuscar_usado = True   # o brilho da armadura, uma vez por luta
+            v = max(-1, v - 1)
         if atacante.vantagem_proxima:
             atacante.vantagem_proxima = False
             v = 1 if v == 0 else (0 if v < 0 else v)
@@ -346,7 +390,7 @@ class Luta:
                          and not (R.APARAR_USA_REACAO and alvo.politica["aparar"]))
         if pode_bloquear:
             alvo.reacao = False
-            bloqueio = 3 if alvo.acessorio == "escudo" else 2
+            bloqueio = (3 if alvo.acessorio == "escudo" else 2) + (1 if "guarda" in alvo.caracteristicas else 0)
         # A Hierarquia: o Prata diante de um Bronze.
         if atacante.posto == "prata" and alvo.posto == "bronze":
             bonus += R.HIERARQUIA
@@ -413,8 +457,8 @@ class Luta:
             x.pv = max(1, x.pv - rolar(self.rng, t.grau, 6))
         if "desprevenido" in t.limites:
             x.desprevenido = True
+        custo = x.custo(t)
         x.tecnicas_usadas += 1
-        custo = t.custo()
         pago = min(x.cosmo, custo)
         falta = custo - pago
         extra = max(0, queima - falta)          # pontos queimados além do custo
@@ -430,7 +474,7 @@ class Luta:
                 y.condicoes[t.condicao] = {"de": x, "tec": t}
         else:
             acertou, crit = self.rolar_ataque(x, y, x.bonus_ataque(t.natureza),
-                                              def_extra=R.BONUS_LIDO if lido else 0)
+                                              def_extra=R.BONUS_LIDO if lido else 0, tecnica=True)
         x.lido_por.add(t.nome)
         self.choque(x, y, self.ultimo_natural)
         if acertou and t.dados_de_dano:
@@ -456,7 +500,7 @@ class Luta:
         # 1) a maior técnica que o Cosmo paga (e que as limitações deixam usar)
         tecs = [t for t in tecs if x.pode_usar(t)]
         grande = tecs[0] if tecs else None
-        pagaveis = [t for t in tecs if t.custo() <= x.cosmo]
+        pagaveis = [t for t in tecs if x.custo(t) <= x.cosmo]
 
         # Diante de um Sentido acima, o Bronze guarda o Cosmo até o Teto para
         # despertar, em vez de gastá-lo em técnicas pequenas.
@@ -483,10 +527,10 @@ class Luta:
                 # a mutilação gasta a ação: fica cego, desperta, e só age no próximo turno
                 x.pv = max(1, x.pv - d(self.rng, 6))
                 x.perder_sentido("visao")
-                x.entrar_no_setimo()
+                x.entrar_no_setimo(self.rng)
                 return
             if vale and pol["queimar"]:
-                x.entrar_no_setimo()     # a queima desta técnica é o sacrifício
+                x.entrar_no_setimo(self.rng)     # a queima desta técnica é o sacrifício
                 q = min(x.queima_maxima(), max(1, x.queima_maxima() // 2))
                 self.usar_tecnica(x, y, grande, queima=q)
                 return
@@ -496,7 +540,7 @@ class Luta:
         #    derrubar — descontando o que a armadura do alvo vai aparar.
         if pol["queimar"] and grande is not None:
             qmax = x.queima_maxima()
-            custo = grande.custo()
+            custo = x.custo(grande)
             por_ponto = R.media_dado(R.dado_de_queima(x.nivel)) * grande.grau
             apara = 0.5 if (not grande.atravessa and y.armada) else 1.0
             if x.cosmo < custo <= x.cosmo + qmax:
@@ -526,7 +570,7 @@ class Luta:
 
         # 4) Concentrar quando isso fecha a grande e o golpe não fecharia
         if (pol["concentrar"] and grande is not None
-                and x.cosmo + R.COSMO_ACERTO < grande.custo() <= x.cosmo + R.COSMO_CONCENTRAR):
+                and x.cosmo + R.COSMO_ACERTO < x.custo(grande) <= x.cosmo + R.COSMO_CONCENTRAR):
             x.subir_cosmo(R.COSMO_CONCENTRAR)
             return
 
@@ -545,14 +589,14 @@ class Luta:
             x.conviccoes -= 1
             x.levantou += 1
             x.caido = False
-            x.pv = R.ceil_div(x.pv_max, 4)
+            x.pv = R.ceil_div(x.pv_max, 3 if "coracao" in x.caracteristicas else 4)
             x.cosmo = x.teto
             if x.posto in ("bronze", "prata"):
-                x.entrar_no_setimo()     # levantar é o sacrifício; a Convicção foi dita
+                x.entrar_no_setimo(self.rng)     # levantar é o sacrifício; a Convicção foi dita
         if rodada >= 2:
             x.subir_cosmo(R.COSMO_RELOGIO)
         if x.posto == "ouro":
-            x.entrar_no_setimo()
+            x.entrar_no_setimo(self.rng)
         # Centelhas dos aliados
         n = self.centelhas.get(x.nome, 0)
         while n and x.centelhas_recebidas < R.TETO_CENTELHA_MAX:
@@ -586,8 +630,8 @@ class Luta:
         a, b, rng = self.a, self.b, self.rng
         a.reiniciar()
         b.reiniciar()
-        ini_a = rng.randint(1, 20) + a.mods["des"]
-        ini_b = rng.randint(1, 20) + b.mods["des"]
+        ini_a = a.iniciativa(rng)
+        ini_b = b.iniciativa(rng)
         ordem = [a, b] if (ini_a, a.mods["des"], rng.random()) >= (ini_b, b.mods["des"], rng.random()) else [b, a]
         for rodada in range(1, self.max_rodadas + 1):
             self.rodada = rodada
@@ -669,7 +713,7 @@ class LutaGrupo(Luta):
         todos = self.grupo + [self.chefe]
         for z in todos:
             z.reiniciar()
-        ordem = sorted(todos, key=lambda z: (self.rng.randint(1, 20) + z.mods["des"],
+        ordem = sorted(todos, key=lambda z: (z.iniciativa(self.rng),
                                              z.mods["des"], self.rng.random()), reverse=True)
         for rodada in range(1, self.max_rodadas + 1):
             self.rodada = rodada

@@ -19,6 +19,7 @@ from luta import Lutador, montar
 INIMIGOS = {
     "cavaleiro-negro": dict(
         nome="Cavaleiro Negro", nivel=2, posto="bronze", acessorio="garras", conviccoes=0,
+        caracteristicas=("cortante",),
         exercito="Renegado", armadura="Armadura Negra, cópia de uma de Bronze",
         tecnicas=("Punho das Sombras", "Chama Negra", None),
         tracos=["<strong>Armadura falsa.</strong> A Armadura Negra não se regenera: a "
@@ -27,6 +28,7 @@ INIMIGOS = {
                "um desses sozinho na maioria das vezes."),
     "espectro-terrestre": dict(
         nome="Espectro de Estrela Terrestre", nivel=4, posto="bronze", acessorio="asas",
+        caracteristicas=("leve",),
         conviccoes=0, exercito="Hades", armadura="Súplice",
         tecnicas=("Asa do Mundo Inferior", "Garra do Cão do Inferno", "Grito Maligno"),
         tracos=["<strong>Estrela Maligna.</strong> Se morrer, volta em "
@@ -35,6 +37,7 @@ INIMIGOS = {
                "nível 3."),
     "cavaleiro-de-prata": dict(
         nome="Cavaleiro de Prata", nivel=9, posto="prata", acessorio="correntes",
+        caracteristicas=("ressonante", "ofuscante"),
         conviccoes=1, exercito="Atena", armadura="Armadura de Prata",
         tecnicas=("Correntes do Cão Infernal", "Laço de Aço", "Chicote de Cosmo"),
         tracos=["<strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.",
@@ -45,6 +48,7 @@ INIMIGOS = {
                "ou para outro Prata."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
+        caracteristicas=("couraca", "ressonante", "estrelada"),
         exercito="Asgard", armadura="Veste Divina", teto_extra=1,
         tecnicas=("Presas do Lobo do Norte", "Ventania Gelada", "Tempestade de Cristal"),
         assento="Golpe da Estrela da Ursa Maior",
@@ -57,6 +61,7 @@ INIMIGOS = {
                "quase sempre."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
+        caracteristicas=("pesada", "espelhada", "couraca"),
         exercito="Poseidon", armadura="Escama", resistencia_extra=1,
         tecnicas=("Maré Devastadora", "Redemoinho", "Garra do Kraken"),
         assento="Triângulo das Ondas",
@@ -66,6 +71,7 @@ INIMIGOS = {
                "Cavaleiro."),
     "cavaleiro-de-ouro": dict(
         nome="Cavaleiro de Ouro", nivel=16, posto="ouro", acessorio="nenhum", conviccoes=3,
+        caracteristicas=("ressonante", "ofuscante", "pesada"),
         exercito="Atena", armadura="Armadura de Ouro",
         tecnicas=("Impacto do Zodíaco", "Chama Dourada", "Muralha de Luz"),
         assento="o Golpe do Assento da vaga",
@@ -73,10 +79,11 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco mais de uma "
-               "vez em quatro."),
+               "vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem uma vez em "
+               "cinco."),
     "juiz-do-inferno": dict(
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
+        caracteristicas=("leve", "cortante", "coracao"),
         exercito="Hades", armadura="Súplice", teto_extra=1,
         tecnicas=("Garras do Grifo", "Marionete Cósmica", "Grande Chifre do Wyvern"),
         assento="Golpe do Juízo",
@@ -97,7 +104,7 @@ INIMIGOS = {
 def lutador(chave: str) -> Lutador:
     e = INIMIGOS[chave]
     x = montar(e["nome"], e["nivel"], e["posto"], acessorio=e["acessorio"],
-               conviccoes=e["conviccoes"])
+               conviccoes=e["conviccoes"], caracteristicas=e["caracteristicas"])
     x.teto_fixo = e.get("teto_extra", 0)
     x.resistencia_extra = e.get("resistencia_extra", 0)
     x.reiniciar()
@@ -109,6 +116,10 @@ def _defesas(x: Lutador) -> tuple[int, int, int]:
     def d_(atr):
         return 14 + x.mods[atr] + (x.prof if atr in treinadas else 0)
     return d_("con"), d_("des"), d_("sab")
+
+
+def _caracteristicas(x: Lutador) -> str:
+    return " · ".join(CARACTERISTICAS[c][0] for c in x.caracteristicas)
 
 
 def _acessorio(x: Lutador) -> str:
@@ -138,7 +149,8 @@ def bloco(chave: str) -> str:
     x.reiniciar()
     fort, refl, vont = _defesas(x)
     teto = x.teto
-    ini = x.mods["des"]
+    ini = (x.mods["des"] + (2 if "leve" in x.caracteristicas else 0)
+           - (2 if "pesada" in x.caracteristicas else 0))
     sentido = "Sétimo quando quiser" if x.posto == "ouro" else "Sexto; desperta como um personagem"
     nomes_tec = list(e["tecnicas"])
     tecs = {t.nome: t for t in x.tecnicas}
@@ -158,6 +170,7 @@ def bloco(chave: str) -> str:
         f"<b>Sentido</b> {sentido}<br>"
         f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{x.armadura_def} · "
         f"<b>Resistência</b> {x.resistencia_max} · {_acessorio(x)}<br>"
+        f"<b>Características</b> {_caracteristicas(x)}<br>"
         f"<b>Convicções</b> {e['conviccoes']}"
     )
     posto_nome = {"bronze": "Bronze", "prata": "Prata", "ouro": "Elite"}[x.posto]
@@ -229,6 +242,38 @@ def tabela_posto() -> str:
               '</tr></thead><tbody>']
     for p, (bonus, res) in R.POSTO.items():
         linhas.append(f'<tr><td>{nomes[p]}</td><td class="num">+{bonus}</td><td class="num">{res}</td></tr>')
+    linhas.append("</tbody></table></div>")
+    return "\n".join(linhas)
+
+
+CARACTERISTICAS = {
+    # chave no simulador: (nome, o que faz). A ordem é a da tabela do livro.
+    "couraca": ("Couraça grossa", "Todo golpe comum que te acerta causa o seu Grau a menos de dano."),
+    "espinhos": ("Espinhos", "Uma vez por turno, quem te acerta com um golpe comum sofre "
+                 "1d4 + o seu Grau de dano."),
+    "espelhada": ("Espelhada", "Uma vez por luta, quando você apara uma técnica, quem a usou "
+                  "sofre 1d6 por Grau."),
+    "pesada": ("Pesada", "+1 na DEF, −2 na Iniciativa e −3 metros de movimento."),
+    "leve": ("Leve", "+2 na Iniciativa e +3 metros de movimento."),
+    "ressonante": ("Ressonante", "Você começa toda luta com +1 de Cosmo."),
+    "estrelada": ("Constelação viva", "Quando você desperta o Sétimo, recupera 1d8 de PV por Grau."),
+    "coracao": ("Coração de estrela", "Quando você levanta com uma Convicção, volta com um terço "
+                "dos PV em vez de um quarto."),
+    "cortante": ("Cortante", "Os seus golpes comuns não podem ser aparados."),
+    "ofuscante": ("Ofuscante", "Uma vez por luta, a primeira técnica usada contra você rola com "
+                  "Desvantagem: a armadura brilha na hora do golpe."),
+    "elmo_fechado": ("Elmo fechado", "Enquanto o Elmo estiver no lugar, nenhuma técnica arranca a "
+                     "sua visão ou a sua audição."),
+}
+
+
+def tabela_caracteristicas() -> str:
+    linhas = ['<div class="rolagem"><table>',
+              '<thead><tr><th>Característica</th><th>O que faz</th></tr></thead><tbody>']
+    for nome, efeito in CARACTERISTICAS.values():
+        efeito = html.escape(efeito).replace("1d4", '<span class="dado">1d4</span>') \
+            .replace("1d6", '<span class="dado">1d6</span>').replace("1d8", '<span class="dado">1d8</span>')
+        linhas.append(f"<tr><td>{nome}</td><td>{efeito}</td></tr>")
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
 

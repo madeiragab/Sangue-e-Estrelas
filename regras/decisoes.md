@@ -153,6 +153,26 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## Características da armadura (0.5.0)
+
+- **Pedido do usuário:** "quero mais características de armaduras". Onze características
+  (Couraça grossa, Espinhos, Espelhada, Pesada, Leve, Ressonante, Constelação viva,
+  Coração de estrela, Cortante, Ofuscante, Elmo fechado): 1 no Bronze, 2 na Prata, 3 na
+  elite; a cada forma nova, dá para trocar uma. Mais um traço de origem de graça, que não
+  mexe na luta.
+- **Cada uma é um empurrão**: medidas uma a uma, vencem 45% a 62% contra a mesma armadura
+  sem ela. Na primeira versão, +2 de Resistência e +1 de Teto não mudavam nada (44% a
+  52%); Espinhos de 1d4 por Grau a cada golpe e Espelhada devolvendo metade chegavam a 73%
+  e 68%. Foram refeitas até caberem na faixa. "Guarda alta" (+1 no Bloquear) saiu: o
+  simulador não a mediria.
+- **Sozinho contra muitos, recalibrado**: com as características, as que protegem pesam
+  mais num chefe (ele leva muitos ataques). Os PV passaram de × (n+1)/2 para × (n/2 + ¼).
+  Medido com características típicas (1 no Bronze, 3 no Ouro): quatro Bronzes vencem um
+  Ouro 38% a 42%.
+- Os lutadores de referência do simulador agora têm as características típicas do Posto
+  (Ressonante; mais Ofuscante na Prata; mais Pesada na elite). Com elas o Bronze vence o
+  Prata 9% a 13% e o Ouro 0% a 2%.
+
 ## Teste de estresse (0.4.0)
 
 `sim/extremos.py` tenta quebrar o sistema e escreve `sim/EXTREMOS.md`. O usuário pediu

@@ -222,9 +222,12 @@ def testar_equilibrio() -> None:
 
 def testar_extremos() -> None:
     """O que o sim/extremos.py achou e o livro corrigiu não pode voltar."""
+    import inimigos as I
     from extremos import montar_build
     from luta import grupo_contra_um
     print(f"extremos ({N} duelos por linha):")
+    confere(set(I.CARACTERISTICAS) >= set(R.CARACTERISTICAS_PADRAO),
+            "as características dos lutadores de referência estão na tabela do livro")
     for n in (15, 20):
         g4 = grupo_contra_um(lambda: [montar(f"P{i}", n) for i in range(4)],
                              lambda: montar("C", n, "ouro"), n=300, semente=200 + n)
@@ -239,6 +242,13 @@ def testar_extremos() -> None:
     for n in (5, 9, 13):
         a = taxa(lambda k: montar_build("A", k, kit="atordoar"), lambda k: montar_build("B", k), n, 230 + n)
         confere(a["a"] <= 0.65, f"nível {n}: atordoar não decide a luta sozinho ({a['a']:.0%})")
+    for c, (nome, _) in I.CARACTERISTICAS.items():
+        if c == "elmo_fechado":
+            continue
+        v = [taxa(lambda k: montar("A", k, caracteristicas=(c,)),
+                  lambda k: montar("B", k, caracteristicas=()), n, 250 + n)["a"] for n in (5, 13)]
+        confere(all(0.42 <= x <= 0.64 for x in v),
+                f"característica {nome}: um empurrão, nunca a luta ({v[0]:.0%} e {v[1]:.0%})")
     for kit in ("lim_so_fere", "lim_so_desprevenido", "lim_so_uma_vez", "lim_so_carregar"):
         r = taxa(lambda k: montar_build("A", k, kit=kit), lambda k: montar_build("B", k), 13, 240)
         confere(r["a"] <= 0.60, f"nível 13: a limitação {kit[7:]} custa de verdade ({r['a']:.0%})")

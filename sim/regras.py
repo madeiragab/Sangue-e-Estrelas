@@ -114,11 +114,17 @@ POSTO = {
 # Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um
 # grupo multiplica os PV e ganha ações a mais por rodada.
 def chefe_pv(oponentes: int) -> float:
-    return (oponentes + 1) / 2 if oponentes >= 2 else 1.0
+    return oponentes / 2 + 0.25 if oponentes >= 2 else 1.0
 
 
 def chefe_acoes(oponentes: int) -> int:
     return oponentes // 2 if oponentes >= 2 else 0
+
+
+# Características da armadura: quantas por Posto, e as que o simulador dá aos
+# lutadores de referência (as de efeito médio, medidas em sim/extremos.py).
+CARACTERISTICAS_POR_POSTO = {"bronze": 1, "prata": 2, "ouro": 3}
+CARACTERISTICAS_PADRAO = ("ressonante", "ofuscante", "pesada")
 
 
 # Uma condição forte, quando acaba, não volta com a mesma técnica no mesmo alvo
