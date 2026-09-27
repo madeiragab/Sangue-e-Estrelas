@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.3.2-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.4.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.3.2 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.4.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em seis linhas
 
@@ -83,6 +83,21 @@ por um milagre, com ajuda, e quase morrendo.
    Extra chegando junto com uma armadura que cortava toda técnica pela metade. O Ataque
    Extra foi para o nível 9, e aparar passou a gastar a reação.
 
+### O teste de estresse
+
+Além do jogo normal, [`sim/extremos.py`](sim/extremos.py) tenta quebrar o sistema:
+builds tortas, técnicas de condição, limitações baratas, políticas exageradas, recursos
+no zero e no máximo, diferenças grandes de nível e de Posto, a escada do sangue inteira e
+lutas de grupo contra um só. O relatório completo está em
+[`sim/EXTREMOS.md`](sim/EXTREMOS.md). O que ele achou e o que mudou:
+
+| Achado | Antes | Depois |
+|---|---:|---:|
+| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 47% a 48% |
+| Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 39% a 59% |
+| Quem tem uma técnica de atordoar | até 89% | 48% a 60% |
+| Quem tem uma técnica com limitação | — | 28% a 56% (nenhuma é brecha) |
+
 ## O livro
 
 Um livro só, para jogador e Mestre, com 13 capítulos:
@@ -116,6 +131,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | `sim/luta.py` | A luta inteira, rodada a rodada, com as regras do livro |
 | `sim/inimigos.py` | Os inimigos prontos e as tabelas que o build imprime no livro |
 | `sim/cenarios.py` | Os experimentos; gera `sim/RESULTADOS.md` |
+| `sim/extremos.py` | O teste de estresse; gera `sim/EXTREMOS.md` |
 | `test.py` | Contas das técnicas, build do livro e metas de equilíbrio |
 | `build.py` | Monta o `livro.html` final, com CSS, capa e tabelas embutidos |
 | `regras/decisoes.md` | Cada decisão de design e de onde ela veio |
@@ -129,6 +145,7 @@ Nada para instalar: é Python puro, da biblioteca padrão.
 python build.py          # monta o livro.html
 python test.py           # tudo: técnicas, livro e equilíbrio (alguns segundos)
 python sim/cenarios.py   # regenera sim/RESULTADOS.md (menos de um minuto)
+python sim/extremos.py   # o teste de estresse; regenera sim/EXTREMOS.md (alguns minutos)
 ```
 
 O `test.py` falha se uma técnica impressa não bater com o motor, se um link interno

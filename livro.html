@@ -1448,6 +1448,17 @@ function rolar(modo) {
     </div>
   </div>
 
+  <div class="destaque">
+    <span class="rotulo">Dois jeitos de lutar</span>
+    <p>Quem luta pelo corpo põe a DES (ou a FOR) na frente: ela acerta o golpe comum e as
+    técnicas de Golpe. Quem luta pelo Cosmo põe o Atributo do Cosmo na frente: ele acerta as
+    técnicas de Cosmo e também o golpe comum. A DEF usa a DES ou o Atributo do Cosmo, o que
+    for maior. Os dois jeitos se equivalem: medido, quem luta pelo Cosmo vence de 39% a 59%
+    contra quem luta pela DES.</p>
+  </div>
+  <p><strong>Um aviso.</strong> A CON na frente é uma armadilha: ela só dá PV. Quem a põe no
+  lugar do atributo de ataque vence de 25% a 49% dos duelos; com a CON no 8, de 20% a 42%.</p>
+
   <h3 id="etapa-treino">Etapa 5 · Treino</h3>
   <p>Antes da armadura houve o treino, e o treino quase te matou. Escolha onde ele
   aconteceu. Cada treino dá <strong>duas perícias</strong> e uma
@@ -1595,11 +1606,11 @@ function rolar(modo) {
     <thead><tr><th>O quê</th><th>Como calcular</th></tr></thead>
     <tbody>
       <tr><td>PV máximos</td><td>A coluna PV da tabela de níveis (<a href="#cap12">Capítulo Doze</a>) + CON × nível · 18 + CON no nível 1</td></tr>
-      <tr><td>DEF</td><td>10 + DES + armadura (Bronze +2, enquanto ela não estiver em pedaços)</td></tr>
+      <tr><td>DEF</td><td>10 + DES ou o Atributo do Cosmo, o que for maior, + armadura (Bronze +2, enquanto ela não estiver em pedaços)</td></tr>
       <tr><td>Fortitude · Reflexos · Vontade</td><td>14 + CON · DES · SAB, e + proficiência nas treinadas</td></tr>
       <tr><td>Iniciativa</td><td>1d20 + DES</td></tr>
       <tr><td>Movimento</td><td>9 metros; +3 metros com a armadura no corpo</td></tr>
-      <tr><td>Golpe comum</td><td>FOR ou DES + proficiência para acertar; 1d8 + o mesmo atributo de dano (dois golpes a partir do nível 9)</td></tr>
+      <tr><td>Golpe comum</td><td>FOR, DES ou o Atributo do Cosmo + proficiência para acertar; 1d8 + o mesmo atributo de dano (dois golpes a partir do nível 9)</td></tr>
       <tr><td>Bônus de técnica</td><td>Golpe: FOR ou DES + proficiência · Cosmo: Atributo do Cosmo + proficiência</td></tr>
       <tr><td>Teto de Cosmo</td><td>3 + proficiência — 5 no nível 1</td></tr>
       <tr><td>Cosmo inicial</td><td>Modificador do Atributo do Cosmo, mínimo 1</td></tr>
@@ -1974,9 +1985,10 @@ function rolar(modo) {
   <div class="grade">
     <div class="cartao">
       <h5>Golpe</h5>
-      <p><span class="dado">1d20 + FOR ou DES + proficiência</span> contra a DEF. Acertou:
-      <span class="dado">1d8</span> + o mesmo atributo de dano, e +1 de Cosmo (uma vez por
-      turno). Não custa nada.</p>
+      <p><span class="dado">1d20 + FOR, DES ou o Atributo do Cosmo + proficiência</span>
+      contra a DEF. Acertou: <span class="dado">1d8</span> + o mesmo atributo de dano, e +1 de
+      Cosmo (uma vez por turno). Não custa nada. Quem luta com o Cosmo na frente dá o golpe
+      comum com ele: um soco carregado, uma rajada curta.</p>
     </div>
     <div class="cartao">
       <h5>Técnica</h5>
@@ -2136,7 +2148,18 @@ function rolar(modo) {
       uma defesa passiva. No fim de cada turno do alvo, quem impôs rola de novo; se errar,
       a condição acaba.</li>
     <li>Nenhuma condição é automática: toda condição passa por uma rolagem.</li>
+    <li><strong>O mesmo golpe não funciona duas vezes.</strong> Quando uma condição
+      <strong>forte</strong> acaba, a técnica que a impôs não a impõe mais no mesmo alvo até
+      o fim da luta. Outra técnica pode.</li>
   </ul>
+  <div class="nota">
+    <p><strong>Medido.</strong> Sem a regra acima, e com "ataques contra você têm Vantagem"
+    no Atordoado, quem tinha uma técnica de atordoar vencia até 89% dos duelos: o alvo perdia
+    turnos seguidos e apanhava com Vantagem. Com as duas mudanças, de 48% a 60%. As condições
+    médias rendem quando são usadas uma vez, na hora certa (38% a 59%); repetidas toda
+    rodada, gastam a ação e o Cosmo que fariam falta no dano, e quem faz isso vence de 13% a
+    62%.</p>
+  </div>
 
   <div class="rolagem"><table>
     <thead><tr><th>Condição</th><th>Grau</th><th>Efeito</th></tr></thead>
@@ -2151,7 +2174,7 @@ function rolar(modo) {
       <tr><td>Cego</td><td>Média · 2</td><td>Desvantagem nos seus ataques; ataques contra você têm Vantagem.</td></tr>
       <tr><td>Confuso</td><td>Média · 2</td><td>No seu turno, role 1d6: com 1–2 você ataca a criatura mais próxima, seja quem for.</td></tr>
       <tr><td>Queimando ou Congelando</td><td>Média · 2</td><td>No fim do seu turno, <span class="dado">1d6</span> de dano por Grau da técnica que impôs.</td></tr>
-      <tr><td>Atordoado</td><td>Forte · 4</td><td>Você perde a ação e a reação; ataques contra você têm Vantagem.</td></tr>
+      <tr><td>Atordoado</td><td>Forte · 4</td><td>Você perde a ação e a reação.</td></tr>
       <tr><td>Paralisado</td><td>Forte · 4</td><td>Você não age. Golpes corpo a corpo contra você que acertam são críticos.</td></tr>
       <tr><td>Dominado</td><td>Forte · 4</td><td>Quem impôs escolhe a sua ação no seu turno. Você não ataca a si mesmo.</td></tr>
       <tr><td>Sentido arrancado</td><td>Forte · 4</td><td>Quem impôs escolhe um dos seus cinco sentidos, e você o perde (com o +1 de Cosmo e de Teto). Não há nova rolagem: ele volta só no descanso.</td></tr>
@@ -2376,15 +2399,22 @@ function rolar(modo) {
       <h5>Custam −1</h5>
       <p class="etiqueta">A limitação tem que ser real</p>
       <p>Só uma vez por luta · só com o Cosmo no Teto · causa <span class="dado">1d6</span>
-      em você · te deixa Caído ou Desprevenido · exige carregar: você gasta a ação do
-      turno anterior preparando o golpe · só funciona sob uma condição difícil, como estar
-      no Sétimo ou ter um sentido perdido.</p>
+      por Grau em você · te deixa Caído ou Desprevenido · exige carregar: no turno anterior
+      você não usa nenhuma técnica, só o golpe comum, Concentrar ou mover · só funciona sob
+      uma condição difícil, como estar no Sétimo ou ter um sentido perdido.</p>
     </div>
   </div>
   <p>As limitações nunca levam o custo abaixo da <strong>metade do tamanho</strong>,
   arredondada para cima, e o mínimo absoluto é 1. Uma limitação que não muda nada na prática
   vale zero: "só funciona no Sétimo" numa ficha de Ouro, que entra no Sétimo quando quer,
   não é limitação. O Mestre é o juiz disso, e deve ser chato nessa hora.</p>
+  <div class="nota">
+    <p><strong>Medido.</strong> Nenhuma limitação da lista é brecha. Com uma limitação na
+    técnica grande, quem a tem vence de 28% a 56% dos duelos; com duas, de 18% a 46%. O
+    Cosmo economizado nunca paga o que a limitação tira. "Exige carregar" pesa mais nos
+    níveis altos, onde uma rodada sem técnica deixa muito dano na mesa. O dano em você
+    cresce com o Grau porque 1d6 fixo não fazia diferença para quem tem 150 PV.</p>
+  </div>
 
   <h3>Três limites que valem sempre</h3>
   <ul>
@@ -3419,11 +3449,50 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     </tbody>
   </table></div>
   <p>A lição da tabela: <strong>o que torna um inimigo perigoso são as Convicções e o
-  Posto, mais que o nível</strong>. Um nomeado sem Convicção quatro níveis acima ainda perde
+  Posto, mais que o nível</strong>. Um nomeado sem Convicção dois níveis acima ainda perde
   na maioria das vezes; um rival com uma só Convicção vira uma luta de verdade.</p>
-  <p>Contra a elite, o grupo inteiro precisa estar envolvido — lutando junto ou mandando
-  Centelhas de longe. Um grupo contra um único inimigo ainda não foi medido; como regra de
-  bolso, cada personagem a mais contra o mesmo inimigo vale mais ou menos dois níveis.</p>
+
+  <div class="destaque">
+    <span class="rotulo">Cuidado com a fronteira de Grau</span>
+    <p>Nos níveis 5, 9, 13 e 17 o Grau sobe, e o dano e os PV saltam juntos. Um inimigo
+    que já cruzou a fronteira e o personagem ainda não pesa como se estivesse muitos níveis
+    acima. Medido, dois níveis acima: um nomeado sem Convicção cai de 85%–99% para 47%–92%;
+    um rival com uma Convicção, de 33%–43% para 4%–20%. Nessas fronteiras, conte o inimigo
+    como <strong>dois degraus mais difícil</strong> na tabela.</p>
+  </div>
+
+  <h3 id="sozinho-contra-muitos">Sozinho contra muitos</h3>
+  <p>Na mesa, o grupo quase sempre luta junto — e quatro contra um é uma conta cruel. Sem
+  ajuda, dois Bronzes vencem um Prata do mesmo nível 85% das vezes, e três Bronzes vencem
+  um Ouro 92%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
+  sozinho contra dois ou mais personagens usa esta regra:</p>
+  <div class="rolagem"><table>
+    <thead><tr><th class="num">Oponentes</th><th class="num">PV do inimigo</th><th class="num">Ações a mais por rodada</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2</td><td class="num">× 1,5</td><td class="num">1</td></tr>
+      <tr><td class="num">3</td><td class="num">× 2</td><td class="num">1</td></tr>
+      <tr><td class="num">4</td><td class="num">× 2,5</td><td class="num">2</td></tr>
+      <tr><td class="num">5</td><td class="num">× 3</td><td class="num">2</td></tr>
+      <tr><td class="num">6</td><td class="num">× 3,5</td><td class="num">3</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>Conte os oponentes no começo da luta. Os PV multiplicados valem também para
+      levantar: ele volta com um quarto deles.</li>
+    <li>Cada <strong>ação a mais</strong> acontece logo depois do turno de um personagem, à
+      escolha do Mestre. É só a ação: sem o Cosmo do relógio, sem nova reação.</li>
+    <li>Nomeados sem Convicção e figurantes não usam a regra. Eles existem para cair.</li>
+  </ul>
+  <div class="rolagem"><table>
+    <thead><tr><th>Grupo de Bronzes do mesmo nível, com a regra</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
+    <tbody>
+      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">46–60%</td><td class="num">77–85%</td><td class="num">85–91%</td><td class="num">95–97%</td></tr>
+      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">17–18%</td><td class="num">36–38%</td><td class="num">47–48%</td><td class="num">65–74%</td></tr>
+    </tbody>
+  </table></div>
+  <p>Quatro Bronzes contra um Ouro do mesmo nível é meio a meio, e uns três deles caem no
+  caminho. Com um atordoador no grupo, o mesmo meio a meio. A luta dura de 7 a 11 rodadas.
+  É o que a elite deve ser para um grupo: a luta da sessão.</p>
 
   <h3>Deuses</h3>
   <p>Um deus não se monta pela tabela. Ele está no Nono Sentido — dois degraus acima de quem
@@ -3494,7 +3563,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <ul><li><strong>Golpe da Estrela da Ursa Maior</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>. Atravessa a armadura.</li><li><strong>Presas do Lobo do Norte</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>.</li><li><strong>Tempestade de Cristal</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">16d8 + 5</span>.</li><li><strong>Ventania Gelada</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">8d8 + 5</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Safira de Odin.</strong> +1 no Teto de Cosmo enquanto a safira estiver na Veste (já somado).</li><li><strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos sete. É luta para um grupo inteiro de nível 12 ou mais, com Centelhas; um personagem sozinho, mesmo do nível dele, perde quase sempre.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos sete. Quatro Bronzes do nível dele vencem menos da metade das vezes, e uns três caem; três níveis abaixo, quase nunca. Sozinho, um personagem perde quase sempre.</p>
 </div>
 
   <div class="criatura">
@@ -3520,7 +3589,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <ul><li><strong>o Golpe do Assento da vaga</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>. Atravessa a armadura.</li><li><strong>Impacto do Zodíaco</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>.</li><li><strong>Muralha de Luz</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">16d8 + 5</span>.</li><li><strong>Chama Dourada</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">8d8 + 5</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Sétimo dominado.</strong> Entra no Sétimo no primeiro turno e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li><li><strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em vinte, mesmo no nível dele; com o grupo mandando Centelhas, um pouco mais.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco mais de uma vez em quatro.</p>
 </div>
 
   <div class="criatura">
@@ -3533,7 +3602,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <ul><li><strong>Golpe do Juízo</strong> · 7 de Cosmo · +11 contra a DEF · <span class="dado">30d8 + 5</span>. Atravessa a armadura.</li><li><strong>Garras do Grifo</strong> · 6 de Cosmo · +11 contra a DEF · <span class="dado">30d8 + 5</span>.</li><li><strong>Grande Chifre do Wyvern</strong> · 4 de Cosmo · +11 contra a DEF · <span class="dado">20d8 + 5</span>.</li><li><strong>Marionete Cósmica</strong> · 2 de Cosmo · +11 contra a DEF · <span class="dado">10d8 + 5</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Estrela Maligna.</strong> Volta em <span class="dado">1d4</span> semanas enquanto Hades existir.</li><li><strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).</li><li><strong>Sétimo dominado.</strong></li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos três juízes. É a luta de um arco inteiro.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e uns três caem. É a luta de um arco inteiro.</p>
 </div>
 </section>
 
@@ -4048,7 +4117,8 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
       <h5>No seu turno</h5>
       <p>Movimento, uma ação, uma interação simples, uma fala breve. Uma reação fora do turno.
       Ações: Golpe, Técnica, Concentrar (+2 Cosmo), Esquivar, Ajudar, Correr, Desengajar,
-      Agarrar, Preparar, Chamar a armadura.</p>
+      Agarrar, Preparar, Chamar a armadura. DEF: 10 + DES ou Atributo do Cosmo (o maior) +
+      armadura.</p>
     </div>
     <div class="cartao">
       <h5>O Cosmo sobe</h5>
@@ -4091,7 +4161,8 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
     <div class="cartao">
       <h5>O mesmo golpe</h5>
       <p>Técnica que o oponente nomeado já viu: ele soma +2 à DEF e às defesas contra ela.
-      Queimar, despertar ou evoluir passa por cima.</p>
+      Queimar, despertar ou evoluir passa por cima. Condição forte que acabou não volta com a
+      mesma técnica naquela luta.</p>
     </div>
     <div class="cartao">
       <h5>Montar uma técnica</h5>
@@ -4105,7 +4176,7 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.3.2</strong>, de 27/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.4.0</strong>, de 27/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que

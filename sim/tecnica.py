@@ -42,6 +42,9 @@ class Tecnica:
     limitacoes: int = 0                 # quantos −1
     grau: int = 1
     assento: bool = False               # Golpe do Assento: +1 no tamanho máximo
+    condicao: str = ""                  # a condição que impõe (o peso está em efeitos)
+    limites: tuple = ()                 # as limitações, por nome, para o simulador:
+                                        # fere · desprevenido · uma_vez · carregar · teto
 
     # ------------------------------------------------------------------
     def pontos_de_efeito(self) -> int:

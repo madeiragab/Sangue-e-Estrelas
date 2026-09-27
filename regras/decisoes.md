@@ -153,9 +153,46 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## Teste de estresse (0.4.0)
+
+`sim/extremos.py` tenta quebrar o sistema e escreve `sim/EXTREMOS.md`. O usuário pediu
+"testa tudo em condições extremas, veja se tá balanceado". O que ele achou e o que mudou:
+
+- **Grupo contra um era um massacre.** Três Bronzes venciam um Ouro do mesmo nível 92%;
+  quatro, 100%. A regra de bolso do livro ("cada personagem a mais vale dois níveis")
+  estava errada: o segundo personagem valia uns seis. Nova regra, **Sozinho contra
+  muitos**: inimigo com Convicção, sozinho contra 2+ personagens, tem PV × (oponentes + 1)
+  ÷ 2 e metade dos oponentes em ações a mais por rodada. Medido: quatro Bronzes contra um
+  Ouro do mesmo nível, 47% a 48%, com uns três caindo. Testadas e descartadas: só PV × n
+  (quatro Bronzes ainda venciam 69% a 77%), PV × n com uma ação por oponente (o Ouro
+  nunca perdia), só ações (quatro Bronzes, 86% a 93%).
+- **DES decidia tudo.** Acerto, dano e DEF no mesmo atributo; quem lutava pelo Cosmo
+  vencia 21% a 38%. Agora a DEF usa a DES ou o Atributo do Cosmo (o maior) e o golpe
+  comum pode usar o Atributo do Cosmo: 39% a 59%. A CON na frente continua perdendo
+  (25% a 49%) — o livro avisa em vez de mudar.
+- **Atordoar decidia a luta** (até 89%): o alvo perdia turnos seguidos com Vantagem
+  contra ele. Agora uma condição forte que acabou não volta com a mesma técnica naquela
+  luta ("o mesmo golpe não funciona duas vezes") e o Atordoado não dá mais Vantagem:
+  48% a 60%. Testado e descartado: condição forte de um turno só (caía para 5% a 24%).
+- **Condições médias não são fracas**: usadas uma vez, 38% a 59%. O que perde é repeti-las
+  toda rodada. O livro avisa.
+- **Limitações não são brecha**: uma limitação, 28% a 56%; duas, 18% a 46%. "Causa 1d6
+  em você" passou a 1d6 por Grau (1d6 fixo não pesava no nível alto). "Exige carregar"
+  deixou de gastar a ação inteira: no turno anterior, só não se usa técnica (antes, 19%
+  a 27%).
+- **Fronteira de Grau**: nos níveis 5, 9, 13 e 17, um nível acima vence 69% a 84% (nos
+  outros, 46% a 66%). É o salto de dano e de PV do Grau, que é o coração do motor de
+  técnicas; ficou como está, e o livro manda contar o inimigo que cruzou a fronteira como
+  dois degraus mais difícil.
+- Sem problema: acessórios (40% a 51%), políticas extremas (41% a 58%), quatro
+  Convicções em vez de três (sem diferença, só se levanta uma vez), Centelhas (uma por
+  rodada é melhor que três de uma vez, porque cada uma dá uma Vantagem), duração (nenhuma
+  luta chega ao limite de 40 rodadas).
+
 ## Pendências
 
-- Medir lutas de grupo contra um inimigo só; hoje só o duelo está medido.
+- Grupo contra grupo (hoje: duelo e grupo contra um).
+- Suavizar a fronteira de Grau, se a mesa sentir o salto.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
 - Nome do sistema: **Sangue e Estrelas** (decidido).

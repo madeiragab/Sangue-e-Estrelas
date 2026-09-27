@@ -52,8 +52,9 @@ INIMIGOS = {
                 "estiver na Veste (já somado).",
                 "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
                 "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
-        quando="Um dos sete. É luta para um grupo inteiro de nível 12 ou mais, com Centelhas; "
-               "um personagem sozinho, mesmo do nível dele, perde quase sempre."),
+        quando="Um dos sete. Quatro Bronzes do nível dele vencem menos da metade das vezes, e "
+               "uns três caem; três níveis abaixo, quase nunca. Sozinho, um personagem perde "
+               "quase sempre."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
         exercito="Poseidon", armadura="Escama", resistencia_extra=1,
@@ -72,7 +73,8 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "vinte, mesmo no nível dele; com o grupo mandando Centelhas, um pouco mais."),
+               "vinte, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco mais de uma "
+               "vez em quatro."),
     "juiz-do-inferno": dict(
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         exercito="Hades", armadura="Súplice", teto_extra=1,
@@ -82,7 +84,8 @@ INIMIGOS = {
                 "semanas enquanto Hades existir.",
                 "<strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).",
                 "<strong>Sétimo dominado.</strong>"],
-        quando="Um dos três juízes. É a luta de um arco inteiro."),
+        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e uns "
+               "três caem. É a luta de um arco inteiro."),
 }
 
 

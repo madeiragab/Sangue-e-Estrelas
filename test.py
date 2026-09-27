@@ -4,14 +4,18 @@
     python test.py motor      só as contas das técnicas
     python test.py livro      só o build e a coerência do livro
     python test.py equilibrio só as metas de equilíbrio
+    python test.py extremos   só as metas dos testes de estresse
 
-Três blocos:
+Quatro blocos:
 
   motor       as técnicas impressas no livro têm o tamanho e o custo que o
               motor do Capítulo Seis calcula;
   livro       o build roda, todo link interno tem destino, e as tabelas
               geradas a partir de sim/regras.py estão no livro;
-  equilibrio  as metas de equilíbrio, medidas em duelos com semente fixa.
+  equilibrio  as metas de equilíbrio, medidas em duelos com semente fixa;
+  extremos    o que o teste de estresse (sim/extremos.py) achou e o livro
+              corrigiu: grupo contra chefe, build de Cosmo, atordoar,
+              limitações.
 
 Uma meta que falha não é um teste quebrado: é o simulador avisando que uma
 mudança de regra mexeu no jogo. Ou a regra volta, ou a meta muda — e a mudança
@@ -216,6 +220,30 @@ def testar_equilibrio() -> None:
                 f"nível {n}: Guerra dos Mil Dias é rara mas acontece entre Ouros ({mil['mil_dias']:.0%})")
 
 
+def testar_extremos() -> None:
+    """O que o sim/extremos.py achou e o livro corrigiu não pode voltar."""
+    from extremos import montar_build
+    from luta import grupo_contra_um
+    print(f"extremos ({N} duelos por linha):")
+    for n in (15, 20):
+        g4 = grupo_contra_um(lambda: [montar(f"P{i}", n) for i in range(4)],
+                             lambda: montar("C", n, "ouro"), n=300, semente=200 + n)
+        g2 = grupo_contra_um(lambda: [montar(f"P{i}", n) for i in range(2)],
+                             lambda: montar("C", n, "ouro"), n=300, semente=210 + n)
+        confere(0.30 <= g4["grupo"] <= 0.65 and g2["grupo"] <= 0.30,
+                f"nível {n}: Sozinho contra muitos segura o Ouro diante do grupo "
+                f"(4 Bronzes {g4['grupo']:.0%}, 2 Bronzes {g2['grupo']:.0%})")
+    for n in (9, 13, 17):
+        c = taxa(lambda k: montar_build("A", k, "cosmo"), lambda k: montar_build("B", k), n, 220 + n)
+        confere(0.35 <= c["a"] <= 0.65, f"nível {n}: quem luta pelo Cosmo empata com quem luta pela DES ({c['a']:.0%})")
+    for n in (5, 9, 13):
+        a = taxa(lambda k: montar_build("A", k, kit="atordoar"), lambda k: montar_build("B", k), n, 230 + n)
+        confere(a["a"] <= 0.65, f"nível {n}: atordoar não decide a luta sozinho ({a['a']:.0%})")
+    for kit in ("lim_so_fere", "lim_so_desprevenido", "lim_so_uma_vez", "lim_so_carregar"):
+        r = taxa(lambda k: montar_build("A", k, kit=kit), lambda k: montar_build("B", k), 13, 240)
+        confere(r["a"] <= 0.60, f"nível 13: a limitação {kit[7:]} custa de verdade ({r['a']:.0%})")
+
+
 # ---------------------------------------------------------------------------
 
 
@@ -227,6 +255,8 @@ def main() -> None:
         testar_livro()
     if alvo in ("tudo", "equilibrio"):
         testar_equilibrio()
+    if alvo in ("tudo", "extremos"):
+        testar_extremos()
     print()
     if falhas:
         print(f"{len(falhas)} falha(s).")

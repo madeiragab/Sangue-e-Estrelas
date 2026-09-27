@@ -3,6 +3,39 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.4.0] - 2026-09-27
+
+O sistema passou por um teste de estresse: `sim/extremos.py` tenta quebrá-lo e escreve
+`sim/EXTREMOS.md`. O simulador ganhou condições, limitações e luta de grupo contra um.
+
+### Adicionado
+
+- **Sozinho contra muitos** (Capítulo Dez): inimigo com Convicção, sozinho contra dois ou
+  mais personagens, tem PV × (oponentes + 1) ÷ 2 e ações a mais por rodada (uma para cada
+  dois oponentes). Sem ela, três Bronzes venciam um Ouro do mesmo nível 92% das vezes;
+  com ela, quatro Bronzes vencem 47% a 48%, e uns três caem.
+- **O mesmo golpe não funciona duas vezes, para condições:** uma condição forte que
+  acabou não volta com a mesma técnica, no mesmo alvo, naquela luta.
+- Aviso da fronteira de Grau na tabela de dificuldade: o inimigo que já cruzou o 5, 9,
+  13 ou 17 conta como dois degraus mais difícil.
+- Conselho de build no Capítulo Três: dois jeitos de lutar, e a CON na frente como
+  armadilha.
+- `sim/extremos.py` e `sim/EXTREMOS.md`; condições, limitações e grupo contra um no
+  simulador (`sim/luta.py`); metas novas em `test.py` (bloco `extremos`).
+
+### Mudado
+
+- **DEF = 10 + DES ou o Atributo do Cosmo, o que for maior, + armadura.** O golpe comum
+  pode usar FOR, DES ou o Atributo do Cosmo. Quem lutava pelo Cosmo vencia 21% a 38%;
+  agora, 39% a 59%.
+- **Atordoado:** perde a ação e a reação, sem dar Vantagem a quem ataca. Quem atordoava
+  vencia até 89%; agora, 48% a 60%.
+- **Limitações:** "causa 1d6 em você" virou 1d6 por Grau; "exige carregar" agora é "no
+  turno anterior você não usa técnica", em vez de gastar a ação inteira.
+- A regra de bolso "cada personagem a mais vale dois níveis" saiu: medido, valia uns seis.
+- Fichas prontas: Guerreiro Deus, Cavaleiro de Ouro e Juiz do Inferno ganharam o quanto
+  pesam contra um grupo de quatro.
+
 ## [0.3.2] - 2026-09-27
 
 ### Mudado
