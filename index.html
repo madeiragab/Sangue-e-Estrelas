@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sangue e Estrelas — RPG de mesa</title>
+<meta name="description" content="RPG de mesa de fã inspirado em Cavaleiros do Zodíaco: d20, Cosmo que cresce na luta, os Sentidos, técnicas montadas por pontos e armaduras que revivem com sangue.">
+<meta property="og:title" content="Sangue e Estrelas — RPG de mesa">
+<meta property="og:description" content="d20, Cosmo que cresce na luta, os Sentidos, técnicas montadas por pontos e armaduras que revivem com sangue.">
+<meta property="og:image" content="imagens/thumb-capa.jpg">
+<meta property="og:type" content="website">
+<style>
+:root {
+  --sangue: #E0485C;
+  --ouro: #D9B45A;
+  --ouro-fundo: #B8923E;
+  --fundo: #070A12;
+  --superficie: #0F1422;
+  --texto: #E7E3D9;
+  --suave: #9C99A8;
+  --borda: #232A40;
+  --titulo: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --texto-f: Charter, "Bitstream Charter", "Sitka Text", Georgia, serif;
+  --sans: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(90% 60% at 50% -10%, rgba(217,180,90,.16) 0%, transparent 60%),
+    radial-gradient(120% 90% at 50% 118%, rgba(224,72,92,.18) 0%, rgba(224,72,92,.04) 45%, transparent 72%),
+    var(--fundo);
+  color: var(--texto);
+  font-family: var(--texto-f);
+  font-size: 17px;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vh, 5rem) clamp(1rem, 5vw, 2.5rem) 3rem;
+}
+.topo { text-align: center; margin-bottom: clamp(2.5rem, 7vh, 4rem); }
+.selo { margin: 0 auto 1.8rem; display: block; }
+h1 {
+  font-family: var(--titulo);
+  font-size: clamp(2.2rem, 8vw, 3.8rem);
+  line-height: .98;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  margin: 0 0 .5rem;
+  color: var(--ouro);
+  text-shadow: 0 0 44px rgba(217,180,90,.28);
+  text-wrap: balance;
+}
+h1 span { display: block; color: var(--texto); }
+.tagline {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  font-size: .72rem;
+  color: var(--ouro-fundo);
+  padding-left: .3em;
+  margin: 0 0 1.6rem;
+}
+.pitch {
+  max-width: 31rem; margin: 0 auto;
+  color: #D6D1C6; font-size: 1.06rem; text-wrap: pretty;
+}
+
+.livro {
+  display: grid;
+  grid-template-columns: minmax(0, 17rem) 1fr;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s, transform .18s;
+}
+.livro:hover, .livro:focus-visible { border-color: var(--ouro-fundo); transform: translateY(-3px); }
+.livro:focus-visible { outline: 2px solid var(--sangue); outline-offset: 3px; }
+.livro img { width: 100%; height: 100%; object-fit: cover; display: block; border-right: 1px solid var(--borda); }
+.livro .corpo { padding: 1.6rem 1.7rem 1.8rem; display: flex; flex-direction: column; }
+.livro .tomo {
+  font-family: var(--sans); font-size: .64rem;
+  text-transform: uppercase; letter-spacing: .2em;
+  color: var(--ouro-fundo); margin: 0 0 .35rem; padding-left: .2em;
+}
+.livro h2 { font-family: var(--titulo); font-size: 1.7rem; margin: 0 0 .7rem; }
+.livro p { margin: 0 0 .9rem; font-size: .97rem; color: #C9C5D1; }
+.livro ul { margin: 0 0 1.2rem; padding-left: 1.1rem; font-size: .95rem; color: #C9C5D1; }
+.livro li { margin-bottom: .3rem; }
+.livro .abrir {
+  margin-top: auto;
+  font-family: var(--sans); font-size: .74rem;
+  text-transform: uppercase; letter-spacing: .13em;
+  color: var(--sangue);
+}
+@media (max-width: 40rem) {
+  .livro { grid-template-columns: 1fr; }
+  .livro img { border-right: none; border-bottom: 1px solid var(--borda); height: auto; }
+}
+
+.oficina {
+  margin-top: 3rem;
+  border-top: 1px solid var(--borda);
+  padding-top: 2rem;
+  font-size: .95rem;
+  color: var(--suave);
+}
+.oficina h3 {
+  font-family: var(--sans); font-size: .7rem;
+  text-transform: uppercase; letter-spacing: .18em;
+  color: var(--ouro-fundo); margin: 0 0 .8rem; padding-left: .18em;
+}
+.oficina p { max-width: 38rem; margin: 0 0 .9rem; }
+a.linha { color: var(--sangue); }
+
+footer {
+  border-top: 1px solid var(--borda);
+  padding: 1.6rem clamp(1.2rem, 5vw, 2.5rem);
+  text-align: center;
+  font-family: var(--sans);
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #5E6076;
+}
+footer a { color: #7E8098; text-decoration: none; }
+footer a:hover { color: var(--ouro); }
+.independencia {
+  margin-top: 2rem; padding: 1rem 1.2rem;
+  border: 1px solid var(--borda); background: rgba(15,20,34,.72);
+  color: var(--suave); font-family: var(--sans); font-size: .76rem;
+  line-height: 1.55; text-align: center;
+}
+.independencia strong { color: var(--ouro-fundo); }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main>
+  <div class="topo">
+    <svg class="selo" width="72" height="72" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#B8923E" stroke-width="1.6"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#B8923E" stroke-width=".8" stroke-dasharray="2 4"/>
+      <path d="M50 16 L55 40 L78 44 L57 53 L63 76 L50 62 L37 76 L43 53 L22 44 L45 40 Z"
+            fill="none" stroke="#D9B45A" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M50 44 C50 44 44 52 44 56 A6 6 0 0 0 56 56 C56 52 50 44 50 44 Z" fill="#E0485C"/>
+    </svg>
+    <h1>Sangue e <span>Estrelas</span></h1>
+    <p class="tagline">RPG de mesa</p>
+    <p class="pitch">
+      Uma armadura feita de estrelas escolheu você. Ela vai quebrar, vai morrer, e vai
+      voltar com o seu sangue. Você também.
+    </p>
+  </div>
+
+  <a class="livro" href="livro.html">
+    <img src="imagens/thumb-capa.webp" width="520" height="924" loading="lazy"
+         alt="Capa: dois guerreiros de armadura dourada trocam golpes diante das doze casas de um santuário, e do punho de um deles pingam gotas de sangue">
+    <div class="corpo">
+      <p class="tomo">O livro</p>
+      <h2>Sangue e Estrelas</h2>
+      <p>Tudo num livro só, para jogador e Mestre: o d20, a criação de personagem em nove
+        etapas e sem classes, e o motor para você montar as suas próprias técnicas.</p>
+      <ul>
+        <li>O Cosmo cresce durante a luta e paga as técnicas.</li>
+        <li>O Sétimo Sentido: o Ouro chega quando quer; o Bronze, só no limite.</li>
+        <li>Os cinco sentidos que você sacrifica para ir além.</li>
+        <li>A armadura que quebra peça por peça, morre, e volta com sangue.</li>
+        <li>Quatro exércitos de exemplo e o molde para o Mestre criar os dele.</li>
+      </ul>
+      <span class="abrir">Abrir o livro →</span>
+    </div>
+  </a>
+
+  <div class="oficina">
+    <h3>Como este sistema é feito</h3>
+    <p>Antes de escrever uma regra, eu pesquisei como outros jogos resolvem as mesmas
+      perguntas: o Cosmo que cresce, o preço de ir além, a armadura que quebra, o duelo com o
+      grupo participando de longe. A pesquisa comparou RPGs de Cavaleiros do Zodíaco já
+      feitos por fãs no Brasil, na França e na Espanha com sistemas como Exalted, Tenra
+      Bansho Zero, Blades in the Dark, 13th Age e Lancer.</p>
+    <p>Duas coisas não existiam em nenhum deles, e são as duas mais CDZ do sistema: "o
+      mesmo golpe não funciona duas vezes" e o Cosmo mandado de longe por quem não está na
+      luta.</p>
+    <p>Esta é a primeira versão escrita, um rascunho jogável. O próximo passo é o mesmo da
+      Ascensão dos Semideuses: levar os números a um simulador antes de fechar o livro.</p>
+    <p><a class="linha" href="https://github.com/madeiragab/sangue-e-estrelas">Código, pesquisa
+      e rascunhos no GitHub →</a></p>
+  </div>
+  <aside class="independencia" role="note">
+    <strong>Projeto de fã, não oficial e sem fins lucrativos.</strong>
+    <em>Os Cavaleiros do Zodíaco</em> (<em>Saint Seiya</em>) e os elementos próprios dessa
+    franquia pertencem a Masami Kurumada e aos seus respectivos titulares e licenciados,
+    incluindo Shueisha, Toei Animation e Bandai. Este projeto não é afiliado, aprovado ou
+    patrocinado por eles.
+  </aside>
+</main>
+
+<footer>
+  Sangue e Estrelas · versão 0.1.0 ·
+  <a href="https://madeiragab.github.io/">madeiragab</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,945 @@
+/* ============================================================
+   SANGUE E ESTRELAS — o livro
+   Este arquivo é um TEMPLATE. Rode `python build.py` para gerar
+   o livro final, com a folha de estilo e a capa embutidas.
+   A estrutura veio da Ascensão dos Semideuses; a paleta é outra:
+   azul-noite, ouro de armadura e uma única cor quente, o sangue.
+   ============================================================ */
+
+:root {
+  --sangue:      #9B1C2E;
+  --sangue-vivo: #E0485C;
+  --ouro:        #8A6A1E;
+  --ouro-luz:    #D9B45A;
+
+  --fundo:      #ECE9E2;
+  --papel:      #FAF8F3;
+  --superficie-2:#E8E3D9;
+  --texto:      #1A1922;
+  --texto-suave:#645F6E;
+  --borda:      #D5CFC4;
+  --borda-forte:#B3AA9A;
+  --acento:     var(--sangue);
+  --acento-fraco:#F4DFE2;
+  --sombra:     rgba(18, 20, 40, .16);
+
+  --serifa-titulo: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", Georgia, serif;
+  --serifa-texto:  Charter, "Bitstream Charter", "Sitka Text", Georgia, "Times New Roman", serif;
+  --sans:          "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono:          "Cascadia Mono", "Consolas", "SF Mono", "Roboto Mono", ui-monospace, monospace;
+
+  /* A MANCHA. Uma só medida para o livro inteiro.
+     A largura da página é a mancha mais as margens laterais; nenhum elemento
+     define largura própria, então tudo compartilha a mesma borda esquerda e
+     a mesma borda direita — é isso que faz a página parecer impressa. */
+  --mancha:  34rem;   /* ~68 caracteres */
+  --margem:  clamp(1.4rem, 5vw, 3.2rem);
+  --pagina:  calc(var(--mancha) + var(--margem) * 2);
+}
+
+/* O tema escuro é da tela. No papel, o livro é sempre claro — ver IMPRESSÃO. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --fundo:       #080B14;
+    --papel:       #10141F;
+    --superficie-2:#181E2E;
+    --texto:       #E7E3D9;
+    --texto-suave: #9C99A8;
+    --borda:       #262C40;
+    --borda-forte: #3A4260;
+    --acento:      var(--sangue-vivo);
+    --acento-fraco:#3A1420;
+    --ouro:        var(--ouro-luz);
+    --sombra:      rgba(0, 0, 0, .6);
+  }
+}
+@media screen {
+  :root[data-theme="dark"] {
+    --fundo:       #080B14;
+    --papel:       #10141F;
+    --superficie-2:#181E2E;
+    --texto:       #E7E3D9;
+    --texto-suave: #9C99A8;
+    --borda:       #262C40;
+    --borda-forte: #3A4260;
+    --acento:      var(--sangue-vivo);
+    --acento-fraco:#3A1420;
+    --ouro:        var(--ouro-luz);
+    --sombra:      rgba(0, 0, 0, .6);
+  }
+}
+:root[data-theme="light"] {
+  --fundo:       #ECE9E2;
+  --papel:       #FAF8F3;
+  --superficie-2:#E8E3D9;
+  --texto:       #1A1922;
+  --texto-suave: #645F6E;
+  --borda:       #D5CFC4;
+  --borda-forte: #B3AA9A;
+  --acento:      var(--sangue);
+  --acento-fraco:#F4DFE2;
+  --ouro:        #8A6A1E;
+  --sombra:      rgba(18, 20, 40, .16);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 1.25rem; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--serifa-texto);
+  font-size: 17.5px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mancha p a, .mancha li a, .mancha td a, .colofao a {
+  color: var(--acento);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--acento) 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+}
+.mancha a:focus-visible, .biblioteca-flutuante a:focus-visible {
+  outline: 2px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+/* ============ MINIESTANTE FLUTUANTE ============ */
+.biblioteca-flutuante {
+  position: fixed; right: clamp(.65rem, 2vw, 1.25rem); bottom: 1rem;
+  z-index: 120; font-family: var(--sans); color: var(--texto);
+}
+.biblioteca-flutuante > summary {
+  list-style: none; width: 2.35rem; height: 2.35rem;
+  display: grid; place-items: center; margin-left: auto;
+  border: 1px solid var(--ouro); border-radius: 50%;
+  color: var(--ouro); background: var(--papel);
+  box-shadow: 0 .35rem 1rem var(--sombra); cursor: pointer;
+  transition: transform .16s ease, background .16s ease, color .16s ease;
+}
+.biblioteca-flutuante > summary::-webkit-details-marker { display: none; }
+.biblioteca-flutuante > summary span { font-size: 1.38rem; line-height: 1; }
+.biblioteca-flutuante > summary:hover,
+.biblioteca-flutuante > summary:focus-visible,
+.biblioteca-flutuante[open] > summary {
+  color: var(--papel); background: var(--acento); transform: translateY(-2px);
+  outline: none;
+}
+.biblioteca-flutuante nav {
+  position: absolute; right: 0; bottom: calc(100% + .55rem);
+  width: min(15rem, calc(100vw - 1.2rem)); padding: .55rem;
+  border: 1px solid var(--borda-forte); border-radius: 4px;
+  background: var(--papel); box-shadow: 0 .7rem 2rem var(--sombra);
+}
+.biblioteca-flutuante nav > strong {
+  display: block; padding: .15rem .3rem .45rem;
+  color: var(--texto-suave); font-size: .62rem;
+  text-transform: uppercase; letter-spacing: .14em;
+}
+.biblioteca-flutuante nav a {
+  display: grid; grid-template-columns: 1.65rem 1fr; gap: .55rem;
+  align-items: center; padding: .38rem .35rem;
+  color: var(--texto); text-decoration: none; border-radius: 3px;
+}
+.biblioteca-flutuante nav a:hover { background: var(--superficie-2); }
+.biblioteca-flutuante nav a b,
+.biblioteca-flutuante nav a small { display: block; line-height: 1.2; }
+.biblioteca-flutuante nav a b { font-family: var(--serifa-titulo); font-size: .82rem; }
+.biblioteca-flutuante nav a small { margin-top: .12rem; color: var(--texto-suave); font-size: .58rem; }
+.biblioteca-flutuante nav a.estante-completa {
+  display: block; margin-top: .3rem; padding-top: .5rem;
+  border-top: 1px solid var(--borda); color: var(--acento);
+  text-align: center; font-size: .64rem; text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* ============ AVISO EDITORIAL ============ */
+.aviso-independencia {
+  max-width: var(--pagina); margin: 1rem auto 0; padding: 1rem var(--margem) 1.2rem;
+  color: var(--texto-suave); background: var(--papel); border: 1px solid var(--borda);
+  font-family: var(--sans); font-size: .68rem; line-height: 1.55; text-align: center;
+}
+.aviso-independencia strong { color: var(--ouro); }
+
+/* ============ O LIVRO COMO OBJETO ============ */
+/* Uma coluna única, da capa à contracapa. */
+.livro {
+  max-width: var(--pagina);
+  margin: 0 auto;
+  background: var(--papel);
+  border-left: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+}
+@media (max-width: 52rem) {
+  .livro { border-left: none; border-right: none; }
+}
+
+/* A mancha de texto: a única coisa que define as margens laterais. */
+.mancha { padding: 0 var(--margem); }
+
+/* ============ AS CAPAS ============ */
+/* Capa e contracapa sangram até a borda da página, como numa capa impressa,
+   e têm exatamente a largura do livro. */
+.capa-pagina { display: block; background: #05070D; }
+.capa-pagina img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.capa-pagina.frente { border-bottom: 1px solid var(--borda); }
+.capa-pagina.fundo  { border-top: 1px solid var(--borda); }
+
+/* ============ FOLHA DE ROSTO ============ */
+.rosto {
+  padding: clamp(3.5rem, 12vh, 8rem) 0 clamp(3rem, 9vh, 5.5rem);
+  text-align: center;
+  border-bottom: 1px solid var(--borda);
+}
+.rosto h1 {
+  font-family: var(--serifa-titulo);
+  font-size: clamp(2rem, 6.5vw, 3.4rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin: 0 0 1.4rem;
+  text-wrap: balance;
+}
+.rosto h1 span { display: block; color: var(--acento); }
+.rosto .tomo {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .38em;
+  font-size: .78rem;
+  color: var(--texto-suave);
+  padding-left: .38em;
+  margin: 0 0 2.5rem;
+}
+.rosto .epigrafe {
+  font-size: 1.06rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  max-width: 26rem;
+  margin: 0 auto;
+  text-wrap: pretty;
+}
+.rosto .selo { margin: 0 auto 2.5rem; display: block; }
+
+/* ============ SUMÁRIO ============ */
+.sumario { padding: clamp(3rem, 8vh, 5rem) 0; }
+.sumario h2 {
+  font-family: var(--serifa-titulo);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--texto-suave);
+  margin: 0 0 2.5rem;
+  padding-left: .22em;
+}
+.sumario ol { list-style: none; padding: 0; margin: 0; }
+.sumario li { margin: 0; }
+.sumario a {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: .9rem;
+  align-items: baseline;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--borda);
+  text-decoration: none;
+  color: var(--texto);
+}
+.sumario a:hover, .sumario a:focus-visible { background: var(--superficie-2); }
+/* O sumário mora dentro da mancha, e a regra de links do texto corrido
+   (".mancha li a") pesa mais que ".sumario a". Sem isto o índice inteiro saía
+   sublinhado e na cor de destaque. */
+.mancha .sumario a { text-decoration: none; color: var(--texto); }
+.sumario .alg {
+  font-family: var(--serifa-titulo);
+  font-size: 1.1rem;
+  color: var(--acento);
+  text-align: right;
+}
+.sumario .tit { font-family: var(--serifa-titulo); font-size: 1.16rem; }
+.sumario .sub {
+  display: block;
+  font-family: var(--sans);
+  font-size: .76rem;
+  color: var(--texto-suave);
+  margin-top: .15rem;
+}
+
+/* ============ CAPÍTULOS ============ */
+.capitulo { padding: clamp(3rem, 9vh, 6rem) 0 1rem; }
+
+.abertura {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--borda);
+}
+.abertura .alg {
+  font-family: var(--serifa-titulo);
+  font-size: 1rem;
+  letter-spacing: .3em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+  padding-left: .3em;
+}
+.abertura h2 {
+  font-family: var(--serifa-titulo);
+  font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+  line-height: 1.04;
+  margin: 0 0 .5rem;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  text-wrap: balance;
+}
+.abertura p {
+  font-style: italic;
+  color: var(--texto-suave);
+  max-width: 26rem;
+  margin: 0 auto;
+}
+
+h3 {
+  font-family: var(--serifa-titulo);
+  font-size: 1.42rem;
+  margin: 2.8rem 0 .7rem;
+  text-wrap: balance;
+}
+h4 {
+  font-family: var(--sans);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--acento);
+  margin: 2rem 0 .6rem;
+}
+/* Nenhuma largura própria: a mancha manda. */
+p, li { text-wrap: pretty; }
+p { margin: 0 0 1.1rem; }
+ul, ol { padding-left: 1.2rem; margin: 0 0 1.3rem; }
+li { margin-bottom: .35rem; }
+
+/* Linha de dados centralizada, como a distribuição de atributos. */
+p.linha-dados {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  color: var(--acento);
+  text-align: center;
+  letter-spacing: .1em;
+}
+em.termo { font-style: normal; color: var(--ouro); font-weight: 700; }
+a { color: var(--acento); }
+
+/* capitular */
+p.abre::first-letter {
+  float: left;
+  font-family: var(--serifa-titulo);
+  font-size: 3.9em;
+  line-height: .82;
+  padding: .06em .1em 0 0;
+  color: var(--acento);
+}
+
+.dado {
+  font-family: var(--mono);
+  font-size: .86em;
+  background: var(--acento-fraco);
+  color: var(--acento);
+  padding: .1em .42em;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ornamento entre seções */
+.ornamento {
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--ouro);
+  font-size: 1rem;
+  letter-spacing: 1.1em;
+  padding-left: 1.1em;
+  opacity: .7;
+}
+
+/* Linha de identificação logo abaixo do nome de um exército. */
+p.etiqueta-livro {
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--texto-suave);
+  margin: -.2rem 0 1rem;
+}
+p.etiqueta-livro strong { color: var(--ouro); font-weight: 600; }
+
+code {
+  font-family: var(--mono);
+  font-size: .9em;
+  background: var(--superficie-2);
+  padding: .05em .35em;
+  border-radius: 3px;
+}
+
+/* ============ BLOCOS ============ */
+.destaque {
+  border-top: 2px solid var(--acento);
+  border-bottom: 1px solid var(--borda);
+  background: var(--superficie-2);
+  padding: 1.15rem 1.35rem;
+  margin: 1.8rem 0;
+}
+.destaque p:last-child { margin-bottom: 0; }
+.destaque .rotulo {
+  font-family: var(--sans);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--acento);
+  display: block;
+  margin-bottom: .45rem;
+}
+.destaque .formula {
+  font-family: var(--mono);
+  font-size: 1.12rem;
+  color: var(--acento);
+  margin: 0;
+  text-align: center;
+}
+
+.nota {
+  border-left: 2px solid var(--borda-forte);
+  padding: .3rem 0 .3rem 1.1rem;
+  margin: 1.8rem 0;
+  font-size: .96rem;
+  color: var(--texto-suave);
+}
+.nota strong { color: var(--ouro); }
+.nota p:last-child { margin-bottom: 0; }
+
+/* ============ FALA DE MESA ============ */
+/* Diálogo entre Mestre e jogadores: o exemplo de jogo do Livro I e as cenas
+   de exemplo do Guia usam o mesmo bloco. */
+.mesa {
+  border-left: 3px solid var(--ouro);
+  padding: .2rem 0 .2rem 1.1rem;
+  margin: 1.4rem 0;
+  font-size: .96rem;
+}
+.mesa p { margin: 0 0 .5rem; }
+.mesa p:last-child { margin-bottom: 0; }
+.mesa b { color: var(--acento); font-weight: 700; }
+.mesa em { color: var(--texto-suave); }
+
+/* ============ CARTÕES ============ */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1px;
+  background: var(--borda);
+  border: 1px solid var(--borda);
+  margin: 1.8rem 0;
+}
+.cartao { background: var(--papel); padding: 1.05rem 1.15rem; }
+/* A mancha comporta no máximo duas colunas de cartão. Com um número ímpar de
+   cartões, o último ficava ao lado de uma célula vazia pintada com a cor da
+   grade; ele passa a ocupar a linha inteira. */
+.grade > .cartao:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.cartao h5 {
+  font-family: var(--serifa-titulo);
+  font-size: 1.08rem;
+  margin: 0 0 .1rem;
+}
+.cartao .etiqueta {
+  font-family: var(--sans);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ouro);
+  margin: 0 0 .55rem;
+}
+.cartao p { font-size: .93rem; margin-bottom: .55rem; }
+.cartao p:last-child { margin-bottom: 0; }
+.cartao .poder {
+  border-top: 1px solid var(--borda);
+  padding-top: .55rem;
+  margin-top: .55rem;
+  font-size: .9rem;
+}
+.cartao .poder b { display: block; color: var(--acento); font-size: .94rem; }
+
+/* ============ CLASSES ============ */
+.classe {
+  border-top: 3px double var(--ouro);
+  border-bottom: 1px solid var(--borda);
+  padding: 1.5rem 0 1.8rem;
+  margin: 2.2rem 0;
+}
+.classe-topo { display: flex; align-items: center; gap: .9rem; }
+.classe-topo h3 { margin: 0; font-size: 1.62rem; }
+.classe .papel {
+  font-family: var(--sans);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--texto-suave);
+  margin: .3rem 0 1rem;
+}
+.recursos { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1.1rem 0; }
+.recurso {
+  flex: 1 1 5.2rem;
+  border: 1px solid var(--borda);
+  padding: .55rem .6rem;
+  text-align: center;
+  background: var(--superficie-2);
+}
+.recurso b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--acento);
+  font-variant-numeric: tabular-nums;
+}
+.recurso span {
+  display: block;
+  line-height: 1.35;
+  font-family: var(--sans);
+  font-size: .62rem;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  color: var(--texto-suave);
+}
+
+/* ============ TABELAS ============ */
+.rolagem { overflow-x: auto; margin: 1.6rem 0; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--sans);
+  font-size: .87rem;
+  font-variant-numeric: tabular-nums;
+}
+th, td {
+  text-align: left;
+  padding: .5rem .7rem;
+  border-bottom: 1px solid var(--borda);
+  vertical-align: top;
+}
+th {
+  font-size: .67rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--texto-suave);
+  border-bottom: 1px solid var(--borda-forte);
+  font-weight: 600;
+}
+td.num, th.num { text-align: right; }
+
+
+/* ============ CAIXA DE DADOS ============ */
+.rolador {
+  background: #0C1020;
+  border: 1px solid #2A3150;
+  padding: 1.4rem;
+  margin: 2rem 0;
+  color: #E7E3D9;
+}
+.rolador-topo {
+  font-family: var(--sans);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--ouro-luz);
+  margin-bottom: 1rem;
+}
+.rolador-linha { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.rolador-visor {
+  font-family: var(--mono);
+  font-size: 2.9rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 3.4ch;
+  text-align: center;
+  color: #F2CF7A;
+  font-variant-numeric: tabular-nums;
+}
+.rolador-visor.critico { color: #86D693; }
+.rolador-visor.falha   { color: #E8632C; }
+.rolador-detalhe {
+  flex: 1 1 14rem; font-size: .92rem; color: #B9B6C4;
+  min-height: 3.4em;
+}
+.rolador-detalhe b { color: #F4F1EA; }
+.botoes { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.1rem; }
+button {
+  font-family: var(--sans);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: .55rem 1rem;
+  border: 1px solid #3A4260;
+  background: #161B2C;
+  color: #E2DECF;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+button:hover { background: #20273D; border-color: var(--ouro-luz); }
+button:focus-visible { outline: 2px solid var(--sangue-vivo); outline-offset: 2px; }
+button.principal { background: var(--sangue); border-color: var(--sangue); color: #FFF1F2; }
+button.principal:hover { background: var(--sangue-vivo); border-color: var(--sangue-vivo); }
+
+/* ============ ETAPAS ============ */
+.passos { counter-reset: passo; list-style: none; padding: 0; margin: 1.8rem 0; }
+.passos > li {
+  counter-increment: passo;
+  position: relative;
+  padding-left: 3.1rem;
+  margin-bottom: 1.4rem;
+}
+.passos > li::before {
+  content: counter(passo);
+  position: absolute; left: 0; top: -.05rem;
+  width: 2.15rem; height: 2.15rem;
+  display: grid; place-items: center;
+  border: 1px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--serifa-titulo);
+  font-size: 1rem;
+  color: var(--ouro);
+}
+.passos > li b { display: block; font-family: var(--serifa-titulo); font-size: 1.14rem; }
+
+/* ============ FICHA ============ */
+.ficha { border: 1px solid var(--borda-forte); margin: 1.8rem 0; background: var(--papel); }
+.ficha-cabeca {
+  background: var(--superficie-2);
+  padding: 1rem 1.3rem;
+  border-bottom: 1px solid var(--borda-forte);
+}
+.ficha-cabeca h4 { margin: 0; color: var(--texto-suave); }
+.ficha-cabeca .nome { font-family: var(--serifa-titulo); font-size: 1.6rem; margin: .1rem 0 0; }
+.ficha-corpo { padding: 1.2rem 1.3rem; }
+.atributos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4.6rem, 1fr));
+  gap: .45rem;
+  margin: 0 0 1.2rem;
+}
+.atributo { text-align: center; border: 1px solid var(--borda); padding: .5rem .3rem; }
+.atributo .sigla {
+  font-family: var(--sans); font-size: .6rem;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--texto-suave); display: block;
+}
+.atributo .valor { font-family: var(--mono); font-size: 1.22rem; font-weight: 700; }
+.atributo .mod { font-family: var(--mono); font-size: .78rem; color: var(--acento); display: block; }
+
+/* ============ COLOFÃO ============ */
+.colofao {
+  border-top: 1px solid var(--borda);
+  margin-top: 4rem;
+  padding: 3rem 0 4rem;
+  font-size: .95rem;
+  color: var(--texto-suave);
+}
+.colofao h3 { margin-top: 0; color: var(--texto); }
+
+/* O carimbo de versão, escrito pelo build a partir do CHANGELOG. Quem tem um
+   PDF na mão precisa saber de quando ele é. */
+.versao-do-livro {
+  margin-top: 1.6rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--borda);
+  font-family: var(--sans);
+  font-size: .72rem;
+  color: var(--texto-suave);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ============ IMPRESSÃO ============ */
+/* A folha é A4. Os miolos ficam na mancha do @page; as capas são as únicas
+   páginas sem margem, para sangrarem até a borda como numa capa de verdade.
+   As cores são as mesmas da tela: cada livro imprime na sua própria paleta. */
+@media print {
+  /* A cor do papel vive aqui, e não em html/body: o navegador ignora o fundo
+     da raiz na impressão, mas pinta o fundo declarado no @page — e pinta a
+     folha inteira, margem inclusive. Sem var(): dentro do @page não existe
+     elemento de onde herdar. Cada livro repete este bloco com o seu tom. */
+  @page      { size: A4 portrait; margin: 16mm 18mm 18mm; background: #10141F; }
+  @page capa { margin: 0; background: #05070D; }
+
+  /* O livro impresso é o de couro escuro, o mesmo que aparece na tela, e é
+     escuro sempre — não importa se o sistema de quem imprime está no claro.
+     A raiz triplicada é de propósito: a paleta própria de cada livro vem
+     depois desta folha no arquivo montado, e um :root sozinho perderia para
+     ela. Cada livro repete este bloco com os seus tons. */
+  :root:root:root {
+    --fundo:       #080B14;
+    --papel:       #10141F;
+    --superficie-2:#181E2E;
+    --texto:       #E7E3D9;
+    --texto-suave: #9C99A8;
+    --borda:       #262C40;
+    --borda-forte: #3A4260;
+    --acento:      var(--sangue-vivo);
+    --acento-fraco:#3A1420;
+    --ouro:        var(--ouro-luz);
+  }
+
+  /* Sem isto o navegador joga fora todo fundo e imprime só o texto em preto. */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* O corpo do texto vinha de body, mas título, cartão e rótulo são medidos em
+     rem — ou seja, no tamanho da raiz, que continuava sendo o da tela (16px).
+     Encolher a raiz encolhe o livro inteiro junto, na mesma proporção. */
+  /* Cuidado: rem na própria raiz é circular — vale o tamanho inicial, 16px.
+     Por isso o tamanho da raiz sai daqui, sozinho, em pt. */
+  html { font-size: 9.5pt; background: none; }
+
+  body {
+    background: none;
+    color: var(--texto);
+    font-size: 1em;
+    line-height: 1.45;
+  }
+
+  .rolador, .botoes, .biblioteca-flutuante, .aviso-independencia { display: none !important; }
+  .livro { border: none; max-width: none; background: var(--papel); }
+  .mancha { padding: 0; }
+
+  /* ---- capas: uma folha inteira cada, a arte inteira, sem corte ---- */
+  .capa-pagina {
+    page: capa;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #05070D;
+    border: none;
+    overflow: hidden;
+    break-inside: avoid;      page-break-inside: avoid;
+    break-after: page;        page-break-after: always;
+  }
+  .capa-pagina img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .capa-pagina.fundo { break-before: page; page-break-before: always; }
+
+  /* ---- estrutura ---- */
+  .rosto, .sumario { break-after: page; page-break-after: always; }
+  .rosto  { padding: 22mm 0 16mm; border-bottom: none; }
+  .sumario { padding: 0; }
+  .capitulo { break-before: page; page-break-before: always; padding-top: 0; }
+  .abertura { break-after: avoid; page-break-after: avoid; }
+  h2, h3, h4, .abertura h2, .cartao h5 { break-after: avoid; page-break-after: avoid; }
+  h3, h4 { break-inside: avoid; page-break-inside: avoid; }
+  p, li { orphans: 3; widows: 3; }
+
+  /* ---- nada de rolagem no papel: o que rola na tela some na impressão ---- */
+  .rolagem, pre.bloco-codigo, .dado {
+    overflow: visible !important;
+    max-width: 100%;
+  }
+  pre.bloco-codigo { white-space: pre-wrap; overflow-wrap: anywhere; }
+  th, td { overflow-wrap: anywhere; }
+  table { font-size: .88rem; }
+  thead { display: table-header-group; }
+  tr, img { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Blocos que só fazem sentido inteiros. A .grade fica de fora de propósito:
+     ela cresce mais que uma folha e, presa, deixava páginas quase vazias. */
+  .classe, .cartao, .ficha, .destaque, .nota, .aviso, .recursos, .atributos {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+
+  /* A grade desenha as linhas com o próprio fundo aparecendo pelos vãos. Num
+     grid partido entre duas folhas isso vira uma tarja no pé da página, com os
+     cartões inteiros já na seguinte. No papel cada cartão leva a sua borda e a
+     grade não pinta nada. */
+  .grade { background: none; border: none; gap: 0; }
+  .grade > .cartao {
+    border: 1px solid var(--borda);
+    margin: -1px 0 0 -1px;
+  }
+
+  /* Miolo do livro impresso não precisa de sublinhado de link. */
+  .mancha p a, .mancha li a, .mancha td a, .colofao a {
+    text-decoration: none;
+    color: var(--texto);
+  }
+  .colofao { break-before: auto; }
+}
+
+/* ============================================================
+   BESTIÁRIO — blocos de criatura
+   ============================================================ */
+
+/* Divisor de degrau: "KLEOS 1 — RUMOR" */
+.degrau {
+  margin: 3.5rem 0 2rem;
+  padding: 1.4rem 0 1.2rem;
+  border-top: 3px double var(--ouro);
+  border-bottom: 1px solid var(--borda);
+  text-align: center;
+}
+.degrau h2 {
+  font-family: var(--serifa-titulo);
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0;
+  color: var(--acento);
+  text-wrap: balance;
+}
+.degrau p { font-style: italic; color: var(--texto-suave); margin: .5rem 0 0; }
+
+/* Ficha de criatura */
+.criatura {
+  border: 1px solid var(--borda-forte);
+  border-top: 3px solid var(--acento);
+  background: var(--papel);
+  margin: 2rem 0;
+  padding: 1.3rem 1.4rem 1.5rem;
+}
+.criatura > h3 {
+  font-family: var(--serifa-titulo);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.criatura .kleos {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .64rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--papel);
+  background: var(--acento);
+  padding: .18em .55em;
+  margin-left: .5rem;
+  vertical-align: .18em;
+  white-space: nowrap;
+}
+.criatura .tipo {
+  font-family: var(--sans);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ouro);
+  margin: .35rem 0 .9rem;
+}
+/* Linhas de PV / DEF / Ataque / resistências */
+.criatura .status {
+  background: var(--superficie-2);
+  border-top: 1px solid var(--borda);
+  border-bottom: 1px solid var(--borda);
+  padding: .7rem .9rem;
+  margin: 0 0 1.1rem;
+  font-family: var(--sans);
+  font-size: .87rem;
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
+}
+.criatura .status b { color: var(--texto-suave); font-weight: 600; }
+.criatura .status .sep { color: var(--borda-forte); padding: 0 .1rem; }
+
+/* Rótulos internos: TRAÇOS, AÇÕES, FRAQUEZA MÍTICA... */
+.criatura .rotulo-bloco {
+  font-family: var(--sans);
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--acento);
+  margin: 1.3rem 0 .5rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--borda);
+}
+.criatura .rotulo-bloco:first-of-type { margin-top: 0; }
+.criatura ul { margin: 0 0 .8rem; padding-left: 1.15rem; }
+.criatura p { margin: 0 0 .8rem; }
+.criatura > *:last-child { margin-bottom: 0; }
+
+/* Fraqueza e morte recebem tratamento próprio */
+.criatura .fraqueza { border-left: 2px solid var(--ouro); padding-left: .95rem; }
+.criatura .morte {
+  font-size: .93rem;
+  color: var(--texto-suave);
+  border-top: 1px dashed var(--borda-forte);
+  padding-top: .8rem;
+}
+.criatura .morte .rotulo-bloco { border: none; padding: 0; margin-bottom: .2rem; }
+
+/* Aviso de efeito perigoso (Medusa) */
+.aviso {
+  border: 1px solid var(--acento);
+  background: var(--acento-fraco);
+  padding: .9rem 1.1rem;
+  margin: 1.2rem 0;
+  font-size: .95rem;
+}
+.aviso p:last-child { margin-bottom: 0; }
+
+@media print {
+  .criatura, .degrau { break-inside: avoid; page-break-inside: avoid; }
+  .degrau {
+    break-before: page;  page-break-before: always;
+    break-after: avoid;  page-break-after: avoid;
+    margin-top: 0;
+  }
+}
+
+/* ============================================================
+   BLOCO DE CÓDIGO CERCADO — modelos de registro, fórmulas
+   Preserva as quebras de linha e rola sozinho se for largo
+   demais, para nunca empurrar a página de lado.
+   ============================================================ */
+pre.bloco-codigo {
+  font-family: var(--mono);
+  font-size: .86rem;
+  line-height: 1.8;
+  color: var(--texto);
+  background: var(--superficie-2);
+  border-left: 3px solid var(--acento);
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Rede de segurança: nenhum trecho de código inline pode ser largo o
+   bastante para estourar a mancha, por mais nowrap que ele seja. */
+.dado { max-width: 100%; overflow-wrap: anywhere; }
+
+/* Dentro de um cartão a coluna é estreita — uns 270 px — e um nowrap longo
+   vaza para fora da grade. Ali o dado quebra linha; o nowrap continua valendo
+   no corpo do texto, onde ele serve para 2d8 não virar "2d" numa linha e "8"
+   na outra. */
+.cartao .dado, .criatura .status .dado { white-space: normal; }
+
+@media print {
+  pre.bloco-codigo {
+    white-space: pre-wrap;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
