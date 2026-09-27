@@ -3,6 +3,57 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.2.0] - 2026-09-27
+
+O sistema passou pelo simulador, ficou mais mecânico e ganhou os capítulos do
+Mestre. Tudo que mudou de número mudou por uma medição, e a medição está no
+livro ao lado da regra.
+
+### Adicionado
+
+- **Simulador** (`sim/`): o motor de técnicas em código, a luta inteira rodada a
+  rodada com todas as regras do livro, e os experimentos que decidiram os
+  números (`sim/cenarios.py` gera `sim/RESULTADOS.md`).
+- **`test.py`**: confere as contas das técnicas impressas, o build do livro e
+  as metas de equilíbrio. Roda em segundos, sem dependências, e no CI.
+- **Tabelas geradas**: a tabela de níveis, a de Posto, a tabela rápida de
+  inimigos e as sete fichas prontas saem do simulador na hora do build.
+- **Capítulo Oito · Itens e relíquias**: raridade, Sintonia, como conseguir
+  itens, equipamento comum, remédios e consumíveis, os três metais, melhorias
+  de armadura, relíquias e itens divinos. Nenhuma arma.
+- **Capítulo Dez · Inimigos**: três tipos, como montar, figurantes em bando,
+  a tabela de dificuldade medida e sete inimigos prontos.
+- **Capítulo Onze · Aliados e a luta na mesa**: aliados de luta, de longe e
+  mentores; o deus do exército; como narrar técnicas, quedas e o levantar;
+  duelos em paralelo; a Guerra dos Mil Dias na mesa; uma cena de exemplo.
+- **Glória**: subir de nível passa a ter conta — vitórias, despertares e
+  objetivos.
+- **Interlúdio em semanas**, com oito ações concretas.
+
+### Mudado
+
+- **Os cinco sentidos não se fecham de propósito.** Só se perdem por técnica
+  inimiga ou mutilação (Visão ou Audição). "Resistir" saiu.
+- **O Ouro domina o Sétimo**: +3 contra quem só o despertou. Armadura de Ouro
+  com +6 na DEF, Prata com +4. Medido: um Bronze sozinho vence um Ouro do mesmo
+  nível de 3% a 4% das vezes, e quase sempre depois de levantar do chão.
+- **Guerra dos Mil Dias**: agora começa num choque de técnicas — o mesmo número
+  natural na mesma rodada. A regra antiga travava 95% das lutas equilibradas.
+- **Aparar gasta a reação** e disputa com Bloquear.
+- **Queimar custa 1d4 por ponto, vezes o Grau**, e nunca derruba quem queima.
+  A Queima Controlada saiu.
+- **PV por Grau**: 18, 38, 58, 78 e 98, mais 1 por nível dentro da faixa, mais
+  CON por nível. Acaba o dente de serra das lutas longas no fim de cada faixa.
+- **Ataque Extra no nível 9.** No nível 5, quem nunca usava técnica vencia
+  metade dos duelos.
+- **Centelhas dão Vantagem** no próximo ataque, além do Cosmo e do Teto.
+- **Levantar: uma vez por luta.** Convicções voltam uma por semana de
+  Interlúdio e todas ao subir de nível — o "fim do arco" saiu.
+- **Oitavo Sentido** com requisito, treino e situação definidos.
+- **Restaurar armadura** com teste, tempo e metal por Posto.
+- **Posto** com requisito de nível (Prata no 5, elite no 9 com vaga vazia).
+- Prazos concretos para a Estrela Maligna, a Súplice e a armadura viva.
+
 ## [0.1.0] - 2026-09-27
 
 Primeira versão escrita do sistema: um rascunho jogável em d20, com um livro só

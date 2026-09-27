@@ -23,15 +23,17 @@ aqui primeiro.
   técnicas montadas por pontos.
 - **Postos: Bronze, Prata, Ouro.** Todo personagem começa Bronze, em qualquer
   exército.
-- **Subir de Posto é narrativo.** Nada de "N despertares viram domínio". O Mestre
-  decide quando.
+- **Subir de Posto é narrativo, com requisito de nível** (0.2.0): Prata a partir do
+  nível 5, elite a partir do 9 e com vaga vazia. O momento vem da história.
 - **A armadura sobe de Bronze a Prata na mesma constelação.** Precedente: Órion
   é Prata na obra do Kurumada e Bronze no Ômega.
 - **Ouro é um conjunto fechado de vagas** (as 12 do zodíaco), e cada vaga tem um
   Golpe do Assento (Excalibur, Cólera dos Cem Dragões, Trovão Atômico). Quem assume
   a vaga continua usando as próprias técnicas.
-- **Convicções:** três frases "eu luto…". Levantar gasta uma; despertar invoca
-  uma.
+- **Convicções:** três frases "eu luto…". Levantar gasta uma (uma vez por luta);
+  despertar invoca uma. Voltam uma por semana de Interlúdio e todas ao subir de nível.
+- **Glória** (0.2.0): subir de nível tem conta — vitórias contra nomeados, despertares,
+  objetivos. O pedido foi de um sistema menos narrativo.
 
 ## Exércitos
 
@@ -49,9 +51,12 @@ aqui primeiro.
   rodada a partir da segunda), pelo golpe comum que acerta (+1), por Concentrar
   (+2), pelos sentidos perdidos e pelas Centelhas.
 - **Perder PV nunca dá Cosmo.** É a trava contra "apanhar de propósito".
-  Referência: as reclamações sobre o modo Rage do Tekken.
+  Referência: as reclamações sobre o modo Rage do Tekken. Medido: quem não apara a
+  armadura vence 34% a 46%.
 - **Teto de Cosmo = 3 + proficiência.** Só queimar passa dele.
-- **Queimar** paga e reforça a técnica; custa dano e zera o Cosmo; ignora Lida.
+- **Queimar** paga e reforça a técnica; custa **1d4 por ponto, vezes o Grau**; nunca
+  derruba; zera o Cosmo; ignora Lida. Com preço fixo, quem queimava vencia 80% nos
+  níveis altos.
 
 ## Sentidos
 
@@ -60,9 +65,14 @@ aqui primeiro.
   extremo, e precisa alcançar de novo em cada luta. O Ouro, pelos anos de treino e
   pela armadura de Ouro, entra quando quer. Na regra: Cosmo no Teto + um sacrifício
   (sentido, levantar ou queimar) + uma Convicção dita antes de rolar.
-- **Ouro contra Ouro:** o Sétimo se anula (precedente: o RPG de CDZ de fã no
-  sistema Daemon). **Poder igual:** Guerra dos Mil Dias — trava, contagem de seis,
-  destruição mútua ou saída por Centelha, sacrifício ou terceiro.
+- **O Ouro domina o Sétimo** (0.2.0): +3 contra quem só o despertou; armadura de
+  Ouro +6. O usuário apontou que, no anime, os Bronzes só venceram Ouros por roteiro
+  (Shura deu a armadura ao Shiryu; Shun por milagre; Hyoga quase morreu). Medido: um
+  Bronze sozinho vence um Ouro 3% a 4%; com Centelhas, até 13%; e quase sempre depois
+  de levantar do chão.
+- **Ouro contra Ouro:** o Sétimo se anula (precedente: o RPG de CDZ de fã no sistema
+  Daemon). **Guerra dos Mil Dias** começa num **choque de técnicas** (mesmo natural na
+  mesma rodada). A primeira regra ("mesmo Teto") travava 95% das lutas equilibradas.
 - **Oitavo:** treino + uma situação específica; **não necessariamente aumenta o
   poder**; dá o estado de Buda (morrer sem morrer) e a entrada viva no mundo dos
   mortos. **Todos precisam despertar**, inclusive os Ouros.
@@ -73,14 +83,19 @@ aqui primeiro.
 
 ## Os cinco sentidos
 
-- **Trilha de sacrifício.** Todo sentido perdido dá +1 Cosmo e +1 Teto.
-- **Sacrificar de propósito é jogada canônica** (Ikki deixando o Shaka arrancar
-  os sentidos). O que se fecha é o atalho barato, não o sacrifício.
+- Todo sentido perdido dá +1 Cosmo e +1 Teto.
+- **Ninguém fecha um sentido de propósito** (0.2.0). Só se perde por técnica inimiga
+  ou por mutilação (se cegar, se ensurdecer). O Ikki contra o Shaka foi genialidade
+  contra uma técnica que arranca sentidos — e a regra permite isso: o sentido arrancado
+  sobe o Cosmo. "Resistir" (entregar um sentido para não cair) saiu.
 
 ## Armadura
 
 - **Duas coisas separadas:** as peças quebram e se regeneram; a vida da armadura
   pode acabar.
+- **Aparar gasta a reação** e disputa com Bloquear (0.2.0). De graça, cortava toda
+  técnica pela metade e as lutas passavam de dez rodadas.
+- **Restaurar tem teste** (Ofício CD 14 + 2 × Versão), tempo e metal por Posto.
 - **Estilo clássico (urna) ou Ômega (pedra):** só visual. **Sem sistema
   elemental** do Ômega (a própria série abandonou na segunda metade).
 - **Reviver com sangue, em terços:** 1/3 do sangue de uma pessoa por armadura; o
@@ -106,10 +121,17 @@ aqui primeiro.
 - **Sem armas.** O juramento dos Cavaleiros de Atena; armas de armadura (Libra,
   lanças dos Marinas) entram como acessório ou Golpe do Assento.
 
+## Números (0.2.0)
+
+- **PV por Grau:** 18, 38, 58, 78, 98, mais 1 por nível na faixa, mais CON por nível.
+  Com PV subindo todo nível, o nível 4 passava de 12 rodadas.
+- **Ataque Extra no nível 9.** No 5, dar só golpes comuns rendia o mesmo que usar
+  técnicas.
+- **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
+
 ## Pendências
 
-- Simular o ritmo do Cosmo, o custo de queimar, o bônus de Lida, as caixas por
-  Posto e os ganhos de nível.
+- Medir lutas de grupo contra um inimigo só; hoje só o duelo está medido.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
 - Nome do sistema: **Sangue e Estrelas** (decidido).

@@ -549,6 +549,9 @@ th {
   font-weight: 600;
 }
 td.num, th.num { text-align: right; }
+/* Tabelas densas de números (a tabela rápida de inimigos): nada quebra linha. */
+table.compacta { font-size: .8rem; }
+table.compacta td, table.compacta th { white-space: nowrap; padding: .45rem .5rem; }
 
 
 /* ============ CAIXA DE DADOS ============ */
@@ -895,7 +898,7 @@ button.principal:hover { background: var(--sangue-vivo); border-color: var(--san
   border-top: 1px dashed var(--borda-forte);
   padding-top: .8rem;
 }
-.criatura .morte .rotulo-bloco { border: none; padding: 0; margin-bottom: .2rem; }
+.criatura .morte .rotulo-bloco { display: block; border: none; padding: 0; margin-bottom: .2rem; }
 
 /* Aviso de efeito perigoso (Medusa) */
 .aviso {
@@ -999,13 +1002,19 @@ pre.bloco-codigo {
       <span class="sub">Trocar golpes, acumular, soltar, e levantar de novo</span></span></a></li>
     <li><a href="#cap6"><span class="alg">VI</span><span><span class="tit">Técnicas</span>
       <span class="sub">Como criar a sua, ponto por ponto</span></span></a></li>
-    <li><a href="#cap7"><span class="alg">VII</span><span><span class="tit">Armaduras e itens</span>
+    <li><a href="#cap7"><span class="alg">VII</span><span><span class="tit">Armaduras</span>
       <span class="sub">Peças que quebram, uma vida que acaba e o sangue que traz de volta</span></span></a></li>
-    <li><a href="#cap8"><span class="alg">VIII</span><span><span class="tit">Exércitos</span>
+    <li><a href="#cap8"><span class="alg">VIII</span><span><span class="tit">Itens e relíquias</span>
+      <span class="sub">Remédios, metais, melhorias e os objetos dos deuses</span></span></a></li>
+    <li><a href="#cap9"><span class="alg">IX</span><span><span class="tit">Exércitos</span>
       <span class="sub">O molde, os quatro exércitos de exemplo e as vagas de elite</span></span></a></li>
-    <li><a href="#cap9"><span class="alg">IX</span><span><span class="tit">Subir de nível</span>
-      <span class="sub">Do nível 1 ao 20, e por que o Posto não está nessa tabela</span></span></a></li>
-    <li><a href="#cap10"><span class="alg">X</span><span><span class="tit">Uma ficha pronta</span>
+    <li><a href="#cap10"><span class="alg">X</span><span><span class="tit">Inimigos</span>
+      <span class="sub">Para o Mestre: montar, medir e sete fichas prontas</span></span></a></li>
+    <li><a href="#cap11"><span class="alg">XI</span><span><span class="tit">Aliados e a luta na mesa</span>
+      <span class="sub">Para o Mestre: quem ajuda, e como conduzir duelos em paralelo</span></span></a></li>
+    <li><a href="#cap12"><span class="alg">XII</span><span><span class="tit">Interlúdio e níveis</span>
+      <span class="sub">A Glória, o Posto e o que você ganha do nível 1 ao 20</span></span></a></li>
+    <li><a href="#cap13"><span class="alg">XIII</span><span><span class="tit">Uma ficha pronta</span>
       <span class="sub">As nove etapas do começo ao fim, e a folha de consulta rápida</span></span></a></li>
   </ol>
 </nav>
@@ -1034,9 +1043,9 @@ pre.bloco-codigo {
     <li><strong>O Cosmo cresce durante a luta.</strong> Você começa fraco, troca golpes,
       acumula, e solta a técnica quando a hora chega. O fim da luta é mais forte que o
       começo.</li>
-    <li><strong>Ir além tem preço.</strong> Você pode queimar o Cosmo, abrir mão de um dos
-      cinco sentidos e levantar quando deveria ter ficado no chão. Tudo isso funciona, e
-      tudo isso cobra.</li>
+    <li><strong>Ir além tem preço.</strong> Você pode queimar o próprio Cosmo, levantar
+      quando deveria ter ficado no chão e ficar mais forte a cada sentido que um inimigo
+      arranca de você. Tudo isso funciona, e tudo isso cobra.</li>
     <li><strong>A armadura é quase um personagem.</strong> Ela quebra peça por peça, pode
       morrer, e só volta com sangue — e cada vez que volta, volta diferente.</li>
   </ul>
@@ -1044,11 +1053,13 @@ pre.bloco-codigo {
   <h3>O que você precisa para jogar</h3>
   <ul>
     <li>Um grupo: de dois a cinco jogadores, mais o Mestre.</li>
-    <li>Um jogo de dados de RPG: <span class="dado">d6</span> <span class="dado">d8</span>
-        <span class="dado">d10</span> <span class="dado">d20</span>. Aplicativo de celular serve.</li>
-    <li>Uma folha para a ficha, lápis e borracha. O modelo está no <a href="#cap10">Capítulo
-        Dez</a>.</li>
-    <li>Este livro. É o único: jogador e Mestre leem o mesmo.</li>
+    <li>Um jogo de dados de RPG: <span class="dado">d4</span> <span class="dado">d6</span>
+        <span class="dado">d8</span> <span class="dado">d10</span> <span class="dado">d20</span>.
+        Aplicativo de celular serve.</li>
+    <li>Uma folha para a ficha, lápis e borracha. O modelo está no <a href="#cap13">Capítulo
+        Treze</a>.</li>
+    <li>Este livro. É o único: os jogadores leem até o Capítulo Nove; o Mestre lê tudo,
+        inclusive os capítulos de inimigos, aliados e da luta na mesa.</li>
   </ul>
 
   <div class="destaque">
@@ -1151,7 +1162,8 @@ pre.bloco-codigo {
       <h5>Vantagem</h5>
       <p class="etiqueta">A situação está a seu favor</p>
       <p>Role dois d20 e use o maior. Você tem Vantagem quando ataca alguém caído, quando
-      um aliado te ajuda, quando está num Sentido acima do inimigo.</p>
+      um aliado te ajuda, quando está num Sentido acima do inimigo, quando recebe uma
+      Centelha.</p>
     </div>
     <div class="cartao">
       <h5>Desvantagem</h5>
@@ -1214,21 +1226,24 @@ pre.bloco-codigo {
     </div>
     <div class="cartao">
       <h5>Os cinco sentidos</h5>
-      <p class="etiqueta">O que você pode sacrificar</p>
-      <p>Visão, audição, olfato, paladar e tato. Cada um que você perde enfraquece o corpo
-      e sobe o Cosmo. Voltam um por noite de descanso.</p>
+      <p class="etiqueta">O que podem tirar de você</p>
+      <p>Visão, audição, olfato, paladar e tato. Ninguém fecha um sentido porque quer: ou o
+      inimigo arranca, ou você se mutila. Cada um que se perde enfraquece o corpo e sobe o
+      Cosmo.</p>
     </div>
     <div class="cartao">
       <h5>Convicções</h5>
       <p class="etiqueta">Por que você levanta</p>
       <p>Três frases: aquilo por que você luta. Cada vez que você levanta do chão, gasta
-      uma. Voltam no fim de cada arco da história.</p>
+      uma. Uma volta a cada semana de Interlúdio, e todas voltam quando você sobe de
+      nível.</p>
     </div>
     <div class="cartao">
       <h5>Centelhas</h5>
       <p class="etiqueta">O Cosmo que você manda</p>
-      <p>Três por sessão. Mande para um amigo que está lutando, esteja você onde estiver.
-      É assim que ninguém fica parado quando o duelo é de outro.</p>
+      <p>Três por sessão. Mande para um amigo que está lutando, esteja você onde estiver:
+      ele ganha Cosmo e acerta melhor o próximo golpe. É assim que ninguém fica parado
+      quando o duelo é de outro.</p>
     </div>
   </div>
 
@@ -1236,16 +1251,17 @@ pre.bloco-codigo {
   <p>Duas palavras vão aparecer o livro inteiro, e vale separar uma da outra desde já.</p>
   <ul>
     <li>O <em class="termo">Posto</em> — Bronze, Prata ou Ouro — é o seu lugar no exército e
-      a qualidade da sua armadura. Todo personagem começa Bronze. Subir de Posto acontece
-      na história, quando o Mestre decide que chegou a hora; não existe conta que leve até
-      lá.</li>
+      a qualidade da sua armadura. Todo personagem começa Bronze. A subida acontece na
+      história, quando uma armadura ou uma vaga chega até você — mas só a partir de um nível
+      mínimo, no <a href="#cap12">Capítulo Doze</a>.</li>
     <li>O <em class="termo">Sentido</em> é o patamar do seu poder naquele momento. Todo
       guerreiro luta no Sexto Sentido. O Sétimo é a velocidade da luz: o Bronze só chega
-      lá no limite, e só por uma luta; o Ouro chega quando quer. O Oitavo e o Nono são
-      outra história, contada no <a href="#cap4">Capítulo Quatro</a>.</li>
+      lá no limite, e só por uma luta; o Ouro chega quando quer, e com um controle que o
+      Bronze não tem. O Oitavo e o Nono estão no <a href="#cap4">Capítulo Quatro</a>.</li>
   </ul>
-  <p>É por isso que um Bronze pode vencer um Ouro. O Posto diz quem você é. O Sentido
-  diz até onde você foi hoje.</p>
+  <p>O Posto pesa muito. Medido no simulador, um Bronze sozinho vence um Ouro do mesmo
+  nível menos de uma vez em dez. Mas pode vencer: despertando, levantando e recebendo o
+  Cosmo dos amigos. O Posto diz quem você é. O Sentido diz até onde você foi hoje.</p>
 
 <script>
 var visor = document.getElementById('visor');
@@ -1328,7 +1344,7 @@ function rolar(modo) {
 
   <h3 id="etapa-exercito">Etapa 1 · Exército</h3>
   <p>Escolha a qual deus você serve. Os quatro exércitos abaixo são os exemplos deste
-  livro; o Mestre pode criar outros com o molde do <a href="#cap8">Capítulo Oito</a>.
+  livro; o Mestre pode criar outros com o molde do <a href="#cap9">Capítulo Nove</a>.
   Todos começam no Posto de Bronze do próprio exército.</p>
 
   <div class="rolagem"><table>
@@ -1341,7 +1357,7 @@ function rolar(modo) {
     </tbody>
   </table></div>
 
-  <p>As regras próprias de cada exército estão no Capítulo Oito. Normalmente o grupo inteiro
+  <p>As regras próprias de cada exército estão no <a href="#cap9">Capítulo Nove</a>. Normalmente o grupo inteiro
   serve ao mesmo deus. Misturar exércitos é possível quando a história explica por que um
   Espectro está lutando ao lado de Cavaleiros — e essa costuma ser uma história boa.</p>
 
@@ -1486,8 +1502,8 @@ function rolar(modo) {
     </div>
   </div>
 
-  <p>Se nenhum servir, invente o seu com o Mestre: duas perícias e uma lição do tamanho
-  destas.</p>
+  <p>Se nenhum servir, monte o seu: duas perícias e uma lição do tamanho destas. No nível
+  6 você ganha uma <em class="termo">Segunda Lição</em>, de qualquer treino.</p>
 
   <h3 id="etapa-conviccoes">Etapa 6 · Convicções</h3>
   <p>Escreva três frases que começam com "eu luto". Elas são as suas
@@ -1497,7 +1513,7 @@ function rolar(modo) {
     <li>Pelo menos uma precisa ter o nome de uma pessoa.</li>
     <li>Precisam ser concretas. "Eu luto pela justiça" não serve; "eu luto para que o
       Santuário nunca mais mate um inocente em nome de Atena" serve.</li>
-    <li>Podem mudar entre um arco e outro, se a história mudar você.</li>
+    <li>Quando você sobe de nível, pode reescrever uma delas.</li>
   </ul>
 
   <div class="mesa">
@@ -1578,17 +1594,18 @@ function rolar(modo) {
   <div class="rolagem"><table>
     <thead><tr><th>O quê</th><th>Como calcular</th></tr></thead>
     <tbody>
-      <tr><td>PV máximos</td><td>12 + CON no nível 1; depois, +5 + CON a cada nível</td></tr>
+      <tr><td>PV máximos</td><td>A coluna PV da tabela de níveis (<a href="#cap12">Capítulo Doze</a>) + CON × nível · 18 + CON no nível 1</td></tr>
       <tr><td>DEF</td><td>10 + DES + armadura (Bronze +2, com o Peitoral inteiro)</td></tr>
       <tr><td>Fortitude · Reflexos · Vontade</td><td>14 + CON · DES · SAB, e + proficiência nas treinadas</td></tr>
       <tr><td>Iniciativa</td><td>1d20 + DES</td></tr>
       <tr><td>Movimento</td><td>9 metros; +3 metros com as Pernas da armadura inteiras</td></tr>
-      <tr><td>Golpe comum</td><td>FOR ou DES + proficiência para acertar; 1d8 + o mesmo atributo de dano</td></tr>
+      <tr><td>Golpe comum</td><td>FOR ou DES + proficiência para acertar; 1d8 + o mesmo atributo de dano (dois golpes a partir do nível 9)</td></tr>
       <tr><td>Bônus de técnica</td><td>Golpe: FOR ou DES + proficiência · Cosmo: Atributo do Cosmo + proficiência</td></tr>
       <tr><td>Teto de Cosmo</td><td>3 + proficiência — 5 no nível 1</td></tr>
       <tr><td>Cosmo inicial</td><td>Modificador do Atributo do Cosmo, mínimo 1</td></tr>
       <tr><td>Armadura</td><td>Bronze: 1 caixa em cada peça — Elmo, Peitoral, Braços, Pernas e acessório</td></tr>
       <tr><td>Convicções · Centelhas</td><td>3 Convicções · 3 Centelhas por sessão</td></tr>
+      <tr><td>Glória</td><td>0. Você sobe de nível com 3 de Glória nos níveis 1 a 4</td></tr>
       <tr><td>Técnicas</td><td>2 no nível 1</td></tr>
     </tbody>
   </table></div>
@@ -1614,7 +1631,7 @@ function rolar(modo) {
   <div class="rolagem"><table>
     <thead><tr><th>Quando</th><th>Cosmo</th></tr></thead>
     <tbody>
-      <tr><td>A luta começa</td><td>Modificador do Atributo do Cosmo, mínimo 1</td></tr>
+      <tr><td>A luta começa</td><td>Modificador do Atributo do Cosmo, mínimo 1 (+1 no nível 3, +2 no nível 15)</td></tr>
       <tr><td>Começo de cada turno seu, a partir da segunda rodada</td><td>+1</td></tr>
       <tr><td>Um golpe comum seu acerta (uma vez por turno)</td><td>+1</td></tr>
       <tr><td>Você usa a ação Concentrar</td><td>+2</td></tr>
@@ -1625,29 +1642,28 @@ function rolar(modo) {
   </table></div>
 
   <p>O Cosmo nunca passa do seu <em class="termo">Teto de Cosmo</em>: 3 + proficiência,
-  ou seja, 5 no nível 1 e 9 no nível 17. O Teto sobe com o Sétimo Sentido, com os
-  sentidos que você perde e com as Centelhas que recebe. A única coisa que passa por cima
-  dele é queimar.</p>
+  ou seja, 5 no nível 1 e 9 no nível 17. O Teto sobe com o Sétimo Sentido (+2), com os
+  sentidos perdidos (+1 cada) e com as Centelhas recebidas (+1 cada, no máximo +3 por luta).
+  A única coisa que passa por cima dele é queimar.</p>
 
   <p>Você gasta Cosmo para usar técnicas: cada técnica custa tantos pontos de Cosmo quanto
-  o tamanho dela. O golpe comum não custa nada — é ele que enche o Cosmo para a técnica.
-  O ritmo que sai daí é o do anime: trocar golpes, acumular, soltar.</p>
+  o tamanho dela. O golpe comum não custa nada — é ele que enche o Cosmo para a técnica.</p>
 
   <div class="nota">
     <p><strong>Por que perder PV não dá Cosmo.</strong> Seria o jeito mais óbvio de fazer
-    "quanto mais apanha, mais forte fica", e é o jeito que quebra. Jogos de luta tentaram:
-    o modo Rage do Tekken fica mais forte quanto menos vida você tem, e os próprios
-    jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para quem
-    perdeu a luta toda". Num RPG é pior, porque o jogador que está ganhando descobriria que
-    vale a pena apanhar de propósito. Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e
-    pelo sacrifício que você escolhe. Apanhar à toa não rende nada.</p>
+    "quanto mais apanha, mais forte fica", e é o jeito que quebra: o jogador descobriria que
+    vale a pena apanhar de propósito. Jogos de luta tentaram — o modo Rage do Tekken — e os
+    próprios jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para
+    quem perdeu a luta toda". Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e pelo que
+    você perde de verdade. <strong>Medido:</strong> quem deixa de aparar os golpes com a
+    armadura vence só de 34% a 46% dos duelos contra quem apara.</p>
   </div>
 
   <h4>A aura</h4>
   <p>Com o Cosmo no Teto, ele deixa de caber em você. A imagem da sua constelação aparece
   às suas costas, e qualquer guerreiro por perto sabe onde você está: você tem Desvantagem
-  em Furtividade até o Cosmo baixar. Fora da luta, perceber um Cosmo escondido é
-  Percepção; esconder o seu é Furtividade.</p>
+  em Furtividade até o Cosmo baixar. Fora da luta, perceber um Cosmo escondido é Percepção
+  contra a Furtividade de quem esconde.</p>
 
   <h4 id="queimar">Queimar o Cosmo</h4>
   <p>Queimar é ir além do que você tem. Antes de rolar uma técnica, declare quantos pontos
@@ -1655,14 +1671,21 @@ function rolar(modo) {
   <ul>
     <li>Os pontos queimados <strong>pagam a técnica</strong> como se fossem Cosmo, mesmo que
       você não tenha esse Cosmo e mesmo passando do Teto.</li>
-    <li>Cada ponto queimado <strong>além do custo</strong> soma um ponto de dano extra à
-      técnica, do mesmo dado dela — mesmo que isso passe do tamanho máximo.</li>
-    <li>O preço: <span class="dado">1d6</span> de dano em você por ponto queimado, que a
-      armadura não reduz. E, depois da técnica, <strong>o seu Cosmo vai a zero</strong>.</li>
-    <li>Uma técnica queimada ignora a marca de <em class="termo">Lido</em> (<a href="#lido">Capítulo
-      Cinco</a>): o inimigo já viu o golpe, mas não com essa força.</li>
+    <li>Cada ponto queimado <strong>além do custo</strong> soma um ponto de dano à técnica,
+      do mesmo dado dela — mesmo que isso passe do tamanho máximo.</li>
+    <li>O preço: <span class="dado">1d4</span> de dano em você <strong>por ponto, vezes o
+      Grau da técnica</strong>. A armadura não reduz esse dano, e ele nunca te leva abaixo de
+      1 PV. Depois da técnica, <strong>o seu Cosmo vai a zero</strong>.</li>
+    <li>Uma técnica queimada ignora a marca de <em class="termo">Lida</em>: o inimigo já viu
+      o golpe, mas não com essa força.</li>
   </ul>
-  <p>Queimar é também uma das três portas do Sétimo Sentido.</p>
+
+  <div class="nota">
+    <p><strong>Medido:</strong> quem nunca queima vence de 42% a 52% dos duelos contra quem
+    queima com juízo — queimar ajuda a fechar a luta, mas não decide sozinho. Numa versão
+    anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes. É por
+    isso que o custo cresce com o Grau.</p>
+  </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -1674,22 +1697,21 @@ function rolar(modo) {
     <thead><tr><th>Sentido</th><th>Quem chega</th><th>O que muda</th></tr></thead>
     <tbody>
       <tr><td>Sexto</td><td>Todo guerreiro</td><td>O patamar de todos: golpes na velocidade do som</td></tr>
-      <tr><td>Sétimo</td><td>Ouro, quando quer · Bronze e Prata, no limite e por uma luta</td><td>A velocidade da luz: um degrau acima do Sexto, e +2 de Teto</td></tr>
-      <tr><td>Oitavo</td><td>Quem desperta, com treino e uma situação específica</td><td>Não dá força: dá o estado de Buda e a entrada viva no mundo dos mortos</td></tr>
+      <tr><td>Sétimo</td><td>A elite, quando quer · Bronze e Prata, no limite e por uma luta</td><td>A velocidade da luz: um degrau acima do Sexto, e +2 de Teto</td></tr>
+      <tr><td>Oitavo</td><td>Quem treinou e passou pela morte</td><td>Não dá força: dá o estado de Buda e a entrada viva no mundo dos mortos</td></tr>
       <tr><td>Nono</td><td>Quem tem um elo com um deus</td><td>O sentido dos deuses: um degrau acima do Sétimo, e o único que fere um deus</td></tr>
     </tbody>
   </table></div>
 
   <h4>A diferença de Sentido</h4>
   <p>Só três Sentidos são degraus de poder: Sexto, Sétimo e Nono. O Oitavo não conta. O
-  que vale é a diferença entre você e o inimigo, nunca o número absoluto.</p>
+  que vale é a diferença entre você e o inimigo.</p>
   <ul>
     <li><strong>Um degrau acima:</strong> você tem Vantagem nos ataques e nas Rolagens de
       Efeito contra ele, e ele tem Desvantagem contra você.</li>
     <li><strong>Dois degraus acima:</strong> além disso, os ataques dele contra você só
       acertam num 20 natural.</li>
-    <li><strong>Mesmo degrau:</strong> nada. Ouro contra Ouro, os dois no Sétimo, se
-      anulam, e a luta vira uma disputa de Cosmo, técnica e leitura.</li>
+    <li><strong>Mesmo degrau:</strong> nada — a não ser o domínio da elite, abaixo.</li>
   </ul>
 
   <h3 id="setimo">O Sétimo Sentido</h3>
@@ -1700,62 +1722,72 @@ function rolar(modo) {
     <li>você pode queimar até a proficiência + 2.</li>
   </ul>
 
-  <h4>O Ouro: quando quiser</h4>
-  <p>Anos de treino e uma armadura de Ouro dão um controle que ninguém mais tem. No
-  começo de qualquer turno seu, sem gastar ação, um guerreiro de Posto Ouro entra no
-  Sétimo e fica nele até o fim da luta.</p>
+  <h4>A elite: quando quiser, e com domínio</h4>
+  <p>Anos de treino e uma armadura de elite — Ouro, General Marina, Juiz, Guerreiro Deus —
+  dão um controle que ninguém mais tem. No começo de qualquer turno seu, sem gastar ação,
+  um guerreiro de elite entra no Sétimo e fica nele até o fim da luta.</p>
+  <div class="destaque">
+    <span class="rotulo">O Sétimo dominado</span>
+    <p>Quando os dois estão no Sétimo e só um é de elite, o de elite soma <strong>+3 nos
+    ataques e nas Rolagens de Efeito</strong> contra o outro, e o outro soma
+    <strong>−3</strong> nos dele. O Bronze despertou o Sétimo hoje; o Ouro vive nele há
+    anos. Entre dois guerreiros de elite, o domínio se anula.</p>
+  </div>
 
   <h4>O Bronze e o Prata: no limite</h4>
   <p>Um Bronze ou um Prata só alcança o Sétimo quando dá tudo o que tem. O despertar
   acontece — sem rolagem — quando as três coisas estão presentes no mesmo turno:</p>
   <ol class="passos">
     <li><b>O Cosmo está no Teto</b> Você já chegou ao máximo do que o seu corpo aguenta.</li>
-    <li><b>Um sacrifício</b> Neste turno você perdeu um dos cinco sentidos, levantou do
-      chão ou queimou o Cosmo.</li>
+    <li><b>Um sacrifício</b> Neste turno você queimou o Cosmo, levantou do chão ou perdeu um
+      dos cinco sentidos.</li>
     <li><b>Uma Convicção dita em voz alta</b> Antes de rolar qualquer coisa, você diz por
       que ainda está lutando. Ela não é gasta: é invocada.</li>
   </ol>
   <p>Você fica no Sétimo até o fim daquela luta. Na próxima, começa no Sexto de novo e
-  precisa despertar outra vez. É o que acontece no anime: o Bronze chega lá, mas não
-  fica.</p>
+  precisa despertar outra vez. E despertar não te iguala a um Ouro: o domínio dele
+  continua valendo.</p>
 
   <div class="nota">
-    <p><strong>Por que as três condições.</strong> O Cosmo no Teto impede o "sacrifico um
-    sentido na primeira rodada e já acordo": primeiro você luta, depois você desperta.
-    Como o Teto se alcança atacando e com o passar das rodadas, e não apanhando, quem luta
-    bem chega lá sem precisar ser surrado. A Convicção dita antes de rolar é uma regra
-    emprestada do <em>Blades in the Dark</em>: você decide antes de ver o dado, e não
-    depois. E o despertar não tem rolagem porque a raridade dele vem do preço, não da
-    sorte.</p>
+    <p><strong>O que o simulador diz sobre Bronze contra Ouro.</strong> Do mesmo nível, um
+    Bronze sozinho vence um Ouro de 3% a 4% das vezes; um Prata, de 4% a 8%. Com um amigo
+    mandando uma Centelha por rodada, o Bronze chega a 5% a 13%. E, das poucas vitórias,
+    de 80% a 100% vieram depois de levantar do chão, e o Bronze terminou a luta com um quinto
+    dos PV. É o anime: um Bronze vence um Ouro por um milagre, com a ajuda de alguém, e quase
+    morrendo.</p>
   </div>
 
   <h3 id="mil-dias">A Guerra dos Mil Dias</h3>
-  <p>Quando dois guerreiros no mesmo Sentido — o Sétimo ou acima — e com o
-  <strong>mesmo Teto de Cosmo</strong> se enfrentam, o Mestre declara a
-  <em class="termo">Guerra dos Mil Dias</em>. É o que acontece quando dois poderes iguais
-  se encontram: nenhum dos dois consegue vencer.</p>
+  <p>Quando dois poderes iguais se chocam, nenhum dos dois consegue vencer. Isso acontece
+  num <em class="termo">choque de técnicas</em>:</p>
+  <div class="destaque">
+    <span class="rotulo">O choque</span>
+    <p>Dois guerreiros no mesmo Sentido — o Sétimo ou acima — usam técnicas um contra o
+    outro na mesma rodada, e os dois d20 naturais dão <strong>o mesmo número</strong>. Os
+    Cosmos se travam: começa a Guerra dos Mil Dias.</p>
+  </div>
   <ul>
     <li>Os acertos entre os dois não causam dano nem condição.</li>
     <li>A luta ganha uma <em class="termo">Contagem dos Mil Dias</em> de seis segmentos. No
-      fim de cada rodada em que os dois continuam travados, marque um.</li>
-    <li>Com os seis marcados, é a <strong>destruição mútua</strong>: os dois caem a 0 PV
-      e as duas armaduras morrem.</li>
+      fim de cada rodada travada, marque um.</li>
+    <li>Com os seis marcados, é a <strong>destruição mútua</strong>: os dois caem a 0 PV,
+      sem poder levantar nesta luta, e as duas armaduras morrem.</li>
   </ul>
   <p>Há quatro jeitos de sair antes disso:</p>
   <div class="grade">
     <div class="cartao">
       <h5>Uma Centelha</h5>
-      <p>Cosmo vindo de fora sobe o Teto de um dos dois. A igualdade acaba e a luta volta
-      ao normal. É aqui que o resto do grupo decide um duelo que não é dele.</p>
+      <p>Qualquer Cosmo vindo de fora quebra a trava, e a luta volta ao normal. É aqui que o
+      resto do grupo decide um duelo que não é dele.</p>
     </div>
     <div class="cartao">
       <h5>Um sentido</h5>
-      <p>Perder um sentido sobe o Teto em 1 e quebra a igualdade — com o preço permanente
-      que isso tem.</p>
+      <p>Perder um sentido também quebra a trava — seja porque o inimigo arrancou, seja
+      porque você se mutilou.</p>
     </div>
     <div class="cartao">
       <h5>Alguém de fora</h5>
-      <p>Um terceiro que entra na luta rompe a trava. Para o bem ou para o mal.</p>
+      <p>Um terceiro que ataca qualquer um dos dois rompe a trava. Para o bem ou para o mal.</p>
     </div>
     <div class="cartao">
       <h5>Destruição voluntária</h5>
@@ -1763,22 +1795,34 @@ function rolar(modo) {
       armaduras morrem.</p>
     </div>
   </div>
-  <p>Na mesa, o jeito mais gostoso de conduzir é congelar o duelo e cortar para as outras
-  cenas: a Contagem avança a cada corte, e os outros jogadores sabem que o relógio está
-  correndo — e que as Centelhas deles são a saída.</p>
+  <p><strong>Medido:</strong> a Guerra acontece em cerca de 13% das lutas entre dois Ouros
+  e em 3% a 6% das lutas entre Bronzes despertos. Numa versão anterior, a condição era "o
+  mesmo Teto de Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela
+  travava 95% das lutas. O choque de números iguais a mantém rara.</p>
 
   <h3 id="oitavo">O Oitavo Sentido</h3>
   <p>O Oitavo, o <em class="termo">Arayashiki</em>, não é um degrau de poder. Ele não
-  aumenta a força de ninguém. O que ele muda é a relação do guerreiro com a morte.</p>
+  aumenta a força de ninguém. O que ele muda é a relação do guerreiro com a morte. Ninguém
+  nasce com ele — nem os Ouros.</p>
+  <ol class="passos">
+    <li><b>Requisito</b> Nível 9.</li>
+    <li><b>O treino</b> Uma ação de Interlúdio por semana: teste de Atributo do Cosmo +
+      proficiência contra CD 18. Junte três sucessos, em semanas diferentes.</li>
+    <li><b>A situação</b> Com o treino completo, na próxima vez em que você cair a 0 PV sem
+      poder levantar, você desperta o Oitavo em vez de ficar no chão: entra no estado de
+      Buda.</li>
+  </ol>
+  <p>Com o Oitavo desperto:</p>
   <ul>
-    <li><strong>Como se chega:</strong> com treino, durante os Interlúdios, e uma situação
-      específica que o Mestre prepara — quase sempre, olhar a morte de frente. Ninguém
-      nasce com ele, nem os Ouros: todo mundo precisa despertar.</li>
-    <li><strong>O estado de Buda:</strong> uma vez por arco, quando você morreria, você pode
-      morrer sem morrer. O corpo cai, mas a consciência continua, e você segue agindo como
-      espírito até o fim da cena.</li>
-    <li><strong>O mundo dos mortos:</strong> você pode entrar nele com o corpo vivo, e sair.
-      Para os outros, o caminho até lá só existe depois de morrer.</li>
+    <li><strong>O estado de Buda.</strong> Uma vez por nível, quando você cairia a 0 PV sem
+      poder levantar, ou quando morreria, você morre sem morrer: o corpo cai, e a consciência
+      segue agindo, como espírito, até o fim da luta — com os PV que tinha no começo dela e
+      sem armadura. Os ataques de quem não tem o Oitavo te atravessam. No fim da luta, você
+      volta ao corpo com 1 PV.</li>
+    <li><strong>O mundo dos mortos.</strong> Você pode entrar nele com o corpo vivo, e sair.
+      Entrar ou sair leva um minuto de meditação.</li>
+    <li><strong>Sentir sem os sentidos.</strong> Sem nenhum dos cinco sentidos, você continua
+      de pé mesmo no Sexto.</li>
   </ul>
 
   <h3 id="nono">O Nono Sentido</h3>
@@ -1794,9 +1838,9 @@ function rolar(modo) {
     <div class="cartao">
       <h5>Elo de ligação</h5>
       <p class="etiqueta">Pode ser cortado</p>
-      <p>Um objeto ou um vínculo que carrega o Cosmo de um deus — um rosário, uma pulseira
-      de flores, uma promessa. Enquanto ele durar, o elo vale. Se o objeto se perde ou a
-      ligação é cortada, o elo acaba na hora, mesmo no meio da luta.</p>
+      <p>Um objeto que carrega o Cosmo de um deus e foi dado a você (<a href="#cap8">Capítulo
+      Oito</a>). Enquanto estiver com você, o elo vale. Se o objeto for tomado ou destruído,
+      o elo acaba na hora, mesmo no meio da luta.</p>
     </div>
   </div>
   <p>Com um elo, o Nono desperta como o Sétimo: você já precisa estar no Sétimo, com o
@@ -1810,99 +1854,86 @@ function rolar(modo) {
       zero</strong>, por mais forte que seja o golpe.</li>
   </ul>
   <p>O Nono dura até o fim da luta — ou até o elo de ligação ser cortado, o que te devolve
-  ao Sétimo na hora. Um inimigo pode tentar cortar o elo de propósito: tomar o objeto é
-  uma manobra de Agarrar, e desfazer a ligação é uma técnica com condição forte. Depois
-  da luta, a armadura volta à forma de sempre.</p>
+  ao Sétimo na hora. Tomar o objeto é uma manobra de Agarrar; destruí-lo exige uma técnica
+  com condição forte contra a Vontade de quem o carrega. Depois da luta, a armadura volta à
+  forma de sempre.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="cinco-sentidos">Os cinco sentidos</h3>
   <p>Visão, audição, olfato, paladar e tato. Na sua ficha eles são cinco caixas, e cada
-  uma que você marca é um sentido perdido. <strong>Todo sentido perdido, não importa
-  como, dá +1 de Cosmo na hora e +1 de Teto enquanto estiver perdido.</strong></p>
+  uma que você marca é um sentido perdido. <strong>Todo sentido perdido dá +1 de Cosmo na
+  hora e +1 de Teto enquanto estiver perdido.</strong></p>
 
-  <h4>Como se perde um sentido</h4>
+  <p><strong>Ninguém fecha um sentido porque quer.</strong> Um sentido só se perde de dois
+  jeitos:</p>
   <div class="grade">
     <div class="cartao">
-      <h5>Sacrifício</h5>
-      <p class="etiqueta">Você escolhe</p>
-      <p>Sem gastar ação, antes de qualquer rolagem sua, você fecha um sentido de
-      propósito — como o guerreiro que se cega para não ver o escudo da Medusa, ou o que
-      deixa o inimigo arrancar os sentidos dele um por um para o Cosmo crescer.</p>
+      <h5>Arrancado</h5>
+      <p class="etiqueta">Por uma técnica inimiga</p>
+      <p>Algumas técnicas arrancam sentidos — é a condição forte <em>Sentido arrancado</em>,
+      e quem ataca escolhe qual. O sentido volta sozinho: um por descanso longo.</p>
     </div>
     <div class="cartao">
-      <h5>Resistir</h5>
-      <p class="etiqueta">Em vez de cair</p>
-      <p>Quando um ataque te acerta, antes de o dano ser rolado, você pode entregar um
-      sentido. Se o dano te levaria a 0 PV, você fica com 1. O sentido vai embora mesmo que
-      o dano fosse menor: você decide antes de ver.</p>
+      <h5>Mutilação</h5>
+      <p class="etiqueta">Pelas suas próprias mãos</p>
+      <p>Com a ação, você destrói os próprios olhos ou os próprios ouvidos: perde a Visão ou
+      a Audição e sofre <span class="dado">1d6</span> de dano. Um sentido mutilado não volta
+      com descanso: só com uma semana de Interlúdio e um teste de Medicina CD 20 de quem
+      cuidar de você — ou nunca, se você quiser.</p>
     </div>
-    <div class="cartao">
-      <h5>Técnica inimiga</h5>
-      <p class="etiqueta">Arrancado</p>
-      <p>Algumas técnicas arrancam sentidos — é uma condição forte, e quem ataca escolhe
-      qual. O Cosmo sobe mesmo assim: foi esse o erro de quem tentou apagar o Cosmo de um
-      Cavaleiro tirando os sentidos dele.</p>
-    </div>
+  </div>
+
+  <div class="nota">
+    <p><strong>A jogada do Ikki.</strong> Arrancar os sentidos de alguém é tirar dele o
+    corpo — e dar a ele Cosmo. Contra quem sabe disso, a técnica que arranca sentidos é uma
+    faca de dois gumes: foi exatamente o que um Cavaleiro de Fênix usou contra o homem mais
+    próximo de Deus, deixando que ele tirasse tudo. A regra permite a mesma genialidade: se
+    um inimigo arranca os seus sentidos, cada um que vai embora te empurra para o Sétimo.</p>
   </div>
 
   <h4>O que cada sentido tira</h4>
   <div class="rolagem"><table>
     <thead><tr><th>Sentido perdido</th><th>Efeito enquanto estiver perdido</th></tr></thead>
     <tbody>
-      <tr><td>Tato</td><td>Você não sente o chão nem a dor: Desvantagem em Acrobacia e Atletismo, e você não pode usar reações</td></tr>
-      <tr><td>Paladar</td><td>Desvantagem em Fortitude</td></tr>
-      <tr><td>Olfato</td><td>Desvantagem em Percepção; você não percebe venenos nem gases</td></tr>
-      <tr><td>Audição</td><td>Desvantagem na Iniciativa; ninguém pode te dar Ajuda, porque você não ouve</td></tr>
-      <tr><td>Visão</td><td>Desvantagem em Reflexos e nos ataques contra alvos a mais de 3 metros</td></tr>
+      <tr><td>Visão</td><td>−2 na DEF; Desvantagem nos ataques contra alvos a mais de 3 metros. Imune a efeitos de olhar, como o Escudo da Medusa.</td></tr>
+      <tr><td>Audição</td><td>Desvantagem na Iniciativa; ninguém pode te dar Ajuda. Imune a efeitos de som.</td></tr>
+      <tr><td>Olfato</td><td>Desvantagem em Percepção; você não percebe venenos nem gases.</td></tr>
+      <tr><td>Paladar</td><td>Desvantagem em Fortitude.</td></tr>
+      <tr><td>Tato</td><td>Você não pode usar reações; Desvantagem em Acrobacia e Atletismo.</td></tr>
     </tbody>
   </table></div>
 
   <p><strong>Sem nenhum dos cinco</strong>, você só continua de pé se estiver no Sétimo
-  Sentido ou acima. Se não estiver, cai a 0 PV no fim do turno.</p>
-
-  <h4>Como eles voltam</h4>
-  <p>Depois da luta, a cada descanso longo, um sentido volta — você escolhe qual. Com eles
-  volta também o Teto de antes.</p>
-  <p>Você pode decidir que uma perda é <strong>para sempre</strong>, como o guerreiro que
-  lutou cego o resto da vida. O sentido não volta, a penalidade fica, e o +1 de Teto fica
-  também. O Mestre aprova, e a mesa deveria sentir o peso da escolha.</p>
-
-  <div class="nota">
-    <p><strong>O sacrifício é permitido.</strong> Deixar o inimigo arrancar os seus
-    sentidos para o Cosmo crescer é uma jogada do anime, e aqui é uma jogada da regra. O
-    que impede o abuso é o preço: cada sentido é uma penalidade real, só existem cinco, e
-    você decide antes de rolar. O sacrifício passa pelos sentidos, nunca pelos PV.</p>
-  </div>
+  Sentido ou acima, ou se tiver despertado o Oitavo. Se não, cai a 0 PV no fim do turno.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="centelhas">Centelhas: o Cosmo que você manda</h3>
-  <p>Em quase toda luta importante de CDZ, alguém está sozinho diante do inimigo e os
-  amigos estão longe — em outra casa, em outro templo, desacordados. E mesmo assim o Cosmo
-  deles chega. É isso que as <em class="termo">Centelhas</em> fazem.</p>
+  <p>Em quase toda luta importante, alguém está sozinho diante do inimigo e os amigos estão
+  longe — em outra casa, em outro templo, desacordados. E mesmo assim o Cosmo deles chega.</p>
   <ul>
     <li>Cada personagem tem <strong>3 Centelhas por sessão</strong>.</li>
     <li>Você manda uma sem gastar ação, uma vez por rodada, para um aliado que esteja
       lutando — <strong>a qualquer distância</strong>, mesmo que o seu personagem esteja em
       outra cena, ou caído.</li>
-    <li>Quem recebe ganha <strong>+1 de Cosmo</strong> e <strong>+1 de Teto até o fim da
-      luta</strong>. Ninguém sobe mais que +3 de Teto por luta com Centelhas.</li>
+    <li>Quem recebe ganha <strong>+1 de Cosmo</strong>, <strong>+1 de Teto até o fim da
+      luta</strong> (no máximo +3 por luta) e <strong>Vantagem no próximo ataque</strong>.</li>
     <li>Se você mesmo estiver numa luta, mandar custa também 1 do seu Cosmo.</li>
-    <li>Um aliado a 0 PV que recebe uma Centelha pode levantar na hora, sem esperar o
-      turno dele — ainda gastando uma Convicção.</li>
+    <li>Uma Centelha quebra a Guerra dos Mil Dias.</li>
+    <li>Um aliado a 0 PV que recebe uma Centelha pode levantar na hora, sem esperar o turno
+      dele — ainda gastando uma Convicção.</li>
     <li>O laço precisa existir: companheiros de grupo sempre contam; um personagem do
       Mestre precisa estar numa das suas Convicções.</li>
   </ul>
 
   <div class="nota">
-    <p><strong>Por que por sessão, e por que a qualquer distância.</strong> Um duelo de
-    uma hora é uma hora de mesa para quem não está nele. As Centelhas dão a esses
-    jogadores uma decisão de verdade — mandar agora ou guardar para a Guerra dos Mil Dias —
-    sem tirar o duelo de quem está lutando. Não achamos nenhum RPG com uma ação explícita
-    de "ajudar de longe"; o mais perto é o Aiki do <em>Tenra Bansho Zero</em>, em que cada
-    jogador tem três fichas por cena para dar a quem fez algo grande. Esta é a nossa
-    versão.</p>
+    <p><strong>Por que por sessão, e por que a qualquer distância.</strong> Um duelo de uma
+    hora é uma hora de mesa para quem não está nele. As Centelhas dão a esses jogadores uma
+    decisão de verdade — mandar agora ou guardar para a Guerra dos Mil Dias — sem tirar o
+    duelo de quem está lutando. Não achamos nenhum RPG com uma ação explícita de "ajudar de
+    longe"; o mais perto é o Aiki do <em>Tenra Bansho Zero</em>. Como conduzir isso na mesa
+    está no <a href="#cap11">Capítulo Onze</a>.</p>
   </div>
 </section>
 
@@ -1989,19 +2020,25 @@ function rolar(modo) {
   </div>
 
   <h4>Reações</h4>
+  <p>Você tem uma reação por rodada, e ela volta no começo do seu turno. Três coisas
+  disputam essa reação — e escolher é a decisão defensiva mais importante da luta:</p>
   <ul>
     <li><strong>Bloquear.</strong> Com os Braços da armadura inteiros, quando um ataque é
       declarado contra você e antes da rolagem: +2 na DEF contra ele.</li>
+    <li><strong>Aparar.</strong> Depois de ser acertado e de ver o dano: marque uma caixa de
+      uma peça da armadura e sofra metade. Está no <a href="#armadura-na-luta">Capítulo
+      Sete</a>.</li>
     <li><strong>Ataque de oportunidade.</strong> Quando alguém ao seu alcance sai dele sem
       Desengajar, você dá um golpe comum.</li>
   </ul>
-  <p>Aparar com a armadura não é reação: é uma escolha que você faz depois de ser acertado,
-  quantas vezes tiver caixas para marcar. Está no <a href="#armadura-na-luta">Capítulo
-  Sete</a>.</p>
+  <p>Bloquear antes ou aparar depois: quem bloqueia o golpe comum fica sem reação para
+  aparar a técnica que vem em seguida. Técnicas de reação também gastam a reação.</p>
 
   <h4>O golpe comum cresce</h4>
-  <p>No nível 5 você ganha o <em class="termo">Ataque Extra</em>: a ação Golpe passa a dar
+  <p>No nível 9 você ganha o <em class="termo">Ataque Extra</em>: a ação Golpe passa a dar
   dois golpes. Cada um rola separado, e o +1 de Cosmo continua valendo uma vez por turno.
+  Ele chega no nível 9, e não antes, por causa de uma medição: com dois golpes no nível 5,
+  um lutador que nunca usava técnica vencia metade dos duelos contra quem usava.
   Com o acessório de garras ou chifres, o dano do golpe comum é
   <span class="dado">1d10</span>.</p>
 
@@ -2043,8 +2080,8 @@ function rolar(modo) {
   <h3>Figurantes</h3>
   <p>Soldados rasos, guardas do templo, espectros sem nome: são
   <em class="termo">figurantes</em>. Um acerto derruba um figurante, e uma técnica em área
-  derruba todos os que pegar. Eles vêm em bandos: o bando age como uma criatura só, com um
-  ataque por rodada, e tem Vantagem enquanto houver mais de três de pé.</p>
+  derruba todos os que pegar. Eles vêm em bandos, e o bando age como uma criatura só. Os
+  números de um bando estão no <a href="#cap10">Capítulo Dez</a>.</p>
   <p>Um personagem de jogador nunca é figurante — nem diante de um Ouro, nem diante de um
   deus.</p>
 
@@ -2060,7 +2097,8 @@ function rolar(modo) {
 
   <h4>Levantar</h4>
   <p>No começo do seu turno — ou na hora, se um aliado te mandar uma Centelha —, você pode
-  <strong>gastar uma Convicção</strong>. Diga a frase em voz alta. Você:</p>
+  <strong>gastar uma Convicção</strong>. Diga a frase em voz alta. Você levanta
+  <strong>uma vez por luta</strong>, e:</p>
   <ul>
     <li>levanta com um quarto dos seus PV máximos, arredondado para cima;</li>
     <li>vai com o Cosmo direto ao Teto;</li>
@@ -2072,13 +2110,19 @@ function rolar(modo) {
 
   <h4>O preço de levantar</h4>
   <ul>
-    <li>A Convicção fica <strong>gasta até o fim do arco</strong>. Com três, você levanta
-      no máximo três vezes por arco.</li>
+    <li>A Convicção fica <strong>gasta</strong>. Uma volta a cada semana de Interlúdio, e
+      todas voltam quando você sobe de nível.</li>
     <li>Cada vez que levanta, você ganha uma <em class="termo">Cicatriz</em>: seus PV
       máximos caem em um valor igual ao seu nível até o próximo descanso longo. Descreva
       a marca que fica.</li>
-    <li>Sem Convicção para gastar, você fica no chão até a luta acabar, e acorda com 1 PV.</li>
+    <li>Sem Convicção para gastar, ou se já levantou nesta luta, você fica no chão até a
+      luta acabar, e acorda com 1 PV.</li>
   </ul>
+  <div class="nota">
+    <p><strong>Medido:</strong> num duelo em que os dois têm Convicções, quem se recusa a
+    levantar vence de 0% a 7% das vezes. Levantar é a jogada mais forte do jogo — e é por
+    isso que ela custa algo que só volta com o tempo, e só uma vez por luta.</p>
+  </div>
 
   <div class="ornamento">❖</div>
 
@@ -2125,14 +2169,15 @@ function rolar(modo) {
     <div class="cartao">
       <h5>Descanso longo</h5>
       <p class="etiqueta">Uma noite</p>
-      <p>Recupera metade dos PV máximos e um sentido perdido. A armadura, se estiver viva,
-      se regenera: todas as caixas voltam. As Cicatrizes somem.</p>
+      <p>Recupera metade dos PV máximos e um sentido arrancado. A armadura, se estiver
+      viva, se regenera: todas as caixas voltam. As Cicatrizes somem.</p>
     </div>
     <div class="cartao">
-      <h5>Fim do arco</h5>
-      <p class="etiqueta">Quando a história fecha um capítulo</p>
-      <p>As Convicções gastas voltam, e você pode reescrever alguma, se a história mudou
-      você.</p>
+      <h5>Interlúdio</h5>
+      <p class="etiqueta">Uma semana de cada vez</p>
+      <p>A cada semana, uma Convicção gasta volta e você faz uma ação de Interlúdio:
+      treinar, evoluir uma técnica, restaurar uma armadura, buscar um item. Está no
+      <a href="#cap12">Capítulo Doze</a>.</p>
     </div>
   </div>
 </section>
@@ -2453,10 +2498,12 @@ function rolar(modo) {
   metade de 3, arredondada para cima.</p>
 
   <div class="nota">
-    <p><strong>Os números ainda vão ao simulador.</strong> O motor veio da Ascensão dos
-    Semideuses, onde foi medido. Aqui ele mudou num ponto que importa: o custo é pago em
-    Cosmo, que enche durante a luta, e não numa reserva do dia. Quanto dano uma luta aguenta
-    e quantas técnicas cabem nela são as primeiras contas da próxima versão.</p>
+    <p><strong>O que o simulador mediu.</strong> O motor veio da Ascensão dos Semideuses,
+    mas aqui o custo é pago em Cosmo, que enche durante a luta. Em duelos do mesmo nível,
+    com a técnica grande no tamanho máximo e uma pequena de 2 pontos, as técnicas respondem
+    por 74% a 83% de todo o dano, e um lutador que nunca usa técnica vence de 5% a 34% das
+    vezes contra quem usa. Toda técnica impressa neste livro é conferida pelo motor em código
+    a cada mudança — a conta do livro e a do simulador são a mesma.</p>
   </div>
 
   <h3>Modelo para registrar</h3>
@@ -2497,7 +2544,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <section class="capitulo" id="cap7">
   <div class="abertura">
     <span class="alg">Capítulo Sete</span>
-    <h2>Armaduras e itens</h2>
+    <h2>Armaduras</h2>
     <p>Peças que quebram, uma vida que acaba e o sangue que traz de volta</p>
   </div>
 
@@ -2543,21 +2590,22 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <p>O Posto diz quão forte é a armadura: quanto ela soma na DEF e quantas
   <em class="termo">caixas</em> cada peça tem.</p>
   <div class="rolagem"><table>
-    <thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Caixas por peça</th></tr></thead>
-    <tbody>
-      <tr><td>Bronze</td><td class="num">+2</td><td class="num">1</td></tr>
-      <tr><td>Prata</td><td class="num">+3</td><td class="num">2</td></tr>
-      <tr><td>Ouro</td><td class="num">+4</td><td class="num">3</td></tr>
-      <tr><td>Forma Divina</td><td class="num">+5</td><td class="num">4</td></tr>
-    </tbody>
-  </table></div>
+<thead><tr><th>Posto</th><th class="num">DEF</th><th class="num">Caixas por peça</th></tr></thead><tbody>
+<tr><td>Bronze</td><td class="num">+2</td><td class="num">1</td></tr>
+<tr><td>Prata</td><td class="num">+4</td><td class="num">2</td></tr>
+<tr><td>Ouro</td><td class="num">+6</td><td class="num">3</td></tr>
+<tr><td>Forma Divina</td><td class="num">+7</td><td class="num">4</td></tr>
+</tbody></table></div>
+  <p>A elite dos outros exércitos — General Marina, Juiz do Inferno, Guerreiro Deus — usa
+  a linha do Ouro. A distância entre as linhas foi medida: Prata vence Bronze do mesmo
+  nível cerca de 60% das vezes.</p>
 
   <h3 id="armadura-na-luta">A armadura na luta</h3>
   <div class="destaque">
     <span class="rotulo">Aparar</span>
-    <p>Quando um ataque ou uma técnica te causa dano, você pode marcar uma caixa de uma
-    peça inteira para sofrer <strong>metade do dano</strong>, arredondado para baixo. Uma
-    caixa por acerto. Não gasta ação nem reação.</p>
+    <p>Quando um ataque ou uma técnica te causa dano, você pode usar a sua reação e marcar
+    uma caixa de uma peça inteira para sofrer <strong>metade do dano</strong>, arredondado
+    para baixo. Você decide depois de ver o dano.</p>
   </div>
   <ul>
     <li>Quando a última caixa de uma peça é marcada, a peça <strong>quebra</strong>: você
@@ -2571,31 +2619,47 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </ul>
 
   <p>Aparar é a escolha mais constante da luta. Cada caixa marcada é metade de um golpe que
-  não entrou — e uma peça a menos para o próximo.</p>
+  não entrou — e uma peça a menos para o próximo. Como Aparar e Bloquear usam a mesma
+  reação, você só faz um dos dois por rodada: bloquear o golpe comum que vem agora ou guardar
+  a reação para aparar a técnica que talvez venha depois.</p>
+  <div class="nota">
+    <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de
+    graça, quantas vezes houvesse caixas. O simulador mostrou o efeito: toda técnica era
+    cortada pela metade, as lutas passavam de dez rodadas e dar só golpes comuns rendia tanto
+    quanto usar técnicas. Com a reação, a armadura continua decisiva — quem nunca apara vence
+    só de 34% a 46% dos duelos — sem apagar as técnicas.</p>
+  </div>
 
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, todas as caixas voltam e as peças
   quebradas se remontam. Só uma armadura morta não volta sozinha.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas.
-  Também morre na destruição mútua da Guerra dos Mil Dias, e quando um deus ou a história
-  decide que sim. Uma armadura morta perde o brilho, fica cinza e fria: não dá nada, não
-  atende ao chamado e não se regenera.</p>
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com todas as peças quebradas,
+  na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
+  de um deus, uma relíquia. Uma armadura morta perde o brilho, fica cinza e fria: não dá
+  nada, não atende ao chamado e não se regenera.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="reviver">Reviver com sangue</h3>
   <p>Uma armadura morta só volta com três coisas juntas:</p>
   <ul>
-    <li><strong>Um restaurador.</strong> Pouquíssimas pessoas no mundo sabem fazer isso, e
-      normalmente vivem em lugares aonde não se chega fácil. Um personagem pode aprender,
-      com anos de treino e a bênção de um mestre restaurador — é uma história, não uma
-      perícia.</li>
-    <li><strong>Material.</strong> Pó de Estrelas, Gamânio e Oricalco, os três metais de que
-      as armaduras são feitas. Não se compram: se acham, se ganham, se herdam.</li>
+    <li><strong>Um restaurador.</strong> Um personagem do Mestre — quase sempre alguém que
+      mora num lugar aonde não se chega fácil — ou um personagem de jogador que aprendeu o
+      ofício (<a href="#cap12">Capítulo Doze</a>).</li>
+    <li><strong>Material</strong>, pelo Posto da armadura: Bronze pede 1 Pó de Estrelas;
+      Prata, 1 Pó de Estrelas e 1 Gamânio; Ouro e elite, os três — Pó de Estrelas, Gamânio e
+      Oricalco. Como achar cada um está no <a href="#cap8">Capítulo Oito</a>.</li>
     <li><strong>Sangue.</strong> Um terço do sangue de uma pessoa por armadura.</li>
   </ul>
+  <div class="destaque">
+    <span class="rotulo">Restaurar</span>
+    <p>O restaurador faz um teste de <strong>Ofício contra CD 14 + 2 × a Versão atual</strong>
+    da armadura e trabalha um dia por Versão. No sucesso, a armadura revive. Na falha, o
+    material se perde e o dia também; o sangue só é doado quando o teste passa, e ele pode
+    tentar de novo.</p>
+  </div>
 
   <h4>O sangue se paga em terços</h4>
   <p>Quem doa marca caixas na trilha de <em class="termo">Sangue</em> da ficha: três
@@ -2642,7 +2706,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <ul>
     <li><strong>Dourada no Sétimo.</strong> Uma armadura que recebeu sangue de elite fica
       dourada quando você desperta o Sétimo. Enquanto você estiver nele, ela usa a linha do
-      Ouro: +4 na DEF e 3 caixas por peça, somadas às das Versões. As caixas já marcadas
+      Ouro da tabela de Posto, somando as caixas das Versões. As caixas já marcadas
       continuam marcadas.</li>
     <li><strong>Divina no Nono.</strong> Uma armadura com sangue de deus é o elo de sangue do
       <a href="#nono">Capítulo Quatro</a>.</li>
@@ -2653,8 +2717,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   adormecido até o portador elevar o Cosmo ao nível de um deus. Quando você desperta o
   Nono, a armadura assume a <em class="termo">forma Divina</em>:</p>
   <ul>
-    <li>ela cobre quase o corpo inteiro e usa a linha Divina: +5 na DEF e 4 caixas por
-      peça;</li>
+    <li>ela cobre quase o corpo inteiro e usa a linha da Forma Divina da tabela de Posto;</li>
     <li>todas as caixas se limpam e todas as peças quebradas se refazem na hora;</li>
     <li>ela dura até o fim da luta. Depois, volta à forma de sempre, com as caixas como
       estavam antes da transformação.</li>
@@ -2667,6 +2730,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <h3>Subir de Posto</h3>
   <p>Quando a história faz você subir de Posto, a armadura acompanha.</p>
   <ul>
+    <li><strong>Requisito:</strong> Prata a partir do nível 5; Ouro, a partir do nível 9 e
+      com uma vaga vazia. O momento da promoção é da história; o requisito é da regra.</li>
     <li><strong>De Bronze a Prata:</strong> a sua armadura sobe junto, na mesma constelação.
       Ela passa a usar a linha da Prata e mantém as caixas das Versões. Não é invenção: a
       armadura de Órion já foi Prata numa história e Bronze em outra.</li>
@@ -2679,58 +2744,343 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
-  <h3>Itens</h3>
-  <p>Neste jogo não há regras de armas. Os Cavaleiros de Atena juram lutar só com o corpo e
-  o Cosmo. Quando uma armadura tem uma arma — as doze armas de Libra, a lança de um General
-  Marina —, ela entra como o acessório da armadura ou como o Golpe do Assento, nunca como um
-  item separado.</p>
-
-  <p>O que existe são relíquias e alguns objetos úteis.</p>
-
-  <div class="grade">
-    <div class="cartao">
-      <h5>Pó de Estrelas, Gamânio e Oricalco</h5>
-      <p class="etiqueta">Material de restauração</p>
-      <p>Os três metais das armaduras. Toda revivida pede um pouco dos três. Achar os
-      metais pode ser uma aventura inteira.</p>
-    </div>
-    <div class="cartao">
-      <h5>Objeto de um deus</h5>
-      <p class="etiqueta">Elo de ligação</p>
-      <p>Uma pulseira de flores, um rosário, um colar — qualquer coisa que carregue o Cosmo
-      de um deus e tenha sido dada a você. Abre o Nono enquanto estiver com você. Um inimigo
-      pode tomá-lo com Agarrar.</p>
-    </div>
-    <div class="cartao">
-      <h5>Rosário de 108 contas</h5>
-      <p class="etiqueta">Relíquia</p>
-      <p>Cada conta sela a alma de um Espectro abatido, e ele não volta mais. Criar um exige
-      o Oitavo Sentido e, quase sempre, a vida de quem o cria.</p>
-    </div>
-    <div class="cartao">
-      <h5>Safira de Odin</h5>
-      <p class="etiqueta">Relíquia de Asgard</p>
-      <p>Encravada em cada Veste Divina de Guerreiro Deus. As regras estão no exército de
-      Asgard, no <a href="#cap8">Capítulo Oito</a>.</p>
-    </div>
-    <div class="cartao">
-      <h5>Escudo da Medusa</h5>
-      <p class="etiqueta">Relíquia · destino</p>
-      <p>Quem olha para ele vira pedra: é uma condição de destino, sem rolagem. A única
-      defesa conhecida é não ver — quem perdeu a Visão está imune.</p>
-    </div>
-    <div class="cartao">
-      <h5>Kit de medicina</h5>
-      <p class="etiqueta">Objeto comum</p>
-      <p>Faixas, ervas, agulhas. Dá Vantagem nos testes de Medicina.</p>
-    </div>
-  </div>
+  <p>Relíquias, remédios, materiais e as melhorias que um restaurador faz numa armadura
+  viva estão no <a href="#cap8">Capítulo Oito</a>.</p>
 </section>
 
 <!-- ==================== VIII ==================== -->
 <section class="capitulo" id="cap8">
   <div class="abertura">
     <span class="alg">Capítulo Oito</span>
+    <h2>Itens e relíquias</h2>
+    <p>Remédios, metais, melhorias de armadura e os objetos que os deuses deixaram para trás</p>
+  </div>
+
+  <p class="abre">Este jogo não tem armas. Os Cavaleiros de Atena juram lutar só com o
+  corpo e o Cosmo, e mesmo nos outros exércitos a arma de verdade é a armadura. Quando uma
+  armadura carrega uma lâmina — as doze armas de Libra, a lança de um General Marina —, ela
+  entra como o acessório ou como o Golpe do Assento, nunca como um item separado.</p>
+
+  <p>O que existe são as coisas que mantêm um guerreiro vivo entre uma luta e outra: o
+  remédio, o metal que revive a armadura, a melhoria que um restaurador faz nela, e as
+  relíquias — objetos que carregam o Cosmo de alguém que já morreu, ou de um deus.</p>
+
+  <h3>Como os itens funcionam</h3>
+
+  <h4>Raridade</h4>
+  <div class="rolagem"><table>
+    <thead><tr><th>Raridade</th><th>Como se consegue</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Comum</td><td>Você tem, ou compra numa cidade. Todo personagem começa com dois à escolha.</td><td>Kit de medicina, corda, ervas</td></tr>
+      <tr><td>Rara</td><td>Buscar num Interlúdio (CD 16), ou como recompensa de luta.</td><td>Unguento de Pó de Estrelas, Chá dos Cinco Picos</td></tr>
+      <tr><td>Relíquia</td><td>Só como recompensa: de uma luta contra a elite, de um mestre que morreu, de um templo esquecido. Pede Sintonia.</td><td>Rosário de 108 contas, Lira de Orfeu</td></tr>
+      <tr><td>Divina</td><td>Pertence a um deus. Quase sempre é um efeito de destino, e nunca fica com um jogador por muito tempo.</td><td>Escudo de Atena, Ânfora de Atena</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Conseguir itens</h4>
+  <ul>
+    <li><strong>No começo:</strong> a urna com a sua armadura, roupa, cantil, dois itens
+      comuns à escolha e um punhado de ervas medicinais.</li>
+    <li><strong>Buscar:</strong> uma ação de Interlúdio. Diga o que procura e role
+      Investigação, Sobrevivência ou Persuasão, conforme o jeito de procurar. Um item raro
+      pede CD 16; os metais têm a CD deles, mais abaixo. No sucesso, você encontra um.</li>
+    <li><strong>Recompensa de luta:</strong> ao vencer um inimigo nomeado, role
+      <span class="dado">1d6</span>: com 6, ele carregava um consumível raro, à escolha do
+      Mestre. Ao vencer um de elite, o grupo ganha uma relíquia, ou uma unidade de Oricalco.</li>
+    <li><strong>Desmontar:</strong> uma armadura inimiga que morreu rende uma unidade do metal
+      do Posto dela — Pó de Estrelas do Bronze, Gamânio da Prata, Oricalco do Ouro — a quem
+      tiver Ofício para desmontá-la (teste CD 14, um dia). Não se desmonta a armadura de um
+      companheiro.</li>
+  </ul>
+
+  <h4>Sintonia</h4>
+  <p>Uma relíquia só funciona para quem está em <em class="termo">Sintonia</em> com ela. Você
+  sustenta a Sintonia com <strong>duas relíquias</strong> ao mesmo tempo, <strong>três a
+  partir do nível 10</strong>. Entrar em Sintonia com uma relíquia nova leva um descanso
+  longo com ela nas mãos. Consumíveis e itens comuns não pedem Sintonia.</p>
+
+  <h4>Usar um item na luta</h4>
+  <ul>
+    <li>Pegar e usar um item é uma <strong>interação simples</strong>, salvo quando o item
+      disser outra coisa.</li>
+    <li>Você usa <strong>um item de cura por luta</strong>. O segundo não faz efeito: o corpo
+      não aceita.</li>
+    <li>Relíquias de efeito têm um uso por luta, salvo quando disserem outra coisa.</li>
+  </ul>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>Equipamento comum</h3>
+  <p>Coisas que qualquer guerreiro pode ter. Nenhuma faz milagre; todas resolvem um
+  problema específico.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>Item</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr><td>Kit de medicina</td><td>Vantagem em Medicina. Tem 5 usos para tratar ferimentos num descanso curto (cada pessoa tratada recupera mais <span class="dado">1d8</span>).</td></tr>
+      <tr><td>Ervas medicinais</td><td>Num descanso curto, uma pessoa recupera mais <span class="dado">1d8</span> PV. Um punhado dá três usos.</td></tr>
+      <tr><td>Corda de escalada</td><td>Vantagem em Atletismo para escalar e descer; aguenta três pessoas.</td></tr>
+      <tr><td>Mapa estelar</td><td>Vantagem em Mitologia para reconhecer uma constelação, uma armadura ou a técnica ligada a ela; à noite, você não se perde.</td></tr>
+      <tr><td>Lanterna e fósforos</td><td>Luz de 12 metros. No escuro, sem ela, todos os testes de ver têm Desvantagem.</td></tr>
+      <tr><td>Capa para a urna</td><td>Esconde que você carrega uma armadura: Vantagem em Enganação e Furtividade para passar despercebido entre pessoas comuns.</td></tr>
+      <tr><td>Pesos de treino</td><td>+2 nos testes de desenvolver ou evoluir uma técnica de Golpe.</td></tr>
+      <tr><td>Diário de técnicas</td><td>+2 nos testes de evoluir uma técnica que você anotou nele. Se um inimigo o roubar, as técnicas anotadas contam como Lidas por ele.</td></tr>
+      <tr><td>Incenso de meditação</td><td>Queimado num descanso curto: na próxima luta você começa com +1 de Cosmo. Também dá +2 no treino do Oitavo Sentido.</td></tr>
+      <tr><td>Rações e cantil</td><td>Uma semana de viagem sem teste de Sobrevivência para comer e beber.</td></tr>
+      <tr><td>Máscara de guerreira</td><td>A tradição das Cavaleiras de Atena. Enquanto usá-la, Vantagem em Vontade contra medo e encantamento; ninguém vê o seu rosto.</td></tr>
+      <tr><td>Telefone ou rádio</td><td>Fala com quem está longe. Não serve para mandar Cosmo — isso só as Centelhas fazem.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Remédios e consumíveis</h3>
+  <p>Coisas que se gastam. Os raros se buscam num Interlúdio ou caem de inimigos; o Néctar
+  e a Ambrosia quase nunca aparecem.</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Unguento de Pó de Estrelas</h5>
+      <p class="etiqueta">Raro · interação simples</p>
+      <p>Passado numa peça da armadura, limpa uma caixa marcada — mesmo de uma peça
+      quebrada, que volta a funcionar. Não revive armadura morta.</p>
+    </div>
+    <div class="cartao">
+      <h5>Água do Santuário</h5>
+      <p class="etiqueta">Rara · ação bônus</p>
+      <p>Tirada da fonte ao pé das doze casas. Encerra uma condição fraca ou média em quem
+      bebe.</p>
+    </div>
+    <div class="cartao">
+      <h5>Chá dos Cinco Picos</h5>
+      <p class="etiqueta">Raro · antes da luta</p>
+      <p>Amargo, feito com as folhas da montanha. Tomado até uma hora antes: você começa a
+      próxima luta com +2 de Cosmo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Hidromel de Valhala</h5>
+      <p class="etiqueta">Raro · ação</p>
+      <p>De Asgard. <span class="dado">2d8</span> PV temporários e Vantagem em Fortitude até o
+      fim da luta. Conta como o item de cura da luta.</p>
+    </div>
+    <div class="cartao">
+      <h5>Sal do Mar Profundo</h5>
+      <p class="etiqueta">Raro · interação simples</p>
+      <p>Da casa de Poseidon. Por uma hora, você respira e luta debaixo d'água sem penalidade.</p>
+    </div>
+    <div class="cartao">
+      <h5>Folha de Lótus</h5>
+      <p class="etiqueta">Rara · ação</p>
+      <p>Mastigada, devolve um sentido arrancado na hora. Não devolve um sentido mutilado — e
+      o +1 de Teto daquele sentido vai embora junto.</p>
+    </div>
+    <div class="cartao">
+      <h5>Néctar</h5>
+      <p class="etiqueta">Relíquia consumível · ação</p>
+      <p>A bebida dos deuses, em gotas. Recupera <span class="dado">4d8</span> PV, ou
+      <span class="dado">8d8</span> a partir do Grau 3. Conta como o item de cura da luta.</p>
+    </div>
+    <div class="cartao">
+      <h5>Maçã dourada das Hespérides</h5>
+      <p class="etiqueta">Relíquia consumível · ação bônus</p>
+      <p>Uma mordida e o Cosmo vai ao Teto. Uma maçã, um uso.</p>
+    </div>
+    <div class="cartao">
+      <h5>Ambrosia</h5>
+      <p class="etiqueta">Divina · ação</p>
+      <p>Todos os PV voltam, uma Convicção gasta volta e todos os sentidos arrancados voltam.
+      Quem prova ambrosia nunca mais esquece o gosto, e os deuses sabem quem provou.</p>
+    </div>
+    <div class="cartao">
+      <h5>Fruto do Saboeiro do Inferno</h5>
+      <p class="etiqueta">Raro · material</p>
+      <p>Cresce no mundo dos mortos. Sozinho não faz nada. Cento e oito deles, abençoados com
+      o Oitavo Sentido, viram o Rosário de 108 contas.</p>
+    </div>
+  </div>
+
+  <div class="nota">
+    <p><strong>O sangue não é item.</strong> Sangue para reviver uma armadura não se guarda num
+    frasco: ele é dado na hora, por alguém que está ali, e custa a esse alguém o que o
+    Capítulo Sete diz que custa.</p>
+  </div>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="metais">Os três metais</h3>
+  <p>Toda armadura é feita de três metais que não existem em nenhuma mina comum. Eles são o
+  material para reviver uma armadura morta e para as melhorias de uma armadura viva.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>Metal</th><th>CD para buscar</th><th>Onde se acha</th><th>Para quê</th></tr></thead>
+    <tbody>
+      <tr><td>Pó de Estrelas</td><td class="num">15</td><td>Areia que cai onde uma estrela morreu; nas encostas de montanhas altas, em noites claras</td><td>Reviver qualquer armadura; o unguento; o polimento</td></tr>
+      <tr><td>Gamânio</td><td class="num">18</td><td>Veios escondidos em lugares sagrados antigos; desmontando armaduras de Prata</td><td>Reviver Prata e acima; o reforço</td></tr>
+      <tr><td>Oricalco</td><td class="num">21</td><td>O metal da Atlântida: ruínas no fundo do mar, templos de Poseidon, armaduras de elite desmontadas</td><td>Reviver Ouro e a elite; a liga</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="melhorias">Melhorias de armadura</h3>
+  <p>Um restaurador pode trabalhar uma armadura <strong>viva</strong>. Cada melhoria pede o
+  metal indicado, um dia de trabalho e um teste de Ofício CD 16. Na falha, o metal se perde.</p>
+  <ul>
+    <li>Uma armadura aceita <strong>tantas melhorias quanto a sua Versão</strong>: uma na V1,
+      duas na V2, e assim por diante. Reviver a armadura é também o que abre espaço para
+      melhorá-la.</li>
+    <li>Cada peça recebe no máximo uma melhoria.</li>
+    <li>Quando a armadura morre, as melhorias morrem com ela, e não voltam na revivida.</li>
+  </ul>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Reforço de Gamânio</h5>
+      <p class="etiqueta">1 Gamânio · uma peça</p>
+      <p>A peça ganha +1 caixa.</p>
+    </div>
+    <div class="cartao">
+      <h5>Liga de Oricalco</h5>
+      <p class="etiqueta">1 Oricalco · Peitoral · Prata ou acima</p>
+      <p>+1 na DEF enquanto o Peitoral estiver inteiro. Não soma na forma Divina.</p>
+    </div>
+    <div class="cartao">
+      <h5>Polimento de Pó de Estrelas</h5>
+      <p class="etiqueta">1 Pó de Estrelas · uma peça</p>
+      <p>A primeira vez que você apara com esta peça em cada luta, sofre um quarto do dano em
+      vez de metade.</p>
+    </div>
+    <div class="cartao">
+      <h5>Elmo de duas camadas</h5>
+      <p class="etiqueta">1 Gamânio · Elmo</p>
+      <p>O Elmo segura dois críticos antes de voar longe, em vez de um.</p>
+    </div>
+    <div class="cartao">
+      <h5>Gravação da constelação</h5>
+      <p class="etiqueta">1 Pó de Estrelas · acessório</p>
+      <p>O acessório ganha +1 caixa, e uma técnica que quebra a armadura não pode escolhê-lo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Urna marcada</h5>
+      <p class="etiqueta">1 Pó de Estrelas · a urna</p>
+      <p>Chamar a armadura funciona a qualquer distância, e ela chega no mesmo turno em vez
+      do seguinte. Não ocupa uma peça.</p>
+    </div>
+  </div>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="reliquias">Relíquias</h3>
+  <p>Todas pedem Sintonia. Todas têm um dono anterior, e às vezes ele quer a relíquia de
+  volta.</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Rosário de 108 contas</h5>
+      <p class="etiqueta">Relíquia · Atena</p>
+      <p>Feito com 108 frutos do saboeiro do inferno e abençoado por alguém com o Oitavo
+      Sentido. Cada Espectro abatido na presença de quem o carrega tem a estrela selada numa
+      conta: ele não volta mais.</p>
+      <div class="poder"><b>Também</b>+2 em Vontade contra técnicas de Espectros.</div>
+    </div>
+    <div class="cartao">
+      <h5>Objeto de um deus</h5>
+      <p class="etiqueta">Relíquia · qualquer deus</p>
+      <p>Uma pulseira de flores, um colar, um rosário — algo que carrega o Cosmo de um deus e
+      foi dado a você, e só a você. É o <em class="termo">elo de ligação</em> do Nono
+      Sentido.</p>
+      <div class="poder"><b>Também</b>+1 Centelha por sessão. Se for tomado, o elo acaba na
+      hora.</div>
+    </div>
+    <div class="cartao">
+      <h5>Escudo da Medusa</h5>
+      <p class="etiqueta">Relíquia de destino · Prata</p>
+      <p>Um escudo de Prata com o rosto da górgona. Como ação, quem o empunha faz uma Rolagem
+      de Efeito (+8 + proficiência) contra a Vontade de cada criatura que o vê num cone de 9
+      metros. Quem é atingido fica Petrificado: um efeito de destino.</p>
+      <div class="poder"><b>A única defesa</b>Não ver. Quem perdeu a Visão está imune — e é
+      por isso que já houve quem furasse os próprios olhos diante dele.</div>
+    </div>
+    <div class="cartao">
+      <h5>Lira de Orfeu</h5>
+      <p class="etiqueta">Relíquia · Prata</p>
+      <p>A música que fez o próprio Hades chorar. Como ação, uma vez por luta: Rolagem de
+      Efeito (Carisma + proficiência) contra a Vontade de cada criatura que ouve, a até 12
+      metros. Quem é atingido fica Atordoado.</p>
+      <div class="poder"><b>Contra ela</b>Quem perdeu a Audição está imune.</div>
+    </div>
+    <div class="cartao">
+      <h5>Safira de Odin</h5>
+      <p class="etiqueta">Relíquia · Asgard</p>
+      <p>Encravada numa Veste Divina. +1 no Teto de Cosmo de quem a veste. Arrancá-la é uma
+      manobra de Agarrar contra quem está Caído, Preso ou Atordoado.</p>
+      <div class="poder"><b>As sete</b>Reunidas por quem tem o Nono, chamam a armadura do
+      próprio Odin: um efeito de destino.</div>
+    </div>
+    <div class="cartao">
+      <h5>Anel dos Nibelungos</h5>
+      <p class="etiqueta">Relíquia maldita · Asgard</p>
+      <p>+2 no Teto de Cosmo e +2 em todas as defesas passivas. Em troca, quem usa fica
+      Dominado por quem lhe deu o anel, sem rolagem, sempre que essa pessoa quiser.</p>
+      <div class="poder"><b>Tirar</b>Só destruindo o anel: uma técnica com condição forte
+      contra a Vontade de quem o usa (bônus do anel: +4).</div>
+    </div>
+    <div class="cartao">
+      <h5>Moedas de Caronte</h5>
+      <p class="etiqueta">Relíquia · Hades</p>
+      <p>Cada moeda paga uma travessia do rio Aqueronte: entrar ou sair do mundo dos mortos
+      com o corpo vivo, mesmo sem o Oitavo Sentido. O barqueiro não aceita outra coisa.</p>
+    </div>
+    <div class="cartao">
+      <h5>Concha de Tritão</h5>
+      <p class="etiqueta">Relíquia · Poseidon</p>
+      <p>Você respira debaixo d'água enquanto a carrega. Como ação, uma vez por luta, sopra a
+      concha: uma onda numa linha de 9 metros empurra 6 metros quem falhar contra
+      Fortitude (Rolagem de Efeito com Atributo do Cosmo + proficiência).</p>
+    </div>
+    <div class="cartao">
+      <h5>Relógio de Fogo</h5>
+      <p class="etiqueta">Relíquia · Atena</p>
+      <p>Uma chama das doze do Santuário, presa numa lanterna. Enquanto ela queimar ao seu
+      lado, você e seus aliados a até 9 metros têm Vantagem contra efeitos que causariam
+      medo.</p>
+    </div>
+    <div class="cartao">
+      <h5>Urna sem dono</h5>
+      <p class="etiqueta">Relíquia · qualquer exército</p>
+      <p>A armadura de alguém que morreu sem discípulo. Quem entra em Sintonia com ela pode,
+      uma vez por nível, vesti-la no lugar da própria — com o Posto dela — até o fim de uma
+      luta. Depois ela volta para a urna, e às vezes não aceita ser vestida de novo.</p>
+    </div>
+  </div>
+
+  <h3>Itens divinos</h3>
+  <p>Estes não são itens de jogador: são o motivo de uma Guerra Santa. Eles aparecem na
+  história, mudam uma cena e voltam para o deus. Mesmo assim, as regras deles são claras.</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>Item</th><th>Dono</th><th>Regra</th></tr></thead>
+    <tbody>
+      <tr><td>Escudo de Atena</td><td>Atena</td><td>Reação, uma vez por luta: anula um ataque ou uma técnica inteira contra quem o empunha. Só quem tem o sangue ou um objeto de Atena consegue erguê-lo.</td></tr>
+      <tr><td>Ânfora de Atena</td><td>Atena</td><td>Sela a alma de um deus a 0 PV: Selado, um efeito de destino. Precisa do sangue de Atena para fechar.</td></tr>
+      <tr><td>Ambrosia</td><td>Os deuses do Olimpo</td><td>Veja acima.</td></tr>
+      <tr><td>Armadura de Odin</td><td>Odin</td><td>Chamada pelas sete Safiras. Quem a veste usa a linha da Forma Divina e fica no Nono até o fim da luta.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Relíquias por exército</h3>
+  <p>Para o Mestre achar depressa o que cada deus costuma deixar pelo caminho:</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>Exército</th><th>Comuns e raros</th><th>Relíquias</th></tr></thead>
+    <tbody>
+      <tr><td>Atena</td><td>Máscara de guerreira, Água do Santuário, Chá dos Cinco Picos</td><td>Rosário de 108 contas, Relógio de Fogo, Escudo da Medusa</td></tr>
+      <tr><td>Poseidon</td><td>Sal do Mar Profundo, Oricalco</td><td>Concha de Tritão</td></tr>
+      <tr><td>Hades</td><td>Fruto do Saboeiro do Inferno</td><td>Moedas de Caronte, Lira de Orfeu</td></tr>
+      <tr><td>Asgard</td><td>Hidromel de Valhala</td><td>Safira de Odin, Anel dos Nibelungos</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ==================== IX ==================== -->
+<section class="capitulo" id="cap9">
+  <div class="abertura">
+    <span class="alg">Capítulo Nove</span>
     <h2>Exércitos</h2>
     <p>O molde, os quatro exércitos de exemplo e as vagas de elite</p>
   </div>
@@ -2747,11 +3097,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><strong>Intermediário, a Prata:</strong> armadura de Prata, e o respeito que vem
       com ela.</li>
     <li><strong>Elite, o Ouro:</strong> um número fechado de vagas. Armadura de Ouro, o
-      Sétimo Sentido quando quiser e o Golpe do Assento de cada vaga.</li>
+      Sétimo Sentido quando quiser — dominado, com +3 contra quem só o despertou — e o Golpe
+      do Assento de cada vaga.</li>
   </ul>
-  <p>Subir de Posto acontece na história, nunca por conta. O nível do personagem e o Posto
-  dele andam separados: um Bronze de nível 12 é um veterano que ninguém promoveu, e um Ouro
-  de nível 6 é alguém que herdou uma vaga cedo demais.</p>
+  <p>O momento de subir de Posto vem da história; o requisito vem da regra: Prata a partir
+  do nível 5, elite a partir do nível 9 e com uma vaga vazia. Um Bronze de nível 12 é um
+  veterano que ninguém promoveu — e ainda perde para quase qualquer Ouro.</p>
 
   <h3>O molde de exército</h3>
   <ol class="passos">
@@ -2786,7 +3137,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     </div>
     <div class="cartao">
       <h5>A armadura viva</h5>
-      <p>Chamar a armadura não custa Cosmo. E, uma vez por arco, quando você cai a 0 PV com
+      <p>Chamar a armadura não custa Cosmo. E, uma vez por nível, quando você cai a 0 PV com
       a armadura viva por perto, ela vem sozinha, se monta sobre você e todas as caixas dela
       voltam.</p>
     </div>
@@ -2820,7 +3171,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <thead><tr><th>Posto</th><th>Nome</th><th>Vagas</th></tr></thead>
     <tbody>
       <tr><td>Base</td><td>Soldado Marina</td><td>Muitos</td></tr>
-      <tr><td>Intermediário</td><td>Guardião dos Mares</td><td>O Mestre decide</td></tr>
+      <tr><td>Intermediário</td><td>Guardião dos Mares</td><td>Um por templo submarino</td></tr>
       <tr><td>Elite</td><td>General Marina</td><td>7: Dragão Marinho, Kraken, Sereia, Scylla, Crisaor, Lymnades e Cavalo-Marinho</td></tr>
     </tbody>
   </table></div>
@@ -2850,14 +3201,14 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="grade">
     <div class="cartao">
       <h5>Estrela Maligna</h5>
-      <p>Enquanto Hades existir, um Espectro que morre volta no começo do próximo arco. O
-      Rosário de 108 contas sela a estrela dele, e aí não há volta.</p>
+      <p>Enquanto Hades existir, um Espectro que morre volta em <span class="dado">1d4</span>
+      semanas. O Rosário de 108 contas sela a estrela dele, e aí não há volta.</p>
     </div>
     <div class="cartao">
       <h5>Súplice sem sangue</h5>
       <p>A Súplice não aceita sangue: não revive nem evolui por ele. Se morre, se refaz
-      sozinha no começo do próximo arco, na mesma Versão. Um Espectro só alcança o Nono por
-      um elo de ligação.</p>
+      sozinha em uma semana, na mesma Versão. Um Espectro só alcança o Nono por um elo de
+      ligação.</p>
     </div>
   </div>
 
@@ -2868,7 +3219,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <thead><tr><th>Posto</th><th>Nome</th><th>Vagas</th></tr></thead>
     <tbody>
       <tr><td>Base</td><td>Guerreiro de Asgard</td><td>Muitos</td></tr>
-      <tr><td>Intermediário</td><td>Guarda do Palácio</td><td>O Mestre decide</td></tr>
+      <tr><td>Intermediário</td><td>Guarda do Palácio</td><td>Doze, a guarda de Valhala</td></tr>
       <tr><td>Elite</td><td>Guerreiro Deus</td><td>7, as estrelas da Ursa Maior: Dubhe, Merak, Phecda, Megrez, Alioth, Mizar e Benetnasch — e Alcor, a sombra de Mizar</td></tr>
     </tbody>
   </table></div>
@@ -2895,67 +3246,535 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </div>
 </section>
 
-<!-- ==================== IX ==================== -->
-<section class="capitulo" id="cap9">
+<!-- ==================== X ==================== -->
+<section class="capitulo" id="cap10">
   <div class="abertura">
-    <span class="alg">Capítulo Nove</span>
-    <h2>Subir de nível</h2>
-    <p>Do nível 1 ao 20, e por que o Posto não está nessa tabela</p>
+    <span class="alg">Capítulo Dez</span>
+    <h2>Inimigos</h2>
+    <p>Para o Mestre: como montar quem está do outro lado, e quanto ele pesa</p>
   </div>
 
-  <p class="abre">Personagem não sobe de nível porque acumulou pontos numa planilha. Sobe
-  quando o Mestre diz que subiu — normalmente no fim de uma batalha importante, e sempre
-  durante um Interlúdio. Você não fica mais forte no meio da escadaria; fica depois, quando
-  teve tempo de entender o que aconteceu lá.</p>
+  <p class="abre">Todo inimigo que importa usa as mesmas regras de um personagem: nível,
+  Posto, armadura com caixas, Cosmo que sobe, técnicas montadas com o motor, Sentidos e —
+  se for alguém de verdade — Convicções. Isso tem uma vantagem enorme: o inimigo reage às
+  mesmas coisas que o jogador. Ele também desperta, também levanta, também lê o golpe que
+  já viu.</p>
 
-  <div class="nota">
-    <p><strong>Nível e Posto são coisas diferentes.</strong> O nível mede o quanto você
-    aprendeu a lutar. O Posto mede o lugar que o seu exército te deu. Um sobe pela tabela; o
-    outro sobe pela história, quando o Mestre decide que chegou a hora — uma vaga que abre,
-    uma armadura que te escolhe, um mestre que te passa o lugar. Por isso o Posto não está
-    na tabela abaixo.</p>
+  <h3>Três tipos de inimigo</h3>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Figurante</h5>
+      <p class="etiqueta">Cenário que ataca</p>
+      <p>Soldados, guardas, espectros sem nome. Um acerto derruba. Vêm em bando, e o bando
+      tem uma linha de números só.</p>
+    </div>
+    <div class="cartao">
+      <h5>Nomeado</h5>
+      <p class="etiqueta">Uma ficha inteira, sem Convicção</p>
+      <p>O Cavaleiro Negro, o capitão da guarda, o Espectro que guarda a ponte. Tem nome e
+      técnicas, mas não tem por que levantar: quando cai, fica.</p>
+    </div>
+    <div class="cartao">
+      <h5>Rival e chefe</h5>
+      <p class="etiqueta">Com Convicções</p>
+      <p>Quem tem uma razão. Um rival tem 1 Convicção; um chefe, 2 ou 3. Eles levantam como os
+      personagens — e isso muda tudo.</p>
+    </div>
   </div>
 
-  <h3>A tabela</h3>
+  <h3>Montar um inimigo</h3>
+  <ol class="passos">
+    <li><b>Nível</b> Escolha na tabela rápida abaixo. Ela já traz PV, DEF por Posto,
+      ataque, golpe comum, a técnica grande e as defesas.</li>
+    <li><b>Posto</b> Bronze, Prata ou elite. A elite entra no Sétimo quando quer, com o
+      domínio de +3, e tem um Golpe do Assento.</li>
+    <li><b>Técnicas</b> Uma grande, no tamanho máximo do Grau, e uma pequena, de 2 pontos. A
+      partir do nível 4, uma média. Dê nome e tema a elas; a conta já está na tabela.</li>
+    <li><b>Convicções</b> Figurante e nomeado: 0. Rival: 1. Chefe: 2 ou 3.</li>
+    <li><b>Um traço</b> A regra do exército dele, e uma coisa que só ele faz.</li>
+  </ol>
+
+  <h4>A tabela rápida</h4>
+  <p>Um inimigo nomeado de cada nível, montado pelo livro: DES e CON na frente, Cosmo em
+  Sabedoria. A coluna DEF mostra Bronze, Prata e elite. As técnicas são de dano em alvo
+  único, contra a DEF, no toque; o número entre parênteses é o custo em Cosmo. As defesas
+  mostram a passiva mais fraca e a mais forte. O Teto de Cosmo é o da tabela de níveis.</p>
+  <div class="rolagem"><table class="compacta">
+<thead><tr><th class="num">Nív.</th><th class="num">PV</th><th class="num">DEF B/P/E</th><th class="num">Atq.</th><th>Golpe</th><th>Técnica (custo)</th><th class="num">Defesas</th></tr></thead><tbody>
+<tr><td class="num">1</td><td class="num">20</td><td class="num">14/16/18</td><td class="num">+4</td><td>1d8+2</td><td>5d8+2 (5)</td><td class="num">16/18</td></tr>
+<tr><td class="num">2</td><td class="num">23</td><td class="num">14/16/18</td><td class="num">+4</td><td>1d8+2</td><td>5d8+2 (5)</td><td class="num">16/18</td></tr>
+<tr><td class="num">3</td><td class="num">26</td><td class="num">14/16/18</td><td class="num">+4</td><td>1d8+2</td><td>5d8+2 (5)</td><td class="num">16/18</td></tr>
+<tr><td class="num">4</td><td class="num">29</td><td class="num">15/17/19</td><td class="num">+5</td><td>1d8+3</td><td>5d8+3 (5)</td><td class="num">16/19</td></tr>
+<tr><td class="num">5</td><td class="num">48</td><td class="num">15/17/19</td><td class="num">+6</td><td>1d8+3</td><td>12d8+3 (6)</td><td class="num">16/20</td></tr>
+<tr><td class="num">6</td><td class="num">51</td><td class="num">15/17/19</td><td class="num">+6</td><td>1d8+3</td><td>12d8+3 (6)</td><td class="num">16/20</td></tr>
+<tr><td class="num">8</td><td class="num">57</td><td class="num">16/18/20</td><td class="num">+7</td><td>1d8+4</td><td>12d8+4 (6)</td><td class="num">16/21</td></tr>
+<tr><td class="num">10</td><td class="num">79</td><td class="num">16/18/20</td><td class="num">+8</td><td>2×1d8+4</td><td>18d8+4 (6)</td><td class="num">19/22</td></tr>
+<tr><td class="num">12</td><td class="num">85</td><td class="num">17/19/21</td><td class="num">+9</td><td>2×1d8+5</td><td>18d8+5 (6)</td><td class="num">19/23</td></tr>
+<tr><td class="num">14</td><td class="num">107</td><td class="num">17/19/21</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
+<tr><td class="num">16</td><td class="num">129</td><td class="num">17/19/21</td><td class="num">+10</td><td>2×1d8+5</td><td>24d8+5 (6)</td><td class="num">20/24</td></tr>
+<tr><td class="num">18</td><td class="num">153</td><td class="num">17/19/21</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
+<tr><td class="num">20</td><td class="num">181</td><td class="num">17/19/21</td><td class="num">+11</td><td>2×1d8+5</td><td>30d8+5 (6)</td><td class="num">21/25</td></tr>
+</tbody></table></div>
+
+  <h3>Figurantes</h3>
+  <p>Um bando age como uma criatura só: um ataque por rodada contra um alvo, na Iniciativa
+  do bando. Ele tem Vantagem enquanto houver mais de três de pé.</p>
   <div class="rolagem"><table>
-    <thead><tr><th class="num">Nível</th><th class="num">Prof.</th><th class="num">Grau</th><th class="num">Teto</th><th>O que você ganha</th></tr></thead>
+    <thead><tr><th>Nível do grupo</th><th class="num">DEF</th><th class="num">Ataque do bando</th><th>Dano por acerto</th></tr></thead>
     <tbody>
-      <tr><td class="num">1</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td>Tudo da criação · duas técnicas · técnica assinatura</td></tr>
-      <tr><td class="num">2</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td>Leitura de Combate</td></tr>
-      <tr><td class="num">3</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td>Cosmo Desperto</td></tr>
-      <tr><td class="num">4</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td>Terceira técnica · +2 pontos de atributo</td></tr>
-      <tr><td class="num">5</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td>Ataque Extra</td></tr>
-      <tr><td class="num">6</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td>+1 caixa numa peça da armadura, à sua escolha</td></tr>
-      <tr><td class="num">7</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td>Queima Controlada</td></tr>
-      <tr><td class="num">8</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td>Quarta técnica · +2 pontos de atributo</td></tr>
-      <tr><td class="num">9</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td>+1 caixa numa peça da armadura</td></tr>
-      <tr><td class="num">10</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td>Terceira defesa treinada</td></tr>
-      <tr><td class="num">11</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td>Golpe Certeiro</td></tr>
-      <tr><td class="num">12</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td>Quinta técnica · +2 pontos de atributo</td></tr>
-      <tr><td class="num">13</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td>+1 caixa numa peça da armadura</td></tr>
-      <tr><td class="num">14</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td>Quarta Convicção</td></tr>
-      <tr><td class="num">15</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td>Cosmo Sereno</td></tr>
-      <tr><td class="num">16</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td>Sexta técnica · +2 pontos de atributo</td></tr>
-      <tr><td class="num">17</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td>+1 caixa numa peça da armadura</td></tr>
-      <tr><td class="num">18</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td>Segunda técnica assinatura</td></tr>
-      <tr><td class="num">19</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td>+2 pontos de atributo</td></tr>
-      <tr><td class="num">20</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td>Sétima técnica · Lenda</td></tr>
+      <tr><td>1 a 4</td><td class="num">12</td><td class="num">+4</td><td><span class="dado">1d6 + 2</span></td></tr>
+      <tr><td>5 a 8</td><td class="num">14</td><td class="num">+6</td><td><span class="dado">2d6 + 3</span></td></tr>
+      <tr><td>9 a 12</td><td class="num">16</td><td class="num">+8</td><td><span class="dado">3d6 + 4</span></td></tr>
+      <tr><td>13 a 16</td><td class="num">18</td><td class="num">+10</td><td><span class="dado">4d6 + 5</span></td></tr>
+      <tr><td>17 a 20</td><td class="num">20</td><td class="num">+12</td><td><span class="dado">5d6 + 6</span></td></tr>
     </tbody>
   </table></div>
+  <ul>
+    <li>Cada golpe comum ou técnica de alvo único que acerta derruba um figurante.</li>
+    <li>Uma técnica em área derruba três; com a área dobrada, seis. Ninguém rola por
+      figurante: a área pegou, eles caíram.</li>
+    <li>Figurantes não dão Glória, não leem técnicas e não levantam.</li>
+    <li>Um bando de seis prende um personagem por duas ou três rodadas. É para isso que ele
+      serve: gastar tempo, Cosmo e PV antes da luta de verdade.</li>
+  </ul>
 
-  <p>A cada nível, os seus PV máximos sobem <strong>5 + CON</strong>. Se a Constituição
-  subir, recalcule como se ela sempre tivesse sido aquela. Nenhum atributo passa de 20. O
-  Teto da tabela é o Teto de Cosmo sem nada somado: o Sétimo, os sentidos perdidos e as
-  Centelhas sobem ele por cima disso. As caixas ganhas nos níveis são da sua armadura atual;
-  se você trocar de armadura, elas passam para a nova.</p>
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="dificuldade">Quanto pesa um inimigo</h3>
+  <p>Medido no simulador, num duelo de um contra um, com o personagem tendo três Convicções
+  e gastando no máximo uma por luta:</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>O personagem vence</th></tr></thead>
+    <tbody>
+      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>87% a 99%</td></tr>
+      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>46% a 51%</td></tr>
+      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção, ou um Prata do mesmo nível com uma</td><td>33% a 42%</td></tr>
+      <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>2% a 4% sozinho</td></tr>
+      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem</td><td>22% a 36% (a partir do nível 5)</td></tr>
+    </tbody>
+  </table></div>
+  <p>A lição da tabela: <strong>o que torna um inimigo perigoso são as Convicções e o
+  Posto, mais que o nível</strong>. Um nomeado sem Convicção quatro níveis acima ainda perde
+  na maioria das vezes; um rival com uma só Convicção vira uma luta de verdade.</p>
+  <p>Contra a elite, o grupo inteiro precisa estar envolvido — lutando junto ou mandando
+  Centelhas de longe. Um grupo contra um único inimigo ainda não foi medido; como regra de
+  bolso, cada personagem a mais contra o mesmo inimigo vale mais ou menos dois níveis.</p>
+
+  <h3>Deuses</h3>
+  <p>Um deus não se monta pela tabela. Ele está no Nono Sentido — dois degraus acima de quem
+  está no Sexto — e <strong>só um ataque de Nono Sentido fere um deus</strong>. Qualquer
+  outro golpe causa zero, por mais forte que seja. Na prática:</p>
+  <ul>
+    <li><strong>PV:</strong> três vezes os de um guerreiro de nível 20.</li>
+    <li><strong>DEF e defesas:</strong> as de um guerreiro de elite de nível 20, mais 4.</li>
+    <li><strong>Ações:</strong> duas por rodada. As técnicas dele são efeitos de destino
+      quando ele quiser: selar, petrificar, matar. Anuncie antes, e dê aos jogadores uma
+      rodada para responder.</li>
+    <li><strong>Como se vence um deus:</strong> com o Nono, com um elo, e quase sempre com um
+      item divino que sela em vez de matar.</li>
+  </ul>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="fichas-inimigos">Sete inimigos prontos</h3>
+  <p>Montados pela tabela e conferidos pelo simulador. Troque o nome, o exército e o tema
+  à vontade: os números continuam valendo.</p>
+
+  <div class="criatura">
+<h3>Cavaleiro Negro<span class="kleos">Nível 2 · Bronze</span></h3>
+<p class="tipo">Renegado</p>
+<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · Elmo 1 · Peitoral 1 · Braços 1 · Pernas 1 · acessório 1<br><b>Convicções</b> 0</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+4 contra a DEF, <span class="dado">1d10 + 2</span>. Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Punho das Sombras</strong> · 5 de Cosmo · +4 contra a DEF · <span class="dado">5d8 + 2</span>.</li><li><strong>Chama Negra</strong> · 2 de Cosmo · +4 contra a DEF · <span class="dado">2d8 + 2</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Armadura falsa.</strong> A Armadura Negra não se regenera: as caixas marcadas ficam marcadas até alguém consertá-la.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence um desses sozinho na maioria das vezes.</p>
+</div>
+
+  <div class="criatura">
+<h3>Espectro de Estrela Terrestre<span class="kleos">Nível 4 · Bronze</span></h3>
+<p class="tipo">Hades</p>
+<div class="status"><b>PV</b> 29 <span class="sep">·</span> <b>DEF</b> 15 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 19 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · Elmo 1 · Peitoral 1 · Braços 1 · Pernas 1 · acessório 1<br><b>Convicções</b> 0</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+5 contra a DEF, <span class="dado">1d8 + 3</span>. Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Asa do Mundo Inferior</strong> · 5 de Cosmo · +5 contra a DEF · <span class="dado">5d8 + 3</span>.</li><li><strong>Grito Maligno</strong> · 3 de Cosmo · +5 contra a DEF · <span class="dado">3d8 + 3</span>.</li><li><strong>Garra do Cão do Inferno</strong> · 2 de Cosmo · +5 contra a DEF · <span class="dado">2d8 + 3</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Estrela Maligna.</strong> Se morrer, volta em <span class="dado">1d4</span> semanas, enquanto Hades existir.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Vem em grupos de dois ou três. Um só é uma luta difícil para um Bronze de nível 3.</p>
+</div>
+
+  <div class="criatura">
+<h3>Cavaleiro de Prata<span class="kleos">Nível 6 · Prata</span></h3>
+<p class="tipo">Atena</p>
+<div class="status"><b>PV</b> 51 <span class="sep">·</span> <b>DEF</b> 17 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 20 <span class="sep">·</span> <b>Vontade</b> 18<br><b>Cosmo</b> começa em 2, Teto 6 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · Elmo 2 · Peitoral 3 · Braços 2 · Pernas 2 · acessório 2<br><b>Convicções</b> 1</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+6 contra a DEF, <span class="dado">1d8 + 3</span>. Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Correntes do Cão Infernal</strong> · 6 de Cosmo · +6 contra a DEF · <span class="dado">12d8 + 3</span>.</li><li><strong>Chicote de Cosmo</strong> · 4 de Cosmo · +6 contra a DEF · <span class="dado">8d8 + 3</span>.</li><li><strong>Laço de Aço</strong> · 2 de Cosmo · +6 contra a DEF · <span class="dado">4d8 + 3</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.</li><li><strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O caçador que o Santuário manda atrás de quem desobedeceu. Um grupo de três Bronzes de nível 5 dá conta; um só, raramente.</p>
+</div>
+
+  <div class="criatura">
+<h3>Guerreiro Deus<span class="kleos">Nível 10 · Elite</span></h3>
+<p class="tipo">Asgard</p>
+<div class="status"><b>PV</b> 79 <span class="sep">·</span> <b>DEF</b> 20 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 20 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 8 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · Elmo 3 · Peitoral 6 · Braços 3 · Pernas 3<br><b>Convicções</b> 2</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+8 contra a DEF, <span class="dado">1d8 + 4</span> (dois golpes). Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Golpe da Estrela da Ursa Maior</strong> · 7 de Cosmo · +8 contra a DEF · <span class="dado">18d8 + 4</span>. Atravessa a armadura.</li><li><strong>Presas do Lobo do Norte</strong> · 6 de Cosmo · +8 contra a DEF · <span class="dado">18d8 + 4</span>.</li><li><strong>Tempestade de Cristal</strong> · 4 de Cosmo · +8 contra a DEF · <span class="dado">12d8 + 4</span>.</li><li><strong>Ventania Gelada</strong> · 2 de Cosmo · +8 contra a DEF · <span class="dado">6d8 + 4</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Safira de Odin.</strong> +1 no Teto de Cosmo enquanto a safira estiver na Veste (já somado).</li><li><strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos sete. Precisa de um grupo inteiro de nível 9 ou 10, com Centelhas.</p>
+</div>
+
+  <div class="criatura">
+<h3>General Marina<span class="kleos">Nível 11 · Elite</span></h3>
+<p class="tipo">Poseidon</p>
+<div class="status"><b>PV</b> 82 <span class="sep">·</span> <b>DEF</b> 20 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 20 <span class="sep">·</span> <b>Reflexos</b> 22 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · Elmo 4 · Peitoral 6 · Braços 4 · Pernas 4 · acessório 4<br><b>Convicções</b> 2</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+8 contra a DEF, <span class="dado">1d8 + 4</span> (dois golpes). Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Triângulo das Ondas</strong> · 7 de Cosmo · +8 contra a DEF · <span class="dado">18d8 + 4</span>. Atravessa a armadura.</li><li><strong>Maré Devastadora</strong> · 6 de Cosmo · +8 contra a DEF · <span class="dado">18d8 + 4</span>.</li><li><strong>Garra do Kraken</strong> · 4 de Cosmo · +8 contra a DEF · <span class="dado">12d8 + 4</span>.</li><li><strong>Redemoinho</strong> · 2 de Cosmo · +8 contra a DEF · <span class="dado">6d8 + 4</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Escama de oricalco.</strong> Uma caixa a mais em cada peça (já somada).</li><li><strong>Sétimo dominado.</strong> Como todo guerreiro de elite.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer Cavaleiro.</p>
+</div>
+
+  <div class="criatura">
+<h3>Cavaleiro de Ouro<span class="kleos">Nível 12 · Elite</span></h3>
+<p class="tipo">Atena</p>
+<div class="status"><b>PV</b> 85 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 20 <span class="sep">·</span> <b>Reflexos</b> 23 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 2, Teto 7 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · Elmo 3 · Peitoral 6 · Braços 3 · Pernas 3<br><b>Convicções</b> 3</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+9 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>o Golpe do Assento da vaga</strong> · 7 de Cosmo · +9 contra a DEF · <span class="dado">18d8 + 5</span>. Atravessa a armadura.</li><li><strong>Impacto do Zodíaco</strong> · 6 de Cosmo · +9 contra a DEF · <span class="dado">18d8 + 5</span>.</li><li><strong>Muralha de Luz</strong> · 4 de Cosmo · +9 contra a DEF · <span class="dado">12d8 + 5</span>.</li><li><strong>Chama Dourada</strong> · 2 de Cosmo · +9 contra a DEF · <span class="dado">6d8 + 5</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Sétimo dominado.</strong> Entra no Sétimo no primeiro turno e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li><li><strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em dez; com o grupo mandando Centelhas, um pouco mais.</p>
+</div>
+
+  <div class="criatura">
+<h3>Juiz do Inferno<span class="kleos">Nível 15 · Elite</span></h3>
+<p class="tipo">Hades</p>
+<div class="status"><b>PV</b> 110 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 3, Teto 9 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · Elmo 3 · Peitoral 6 · Braços 3 · Pernas 3 · acessório 3<br><b>Convicções</b> 3</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Golpe do Juízo</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>. Atravessa a armadura.</li><li><strong>Garras do Grifo</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">24d8 + 5</span>.</li><li><strong>Grande Chifre do Wyvern</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">16d8 + 5</span>.</li><li><strong>Marionete Cósmica</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">8d8 + 5</span>.</li></ul>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Estrela Maligna.</strong> Volta em <span class="dado">1d4</span> semanas enquanto Hades existir.</li><li><strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).</li><li><strong>Sétimo dominado.</strong></li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos três juízes. É a luta de um arco inteiro.</p>
+</div>
+</section>
+
+<!-- ==================== XI ==================== -->
+<section class="capitulo" id="cap11">
+  <div class="abertura">
+    <span class="alg">Capítulo Onze</span>
+    <h2>Aliados e a luta na mesa</h2>
+    <p>Para o Mestre: quem luta ao lado, quem ajuda de longe, e como conduzir tudo isso</p>
+  </div>
+
+  <p class="abre">Este jogo tem uma forma de luta que a maioria dos RPGs evita: o duelo. Um
+  personagem contra um inimigo, enquanto o resto do grupo está em outra casa, em outro
+  templo, caído no chão. Este capítulo é sobre fazer isso funcionar numa mesa com quatro
+  pessoas — sem ninguém passar uma hora olhando para o teto.</p>
+
+  <h3>Aliados</h3>
+  <p>Aliados são personagens do Mestre que estão do lado do grupo. Existem três tipos, e
+  cada um tem uma regra.</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Aliado de luta</h5>
+      <p class="etiqueta">Ao seu lado</p>
+      <p>Montado como um inimigo da tabela rápida, dois níveis abaixo do grupo. Age logo
+      depois de quem o controla, com uma ação só: golpe comum, a técnica grande quando o
+      Cosmo fecha, ou Ajudar. Não tem Convicção, não lê técnicas e não ganha Glória. Se cai,
+      fica.</p>
+    </div>
+    <div class="cartao">
+      <h5>Aliado de longe</h5>
+      <p class="etiqueta">O Cosmo que chega</p>
+      <p>Todo personagem do Mestre que está numa Convicção de alguém do grupo pode mandar
+      <strong>uma Centelha por sessão</strong> para essa pessoa, de onde estiver. O Mestre
+      decide quando — de preferência na pior hora.</p>
+    </div>
+    <div class="cartao">
+      <h5>Mentor</h5>
+      <p class="etiqueta">No Interlúdio</p>
+      <p>Quem te treinou. Treinando com ele numa semana de Interlúdio, você tem +2 no teste
+      daquela semana — evoluir uma técnica, o treino do Oitavo, aprender a restaurar. Um
+      mentor também pode ensinar a lição do treino dele como a sua Segunda Lição.</p>
+    </div>
+  </div>
+
+  <h4>O deus do exército</h4>
+  <p>Uma vez por sessão, o deus patrono manda uma Centelha para um dos guerreiros dele — o
+  que estiver no pior momento, a critério do Mestre. Não precisa de laço nem de distância:
+  é o Cosmo do deus. Enquanto o deus estiver presente na cena, essa Centelha pode vir uma
+  vez por luta, em vez de uma vez por sessão.</p>
+
+  <h4>Quem controla o aliado de luta</h4>
+  <p>Entregue o aliado a um jogador — de preferência a quem está sem nada para fazer naquela
+  luta. O Mestre continua dono das decisões que importam para a história (o aliado foge? se
+  sacrifica?), mas o turno é do jogador. Um aliado por jogador, no máximo.</p>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>Conduzir uma luta</h3>
+
+  <h4>Antes do primeiro dado</h4>
+  <ul>
+    <li><strong>Mostre o Cosmo.</strong> Qualquer guerreiro sente o Cosmo de outro. Diga o
+      Posto e se ele está no Sétimo antes da luta começar: os jogadores precisam saber que
+      estão diante de um Ouro para decidir se lutam, fogem ou chamam o grupo.</li>
+    <li><strong>Diga o que está em jogo.</strong> Passar pela casa, salvar alguém, recuperar
+      uma urna. Uma luta com objetivo termina quando o objetivo termina — não precisa de
+      alguém a 0 PV.</li>
+    <li><strong>Role a Iniciativa uma vez</strong> e deixe a ordem escrita à vista.</li>
+  </ul>
+
+  <h4>Narrar a técnica</h4>
+  <p>Quando um jogador usa uma técnica, peça três coisas, nessa ordem: o nome (em voz alta,
+  é tradição), o Cosmo pago e a rolagem. Depois de ver o dado, o jogador descreve o golpe
+  e o Mestre descreve o que acontece com o inimigo. Uma técnica que o inimigo já leu merece
+  uma frase: "ele desvia sem olhar — já viu esse golpe".</p>
+  <p>Com o Cosmo no Teto, descreva a aura: a constelação aparece nas costas. É o sinal, para
+  a mesa inteira, de que algo grande vem aí.</p>
+
+  <h4>Narrar a queda e o levantar</h4>
+  <p>Quando um personagem cai a 0 PV, pare. O inimigo fala — é a hora do discurso. Pergunte
+  ao jogador se ele tem uma Convicção para gastar e deixe que ele a diga em voz alta. Então
+  ele levanta. Se for um Bronze, ele levanta desperto: descreva o Cosmo subindo, a armadura
+  brilhando, o inimigo percebendo que alguma coisa mudou.</p>
+
+  <div class="ornamento">❖</div>
+
+  <h3 id="duelos-em-paralelo">Duelos em paralelo</h3>
+  <p>Quando o grupo se separa, cada personagem pode acabar num duelo diferente. Conduza
+  assim:</p>
+  <ol class="passos">
+    <li><b>Uma rodada de cada vez</b> Jogue uma rodada inteira do duelo A — os dois lados
+      agem —, depois uma do duelo B, depois C, e volte ao A.</li>
+    <li><b>Corte no fim da rodada</b> Nunca no meio de um turno. Se a rodada terminou com
+      alguém caído, o corte é o melhor momento: a mesa passa uma volta inteira sem saber se
+      ele levanta.</li>
+    <li><b>Quem está fora age de longe</b> Nas rodadas dos outros, cada jogador pode mandar
+      uma Centelha, se ainda tiver. É uma decisão real, feita em voz alta: "eu mando para o
+      Téo".</li>
+    <li><b>O duelo que acaba libera alguém</b> Quem venceu pode correr para outro duelo e
+      chega em <span class="dado">1d4</span> rodadas, ou ficar e mandar Centelhas.</li>
+  </ol>
+  <p>Com quatro duelos em paralelo, cada jogador age a cada quatro rodadas de mesa. Isso é
+  demais: acima de três duelos simultâneos, junte dois deles numa luta de dois contra dois,
+  ou resolva os figurantes de um duelo em uma frase.</p>
+
+  <h4>A Guerra dos Mil Dias na mesa</h4>
+  <p>Quando um duelo trava, desenhe seis caixas num papel no meio da mesa e congele aquele
+  duelo. A cada corte para outro duelo, marque uma caixa. Todo mundo vê o relógio andar, e
+  todo mundo sabe que a saída está nas Centelhas deles. É a melhor cena que este jogo
+  produz — deixe ela respirar.</p>
+
+  <h4>Figurantes como cenário</h4>
+  <p>Não conte figurante por figurante na narração. Descreva o bando como uma onda, e cada
+  acerto como mais um que cai. O importante é o tempo e o Cosmo que eles tiram do personagem
+  antes da luta de verdade.</p>
+
+  <h4>Terminar a luta</h4>
+  <ul>
+    <li>A luta termina quando todos de um lado estão no chão sem poder levantar, quando o
+      objetivo acaba ou quando alguém se rende.</li>
+    <li>Inimigos nomeados a 0 PV não morrem sozinhos. Matar exige o turno inteiro ao lado
+      dele, como para um personagem.</li>
+    <li>Dê a Glória na hora, com a luta ainda quente (<a href="#cap12">Capítulo Doze</a>).</li>
+  </ul>
+
+  <h4>O ritmo certo</h4>
+  <p><strong>Medido:</strong> um duelo justo dura de 4 a 7 rodadas sem Convicções, e de 6 a
+  10 quando os dois levantam uma vez. Se uma luta passar de 12 rodadas, algo está errado:
+  ou o inimigo é forte demais para o grupo, ou alguém está guardando Cosmo sem usar. Diga
+  isso em voz alta: o Cosmo no Teto não sobe mais, e parado ele não ganha nada.</p>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3>Uma cena, de ponta a ponta</h3>
+  <p>Três jogadores. Téo está na Casa de Leão contra um Cavaleiro de Ouro; Helena e Rurik
+  ficaram para trás, cada um num duelo contra um Cavaleiro de Prata.</p>
+  <div class="mesa">
+    <p><b>Mestre:</b> Rodada três na casa de Leão. O Ouro te acerta com o Relâmpago de
+    Plasma; você já tinha usado a reação para bloquear. Vinte e dois de dano. Você cai.</p>
+    <p><b>Mestre:</b> Corte. Rodada três da Helena.</p>
+    <p><em>Helena joga a rodada dela. Rurik joga a dele. No fim da rodada do Rurik:</em></p>
+    <p><b>Rurik:</b> Eu mando uma Centelha para o Téo.</p>
+    <p><b>Mestre:</b> Casa de Leão. O Ouro está falando que a esperança de um Bronze é a
+    coisa mais tola do mundo. Mas você sente o Cosmo do Rurik chegando. Tem Convicção?</p>
+    <p><b>Téo:</b> "Eu luto para provar que um Bronze vale tanto quanto uma estrela de
+    Ouro." Eu levanto.</p>
+    <p><b>Mestre:</b> Você levanta na hora, com um quarto dos PV e o Cosmo no Teto — mais o
+    ponto de Teto da Centelha. Levantar é o seu sacrifício, você disse a Convicção: você
+    desperta. Sétimo Sentido. O Ouro para de falar. Mas ele ainda domina o Sétimo, e você
+    acabou de chegar lá: ele tem +3 contra você. Corte.</p>
+    <p><em>Uma volta depois, de novo na Casa de Leão, é o turno do Téo.</em></p>
+    <p><b>Téo:</b> A Centelha me dá Vantagem no próximo ataque. Garra que Rasga o Céu,
+    queimando dois.</p>
+  </div>
+  <p>Repare no que a regra fez: o jogador que estava longe decidiu a hora; o que caiu teve
+  uma cena; e o Ouro continuou sendo um Ouro.</p>
+</section>
+
+<!-- ==================== XII ==================== -->
+<section class="capitulo" id="cap12">
+  <div class="abertura">
+    <span class="alg">Capítulo Doze</span>
+    <h2>Interlúdio e níveis</h2>
+    <p>O tempo entre as lutas, a Glória, o Posto e o que você ganha do nível 1 ao 20</p>
+  </div>
+
+  <p class="abre">Ninguém fica mais forte no meio da escadaria. Fica depois, no tempo entre
+  uma batalha e outra: treinando, levando a armadura morta a quem sabe restaurá-la,
+  recuperando o sangue que doou. Esse tempo é o <em class="termo">Interlúdio</em>, e ele se
+  conta em semanas.</p>
+
+  <h3 id="gloria">Glória</h3>
+  <p>Você sobe de nível juntando <em class="termo">Glória</em>. Ela vem das lutas e dos
+  marcos, nunca de uma decisão solta.</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>Quando</th><th class="num">Glória</th></tr></thead>
+    <tbody>
+      <tr><td>Vencer uma luta contra pelo menos um inimigo nomeado</td><td class="num">1</td></tr>
+      <tr><td>…e ele era de Posto acima do seu</td><td class="num">+1</td></tr>
+      <tr><td>Despertar um Sentido pela primeira vez na vida (o Sétimo, o Oitavo, o Nono)</td><td class="num">1</td></tr>
+      <tr><td>Sair vivo de uma Guerra dos Mil Dias</td><td class="num">1</td></tr>
+      <tr><td>Cumprir o objetivo que o grupo recebeu no começo da missão</td><td class="num">1</td></tr>
+    </tbody>
+  </table></div>
+  <p>A Glória é de cada personagem: quem estava na luta ganha. Quem mandou uma Centelha para
+  a luta também estava nela.</p>
+  <p>Quando você junta a Glória da coluna <strong>Glória</strong> da tabela, você sobe de
+  nível no próximo descanso longo, e a Glória volta a zero. São 3 de Glória por nível até o
+  4, 4 até o 12 e 5 daí em diante: umas três ou quatro lutas importantes por nível.</p>
+
+  <h3 id="interludio">O Interlúdio</h3>
+  <p>Cada semana de Interlúdio te dá, de graça:</p>
+  <ul>
+    <li>uma Convicção gasta de volta;</li>
+    <li>um terço de sangue doado de volta;</li>
+    <li>todos os PV e os sentidos arrancados, porque há tempo para descansar.</li>
+  </ul>
+  <p>E uma <strong>ação de Interlúdio</strong>, à escolha:</p>
+
+  <div class="grade">
+    <div class="cartao">
+      <h5>Evoluir uma técnica</h5>
+      <p>O teste do <a href="#evolucao">Capítulo Seis</a>. Também serve para desenvolver
+      uma técnica nova, quando a tabela abre uma vaga.</p>
+    </div>
+    <div class="cartao">
+      <h5>Restaurar uma armadura</h5>
+      <p>Se alguém do grupo é restaurador, ou se vocês foram até um: o teste de Ofício do
+      <a href="#reviver">Capítulo Sete</a>.</p>
+    </div>
+    <div class="cartao">
+      <h5>Melhorar a armadura</h5>
+      <p>Uma melhoria do <a href="#melhorias">Capítulo Oito</a>, com o metal na mão.</p>
+    </div>
+    <div class="cartao">
+      <h5>Buscar</h5>
+      <p>Um item raro ou um dos três metais. O teste e as CDs estão no Capítulo Oito.</p>
+    </div>
+    <div class="cartao">
+      <h5>Estudar um inimigo</h5>
+      <p>Mitologia ou Investigação contra CD 12 + o nível dele. No sucesso, as técnicas dele
+      que alguém do grupo já viu contam como Lidas por você também.</p>
+    </div>
+    <div class="cartao">
+      <h5>Treinar o Oitavo</h5>
+      <p>A partir do nível 9: Atributo do Cosmo + proficiência contra CD 18. Três sucessos, e
+      a situação do <a href="#oitavo">Capítulo Quatro</a> pode acontecer.</p>
+    </div>
+    <div class="cartao">
+      <h5>Aprender a restaurar</h5>
+      <p>Só com um mestre restaurador: Ofício contra CD 16. Três sucessos e você passa a
+      restaurar armaduras.</p>
+    </div>
+    <div class="cartao">
+      <h5>Cuidar de um sentido mutilado</h5>
+      <p>Medicina contra CD 20, feito por alguém que cuide de você. No sucesso, o sentido
+      volta — e o +1 de Teto dele vai embora.</p>
+    </div>
+  </div>
+
+  <div class="ornamento">❖ ❖ ❖</div>
+
+  <h3 id="posto">Subir de Posto</h3>
+  <p>O nível mede o quanto você aprendeu a lutar. O Posto mede o lugar que o seu exército te
+  deu. Os dois andam separados, e cada um tem a sua regra.</p>
+  <div class="destaque">
+    <span class="rotulo">Posto</span>
+    <p><strong>Prata:</strong> a partir do nível 5. <strong>Elite:</strong> a partir do nível 9,
+    e só se houver uma vaga vazia. Cumprido o requisito, a promoção acontece quando a
+    história a traz — uma armadura que te escolhe, um mestre que passa o lugar, uma vaga que
+    abre porque alguém morreu.</p>
+  </div>
+  <p>Subir para Prata dá a linha da Prata na armadura. Subir para a elite dá a armadura da
+  vaga, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
+  ele não vem com o nível: vem com ele e com a história.</p>
+
+  <h3>A tabela</h3>
+  <p>A coluna <strong>PV</strong> é a base: some a sua CON uma vez por nível. Um personagem
+  com CON +2 no nível 5 tem 38 + 10 = 48 PV. O <strong>Teto</strong> é o Teto de Cosmo sem
+  nada somado. A coluna <strong>Glória</strong> é quanto você precisa para sair daquele
+  nível.</p>
+
+  <div class="rolagem"><table>
+<thead><tr><th class="num">Nível</th><th class="num">Prof.</th><th class="num">Grau</th><th class="num">Teto</th><th class="num">PV</th><th class="num">Glória</th><th>O que você ganha</th></tr></thead><tbody>
+<tr><td class="num">1</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">18</td><td class="num">3</td><td>Tudo da criação · duas técnicas · técnica assinatura</td></tr>
+<tr><td class="num">2</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">19</td><td class="num">3</td><td>Leitura de Combate</td></tr>
+<tr><td class="num">3</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">20</td><td class="num">3</td><td>Cosmo Desperto</td></tr>
+<tr><td class="num">4</td><td class="num">+2</td><td class="num">1</td><td class="num">5</td><td class="num">21</td><td class="num">3</td><td>Terceira técnica · +2 pontos de atributo</td></tr>
+<tr><td class="num">5</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">38</td><td class="num">4</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">6</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">39</td><td class="num">4</td><td>Segunda Lição</td></tr>
+<tr><td class="num">7</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">40</td><td class="num">4</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">8</td><td class="num">+3</td><td class="num">2</td><td class="num">6</td><td class="num">41</td><td class="num">4</td><td>Quarta técnica · +2 pontos de atributo</td></tr>
+<tr><td class="num">9</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">58</td><td class="num">4</td><td>Ataque Extra</td></tr>
+<tr><td class="num">10</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">59</td><td class="num">4</td><td>Terceira defesa treinada</td></tr>
+<tr><td class="num">11</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">60</td><td class="num">4</td><td>Golpe Certeiro</td></tr>
+<tr><td class="num">12</td><td class="num">+4</td><td class="num">3</td><td class="num">7</td><td class="num">61</td><td class="num">4</td><td>Quinta técnica · +2 pontos de atributo</td></tr>
+<tr><td class="num">13</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">78</td><td class="num">5</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">14</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">79</td><td class="num">5</td><td>Quarta Convicção</td></tr>
+<tr><td class="num">15</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">80</td><td class="num">5</td><td>Cosmo Sereno</td></tr>
+<tr><td class="num">16</td><td class="num">+5</td><td class="num">4</td><td class="num">8</td><td class="num">81</td><td class="num">5</td><td>Sexta técnica · +2 pontos de atributo</td></tr>
+<tr><td class="num">17</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">98</td><td class="num">5</td><td>+1 caixa numa peça da armadura</td></tr>
+<tr><td class="num">18</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">99</td><td class="num">5</td><td>Segunda técnica assinatura</td></tr>
+<tr><td class="num">19</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">100</td><td class="num">5</td><td>+2 pontos de atributo</td></tr>
+<tr><td class="num">20</td><td class="num">+6</td><td class="num">5</td><td class="num">9</td><td class="num">101</td><td class="num">—</td><td>Sétima técnica · Lenda</td></tr>
+</tbody></table></div>
+
+  <p>Nenhum atributo passa de 20. Se a Constituição subir, recalcule os PV como se ela sempre
+  tivesse sido aquela. As caixas ganhas nos níveis são suas, não da armadura: se você trocar
+  de armadura, elas passam para a nova.</p>
+
+  <div class="nota">
+    <p><strong>Por que os PV sobem por Grau.</strong> O dano das técnicas cresce de quatro em
+    quatro níveis, junto com o Grau. Com PV subindo todo nível, as lutas ficavam cada vez mais
+    longas dentro de cada faixa — no nível 4, um duelo passava de 12 rodadas. Com a base por
+    Grau, a luta dura parecido do começo ao fim de cada faixa: de 4 a 7 rodadas sem
+    Convicções, medido.</p>
+  </div>
 
   <h3>O que cada ganho faz</h3>
   <div class="grade">
     <div class="cartao">
       <h5>Leitura de Combate</h5>
       <p class="etiqueta">Nível 2</p>
-      <p>Uma vez por luta, quando uma técnica que você nunca viu é usada contra você, você
-      a lê na hora: ela já conta como Lida por você nessa rolagem.</p>
+      <p>Uma vez por luta, quando uma técnica que você nunca viu é usada contra você, você a
+      lê na hora: ela já conta como Lida por você nessa rolagem.</p>
     </div>
     <div class="cartao">
       <h5>Cosmo Desperto</h5>
@@ -2963,16 +3782,20 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <p>Você começa toda luta com +1 de Cosmo.</p>
     </div>
     <div class="cartao">
-      <h5>Ataque Extra</h5>
-      <p class="etiqueta">Nível 5</p>
-      <p>A ação Golpe dá dois golpes comuns. O +1 de Cosmo por acerto continua valendo uma
-      vez por turno.</p>
+      <h5>Caixas de armadura</h5>
+      <p class="etiqueta">Níveis 5, 7, 13 e 17</p>
+      <p>+1 caixa numa peça da sua armadura, à sua escolha.</p>
     </div>
     <div class="cartao">
-      <h5>Queima Controlada</h5>
-      <p class="etiqueta">Nível 7</p>
-      <p>Queimar passa a custar <span class="dado">1d4</span> por ponto em vez de
-      <span class="dado">1d6</span>.</p>
+      <h5>Segunda Lição</h5>
+      <p class="etiqueta">Nível 6</p>
+      <p>A lição de outro treino, à sua escolha — ou a do treino do seu mentor.</p>
+    </div>
+    <div class="cartao">
+      <h5>Ataque Extra</h5>
+      <p class="etiqueta">Nível 9</p>
+      <p>A ação Golpe dá dois golpes comuns. O +1 de Cosmo por acerto continua valendo uma vez
+      por turno.</p>
     </div>
     <div class="cartao">
       <h5>Terceira defesa treinada</h5>
@@ -2989,7 +3812,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Quarta Convicção</h5>
       <p class="etiqueta">Nível 14</p>
-      <p>Escreva mais uma frase. Você passa a poder levantar quatro vezes por arco.</p>
+      <p>Escreva mais uma frase.</p>
     </div>
     <div class="cartao">
       <h5>Cosmo Sereno</h5>
@@ -3004,23 +3827,16 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Lenda</h5>
       <p class="etiqueta">Nível 20</p>
-      <p>Uma vez por arco, você começa uma luta com o Cosmo no Teto. Se é Bronze ou Prata,
-      pode despertar o Sétimo nessa luta sem o sacrifício: basta o Cosmo no Teto e a
-      Convicção.</p>
+      <p>Uma vez por dia, você começa uma luta com o Cosmo no Teto. Se é Bronze ou Prata, pode
+      despertar o Sétimo nessa luta sem o sacrifício: basta o Cosmo no Teto e a Convicção.</p>
     </div>
-  </div>
-
-  <div class="nota">
-    <p><strong>Os ganhos ainda vão ao simulador.</strong> A tabela segue a estrutura que
-    funcionou na Ascensão dos Semideuses, mas os ganhos são novos e ainda não foram medidos
-    numa luta de verdade.</p>
   </div>
 </section>
 
-<!-- ==================== X ==================== -->
-<section class="capitulo" id="cap10">
+<!-- ==================== XIII ==================== -->
+<section class="capitulo" id="cap13">
   <div class="abertura">
-    <span class="alg">Capítulo Dez</span>
+    <span class="alg">Capítulo Treze</span>
     <h2>Uma ficha pronta</h2>
     <p>As nove etapas do começo ao fim, e a folha de consulta rápida</p>
   </div>
@@ -3044,7 +3860,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       </div>
 
       <div class="recursos">
-        <div class="recurso"><b>13</b><span>PV</span></div>
+        <div class="recurso"><b>19</b><span>PV</span></div>
         <div class="recurso"><b>14</b><span>DEF</span></div>
         <div class="recurso"><b>5</b><span>Teto</span></div>
         <div class="recurso"><b>2</b><span>Cosmo inicial</span></div>
@@ -3090,7 +3906,10 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       Tamanho 2, custo 2. O ataque sai com Desvantagem.</p>
 
       <p><strong>Sentidos</strong> ☐☐☐☐☐ · <strong>Sangue</strong> ☐☐☐ ·
-      <strong>Centelhas</strong> 3 · <strong>Convicções</strong> 3.</p>
+      <strong>Centelhas</strong> 3 · <strong>Convicções</strong> 3 · <strong>Glória</strong>
+      0 de 3.</p>
+      <p><strong>Itens:</strong> a urna, corda de escalada e capa para a urna (os dois comuns
+      à escolha), e um punhado de ervas medicinais.</p>
 
       <p><strong>O dia em que a armadura o aceitou:</strong> ele não venceu o torneio. Perdeu
       na final, com o braço quebrado — e a urna se abriu mesmo assim.</p>
@@ -3116,7 +3935,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <p><b>Rodada 3.</b> O relógio leva a 4. Ele quer a Garra, que custa 3, e ainda sobraria 1.
     Mas o inimigo já está ferido, e o Téo quer terminar: queima 1 ponto além do custo. Paga
     3 com o Cosmo, queima 1 — que soma <span class="dado">1d8</span> ao golpe — e sofre
-    <span class="dado">1d6</span>. A Garra sai com <span class="dado">3d8 + 2</span>, ignora a
+    <span class="dado">1d4</span>, porque a técnica é de Grau 1. A Garra sai com <span class="dado">3d8 + 2</span>, ignora a
     marca de Lida, e o Cosmo dele vai a zero.</p>
     <p><em>Se o golpe não derrubar o inimigo, o Téo acabou de ficar sem nada. É esse o preço
     de queimar.</em></p>
@@ -3137,6 +3956,7 @@ SENTIDO  Sexto · Sétimo · Oitavo · Nono     Elo divino: ___________
 
 SENTIDOS  ☐ Tato  ☐ Paladar  ☐ Olfato  ☐ Audição  ☐ Visão
 SANGUE    ☐ ☐ ☐           CENTELHAS  ☐ ☐ ☐       CICATRIZES ___
+GLÓRIA    ___ de ___       RELÍQUIAS EM SINTONIA ______________________
 
 ARMADURA ______________  Versão __   DEF +__   Traço do sangue: ________
   Elmo ☐☐☐  Peitoral ☐☐☐  Braços ☐☐☐  Pernas ☐☐☐  Acessório ☐☐☐
@@ -3174,30 +3994,33 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
     <div class="cartao">
       <h5>Queimar</h5>
       <p>Antes de rolar, até a proficiência (+2 no Sétimo). Paga a técnica e, além do custo,
-      soma pontos de dano. Custa <span class="dado">1d6</span> por ponto, que a armadura não
-      reduz, e o Cosmo vai a zero depois. Ignora Lida.</p>
+      soma pontos de dano. Custa <span class="dado">1d4</span> por ponto, vezes o Grau, que a
+      armadura não reduz e nunca te derruba. O Cosmo vai a zero depois. Ignora Lida.</p>
     </div>
     <div class="cartao">
       <h5>O Sétimo</h5>
-      <p>Ouro: quando quiser. Bronze e Prata: Cosmo no Teto + um sacrifício no turno (sentido,
-      levantar ou queimar) + uma Convicção dita. Um degrau acima: Vantagem contra quem está
-      abaixo, e ele tem Desvantagem contra você. +2 no Teto.</p>
+      <p>Elite: quando quiser, dominado (+3 contra quem só despertou). Bronze e Prata: Cosmo no
+      Teto + um sacrifício no turno (queimar, levantar ou perder um sentido) + uma Convicção
+      dita. Um degrau acima: Vantagem contra quem está abaixo, e ele tem Desvantagem contra
+      você. +2 no Teto.</p>
     </div>
     <div class="cartao">
       <h5>Os cinco sentidos</h5>
-      <p>Sacrifício, Resistir ou técnica inimiga. Cada um: +1 Cosmo e +1 Teto, e uma
-      penalidade própria. Sem os cinco, só fica de pé no Sétimo. Volta um por descanso
-      longo.</p>
+      <p>Só se perdem por técnica inimiga ou mutilação. Cada um: +1 Cosmo e +1 Teto, e uma
+      penalidade própria. Sem os cinco, só fica de pé no Sétimo. O arrancado volta num
+      descanso longo; o mutilado, não.</p>
     </div>
     <div class="cartao">
       <h5>Cair e levantar</h5>
-      <p>A 0 PV: Inconsciente e Caído, sem morrer. Gaste uma Convicção: levanta com um quarto
-      dos PV, Cosmo no Teto — e um Bronze levanta desperto. Ganha uma Cicatriz.</p>
+      <p>A 0 PV: Inconsciente e Caído, sem morrer. Uma vez por luta, gaste uma Convicção:
+      levanta com um quarto dos PV, Cosmo no Teto — e um Bronze levanta desperto. Ganha uma
+      Cicatriz.</p>
     </div>
     <div class="cartao">
       <h5>A armadura</h5>
-      <p>Aparar: marque uma caixa, sofra metade. Peça sem caixa quebra e perde o que dava. O
-      Elmo segura o primeiro crítico. Tudo volta no descanso longo — menos a morte.</p>
+      <p>Aparar (reação): marque uma caixa, sofra metade. Bloquear (reação): +2 DEF antes da
+      rolagem. Um dos dois por rodada. Peça sem caixa quebra. O Elmo segura o primeiro
+      crítico. Tudo volta no descanso longo — menos a morte.</p>
     </div>
     <div class="cartao">
       <h5>O mesmo golpe</h5>
@@ -3216,10 +4039,11 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a primeira versão escrita do sistema, a <strong>0.1.0</strong>, de
-  27/09/2026. Ela é um rascunho jogável: as regras estão completas o bastante para montar
-  um personagem e levar uma luta até o fim, mas os números ainda não passaram por um
-  simulador. Cada valor que precisa ser medido está marcado no texto.</p>
+  <p>Esta é a versão <strong>0.2.0</strong>, de 27/09/2026. Os números de combate dela
+  passaram por um simulador que roda milhares de duelos com as regras deste livro — o
+  mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
+  não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que
+  ainda não foi, como lutas de grupo contra um inimigo só, também.</p>
   <p>O desenho do sistema saiu de uma pesquisa sobre como outros jogos resolvem as
   mesmas perguntas — o Cosmo que cresce, o preço de ir além, a armadura que quebra, o
   duelo com o grupo participando de longe. O relatório e as notas estão no repositório,

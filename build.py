@@ -21,10 +21,16 @@ import base64
 import html
 import pathlib
 import re
+import sys
 
 RAIZ = pathlib.Path(__file__).parent
 TEMPLATE = RAIZ / "template"
 SAIDA = RAIZ / "livro.html"
+
+# As tabelas de números e as fichas de inimigos saem do simulador: o livro
+# imprime exatamente o que foi medido.
+sys.path.insert(0, str(RAIZ / "sim"))
+import inimigos  # noqa: E402
 
 DESCRICAO = ("Sangue e Estrelas: RPG de mesa de fã inspirado em Cavaleiros do "
              "Zodíaco. d20, Cosmo que cresce na luta, os Sentidos, técnicas "
@@ -132,8 +138,12 @@ def main() -> None:
     s = s.replace("{{CAPA}}", capa_embutida())
     s = s.replace("{{VERSAO}}", versao)
     s = s.replace("{{DATA}}", data_br(data))
+    s = s.replace("{{TABELA_NIVEIS}}", inimigos.tabela_niveis())
+    s = s.replace("{{TABELA_POSTO}}", inimigos.tabela_posto())
+    s = s.replace("{{TABELA_INIMIGOS}}", inimigos.tabela_rapida())
+    s = re.sub(r"\{\{INIMIGO:([a-z-]+)\}\}", lambda m: inimigos.bloco(m.group(1)), s)
 
-    faltando = set(re.findall(r"\{\{[A-Z_]+\}\}", s))
+    faltando = set(re.findall(r"\{\{[A-Z_]+(?::[a-z-]+)?\}\}", s))
     if faltando:
         raise SystemExit(f"marcadores não substituídos: {faltando}")
 
