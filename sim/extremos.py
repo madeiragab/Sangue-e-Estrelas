@@ -175,7 +175,17 @@ def builds() -> list[str]:
     for ac in ("garras", "escudo", "asas"):
         out.append(linha_por_nivel(f"Acessório: {ac}", lambda n, ac=ac: montar("A", n, acessorio=ac),
                                    lambda n: montar("B", n)))
+    out.append(linha_por_nivel("Só Vida contra só Cosmo, nas escolhas de nível",
+                               lambda n: montar("A", n, escolhas=so_vida_ou_cosmo(n, "v")),
+                               lambda n: montar("B", n, escolhas=so_vida_ou_cosmo(n, "c"))))
     return out
+
+
+def so_vida_ou_cosmo(nivel: int, qual: str) -> dict:
+    """As escolhas do padrão, mas com Vida (ou Cosmo) em todo nível."""
+    esc = R.escolhas_padrao(nivel)
+    esc["vida_cosmo"] = qual * (nivel - 1)
+    return esc
 
 
 def limitacoes() -> list[str]:
@@ -302,7 +312,7 @@ def duracao() -> list[str]:
          lambda: montar("B", 13, politica={"aparar_limiar": 0.0})),
     ):
         r = duelos(fa, fb, n=N, semente=semente())
-        out.append(f"| {rot} | {r['rodadas_media']:.1f} | {pct(r['empate'] - r['mil_dias'])} |")
+        out.append(f"| {rot} | {r['rodadas_media']:.1f} | {pct(max(0.0, r['empate'] - r['mil_dias']))} |")
     return out
 
 
@@ -362,9 +372,10 @@ def main() -> None:
         "A mesma técnica da seção de condições, mas usada uma vez só por luta.", "",
         *condicoes_uma_vez(), "",
         "## Fronteiras de Grau", "",
-        "Nos níveis 5, 9, 13 e 17 o Grau sobe: o dano por ponto e os PV saltam juntos. "
-        "Dentro da faixa: personagem de nível 1, 5, 9, 13, 17. Cruzando: 3, 7, 11, 15 "
-        "(o inimigo já está no Grau seguinte).", "",
+        "Desde a 0.7.0 o dano de cada ponto e os PV sobem nível a nível, sem saltar quando o "
+        "Grau muda. Esta tabela confere: o inimigo que já cruzou o Grau não pesa mais que o "
+        "que ainda não cruzou. Dentro da faixa: personagem de nível 1, 5, 9, 13, 17. "
+        "Cruzando: 3, 7, 11, 15 (o inimigo já está no Grau seguinte).", "",
         *fronteiras_de_grau(), "",
         "## Características da armadura", "", *caracteristicas(), "",
     ]

@@ -153,6 +153,50 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## Sem salto de nível, e o motor do Mestre conferido (0.7.0)
+
+- **Pedido do usuário:** "suaviza o salto de nível, mas não o de grau, tipo Bronze pra
+  Prata, Prata pra Ouro". Até a 0.6.0 o dano de cada ponto era 1d8 por Grau e os PV
+  vinham por Grau: nos níveis 5, 9, 13 e 17 os dois saltavam juntos, e um nível acima
+  vencia até 97%.
+- **O dano de cada ponto é 1d8 + nível − 1** (o "bônus do ponto"). Nos começos de faixa dá
+  a mesma média do 1d8 por Grau; no meio, cresce aos poucos. A técnica soma no máximo o
+  bônus do último nível do Grau dela (+3, +7, +11, +15, +19): a evolução continua valendo.
+  O crítico de técnica e o ponto queimado somam um ponto inteiro (dado + bônus).
+- **PV base nível a nível:** 14, 18, 23, 30, 38, 46, 55, 65, 76, 88, 101, 115, 130, 146,
+  163, 181, 200, 220, 240, 260. **Vida** soma metade do nível (para cima) por escolha, e
+  cresce a cada nível.
+- Medido: um nível acima vence de 55% a 91% (antes, 50% a 97%). O pico que sobrou, nos
+  níveis 13 e 14, é a proficiência e o +2 de atributo chegando juntos, numa luta que já é
+  longa. Testado e descartado: tirar a Resistência ganha por nível achata a curva (máximo
+  74%), mas encurta a luta do nível 20 de 11 para 8 rodadas, e o usuário pediu luta longa
+  no fim. Também descartado: o preço da vida paga por nível (1d4 + metade do nível) em vez
+  de por Grau — o pico do nível 13 subia para 92%.
+- **Os saltos de Posto ficaram**, como pedido: o Bronze de nível 8 vence o Prata de nível
+  9 (uma Convicção) 6% das vezes; ninguém de nível 14 vence a elite de nível 15.
+- **Figurantes refeitos.** Com a tabela antiga, um bando de seis derrubava um personagem de
+  nível 1 em 94% das vezes, e a luta durava 9 rodadas (o livro dizia 2 ou 3). Agora cada
+  nível tem a sua linha (DEF 11 + nível ÷ 3, ataque proficiência + 2, dano fixo de um
+  quinto da base de PV), o golpe comum derruba dois figurantes, a técnica de alvo único
+  três e a de área o bando inteiro. Medido: seis figurantes custam de 15% a 30% dos PV em 2
+  a 4 rodadas, e quase ninguém cai.
+- **Aliado de luta: metade do nível do grupo, metade dos PV, e não conta para Sozinho
+  contra muitos.** Dois níveis abaixo e com os PV inteiros, com os níveis agora próximos,
+  ele virava um segundo personagem: 96% contra um rival que o personagem venceria na
+  metade das vezes. Testado e descartado: contá-lo como oponente do chefe (um aliado fraco
+  deixava o grupo pior do que sem ele). Agora, 68% a 72%; com o grupo contra um Ouro, +10
+  a +15 pontos.
+- **A tabela rápida** traz o Cosmo (começa, piso, Teto — com as escolhas de Cosmo; antes
+  o livro mandava usar o Teto da tabela de níveis, que não tem as escolhas), não traz
+  características (o Mestre soma as dele) e vai do nível 1 ao 20. As fichas prontas mostram
+  o piso, e a defesa treinada vem da escolha de nível (antes, do nível 10 em diante, sem
+  escolha).
+- **A tabela de dificuldade** foi medida de novo, com uma linha a mais: o rival um nível
+  acima é "difícil" (12% a 35%); dois níveis acima, "muito difícil" (4% a 24%). O aviso
+  da fronteira de Grau virou o aviso da fronteira de Posto.
+- `sim/mestre.py` mede tudo isso e escreve `sim/MESTRE.md`; `test.py mestre` confere cada
+  frase das fichas prontas.
+
 ## O Cosmo não acaba, e a progressão é escolhida (0.6.0)
 
 - **O Cosmo não acaba** (pedido do usuário: "diferente de ASD, o cosmo simplesmente não
@@ -245,7 +289,6 @@ aqui primeiro.
 ## Pendências
 
 - Grupo contra grupo (hoje: duelo e grupo contra um).
-- Suavizar a fronteira de Grau, se a mesa sentir o salto (ficou maior na 0.6.0).
 - Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.

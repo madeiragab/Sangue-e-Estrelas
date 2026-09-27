@@ -37,83 +37,99 @@
   <h3>Montar um inimigo</h3>
   <ol class="passos">
     <li><b>Nível</b> Escolha na tabela rápida abaixo. Ela já traz PV, DEF por Posto,
-      ataque, golpe comum, a técnica grande e as defesas.</li>
+      Cosmo, ataque, golpe comum, a técnica grande e as defesas.</li>
     <li><b>Posto</b> Bronze, Prata ou elite. O Prata tem a Hierarquia contra Bronzes (+2 e
       −2). A elite entra no Sétimo quando quer, com o domínio de +3, e tem um Golpe do
       Assento.</li>
+    <li><b>Escolhas</b> A tabela faz as escolhas de nível do jeito do livro: Vida nos níveis
+      pares, Cosmo nos ímpares, técnica nova nos níveis 4, 8, 12, 16 e 20 e +2 na DES nos
+      outros. Para um inimigo que aguenta mais, troque escolhas de Cosmo por Vida (cada troca:
+      + metade do nível em PV, −1 no Teto e no Cosmo inicial); para um que solta a técnica
+      grande mais cedo, o contrário.</li>
     <li><b>Características</b> 1 no Bronze, 2 na Prata, 3 na elite, do
-      <a href="#caracteristicas">Capítulo Sete</a>. Para um chefe que vai lutar contra o grupo
-      inteiro, as que protegem (Couraça, Espinhos, Espelhada, Pesada) o deixam bem mais
-      duro.</li>
+      <a href="#caracteristicas">Capítulo Sete</a>. A tabela não traz nenhuma: some o efeito
+      das que escolher (Pesada, +1 na DEF; Ressonante, +1 no Cosmo inicial). Para um chefe
+      que vai lutar contra o grupo inteiro, as que protegem (Couraça, Espinhos, Espelhada,
+      Pesada) o deixam bem mais duro.</li>
     <li><b>Técnicas</b> Uma grande, no tamanho máximo do Grau, e uma pequena, de 2 pontos. A
-      partir do nível 4, uma média. Dê nome e tema a elas; a conta já está na tabela.</li>
+      partir do nível 4, uma média. Cada ponto de dano rola <span class="dado">1d8</span> +
+      o nível − 1. Dê nome e tema a elas; a conta da grande já está na tabela.</li>
     <li><b>Convicções</b> Figurante e nomeado: 0. Rival: 1. Chefe: 2 ou 3.</li>
     <li><b>Um traço</b> A regra do exército dele, e uma coisa que só ele faz.</li>
   </ol>
 
   <h4>A tabela rápida</h4>
   <p>Um inimigo nomeado de cada nível, montado pelo livro: DES e CON na frente, Cosmo em
-  Sabedoria. A coluna DEF mostra Bronze, Prata e elite; o traço é um Posto que
-  ainda não existe naquele nível (Prata a partir do 9, elite a partir do 15). As técnicas são de dano em alvo
-  único, contra a DEF, no toque; o número entre parênteses é o custo em Cosmo. As defesas
-  mostram a passiva mais fraca e a mais forte. O Teto de Cosmo é o da tabela de níveis.</p>
+  Sabedoria, sem características. A primeira tabela é o que ele aguenta; a segunda, o que
+  ele bate. A coluna DEF mostra Bronze, Prata e elite; o traço é um
+  Posto que ainda não existe naquele nível (Prata a partir do 9, elite a partir do 15). A
+  coluna Cosmo mostra com quanto ele começa a luta, o piso e o Teto — já com as escolhas de
+  Cosmo. As técnicas são de dano em alvo único, contra a DEF, no toque; o número entre
+  parênteses é o custo em Cosmo. As defesas mostram a passiva mais fraca e a mais forte. A
+  Resistência é a do Posto (<a href="#cap7">Capítulo Sete</a>), +1 sem acessório e +1 nos
+  níveis 5, 7, 13 e 17.</p>
   {{TABELA_INIMIGOS}}
 
-  <h3>Figurantes</h3>
+  <h3 id="figurantes">Figurantes</h3>
   <p>Um bando age como uma criatura só: um ataque por rodada contra um alvo, na Iniciativa
-  do bando. Ele tem Vantagem enquanto houver mais de três de pé.</p>
-  <div class="rolagem"><table>
-    <thead><tr><th>Nível do grupo</th><th class="num">DEF</th><th class="num">Ataque do bando</th><th>Dano por acerto</th></tr></thead>
-    <tbody>
-      <tr><td>1 a 4</td><td class="num">12</td><td class="num">+4</td><td><span class="dado">1d6 + 2</span></td></tr>
-      <tr><td>5 a 8</td><td class="num">14</td><td class="num">+6</td><td><span class="dado">2d6 + 3</span></td></tr>
-      <tr><td>9 a 12</td><td class="num">16</td><td class="num">+8</td><td><span class="dado">3d6 + 4</span></td></tr>
-      <tr><td>13 a 16</td><td class="num">18</td><td class="num">+10</td><td><span class="dado">4d6 + 5</span></td></tr>
-      <tr><td>17 a 20</td><td class="num">20</td><td class="num">+12</td><td><span class="dado">5d6 + 6</span></td></tr>
-    </tbody>
-  </table></div>
+  do bando. Ele tem Vantagem enquanto houver mais de três de pé. Use a linha do nível do
+  grupo. O dano é fixo, sem rolar: é o número da tabela, que sobe um pouco a cada nível,
+  junto com os PV de quem apanha.</p>
+  {{TABELA_FIGURANTES}}
   <ul>
-    <li>Cada golpe comum ou técnica de alvo único que acerta derruba um figurante.</li>
-    <li>Uma técnica em área derruba três; com a área dobrada, seis. Ninguém rola por
-      figurante: a área pegou, eles caíram.</li>
-    <li>Figurantes não dão Glória, não leem técnicas e não levantam.</li>
-    <li>Um bando de seis prende um personagem por duas ou três rodadas. É para isso que ele
-      serve: gastar tempo, Cosmo e PV antes da luta de verdade.</li>
+    <li>Um golpe comum que acerta derruba <strong>dois</strong> figurantes — com o Ataque
+      Extra, são dois golpes e até quatro no chão.</li>
+    <li>Uma técnica de alvo único que acerta derruba <strong>três</strong>. Uma técnica em
+      área derruba o bando inteiro. Rola-se uma vez só, contra a DEF do bando: ninguém rola
+      por figurante.</li>
+    <li>Figurantes não dão Glória, não leem técnicas, não levantam e não usam Sozinho contra
+      muitos.</li>
+    <li><strong>Medido:</strong> um bando de seis prende um personagem sozinho por três ou
+      quatro rodadas até o nível 8, e por duas depois do Ataque Extra, e custa de 15% a 30%
+      dos PV dele — mais nos primeiros níveis. Com uma técnica em área, uma ou duas rodadas e
+      metade do estrago. Quase ninguém cai. É para isso que o bando serve: gastar tempo e PV
+      antes da luta de verdade. Um bando de dez já é uma luta: metade dos PV até o nível 8,
+      e às vezes derruba.</li>
   </ul>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="dificuldade">Quanto pesa um inimigo</h3>
   <p>Medido no simulador, num duelo de um contra um, com o personagem tendo três Convicções
-  e gastando no máximo uma por luta:</p>
+  e gastando no máximo uma por luta. A última coluna é quanto o personagem vence:</p>
   <div class="rolagem"><table>
-    <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>O personagem vence</th></tr></thead>
+    <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>Ele vence</th></tr></thead>
     <tbody>
-      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou até dois acima</td><td>74% a 99%</td></tr>
-      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>47% a 50%</td></tr>
-      <tr><td>Difícil</td><td>Rival dois níveis acima com uma Convicção</td><td>30% a 39%</td></tr>
+      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou um acima</td><td>64% a 99%</td></tr>
+      <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>48% a 52%</td></tr>
+      <tr><td>Difícil</td><td>Rival um nível acima, com uma Convicção</td><td>12% a 35%</td></tr>
+      <tr><td>Muito difícil</td><td>Rival dois níveis acima, com uma Convicção</td><td>4% a 24%</td></tr>
       <tr><td>Muito difícil</td><td>Um Prata do mesmo nível com uma Convicção, contra um Bronze</td><td>6% a 12%</td></tr>
-      <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>0% a 1% sozinho, Bronze ou Prata</td></tr>
-      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>0% a 8%</td></tr>
+      <tr><td>Mortal</td><td>Elite do mesmo nível</td><td>0% sozinho, Bronze ou Prata</td></tr>
+      <tr><td>Mortal, mas possível</td><td>Elite três níveis abaixo do personagem (só a partir do nível 18, porque não há elite abaixo do 15)</td><td>0% a 5%</td></tr>
     </tbody>
   </table></div>
   <p>A lição da tabela: <strong>o que torna um inimigo perigoso são as Convicções e o
-  Posto, mais que o nível</strong>. Um nomeado sem Convicção dois níveis acima ainda perde
-  na maioria das vezes; um rival com uma só Convicção vira uma luta de verdade.</p>
+  Posto, mais que o nível</strong>. Um nomeado sem Convicção um nível acima ainda perde
+  na maioria das vezes; um rival com uma só Convicção, um nível acima, vira uma luta
+  difícil. Nos níveis altos as lutas são longas, e levantar pesa ainda mais: do 15 em diante,
+  um nomeado sem Convicção quase nunca vence um personagem, nem dois níveis acima.</p>
 
   <div class="destaque">
-    <span class="rotulo">Cuidado com a fronteira de Grau</span>
-    <p>Nos níveis 5, 9, 13 e 17 o Grau sobe, e o dano e os PV saltam juntos. Um inimigo
-    que já cruzou a fronteira e o personagem ainda não pesa como se estivesse muitos níveis
-    acima. Medido, dois níveis acima: um nomeado sem Convicção cai de 74%–98% para 29%–89%;
-    um rival com uma Convicção, de 28%–36% para 1%–8%. Nessas fronteiras, conte o inimigo
-    como <strong>dois degraus mais difícil</strong> na tabela.</p>
+    <span class="rotulo">A fronteira que pesa é a do Posto</span>
+    <p>O nível não salta: o dano de cada ponto e os PV sobem um pouco a cada nível, e um
+    inimigo um nível acima pesa mais ou menos o mesmo em qualquer ponto da campanha — quem
+    está acima vence de 55% a 91% dos duelos, com o pico nos níveis 13 e 14, quando a
+    proficiência e o +2 de atributo chegam juntos. O salto que ficou é o do Posto, e é de
+    propósito: um Bronze de nível 8 vence um Prata de nível 9 com uma Convicção 6% das
+    vezes, e ninguém de nível 14 vence uma elite de nível 15. Quando o inimigo está um Posto
+    acima, conte-o como <strong>dois degraus mais difícil</strong> na tabela.</p>
   </div>
 
   <h3 id="sozinho-contra-muitos">Sozinho contra muitos</h3>
   <p>Na mesa, o grupo quase sempre luta junto — e quatro contra um é uma conta cruel. Sem
-  ajuda, dois Bronzes vencem um Prata do mesmo nível 80% a 95% das vezes, e três Bronzes vencem
-  um Ouro 88% a 89%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
+  ajuda, dois Bronzes vencem um Prata do mesmo nível 83% a 91% das vezes, e três Bronzes vencem
+  um Ouro 86% a 93%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
   sozinho contra dois ou mais personagens usa esta regra:</p>
   <div class="rolagem"><table>
     <thead><tr><th class="num">Oponentes</th><th class="num">PV do inimigo</th><th class="num">Golpes comuns a mais por rodada</th></tr></thead>
@@ -133,17 +149,20 @@
       nova reação. Com o Cosmo que não acaba, uma ação livre a mais seria uma técnica a mais,
       e o chefe não perderia nunca.</li>
     <li>Nomeados sem Convicção e figurantes não usam a regra. Eles existem para cair.</li>
+    <li>Conte só os personagens. O aliado de luta (<a href="#cap11">Capítulo Onze</a>) não
+      conta: ele é mais fraco e cai antes, e o chefe não precisa de PV a mais por causa dele.</li>
   </ul>
   <div class="rolagem"><table>
     <thead><tr><th>Grupo de Bronzes do mesmo nível, com a regra</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
     <tbody>
-      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">72–83%</td><td class="num">85–95%</td><td class="num">88–100%</td><td class="num">91–100%</td></tr>
-      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">6–14%</td><td class="num">18–25%</td><td class="num">43–51%</td><td class="num">71–78%</td></tr>
+      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">70–81%</td><td class="num">84–94%</td><td class="num">88–100%</td><td class="num">92–100%</td></tr>
+      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">5–19%</td><td class="num">22–23%</td><td class="num">50–60%</td><td class="num">66–92%</td></tr>
     </tbody>
   </table></div>
-  <p>Quatro Bronzes contra um Ouro do mesmo nível vencem umas cinco vezes em dez, e uns
-  três deles caem no caminho; cinco Bronzes vencem sete em dez. Com um atordoador no grupo,
-  quase o mesmo (47% a 57%). A luta é longa: de 12 rodadas no nível 15 a 17 no nível 20.
+  <p>Quatro Bronzes contra um Ouro do mesmo nível vencem de quatro a seis vezes em dez, e
+  uns três deles caem no caminho; cinco Bronzes vencem de sete a nove em dez. Com um
+  atordoador no grupo, um pouco mais (57% a 66%). A luta é longa: de 13 rodadas no nível 15
+  a 18 no nível 20.
   Com cinco ou mais jogadores, use dois inimigos em vez de um. Medido com características
   típicas dos dois lados: 1 no Bronze, 3 no Ouro.
   É o que a elite deve ser para um grupo: a luta da sessão.</p>

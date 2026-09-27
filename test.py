@@ -249,6 +249,12 @@ def testar_extremos() -> None:
     for n in (9, 13, 17):
         c = taxa(lambda k: montar_build("A", k, "cosmo"), lambda k: montar_build("B", k), n, 220 + n)
         confere(0.35 <= c["a"] <= 0.65, f"nível {n}: quem luta pelo Cosmo empata com quem luta pela DES ({c['a']:.0%})")
+    from extremos import so_vida_ou_cosmo
+    for n in (5, 13, 17, 20):
+        v = taxa(lambda k: montar("A", k, escolhas=so_vida_ou_cosmo(k, "v")),
+                 lambda k: montar("B", k, escolhas=so_vida_ou_cosmo(k, "c")), n, 225 + n)
+        confere(0.25 <= v["a"] <= 0.78,
+                f"nível {n}: nem só Vida nem só Cosmo domina ({v['a']:.0%} da Vida)")
     for n in (5, 9, 13):
         a = taxa(lambda k: montar_build("A", k, kit="atordoar"), lambda k: montar_build("B", k), n, 230 + n)
         confere(a["a"] <= 0.65, f"nível {n}: atordoar não decide a luta sozinho ({a['a']:.0%})")
@@ -264,6 +270,55 @@ def testar_extremos() -> None:
         confere(r["a"] <= 0.60, f"nível 13: a limitação {kit[7:]} custa de verdade ({r['a']:.0%})")
 
 
+def testar_mestre() -> None:
+    """As promessas dos Capítulos Dez e Onze: nível sem salto, figurantes, aliado de
+    luta e as fichas prontas (sim/mestre.py)."""
+    import mestre as M
+    print(f"mestre ({N} duelos por linha, 200 nas lutas de grupo):")
+    # um nível acima pesa parecido em toda a campanha, até na troca de Grau
+    for n in (5, 9, 13, 14, 17):
+        u = taxa(lambda k: montar("A", k), lambda k: montar("B", k - 1), n, 300 + n)
+        confere(0.52 <= u["a"] <= 0.90, f"nível {n}: um nível acima pesa sem saltar ({u['a']:.0%})")
+    for n in (1, 4, 8, 9, 14, 20):
+        b = M.bando(n, 6, lutas=1000, semente=n)
+        a = M.bando(n, 6, area=True, lutas=1000, semente=n)
+        confere(0.12 <= b["perda"] <= 0.35 and b["caiu"] <= 0.03 and 1.8 <= b["rodadas"] <= 4.5
+                and a["rodadas"] <= 2.5,
+                f"nível {n}: um bando de seis custa PV e tempo sem derrubar "
+                f"({b['perda']:.0%} dos PV, {b['rodadas']:.1f} rodadas; com área {a['rodadas']:.1f})")
+    for n in (3, 11, 19):
+        so, com = M.aliado_no_duelo(n, lutas=200)
+        confere(0.60 <= com <= 0.82 and com >= so + 0.08,
+                f"nível {n}: o aliado de luta ajuda sem decidir ({so:.0%} → {com:.0%})")
+    sem, com = M.aliado_no_grupo(15, 4, lutas=200)
+    confere(sem - 0.03 <= com <= sem + 0.25,
+            f"nível 15: o aliado não piora o grupo nem vence o Ouro por ele ({sem:.0%} → {com:.0%})")
+    fichas = [
+        ("cavaleiro-negro", 1, 1, 0.70, 1.00, "vence na maioria das vezes"),
+        ("cavaleiro-de-prata", 8, 1, 0.00, 0.10, "quase nunca"),
+        ("cavaleiro-de-prata", 9, 1, 0.05, 0.20, "uma vez em nove"),
+        ("cavaleiro-de-prata", 13, 1, 0.75, 1.00, "vence com folga"),
+        ("cavaleiro-de-prata", 9, 3, 0.75, 1.00, "é luta para três Bronzes"),
+        ("guerreiro-deus", 12, 4, 0.00, 0.10, "três níveis abaixo, quase nunca"),
+        ("guerreiro-deus", 15, 4, 0.50, 0.78, "duas vezes em três"),
+        ("general-marina", 15, 4, 0.35, 0.65, "metade das vezes"),
+        ("cavaleiro-de-ouro", 16, 1, 0.00, 0.02, "menos de uma vez em cem"),
+        ("cavaleiro-de-ouro", 15, 4, 0.22, 0.45, "um terço das vezes"),
+        ("cavaleiro-de-ouro", 15, 5, 0.45, 0.75, "cinco, pouco mais da metade"),
+        ("juiz-do-inferno", 17, 4, 0.35, 0.60, "quase metade das vezes"),
+        ("juiz-do-inferno", 18, 4, 0.52, 0.80, "de nível 18, duas vezes em três"),
+    ]
+    for i, (chave, n, k, lo, hi, texto) in enumerate(fichas):
+        r = M.contra_ficha(chave, n, k, lutas=N if k == 1 else 200, semente=900 + i)
+        confere(lo <= r["vence"] <= hi,
+                f"{chave}: {k} Bronze(s) de nível {n} — {texto} ({r['vence']:.0%})")
+    e2 = M.varios_contra_um("espectro-terrestre", 2, 3, lutas=200, semente=950)
+    e3 = M.varios_contra_um("espectro-terrestre", 3, 4, lutas=200, semente=951)
+    confere(0.15 <= e2 <= 0.40 and e3 <= 0.20,
+            f"espectro-terrestre: dois são luta difícil para um nível 3 ({e2:.0%}), "
+            f"três derrubam um nível 4 ({e3:.0%})")
+
+
 # ---------------------------------------------------------------------------
 
 
@@ -277,6 +332,8 @@ def main() -> None:
         testar_equilibrio()
     if alvo in ("tudo", "extremos"):
         testar_extremos()
+    if alvo in ("tudo", "mestre"):
+        testar_mestre()
     print()
     if falhas:
         print(f"{len(falhas)} falha(s).")

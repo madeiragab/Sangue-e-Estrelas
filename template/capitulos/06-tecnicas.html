@@ -101,24 +101,28 @@
 
   <h3 id="grau">O Grau</h3>
   <p>O <em class="termo">Grau</em> é a faixa de nível em que você está. Ele não se compra:
-  chega com o nível, e diz o quanto cada ponto de uma técnica entrega. Cada técnica tem o
-  Grau dela, gravado quando ela nasce.</p>
+  chega com o nível, e diz o tamanho máximo de uma técnica e até onde ela cresce. Cada
+  técnica tem o Grau dela, gravado quando ela nasce.</p>
 
   <div class="rolagem"><table>
-    <thead><tr><th class="num">Grau</th><th>Níveis</th><th class="num">Tamanho máximo</th></tr></thead>
+    <thead><tr><th class="num">Grau</th><th>Níveis</th><th class="num">Tamanho máximo</th><th class="num">Bônus do ponto, no máximo</th></tr></thead>
     <tbody>
-      <tr><td class="num">1</td><td>1 a 4</td><td class="num">5 pontos</td></tr>
-      <tr><td class="num">2</td><td>5 a 8</td><td class="num">6 pontos</td></tr>
-      <tr><td class="num">3</td><td>9 a 12</td><td class="num">6 pontos</td></tr>
-      <tr><td class="num">4</td><td>13 a 16</td><td class="num">6 pontos</td></tr>
-      <tr><td class="num">5</td><td>17 a 20</td><td class="num">6 pontos</td></tr>
+      <tr><td class="num">1</td><td>1 a 4</td><td class="num">5 pontos</td><td class="num">+3</td></tr>
+      <tr><td class="num">2</td><td>5 a 8</td><td class="num">6 pontos</td><td class="num">+7</td></tr>
+      <tr><td class="num">3</td><td>9 a 12</td><td class="num">6 pontos</td><td class="num">+11</td></tr>
+      <tr><td class="num">4</td><td>13 a 16</td><td class="num">6 pontos</td><td class="num">+15</td></tr>
+      <tr><td class="num">5</td><td>17 a 20</td><td class="num">6 pontos</td><td class="num">+19</td></tr>
     </tbody>
   </table></div>
 
-  <p>O tamanho quase não cresce. O que cresce é o que cada ponto compra: um ponto de dano
-  do Grau 3 rola três vezes os dados de um ponto do Grau 1 — e custa o mesmo Cosmo. A
-  técnica que você escreveu no nível 1 continua no Grau 1 até ser
-  <a href="#evolucao">evoluída</a>.</p>
+  <p>O tamanho quase não cresce. O que cresce é o que cada ponto entrega. Todo ponto de
+  dano, de PV temporários ou de cura rola o dado dele e soma o
+  <strong>bônus do ponto: o seu nível − 1</strong>. No nível 1, um ponto de dano é
+  <span class="dado">1d8</span>; no nível 10, <span class="dado">1d8 + 9</span> — e custa o
+  mesmo Cosmo. Ele sobe um pouco a cada nível, sem salto na troca de Grau.</p>
+  <p>O limite é o Grau da técnica: ela soma no máximo o bônus da última coluna. A técnica
+  que você escreveu no nível 1 para de crescer no nível 4 (+3 por ponto) e fica assim até
+  ser <a href="#evolucao">evoluída</a>.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -130,9 +134,9 @@
   <div class="rolagem"><table>
     <thead><tr><th>Efeito</th><th>Por ponto</th><th>Rolagem</th></tr></thead>
     <tbody>
-      <tr><td>Alvo único</td><td><span class="dado">1d8</span> por Grau</td><td>Ataque contra DEF</td></tr>
-      <tr><td>Em área</td><td><span class="dado">1d6</span> por Grau</td><td>Efeito contra Reflexos; o erro ainda causa metade</td></tr>
-      <tr><td>Contínuo</td><td><span class="dado">1d6</span> por Grau, no fim do turno do alvo</td><td>A mesma do dano que o acompanha; não permite nova defesa</td></tr>
+      <tr><td>Alvo único</td><td><span class="dado">1d8</span> + bônus do ponto</td><td>Ataque contra DEF</td></tr>
+      <tr><td>Em área</td><td><span class="dado">1d6</span> + bônus do ponto</td><td>Efeito contra Reflexos; o erro ainda causa metade</td></tr>
+      <tr><td>Contínuo</td><td><span class="dado">1d6</span> + bônus do ponto, no fim do turno do alvo</td><td>A mesma do dano que o acompanha; não permite nova defesa</td></tr>
     </tbody>
   </table></div>
 
@@ -140,8 +144,8 @@
   <div class="rolagem"><table>
     <thead><tr><th>Efeito</th><th>Por ponto</th><th>Observação</th></tr></thead>
     <tbody>
-      <tr><td>PV temporários</td><td><span class="dado">1d8</span> por Grau</td><td>Somem no fim da luta</td></tr>
-      <tr><td>Cura</td><td><span class="dado">1d8</span> por Grau</td><td>Só técnicas de Cosmo; cada pessoa recebe cura de técnica uma vez por luta</td></tr>
+      <tr><td>PV temporários</td><td><span class="dado">1d8</span> + bônus do ponto</td><td>Somem no fim da luta</td></tr>
+      <tr><td>Cura</td><td><span class="dado">1d8</span> + bônus do ponto</td><td>Só técnicas de Cosmo; cada pessoa recebe cura de técnica uma vez por luta</td></tr>
       <tr><td>Defesa</td><td>+2 na DEF, para tantos alvos quanto o Grau</td><td>Duas fontes não somam. Como reação, vale contra todos os ataques até o seu próximo turno</td></tr>
     </tbody>
   </table></div>
@@ -170,9 +174,10 @@
   de condições e os graus delas estão no <a href="#condicoes">Capítulo Cinco</a>.</p>
 
   <div class="nota">
-    <p><strong>O modificador entra uma vez.</strong> Some o modificador do atributo da
-    técnica uma única vez ao total de dano, PV temporários ou cura — não uma vez por ponto.
-    Uma técnica de 3 pontos de dano no Grau 2 causa <span class="dado">6d8 + mod</span>.</p>
+    <p><strong>O modificador entra uma vez; o bônus do ponto, uma vez por ponto.</strong>
+    Uma técnica de 3 pontos de dano no nível 6 causa <span class="dado">3d8 + 15 + mod</span>:
+    três dados, três vezes o bônus do ponto (+5) e o modificador do atributo uma vez só.
+    Anote o total na ficha e acerte a conta quando subir de nível.</p>
   </div>
 
   <h3>Modificadores</h3>
@@ -201,7 +206,7 @@
   não é limitação. O Mestre é o juiz disso, e deve ser chato nessa hora.</p>
   <div class="nota">
     <p><strong>Medido.</strong> Nenhuma limitação da lista é brecha. Com uma limitação na
-    técnica grande, quem a tem vence de 16% a 51% dos duelos; com duas, de 3% a 48%. O
+    técnica grande, quem a tem vence de 13% a 46% dos duelos; com duas, de 2% a 50%. O
     Cosmo economizado nunca paga o que a limitação tira — ainda mais nos níveis altos, onde o
     Cosmo sobra e a técnica sai quase toda rodada. O dano em você
     cresce com o Grau porque 1d6 fixo não fazia diferença para quem tem 150 PV.</p>
@@ -262,39 +267,41 @@
       no Sétimo.</li>
   </ul>
 
-  <p>Três exemplos, montados no Grau 3, com tamanho máximo 7:</p>
+  <p>Três exemplos, montados no Grau 4, com tamanho máximo 7. O dano está no nível 15,
+  o primeiro da elite (bônus do ponto +14):</p>
   <div class="grade">
     <div class="cartao">
       <h5>Excalibur</h5>
       <p class="etiqueta">Capricórnio · Golpe (FOR) · Ataque contra DEF</p>
       <p>O braço vira uma lâmina que corta qualquer coisa.</p>
       <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e quatro pontos de dano
-      em alvo único (4), alcance médio (+2), atravessa a armadura (+1). No Grau 3:
-      <span class="dado">12d8 + FOR</span>.</div>
+      em alvo único (4), alcance médio (+2), atravessa a armadura (+1). No nível 15:
+      <span class="dado">4d8 + 56 + FOR</span>.</div>
     </div>
     <div class="cartao">
       <h5>Cólera dos Cem Dragões</h5>
       <p class="etiqueta">Libra · Cosmo · Efeito contra Reflexos</p>
       <p>Cem dragões de Cosmo saem de uma vez.</p>
       <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e quatro pontos de dano
-      em área (4), área dobrada numa explosão de 6 m (+2), alcance médio (+1). No Grau 3:
-      <span class="dado">12d6 + mod</span>, metade no erro.</div>
+      em área (4), área dobrada numa explosão de 6 m (+2), alcance médio (+1). No nível 15:
+      <span class="dado">4d6 + 56 + mod</span>, metade no erro.</div>
     </div>
     <div class="cartao">
       <h5>Trovão Atômico</h5>
       <p class="etiqueta">Sagitário · Golpe (DES) · Ataque contra DEF</p>
       <p>Milhões de golpes de luz num instante, de longe.</p>
       <div class="poder"><b>7 pontos · 7 de Cosmo</b>Instantânea e três pontos de dano em
-      alvo único (3), alcance longo (+3), ignora cobertura (+1). No Grau 3:
-      <span class="dado">9d8 + DES</span>.</div>
+      alvo único (3), alcance longo (+3), ignora cobertura (+1). No nível 15:
+      <span class="dado">3d8 + 42 + DES</span>.</div>
     </div>
   </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
   <h3 id="exemplos">Oito técnicas de nível 1</h3>
-  <p>Confira as contas. Todas estão no Grau 1 e nenhuma passa de 5 pontos. Troque os nomes
-  e o tema pelos da sua constelação.</p>
+  <p>Confira as contas. Todas estão no Grau 1 e nenhuma passa de 5 pontos. O dano e os PV
+  temporários estão no nível 1; a cada nível, cada ponto soma +1, até +3 no nível 4.
+  Troque os nomes e o tema pelos da sua constelação.</p>
 
   <div class="rolagem"><table>
     <thead><tr><th>Técnica</th><th>Natureza</th><th>Efeito</th><th>Rolagem</th><th class="num">Tamanho</th><th class="num">Custo</th></tr></thead>
@@ -325,7 +332,7 @@
     <p><strong>O que o simulador mediu.</strong> O motor veio da Ascensão dos Semideuses,
     mas aqui o custo é pago em Cosmo, que enche durante a luta. Em duelos do mesmo nível,
     com a técnica grande no tamanho máximo e uma pequena de 2 pontos, as técnicas respondem
-    por 74% a 83% de todo o dano, e um lutador que nunca usa técnica vence de 5% a 34% das
+    por 91% a 100% de todo o dano, e um lutador que nunca usa técnica vence de 0% a 35% das
     vezes contra quem usa. Toda técnica impressa neste livro é conferida pelo motor em código
     a cada mudança — a conta do livro e a do simulador são a mesma.</p>
   </div>
@@ -345,6 +352,7 @@ Limitações:
 Custo em Cosmo:    (tamanho − limitações; nunca abaixo da metade)
 Grau:              o Grau em que ela nasceu
 Rolagem:           Ataque contra DEF · Efeito contra Fortitude, Reflexos ou Vontade
+Dano ou cura:      pontos × o dado, + pontos × o bônus do ponto, + mod (refaça ao subir)
 Lida por:          (nomes de quem já viu)
 Descrição:         como ela aparece, e o nome que você grita</pre>
 

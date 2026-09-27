@@ -33,8 +33,9 @@ INIMIGOS = {
         tecnicas=("Asa do Mundo Inferior", "Garra do Cão do Inferno", "Grito Maligno"),
         tracos=["<strong>Estrela Maligna.</strong> Se morrer, volta em "
                 "<span class=\"dado\">1d4</span> semanas, enquanto Hades existir."],
-        quando="Vem em grupos de dois ou três. Um só é uma luta difícil para um Bronze de "
-               "nível 3."),
+        quando="Vem em grupos de dois ou três. Sozinho, perde quase sempre para um Bronze de "
+               "nível 3; dois juntos já são uma luta difícil para ele (o Bronze vence uma vez "
+               "em quatro), e três derrubam até um Bronze de nível 4."),
     "cavaleiro-de-prata": dict(
         nome="Cavaleiro de Prata", nivel=9, posto="prata", acessorio="correntes",
         caracteristicas=("ressonante", "ofuscante"),
@@ -43,9 +44,9 @@ INIMIGOS = {
         tracos=["<strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.",
                 "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
         quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do "
-               "mesmo nível vence uma vez em oito; um de nível 8, quase nunca; só um Bronze de "
-               "nível 13 vence com folga. É luta para dois ou três Bronzes juntos, ou para "
-               "outro Prata."),
+               "mesmo nível vence uma vez em nove; um de nível 8, quase nunca; só um Bronze de "
+               "nível 13 vence com folga. É luta para dois ou três Bronzes juntos (vencem sete "
+               "e oito vezes em dez), ou para outro Prata."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -56,8 +57,8 @@ INIMIGOS = {
                 "estiver na Veste (já somado).",
                 "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
                 "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
-        quando="Um dos sete. Quatro Bronzes do nível dele vencem seis vezes em dez, e uns três "
-               "caem; três níveis abaixo, nunca. Sozinho, um personagem não vence."),
+        quando="Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns três "
+               "caem; três níveis abaixo, quase nunca. Sozinho, um personagem não vence."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
         caracteristicas=("pesada", "espelhada", "couraca"),
@@ -67,7 +68,8 @@ INIMIGOS = {
         tracos=["<strong>Escama de oricalco.</strong> +1 de Resistência (já somada).",
                 "<strong>Sétimo dominado.</strong> Como todo guerreiro de elite."],
         quando="O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer "
-               "Cavaleiro."),
+               "Cavaleiro. Quatro Bronzes do nível dele vencem metade das vezes: a Escama e a "
+               "Couraça seguram o grupo mais que o Guerreiro Deus."),
     "cavaleiro-de-ouro": dict(
         nome="Cavaleiro de Ouro", nivel=16, posto="ouro", acessorio="nenhum", conviccoes=3,
         caracteristicas=("ressonante", "ofuscante", "pesada"),
@@ -78,8 +80,8 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem pouco menos da "
-               "metade das vezes."),
+               "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem um terço das "
+               "vezes, e uns três caem; cinco, pouco mais da metade."),
     "juiz-do-inferno": dict(
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         caracteristicas=("leve", "cortante", "coracao"),
@@ -90,8 +92,8 @@ INIMIGOS = {
                 "semanas enquanto Hades existir.",
                 "<strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).",
                 "<strong>Sétimo dominado.</strong>"],
-        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem pouco mais da metade das "
-               "vezes, e uns três caem. É a luta de um arco inteiro."),
+        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem quase metade das vezes, "
+               "e uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro."),
 }
 
 
@@ -111,10 +113,8 @@ def lutador(chave: str) -> Lutador:
 
 
 def _defesas(x: Lutador) -> tuple[int, int, int]:
-    treinadas = {"des", "sab"} | ({"con"} if x.nivel >= 10 else set())
-    def d_(atr):
-        return 14 + x.mods[atr] + (x.prof if atr in treinadas else 0)
-    return d_("con"), d_("des"), d_("sab")
+    d_ = x.defesas_passivas()
+    return d_["con"], d_["des"], d_["sab"]
 
 
 def _caracteristicas(x: Lutador) -> str:
@@ -134,12 +134,20 @@ def _golpe(x: Lutador) -> str:
             f"<span class=\"dado\">1d{lados} + {x.mods[x.atr_golpe]}</span>{vezes}")
 
 
+def dano_texto(x: Lutador, t) -> str:
+    """O dano de uma técnica como o livro escreve: 3d8 + 50 (cada ponto rola 1d8 +
+    nível − 1, e o atributo soma uma vez)."""
+    dados, fixo = R.dano_do_ponto(x.nivel, t.grau)
+    p = t.pontos_de_dano
+    mod = x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo]
+    return f"{p * dados}d{t.lado} + {p * fixo + mod}"
+
+
 def _tecnica(x: Lutador, t, nome: str) -> str:
-    mod = x.mods[x.atr_golpe]
     extra = " Atravessa a armadura." if t.atravessa else ""
     return (f"<strong>{html.escape(nome)}</strong> · {t.custo()} de Cosmo · "
-            f"+{x.bonus_ataque('golpe')} contra a DEF · "
-            f"<span class=\"dado\">{t.dados_de_dano}d{t.lado} + {mod}</span>.{extra}")
+            f"+{x.bonus_ataque(t.natureza)} contra a DEF · "
+            f"<span class=\"dado\">{dano_texto(x, t)}</span>.{extra}")
 
 
 def bloco(chave: str) -> str:
@@ -165,7 +173,8 @@ def bloco(chave: str) -> str:
         f"<span class=\"sep\">·</span> <b>Iniciativa</b> +{ini}<br>"
         f"<b>Fortitude</b> {fort} <span class=\"sep\">·</span> <b>Reflexos</b> {refl} "
         f"<span class=\"sep\">·</span> <b>Vontade</b> {vont}<br>"
-        f"<b>Cosmo</b> começa em {x.cosmo}, Teto {teto} <span class=\"sep\">·</span> "
+        f"<b>Cosmo</b> começa em {x.cosmo}, piso {x.piso}, Teto {teto} "
+        f"<span class=\"sep\">·</span> "
         f"<b>Sentido</b> {sentido}<br>"
         f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{x.armadura_def} · "
         f"<b>Resistência</b> {x.resistencia_max} · {_acessorio(x)}<br>"
@@ -223,23 +232,25 @@ def escolhas_do_nivel(n: int) -> str:
 
 
 def tabela_niveis() -> str:
-    """Duas tabelas: os números de cada nível, e o que se ganha e se escolhe."""
-    linhas = ['<div class="rolagem"><table>',
+    """Duas tabelas: os números de cada nível, e o que se ganha, o que se escolhe e a
+    Glória para sair dele. Seis colunas no máximo em cada, para caber no celular."""
+    linhas = ['<div class="rolagem"><table class="compacta">',
               '<thead><tr><th class="num">Nível</th><th class="num">Prof.</th>'
               '<th class="num">Grau</th><th class="num">Teto</th><th class="num">PV</th>'
-              '<th class="num">Glória</th></tr></thead><tbody>']
+              '<th class="num">Ponto</th></tr></thead><tbody>']
     for n in range(1, 21):
-        gloria = "—" if n == 20 else str(R.gloria_para_subir(n))
         linhas.append(
             f'<tr><td class="num">{n}</td><td class="num">+{R.prof(n)}</td>'
             f'<td class="num">{R.grau(n)}</td><td class="num">{R.teto_base(n)}</td>'
-            f'<td class="num">{R.pv_maximo(n, 0)}</td><td class="num">{gloria}</td></tr>')
+            f'<td class="num">{R.pv_maximo(n, 0)}</td>'
+            f'<td class="num">+{R.bonus_do_ponto(n)}</td></tr>')
     linhas += ["</tbody></table></div>", '<div class="rolagem"><table>',
                '<thead><tr><th class="num">Nível</th><th>O que você ganha</th>'
-               '<th>O que você escolhe</th></tr></thead><tbody>']
+               '<th>O que você escolhe</th><th class="num">Glória</th></tr></thead><tbody>']
     for n in range(1, 21):
+        gloria = "—" if n == 20 else str(R.gloria_para_subir(n))
         linhas.append(f'<tr><td class="num">{n}</td><td>{GANHOS.get(n, "—")}</td>'
-                      f'<td>{escolhas_do_nivel(n)}</td></tr>')
+                      f'<td>{escolhas_do_nivel(n)}</td><td class="num">{gloria}</td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
 
@@ -326,14 +337,18 @@ def tabela_formas() -> str:
 
 
 def tabela_rapida() -> str:
-    """Um inimigo nomeado genérico de cada nível, pelo mesmo construtor."""
-    linhas = ['<div class="rolagem"><table class="compacta">',
+    """Um inimigo nomeado genérico de cada nível, pelo mesmo construtor, sem
+    características (o Mestre soma as que escolher). Em duas tabelas, para caber no
+    celular: o que ele aguenta e o que ele bate."""
+    defesa = ['<div class="rolagem"><table class="compacta">',
               '<thead><tr><th class="num">Nív.</th><th class="num">PV</th>'
-              '<th class="num">DEF B/P/E</th><th class="num">Atq.</th>'
-              '<th>Golpe</th><th>Técnica (custo)</th>'
+              '<th class="num">DEF B/P/E</th><th class="num">Cosmo</th>'
               '<th class="num">Defesas</th></tr></thead><tbody>']
-    for n in (1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20):
-        b, p, o = (montar("x", n, posto) for posto in ("bronze", "prata", "ouro"))
+    ataque = ['<div class="rolagem"><table class="compacta">',
+              '<thead><tr><th class="num">Nív.</th><th class="num">Atq.</th>'
+              '<th>Golpe</th><th>Técnica (custo)</th></tr></thead><tbody>']
+    for n in range(1, 21):
+        b, p, o = (montar("x", n, posto, caracteristicas=()) for posto in ("bronze", "prata", "ouro"))
         for z in (b, p, o):
             z.reiniciar()
         grande = next(t for t in b.tecnicas if t.nome == "grande")
@@ -343,12 +358,29 @@ def tabela_rapida() -> str:
         # o traço é um Posto que ainda não existe nesse nível
         def_p = p.defesa if R.posto_existe("prata", n) else "—"
         def_o = o.defesa if R.posto_existe("ouro", n) else "—"
-        linhas.append(
+        defesa.append(
             f'<tr><td class="num">{n}</td><td class="num">{b.pv_max}</td>'
             f'<td class="num">{b.defesa}/{def_p}/{def_o}</td>'
-            f'<td class="num">+{b.bonus_ataque("golpe")}</td>'
-            f'<td>{golpes}1d8+{mod}</td>'
-            f'<td>{grande.dados_de_dano}d8+{mod} ({grande.custo()})</td>'
+            f'<td class="num">{b.cosmo}/{b.piso}/{b.teto}</td>'
             f'<td class="num">{min(fort, refl, vont)}/{max(fort, refl, vont)}</td></tr>')
+        ataque.append(
+            f'<tr><td class="num">{n}</td><td class="num">+{b.bonus_ataque("golpe")}</td>'
+            f'<td>{golpes}1d8+{mod}</td>'
+            f'<td>{dano_texto(b, grande)} ({grande.custo()})</td></tr>')
+    defesa.append("</tbody></table></div>")
+    ataque.append("</tbody></table></div>")
+    return "\n".join(defesa + ataque)
+
+
+def tabela_figurantes() -> str:
+    """O bando de cada nível (sim/regras.py: figurante)."""
+    linhas = ['<div class="rolagem"><table class="compacta">',
+              '<thead><tr><th class="num">Nível</th><th class="num">DEF</th>'
+              '<th class="num">Ataque</th><th class="num">Dano</th>'
+              '</tr></thead><tbody>']
+    for n in range(1, 21):
+        de, atk, dano = R.figurante(n)
+        linhas.append(f'<tr><td class="num">{n}</td><td class="num">{de}</td>'
+                      f'<td class="num">+{atk}</td><td class="num">{dano}</td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
