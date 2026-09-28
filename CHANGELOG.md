@@ -3,6 +3,21 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.8.1] - 2026-09-28
+
+### Mudado
+
+- **A Resposta causa só o dano** (Capítulo Dez): condições e outros efeitos comprados da
+  técnica não vêm junto, a não ser que a ficha do chefe diga que fazem parte da Resposta.
+  Sem isso, um Lento ou um Caído na técnica mais barata sairia uma vez depois de cada
+  personagem, de graça. "Montar um inimigo" ganhou o passo da Resposta, e as fichas prontas
+  com Convicção trazem a Resposta escrita.
+
+### Corrigido
+
+- As contas finais da criação (Capítulo Três) ainda davam a Resistência antiga: agora é a
+  do Posto, +1 sem acessório, + o modificador de CON, e depois Vida, formas e melhorias.
+
 ## [0.8.0] - 2026-09-28
 
 Uma leitura crítica do livro apontou três coisas para atacar antes de chamar o sistema de

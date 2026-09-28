@@ -757,6 +757,8 @@ class LutaGrupo(Luta):
             tecs = sorted((t for t in c.tecnicas if t.pontos_de_dano and not t.condicao
                            and not t.assento), key=lambda t: t.pontos_de_dano)
             t = tecs[min(len(tecs) - 1, 1)] if R.CHEFE_ACAO == "media" else tecs[0]
+            # só o dano: condições e outros efeitos comprados não vêm junto na resposta
+            t = Tecnica(t.nome, t.natureza, {"dano": t.pontos_de_dano}, grau=t.grau)
             cosmo = c.cosmo
             c.cosmo = max(c.cosmo, c.custo(t))     # a resposta não gasta Cosmo
             self.usar_tecnica(c, alvo, t, 0)
