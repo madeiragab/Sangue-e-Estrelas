@@ -150,6 +150,18 @@ def _tecnica(x: Lutador, t, nome: str) -> str:
             f"<span class=\"dado\">{dano_texto(x, t)}</span>.{extra}")
 
 
+def _resposta(x: Lutador, t, nome: str, conviccoes: int) -> list:
+    """A Resposta de Sozinho contra muitos, escrita na ficha: a técnica mais barata,
+    só o dano. Nomeados sem Convicção não têm."""
+    if not conviccoes:
+        return []
+    return ['<p class="rotulo-bloco">Resposta</p>',
+            f'<p>Contra dois ou mais personagens, depois do turno de cada um: '
+            f'<strong>{html.escape(nome)}</strong> contra quem acabou de agir, sem gastar '
+            f'Cosmo · +{x.bonus_ataque(t.natureza)} contra a DEF · '
+            f'<span class="dado">{dano_texto(x, t)}</span>. Só o dano.</p>']
+
+
 def bloco(chave: str) -> str:
     e = INIMIGOS[chave]
     x = lutador(chave)
@@ -191,6 +203,7 @@ def bloco(chave: str) -> str:
         f'<p>{_golpe(x)}. Acertou: +1 de Cosmo.</p>',
         '<p class="rotulo-bloco">Técnicas</p>',
         "<ul>" + "".join(f"<li>{i}</li>" for i in itens) + "</ul>",
+        *_resposta(x, tecs["pequena"], nomes_tec[1], e["conviccoes"]),
         '<p class="rotulo-bloco">Traços</p>',
         "<ul>" + "".join(f"<li>{t}</li>" for t in e["tracos"]) + "</ul>",
         f'<p class="morte"><span class="rotulo-bloco">Quando usar</span>{e["quando"]}</p>',

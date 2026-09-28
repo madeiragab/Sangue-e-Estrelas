@@ -175,6 +175,10 @@ aqui primeiro.
   golpes comuns (o grupo vencia até 86%), técnicas livres (81% no 15, 29% no 20), a técnica
   média (duro demais com três), PV × 1⅛ a 1½ com respostas (o Ouro ficava duro demais).
   Um Prata sozinho contra três ou mais cai depressa; o livro manda pôr dois.
+- **A Resposta é só o dano** (0.8.1, apontado na mesma leitura): a técnica mais barata
+  sai uma vez depois de cada personagem, e um efeito barato nela (Lento, Caído, quebrar)
+  sairia junto, de graça. Agora só o dano, salvo o que a ficha do chefe escrever; as fichas
+  prontas trazem a Resposta. O simulador já usava técnicas sem efeito: números iguais.
 - **Lida** — quem leu anota; só quem tem Convicção lembra depois da luta. Sem efeito no
   simulador (ele mede uma luta de cada vez); o ganho é de ficha.
 - **Glória** — resolver sem luta um conflito que importava vale 1.
