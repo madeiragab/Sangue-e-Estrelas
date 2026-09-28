@@ -107,11 +107,11 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 
 ## Antes do Sexto Sentido: a prova da armadura
 
-Dois aprendizes (nível 0, humanos, FOR ou DES 15 e CON 14) num duelo. Quem cai gasta a Convicção e levanta — humano, ou desperto.
+Dois aprendizes do mesmo nível humano (FOR ou DES 15 e CON 14) num duelo. Quem cai gasta a Convicção e levanta — humano, ou desperto.
 
-| A prova | Rodadas | Alguém desperta | Os dois despertam |
-|---|---:|---:|---:|
-| Sem despertar | 3.4 | — | — |
-| Levantando desperto | 3.4 | 100% | 79% |
+| Nível humano | PV | Golpe | Rodadas, sem despertar | Rodadas, despertando | Alguém desperta | Os dois despertam |
+|---:|---:|---|---:|---:|---:|---:|
+| 3 | 10 | 1d6 + 2 | 4.1 | 4.1 | 100% | 78% |
+| 4 | 12 | 1d6 + 2 | 4.5 | 4.5 | 100% | 78% |
 
 Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de figurantes, na seção acima.

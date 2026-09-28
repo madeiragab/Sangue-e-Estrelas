@@ -70,18 +70,32 @@ def pv_maximo(nivel: int, con: int, vigor: int = 0, extra_por_nivel: int = 0) ->
 # Antes do Sexto Sentido: o status base (Capítulo Três)
 # ---------------------------------------------------------------------------
 
-# Todo mundo começa humano. O aprendiz é o nível 0: sem Cosmo, sem técnica, sem
-# armadura. Diante de um guerreiro desperto, um humano é figurante (Capítulo Dez).
-HUMANO_PV = 4                  # + CON
+# Todo mundo começa humano. Antes de despertar há os níveis humanos (0.9.1, pedido do
+# usuário): o nível 1 é o humano comum, automático; do 2 em diante, o aprendiz. O 4 é
+# o limite do corpo humano, e a prova pode acontecer a partir do 3. Quem desperta
+# recomeça no nível 1 — de guerreiro. Sem Cosmo, sem técnica, sem armadura; diante de
+# um guerreiro desperto, um humano é figurante (Capítulo Dez).
+NIVEIS_HUMANOS = (1, 2, 3, 4)
+NIVEL_APRENDIZ = 2
+NIVEL_DA_PROVA = 3
 HUMANO_DEF = 10                # + DES
-HUMANO_DADO_GOLPE = 4          # o soco de gente: 1d4 + atributo
-HUMANO_DEFESA_PASSIVA = 10     # + atributo (+ proficiência nas treinadas)
-HUMANO_CONVICCOES = 1          # o motivo pelo qual ele treina
-DESPERTO_DEFESA_PASSIVA = 14   # o nível 1 (14 + atributo)
+HUMANO_DEFESA_PASSIVA = 10     # + atributo (+ proficiência nas treinadas, do nível 2)
+DESPERTO_DEFESA_PASSIVA = 14   # o nível 1 de guerreiro (14 + atributo)
 
 
-def pv_humano(mod_con: int) -> int:
-    return max(1, HUMANO_PV + mod_con)
+def pv_humano(nivel_humano: int, mod_con: int) -> int:
+    """4, 6, 8 e 10, + CON."""
+    return max(1, 2 + 2 * nivel_humano + mod_con)
+
+
+def dado_golpe_humano(nivel_humano: int) -> int:
+    """O soco de gente: 1d4; o aprendiz de nível 3 em diante, 1d6."""
+    return 6 if nivel_humano >= 3 else 4
+
+
+def conviccoes_humanas(nivel_humano: int) -> int:
+    """Gente comum não levanta; o aprendiz tem uma: o motivo pelo qual treina."""
+    return 1 if nivel_humano >= NIVEL_APRENDIZ else 0
 
 
 # ---------------------------------------------------------------------------
