@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.7.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.8.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.7.0 · 27/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.8.0 · 28/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -44,7 +44,7 @@ build. O livro e o simulador não têm como discordar.
 | ✨ **O Cosmo** | Começa baixo e sobe a cada rodada e a cada golpe que entra. Paga as técnicas, e não acaba: quando falta, a vida paga. Perder PV nunca dá Cosmo. |
 | 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção. |
 | 👁️ **Os cinco sentidos** | Ninguém fecha um sentido porque quer. O inimigo arranca, ou você se mutila — e cada um que vai embora sobe o seu Cosmo. |
-| 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
+| 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Com ela no corpo, a FOR ou a CON também guardam. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
 | 📈 **A progressão** | A cada nível você escolhe: Vida ou Cosmo; técnica nova ou atributo; perícia ou defesa. Tudo sobe um pouco a cada nível, sem salto; o salto é o do Posto. A luta é curta no começo e longa no fim. |
 | 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e um Bronze levanta desperto. |
 
@@ -68,7 +68,8 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 A luta é curta e decisiva no começo e longa no fim, e um nível a mais pesa parecido em
 toda a campanha. O Bronze perde para o Prata e, no duelo justo, não vence o Ouro: o milagre
-vem do grupo inteiro contra ele (quatro Bronzes vencem de 37% a 64%) ou da história. Uma armadura que morreu e voltou fica um pouco mais forte a
+vem do grupo inteiro contra ele (quatro Bronzes vencem de 42% a 64%, em 8 a 11 rodadas) ou
+da história. Uma armadura que morreu e voltou fica um pouco mais forte a
 cada forma nova, mas nem com o sangue de um deus iguala o Ouro.
 
 ### As vezes em que o simulador contrariou o rascunho
@@ -100,18 +101,21 @@ lutas de grupo contra um só. O relatório completo está em
 
 | Achado | Antes | Depois |
 |---|---:|---:|
-| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 37% a 64% |
+| Quatro Bronzes contra um Ouro do mesmo nível | 99% a 100% | 42% a 64% |
+| …e quantas rodadas isso leva | 13 a 18 | 8 a 11 |
 | Quem luta pelo Cosmo contra quem luta pela DES | 21% a 38% | 44% a 52% |
-| Quem tem uma técnica de atordoar | até 89% | 49% a 69% |
-| Quem tem uma técnica com limitação | — | 13% a 46% (nenhuma é brecha) |
+| Quem luta pela FOR contra quem luta pela DES | 13% a 51% | 44% a 50% |
+| Quem põe a CON na frente | 8% a 52% | 32% a 52% |
+| Quem tem uma técnica de atordoar | até 89% | 49% a 70% |
+| Quem tem uma técnica com limitação | — | 13% a 48% (nenhuma é brecha) |
 | Cada característica de armadura, sozinha | — | 47% a 59% |
-| Quem escolhe só Vida contra quem escolhe só Cosmo | — | 35% a 72% |
+| Quem escolhe só Vida contra quem escolhe só Cosmo | — | 40% a 70% |
 | Um nível acima, no pior nível | 97% | 91% |
 | Um personagem com um aliado de luta, contra um rival que ele venceria na metade | 96% | 68% a 72% |
 
 ## O livro
 
-Um livro só, para jogador e Mestre, com 13 capítulos:
+Um livro só, para jogador e Mestre, com 13 capítulos e um apêndice:
 [**ler online**](https://madeiragab.github.io/Sangue-e-Estrelas/livro.html).
 
 | | Capítulo | Conteúdo |
@@ -129,6 +133,7 @@ Um livro só, para jogador e Mestre, com 13 capítulos:
 | XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
 | XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |
 | XIII | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
+| Ap. | Notas de design e balanceamento | Por que cada regra é como é, o que o simulador mediu, o que ele não sabe e o que mudou no caminho |
 
 ## Estrutura do repositório
 

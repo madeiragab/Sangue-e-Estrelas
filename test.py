@@ -243,18 +243,29 @@ def testar_extremos() -> None:
                              lambda: montar("C", n, "ouro"), n=300, semente=200 + n)
         g2 = grupo_contra_um(lambda: [montar(f"P{i}", n) for i in range(2)],
                              lambda: montar("C", n, "ouro"), n=300, semente=210 + n)
-        confere(0.30 <= g4["grupo"] <= 0.65 and g2["grupo"] <= 0.30,
+        confere(0.35 <= g4["grupo"] <= 0.72 and g2["grupo"] <= 0.30 and g4["rodadas_media"] <= 12.5,
                 f"nível {n}: Sozinho contra muitos segura o Ouro diante do grupo "
-                f"(4 Bronzes {g4['grupo']:.0%}, 2 Bronzes {g2['grupo']:.0%})")
+                f"(4 Bronzes {g4['grupo']:.0%} em {g4['rodadas_media']:.1f} rodadas, 2 Bronzes {g2['grupo']:.0%})")
     for n in (9, 13, 17):
         c = taxa(lambda k: montar_build("A", k, "cosmo"), lambda k: montar_build("B", k), n, 220 + n)
         confere(0.35 <= c["a"] <= 0.65, f"nível {n}: quem luta pelo Cosmo empata com quem luta pela DES ({c['a']:.0%})")
+        f = taxa(lambda k: montar_build("A", k, "forca"), lambda k: montar_build("B", k), n, 260 + n)
+        confere(0.38 <= f["a"] <= 0.62, f"nível {n}: quem luta pela FOR empata com quem luta pela DES ({f['a']:.0%})")
+        t = taxa(lambda k: montar_build("A", k, "tanque"), lambda k: montar_build("B", k), n, 270 + n)
+        confere(t["a"] >= 0.30, f"nível {n}: a CON na frente não é mais armadilha ({t['a']:.0%})")
     from extremos import so_vida_ou_cosmo
     for n in (5, 13, 17, 20):
         v = taxa(lambda k: montar("A", k, escolhas=so_vida_ou_cosmo(k, "v")),
                  lambda k: montar("B", k, escolhas=so_vida_ou_cosmo(k, "c")), n, 225 + n)
         confere(0.25 <= v["a"] <= 0.78,
                 f"nível {n}: nem só Vida nem só Cosmo domina ({v['a']:.0%} da Vida)")
+        sv = taxa(lambda k: montar("A", k, escolhas=so_vida_ou_cosmo(k, "v")), lambda k: montar("B", k),
+                  n, 235 + n)
+        sc = taxa(lambda k: montar("A", k, escolhas=so_vida_ou_cosmo(k, "c")), lambda k: montar("B", k),
+                  n, 245 + n)
+        confere(0.12 <= sv["a"] <= 0.62 and 0.10 <= sc["a"] <= 0.62,
+                f"nível {n}: nenhum extremo vence quem alterna, e nenhum é armadilha "
+                f"(só Vida {sv['a']:.0%}, só Cosmo {sc['a']:.0%})")
     for n in (5, 9, 13):
         a = taxa(lambda k: montar_build("A", k, kit="atordoar"), lambda k: montar_build("B", k), n, 230 + n)
         confere(a["a"] <= 0.65, f"nível {n}: atordoar não decide a luta sozinho ({a['a']:.0%})")
@@ -298,14 +309,14 @@ def testar_mestre() -> None:
         ("cavaleiro-de-prata", 8, 1, 0.00, 0.10, "quase nunca"),
         ("cavaleiro-de-prata", 9, 1, 0.05, 0.20, "uma vez em nove"),
         ("cavaleiro-de-prata", 13, 1, 0.75, 1.00, "vence com folga"),
-        ("cavaleiro-de-prata", 9, 3, 0.75, 1.00, "é luta para três Bronzes"),
-        ("guerreiro-deus", 12, 4, 0.00, 0.10, "três níveis abaixo, quase nunca"),
-        ("guerreiro-deus", 15, 4, 0.50, 0.78, "duas vezes em três"),
-        ("general-marina", 15, 4, 0.35, 0.65, "metade das vezes"),
+        ("cavaleiro-de-prata", 9, 2, 0.45, 0.75, "dois Bronzes vencem seis vezes em dez"),
+        ("guerreiro-deus", 12, 4, 0.05, 0.25, "três níveis abaixo, uma vez em sete"),
+        ("guerreiro-deus", 15, 4, 0.55, 0.82, "duas vezes em três"),
+        ("general-marina", 15, 4, 0.52, 0.80, "duas vezes em três"),
         ("cavaleiro-de-ouro", 16, 1, 0.00, 0.02, "menos de uma vez em cem"),
-        ("cavaleiro-de-ouro", 15, 4, 0.22, 0.45, "um terço das vezes"),
-        ("cavaleiro-de-ouro", 15, 5, 0.45, 0.75, "cinco, pouco mais da metade"),
-        ("juiz-do-inferno", 17, 4, 0.35, 0.60, "quase metade das vezes"),
+        ("cavaleiro-de-ouro", 15, 4, 0.38, 0.62, "metade das vezes"),
+        ("cavaleiro-de-ouro", 15, 5, 0.62, 0.88, "cinco, três vezes em quatro"),
+        ("juiz-do-inferno", 17, 4, 0.40, 0.65, "metade das vezes"),
         ("juiz-do-inferno", 18, 4, 0.52, 0.80, "de nível 18, duas vezes em três"),
     ]
     for i, (chave, n, k, lo, hi, texto) in enumerate(fichas):

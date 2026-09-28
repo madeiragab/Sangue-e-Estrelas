@@ -45,8 +45,8 @@ INIMIGOS = {
                 "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
         quando="O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do "
                "mesmo nível vence uma vez em nove; um de nível 8, quase nunca; só um Bronze de "
-               "nível 13 vence com folga. É luta para dois ou três Bronzes juntos (vencem sete "
-               "e oito vezes em dez), ou para outro Prata."),
+               "nível 13 vence com folga. É luta para dois Bronzes juntos (vencem seis vezes em "
+               "dez) ou para outro Prata; contra três, ele cai depressa."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -57,8 +57,8 @@ INIMIGOS = {
                 "estiver na Veste (já somado).",
                 "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
                 "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
-        quando="Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns três "
-               "caem; três níveis abaixo, quase nunca. Sozinho, um personagem não vence."),
+        quando="Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois "
+               "caem; três níveis abaixo, uma vez em sete. Sozinho, um personagem não vence."),
     "general-marina": dict(
         nome="General Marina", nivel=15, posto="ouro", acessorio="escudo", conviccoes=2,
         caracteristicas=("pesada", "espelhada", "couraca"),
@@ -68,8 +68,8 @@ INIMIGOS = {
         tracos=["<strong>Escama de oricalco.</strong> +1 de Resistência (já somada).",
                 "<strong>Sétimo dominado.</strong> Como todo guerreiro de elite."],
         quando="O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer "
-               "Cavaleiro. Quatro Bronzes do nível dele vencem metade das vezes: a Escama e a "
-               "Couraça seguram o grupo mais que o Guerreiro Deus."),
+               "Cavaleiro. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois "
+               "caem."),
     "cavaleiro-de-ouro": dict(
         nome="Cavaleiro de Ouro", nivel=16, posto="ouro", acessorio="nenhum", conviccoes=3,
         caracteristicas=("ressonante", "ofuscante", "pesada"),
@@ -80,8 +80,8 @@ INIMIGOS = {
                 "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
-               "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem um terço das "
-               "vezes, e uns três caem; cinco, pouco mais da metade."),
+               "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem metade das "
+               "vezes, e uns três caem; cinco, três vezes em quatro."),
     "juiz-do-inferno": dict(
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         caracteristicas=("leve", "cortante", "coracao"),
@@ -92,8 +92,8 @@ INIMIGOS = {
                 "semanas enquanto Hades existir.",
                 "<strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).",
                 "<strong>Sétimo dominado.</strong>"],
-        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem quase metade das vezes, "
-               "e uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro."),
+        quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e "
+               "uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro."),
 }
 
 
@@ -206,14 +206,10 @@ def bloco(chave: str) -> str:
 GANHOS = {
     1: "Tudo da criação · duas técnicas · técnica assinatura",
     2: "Leitura de Combate",
-    5: "+1 de Resistência",
     6: "Segunda Lição",
-    7: "+1 de Resistência",
     9: "Ataque Extra",
     11: "Golpe Certeiro",
-    13: "+1 de Resistência",
     14: "Quarta Convicção",
-    17: "+1 de Resistência",
     18: "Segunda técnica assinatura",
     20: "Lenda",
 }

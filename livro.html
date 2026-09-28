@@ -1016,6 +1016,8 @@ pre.bloco-codigo {
       <span class="sub">A Glória, o Posto e o que você ganha do nível 1 ao 20</span></span></a></li>
     <li><a href="#cap13"><span class="alg">XIII</span><span><span class="tit">Uma ficha pronta</span>
       <span class="sub">As nove etapas do começo ao fim, e a folha de consulta rápida</span></span></a></li>
+    <li><a href="#apendice"><span class="alg">Ap.</span><span><span class="tit">Notas de design e balanceamento</span>
+      <span class="sub">Por que cada regra é como é, e o que o simulador mediu</span></span></a></li>
   </ol>
 </nav>
 
@@ -1259,9 +1261,10 @@ pre.bloco-codigo {
       lá no limite, e só por uma luta; o Ouro chega quando quer, e com um controle que o
       Bronze não tem. O Oitavo e o Nono estão no <a href="#cap4">Capítulo Quatro</a>.</li>
   </ul>
-  <p>O Posto pesa muito. Medido no simulador, um Bronze sozinho vence um Ouro do mesmo
-  nível menos de uma vez em dez. Mas pode vencer: despertando, levantando e recebendo o
-  Cosmo dos amigos. O Posto diz quem você é. O Sentido diz até onde você foi hoje.</p>
+  <p>O Posto pesa muito. Num duelo justo, um Bronze sozinho não vence um Ouro do mesmo
+  nível. Mas o Bronze nunca luta sozinho: o grupo inteiro, despertando, levantando e
+  mandando Cosmo uns para os outros, vence. O Posto diz quem você é. O Sentido diz até onde
+  você foi hoje.</p>
 
 <script>
 var visor = document.getElementById('visor');
@@ -1452,15 +1455,16 @@ function rolar(modo) {
   </div>
 
   <div class="destaque">
-    <span class="rotulo">Dois jeitos de lutar</span>
-    <p>Quem luta pelo corpo põe a DES (ou a FOR) na frente: ela acerta o golpe comum e as
+    <span class="rotulo">Três jeitos de lutar</span>
+    <p>Quem luta pelo corpo põe a DES ou a FOR na frente: ela acerta o golpe comum e as
     técnicas de Golpe. Quem luta pelo Cosmo põe o Atributo do Cosmo na frente: ele acerta as
-    técnicas de Cosmo e também o golpe comum. A DEF usa a DES ou o Atributo do Cosmo, o que
-    for maior. Os dois jeitos se equivalem: medido, quem luta pelo Cosmo vence de 44% a 52%
-    contra quem luta pela DES.</p>
+    técnicas de Cosmo e também o golpe comum. Quem aguenta põe a CON na frente: mais PV e
+    mais Resistência na armadura. A DEF usa a DES ou o Atributo do Cosmo, o que for maior —
+    e, com a armadura no corpo, também a FOR ou a CON: é a guarda, o golpe que bate no braço
+    cruzado ou no peito e não entra. Nenhum dos três é armadilha.</p>
   </div>
-  <p><strong>Um aviso.</strong> A CON na frente é uma armadilha: ela só dá PV. Quem a põe no
-  lugar do atributo de ataque vence de 12% a 52% dos duelos; com a CON no 8, de 24% a 48%.</p>
+  <p><strong>Um aviso.</strong> Deixar a CON no 8 continua caro: poucos PV, nenhuma
+  Resistência a mais, e nos níveis altos quem faz isso perde a maioria das lutas longas.</p>
 
   <h3 id="etapa-treino">Etapa 5 · Treino</h3>
   <p>Antes da armadura houve o treino, e o treino quase te matou. Escolha onde ele
@@ -1609,7 +1613,7 @@ function rolar(modo) {
     <thead><tr><th>O quê</th><th>Como calcular</th></tr></thead>
     <tbody>
       <tr><td>PV máximos</td><td>A coluna PV da tabela de níveis (<a href="#cap12">Capítulo Doze</a>) + CON × nível + metade do nível (para cima) por escolha de Vida · 14 + CON no nível 1</td></tr>
-      <tr><td>DEF</td><td>10 + DES ou o Atributo do Cosmo, o que for maior, + armadura (Bronze +2, enquanto ela não estiver em pedaços)</td></tr>
+      <tr><td>DEF</td><td>10 + o maior entre DES e o Atributo do Cosmo — com a armadura no corpo, também FOR ou CON —, + armadura (Bronze +2, enquanto ela não estiver em pedaços)</td></tr>
       <tr><td>Fortitude · Reflexos · Vontade</td><td>14 + CON · DES · SAB, e + proficiência nas treinadas</td></tr>
       <tr><td>Iniciativa</td><td>1d20 + DES</td></tr>
       <tr><td>Movimento</td><td>9 metros; +3 metros com a armadura no corpo</td></tr>
@@ -1677,16 +1681,6 @@ function rolar(modo) {
     derrubar, você cai logo depois dele.</p>
   </div>
 
-  <div class="nota">
-    <p><strong>Por que perder PV não dá Cosmo.</strong> Seria o jeito mais óbvio de fazer
-    "quanto mais apanha, mais forte fica", e é o jeito que quebra: o jogador descobriria que
-    vale a pena apanhar de propósito. Jogos de luta tentaram — o modo Rage do Tekken — e os
-    próprios jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para
-    quem perdeu a luta toda". Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e pelo que
-    você perde de verdade. <strong>Medido:</strong> quem deixa de aparar os golpes com a
-    armadura vence de 12% a 54% dos duelos contra quem apara: no nível 1 quase empata, e
-    dali em diante perde cada vez mais.</p>
-  </div>
 
   <h4>A aura</h4>
   <p>Com o Cosmo no Teto, ele deixa de caber em você. A imagem da sua constelação aparece
@@ -1709,12 +1703,6 @@ function rolar(modo) {
       o golpe, mas não com essa força.</li>
   </ul>
 
-  <div class="nota">
-    <p><strong>Medido:</strong> quem nunca queima nem paga com a vida vence de 34% a 51% dos
-    duelos contra quem faz isso com juízo — ajuda a fechar a luta, mas não decide sozinho. Numa versão
-    anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes. É por
-    isso que o custo cresce com o Grau.</p>
-  </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -1778,15 +1766,9 @@ function rolar(modo) {
   precisa despertar outra vez. E despertar não te iguala a um Ouro: o domínio dele
   continua valendo.</p>
 
-  <div class="nota">
-    <p><strong>O que o simulador diz sobre Bronze contra Ouro.</strong> Do mesmo nível — e o
-    Ouro só existe do 15 em diante —, um Bronze sozinho não vence um Ouro: menos de 1% das
-    vezes, e nem uma Centelha por rodada muda isso. Um Prata, também não. Nem cinco níveis
-    acima o Bronze passa de 5%. No duelo justo, o Ouro não perde. O milagre vem de outro
-    lugar: do grupo inteiro contra ele (quatro Bronzes vencem de 37% a 64%, no
-    <a href="#sozinho-contra-muitos">Capítulo Dez</a>), ou da história — o Ouro que se deixa
-    vencer, a armadura que outro Ouro empresta.</p>
-  </div>
+  <p>No duelo justo, um Bronze não vence um Ouro — nem cinco níveis acima, nem com Centelhas.
+  O milagre vem do grupo inteiro contra ele (<a href="#sozinho-contra-muitos">Capítulo
+  Dez</a>) ou da história: o Ouro que se deixa vencer, a armadura que outro Ouro empresta.</p>
 
   <h3 id="mil-dias">A Guerra dos Mil Dias</h3>
   <p>Quando dois poderes iguais se chocam, nenhum dos dois consegue vencer. Isso acontece
@@ -1827,11 +1809,8 @@ function rolar(modo) {
       armaduras morrem.</p>
     </div>
   </div>
-  <p><strong>Medido:</strong> a Guerra acontece em 11% a 17% das lutas entre dois Ouros
-  e em até 3% das lutas entre Bronzes. Numa versão anterior, a condição era "o mesmo Teto de
-  Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela travava 95%
-  das lutas. Depois que o Cosmo passou a não acabar, os dois usam técnica quase toda rodada,
-  e qualquer número igual travava metade das lutas: por isso o choque pede de 16 a 20.</p>
+  <p>A Guerra é rara: acontece numa luta em cada seis a nove entre dois Ouros, e quase
+  nunca entre Bronzes.</p>
 
   <h3 id="oitavo">O Oitavo Sentido</h3>
   <p>O Oitavo, o <em class="termo">Arayashiki</em>, não é um degrau de poder. Ele não
@@ -2081,8 +2060,10 @@ function rolar(modo) {
   <h3 id="lido">O mesmo golpe não funciona duas vezes</h3>
   <p>Contra um Cavaleiro, o golpe que ele já viu perde a força. Quando um
   <strong>oponente nomeado</strong> — um personagem de jogador, ou um inimigo que o Mestre
-  trata como importante — é alvo de uma técnica sua ou a vê sendo usada, anote o nome dele
-  ao lado da técnica: ela está <em class="termo">Lida</em> por ele.</p>
+  trata como importante — é alvo de uma técnica ou a vê sendo usada, ela está
+  <em class="termo">Lida</em> por ele. <strong>Quem leu anota</strong>: o Mestre escreve na
+  ficha do inimigo o nome da técnica que ele leu; o jogador escreve na ficha do personagem
+  as técnicas dos inimigos que ele leu. Cada ficha guarda só o que aquele guerreiro viu.</p>
 
   <div class="destaque">
     <span class="rotulo">Técnica Lida</span>
@@ -2090,8 +2071,10 @@ function rolar(modo) {
     passivas</strong>. O bônus é fixo: ler duas vezes não dá +4.</p>
   </div>
 
-  <p>A marca não some no fim da luta: o inimigo que te enfrentou lembra. Há três jeitos de
-  passar por cima dela:</p>
+  <p><strong>Quem lembra.</strong> Personagens de jogador, rivais e chefes — quem tem
+  Convicção — lembram: a marca fica na ficha deles depois da luta. Um nomeado sem Convicção
+  lê durante a luta e esquece quando ela acaba; o Mestre não guarda nada dele. Há três
+  jeitos de passar por cima da marca:</p>
   <ul>
     <li><strong>Queimar.</strong> Uma técnica queimada ignora a marca naquele uso.</li>
     <li><strong>Despertar.</strong> Quando você desperta um Sentido, todas as suas técnicas
@@ -2152,11 +2135,8 @@ function rolar(modo) {
     <li>Sem Convicção para gastar, ou se já levantou nesta luta, você fica no chão até a
       luta acabar, e acorda com 1 PV.</li>
   </ul>
-  <div class="nota">
-    <p><strong>Medido:</strong> num duelo em que os dois têm Convicções, quem se recusa a
-    levantar vence de 1% a 14% das vezes. Levantar é a jogada mais forte do jogo — e é por
-    isso que ela custa algo que só volta com o tempo, e só uma vez por luta.</p>
-  </div>
+  <p>Levantar é a jogada mais forte do jogo — é por isso que custa uma Convicção, que só
+  volta com o tempo, e acontece uma vez por luta.</p>
 
   <div class="ornamento">❖</div>
 
@@ -2172,15 +2152,8 @@ function rolar(modo) {
       <strong>forte</strong> acaba, a técnica que a impôs não a impõe mais no mesmo alvo até
       o fim da luta. Outra técnica pode.</li>
   </ul>
-  <div class="nota">
-    <p><strong>Medido.</strong> Sem a regra acima, e com "ataques contra você têm Vantagem"
-    no Atordoado, quem tinha uma técnica de atordoar vencia até 89% dos duelos: o alvo perdia
-    turnos seguidos e apanhava com Vantagem. Com as duas mudanças, de 49% a 69% — mais nos
-    níveis altos, onde a luta é longa e perder um turno pesa. As condições médias rendem
-    quando são usadas uma vez, na hora certa (41% a 56%); repetidas toda rodada, gastam a
-    ação e o Cosmo que fariam falta no dano, e quem faz isso vence de 8% a 56% — só a cegueira repetida
-    ainda empata, e só no nível 9.</p>
-  </div>
+  <p><strong>Na mesa:</strong> uma condição média rende mais usada uma vez, na hora certa,
+  do que repetida toda rodada — repetir gasta a ação e o Cosmo que fariam falta no dano.</p>
 
   <div class="rolagem"><table>
     <thead><tr><th>Condição</th><th>Grau</th><th>Efeito</th></tr></thead>
@@ -2434,13 +2407,7 @@ function rolar(modo) {
   arredondada para cima, e o mínimo absoluto é 1. Uma limitação que não muda nada na prática
   vale zero: "só funciona no Sétimo" numa ficha de Ouro, que entra no Sétimo quando quer,
   não é limitação. O Mestre é o juiz disso, e deve ser chato nessa hora.</p>
-  <div class="nota">
-    <p><strong>Medido.</strong> Nenhuma limitação da lista é brecha. Com uma limitação na
-    técnica grande, quem a tem vence de 13% a 46% dos duelos; com duas, de 2% a 50%. O
-    Cosmo economizado nunca paga o que a limitação tira — ainda mais nos níveis altos, onde o
-    Cosmo sobra e a técnica sai quase toda rodada. O dano em você
-    cresce com o Grau porque 1d6 fixo não fazia diferença para quem tem 150 PV.</p>
-  </div>
+  <p>Nenhuma limitação da lista é brecha: o Cosmo economizado nunca paga o que ela tira.</p>
 
   <h3>Três limites que valem sempre</h3>
   <ul>
@@ -2558,14 +2525,6 @@ function rolar(modo) {
   guarda por um instante — tira 1 do custo, que fica em 2. Não pode tirar mais: o piso é a
   metade de 3, arredondada para cima.</p>
 
-  <div class="nota">
-    <p><strong>O que o simulador mediu.</strong> O motor veio da Ascensão dos Semideuses,
-    mas aqui o custo é pago em Cosmo, que enche durante a luta. Em duelos do mesmo nível,
-    com a técnica grande no tamanho máximo e uma pequena de 2 pontos, as técnicas respondem
-    por 91% a 100% de todo o dano, e um lutador que nunca usa técnica vence de 0% a 35% das
-    vezes contra quem usa. Toda técnica impressa neste livro é conferida pelo motor em código
-    a cada mudança — a conta do livro e a do simulador são a mesma.</p>
-  </div>
 
   <h3>Modelo para registrar</h3>
   <p>Toda técnica criada entra na ficha assim. Se algum campo estiver em branco, ela não
@@ -2583,7 +2542,6 @@ Custo em Cosmo:    (tamanho − limitações; nunca abaixo da metade)
 Grau:              o Grau em que ela nasceu
 Rolagem:           Ataque contra DEF · Efeito contra Fortitude, Reflexos ou Vontade
 Dano ou cura:      pontos × o dado, + pontos × o bônus do ponto, + mod (refaça ao subir)
-Lida por:          (nomes de quem já viu)
 Descrição:         como ela aparece, e o nome que você grita</pre>
 
   <h4>As etapas, em ordem</h4>
@@ -2679,13 +2637,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   graça, um traço que venha da constelação ou do exército e que não mexa na luta: respirar
   debaixo d'água, ignorar o frio da Sibéria ou o calor de um vulcão, não fazer barulho,
   brilhar no escuro. Se o traço começar a dar vantagem de regra, virou característica.</p>
-  <div class="nota">
-    <p><strong>Medido.</strong> Cada característica, sozinha, vence de 47% a 59% dos duelos
-    contra a mesma armadura sem ela: um empurrão, nunca a luta. O Elmo fechado não foi medido
-    porque o simulador não arranca sentidos. Diante de um grupo, as que protegem pesam mais: um
-    chefe com Couraça, Espinhos e Espelhada é mais duro que um com Leve, Cortante e
-    Constelação viva.</p>
-  </div>
+  <p>Cada característica é um empurrão, nunca a luta. Diante de um grupo, as que protegem
+  pesam mais: um chefe com Couraça, Espinhos e Espelhada é mais duro que um com Leve,
+  Cortante e Constelação viva.</p>
 
   <h3 id="resistencia">A Resistência</h3>
   <p>A armadura tem um número só para acompanhar na luta: a
@@ -2695,7 +2649,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <ul>
     <li>a Resistência do Posto da armadura, na tabela abaixo;</li>
     <li>+1 se a armadura não tem acessório;</li>
-    <li>+1 nos níveis 5, 7, 13 e 17 (<a href="#cap12">Capítulo Doze</a>);</li>
+    <li>+ o seu modificador de CON, mínimo 0: o corpo que aguenta a armadura;</li>
+    <li>+1 a cada duas escolhas de Vida (<a href="#escolhas">Capítulo Doze</a>);</li>
     <li>o bônus de cada forma nova, se a armadura já reviveu (<a href="#reviver">mais
       abaixo</a>), e as melhorias do <a href="#cap8">Capítulo Oito</a>.</li>
   </ul>
@@ -2747,13 +2702,6 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   golpe que não entrou — e um passo mais perto de lutar sem armadura. Como Aparar e
   Bloquear usam a mesma reação, você só faz um dos dois por rodada: bloquear o golpe comum
   que vem agora ou guardar a reação para aparar a técnica que talvez venha depois.</p>
-  <div class="nota">
-    <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de
-    graça. O simulador mostrou o efeito: toda técnica era cortada pela metade, as lutas
-    passavam de dez rodadas e dar só golpes comuns rendia tanto quanto usar técnicas. Com a
-    reação, a armadura continua decisiva — quem nunca apara vence bem menos da metade dos
-    duelos — sem apagar as técnicas.</p>
-  </div>
 
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
@@ -2833,6 +2781,13 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li>ela ganha o <strong>bônus do sangue</strong> que a trouxe de volta, na tabela acima,
       para sempre. Os bônus somam.</li>
   </ul>
+  <div class="destaque">
+    <span class="rotulo">Só a morte de verdade</span>
+    <p>A armadura só muda de forma quando morreu num risco de verdade: numa luta que valia
+    alguma coisa, contra alguém que queria vencer. Uma armadura destruída de propósito — um
+    treino entre amigos levado até o fim, um golpe no próprio peito — revive na mesma Versão,
+    sem bônus. Morrer protegendo o dono é o que a faz crescer; morrer para crescer, não.</p>
+  </div>
   <p>O <strong>acerto</strong> soma em todas as suas rolagens de ataque e Rolagens de Efeito,
   e a DEF, na sua DEF — enquanto a armadura estiver no corpo. Em pedaços, ela não dá nenhum
   dos dois. Os bônus são pequenos de propósito: uma armadura pode morrer muitas vezes, e eles
@@ -2843,22 +2798,13 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     Ela está na V5. As três formas de guerreiro deram +1 no acerto (a 1ª), +1 de Resistência
     (a 2ª) e +1 no acerto (a 3ª); a forma de elite deu +1 na DEF. A armadura tem
     <strong>DEF +3</strong> (2 do Bronze e 1 da forma de elite),
-    <strong>Resistência 4</strong> (3 do Bronze e 1 da forma), mais o que vier do acessório
-    e dos níveis, e dá
+    <strong>Resistência 4</strong> (3 do Bronze e 1 da forma), mais o que vier do acessório,
+    da CON e da Vida, e dá
     <strong>+2 no acerto</strong>. E ela fica dourada quando o Téo desperta o Sétimo.</p>
   </div>
   <p>No mangá, a armadura de Pégaso tem cinco versões, e no anime três: ela muda de forma a
   cada conserto e fica mais forte a cada vez. É esse o espírito.</p>
-  <div class="nota">
-    <p><strong>Medido</strong>, sempre do mesmo nível. Uma armadura de Bronze revivida três
-    vezes vence a original de 59% a 67% das vezes; somando a forma de elite, de 65% a 74%.
-    Uma de Prata revivida quatro vezes vence a original de 64% a 67%; uma de Ouro revivida
-    seis vezes, de 69% a 71%.</p>
-    <p>Contra um Ouro original, a armadura de Bronze com a escada inteira — três formas, a de
-    elite e a de deus — vence de 0% a 3%; a de Prata com a escada inteira, seis mortes, de
-    2% a 7%. E isso sem a forma Divina. As armaduras que morreram e voltaram chegam mais
-    perto do Ouro. Não chegam a ele.</p>
-  </div>
+  <p>As armaduras que morreram e voltaram chegam mais perto do Ouro. Não chegam a ele.</p>
 
   <h4>O traço do sangue</h4>
   <p>Além do bônus, o sangue forte deixa um traço, que acorda com o Sentido certo:</p>
@@ -3472,8 +3418,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   coluna Cosmo mostra com quanto ele começa a luta, o piso e o Teto — já com as escolhas de
   Cosmo. As técnicas são de dano em alvo único, contra a DEF, no toque; o número entre
   parênteses é o custo em Cosmo. As defesas mostram a passiva mais fraca e a mais forte. A
-  Resistência é a do Posto (<a href="#cap7">Capítulo Sete</a>), +1 sem acessório e +1 nos
-  níveis 5, 7, 13 e 17.</p>
+  Resistência é a do Posto (<a href="#cap7">Capítulo Sete</a>), +1 sem acessório, + o
+  modificador de CON e +1 a cada duas escolhas de Vida.</p>
   <div class="rolagem"><table class="compacta">
 <thead><tr><th class="num">Nív.</th><th class="num">PV</th><th class="num">DEF B/P/E</th><th class="num">Cosmo</th><th class="num">Defesas</th></tr></thead><tbody>
 <tr><td class="num">1</td><td class="num">16</td><td class="num">14/—/—</td><td class="num">1/1/5</td><td class="num">16/18</td></tr>
@@ -3601,42 +3547,43 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 
   <h3 id="sozinho-contra-muitos">Sozinho contra muitos</h3>
   <p>Na mesa, o grupo quase sempre luta junto — e quatro contra um é uma conta cruel. Sem
-  ajuda, dois Bronzes vencem um Prata do mesmo nível 83% a 91% das vezes, e três Bronzes vencem
-  um Ouro 86% a 93%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
+  ajuda, dois Bronzes vencem um Prata do mesmo nível 80% a 92% das vezes, e três Bronzes vencem
+  um Ouro 86% a 91%. Por isso todo inimigo <strong>com pelo menos uma Convicção</strong> que luta
   sozinho contra dois ou mais personagens usa esta regra:</p>
-  <div class="rolagem"><table>
-    <thead><tr><th class="num">Oponentes</th><th class="num">PV do inimigo</th><th class="num">Golpes comuns a mais por rodada</th></tr></thead>
-    <tbody>
-      <tr><td class="num">2</td><td class="num">× 1¼</td><td class="num">—</td></tr>
-      <tr><td class="num">3</td><td class="num">× 1½</td><td class="num">1</td></tr>
-      <tr><td class="num">4</td><td class="num">× 1¾</td><td class="num">2</td></tr>
-      <tr><td class="num">5</td><td class="num">× 2</td><td class="num">3</td></tr>
-      <tr><td class="num">6</td><td class="num">× 2¼</td><td class="num">4</td></tr>
-    </tbody>
-  </table></div>
+  <div class="destaque">
+    <span class="rotulo">A resposta</span>
+    <p>Logo depois do turno de <strong>cada personagem</strong>, o inimigo responde contra
+    quem acabou de agir: usa a técnica de dano mais barata dele, sem gastar Cosmo. Se ele não
+    tiver técnica de dano, é um golpe comum. A resposta não gasta a reação dele.</p>
+  </div>
   <ul>
-    <li>Conte os oponentes no começo da luta. Os PV multiplicados valem também para
-      levantar: ele volta com um quarto deles.</li>
-    <li>Cada <strong>golpe comum a mais</strong> acontece logo depois do turno de um
-      personagem, à escolha do Mestre. É só o golpe: sem técnica, sem o Cosmo do relógio, sem
-      nova reação. Com o Cosmo que não acaba, uma ação livre a mais seria uma técnica a mais,
-      e o chefe não perderia nunca.</li>
+    <li>Os PV dele não mudam. O que muda é que ninguém ataca de graça: quatro personagens
+      são quatro respostas por rodada.</li>
+    <li>Quem acabou de agir e caiu não recebe resposta; ela vai para o mais ferido de pé.</li>
     <li>Nomeados sem Convicção e figurantes não usam a regra. Eles existem para cair.</li>
     <li>Conte só os personagens. O aliado de luta (<a href="#cap11">Capítulo Onze</a>) não
-      conta: ele é mais fraco e cai antes, e o chefe não precisa de PV a mais por causa dele.</li>
+      tem resposta própria: o chefe só responde depois dos turnos dos personagens.</li>
   </ul>
+  <div class="nota">
+    <p><strong>Dê um rosto à resposta.</strong> A conta é a mesma para todo chefe; a cena,
+    não. O Ouro de Virgem não se mexe e o golpe volta sozinho; o General Marina responde com
+    a maré que puxa de volta quem avançou; o Juiz puxa os fios de quem acabou de atacar; o
+    Guerreiro Deus está atrás de você antes do golpe terminar. Diga isso ao descrever cada
+    resposta, e o grupo vai sentir um inimigo rápido demais para ser cercado — não uma
+    tabela.</p>
+  </div>
   <div class="rolagem"><table>
     <thead><tr><th>Grupo de Bronzes do mesmo nível, com a regra</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
     <tbody>
-      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">70–81%</td><td class="num">84–94%</td><td class="num">88–100%</td><td class="num">92–100%</td></tr>
-      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">5–19%</td><td class="num">22–23%</td><td class="num">50–60%</td><td class="num">66–92%</td></tr>
+      <tr><td>Contra um Prata (níveis 9 e 13)</td><td class="num">60–67%</td><td class="num">94–98%</td><td class="num">100%</td><td class="num">100%</td></tr>
+      <tr><td>Contra um Ouro (níveis 15 e 20)</td><td class="num">0–3%</td><td class="num">9–25%</td><td class="num">42–64%</td><td class="num">76–85%</td></tr>
     </tbody>
   </table></div>
   <p>Quatro Bronzes contra um Ouro do mesmo nível vencem de quatro a seis vezes em dez, e
-  uns três deles caem no caminho; cinco Bronzes vencem de sete a nove em dez. Com um
-  atordoador no grupo, um pouco mais (57% a 66%). A luta é longa: de 13 rodadas no nível 15
-  a 18 no nível 20.
-  Com cinco ou mais jogadores, use dois inimigos em vez de um. Medido com características
+  dois ou três deles caem no caminho; cinco Bronzes vencem de sete a oito em dez. A luta
+  dura de 8 rodadas no nível 15 a 11 no nível 20. Um Prata sozinho contra três ou mais
+  Bronzes cai depressa: para um Prata ser a luta da sessão, ponha dois. Com cinco ou mais
+  jogadores contra a elite, use dois inimigos em vez de um. Medido com características
   típicas dos dois lados: 1 no Bronze, 3 no Ouro.
   É o que a elite deve ser para um grupo: a luta da sessão.</p>
 
@@ -3663,7 +3610,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro Negro<span class="kleos">Nível 2 · Bronze</span></h3>
 <p class="tipo">Renegado</p>
-<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, piso 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · <b>Resistência</b> 3 · garras<br><b>Características</b> Cortante<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 23 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +2<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 1, piso 1, Teto 5 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura Negra, cópia de uma de Bronze, DEF +2 · <b>Resistência</b> 5 · garras<br><b>Características</b> Cortante<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+4 contra a DEF, <span class="dado">1d10 + 2</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3676,7 +3623,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Espectro de Estrela Terrestre<span class="kleos">Nível 4 · Bronze</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 42 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, piso 1, Teto 6 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · <b>Resistência</b> 3 · asas<br><b>Características</b> Leve<br><b>Convicções</b> 0</div>
+<div class="status"><b>PV</b> 42 <span class="sep">·</span> <b>DEF</b> 14 <span class="sep">·</span> <b>Iniciativa</b> +4<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 18 <span class="sep">·</span> <b>Vontade</b> 17<br><b>Cosmo</b> começa em 2, piso 1, Teto 6 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Súplice, DEF +2 · <b>Resistência</b> 6 · asas<br><b>Características</b> Leve<br><b>Convicções</b> 0</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+4 contra a DEF, <span class="dado">1d8 + 2</span>. Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
@@ -3689,66 +3636,66 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="criatura">
 <h3>Cavaleiro de Prata<span class="kleos">Nível 9 · Prata</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 114 <span class="sep">·</span> <b>DEF</b> 17 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 21 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 6, piso 3, Teto 11 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · <b>Resistência</b> 6 · correntes<br><b>Características</b> Ressonante · Ofuscante<br><b>Convicções</b> 1</div>
+<div class="status"><b>PV</b> 114 <span class="sep">·</span> <b>DEF</b> 17 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 21 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 6, piso 3, Teto 11 <span class="sep">·</span> <b>Sentido</b> Sexto; desperta como um personagem<br><b>Armadura</b> Armadura de Prata, DEF +4 · <b>Resistência</b> 8 · correntes<br><b>Características</b> Ressonante · Ofuscante<br><b>Convicções</b> 1</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+7 contra a DEF, <span class="dado">1d8 + 3</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Correntes do Cão Infernal</strong> · 6 de Cosmo · +7 contra a DEF · <span class="dado">6d8 + 51</span>.</li><li><strong>Chicote de Cosmo</strong> · 4 de Cosmo · +7 contra a DEF · <span class="dado">4d8 + 35</span>.</li><li><strong>Laço de Aço</strong> · 2 de Cosmo · +7 contra a DEF · <span class="dado">2d8 + 19</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Correntes.</strong> Golpes comuns e Agarrar alcançam 6 metros.</li><li><strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do mesmo nível vence uma vez em nove; um de nível 8, quase nunca; só um Bronze de nível 13 vence com folga. É luta para dois ou três Bronzes juntos (vencem sete e oito vezes em dez), ou para outro Prata.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O caçador que o Santuário manda atrás de quem desobedeceu. Um Bronze do mesmo nível vence uma vez em nove; um de nível 8, quase nunca; só um Bronze de nível 13 vence com folga. É luta para dois Bronzes juntos (vencem seis vezes em dez) ou para outro Prata; contra três, ele cai depressa.</p>
 </div>
 
   <div class="criatura">
 <h3>Guerreiro Deus<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Asgard</p>
-<div class="status"><b>PV</b> 249 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 9, piso 4, Teto 16 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Características</b> Couraça grossa · Ressonante · Constelação viva<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 249 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +5<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 9, piso 4, Teto 16 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Veste Divina, DEF +6 · <b>Resistência</b> 11 · sem acessório<br><b>Características</b> Couraça grossa · Ressonante · Constelação viva<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Golpe da Estrela da Ursa Maior</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 89</span>. Atravessa a armadura.</li><li><strong>Presas do Lobo do Norte</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 89</span>.</li><li><strong>Tempestade de Cristal</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">4d8 + 61</span>.</li><li><strong>Ventania Gelada</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">2d8 + 33</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Safira de Odin.</strong> +1 no Teto de Cosmo enquanto a safira estiver na Veste (já somado).</li><li><strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns três caem; três níveis abaixo, quase nunca. Sozinho, um personagem não vence.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois caem; três níveis abaixo, uma vez em sete. Sozinho, um personagem não vence.</p>
 </div>
 
   <div class="criatura">
 <h3>General Marina<span class="kleos">Nível 15 · Elite</span></h3>
 <p class="tipo">Poseidon</p>
-<div class="status"><b>PV</b> 249 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 8, piso 4, Teto 15 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · <b>Resistência</b> 9 · escudo<br><b>Características</b> Pesada · Espelhada · Couraça grossa<br><b>Convicções</b> 2</div>
+<div class="status"><b>PV</b> 249 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 8, piso 4, Teto 15 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Escama, DEF +6 · <b>Resistência</b> 11 · escudo<br><b>Características</b> Pesada · Espelhada · Couraça grossa<br><b>Convicções</b> 2</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Triângulo das Ondas</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 89</span>. Atravessa a armadura.</li><li><strong>Maré Devastadora</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 89</span>.</li><li><strong>Garra do Kraken</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">4d8 + 61</span>.</li><li><strong>Redemoinho</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">2d8 + 33</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Escama de oricalco.</strong> +1 de Resistência (já somada).</li><li><strong>Sétimo dominado.</strong> Como todo guerreiro de elite.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer Cavaleiro. Quatro Bronzes do nível dele vencem metade das vezes: a Escama e a Couraça seguram o grupo mais que o Guerreiro Deus.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer Cavaleiro. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois caem.</p>
 </div>
 
   <div class="criatura">
 <h3>Cavaleiro de Ouro<span class="kleos">Nível 16 · Elite</span></h3>
 <p class="tipo">Atena</p>
-<div class="status"><b>PV</b> 277 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 9, piso 4, Teto 15 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · <b>Resistência</b> 9 · sem acessório<br><b>Características</b> Ressonante · Ofuscante · Pesada<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 277 <span class="sep">·</span> <b>DEF</b> 22 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 21 <span class="sep">·</span> <b>Reflexos</b> 24 <span class="sep">·</span> <b>Vontade</b> 20<br><b>Cosmo</b> começa em 9, piso 4, Teto 15 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Armadura de Ouro, DEF +6 · <b>Resistência</b> 12 · sem acessório<br><b>Características</b> Ressonante · Ofuscante · Pesada<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+10 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>o Golpe do Assento da vaga</strong> · 7 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 95</span>. Atravessa a armadura.</li><li><strong>Impacto do Zodíaco</strong> · 6 de Cosmo · +10 contra a DEF · <span class="dado">6d8 + 95</span>.</li><li><strong>Muralha de Luz</strong> · 4 de Cosmo · +10 contra a DEF · <span class="dado">4d8 + 65</span>.</li><li><strong>Chama Dourada</strong> · 2 de Cosmo · +10 contra a DEF · <span class="dado">2d8 + 35</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Sétimo dominado.</strong> Entra no Sétimo no primeiro turno e, diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.</li><li><strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem um terço das vezes, e uns três caem; cinco, pouco mais da metade.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem metade das vezes, e uns três caem; cinco, três vezes em quatro.</p>
 </div>
 
   <div class="criatura">
 <h3>Juiz do Inferno<span class="kleos">Nível 18 · Elite</span></h3>
 <p class="tipo">Hades</p>
-<div class="status"><b>PV</b> 355 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +7<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 9, piso 5, Teto 18 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · <b>Resistência</b> 9 · asas<br><b>Características</b> Leve · Cortante · Coração de estrela<br><b>Convicções</b> 3</div>
+<div class="status"><b>PV</b> 355 <span class="sep">·</span> <b>DEF</b> 21 <span class="sep">·</span> <b>Iniciativa</b> +7<br><b>Fortitude</b> 23 <span class="sep">·</span> <b>Reflexos</b> 25 <span class="sep">·</span> <b>Vontade</b> 21<br><b>Cosmo</b> começa em 9, piso 5, Teto 18 <span class="sep">·</span> <b>Sentido</b> Sétimo quando quiser<br><b>Armadura</b> Súplice, DEF +6 · <b>Resistência</b> 12 · asas<br><b>Características</b> Leve · Cortante · Coração de estrela<br><b>Convicções</b> 3</div>
 <p class="rotulo-bloco">Golpe comum</p>
 <p>+11 contra a DEF, <span class="dado">1d8 + 5</span> (dois golpes). Acertou: +1 de Cosmo.</p>
 <p class="rotulo-bloco">Técnicas</p>
 <ul><li><strong>Golpe do Juízo</strong> · 7 de Cosmo · +11 contra a DEF · <span class="dado">6d8 + 107</span>. Atravessa a armadura.</li><li><strong>Garras do Grifo</strong> · 6 de Cosmo · +11 contra a DEF · <span class="dado">6d8 + 107</span>.</li><li><strong>Grande Chifre do Wyvern</strong> · 4 de Cosmo · +11 contra a DEF · <span class="dado">4d8 + 73</span>.</li><li><strong>Marionete Cósmica</strong> · 2 de Cosmo · +11 contra a DEF · <span class="dado">2d8 + 39</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Estrela Maligna.</strong> Volta em <span class="dado">1d4</span> semanas enquanto Hades existir.</li><li><strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).</li><li><strong>Sétimo dominado.</strong></li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos três juízes. Quatro Bronzes de nível 17 vencem quase metade das vezes, e uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro.</p>
 </div>
 </section>
 
@@ -3805,13 +3752,6 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <p>Entregue o aliado a um jogador — de preferência a quem está sem nada para fazer naquela
   luta. O Mestre continua dono das decisões que importam para a história (o aliado foge? se
   sacrifica?), mas o turno é do jogador. Um aliado por jogador, no máximo.</p>
-  <div class="nota">
-    <p><strong>Medido.</strong> Um personagem que venceria um rival do mesmo nível metade das
-    vezes vence de 68% a 72% com um aliado de luta ao lado; quatro Bronzes contra um Ouro
-    ganham de 10 a 15 pontos. O aliado ajuda sem decidir. Numa versão anterior ele vinha
-    só dois níveis abaixo e com os PV inteiros: nos níveis altos, onde dois níveis quase não
-    pesam, ele virava um segundo personagem, e o duelo contra o rival ia a 96%.</p>
-  </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -3886,7 +3826,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <h4>O ritmo certo</h4>
   <p><strong>Medido:</strong> um duelo justo dura de 3 rodadas no nível 1 a 8 no nível 20
   sem Convicções, e de 5 a 11 quando os dois levantam uma vez: curto no começo, longo no fim.
-  O grupo inteiro contra um chefe de elite leva de 13 a 18. Se um duelo passar de 14
+  O grupo inteiro contra um chefe de elite leva de 8 a 11. Se um duelo passar de 14
   rodadas, algo está errado:
   ou o inimigo é forte demais para o grupo, ou alguém está guardando Cosmo sem usar. Diga
   isso em voz alta: o Cosmo no Teto não sobe mais, e parado ele não ganha nada.</p>
@@ -3942,6 +3882,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <tr><td>Despertar um Sentido pela primeira vez na vida (o Sétimo, o Oitavo, o Nono)</td><td class="num">1</td></tr>
       <tr><td>Sair vivo de uma Guerra dos Mil Dias</td><td class="num">1</td></tr>
       <tr><td>Cumprir o objetivo que o grupo recebeu no começo da missão</td><td class="num">1</td></tr>
+      <tr><td>Resolver sem luta um conflito que importava — uma negociação, uma investigação, uma traição desfeita — ou mudar para sempre um juramento, uma relação ou a situação da campanha</td><td class="num">1</td></tr>
     </tbody>
   </table></div>
   <p>A Glória é de cada personagem: quem estava na luta ganha. Quem mandou uma Centelha para
@@ -4025,7 +3966,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <h5>Vida</h5>
       <p class="etiqueta">Todo nível · ou Cosmo</p>
       <p>+ metade do seu nível em PV (arredondada para cima), e ela cresce junto: a cada
-      nível, toda escolha de Vida que você já fez passa a valer a metade do nível novo.</p>
+      nível, toda escolha de Vida que você já fez passa a valer a metade do nível novo. A
+      cada duas escolhas de Vida, +1 de Resistência.</p>
     </div>
     <div class="cartao">
       <h5>Cosmo</h5>
@@ -4046,14 +3988,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       já é treinado nas três defesas ganha +2 na Iniciativa.</p>
     </div>
   </div>
-  <div class="nota">
-    <p><strong>Medido.</strong> Quem escolhe só Vida contra quem escolhe só Cosmo, do mesmo
-    nível, vence de 35% a 72%: nenhum dos dois caminhos domina o jogo inteiro. A Vida pesa
-    mais do nível 9 ao 17, quando as lutas ficam longas; o Cosmo, no começo e no nível 20,
-    quando o piso alto já paga a técnica grande toda rodada. Vida deixa a luta mais longa e
-    dá mais sangue para a vida pagar; Cosmo solta a técnica grande mais cedo e mais vezes. O
-    lutador de referência do livro alterna os dois.</p>
-  </div>
+  <p>Nenhum dos dois caminhos domina. Nos níveis altos, quem alterna Vida e Cosmo luta
+  melhor que quem escolhe só um.</p>
 
   <h3>A tabela</h3>
   <p>A coluna <strong>PV</strong> é a base do nível: some a sua CON uma vez por nível e
@@ -4093,40 +4029,31 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <tr><td class="num">2</td><td>Leitura de Combate</td><td>Vida ou Cosmo</td><td class="num">3</td></tr>
 <tr><td class="num">3</td><td>—</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">3</td></tr>
 <tr><td class="num">4</td><td>—</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">3</td></tr>
-<tr><td class="num">5</td><td>+1 de Resistência</td><td>Vida ou Cosmo</td><td class="num">4</td></tr>
+<tr><td class="num">5</td><td>—</td><td>Vida ou Cosmo</td><td class="num">4</td></tr>
 <tr><td class="num">6</td><td>Segunda Lição</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">4</td></tr>
-<tr><td class="num">7</td><td>+1 de Resistência</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">4</td></tr>
+<tr><td class="num">7</td><td>—</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">4</td></tr>
 <tr><td class="num">8</td><td>—</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">4</td></tr>
 <tr><td class="num">9</td><td>Ataque Extra</td><td>Vida ou Cosmo</td><td class="num">4</td></tr>
 <tr><td class="num">10</td><td>—</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">4</td></tr>
 <tr><td class="num">11</td><td>Golpe Certeiro</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">4</td></tr>
 <tr><td class="num">12</td><td>—</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">4</td></tr>
-<tr><td class="num">13</td><td>+1 de Resistência</td><td>Vida ou Cosmo</td><td class="num">5</td></tr>
+<tr><td class="num">13</td><td>—</td><td>Vida ou Cosmo</td><td class="num">5</td></tr>
 <tr><td class="num">14</td><td>Quarta Convicção</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">5</td></tr>
 <tr><td class="num">15</td><td>—</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">5</td></tr>
 <tr><td class="num">16</td><td>—</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">5</td></tr>
-<tr><td class="num">17</td><td>+1 de Resistência</td><td>Vida ou Cosmo</td><td class="num">5</td></tr>
+<tr><td class="num">17</td><td>—</td><td>Vida ou Cosmo</td><td class="num">5</td></tr>
 <tr><td class="num">18</td><td>Segunda técnica assinatura</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">5</td></tr>
 <tr><td class="num">19</td><td>—</td><td>Vida ou Cosmo · perícia ou defesa</td><td class="num">5</td></tr>
 <tr><td class="num">20</td><td>Lenda</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">—</td></tr>
 </tbody></table></div>
 
   <p>Nenhum atributo passa de 20. Se a Constituição subir, recalcule os PV como se ela sempre
-  tivesse sido aquela. A Resistência ganha nos níveis é sua, não da armadura: se você trocar
+  tivesse sido aquela. A Resistência da CON e da Vida é sua, não da armadura: se você trocar
   de armadura, ela passa para a nova.</p>
 
-  <div class="nota">
-    <p><strong>Curta no começo, longa no fim.</strong> A base de PV cresce mais depressa que o
-    dano das técnicas, e as escolhas de Vida crescem com o nível. No nível 1 a luta é decidida
-    em 3 rodadas (5, com as Convicções); no nível 20, dura 8 (11, com as Convicções) e as
-    técnicas grandes saem quase toda rodada. Medido, espelho de Bronzes. Numa versão anterior
-    a luta durava de 4 a 7 rodadas do começo ao fim.</p>
-    <p><strong>Sem salto de nível.</strong> Até a 0.6.0 o dano de cada ponto era
-    <span class="dado">1d8</span> por Grau e os PV vinham por Grau: nos níveis 5, 9, 13 e 17
-    os dois saltavam juntos, e quem tinha um nível a mais vencia até 97% das vezes. Agora
-    os dois sobem a cada nível, e um nível acima vence de 55% a 91%. O salto que ficou é o do
-    Posto — Bronze, Prata, elite —, e esse é de propósito.</p>
-  </div>
+  <p><strong>Curta no começo, longa no fim.</strong> A base de PV cresce mais depressa que o
+  dano das técnicas: a luta vai de 3 rodadas no nível 1 a 8 no nível 20 (5 e 11 quando os
+  dois levantam). Cada nível pesa um pouco, sem salto; o salto é o do Posto.</p>
 
   <h3>O que cada ganho fixo faz</h3>
   <div class="grade">
@@ -4135,11 +4062,6 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <p class="etiqueta">Nível 2</p>
       <p>Uma vez por luta, quando uma técnica que você nunca viu é usada contra você, você a
       lê na hora: ela já conta como Lida por você nessa rolagem.</p>
-    </div>
-    <div class="cartao">
-      <h5>Resistência</h5>
-      <p class="etiqueta">Níveis 5, 7, 13 e 17</p>
-      <p>+1 de Resistência na armadura que você vestir.</p>
     </div>
     <div class="cartao">
       <h5>Segunda Lição</h5>
@@ -4237,7 +4159,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <span class="dado">1d10 + 2</span> de dano. <strong>Movimento:</strong> 12 metros, com a
       armadura no corpo.</p>
 
-      <p><strong>Armadura de Lince</strong> · Bronze, Versão 1 · DEF +2 · Resistência ☐ ☐ ☐ ·
+      <p><strong>Armadura de Lince</strong> · Bronze, Versão 1 · DEF +2 · Resistência ☐ ☐ ☐ ☐
+      (3 do Bronze e 1 da CON) ·
       acessório: garras · característica: Cortante (os golpes comuns do Téo não podem ser
       aparados).</p>
 
@@ -4315,9 +4238,12 @@ CONVICÇÕES  1. ______________________________________________  ☐ gasta
 PERÍCIAS ____________________________________________________________
 
 GOLPE COMUM  +__ para acertar   dano 1d__ + __
-TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
+TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · dano)
   1. ______________________________________________________________
-  2. ______________________________________________________________</pre>
+  2. ______________________________________________________________
+
+LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
+  ______________________________________________________________</pre>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -4329,8 +4255,8 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
       <h5>No seu turno</h5>
       <p>Movimento, uma ação, uma interação simples, uma fala breve. Uma reação fora do turno.
       Ações: Golpe, Técnica, Concentrar (+2 Cosmo), Esquivar, Ajudar, Correr, Desengajar,
-      Agarrar, Preparar, Chamar a armadura. DEF: 10 + DES ou Atributo do Cosmo (o maior) +
-      armadura.</p>
+      Agarrar, Preparar, Chamar a armadura. DEF: 10 + DES ou Atributo do Cosmo (o maior; com
+      a armadura, também FOR ou CON) + armadura.</p>
     </div>
     <div class="cartao">
       <h5>O Cosmo sobe</h5>
@@ -4374,8 +4300,9 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
     </div>
     <div class="cartao">
       <h5>O mesmo golpe</h5>
-      <p>Técnica que o oponente nomeado já viu: ele soma +2 à DEF e às defesas contra ela.
-      Queimar, despertar ou evoluir passa por cima. Condição forte que acabou não volta com a
+      <p>Técnica que o oponente já viu: ele soma +2 à DEF e às defesas contra ela. Quem leu
+      anota. Só rival e chefe lembram depois da luta. Queimar, despertar ou evoluir passa por
+      cima. Condição forte que acabou não volta com a
       mesma técnica naquela luta.</p>
     </div>
     <div class="cartao">
@@ -4388,10 +4315,168 @@ TÉCNICAS  (nome · natureza · tamanho · custo · Grau · rolagem · Lida por)
   </div>
 </section>
 
+<!-- ==================== APÊNDICE ==================== -->
+<section class="capitulo" id="apendice">
+  <div class="abertura">
+    <span class="alg">Apêndice</span>
+    <h2>Notas de design e balanceamento</h2>
+    <p>Por que cada regra é como é, o que o simulador mediu e o que mudou no caminho</p>
+  </div>
+
+  <p class="abre">Nada aqui é regra. É o caderno de quem desenhou o jogo: de onde veio cada
+  número, o que foi testado e descartado, e o que uma versão anterior fazia de errado. Se
+  você só quer jogar, pode pular este apêndice inteiro.</p>
+
+  <div class="destaque">
+    <span class="rotulo">O que o simulador sabe, e o que não sabe</span>
+    <p>Todo número marcado como medido vem de milhares de duelos rodados com as regras deste
+    livro, no simulador que acompanha o projeto (a pasta <code>sim/</code> do repositório).
+    O lutador de referência é um Bronze com DES e CON na frente, a técnica grande, uma
+    pequena e uma média, e uma política de jogo fixa.</p>
+    <p>O simulador responde bem a uma pergunta: <em>num duelo, com esta estratégia, quem
+    tende a ganhar?</em> Ele é ruim em tudo o que uma mesa faz melhor: quatro jogadores
+    combinando ataques, Centelhas mandadas na hora certa, terreno, objetivos que não são
+    derrubar alguém, conhecimento do inimigo, e a interação que ninguém pensou em testar. Um
+    número daqui é um ponto de partida, não uma prova. Se ele contrariar a sua mesa, a mesa
+    vence.</p>
+  </div>
+
+  <h3>Criação (Capítulo Três)</h3>
+  <p><strong>Três jeitos de lutar.</strong> Quem luta pelo Cosmo vence de 44% a 52% dos
+  duelos contra quem luta pela DES; quem luta pela FOR, de 44% a 50%; quem põe a CON na
+  frente, de 32% a 52% (a CON perde um pouco nos níveis 17 a 20, quando o ataque dela fica
+  para trás). Até a 0.7.0, a DEF usava só a DES ou o Atributo do Cosmo: quem lutava pela FOR
+  precisava de dois atributos altos onde os outros precisavam de um, e vencia de 13% a 51%;
+  a CON na frente, de 8% a 52%. A guarda (FOR ou CON na DEF, com a armadura no corpo) e a
+  Resistência vinda da CON — no lugar do +1 fixo nos níveis 5, 7, 13 e 17 — corrigiram as
+  duas coisas sem mexer na duração das lutas. Com a CON no 8, de 23% a 46%: deixar a CON de
+  lado continua caro.</p>
+
+  <h3>Cosmo e Sentidos (Capítulo Quatro)</h3>
+  <p><strong>Por que perder PV não dá Cosmo.</strong> Seria o jeito mais óbvio de fazer
+  "quanto mais apanha, mais forte fica", e é o jeito que quebra: o jogador descobriria que
+  vale a pena apanhar de propósito. Jogos de luta tentaram — o modo Rage do Tekken — e os
+  próprios jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para
+  quem perdeu a luta toda". Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e pelo que
+  você perde de verdade. Quem deixa de aparar os golpes com a armadura vence de 12% a 54%
+  dos duelos contra quem apara: no nível 1 quase empata, e dali em diante perde cada vez
+  mais.</p>
+  <p><strong>Queimar.</strong> Quem nunca queima nem paga com a vida vence de 34% a 50% dos
+  duelos contra quem faz isso com juízo: ajuda a fechar a luta, mas não decide sozinho. Numa
+  versão anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes.
+  É por isso que o custo cresce com o Grau. Na 0.7.0 foi testado um preço que crescia com o
+  nível (<span class="dado">1d4</span> + metade do nível) e descartado: sem o degrau do
+  Grau, um nível acima no nível 13 passava a vencer 92%.</p>
+  <p><strong>Bronze contra Ouro.</strong> Do mesmo nível, um Bronze sozinho não vence um Ouro:
+  menos de 1% das vezes, e nem uma Centelha por rodada muda isso. Um Prata, também não. Cinco
+  níveis acima, o Bronze chega a 5%. Quatro Bronzes juntos vencem de 42% a 64%.</p>
+  <p><strong>A Guerra dos Mil Dias</strong> acontece em 11% a 17% das lutas entre dois Ouros e
+  em até 3% das lutas entre Bronzes. Numa versão anterior, a condição era "o mesmo Teto de
+  Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela travava 95% das
+  lutas. Depois que o Cosmo passou a não acabar, os dois usam técnica quase toda rodada, e
+  qualquer número igual travava metade das lutas: por isso o choque pede de 16 a 20.</p>
+
+  <h3>Combate (Capítulo Cinco)</h3>
+  <p><strong>Levantar.</strong> Num duelo em que os dois têm Convicções, quem se recusa a
+  levantar vence de 1% a 14% das vezes.</p>
+  <p><strong>Condições.</strong> Sem "o mesmo golpe não funciona duas vezes", e com "ataques
+  contra você têm Vantagem" no Atordoado, quem tinha uma técnica de atordoar vencia até 89%
+  dos duelos: o alvo perdia turnos seguidos e apanhava com Vantagem. Com as duas mudanças,
+  de 49% a 70% — mais nos níveis altos, onde a luta é longa e perder um turno pesa. As
+  condições médias usadas uma vez, na hora certa, vencem de 40% a 54%; repetidas toda
+  rodada, de 7% a 55%.</p>
+  <p><strong>Técnica Lida.</strong> Até a 0.7.0, a marca ficava na ficha de quem usou a
+  técnica, com o nome de cada oponente nomeado que a tinha visto, para sempre. Com quatro
+  personagens e alguns inimigos recorrentes, a lista não acabava. Agora quem leu anota, e só
+  quem tem Convicção lembra depois da luta. A regra na luta não mudou, e o simulador, que
+  mede uma luta de cada vez, não viu diferença.</p>
+
+  <h3>Técnicas (Capítulo Seis)</h3>
+  <p><strong>Limitações.</strong> Com uma limitação na técnica grande, quem a tem vence de 13%
+  a 48% dos duelos; com duas, de 1% a 48%. O Cosmo economizado nunca paga o que a limitação
+  tira — ainda mais nos níveis altos, onde o Cosmo sobra e a técnica sai quase toda rodada. O
+  dano em você cresce com o Grau porque <span class="dado">1d6</span> fixo não fazia
+  diferença para quem tem 150 PV.</p>
+  <p><strong>O peso das técnicas.</strong> O motor veio da Ascensão dos Semideuses, mas aqui o
+  custo é pago em Cosmo, que enche durante a luta. Em duelos do mesmo nível, as técnicas
+  respondem por 91% a 100% de todo o dano, e um lutador que nunca usa técnica vence de 0% a
+  31% das vezes. Toda técnica impressa neste livro é conferida pelo motor em código a cada
+  mudança.</p>
+  <p><strong>Sem salto de nível.</strong> Até a 0.6.0, cada ponto de dano era
+  <span class="dado">1d8</span> por Grau e os PV vinham por Grau: nos níveis 5, 9, 13 e 17 os
+  dois saltavam juntos, e quem tinha um nível a mais vencia até 97% das vezes. Com o bônus do
+  ponto e os PV nível a nível, um nível acima vence de 55% a 91%. O pico que sobrou, nos
+  níveis 13 e 14, é a proficiência e o +2 de atributo chegando juntos numa luta que já é
+  longa. O salto que ficou é o do Posto, e esse é de propósito.</p>
+
+  <h3>Armaduras (Capítulo Sete)</h3>
+  <p><strong>Características.</strong> Cada uma, sozinha, vence de 47% a 59% dos duelos contra
+  a mesma armadura sem ela. O Elmo fechado não foi medido, porque o simulador não arranca
+  sentidos.</p>
+  <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de graça.
+  O simulador mostrou o efeito: toda técnica era cortada pela metade, as lutas passavam de
+  dez rodadas e dar só golpes comuns rendia tanto quanto usar técnicas.</p>
+  <p><strong>As formas.</strong> Do mesmo nível, uma armadura de Bronze revivida três vezes
+  vence a original de 59% a 67% das vezes; somando a forma de elite, de 65% a 74%. Uma de
+  Prata revivida quatro vezes, de 64% a 67%; uma de Ouro revivida seis vezes, de 69% a 71%.
+  Contra um Ouro original, a de Bronze com a escada inteira — três formas, a de elite e a de
+  deus — vence de 0% a 3%; a de Prata com a escada inteira, de 2% a 7%.</p>
+  <p><strong>Só a morte de verdade.</strong> Uma armadura que fica mais forte quando morre é o
+  coração do jogo — e uma brecha óbvia: um grupo podia destruir a própria armadura num treino
+  para colher a forma nova. A regra fecha isso sem mudar o que acontece numa luta de
+  verdade.</p>
+
+  <h3>Inimigos (Capítulo Dez)</h3>
+  <p><strong>Sozinho contra muitos.</strong> Até a 0.7.0, o chefe tinha os PV multiplicados
+  (× 1¼ a × 2¼) e golpes comuns a mais. Funcionava na conta — quatro Bronzes venciam um Ouro
+  de quatro a seis vezes em dez —, mas a luta levava de 13 a 18 rodadas, uma eternidade na
+  mesa, e o golpe comum, que não cresce com o nível, quase não pesava no nível 20. A
+  resposta depois do turno de cada personagem mantém o mesmo equilíbrio (42% a 64%) em 8 a
+  11 rodadas, e cresce com o nível junto com a técnica do chefe. Testado e descartado: PV
+  normais com golpes comuns a mais (o grupo vencia até 86%); técnicas livres (o grupo ia de
+  81% no nível 15 a 29% no nível 20); a técnica média como resposta (duro demais com três
+  personagens).</p>
+  <p><strong>Figurantes.</strong> Com a tabela antiga, feita para os PV de outra versão, um
+  bando de seis derrubava um personagem de nível 1 em 94% das vezes, e a luta durava 9
+  rodadas.</p>
+
+  <h3>Aliados (Capítulo Onze)</h3>
+  <p>Um personagem que venceria um rival do mesmo nível metade das vezes vence de 68% a 72%
+  com um aliado de luta ao lado; três ou quatro Bronzes contra um Ouro ganham de 5 a 9
+  pontos. Numa versão anterior o aliado vinha só dois níveis abaixo e com os PV inteiros:
+  nos níveis altos, onde dois níveis quase não pesam, ele virava um segundo personagem, e o
+  duelo contra o rival ia a 96%.</p>
+
+  <h3>Progressão (Capítulo Doze)</h3>
+  <p><strong>Vida e Cosmo.</strong> Quem escolhe só Vida contra quem escolhe só Cosmo vence de
+  40% a 70%. Contra quem alterna, os dois extremos perdem nos níveis altos: só Vida, de 18% a
+  47%; só Cosmo, de 14% a 57%. Até a 0.7.0 a Vida não dava Resistência, e quem escolhia só
+  Vida ficava sem armadura nas lutas longas do nível 17 em diante: vencia 4% a 6% contra
+  quem alterna. O +1 de Resistência a cada duas escolhas de Vida espelha o piso que sobe a
+  cada duas de Cosmo.</p>
+  <p><strong>Curta no começo, longa no fim.</strong> Espelho de Bronzes: no nível 1 a luta é
+  decidida em 3 rodadas (5 com as Convicções); no nível 20, em 8 (11). Numa versão anterior
+  a luta durava de 4 a 7 rodadas do começo ao fim.</p>
+  <p><strong>Glória fora da luta.</strong> Quatro dos cinco jeitos de ganhar Glória eram de
+  luta. Uma sessão inteira de política no Santuário, de investigação ou de uma traição
+  desfeita valia quase nada, e o jogo ensinava sem querer que progresso é pancada. O sexto
+  gatilho não muda o que o jogo é; só deixa de punir quem resolve sem lutar.</p>
+
+  <h3>O que ainda falta</h3>
+  <ul>
+    <li><strong>Mesa.</strong> Principalmente as lutas de grupo contra a elite e o nível alto:
+      se 8 a 11 rodadas são divertidas, e não só equilibradas.</li>
+    <li><strong>Princípio da constelação.</strong> Um comportamento pequeno por constelação,
+      para o gelo, o fogo e as correntes não virarem a mesma técnica com outra roupa.
+      Adiado: é fácil virar balanceamento por elemento.</li>
+    <li>Grupo contra grupo, que o simulador ainda não mede.</li>
+  </ul>
+</section>
+
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.7.0</strong>, de 27/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.8.0</strong>, de 28/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que

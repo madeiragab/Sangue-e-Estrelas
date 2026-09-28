@@ -57,6 +57,7 @@ def aliado(n: int):
     metade dos PV e sem Convicção."""
     a = montar("Aliado", R.nivel_do_aliado(n), conviccoes=0)
     a.pv_max = round(a.pv_max * R.ALIADO_PV)
+    a.aliado = True                 # o chefe não responde ao turno dele
     a.reiniciar()
     return a
 

@@ -1,0 +1,157 @@
+<!-- ==================== APÊNDICE ==================== -->
+<section class="capitulo" id="apendice">
+  <div class="abertura">
+    <span class="alg">Apêndice</span>
+    <h2>Notas de design e balanceamento</h2>
+    <p>Por que cada regra é como é, o que o simulador mediu e o que mudou no caminho</p>
+  </div>
+
+  <p class="abre">Nada aqui é regra. É o caderno de quem desenhou o jogo: de onde veio cada
+  número, o que foi testado e descartado, e o que uma versão anterior fazia de errado. Se
+  você só quer jogar, pode pular este apêndice inteiro.</p>
+
+  <div class="destaque">
+    <span class="rotulo">O que o simulador sabe, e o que não sabe</span>
+    <p>Todo número marcado como medido vem de milhares de duelos rodados com as regras deste
+    livro, no simulador que acompanha o projeto (a pasta <code>sim/</code> do repositório).
+    O lutador de referência é um Bronze com DES e CON na frente, a técnica grande, uma
+    pequena e uma média, e uma política de jogo fixa.</p>
+    <p>O simulador responde bem a uma pergunta: <em>num duelo, com esta estratégia, quem
+    tende a ganhar?</em> Ele é ruim em tudo o que uma mesa faz melhor: quatro jogadores
+    combinando ataques, Centelhas mandadas na hora certa, terreno, objetivos que não são
+    derrubar alguém, conhecimento do inimigo, e a interação que ninguém pensou em testar. Um
+    número daqui é um ponto de partida, não uma prova. Se ele contrariar a sua mesa, a mesa
+    vence.</p>
+  </div>
+
+  <h3>Criação (Capítulo Três)</h3>
+  <p><strong>Três jeitos de lutar.</strong> Quem luta pelo Cosmo vence de 44% a 52% dos
+  duelos contra quem luta pela DES; quem luta pela FOR, de 44% a 50%; quem põe a CON na
+  frente, de 32% a 52% (a CON perde um pouco nos níveis 17 a 20, quando o ataque dela fica
+  para trás). Até a 0.7.0, a DEF usava só a DES ou o Atributo do Cosmo: quem lutava pela FOR
+  precisava de dois atributos altos onde os outros precisavam de um, e vencia de 13% a 51%;
+  a CON na frente, de 8% a 52%. A guarda (FOR ou CON na DEF, com a armadura no corpo) e a
+  Resistência vinda da CON — no lugar do +1 fixo nos níveis 5, 7, 13 e 17 — corrigiram as
+  duas coisas sem mexer na duração das lutas. Com a CON no 8, de 23% a 46%: deixar a CON de
+  lado continua caro.</p>
+
+  <h3>Cosmo e Sentidos (Capítulo Quatro)</h3>
+  <p><strong>Por que perder PV não dá Cosmo.</strong> Seria o jeito mais óbvio de fazer
+  "quanto mais apanha, mais forte fica", e é o jeito que quebra: o jogador descobriria que
+  vale a pena apanhar de propósito. Jogos de luta tentaram — o modo Rage do Tekken — e os
+  próprios jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para
+  quem perdeu a luta toda". Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e pelo que
+  você perde de verdade. Quem deixa de aparar os golpes com a armadura vence de 12% a 54%
+  dos duelos contra quem apara: no nível 1 quase empata, e dali em diante perde cada vez
+  mais.</p>
+  <p><strong>Queimar.</strong> Quem nunca queima nem paga com a vida vence de 34% a 50% dos
+  duelos contra quem faz isso com juízo: ajuda a fechar a luta, mas não decide sozinho. Numa
+  versão anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes.
+  É por isso que o custo cresce com o Grau. Na 0.7.0 foi testado um preço que crescia com o
+  nível (<span class="dado">1d4</span> + metade do nível) e descartado: sem o degrau do
+  Grau, um nível acima no nível 13 passava a vencer 92%.</p>
+  <p><strong>Bronze contra Ouro.</strong> Do mesmo nível, um Bronze sozinho não vence um Ouro:
+  menos de 1% das vezes, e nem uma Centelha por rodada muda isso. Um Prata, também não. Cinco
+  níveis acima, o Bronze chega a 5%. Quatro Bronzes juntos vencem de 42% a 64%.</p>
+  <p><strong>A Guerra dos Mil Dias</strong> acontece em 11% a 17% das lutas entre dois Ouros e
+  em até 3% das lutas entre Bronzes. Numa versão anterior, a condição era "o mesmo Teto de
+  Cosmo" — e como dois guerreiros do mesmo nível sempre têm o mesmo Teto, ela travava 95% das
+  lutas. Depois que o Cosmo passou a não acabar, os dois usam técnica quase toda rodada, e
+  qualquer número igual travava metade das lutas: por isso o choque pede de 16 a 20.</p>
+
+  <h3>Combate (Capítulo Cinco)</h3>
+  <p><strong>Levantar.</strong> Num duelo em que os dois têm Convicções, quem se recusa a
+  levantar vence de 1% a 14% das vezes.</p>
+  <p><strong>Condições.</strong> Sem "o mesmo golpe não funciona duas vezes", e com "ataques
+  contra você têm Vantagem" no Atordoado, quem tinha uma técnica de atordoar vencia até 89%
+  dos duelos: o alvo perdia turnos seguidos e apanhava com Vantagem. Com as duas mudanças,
+  de 49% a 70% — mais nos níveis altos, onde a luta é longa e perder um turno pesa. As
+  condições médias usadas uma vez, na hora certa, vencem de 40% a 54%; repetidas toda
+  rodada, de 7% a 55%.</p>
+  <p><strong>Técnica Lida.</strong> Até a 0.7.0, a marca ficava na ficha de quem usou a
+  técnica, com o nome de cada oponente nomeado que a tinha visto, para sempre. Com quatro
+  personagens e alguns inimigos recorrentes, a lista não acabava. Agora quem leu anota, e só
+  quem tem Convicção lembra depois da luta. A regra na luta não mudou, e o simulador, que
+  mede uma luta de cada vez, não viu diferença.</p>
+
+  <h3>Técnicas (Capítulo Seis)</h3>
+  <p><strong>Limitações.</strong> Com uma limitação na técnica grande, quem a tem vence de 13%
+  a 48% dos duelos; com duas, de 1% a 48%. O Cosmo economizado nunca paga o que a limitação
+  tira — ainda mais nos níveis altos, onde o Cosmo sobra e a técnica sai quase toda rodada. O
+  dano em você cresce com o Grau porque <span class="dado">1d6</span> fixo não fazia
+  diferença para quem tem 150 PV.</p>
+  <p><strong>O peso das técnicas.</strong> O motor veio da Ascensão dos Semideuses, mas aqui o
+  custo é pago em Cosmo, que enche durante a luta. Em duelos do mesmo nível, as técnicas
+  respondem por 91% a 100% de todo o dano, e um lutador que nunca usa técnica vence de 0% a
+  31% das vezes. Toda técnica impressa neste livro é conferida pelo motor em código a cada
+  mudança.</p>
+  <p><strong>Sem salto de nível.</strong> Até a 0.6.0, cada ponto de dano era
+  <span class="dado">1d8</span> por Grau e os PV vinham por Grau: nos níveis 5, 9, 13 e 17 os
+  dois saltavam juntos, e quem tinha um nível a mais vencia até 97% das vezes. Com o bônus do
+  ponto e os PV nível a nível, um nível acima vence de 55% a 91%. O pico que sobrou, nos
+  níveis 13 e 14, é a proficiência e o +2 de atributo chegando juntos numa luta que já é
+  longa. O salto que ficou é o do Posto, e esse é de propósito.</p>
+
+  <h3>Armaduras (Capítulo Sete)</h3>
+  <p><strong>Características.</strong> Cada uma, sozinha, vence de 47% a 59% dos duelos contra
+  a mesma armadura sem ela. O Elmo fechado não foi medido, porque o simulador não arranca
+  sentidos.</p>
+  <p><strong>Por que Aparar gasta a reação.</strong> Na primeira versão, aparar era de graça.
+  O simulador mostrou o efeito: toda técnica era cortada pela metade, as lutas passavam de
+  dez rodadas e dar só golpes comuns rendia tanto quanto usar técnicas.</p>
+  <p><strong>As formas.</strong> Do mesmo nível, uma armadura de Bronze revivida três vezes
+  vence a original de 59% a 67% das vezes; somando a forma de elite, de 65% a 74%. Uma de
+  Prata revivida quatro vezes, de 64% a 67%; uma de Ouro revivida seis vezes, de 69% a 71%.
+  Contra um Ouro original, a de Bronze com a escada inteira — três formas, a de elite e a de
+  deus — vence de 0% a 3%; a de Prata com a escada inteira, de 2% a 7%.</p>
+  <p><strong>Só a morte de verdade.</strong> Uma armadura que fica mais forte quando morre é o
+  coração do jogo — e uma brecha óbvia: um grupo podia destruir a própria armadura num treino
+  para colher a forma nova. A regra fecha isso sem mudar o que acontece numa luta de
+  verdade.</p>
+
+  <h3>Inimigos (Capítulo Dez)</h3>
+  <p><strong>Sozinho contra muitos.</strong> Até a 0.7.0, o chefe tinha os PV multiplicados
+  (× 1¼ a × 2¼) e golpes comuns a mais. Funcionava na conta — quatro Bronzes venciam um Ouro
+  de quatro a seis vezes em dez —, mas a luta levava de 13 a 18 rodadas, uma eternidade na
+  mesa, e o golpe comum, que não cresce com o nível, quase não pesava no nível 20. A
+  resposta depois do turno de cada personagem mantém o mesmo equilíbrio (42% a 64%) em 8 a
+  11 rodadas, e cresce com o nível junto com a técnica do chefe. Testado e descartado: PV
+  normais com golpes comuns a mais (o grupo vencia até 86%); técnicas livres (o grupo ia de
+  81% no nível 15 a 29% no nível 20); a técnica média como resposta (duro demais com três
+  personagens).</p>
+  <p><strong>Figurantes.</strong> Com a tabela antiga, feita para os PV de outra versão, um
+  bando de seis derrubava um personagem de nível 1 em 94% das vezes, e a luta durava 9
+  rodadas.</p>
+
+  <h3>Aliados (Capítulo Onze)</h3>
+  <p>Um personagem que venceria um rival do mesmo nível metade das vezes vence de 68% a 72%
+  com um aliado de luta ao lado; três ou quatro Bronzes contra um Ouro ganham de 5 a 9
+  pontos. Numa versão anterior o aliado vinha só dois níveis abaixo e com os PV inteiros:
+  nos níveis altos, onde dois níveis quase não pesam, ele virava um segundo personagem, e o
+  duelo contra o rival ia a 96%.</p>
+
+  <h3>Progressão (Capítulo Doze)</h3>
+  <p><strong>Vida e Cosmo.</strong> Quem escolhe só Vida contra quem escolhe só Cosmo vence de
+  40% a 70%. Contra quem alterna, os dois extremos perdem nos níveis altos: só Vida, de 18% a
+  47%; só Cosmo, de 14% a 57%. Até a 0.7.0 a Vida não dava Resistência, e quem escolhia só
+  Vida ficava sem armadura nas lutas longas do nível 17 em diante: vencia 4% a 6% contra
+  quem alterna. O +1 de Resistência a cada duas escolhas de Vida espelha o piso que sobe a
+  cada duas de Cosmo.</p>
+  <p><strong>Curta no começo, longa no fim.</strong> Espelho de Bronzes: no nível 1 a luta é
+  decidida em 3 rodadas (5 com as Convicções); no nível 20, em 8 (11). Numa versão anterior
+  a luta durava de 4 a 7 rodadas do começo ao fim.</p>
+  <p><strong>Glória fora da luta.</strong> Quatro dos cinco jeitos de ganhar Glória eram de
+  luta. Uma sessão inteira de política no Santuário, de investigação ou de uma traição
+  desfeita valia quase nada, e o jogo ensinava sem querer que progresso é pancada. O sexto
+  gatilho não muda o que o jogo é; só deixa de punir quem resolve sem lutar.</p>
+
+  <h3>O que ainda falta</h3>
+  <ul>
+    <li><strong>Mesa.</strong> Principalmente as lutas de grupo contra a elite e o nível alto:
+      se 8 a 11 rodadas são divertidas, e não só equilibradas.</li>
+    <li><strong>Princípio da constelação.</strong> Um comportamento pequeno por constelação,
+      para o gelo, o fogo e as correntes não virarem a mesma técnica com outra roupa.
+      Adiado: é fácil virar balanceamento por elemento.</li>
+    <li>Grupo contra grupo, que o simulador ainda não mede.</li>
+  </ul>
+</section>

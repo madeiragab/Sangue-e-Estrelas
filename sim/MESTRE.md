@@ -9,7 +9,7 @@ Gerado por `python sim/mestre.py`. 800 duelos por célula (400 nas lutas de grup
 | Fácil | Nomeado sem Convicção, do mesmo nível ou um acima | 64% a 99% |
 | Justa | Mesmo nível e mesmo Posto, com três Convicções, como o personagem | 48% a 52% |
 | Difícil | Rival um nível acima, com uma Convicção | 12% a 35% |
-| Muito difícil | Rival dois níveis acima, com uma Convicção | 4% a 24% |
+| Muito difícil | Rival dois níveis acima, com uma Convicção | 4% a 23% |
 | Muito difícil | Um Prata do mesmo nível com uma Convicção, contra um Bronze | 6% a 12% |
 | Mortal | Elite do mesmo nível, contra um Bronze ou um Prata | 0% |
 | Mortal, mas possível | Elite três níveis abaixo do personagem (a partir do nível 18) | 0% a 5% |
@@ -66,37 +66,37 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 
 | Bronzes contra um Ouro do mesmo nível | Sem aliado | Com um aliado |
 |---|---:|---:|
-| 3 Bronzes, nível 15 | 19% | 32% |
-| 4 Bronzes, nível 15 | 45% | 60% |
-| 3 Bronzes, nível 20 | 23% | 34% |
-| 4 Bronzes, nível 20 | 62% | 72% |
+| 3 Bronzes, nível 15 | 27% | 35% |
+| 4 Bronzes, nível 15 | 59% | 67% |
+| 3 Bronzes, nível 20 | 10% | 16% |
+| 4 Bronzes, nível 20 | 43% | 48% |
 
 | Quatro Bronzes contra um Ouro do mesmo nível | Vence | Caem | Rodadas |
 |---|---:|---:|---:|
-| Nível 15 | 50% | 3.0 | 12.8 |
-| Nível 17 | 37% | 3.3 | 15.4 |
-| Nível 20 | 64% | 2.8 | 17.6 |
+| Nível 15 | 64% | 2.3 | 7.8 |
+| Nível 17 | 47% | 2.7 | 8.7 |
+| Nível 20 | 42% | 2.9 | 10.8 |
 
 ## As fichas prontas
 
 | Ficha | Quem enfrenta | Vence | Caem |
 |---|---|---:|---:|
-| Cavaleiro Negro | Um Bronze de nível 1 | 85% | — |
+| Cavaleiro Negro | Um Bronze de nível 1 | 84% | — |
 | Espectro de Estrela Terrestre | Um Bronze de nível 3 | 87% | — |
 | Espectro de Estrela Terrestre | Um Bronze de nível 4 | 91% | — |
 | Cavaleiro de Prata | Um Bronze de nível 8 | 6% | — |
 | Cavaleiro de Prata | Um Bronze de nível 9 | 11% | — |
 | Cavaleiro de Prata | Um Bronze de nível 13 | 86% | — |
-| Cavaleiro de Prata | Dois Bronzes de nível 9 | 71% | 1.0 |
-| Cavaleiro de Prata | Três Bronzes de nível 9 | 86% | 1.5 |
-| Guerreiro Deus | Quatro Bronzes de nível 12 | 3% | 4.0 |
-| Guerreiro Deus | Quatro Bronzes de nível 15 | 66% | 2.6 |
-| General Marina | Quatro Bronzes de nível 15 | 49% | 3.0 |
+| Cavaleiro de Prata | Dois Bronzes de nível 9 | 60% | 1.2 |
+| Cavaleiro de Prata | Três Bronzes de nível 9 | 96% | 0.9 |
+| Guerreiro Deus | Quatro Bronzes de nível 12 | 15% | 3.7 |
+| Guerreiro Deus | Quatro Bronzes de nível 15 | 70% | 2.0 |
+| General Marina | Quatro Bronzes de nível 15 | 65% | 2.2 |
 | Cavaleiro de Ouro | Um Bronze de nível 16 | 0% | — |
-| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 34% | 3.4 |
-| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 58% | 3.6 |
-| Juiz do Inferno | Quatro Bronzes de nível 17 | 47% | 3.1 |
-| Juiz do Inferno | Quatro Bronzes de nível 18 | 66% | 2.7 |
+| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 48% | 2.8 |
+| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 77% | 2.2 |
+| Juiz do Inferno | Quatro Bronzes de nível 17 | 54% | 2.6 |
+| Juiz do Inferno | Quatro Bronzes de nível 18 | 66% | 2.3 |
 
 | Espectros juntos contra um Bronze | O Bronze vence |
 |---|---:|

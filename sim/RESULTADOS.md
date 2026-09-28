@@ -8,8 +8,8 @@ Espelho de Bronze contra Bronze. *Rodadas* é a duração média da luta; *com C
 
 | Nível | PV | Rodadas, com Convicções | Rodadas, sem | Dano vindo de técnicas | Quem não usa técnica vence |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 16 | 4.7 | 2.9 | 91% | 35% |
-| 4 | 42 | 4.9 | 3.1 | 97% | 16% |
+| 1 | 16 | 4.7 | 2.9 | 91% | 31% |
+| 4 | 42 | 4.9 | 3.1 | 97% | 15% |
 | 5 | 54 | 6.1 | 4.6 | 95% | 14% |
 | 8 | 97 | 6.4 | 4.9 | 94% | 4% |
 | 9 | 114 | 7.6 | 6.0 | 100% | 8% |
@@ -27,13 +27,13 @@ Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%;
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Espelho: Bronze contra Bronze | 50% | 51% | 51% | 50% | 50% | 51% | 49% |
 | Quem não apara a armadura | 54% | 45% | 40% | 24% | 16% | 16% | 12% |
-| Quem nunca queima | 47% | 45% | 42% | 34% | 42% | 49% | 51% |
+| Quem nunca queima | 47% | 44% | 42% | 34% | 42% | 49% | 50% |
 | Quem nunca levanta | 6% | 8% | 14% | 10% | 3% | 1% | 1% |
 | Prata contra Bronze | — | — | 89% | 90% | 91% | 91% | 90% |
 | Bronze contra Prata | — | — | 11% | 11% | 8% | 8% | 6% |
 | Prata contra Ouro | — | — | — | — | 0% | 0% | 0% |
-| Um nível acima | 70% | 73% | 76% | 89% | 71% | 66% | — |
-| Dois níveis acima | 79% | 81% | 88% | 95% | 89% | 76% | — |
+| Um nível acima | 71% | 73% | 76% | 89% | 71% | 66% | — |
+| Dois níveis acima | 79% | 81% | 88% | 95% | 89% | 78% | — |
 | Bronze sozinho contra Ouro | — | — | — | — | 0% | 0% | 0% |
 | Bronze com uma Centelha por rodada contra Ouro | — | — | — | — | 0% | 0% | 0% |
 | Bronze que se cega contra Ouro | — | — | — | — | 0% | 0% | 0% |
@@ -44,8 +44,8 @@ Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%;
 | Prata revivida quatro vezes contra a original | — | — | 65% | 64% | 67% | 66% | 64% |
 | Prata com a escada inteira (quatro, elite, deus) contra Ouro | — | — | — | — | 7% | 2% | 2% (5% emp.) |
 | Ouro revivido seis vezes contra o original | — | — | — | — | 69% (9% emp.) | 71% (11% emp.) | 69% (13% emp.) |
-| Garras contra nenhum acessório | 49% | 50% | 51% | 49% | 48% | 51% | 47% |
-| Escudo contra nenhum acessório | 47% | 49% | 51% | 49% | 48% | 48% | 46% |
+| Garras contra nenhum acessório | 49% | 50% | 51% | 49% | 48% | 51% | 49% |
+| Escudo contra nenhum acessório | 48% | 49% | 51% | 49% | 48% | 48% | 50% |
 
 ## Guerra dos Mil Dias
 
