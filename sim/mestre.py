@@ -183,6 +183,57 @@ def bando(nivel: int, tamanho: int = 6, area: bool = False, lutas: int = 2000,
 
 
 # ---------------------------------------------------------------------------
+# Antes do Sexto Sentido: a prova da armadura
+# ---------------------------------------------------------------------------
+
+
+def prova(lutas: int = 4000, semente: int = 1, despertar: bool = True) -> dict:
+    """Dois aprendizes (nível 0, humanos) na prova da armadura: FOR ou DES 15, CON 14.
+
+    Cada um ataca uma vez por turno com o golpe de gente (1d4 + 2). Quem cai a 0 PV
+    gasta a Convicção e levanta com um quarto dos PV; com `despertar`, levanta desperto:
+    um quarto dos PV do nível 1, o Cosmo no Teto e a técnica assinatura (a grande do
+    Grau 1). Devolve as rodadas, quantas provas tiveram alguém despertando e em quantas
+    os dois despertaram."""
+    rng = random.Random(semente)
+    mod = 2
+    rodadas = despertou = vence_desperto = 0
+    for _ in range(lutas):
+        pv = [R.pv_humano(mod), R.pv_humano(mod)]
+        acordado = [False, False]
+        levantou = [False, False]
+        r = 0
+        vez = rng.randint(0, 1)
+        while min(pv) > 0 and r < 30:
+            r += 1
+            for _t in range(2):
+                a, b = vez, 1 - vez
+                vez = b
+                de = R.HUMANO_DEF + mod
+                if rng.randint(1, 20) + mod + R.prof(1) >= de:
+                    if acordado[a]:
+                        # desperto: o Cosmo no Teto e a técnica assinatura, a grande
+                        pontos = R.TAMANHO_MAXIMO[1]
+                        pv[b] -= sum(rng.randint(1, 8) for _p in range(pontos)) + mod
+                    else:
+                        pv[b] -= rng.randint(1, R.HUMANO_DADO_GOLPE) + mod
+                if pv[b] <= 0 and not levantou[b]:
+                    levantou[b] = True
+                    if despertar:
+                        acordado[b] = True
+                        pv[b] = max(1, (R.PV_BASE[1] + mod) // 4)
+                    else:
+                        pv[b] = max(1, R.pv_humano(mod) // 4)
+                if pv[b] <= 0:
+                    break
+        rodadas += r
+        despertou += any(acordado)
+        vence_desperto += all(acordado)
+    return {"rodadas": rodadas / lutas, "despertou": despertou / lutas,
+            "os_dois_despertam": vence_desperto / lutas}
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -325,6 +376,18 @@ def main() -> None:
     for i, (q, n) in enumerate(((2, 3), (2, 4), (3, 4), (3, 5))):
         linhas.append(f"| {q} Espectros contra um Bronze de nível {n} | "
                       f"{pct(varios_contra_um('espectro-terrestre', q, n, semente=900 + i))} |")
+
+    print("prova...")
+    sem, com = prova(despertar=False), prova(despertar=True)
+    linhas += ["", "## Antes do Sexto Sentido: a prova da armadura", "",
+               "Dois aprendizes (nível 0, humanos, FOR ou DES 15 e CON 14) num duelo. Quem cai "
+               "gasta a Convicção e levanta — humano, ou desperto.", "",
+               "| A prova | Rodadas | Alguém desperta | Os dois despertam |", "|---|---:|---:|---:|",
+               f"| Sem despertar | {sem['rodadas']:.1f} | — | — |",
+               f"| Levantando desperto | {com['rodadas']:.1f} | {pct(com['despertou'])} | "
+               f"{pct(com['os_dois_despertam'])} |",
+               "", "Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de "
+               "figurantes, na seção acima."]
 
     saida = pathlib.Path(__file__).parent / "MESTRE.md"
     saida.write_text("\n".join(linhas) + "\n", encoding="utf-8")

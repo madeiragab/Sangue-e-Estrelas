@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.8.1-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.9.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.8.1 · 28/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.9.0 · 28/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -122,13 +122,13 @@ Um livro só, para jogador e Mestre, com 13 capítulos e um apêndice:
 |---|---|---|
 | I | Antes de tudo | O que é o jogo e o que você precisa |
 | II | Como se joga | O d20, a dificuldade e os cinco números da ficha |
-| III | Criação de personagem | Nove etapas, sem classes: exército, constelação, treino, Convicções |
+| III | Criação de personagem | Antes do Sexto Sentido (o humano e a prova da armadura), e nove etapas sem classes: exército, constelação, treino, Convicções |
 | IV | Cosmo e Sentidos | O Cosmo que cresce, queimar, o Sétimo dominado, a Guerra dos Mil Dias, o Oitavo, o Nono, os cinco sentidos e as Centelhas |
 | V | Combate | Ações, reações, "o mesmo golpe não funciona duas vezes", cair e levantar, condições |
 | VI | Técnicas | O motor para criar as suas, evolução e o Golpe do Assento |
 | VII | Armaduras | Características, Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
 | VIII | Itens e relíquias | Raridade, Sintonia, remédios, os três metais, melhorias e relíquias — nenhuma arma |
-| IX | Exércitos | O molde e quatro exércitos de exemplo |
+| IX | Exércitos | A cadeia de comando, do aprendiz ao deus, o molde e quatro exércitos de exemplo |
 | X | Inimigos | Como montar, a tabela rápida de 1 a 20, figurantes, a dificuldade medida e sete fichas prontas |
 | XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
 | XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |

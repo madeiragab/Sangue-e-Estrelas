@@ -1343,6 +1343,51 @@ function rolar(modo) {
     jeito de lutar ponto por ponto. A sua "classe" é o que você monta.</p>
   </div>
 
+  <h3 id="antes-do-sexto">Antes do Sexto Sentido</h3>
+  <p>Todo guerreiro começou humano. Antes da armadura e do Cosmo houve alguém de carne e osso
+  treinando até cair: um <em class="termo">aprendiz</em>. O que separa as duas coisas é o
+  <strong>Sexto Sentido</strong>. Quando ele desperta, a pessoa passa a sentir o Cosmo que
+  existe em tudo, e o corpo passa a obedecer a ele. É aí que alguém se torna sobre-humano —
+  e é aí que este jogo começa: os personagens de jogador nascem despertos, no nível 1.</p>
+  <p>O status base abaixo é o de todo mundo antes disso. Ele serve para os aprendizes do
+  Mestre, para a gente comum e para jogar o treino antes da armadura, se a mesa quiser.</p>
+
+  <div class="rolagem"><table>
+    <thead><tr><th>O status base</th><th>Humano · o aprendiz, nível 0</th><th>Desperto · nível 1</th></tr></thead>
+    <tbody>
+      <tr><td>PV</td><td>4 + CON</td><td>14 + CON</td></tr>
+      <tr><td>DEF</td><td>10 + DES</td><td>10 + DES ou o Atributo do Cosmo, + armadura (e a guarda)</td></tr>
+      <tr><td>Golpe</td><td>FOR ou DES + proficiência; <span class="dado">1d4</span> + o atributo</td><td>FOR, DES ou o Atributo do Cosmo + proficiência; <span class="dado">1d8</span> + o atributo</td></tr>
+      <tr><td>Defesas passivas</td><td>10 + atributo, + proficiência nas treinadas</td><td>14 + atributo, + proficiência nas treinadas</td></tr>
+      <tr><td>Cosmo</td><td>Nenhum: sem Teto, sem piso</td><td>O Cosmo inicial, o piso e Teto 5</td></tr>
+      <tr><td>Técnicas</td><td>Nenhuma</td><td>Duas, uma delas a assinatura</td></tr>
+      <tr><td>Convicções</td><td>Uma: o motivo pelo qual ele treina</td><td>Três</td></tr>
+      <tr><td>Proficiência · perícias</td><td>+2 · as duas do treino</td><td>+2 · as seis da criação</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Gente comum</strong> usa a coluna do humano, com atributos entre 8 e 12 e
+      sem proficiência para acertar.</li>
+    <li><strong>Diante de um desperto, o humano é figurante</strong> (<a href="#figurantes">Capítulo
+      Dez</a>): um acerto derruba, e o bando dele usa a linha de figurantes do nível do
+      guerreiro. É o que a série mostra — um Cavaleiro passa por uma guarda inteira como
+      quem passa por uma porta.</li>
+    <li>Só quem tem Posto acima do Bronze treina um aprendiz (<a href="#comando">Capítulo
+      Nove</a>).</li>
+  </ul>
+
+  <div class="destaque">
+    <span class="rotulo">O despertar: a prova da armadura</span>
+    <p>O aprendiz ganha a armadura numa prova diante do mestre dele — quase sempre um duelo
+    contra outro aprendiz que quer a mesma armadura. Na prova, quem cai a 0 PV e gasta a
+    Convicção para levantar <strong>levanta desperto</strong>: com um quarto dos PV do nível
+    1, o Cosmo no Teto e a técnica assinatura, que nasce ali. Quem vence a prova ganha a
+    armadura e está no nível 1. Quem perdeu e despertou mesmo assim já é um guerreiro — sem
+    armadura, por enquanto.</p>
+  </div>
+  <p>O Sexto Sentido não escolhe quem vence: numa prova, quase sempre os dois despertam. A
+  armadura escolhe.</p>
+
   <div class="ornamento">❖</div>
 
   <h3 id="etapa-exercito">Etapa 1 · Exército</h3>
@@ -1470,6 +1515,11 @@ function rolar(modo) {
   <p>Antes da armadura houve o treino, e o treino quase te matou. Escolha onde ele
   aconteceu. Cada treino dá <strong>duas perícias</strong> e uma
   <em class="termo">lição</em>: uma coisa que você aprendeu do jeito difícil.</p>
+  <p><strong>Quem te treinou.</strong> Todo treino tem um mestre, e ele tem Posto acima do
+  seu: um Prata ou um Ouro — ou o degrau equivalente no seu exército. Um Bronze nunca tem
+  aprendiz. Dê ao seu mestre um nome, uma constelação e um lugar na
+  <a href="#comando">cadeia de comando</a>: ele é o seu Mentor (<a href="#cap11">Capítulo
+  Onze</a>) e, até você subir de Posto, alguém a quem você responde.</p>
 
   <div class="grade">
     <div class="cartao">
@@ -3208,14 +3258,59 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   do nível 9, elite a partir do nível 15 e com uma vaga vazia. Um Bronze de nível 12 é um
   veterano que ninguém promoveu — e ainda perde para quase qualquer Ouro.</p>
 
+  <h3 id="comando">A cadeia de comando</h3>
+  <p>Todo exército é uma escada, e cada degrau responde ao de cima. Ninguém se forma
+  sozinho: para virar guerreiro, você precisa ser treinado por alguém de Posto acima.</p>
+  <ol class="passos">
+    <li><b>Aprendiz</b> Humano, ainda sem o Sexto Sentido (<a href="#antes-do-sexto">Capítulo
+      Três</a>). É treinado por um Prata ou por um Ouro.</li>
+    <li><b>Base · Bronze</b> O guerreiro que acabou de despertar. Ainda está aprendendo, e
+      por isso <strong>não tem aprendiz</strong>. Responde a um Prata.</li>
+    <li><b>Intermediário · Prata</b> Pode ter aprendizes, e comanda um ou mais Bronzes.</li>
+    <li><b>Elite · Ouro</b> Pode ter aprendizes. Comanda um ou mais Pratas — e, por eles, os
+      Bronzes deles.</li>
+    <li><b>O líder</b> Um só, que comanda toda a elite e fala em nome do deus. No Santuário,
+      o Grande Mestre.</li>
+    <li><b>O deus</b> Acima de todos. Comanda o líder.</li>
+  </ol>
+  <div class="rolagem"><table>
+    <thead><tr><th>Deus</th><th>Quem treina aprendizes</th><th>O líder, abaixo do deus</th></tr></thead>
+    <tbody>
+      <tr><td>Atena</td><td>Cavaleiros de Prata e de Ouro</td><td>O Grande Mestre do Santuário</td></tr>
+      <tr><td>Poseidon</td><td>Guardiões dos Mares e Generais Marinas</td><td>O General do Dragão Marinho, o primeiro dos sete</td></tr>
+      <tr><td>Hades</td><td>Estrelas Celestes e Juízes do Inferno</td><td>Pandora — e, acima dela, os deuses gêmeos Hypnos e Thanatos</td></tr>
+      <tr><td>Odin (Asgard)</td><td>Guardas do Palácio e Guerreiros Deuses</td><td>Hilda de Polaris, a representante de Odin na Terra</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Ter um aprendiz</h5>
+      <p class="etiqueta">Prata ou acima</p>
+      <p>Um aprendiz é um personagem do Mestre de nível 0. Treiná-lo é uma ação de
+      Interlúdio (<a href="#interludio">Capítulo Doze</a>); depois de três semanas de
+      treino, ele pode fazer a prova. Se ganhar a armadura, é um Bronze — que responde a
+      você e pode lutar ao seu lado como aliado de luta (<a href="#cap11">Capítulo
+      Onze</a>).</p>
+    </div>
+    <div class="cartao">
+      <h5>Comandar e obedecer</h5>
+      <p class="etiqueta">A ordem desce a escada</p>
+      <p>A missão chega pela cadeia: o deus fala ao líder, o líder à elite, a elite aos
+      Pratas, os Pratas aos Bronzes. O objetivo da missão — o que vale Glória no
+      <a href="#gloria">Capítulo Doze</a> — é o que quem comanda mandou fazer. Desobedecer
+      não é uma regra: é uma história. O Santuário manda um Prata atrás de quem
+      desobedeceu.</p>
+    </div>
+  </div>
+
   <h3>O molde de exército</h3>
   <ol class="passos">
     <li><b>O deus</b> A quem o exército serve. É dele o sangue que revive as armaduras no
       último degrau, e dele o elo que abre o Nono Sentido.</li>
     <li><b>Os nomes</b> Como se chamam os guerreiros e a armadura: Cavaleiros e Armaduras,
       Marinas e Escamas.</li>
-    <li><b>A hierarquia</b> Os nomes dos três Postos, e quantas vagas tem a elite. Cada vaga
-      de elite tem o seu Golpe do Assento.</li>
+    <li><b>A hierarquia</b> Os nomes dos três Postos, quantas vagas tem a elite e quem é o
+      líder acima dela. Cada vaga de elite tem o seu Golpe do Assento.</li>
     <li><b>Uma ou duas regras próprias</b> O que diferencia este exército dos outros na
       mesa. Do tamanho das regras abaixo.</li>
   </ol>
@@ -3369,8 +3464,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Figurante</h5>
       <p class="etiqueta">Cenário que ataca</p>
-      <p>Soldados, guardas, espectros sem nome. Um acerto derruba. Vêm em bando, e o bando
-      tem uma linha de números só.</p>
+      <p>Soldados, guardas, espectros sem nome — e todo humano que ainda não despertou o
+      Sexto Sentido. Um acerto derruba. Vêm em bando, e o bando tem uma linha de números
+      só.</p>
     </div>
     <div class="cartao">
       <h5>Nomeado</h5>
@@ -3754,7 +3850,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Mentor</h5>
       <p class="etiqueta">No Interlúdio</p>
-      <p>Quem te treinou. Treinando com ele numa semana de Interlúdio, você tem +2 no teste
+      <p>Quem te treinou — sempre de Posto acima do seu (<a href="#comando">Capítulo
+      Nove</a>). Treinando com ele numa semana de Interlúdio, você tem +2 no teste
       daquela semana — evoluir uma técnica, o treino do Oitavo, aprender a restaurar. Um
       mentor também pode ensinar a lição do treino dele como a sua Segunda Lição.</p>
     </div>
@@ -3957,6 +4054,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <p>Medicina contra CD 20, feito por alguém que cuide de você. No sucesso, o sentido
       volta — e o +1 de Teto dele vai embora.</p>
     </div>
+    <div class="cartao">
+      <h5>Treinar um aprendiz</h5>
+      <p>Só Prata ou acima (<a href="#comando">Capítulo Nove</a>). Uma semana de treino
+      conta; com três, o aprendiz pode fazer a prova da armadura
+      (<a href="#antes-do-sexto">Capítulo Três</a>).</p>
+    </div>
   </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
@@ -3975,6 +4078,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   Hierarquia sobre os Bronzes. Subir para a elite dá a armadura da vaga, com as três
   características dela, o Golpe do Assento e o Sétimo dominado. O Posto não está na tabela de níveis, porque
   ele não vem com o nível: vem com ele e com a história.</p>
+  <p>Com o Posto vem o lugar na <a href="#comando">cadeia de comando</a>. Um Bronze responde a
+  um Prata e não tem aprendiz. A partir da Prata você pode treinar aprendizes e comandar
+  Bronzes; na elite, comanda Pratas, e responde só ao líder do exército e ao deus.</p>
 
   <h3 id="escolhas">Subir de nível: você escolhe</h3>
   <p>Não existe um caminho só. A cada nível, do 2 ao 20, você escolhe no que o seu guerreiro
@@ -4360,6 +4466,13 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
   </div>
 
   <h3>Criação (Capítulo Três)</h3>
+  <p><strong>Antes do Sexto Sentido.</strong> O status base é pequeno de propósito: 4 PV +
+  CON e um golpe de <span class="dado">1d4</span>, contra os 14 + CON e o
+  <span class="dado">1d8</span> de quem despertou. O salto tem que ser do tamanho do que a
+  série mostra. Por isso o humano diante de um desperto não usa a própria ficha: ele é
+  figurante, e a tabela do bando já está medida. A prova da armadura, entre dois aprendizes,
+  dura de 3 a 4 rodadas; alguém sempre desperta, e em quatro de cada cinco provas os dois
+  despertam. Quem ganha a armadura é quem vence, não quem desperta primeiro.</p>
   <p><strong>Três jeitos de lutar.</strong> Quem luta pelo Cosmo vence de 44% a 52% dos
   duelos contra quem luta pela DES; quem luta pela FOR, de 44% a 50%; quem põe a CON na
   frente, de 32% a 52% (a CON perde um pouco nos níveis 17 a 20, quando o ataque dela fica
@@ -4494,7 +4607,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.8.1</strong>, de 28/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.9.0</strong>, de 28/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece; o que

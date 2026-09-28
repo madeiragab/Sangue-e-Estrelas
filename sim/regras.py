@@ -67,6 +67,24 @@ def pv_maximo(nivel: int, con: int, vigor: int = 0, extra_por_nivel: int = 0) ->
 
 
 # ---------------------------------------------------------------------------
+# Antes do Sexto Sentido: o status base (Capítulo Três)
+# ---------------------------------------------------------------------------
+
+# Todo mundo começa humano. O aprendiz é o nível 0: sem Cosmo, sem técnica, sem
+# armadura. Diante de um guerreiro desperto, um humano é figurante (Capítulo Dez).
+HUMANO_PV = 4                  # + CON
+HUMANO_DEF = 10                # + DES
+HUMANO_DADO_GOLPE = 4          # o soco de gente: 1d4 + atributo
+HUMANO_DEFESA_PASSIVA = 10     # + atributo (+ proficiência nas treinadas)
+HUMANO_CONVICCOES = 1          # o motivo pelo qual ele treina
+DESPERTO_DEFESA_PASSIVA = 14   # o nível 1 (14 + atributo)
+
+
+def pv_humano(mod_con: int) -> int:
+    return max(1, HUMANO_PV + mod_con)
+
+
+# ---------------------------------------------------------------------------
 # Progressão por escolha
 # ---------------------------------------------------------------------------
 
