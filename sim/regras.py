@@ -158,9 +158,23 @@ def media_preco(nivel: int, grau_tecnica: int) -> float:
     return dados * (lados + 1) / 2 + fixo
 
 
-def resistencia_por_nivel(nivel: int) -> int:
-    """+1 de Resistência nos níveis 5, 7, 13 e 17 (é sua, não da armadura)."""
-    return sum(1 for n in (5, 7, 13, 17) if n <= nivel)
+def resistencia_do_corpo(mod_con: int) -> int:
+    """A Resistência que é sua, não da armadura: o modificador de CON, mínimo 0 (0.8.0;
+    antes, +1 nos níveis 5, 7, 13 e 17). O corpo que aguenta a armadura."""
+    return max(0, mod_con)
+
+
+def resistencia_da_vida(escolhas_de_vida: int) -> int:
+    """+1 de Resistência a cada duas escolhas de Vida, como o piso sobe a cada duas de
+    Cosmo (0.8.0). Sem isso, quem escolhia só Vida ficava sem armadura nas lutas longas
+    do nível 17 em diante e vencia 4% a 6% contra quem alterna."""
+    return escolhas_de_vida // 2
+
+
+# A DEF usa a DES ou o Atributo do Cosmo, o maior. Com a armadura no corpo, também a FOR
+# ou a CON: a guarda — o golpe bate no braço cruzado ou no corpo e não entra (0.8.0). Sem
+# isso, quem lutava pela FOR vencia 13% a 51% contra quem luta pela DES.
+ATRIBUTOS_DA_GUARDA = ("for", "con")
 
 
 # ---------------------------------------------------------------------------
@@ -175,19 +189,21 @@ POSTO = {
     "divina": (7, 6),
 }
 
-# Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um
-# grupo multiplica os PV e ganha ações a mais por rodada.
+# Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um grupo
+# responde depois do turno de cada personagem, contra quem acabou de agir, com a técnica
+# de dano mais barata dele, sem gastar Cosmo (0.8.0). Os PV não se multiplicam mais: com
+# PV × 1¼ a 2¼ e golpes comuns a mais, o grupo contra a elite levava 13 a 18 rodadas, e o
+# golpe comum, que não cresce com o nível, quase não pesava no nível 20.
 def chefe_pv(oponentes: int) -> float:
-    """× 1¼, 1½, 1¾, 2, 2¼ para 2 a 6 oponentes."""
-    return (oponentes + 3) / 4 if oponentes >= 2 else 1.0
+    return 1.0
 
 
-CHEFE_ACAO_SO_GOLPE = True    # a ação a mais do chefe é só um golpe comum
+CHEFE_ACAO = "pequena"    # a resposta: "pequena" (a do livro), "golpe" ou "tecnica"
 
 
 def chefe_acoes(oponentes: int) -> int:
-    """0, 1, 2, 3, 4 golpes comuns a mais por rodada para 2 a 6 oponentes."""
-    return max(0, oponentes - 2)
+    """Uma resposta por personagem, de 2 oponentes em diante."""
+    return oponentes if oponentes >= 2 else 0
 
 
 # O aliado de luta (Capítulo Onze): um inimigo da tabela rápida na metade do nível do

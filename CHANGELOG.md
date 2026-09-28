@@ -3,6 +3,46 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.8.0] - 2026-09-28
+
+Uma leitura crítica do livro apontou três coisas para atacar antes de chamar o sistema de
+fechado: a FOR e a CON valiam menos que a DES e o Cosmo, a Técnica Lida pesava na ficha, e a
+luta do grupo contra a elite era longa demais para a mesa. As três mudaram.
+
+### Mudado
+
+- **A guarda** (Capítulos Três e Sete): com a armadura no corpo, a DEF pode usar a FOR ou a
+  CON, além da DES e do Atributo do Cosmo. Quem luta pela FOR vence de 44% a 50% contra quem
+  luta pela DES (antes, 13% a 51%).
+- **Resistência da CON e da Vida**: a Resistência que é sua passa a ser o modificador de CON
+  (mínimo 0) e +1 a cada duas escolhas de Vida, no lugar do +1 fixo nos níveis 5, 7, 13 e 17.
+  A CON na frente vence de 32% a 52% (antes, 8% a 52%); quem escolhe só Vida deixa de ficar
+  sem armadura nos níveis altos (18% a 47% contra quem alterna; antes, 4% a 6% no 17 e no 20).
+- **Sozinho contra muitos** (Capítulo Dez): os PV do chefe não se multiplicam mais. Depois do
+  turno de cada personagem, ele responde contra quem agiu com a técnica de dano mais barata
+  dele, sem gastar Cosmo. Quatro Bronzes contra um Ouro: 42% a 64%, em 8 a 11 rodadas (antes,
+  13 a 18). O livro dá um rosto a cada resposta.
+- **Técnica Lida** (Capítulo Cinco): quem leu anota, na ficha dele; só quem tem Convicção
+  lembra depois da luta. A ficha do personagem ganhou "Lidas por mim".
+- **Glória** (Capítulo Doze): um gatilho novo, resolver sem luta um conflito que importava.
+- **Só a morte de verdade** (Capítulo Sete): a armadura destruída de propósito revive na
+  mesma Versão, sem bônus.
+- Fichas prontas e tabela de grupo medidas de novo com a regra do chefe.
+
+### Adicionado
+
+- **Apêndice: Notas de design e balanceamento.** As notas de "medido" e de "numa versão
+  anterior" saíram do corpo dos capítulos — no lugar ficou uma linha de conselho de mesa — e
+  foram para o apêndice, com um aviso do que o simulador sabe e do que não sabe.
+- `test.py`: FOR e CON contra DES; nenhum extremo de Vida ou Cosmo vence quem alterna, e
+  nenhum é armadilha; o grupo contra o Ouro em até 12 rodadas.
+
+### Corrigido
+
+- O Capítulo Dois dizia que um Bronze vence um Ouro do mesmo nível "menos de uma vez em
+  dez"; desde a 0.6.0, no duelo justo, não vence.
+- O chefe respondia também depois do turno do aliado de luta.
+
 ## [0.7.0] - 2026-09-27
 
 ### Mudado

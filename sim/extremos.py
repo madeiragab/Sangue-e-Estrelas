@@ -65,6 +65,7 @@ def cabecalho(titulo: str, niveis=NIVEIS) -> list[str]:
 DISTRIBUICOES = {
     # nome: (atributo principal, segundo, terceiro, e o resto), natureza das técnicas
     "golpe": ("des", "con", "sab", "golpe"),
+    "forca": ("for", "con", "sab", "golpe"),
     "cosmo": ("sab", "con", "des", "cosmo"),
     "tanque": ("con", "des", "sab", "golpe"),
     "vidro": ("des", "sab", "for", "golpe"),       # CON no 8
@@ -91,7 +92,8 @@ def montar_build(nome: str, nivel: int, build: str = "golpe", posto: str = "bron
     pol = dict(POLITICA_PADRAO)
     pol.update(kw.pop("politica", {}))
     # a build de Cosmo dá o golpe comum com o Atributo do Cosmo
-    return Lutador(nome, nivel, posto, valores, tecs, atr_golpe="sab" if build == "cosmo" else "des",
+    atr_golpe = {"cosmo": "sab", "forca": "for"}.get(build, "des")
+    return Lutador(nome, nivel, posto, valores, tecs, atr_golpe=atr_golpe,
                    atr_cosmo="sab", politica=pol, vigor=esc["vida_cosmo"].count("v"),
                    cosmo_escolhas=esc["vida_cosmo"].count("c"),
                    defesas_extra=esc["pericia_defesa"].count("d"), **kw)
@@ -165,8 +167,8 @@ def curva_de_nivel() -> list[str]:
 
 def builds() -> list[str]:
     out = cabecalho("Build contra o padrão (DES, CON, SAB; técnicas de Golpe)")
-    for b, rot in (("cosmo", "Cosmo na frente, técnicas de Cosmo"), ("tanque", "CON na frente"),
-                   ("vidro", "Canhão de vidro, CON 8")):
+    for b, rot in (("cosmo", "Cosmo na frente, técnicas de Cosmo"), ("forca", "FOR na frente"),
+                   ("tanque", "CON na frente"), ("vidro", "Canhão de vidro, CON 8")):
         out.append(linha_por_nivel(rot, lambda n, b=b: montar_build("A", n, b),
                                    lambda n: montar_build("B", n)))
     for k, rot in (("so_grande", "Só a técnica grande"), ("so_pequenas", "Só técnicas pequenas")):

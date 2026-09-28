@@ -125,7 +125,8 @@ class Lutador:
         car = self.caracteristicas
         self.resistencia_max = (res + forma["res"] + self.resistencia_extra
                                 + (1 if self.acessorio == "nenhum" else 0)
-                                + R.resistencia_por_nivel(self.nivel)
+                                + R.resistencia_do_corpo(self.mods["con"])
+                                + R.resistencia_da_vida(self.vigor)
                                 )
         if "ressonante" in car:
             self.cosmo += 1
@@ -154,7 +155,10 @@ class Lutador:
 
     @property
     def defesa(self) -> int:
-        d_ = 10 + max(self.mods["des"], self.mods[self.atr_cosmo])
+        atributos = ["des", self.atr_cosmo]
+        if self.armada:                # a guarda: com a armadura, FOR ou CON também
+            atributos += R.ATRIBUTOS_DA_GUARDA
+        d_ = 10 + max(self.mods[a] for a in atributos)
         if self.armada:
             d_ += self.armadura_def + (1 if "pesada" in self.caracteristicas else 0)
         if "visao" in self.sentidos_perdidos:
@@ -744,6 +748,24 @@ class LutaGrupo(Luta):
     def pode_levantar(z: Lutador) -> bool:
         return z.politica["levantar"] and z.conviccoes > 0 and z.levantou < R.LEVANTAR_POR_LUTA
 
+    def resposta_do_chefe(self, c: Lutador, x: Lutador):
+        """A ação a mais do chefe, logo depois do turno de alguém do grupo (Sozinho contra
+        muitos). "pequena": a técnica pequena dele, de graça, contra quem acabou de agir;
+        "golpe": um golpe comum no mais ferido; "tecnica": uma ação inteira."""
+        alvo = x if not (x.caido or x.fora) else self.oponente(c)
+        if R.CHEFE_ACAO in ("pequena", "media"):
+            tecs = sorted((t for t in c.tecnicas if t.pontos_de_dano and not t.condicao
+                           and not t.assento), key=lambda t: t.pontos_de_dano)
+            t = tecs[min(len(tecs) - 1, 1)] if R.CHEFE_ACAO == "media" else tecs[0]
+            cosmo = c.cosmo
+            c.cosmo = max(c.cosmo, c.custo(t))     # a resposta não gasta Cosmo
+            self.usar_tecnica(c, alvo, t, 0)
+            c.cosmo = cosmo
+        elif R.CHEFE_ACAO == "golpe":
+            self.golpe(c, self.oponente(c))
+        else:
+            self.escolher_e_agir(c, self.oponente(c))
+
     def lutar(self) -> Resultado:
         todos = self.grupo + [self.chefe]
         for z in todos:
@@ -759,13 +781,11 @@ class LutaGrupo(Luta):
                 self.turno(x, rodada)
                 # a ação a mais do chefe vem logo depois do turno de alguém do grupo
                 c = self.chefe
-                if (x is not c and extras > 0 and not c.fora and not c.caido
+                if (x is not c and not getattr(x, "aliado", False) and extras > 0
+                        and not c.fora and not c.caido
                         and not any(k in c.condicoes for k in PERDE_O_TURNO)):
                     extras -= 1
-                    if R.CHEFE_ACAO_SO_GOLPE:
-                        self.golpe(c, self.oponente(c))
-                    else:
-                        self.escolher_e_agir(c, self.oponente(c))
+                    self.resposta_do_chefe(c, x)
                 for z in todos:
                     if z.caido and not z.fora and not self.pode_levantar(z):
                         z.fora = True

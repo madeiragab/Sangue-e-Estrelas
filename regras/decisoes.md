@@ -153,6 +153,34 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## Lapidar: FOR, CON, chefe, Lida (0.8.0)
+
+- **Pedido do usuário:** atacar três pontos de uma leitura crítica do livro — FOR e CON
+  valendo menos que DES e Cosmo; a Técnica Lida pesando na ficha; a luta do grupo contra a
+  elite longa demais — e mais três menores (Glória fora da luta, farm de morte de armadura,
+  notas de design no corpo do livro). O princípio da constelação ficou para depois.
+- **A guarda.** Medido: FOR na frente vencia 13% a 51% contra DES (a DEF dependia de outro
+  atributo). Com a armadura no corpo, FOR ou CON entram na DEF: 44% a 50%. Sem armadura, a
+  guarda cai — quebrar a armadura do Touro abre a guarda dele.
+- **Resistência = CON (mínimo 0) + 1 a cada duas escolhas de Vida**, no lugar de +1 nos
+  níveis 5, 7, 13 e 17. A CON na frente foi de 8%–52% para 32%–52%; a duração das lutas não
+  mudou; o salto do nível 17 sumiu. Sem o +1 da Vida, quem escolhia só Vida vencia 4% a 6%
+  contra quem alterna no 17 e no 20 (a armadura acabava nas lutas longas); com ele, 18% a
+  47%. Testado e descartado: Vida valendo o nível inteiro em PV (não resolvia: o problema era
+  a armadura, não os PV); teto no piso do Cosmo (tirava do Cosmo sem ajudar a Vida).
+- **O chefe responde.** Com PV × 1¼ a 2¼ e golpes comuns a mais, quatro Bronzes contra um
+  Ouro levavam 13 a 18 rodadas — e o golpe comum, que não cresce com o nível, quase não pesava
+  no 20. Agora: PV normais e uma resposta depois do turno de cada personagem, com a técnica de
+  dano mais barata, sem Cosmo, contra quem agiu. 42% a 64% em 8 a 11 rodadas. Testados:
+  golpes comuns (o grupo vencia até 86%), técnicas livres (81% no 15, 29% no 20), a técnica
+  média (duro demais com três), PV × 1⅛ a 1½ com respostas (o Ouro ficava duro demais).
+  Um Prata sozinho contra três ou mais cai depressa; o livro manda pôr dois.
+- **Lida** — quem leu anota; só quem tem Convicção lembra depois da luta. Sem efeito no
+  simulador (ele mede uma luta de cada vez); o ganho é de ficha.
+- **Glória** — resolver sem luta um conflito que importava vale 1.
+- **Armadura** — morte de propósito não dá forma nova.
+- **Apêndice** — as notas medidas saíram do corpo dos capítulos.
+
 ## Sem salto de nível, e o motor do Mestre conferido (0.7.0)
 
 - **Pedido do usuário:** "suaviza o salto de nível, mas não o de grau, tipo Bronze pra
@@ -289,6 +317,9 @@ aqui primeiro.
 ## Pendências
 
 - Grupo contra grupo (hoje: duelo e grupo contra um).
+- Princípio da constelação: um comportamento pequeno por constelação, medido como as
+  características (adiado na 0.8.0).
+- Playtest humano das lutas de grupo contra a elite e do nível alto.
 - Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
