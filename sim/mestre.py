@@ -189,16 +189,18 @@ def bando(nivel: int, tamanho: int = 6, area: bool = False, lutas: int = 2000,
 
 def prova(nivel_humano: int = R.NIVEL_DA_PROVA, lutas: int = 4000, semente: int = 1,
           despertar: bool = True) -> dict:
-    """Dois aprendizes do mesmo nível humano na prova da armadura: FOR ou DES 15, CON 14.
+    """Dois aprendizes do mesmo nível humano na prova da armadura: FOR ou DES 12, CON 11,
+    que viram 15 e 14 quando ele desperta.
 
     Cada um ataca uma vez por turno com o golpe de gente do nível dele. Quem cai a 0 PV
     gasta a Convicção e levanta com um quarto dos PV; com `despertar`, levanta desperto:
-    um quarto dos PV do nível 1 de guerreiro, o Cosmo no Teto e a técnica assinatura (a
-    grande do Grau 1). Devolve as rodadas, quantas provas tiveram alguém despertando e
-    em quantas os dois despertaram."""
+    os atributos de guerreiro, um quarto dos PV do nível 1 de guerreiro, o Cosmo no Teto e
+    a técnica assinatura (a grande do Grau 1). Devolve as rodadas, quantas provas tiveram
+    alguém despertando e em quantas os dois despertaram."""
     rng = random.Random(semente)
-    mod = 2
-    pv_max = R.pv_humano(nivel_humano, mod)
+    golpe_h, con_h = (R.mod(v) for v in R.DISTRIBUICAO_HUMANA[:2])
+    golpe_d, con_d = (R.mod(v) for v in R.DISTRIBUICAO[:2])
+    pv_max = R.pv_humano(nivel_humano, con_h)
     dado = R.dado_golpe_humano(nivel_humano)
     rodadas = despertou = vence_desperto = 0
     for _ in range(lutas):
@@ -212,7 +214,8 @@ def prova(nivel_humano: int = R.NIVEL_DA_PROVA, lutas: int = 4000, semente: int 
             for _t in range(2):
                 a, b = vez, 1 - vez
                 vez = b
-                de = R.HUMANO_DEF + mod
+                mod = golpe_d if acordado[a] else golpe_h
+                de = R.HUMANO_DEF + (golpe_d if acordado[b] else golpe_h)
                 if rng.randint(1, 20) + mod + R.prof(1) >= de:
                     if acordado[a]:
                         # desperto: o Cosmo no Teto e a técnica assinatura, a grande
@@ -224,7 +227,7 @@ def prova(nivel_humano: int = R.NIVEL_DA_PROVA, lutas: int = 4000, semente: int 
                     levantou[b] = True
                     if despertar:
                         acordado[b] = True
-                        pv[b] = max(1, (R.PV_BASE[1] + mod) // 4)
+                        pv[b] = max(1, (R.PV_BASE[1] + con_d) // 4)
                     else:
                         pv[b] = max(1, pv_max // 4)
                 if pv[b] <= 0:
@@ -382,13 +385,15 @@ def main() -> None:
 
     print("prova...")
     linhas += ["", "## Antes do Sexto Sentido: a prova da armadura", "",
-               "Dois aprendizes do mesmo nível humano (FOR ou DES 15 e CON 14) num duelo. Quem "
-               "cai gasta a Convicção e levanta — humano, ou desperto.", "",
+               "Dois aprendizes do mesmo nível humano (FOR ou DES 12 e CON 11, que viram 15 e "
+               "14 ao despertar) num duelo. Quem cai gasta a Convicção e levanta — humano, ou "
+               "desperto.", "",
                "| Nível humano | PV | Golpe | Rodadas, sem despertar | Rodadas, despertando | "
                "Alguém desperta | Os dois despertam |", "|---:|---:|---|---:|---:|---:|---:|"]
+    golpe_h, con_h = (R.mod(v) for v in R.DISTRIBUICAO_HUMANA[:2])
     for nh in R.NIVEIS_HUMANOS[R.NIVEL_DA_PROVA - 1:]:
         sem, com = prova(nh, despertar=False), prova(nh, despertar=True)
-        linhas.append(f"| {nh} | {R.pv_humano(nh, 2)} | 1d{R.dado_golpe_humano(nh)} + 2 | "
+        linhas.append(f"| {nh} | {R.pv_humano(nh, con_h)} | 1d{R.dado_golpe_humano(nh)} + {golpe_h} | "
                       f"{sem['rodadas']:.1f} | {com['rodadas']:.1f} | {pct(com['despertou'])} | "
                       f"{pct(com['os_dois_despertam'])} |")
     linhas += ["", "Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de "

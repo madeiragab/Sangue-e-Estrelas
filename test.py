@@ -137,6 +137,9 @@ def testar_livro() -> None:
             f"outro soma −{R.DOMINIO_OURO}" in corrido and "+2 no ataque e na DEF" not in corrido,
             f"o Sétimo dominado é +{R.DOMINIO_OURO}/−{R.DOMINIO_OURO} na regra e nas fichas prontas")
     confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
+    humana = " · ".join(map(str, R.DISTRIBUICAO_HUMANA))
+    confere(f"<td>Atributos</td><td>{humana}</td>" in corrido,
+            f"o livro dá os atributos do humano: {humana}")
     from inimigos import INIMIGOS
     for slug, ficha in INIMIGOS.items():
         confere(R.posto_existe(ficha["posto"], ficha["nivel"]),
@@ -309,8 +312,13 @@ def testar_mestre() -> None:
                 f"nível humano {nh}: a prova da armadura dura pouco e alguém desperta "
                 f"({p['rodadas']:.1f} rodadas, {p['despertou']:.0%} despertam)")
     topo = max(R.NIVEIS_HUMANOS)
-    confere(R.pv_humano(topo, 2) < R.PV_BASE[1] and R.dado_golpe_humano(topo) < 8,
+    con_h = R.mod(max(R.DISTRIBUICAO_HUMANA))
+    confere(R.pv_humano(topo, con_h) < R.PV_BASE[1] and R.dado_golpe_humano(topo) < 8,
             f"nem o limite humano (nível {topo}) chega ao desperto de nível 1 (PV e golpe)")
+    h, d = R.DISTRIBUICAO_HUMANA, R.DISTRIBUICAO
+    confere(list(h) == sorted(h, reverse=True) and all(a <= b for a, b in zip(h, d))
+            and sum(map(R.mod, h)) < sum(map(R.mod, d)),
+            f"ao despertar, cada atributo humano sobe na mesma posição ({h} → {d})")
     for n in (3, 11, 19):
         so, com = M.aliado_no_duelo(n, lutas=200)
         confere(0.60 <= com <= 0.82 and com >= so + 0.08,

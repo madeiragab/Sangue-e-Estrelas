@@ -3,6 +3,24 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.9.3] - 2026-09-28
+
+### Mudado
+
+- **Os atributos do humano** (Capítulo Três): 12 · 11 · 11 · 10 · 9 · 8, um valor para cada
+  atributo (sugestão do usuário). Antes o livro só dizia "entre 8 e 12". Ao despertar, cada
+  valor sobe para o do guerreiro na mesma posição: 12→15, os dois 11 viram 14 e 13, 10→12,
+  9→10 e o 8 continua 8.
+- A prova da armadura foi medida de novo com esses atributos (antes o simulador usava os de
+  guerreiro): continua em cerca de 4 rodadas no nível humano 3 e 4,6 no 4, alguém sempre
+  desperta, e os dois despertam em 84% das provas (eram 78%).
+
+### Corrigido
+
+- Ambiguidade: a tabela dos humanos escrevia "4 + CON" e "10 + DES" antes de o livro
+  explicar o modificador. Agora a seção diz, com um exemplo, que nas contas o atributo é
+  sempre o modificador, e a Etapa 3 diz o mesmo para o livro inteiro.
+
 ## [0.9.2] - 2026-09-28
 
 ### Corrigido

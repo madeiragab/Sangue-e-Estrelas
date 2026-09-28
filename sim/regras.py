@@ -132,6 +132,9 @@ def mod(valor: int) -> int:
 
 # Os seis valores e os aumentos de atributo (+2 nos níveis 4, 8, 12, 16, 19).
 DISTRIBUICAO = (15, 14, 13, 12, 10, 8)
+# Os do humano, antes de despertar (0.9.3, sugestão do usuário). Ao despertar, cada valor
+# sobe para o do guerreiro na mesma posição: 12→15, 11→14, 11→13, 10→12, 9→10, 8→8.
+DISTRIBUICAO_HUMANA = (12, 11, 11, 10, 9, 8)
 NIVEIS_DE_ATRIBUTO = (4, 8, 12, 16, 19)
 
 
