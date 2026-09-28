@@ -3,6 +3,21 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.9.2] - 2026-09-28
+
+### Corrigido
+
+- **O Sétimo dominado nas fichas prontas** (Capítulo Dez): o Guerreiro Deus e o Cavaleiro
+  de Ouro diziam "+2 no ataque e na DEF". A regra (Capítulo Quatro) e o simulador sempre
+  usaram +3 nos ataques e nas Rolagens de Efeito do elite e −3 nos do recém-despertado;
+  agora as quatro fichas de elite dizem isso, com o número tirado da mesma regra.
+- A folha de consulta rápida (Capítulo Treze) dizia que só rival e chefe lembram a Técnica
+  Lida depois da luta. Quem lembra é quem tem Convicção: personagem, rival e chefe.
+- O colofão dizia que luta de grupo contra um inimigo ainda não tinha sido medida. Foi; o
+  que falta é mesa.
+- O Juiz do Inferno usava o "Grande Chifre do Wyvern"; o Grande Chifre é do Touro. A
+  técnica agora é a Grande Cautela, a do Wyvern.
+
 ## [0.9.1] - 2026-09-28
 
 ### Mudado
