@@ -153,6 +153,25 @@ aqui primeiro.
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
 
+## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
+
+- **Pedido do usuário:** para virar guerreiro é preciso ser treinado por uma patente
+  maior; o Bronze não pode ter aprendiz, Prata e Ouro podem; Prata comanda Bronzes, Ouro
+  comanda Pratas, o Grande Mestre comanda os Ouros e o deus comanda o Grande Mestre. E um
+  status base com que todos começam, antes de despertar o Sexto Sentido — o ponto em que a
+  pessoa vira sobre-humana (o Bronze de nível 1).
+- **O humano não luta contra o desperto com ficha própria: é figurante.** É o que a série
+  mostra (a guarda do Santuário não segura um Cavaleiro), e a tabela do bando já está
+  medida. A ficha do humano (4 + CON de PV, 1d4 no golpe, defesas 10 + atributo) serve para
+  cenas entre humanos: o treino e a prova.
+- **O despertar acontece no limite**, como tudo neste jogo: na prova, quem cai e levanta
+  com a Convicção levanta desperto. Medido: 3 a 4 rodadas; em quatro de cada cinco provas
+  os dois despertam — a armadura vai para quem vence.
+- **A cadeia de comando é história, não regra de combate.** Treinar aprendiz é uma ação de
+  Interlúdio (Prata ou acima); a missão, e com ela o objetivo que vale Glória, desce a
+  escada. Líderes: Grande Mestre (Atena), o General do Dragão Marinho (Poseidon), Pandora e,
+  acima dela, Hypnos e Thanatos (Hades), Hilda de Polaris (Asgard).
+
 ## Lapidar: FOR, CON, chefe, Lida (0.8.0)
 
 - **Pedido do usuário:** atacar três pontos de uma leitura crítica do livro — FOR e CON

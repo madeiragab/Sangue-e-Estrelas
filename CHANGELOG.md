@@ -3,6 +3,24 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.9.0] - 2026-09-28
+
+### Adicionado
+
+- **Antes do Sexto Sentido** (Capítulo Três): o status base de quem ainda é humano — o
+  aprendiz, nível 0 — ao lado do desperto: 4 + CON de PV, DEF 10 + DES, golpe de
+  1d4, defesas 10 + atributo, sem Cosmo nem técnica, uma Convicção. Gente
+  comum usa a mesma coluna. Diante de um desperto, o humano é figurante.
+- **A prova da armadura**: na prova, quem cai e levanta com a Convicção levanta desperto
+  (um quarto dos PV do nível 1, Cosmo no Teto, a técnica assinatura). Medido: 3 a 4
+  rodadas, alguém sempre desperta, e em quatro de cada cinco os dois despertam.
+- **A cadeia de comando** (Capítulo Nove): aprendiz, Bronze, Prata, Ouro, o líder e o
+  deus. Só Prata ou acima treina aprendiz; o Bronze responde a um Prata, o Prata a um Ouro,
+  o Ouro ao líder (o Grande Mestre, o Dragão Marinho, Pandora, Hilda de Polaris) e o líder
+  ao deus. A missão desce a escada.
+- A etapa de Treino (Capítulo Três) pede um mestre de Posto acima do seu; o Interlúdio
+  ganhou "Treinar um aprendiz"; o Mentor (Capítulo Onze) é sempre de Posto acima.
+
 ## [0.8.1] - 2026-09-28
 
 ### Mudado

@@ -104,3 +104,14 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | 2 Espectros contra um Bronze de nível 4 | 45% |
 | 3 Espectros contra um Bronze de nível 4 | 9% |
 | 3 Espectros contra um Bronze de nível 5 | 21% |
+
+## Antes do Sexto Sentido: a prova da armadura
+
+Dois aprendizes (nível 0, humanos, FOR ou DES 15 e CON 14) num duelo. Quem cai gasta a Convicção e levanta — humano, ou desperto.
+
+| A prova | Rodadas | Alguém desperta | Os dois despertam |
+|---|---:|---:|---:|
+| Sem despertar | 3.4 | — | — |
+| Levantando desperto | 3.4 | 100% | 79% |
+
+Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de figurantes, na seção acima.
