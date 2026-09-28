@@ -3,6 +3,21 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.9.1] - 2026-09-28
+
+### Mudado
+
+- **Os níveis humanos** (Capítulo Três): antes de despertar, o humano tem os níveis dele,
+  de 1 a 4. O nível 1 é o humano comum — todo mundo, automaticamente, sem proficiência nem
+  Convicção. Do nível 2 em diante, quem tem um mestre é aprendiz: proficiência, as duas
+  perícias do treino e uma Convicção. PV 4, 6, 8 e 10 (+ CON); golpe de 1d4, e de 1d6 a
+  partir do 3. A prova da armadura pode acontecer a partir do nível 3, e o 4 é o limite do
+  corpo humano. Quem desperta recomeça no nível 1 — de guerreiro; a tabela de 1 a 20 não
+  muda. Antes, o aprendiz era um "nível 0" só.
+- A cadeia de comando (Capítulo Nove) separa o humano (todo mundo) do aprendiz (quem um
+  Prata ou um Ouro escolheu). Treinar um aprendiz sobe um nível humano a cada três semanas.
+- Medido: a prova dura cerca de 4 rodadas no nível humano 3 e 4,5 no 4.
+
 ## [0.9.0] - 2026-09-28
 
 ### Adicionado

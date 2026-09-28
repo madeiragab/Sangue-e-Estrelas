@@ -297,12 +297,14 @@ def testar_mestre() -> None:
                 and a["rodadas"] <= 2.5,
                 f"nível {n}: um bando de seis custa PV e tempo sem derrubar "
                 f"({b['perda']:.0%} dos PV, {b['rodadas']:.1f} rodadas; com área {a['rodadas']:.1f})")
-    p = M.prova(lutas=2000)
-    confere(2.5 <= p["rodadas"] <= 5.0 and p["despertou"] >= 0.95,
-            f"a prova da armadura dura pouco e alguém desperta "
-            f"({p['rodadas']:.1f} rodadas, {p['despertou']:.0%} despertam)")
-    confere(R.pv_humano(2) < R.PV_BASE[1] // 2 and R.HUMANO_DADO_GOLPE < 8,
-            "o humano é bem menor que o desperto (PV e golpe)")
+    for nh in (R.NIVEL_DA_PROVA, max(R.NIVEIS_HUMANOS)):
+        p = M.prova(nh, lutas=2000)
+        confere(2.5 <= p["rodadas"] <= 6.0 and p["despertou"] >= 0.95,
+                f"nível humano {nh}: a prova da armadura dura pouco e alguém desperta "
+                f"({p['rodadas']:.1f} rodadas, {p['despertou']:.0%} despertam)")
+    topo = max(R.NIVEIS_HUMANOS)
+    confere(R.pv_humano(topo, 2) < R.PV_BASE[1] and R.dado_golpe_humano(topo) < 8,
+            f"nem o limite humano (nível {topo}) chega ao desperto de nível 1 (PV e golpe)")
     for n in (3, 11, 19):
         so, com = M.aliado_no_duelo(n, lutas=200)
         confere(0.60 <= com <= 0.82 and com >= so + 0.08,

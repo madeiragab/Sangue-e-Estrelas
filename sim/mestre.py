@@ -187,19 +187,22 @@ def bando(nivel: int, tamanho: int = 6, area: bool = False, lutas: int = 2000,
 # ---------------------------------------------------------------------------
 
 
-def prova(lutas: int = 4000, semente: int = 1, despertar: bool = True) -> dict:
-    """Dois aprendizes (nível 0, humanos) na prova da armadura: FOR ou DES 15, CON 14.
+def prova(nivel_humano: int = R.NIVEL_DA_PROVA, lutas: int = 4000, semente: int = 1,
+          despertar: bool = True) -> dict:
+    """Dois aprendizes do mesmo nível humano na prova da armadura: FOR ou DES 15, CON 14.
 
-    Cada um ataca uma vez por turno com o golpe de gente (1d4 + 2). Quem cai a 0 PV
+    Cada um ataca uma vez por turno com o golpe de gente do nível dele. Quem cai a 0 PV
     gasta a Convicção e levanta com um quarto dos PV; com `despertar`, levanta desperto:
-    um quarto dos PV do nível 1, o Cosmo no Teto e a técnica assinatura (a grande do
-    Grau 1). Devolve as rodadas, quantas provas tiveram alguém despertando e em quantas
-    os dois despertaram."""
+    um quarto dos PV do nível 1 de guerreiro, o Cosmo no Teto e a técnica assinatura (a
+    grande do Grau 1). Devolve as rodadas, quantas provas tiveram alguém despertando e
+    em quantas os dois despertaram."""
     rng = random.Random(semente)
     mod = 2
+    pv_max = R.pv_humano(nivel_humano, mod)
+    dado = R.dado_golpe_humano(nivel_humano)
     rodadas = despertou = vence_desperto = 0
     for _ in range(lutas):
-        pv = [R.pv_humano(mod), R.pv_humano(mod)]
+        pv = [pv_max, pv_max]
         acordado = [False, False]
         levantou = [False, False]
         r = 0
@@ -216,14 +219,14 @@ def prova(lutas: int = 4000, semente: int = 1, despertar: bool = True) -> dict:
                         pontos = R.TAMANHO_MAXIMO[1]
                         pv[b] -= sum(rng.randint(1, 8) for _p in range(pontos)) + mod
                     else:
-                        pv[b] -= rng.randint(1, R.HUMANO_DADO_GOLPE) + mod
+                        pv[b] -= rng.randint(1, dado) + mod
                 if pv[b] <= 0 and not levantou[b]:
                     levantou[b] = True
                     if despertar:
                         acordado[b] = True
                         pv[b] = max(1, (R.PV_BASE[1] + mod) // 4)
                     else:
-                        pv[b] = max(1, R.pv_humano(mod) // 4)
+                        pv[b] = max(1, pv_max // 4)
                 if pv[b] <= 0:
                     break
         rodadas += r
@@ -378,15 +381,17 @@ def main() -> None:
                       f"{pct(varios_contra_um('espectro-terrestre', q, n, semente=900 + i))} |")
 
     print("prova...")
-    sem, com = prova(despertar=False), prova(despertar=True)
     linhas += ["", "## Antes do Sexto Sentido: a prova da armadura", "",
-               "Dois aprendizes (nível 0, humanos, FOR ou DES 15 e CON 14) num duelo. Quem cai "
-               "gasta a Convicção e levanta — humano, ou desperto.", "",
-               "| A prova | Rodadas | Alguém desperta | Os dois despertam |", "|---|---:|---:|---:|",
-               f"| Sem despertar | {sem['rodadas']:.1f} | — | — |",
-               f"| Levantando desperto | {com['rodadas']:.1f} | {pct(com['despertou'])} | "
-               f"{pct(com['os_dois_despertam'])} |",
-               "", "Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de "
+               "Dois aprendizes do mesmo nível humano (FOR ou DES 15 e CON 14) num duelo. Quem "
+               "cai gasta a Convicção e levanta — humano, ou desperto.", "",
+               "| Nível humano | PV | Golpe | Rodadas, sem despertar | Rodadas, despertando | "
+               "Alguém desperta | Os dois despertam |", "|---:|---:|---|---:|---:|---:|---:|"]
+    for nh in R.NIVEIS_HUMANOS[R.NIVEL_DA_PROVA - 1:]:
+        sem, com = prova(nh, despertar=False), prova(nh, despertar=True)
+        linhas.append(f"| {nh} | {R.pv_humano(nh, 2)} | 1d{R.dado_golpe_humano(nh)} + 2 | "
+                      f"{sem['rodadas']:.1f} | {com['rodadas']:.1f} | {pct(com['despertou'])} | "
+                      f"{pct(com['os_dois_despertam'])} |")
+    linhas += ["", "Diante de um desperto, o humano é figurante: a linha do nível 1 da tabela de "
                "figurantes, na seção acima."]
 
     saida = pathlib.Path(__file__).parent / "MESTRE.md"
