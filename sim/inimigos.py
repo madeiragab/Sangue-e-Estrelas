@@ -16,6 +16,11 @@ from luta import Lutador, montar
 # Os inimigos prontos
 # ---------------------------------------------------------------------------
 
+# O mesmo número da regra (R.DOMINIO_OURO), nos ataques e nas Rolagens de Efeito.
+SETIMO_DOMINADO = (f"<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer. Diante de "
+                   f"um Sétimo recém-despertado, soma +{R.DOMINIO_OURO} nos ataques e nas "
+                   f"Rolagens de Efeito, e o outro soma −{R.DOMINIO_OURO} nos dele.")
+
 INIMIGOS = {
     "cavaleiro-negro": dict(
         nome="Cavaleiro Negro", nivel=2, posto="bronze", acessorio="garras", conviccoes=0,
@@ -55,8 +60,7 @@ INIMIGOS = {
         assento="Golpe da Estrela da Ursa Maior",
         tracos=["<strong>Safira de Odin.</strong> +1 no Teto de Cosmo enquanto a safira "
                 "estiver na Veste (já somado).",
-                "<strong>Sétimo dominado.</strong> Entra no Sétimo quando quer e, diante de um "
-                "Sétimo recém-despertado, soma +2 no ataque e na DEF."],
+                SETIMO_DOMINADO],
         quando="Um dos sete. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois "
                "caem; três níveis abaixo, uma vez em sete. Sozinho, um personagem não vence."),
     "general-marina": dict(
@@ -66,7 +70,7 @@ INIMIGOS = {
         tecnicas=("Maré Devastadora", "Redemoinho", "Garra do Kraken"),
         assento="Triângulo das Ondas",
         tracos=["<strong>Escama de oricalco.</strong> +1 de Resistência (já somada).",
-                "<strong>Sétimo dominado.</strong> Como todo guerreiro de elite."],
+                SETIMO_DOMINADO],
         quando="O guardião de um dos sete pilares. Luta melhor debaixo d'água que qualquer "
                "Cavaleiro. Quatro Bronzes do nível dele vencem duas vezes em três, e uns dois "
                "caem."),
@@ -76,8 +80,7 @@ INIMIGOS = {
         exercito="Atena", armadura="Armadura de Ouro",
         tecnicas=("Impacto do Zodíaco", "Chama Dourada", "Muralha de Luz"),
         assento="o Golpe do Assento da vaga",
-        tracos=["<strong>Sétimo dominado.</strong> Entra no Sétimo no primeiro turno e, "
-                "diante de um Sétimo recém-despertado, soma +2 no ataque e na DEF.",
+        tracos=[SETIMO_DOMINADO,
                 "<strong>Três Convicções.</strong> Derrubar um Ouro uma vez não basta."],
         quando="Uma das doze casas. Um Bronze sozinho vence um destes menos de uma vez em "
                "cem, mesmo no nível dele. Quatro Bronzes de nível 15 vencem metade das "
@@ -86,16 +89,15 @@ INIMIGOS = {
         nome="Juiz do Inferno", nivel=18, posto="ouro", acessorio="asas", conviccoes=3,
         caracteristicas=("leve", "cortante", "coracao"),
         exercito="Hades", armadura="Súplice", teto_extra=1,
-        tecnicas=("Garras do Grifo", "Marionete Cósmica", "Grande Chifre do Wyvern"),
+        tecnicas=("Garras do Grifo", "Marionete Cósmica", "Grande Cautela"),
         assento="Golpe do Juízo",
         tracos=["<strong>Estrela Maligna.</strong> Volta em <span class=\"dado\">1d4</span> "
                 "semanas enquanto Hades existir.",
                 "<strong>Juiz.</strong> +1 no Teto de Cosmo (já somado).",
-                "<strong>Sétimo dominado.</strong>"],
+                SETIMO_DOMINADO],
         quando="Um dos três juízes. Quatro Bronzes de nível 17 vencem metade das vezes, e "
                "uns três caem; de nível 18, duas vezes em três. É a luta de um arco inteiro."),
 }
-
 
 # ---------------------------------------------------------------------------
 # Montar

@@ -131,6 +131,12 @@ def testar_livro() -> None:
     confere(f"<strong>Prata:</strong> a partir do nível {R.NIVEL_PRATA}." in html
             and f"<strong>Elite:</strong> a partir do nível {R.NIVEL_ELITE}," in html,
             f"o livro dá o requisito de Posto: Prata no {R.NIVEL_PRATA}, elite no {R.NIVEL_ELITE}")
+    corrido = " ".join(html.split())
+    confere(f"o de elite soma <strong>+{R.DOMINIO_OURO} nos ataques e nas Rolagens de Efeito"
+            in corrido and f"soma +{R.DOMINIO_OURO} nos ataques e nas Rolagens de Efeito, e o "
+            f"outro soma −{R.DOMINIO_OURO}" in corrido and "+2 no ataque e na DEF" not in corrido,
+            f"o Sétimo dominado é +{R.DOMINIO_OURO}/−{R.DOMINIO_OURO} na regra e nas fichas prontas")
+    confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
     from inimigos import INIMIGOS
     for slug, ficha in INIMIGOS.items():
         confere(R.posto_existe(ficha["posto"], ficha["nivel"]),
