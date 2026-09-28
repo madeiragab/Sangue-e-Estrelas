@@ -83,6 +83,7 @@ class Lutador:
     defesas_extra: int = 0             # defesas treinadas escolhidas
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
     caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
+    armadura: str = "viva"             # viva · casca (morta, vestida) · nenhuma
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -135,7 +136,8 @@ class Lutador:
         self.espinhos_turno = 0
         self.resistencia = self.resistencia_max
         self.elmo = True
-        self.armadura_morta = False
+        self.armadura_morta = self.armadura != "viva"
+        self.casca_caiu = False
         # estatística
         self.dano_golpe = 0
         self.dano_tecnica = 0
@@ -154,13 +156,21 @@ class Lutador:
         return not self.armadura_morta and self.resistencia > 0
 
     @property
+    def vestida(self) -> bool:
+        """Alguma armadura no corpo: a viva e inteira, ou a casca de uma morta que um
+        crítico ainda não derrubou."""
+        return self.armada or (self.armadura == "casca" and not self.casca_caiu)
+
+    @property
     def defesa(self) -> int:
         atributos = ["des", self.atr_cosmo]
-        if self.armada:                # a guarda: com a armadura, FOR ou CON também
+        if self.vestida:               # a guarda: com a armadura, FOR ou CON também
             atributos += R.ATRIBUTOS_DA_GUARDA
         d_ = 10 + max(self.mods[a] for a in atributos)
         if self.armada:
             d_ += self.armadura_def + (1 if "pesada" in self.caracteristicas else 0)
+        elif self.vestida:
+            d_ += R.POSTO[self.posto][0]   # a casca: só a DEF do Posto
         if "visao" in self.sentidos_perdidos:
             d_ -= 2                    # não vê o golpe vindo
         return d_
@@ -397,13 +407,18 @@ class Luta:
             atacante.vantagem_proxima = False
             v = 1 if v == 0 else (0 if v < 0 else v)
         bloqueio = 0
-        pode_bloquear = (passiva is None and alvo.armada
+        # Quem pode Aparar guarda a reação para isso; a casca não apara, então bloqueia.
+        pode_bloquear = (passiva is None and alvo.vestida
                          and alvo.reacao and "tato" not in alvo.sentidos_perdidos
                          and not alvo.caido and alvo.politica["bloquear"]
-                         and not (R.APARAR_USA_REACAO and alvo.politica["aparar"]))
+                         and not (R.APARAR_USA_REACAO and alvo.politica["aparar"]
+                                  and alvo.armada))
         if pode_bloquear:
             alvo.reacao = False
-            bloqueio = (3 if alvo.acessorio == "escudo" else 2) + (1 if "guarda" in alvo.caracteristicas else 0)
+            bloqueio = 2
+            if alvo.armada:
+                bloqueio += ((1 if alvo.acessorio == "escudo" else 0)
+                             + (1 if "guarda" in alvo.caracteristicas else 0))
         # A Hierarquia: o Prata diante de um Bronze.
         if atacante.posto == "prata" and alvo.posto == "bronze":
             bonus += R.HIERARQUIA
@@ -440,6 +455,8 @@ class Luta:
         if critico and alvo.elmo and alvo.armada:
             alvo.elmo = False
             return False
+        if critico and alvo.vestida and not alvo.armada:
+            alvo.casca_caiu = True     # a casca não segura um crítico: cai até o fim da luta
         return critico
 
     # ------------------------------------------------------------------

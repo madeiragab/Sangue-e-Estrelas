@@ -289,6 +289,21 @@ def testar_extremos() -> None:
         r = taxa(lambda k: montar_build("A", k, kit=kit), lambda k: montar_build("B", k), 13, 240)
         confere(r["a"] <= 0.60, f"nível 13: a limitação {kit[7:]} custa de verdade ({r['a']:.0%})")
 
+    # A casca (0.9.4): vestir a armadura morta ajuda, mas não chega à viva.
+    def vestindo(arm):
+        def f(k):
+            x = montar("A" + arm, k)
+            x.armadura = arm
+            x.reiniciar()
+            return x
+        return f
+    for n in (1, 9, 17):
+        c = taxa(vestindo("casca"), lambda k: montar("B", k), n, 260 + n)["a"]
+        s = taxa(vestindo("nenhuma"), lambda k: montar("B", k), n, 270 + n)["a"]
+        confere(s + 0.05 <= c <= 0.55,
+                f"nível {n}: a casca é melhor que nada e não passa da viva "
+                f"(sem armadura {s:.0%}, casca {c:.0%})")
+
 
 def testar_mestre() -> None:
     """As promessas dos Capítulos Dez e Onze: nível sem salto, figurantes, aliado de

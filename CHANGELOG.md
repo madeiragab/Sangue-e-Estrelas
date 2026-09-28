@@ -3,6 +3,18 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.9.4] - 2026-09-28
+
+### Mudado
+
+- **A casca** (Capítulo Sete, pedido do usuário): a armadura morta ainda atende ao chamado
+  e ainda se veste. Dá a DEF do Posto (e a guarda) e deixa Bloquear; não tem Resistência,
+  então não apara, e não dá características, formas, Elmo, Pernas nem acessório. Um crítico
+  a derruba até o fim da luta; ela não morre de novo. Antes, a armadura morta não dava nada.
+- Medido: contra um guerreiro do mesmo nível com a armadura viva, quem luta de casca vence
+  de 9% a 49%; sem armadura, de 2% a 29%. A folha de consulta rápida (Capítulo Treze) traz
+  a regra.
+
 ## [0.9.3] - 2026-09-28
 
 ### Mudado
