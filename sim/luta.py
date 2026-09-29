@@ -205,8 +205,14 @@ class Lutador:
     def subir_cosmo(self, n: int):
         self.cosmo = min(self.teto, self.cosmo + n)
 
+    @property
+    def alcanca_o_setimo(self) -> bool:
+        """A elite entra quando quer. O Bronze e o Prata, só do nível mínimo em diante:
+        antes dele, o primeiro despertar ainda não aconteceu."""
+        return self.posto not in ("bronze", "prata") or self.nivel >= R.NIVEL_SETIMO
+
     def entrar_no_setimo(self, rng=None):
-        if self.sentido == "sexto":
+        if self.sentido == "sexto" and self.alcanca_o_setimo:
             self.sentido = "setimo"
             self.teto_extra += R.TETO_SETIMO
             self.despertou = True
@@ -303,8 +309,11 @@ class Resultado:
 
 class Luta:
     def __init__(self, a: Lutador, b: Lutador, rng: random.Random,
-                 centelhas_a: int = 0, centelhas_b: int = 0, max_rodadas: int = 40):
+                 centelhas_a: int = 0, centelhas_b: int = 0, max_rodadas: int = 40,
+                 surpresa_a: bool = False):
         self.a, self.b, self.rng = a, b, rng
+        # Surpresa (0.10.0): `a` pegou `b` sem ser percebido e dá o golpe de abertura.
+        self.surpresa_a = surpresa_a
         # Centelhas por lado: quantas cada lado recebe por rodada, até o limite
         self.centelhas = {a.nome: centelhas_a, b.nome: centelhas_b}
         self.max_rodadas = max_rodadas
@@ -549,8 +558,8 @@ class Luta:
         # Diante de um Sentido acima, o Bronze guarda o Cosmo até o Teto para
         # despertar, em vez de gastá-lo em técnicas pequenas.
         poupando = (pol["despertar"] and x.posto in ("bronze", "prata")
-                    and x.sentido == "sexto" and y.degrau > x.degrau
-                    and x.cosmo < x.teto)
+                    and x.alcanca_o_setimo and x.sentido == "sexto"
+                    and y.degrau > x.degrau and x.cosmo < x.teto)
         if poupando:
             pagaveis = []
 
@@ -564,8 +573,8 @@ class Luta:
 
         # 2) despertar o Sétimo (Bronze e Prata): Cosmo no Teto + um sacrifício.
         #    Queimar é o sacrifício mais comum; cegar-se é opcional.
-        if (pol["despertar"] and x.posto in ("bronze", "prata") and x.sentido == "sexto"
-                and x.cosmo >= x.teto and grande is not None):
+        if (pol["despertar"] and x.posto in ("bronze", "prata") and x.alcanca_o_setimo
+                and x.sentido == "sexto" and x.cosmo >= x.teto and grande is not None):
             vale = y.degrau > x.degrau or x.pv < 0.5 * x.pv_max
             if vale and pol["cegar_se"] and "visao" not in x.sentidos_perdidos:
                 # a mutilação gasta a ação: fica cego, desperta, e só age no próximo turno
@@ -689,6 +698,13 @@ class Luta:
         ini_a = a.iniciativa(rng)
         ini_b = b.iniciativa(rng)
         ordem = [a, b] if (ini_a, a.mods["des"], rng.random()) >= (ini_b, b.mods["des"], rng.random()) else [b, a]
+        if self.surpresa_a:
+            # O golpe de abertura: um golpe comum antes da rodada 1, com Vantagem, e o
+            # surpreendido fica sem reação até o primeiro turno dele. Uma ação inteira
+            # (com técnica) vencia 60% a 81% dos espelhos; o golpe, 55% a 66%.
+            a.vantagem_proxima = True
+            b.reacao = False
+            self.golpe(a, b)
         for rodada in range(1, self.max_rodadas + 1):
             self.rodada = rodada
             for x in ordem:

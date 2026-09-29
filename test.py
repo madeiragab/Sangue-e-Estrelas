@@ -137,6 +137,9 @@ def testar_livro() -> None:
             f"outro soma −{R.DOMINIO_OURO}" in corrido and "+2 no ataque e na DEF" not in corrido,
             f"o Sétimo dominado é +{R.DOMINIO_OURO}/−{R.DOMINIO_OURO} na regra e nas fichas prontas")
     confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
+    confere(f"do nível {R.NIVEL_SETIMO} em diante" in corrido
+            and f"antes do <strong>nível {R.NIVEL_SETIMO}</strong>" in corrido,
+            f"o livro dá o nível do primeiro Sétimo ({R.NIVEL_SETIMO}), como o simulador")
     humana = " · ".join(map(str, R.DISTRIBUICAO_HUMANA))
     confere(f"<td>Atributos</td><td>{humana}</td>" in corrido,
             f"o livro dá os atributos do humano: {humana}")
@@ -321,6 +324,10 @@ def testar_mestre() -> None:
                 and a["rodadas"] <= 2.5,
                 f"nível {n}: um bando de seis custa PV e tempo sem derrubar "
                 f"({b['perda']:.0%} dos PV, {b['rodadas']:.1f} rodadas; com área {a['rodadas']:.1f})")
+        doze = M.bando(n, 12, area=True, lutas=1000, semente=n)
+        confere(doze["rodadas"] >= 2.3 and doze["caiu"] <= 0.06,
+                f"nível {n}: a área derruba até seis, e doze figurantes pedem mais de uma "
+                f"({doze['rodadas']:.1f} rodadas, {doze['perda']:.0%} dos PV)")
     for nh in (R.NIVEL_DA_PROVA, max(R.NIVEIS_HUMANOS)):
         p = M.prova(nh, lutas=2000)
         confere(2.5 <= p["rodadas"] <= 6.0 and p["despertou"] >= 0.95,
@@ -342,7 +349,8 @@ def testar_mestre() -> None:
     confere(sem - 0.03 <= com <= sem + 0.25,
             f"nível 15: o aliado não piora o grupo nem vence o Ouro por ele ({sem:.0%} → {com:.0%})")
     fichas = [
-        ("cavaleiro-negro", 1, 1, 0.70, 1.00, "vence na maioria das vezes"),
+        ("cavaleiro-negro", 1, 1, 0.48, 0.72, "pouco mais da metade das vezes"),
+        ("espectro-terrestre", 3, 1, 0.55, 0.80, "o Espectro perde duas vezes em três"),
         ("cavaleiro-de-prata", 8, 1, 0.00, 0.10, "quase nunca"),
         ("cavaleiro-de-prata", 9, 1, 0.05, 0.20, "uma vez em nove"),
         ("cavaleiro-de-prata", 13, 1, 0.75, 1.00, "vence com folga"),
@@ -361,10 +369,23 @@ def testar_mestre() -> None:
         confere(lo <= r["vence"] <= hi,
                 f"{chave}: {k} Bronze(s) de nível {n} — {texto} ({r['vence']:.0%})")
     e2 = M.varios_contra_um("espectro-terrestre", 2, 3, lutas=200, semente=950)
-    e3 = M.varios_contra_um("espectro-terrestre", 3, 4, lutas=200, semente=951)
-    confere(0.15 <= e2 <= 0.40 and e3 <= 0.20,
-            f"espectro-terrestre: dois são luta difícil para um nível 3 ({e2:.0%}), "
-            f"três derrubam um nível 4 ({e3:.0%})")
+    e2b = M.varios_contra_um("espectro-terrestre", 2, 4, lutas=200, semente=952)
+    e3 = M.varios_contra_um("espectro-terrestre", 3, 5, lutas=200, semente=951)
+    confere(e2 <= 0.20 and e2b <= 0.25 and 0.08 <= e3 <= 0.35,
+            f"espectro-terrestre: dois derrubam quase sempre um nível 3 ou 4 "
+            f"({e2:.0%}, {e2b:.0%}), três derrubam um nível 5 quatro vezes em cinco ({e3:.0%})")
+
+    # O primeiro Sétimo é um marco (0.10.0): antes do nível mínimo, nem levantando.
+    for n in (1, R.NIVEL_SETIMO - 1, R.NIVEL_SETIMO):
+        d = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 960 + n)
+        antes = n < R.NIVEL_SETIMO
+        confere((d["despertar_a"] == 0) if antes else (d["despertar_a"] > 0.2),
+                f"nível {n}: o Bronze {'não desperta' if antes else 'já desperta'} o Sétimo "
+                f"({d['despertar_a']:.0%} das lutas)")
+    # A surpresa (0.10.0): o golpe de abertura pesa, sem decidir.
+    for n in (1, 9, 20):
+        s = M.surpresa(n, lutas=N)
+        confere(0.50 <= s <= 0.70, f"nível {n}: o golpe de abertura ajuda sem decidir ({s:.0%})")
 
 
 # ---------------------------------------------------------------------------
