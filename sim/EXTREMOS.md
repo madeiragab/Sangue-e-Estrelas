@@ -6,21 +6,21 @@ Gerado por `python sim/extremos.py`. 800 duelos por célula (500 nas lutas de gr
 
 | | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Um nível acima | 71% | 62% | 62% | 63% | 72% | 63% | 66% | 70% | 77% | 65% | 71% | 86% | 91% | 80% | 69% | 77% | 65% | 55% | 57% |
-| Dois níveis acima | — | 81% | 81% | 79% | 84% | 82% | 73% | 80% | 90% | 87% | 87% | 94% | 98% | 96% | 90% | 88% | 86% | 76% | 75% |
+| Um nível acima | 69% | 64% | 67% | 88% | 72% | 63% | 66% | 70% | 77% | 65% | 71% | 86% | 91% | 80% | 69% | 77% | 65% | 55% | 57% |
+| Dois níveis acima | — | 82% | 82% | 94% | 95% | 82% | 73% | 80% | 90% | 87% | 87% | 94% | 98% | 96% | 90% | 88% | 86% | 76% | 75% |
 
 ## Builds
 
 | Build contra o padrão (DES, CON, SAB; técnicas de Golpe) | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
 | Cosmo na frente, técnicas de Cosmo | 51% | 52% | 50% | 50% | 44% |
-| FOR na frente | 46% | 50% | 48% | 50% | 44% |
-| CON na frente | 51% | 50% | 44% | 52% | 32% |
-| Canhão de vidro, CON 8 | 46% | 41% | 40% | 25% | 23% |
-| Só a técnica grande | 43% | 50% | 48% | 52% | 50% |
-| Só técnicas pequenas | 44% | 41% | 22% | 8% | 6% |
-| Acessório: garras | 52% | 51% | 52% | 49% | 50% |
-| Acessório: escudo | 47% | 50% | 48% | 47% | 49% |
+| FOR na frente | 50% | 50% | 48% | 50% | 44% |
+| CON na frente | 50% | 50% | 44% | 52% | 32% |
+| Canhão de vidro, CON 8 | 44% | 41% | 40% | 25% | 23% |
+| Só a técnica grande | 46% | 50% | 48% | 52% | 50% |
+| Só técnicas pequenas | 48% | 41% | 22% | 8% | 6% |
+| Acessório: garras | 51% | 51% | 52% | 49% | 50% |
+| Acessório: escudo | 48% | 50% | 48% | 47% | 49% |
 | Acessório: asas | 49% | 49% | 49% | 52% | 48% |
 | Só Vida contra só Cosmo, nas escolhas de nível | 48% | 40% | 60% | 56% | 70% |
 
@@ -28,45 +28,45 @@ Gerado por `python sim/extremos.py`. 800 duelos por célula (500 nas lutas de gr
 
 | A técnica grande com limitações (cada uma custa 1 a menos) | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Fere 1d6 por Grau | 41% | 42% | 44% | 29% | 13% |
-| Desprevenido | 36% | 31% | 47% | 24% | 16% |
-| Uma vez por luta | 48% | 48% | 45% | 21% | 21% |
-| Exige carregar | 44% | 39% | 44% | 16% | 17% |
+| Fere 1d6 por Grau | 44% | 42% | 44% | 29% | 13% |
+| Desprevenido | 37% | 31% | 47% | 24% | 16% |
+| Uma vez por luta | 52% | 48% | 45% | 21% | 21% |
+| Exige carregar | 49% | 39% | 44% | 16% | 17% |
 | Fere e Desprevenido | 29% | 30% | 26% | 10% | 1% |
-| Uma vez por luta e fere | 43% | 44% | 35% | 16% | 20% |
-| Exige carregar e fere | 39% | 35% | 26% | 11% | 7% |
-| Só com o Cosmo no Teto e fere | 42% | 48% | 34% | 19% | 18% |
+| Uma vez por luta e fere | 46% | 44% | 35% | 16% | 20% |
+| Exige carregar e fere | 45% | 35% | 26% | 11% | 7% |
+| Só com o Cosmo no Teto e fere | 49% | 48% | 34% | 19% | 18% |
 
 ## Técnicas de condição
 
 | O kit padrão mais uma técnica de condição | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Atordoar (forte, 4) | 49% | 52% | 55% | 66% | 68% |
-| Paralisar (forte, 4) | 51% | 55% | 57% | 66% | 66% |
-| Cegar (média, 2) | 39% | 49% | 55% | 33% | 40% |
-| Queimando (média, 2) | 32% | 24% | 27% | 10% | 19% |
-| Amedrontar (média, 2) | 16% | 23% | 24% | 9% | 7% |
-| Dano e atordoar (5) | 56% | 55% | 64% | 68% | 70% |
+| Atordoar (forte, 4) | 45% | 52% | 55% | 66% | 68% |
+| Paralisar (forte, 4) | 47% | 55% | 57% | 66% | 66% |
+| Cegar (média, 2) | 46% | 49% | 55% | 33% | 40% |
+| Queimando (média, 2) | 34% | 24% | 27% | 10% | 19% |
+| Amedrontar (média, 2) | 18% | 23% | 24% | 9% | 7% |
+| Dano e atordoar (5) | 51% | 55% | 64% | 68% | 70% |
 
 ## Políticas extremas
 
 | Política extrema contra a padrão | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
 | Apara tudo o que puder | 49% | 51% | 52% | 49% | 51% |
-| Nunca bloqueia | 47% | 50% | 48% | 52% | 49% |
-| Nunca concentra | 49% | 51% | 55% | 48% | 50% |
-| Se cega para despertar | 49% | 49% | 50% | 50% | 48% |
-| Nunca desperta o Sétimo | 52% | 52% | 52% | 51% | 52% |
+| Nunca bloqueia | 52% | 50% | 48% | 52% | 49% |
+| Nunca concentra | 51% | 51% | 55% | 48% | 50% |
+| Se cega para despertar | 52% | 49% | 50% | 50% | 48% |
+| Nunca desperta o Sétimo | 49% | 52% | 52% | 51% | 52% |
 
 ## Recursos
 
 | Recursos no extremo | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Zero Convicções contra três | 6% | 6% | 13% | 9% | 2% |
-| Quatro Convicções contra três | 48% | 49% | 50% | 49% | 47% |
-| 1 Centelha(s) por rodada, espelho | 62% | 66% | 72% | 63% | 61% |
-| 2 Centelha(s) por rodada, espelho | 60% | 67% | 66% | 56% | 55% |
-| 3 Centelha(s) por rodada, espelho | 58% | 60% | 56% | 52% | 51% |
+| Zero Convicções contra três | 20% | 6% | 13% | 9% | 2% |
+| Quatro Convicções contra três | 49% | 49% | 50% | 49% | 47% |
+| 1 Centelha(s) por rodada, espelho | 65% | 66% | 72% | 63% | 61% |
+| 2 Centelha(s) por rodada, espelho | 62% | 67% | 66% | 56% | 55% |
+| 3 Centelha(s) por rodada, espelho | 62% | 60% | 56% | 52% | 51% |
 | Bronze com 1 Centelha(s) por rodada contra Prata | 31% | 18% | 11% |
 | Bronze com 3 Centelha(s) por rodada contra Prata | 16% | 14% | 7% |
 
@@ -124,9 +124,9 @@ A mesma técnica da seção de condições, mas usada uma vez só por luta.
 
 | A condição média usada uma vez, na hora certa | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
-| Cegar | 50% | 54% | 54% | 46% | 52% |
-| Queimando | 48% | 50% | 48% | 42% | 41% |
-| Amedrontar | 48% | 46% | 43% | 43% | 40% |
+| Cegar | 53% | 54% | 54% | 46% | 52% |
+| Queimando | 49% | 50% | 48% | 42% | 41% |
+| Amedrontar | 49% | 46% | 43% | 43% | 40% |
 
 ## Fronteiras de Grau
 
@@ -134,20 +134,20 @@ Desde a 0.7.0 o dano de cada ponto e os PV sobem nível a nível, sem saltar qua
 
 | Personagem contra inimigo dois níveis acima | Dentro da faixa | Cruzando o Grau |
 |---|---:|---:|
-| Nomeado sem Convicção | 45% a 94% | 57% a 97% |
-| Rival com uma Convicção | 3% a 26% | 6% a 23% |
+| Nomeado sem Convicção | 44% a 94% | 46% a 97% |
+| Rival com uma Convicção | 3% a 26% | 6% a 19% |
 
 ## Características da armadura
 
 | Com a característica, contra a mesma armadura sem nenhuma | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 17 |
 |---|---:|---:|---:|---:|---:|
 | Couraça grossa | 49% | 52% | 49% | 51% | 51% |
-| Espinhos | 54% | 51% | 50% | 52% | 52% |
-| Espelhada | 56% | 55% | 55% | 52% | 51% |
-| Pesada | 54% | 58% | 59% | 55% | 56% |
-| Leve | 53% | 50% | 54% | 50% | 54% |
-| Ressonante | 52% | 50% | 54% | 49% | 48% |
-| Constelação viva | 50% | 51% | 51% | 54% | 54% |
-| Coração de estrela | 56% | 58% | 56% | 56% | 54% |
+| Espinhos | 53% | 51% | 50% | 52% | 52% |
+| Espelhada | 57% | 55% | 55% | 52% | 51% |
+| Pesada | 55% | 58% | 59% | 55% | 56% |
+| Leve | 50% | 50% | 54% | 50% | 54% |
+| Ressonante | 51% | 50% | 54% | 49% | 48% |
+| Constelação viva | 49% | 51% | 51% | 54% | 54% |
+| Coração de estrela | 60% | 58% | 56% | 56% | 54% |
 | Cortante | 52% | 50% | 50% | 54% | 47% |
-| Ofuscante | 54% | 57% | 54% | 57% | 51% |
+| Ofuscante | 55% | 57% | 54% | 57% | 51% |

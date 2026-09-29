@@ -132,15 +132,16 @@ def bando(nivel: int, tamanho: int = 6, area: bool = False, lutas: int = 2000,
     """Um personagem sozinho contra um bando da tabela de figurantes.
 
     Ele usa a técnica quando ela derruba mais que os golpes do turno (a de área
-    derruba o bando inteiro; a de alvo único, três) e o golpe comum no resto. O
-    bando ataca uma vez por rodada, com Vantagem enquanto houver mais de três de pé.
+    derruba até seis; a de alvo único, três) e o golpe comum no resto. O bando ataca
+    uma vez por rodada, com Vantagem enquanto houver mais de três de pé. O dano dele
+    não se apara e o ataque não tem crítico (0.10.0): o bando só custa PV.
     Devolve as rodadas, a fração dos PV que ele perdeu e quantas vezes caiu."""
     rng = random.Random(semente)
     de, atk, dano = R.figurante(nivel)
     g = R.grau(nivel)
     if area:
         tec = Tecnica("área", "golpe", {"dano": 1, "area": 1}, grau=g)
-        derruba_tec = tamanho
+        derruba_tec = min(tamanho, R.FIGURANTES_POR_AREA)
     else:
         tec = Tecnica("alvo único", "golpe", {"dano": 2}, grau=g)
         derruba_tec = R.FIGURANTES_POR_TECNICA
@@ -240,6 +241,19 @@ def prova(nivel_humano: int = R.NIVEL_DA_PROVA, lutas: int = 4000, semente: int 
 
 
 # ---------------------------------------------------------------------------
+# A surpresa (0.10.0)
+# ---------------------------------------------------------------------------
+
+NIVEIS_SURPRESA = (1, 3, 5, 9, 13, 17, 20)
+
+
+def surpresa(n: int, lutas: int = N) -> float:
+    """Espelho de Bronzes em que o primeiro dá o golpe de abertura."""
+    return duelos(lambda: montar("A", n, conviccoes=3), lambda: montar("B", n, conviccoes=3),
+                  n=lutas, semente=650 + n, surpresa_a=True)["a"]
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -333,19 +347,32 @@ def main() -> None:
     linhas += ["", "## Figurantes", "",
                "Um personagem sozinho contra um bando da tabela. O golpe comum que acerta "
                f"derruba {R.FIGURANTES_POR_GOLPE}; a técnica de alvo único, "
-               f"{R.FIGURANTES_POR_TECNICA}; a de área, o bando inteiro.", "",
-               "| Nível | DEF · ataque · dano | Seis, sem área | Seis, com área | Dez, sem área |",
-               "|---:|---|---|---|---|"]
+               f"{R.FIGURANTES_POR_TECNICA}; a de área, os que pegar, até "
+               f"{R.FIGURANTES_POR_AREA}. O dano do bando não se apara e o ataque dele não "
+               "tem crítico.", "",
+               "| Nível | DEF · ataque · dano | Seis, sem área | Seis, com área | Dez, sem área "
+               "| Doze, com área |",
+               "|---:|---|---|---|---|---|"]
     for n in range(1, 21):
         de, atk, dano = R.figurante(n)
         cel = []
-        for tam, area in ((6, False), (6, True), (10, False)):
+        for tam, area in ((6, False), (6, True), (10, False), (12, True)):
             b = bando(n, tam, area, semente=n)
             c = f"{b['rodadas']:.1f} rodadas, {pct(b['perda'])} dos PV"
             if b["caiu"] >= 0.005:
                 c += f", cai {pct(b['caiu'])}"
             cel.append(c)
         linhas.append(f"| {n} | {de} · +{atk} · {dano} | " + " | ".join(cel) + " |")
+
+    print("surpresa...")
+    linhas += ["", "## A surpresa", "",
+               "Dois Bronzes do mesmo nível; o primeiro pegou o outro sem ser percebido e dá o "
+               "golpe de abertura: um golpe comum antes da Iniciativa, com Vantagem, e o outro "
+               "sem reação até o primeiro turno dele.", "",
+               "| Nível | " + " | ".join(str(n) for n in NIVEIS_SURPRESA) + " |",
+               "|---|" + "---:|" * len(NIVEIS_SURPRESA),
+               "| Quem surpreende vence | "
+               + " | ".join(pct(surpresa(n)) for n in NIVEIS_SURPRESA) + " |"]
 
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",

@@ -64,7 +64,8 @@ aqui primeiro.
 - **Sétimo:** o Bronze (e o Prata) alcança em luta, perto da morte ou em esforço
   extremo, e precisa alcançar de novo em cada luta. O Ouro, pelos anos de treino e
   pela armadura de Ouro, entra quando quer. Na regra: Cosmo no Teto + um sacrifício
-  (sentido, levantar ou queimar) + uma Convicção dita antes de rolar.
+  (sentido, levantar ou queimar) + uma Convicção dita antes de rolar. **A primeira vez é
+  um marco** (0.10.0): só do nível 5 em diante, numa luta que importa.
 - **O Ouro domina o Sétimo** (0.2.0): +3 contra quem só o despertou; armadura de
   Ouro +6. O usuário apontou que, no anime, os Bronzes só venceram Ouros por roteiro
   (Shura deu a armadura ao Shiryu; Shun por milagre; Hyoga quase morreu). Medido: um
@@ -152,6 +153,37 @@ aqui primeiro.
 - **Ataque Extra no nível 9.** No 5, dar só golpes comuns rendia o mesmo que usar
   técnicas.
 - **Centelha:** +1 Cosmo, +1 Teto, Vantagem no próximo ataque.
+
+## O primeiro playtest (0.10.0)
+
+Uma campanha de um jogador só, com o ChatGPT de Mestre, do humano de nível 1 ao Bronze de
+nível 4 (`regras/playtest-01.md`). O que mudou:
+
+- **O primeiro Sétimo é um marco, do nível 5 em diante** (decisão do usuário, "nível 5 mais
+  a situação"). Pela regra, o Bronze de nível 1 despertou ao levantar na primeira luta séria;
+  o usuário vetou na campanha ("o Sétimo só desperta bem mais para a frente, contra um
+  inimigo de verdade"). O problema não era só o levantar: no nível 1 o Teto é 5 e queimar um
+  ponto custa 1d4. A primeira vez agora pede o nível 5 e uma luta contra Posto acima ou um
+  nomeado com Convicção; depois, vale a regra de sempre. O simulador trata o nível mínimo
+  como a primeira vez já acontecida. Custo aceito: nos níveis 1 a 4 o personagem perde o
+  Sétimo que levantar dava, e o nível 5 virou um salto (88% contra quem está no 4).
+- **Figurante não racha armadura.** O dano do bando não se apara e o ataque dele não tem
+  crítico. Na mesa, a armadura morreu aparando soldado raso; o simulador nunca modelou isso,
+  então o livro passou a dizer o que o simulador media.
+- **A área derruba até seis.** "O bando inteiro" deixava uma técnica de tamanho 3 apagar
+  bandos de doze toda rodada (com piso 2, ela sai de graça: 3 de Cosmo, paga, volta ao piso 2,
+  +1 no turno). Testado e descartado: bandos de no máximo seis, cada um atacando — dois bandos
+  juntos derrubavam um personagem de nível 1 a 4 em 8% a 12% das lutas e custavam metade dos
+  PV.
+- **Surpresa: o golpe de abertura**, só golpe comum, com Vantagem. Testados e descartados:
+  uma ação inteira antes da Iniciativa (60% a 81% num espelho) e agir primeiro com Vantagem
+  (59% a 78%). Só agir primeiro já vale 54% a 69%: a Iniciativa pesa neste jogo.
+- **O ritmo da Glória fica** (decisão do usuário): um nível por missão, do N1 ao N4 em duas
+  semanas de história, foi o que ele quis.
+- Esclarecimentos sem número: o piso e a vida paga (o texto dizia "sai de graça"; o
+  simulador sempre cobrou da vida o que passa do Cosmo que se tem), arredondamento para
+  cima, empate com bando, PV ao subir de nível, Elmo na luta seguinte, pular degraus da
+  escada do sangue, kit de medicina, nível humano por ano × três semanas, laço da Centelha.
 
 ## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
 
@@ -346,4 +378,8 @@ aqui primeiro.
 - Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
+- Do playtest (`regras/playtest-01.md`): jogo com um jogador só e aliados de elite na mesma
+  luta; veneno e ameaças que não são guerreiros; fichas de aprendiz, de Espectro de nível
+  baixo e de Estrela Celeste; a técnica nova que nasce no limite numa campanha sem
+  Interlúdio; prova em forma de torneio; a armadura que se sacrifica.
 - Nome do sistema: **Sangue e Estrelas** (decidido).

@@ -1206,7 +1206,10 @@ pre.bloco-codigo {
   <p>Num teste de perícia, o 20 natural não garante o impossível, mas acrescenta algo
   excepcional: mais informação, menos tempo, uma impressão que fica. O 1 natural usa o
   total normalmente e pode trazer uma complicação — nunca um ferimento de graça.
-  Rolagens de Efeito e Iniciativa não têm crítico.</p>
+  Rolagens de Efeito, Iniciativa e o ataque de um bando de figurantes não têm crítico.</p>
+
+  <p><strong>Frações.</strong> Quando uma conta dá fração e a regra não diz para que lado
+  arredondar, arredonde para cima.</p>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -1258,8 +1261,8 @@ pre.bloco-codigo {
       mínimo, no <a href="#cap12">Capítulo Doze</a>.</li>
     <li>O <em class="termo">Sentido</em> é o patamar do seu poder naquele momento. Todo
       guerreiro luta no Sexto Sentido. O Sétimo é a velocidade da luz: o Bronze só chega
-      lá no limite, e só por uma luta; o Ouro chega quando quer, e com um controle que o
-      Bronze não tem. O Oitavo e o Nono estão no <a href="#cap4">Capítulo Quatro</a>.</li>
+      lá no limite, só por uma luta, e a primeira vez é um marco do nível 5 em diante; o
+      Ouro chega quando quer, e com um controle que o Bronze não tem. O Oitavo e o Nono estão no <a href="#cap4">Capítulo Quatro</a>.</li>
   </ul>
   <p>O Posto pesa muito. Num duelo justo, um Bronze sozinho não vence um Ouro do mesmo
   nível. Mas o Bronze nunca luta sozinho: o grupo inteiro, despertando, levantando e
@@ -1376,9 +1379,12 @@ function rolar(modo) {
     <li><strong>Nível 3.</strong> O corpo aprendeu a bater, e a prova da armadura pode
       acontecer, quando o mestre disser.</li>
     <li><strong>Nível 4.</strong> O limite do corpo humano. Daqui, só se sai pela prova.</li>
-    <li><strong>Subir de nível humano:</strong> um nível por ano de treino, ou quando o
-      mestre diz que o aprendiz passou numa prova menor. Quem joga o treino sobe um nível
-      a cada sessão que termina com o mestre satisfeito.</li>
+    <li><strong>Subir de nível humano:</strong> ser escolhido já é o nível 2; dali em diante,
+      um nível por ano de treino, ou quando o mestre diz que o aprendiz passou numa prova
+      menor. Quem joga o treino sobe um nível a cada sessão que termina com o mestre
+      satisfeito. Quando o mestre é um personagem de jogador, conte em Interlúdio: três
+      semanas dedicadas a um aprendiz só valem um nível (<a href="#comando">Capítulo
+      Nove</a>).</li>
   </ul>
 
   <div class="rolagem"><table>
@@ -1754,12 +1760,14 @@ function rolar(modo) {
 
   <div class="destaque">
     <span class="rotulo">O Cosmo não acaba</span>
-    <p><strong>O piso.</strong> Gastar nunca leva o seu Cosmo abaixo do
-    <em class="termo">piso</em>: 1, e +1 a cada duas escolhas de Cosmo. O que a técnica
-    custaria abaixo do piso sai de graça.</p>
-    <p><strong>A vida paga.</strong> Se o Cosmo não basta para uma técnica, pague o que falta
-    com vida: <span class="dado">1d4</span> por ponto, vezes o Grau da técnica. Não há limite
-    de pontos, e a armadura não reduz esse preço.</p>
+    <p><strong>O piso.</strong> Pague a técnica com o Cosmo que você tem. Depois de pagar, o
+    seu Cosmo nunca fica abaixo do <em class="termo">piso</em>: 1, e +1 a cada duas escolhas
+    de Cosmo. Se a conta o levaria para baixo, ele para no piso.</p>
+    <p><strong>A vida paga.</strong> Se a técnica custa mais do que o Cosmo que você tem,
+    pague a diferença com vida: <span class="dado">1d4</span> por ponto, vezes o Grau da
+    técnica. Não há limite de pontos, e a armadura não reduz esse preço.</p>
+    <p><em>Exemplo:</em> com piso 2 e 3 de Cosmo, uma técnica de 3 sai toda do Cosmo, e ele
+    fica em 2. Com 2 de Cosmo, a mesma técnica cobra 1 ponto da vida, e o Cosmo fica em 2.</p>
     <p><strong>O último golpe.</strong> Se o preço passar da vida que você tem, o golpe sai
     assim mesmo. Se ele derrubar o inimigo, você fica de pé com 1 PV, por um fio. Se não
     derrubar, você cai logo depois dele.</p>
@@ -1798,7 +1806,7 @@ function rolar(modo) {
     <thead><tr><th>Sentido</th><th>Quem chega</th><th>O que muda</th></tr></thead>
     <tbody>
       <tr><td>Sexto</td><td>Todo guerreiro</td><td>O patamar de todos: golpes na velocidade do som</td></tr>
-      <tr><td>Sétimo</td><td>A elite, quando quer · Bronze e Prata, no limite e por uma luta</td><td>A velocidade da luz: um degrau acima do Sexto, e +2 de Teto</td></tr>
+      <tr><td>Sétimo</td><td>A elite, quando quer · Bronze e Prata, do nível 5 em diante, no limite e por uma luta</td><td>A velocidade da luz: um degrau acima do Sexto, e +2 de Teto</td></tr>
       <tr><td>Oitavo</td><td>Quem treinou e passou pela morte</td><td>Não dá força: dá o estado de Buda e a entrada viva no mundo dos mortos</td></tr>
       <tr><td>Nono</td><td>Quem tem um elo com um deus</td><td>O sentido dos deuses: um degrau acima do Sétimo, e o único que fere um deus</td></tr>
     </tbody>
@@ -1849,6 +1857,15 @@ function rolar(modo) {
   <p>Você fica no Sétimo até o fim daquela luta. Na próxima, começa no Sexto de novo e
   precisa despertar outra vez. E despertar não te iguala a um Ouro: o domínio dele
   continua valendo.</p>
+  <div class="destaque" id="primeiro-setimo">
+    <span class="rotulo">O primeiro despertar</span>
+    <p>O primeiro Sétimo de um Bronze ou de um Prata é um marco, não um acidente. Ele não
+    acontece antes do <strong>nível 5</strong>, nem levantando do chão. E a primeira vez vem
+    numa luta que importa: contra alguém de Posto acima do seu, ou contra um nomeado com
+    Convicção, com algo de verdade em jogo. O Mestre diz quando a luta é essa.</p>
+    <p>Depois da primeira vez, o Sétimo fica ao seu alcance em toda luta, com as três
+    condições de sempre.</p>
+  </div>
 
   <p>No duelo justo, um Bronze não vence um Ouro — nem cinco níveis acima, nem com Centelhas.
   O milagre vem do grupo inteiro contra ele (<a href="#sozinho-contra-muitos">Capítulo
@@ -2019,8 +2036,10 @@ function rolar(modo) {
     <li>Uma Centelha quebra a Guerra dos Mil Dias.</li>
     <li>Um aliado a 0 PV que recebe uma Centelha pode levantar na hora, sem esperar o turno
       dele — ainda gastando uma Convicção.</li>
-    <li>O laço precisa existir: companheiros de grupo sempre contam; um personagem do
-      Mestre precisa estar numa das suas Convicções.</li>
+    <li>O laço precisa existir: companheiros de grupo — os outros personagens e os aliados
+      que lutam com você nesta missão — sempre contam; qualquer outro personagem do Mestre
+      precisa estar numa das suas Convicções. E quem manda precisa ter o Cosmo desperto:
+      gente comum reza, mas não manda Centelha.</li>
   </ul>
 
   <div class="nota">
@@ -2043,8 +2062,19 @@ function rolar(modo) {
 
   <p class="abre">Quando a luta começa, todo mundo rola <span class="dado">1d20 + DES</span>
   — a <em class="termo">Iniciativa</em> — e age nessa ordem, do maior para o menor. Empate
-  vai para quem tem a maior Destreza. Uma volta completa, com todo mundo agindo uma vez, é
-  uma <em class="termo">rodada</em>.</p>
+  vai para quem tem a maior Destreza; entre um personagem e um bando de figurantes, que não
+  tem Destreza, o personagem age primeiro. Uma volta completa, com todo mundo agindo uma vez,
+  é uma <em class="termo">rodada</em>.</p>
+
+  <h4 id="surpresa">Surpresa: o golpe de abertura</h4>
+  <p>Quem começa a luta sem ter sido percebido — Furtividade contra a Percepção do alvo, ou
+  um alvo que nem sabe que vai haver luta — dá o <em class="termo">golpe de abertura</em>:
+  um golpe comum antes da Iniciativa, com Vantagem, e o alvo fica sem reação até o primeiro
+  turno dele. Só o golpe comum: o Cosmo ainda não subiu para uma técnica. Depois todo mundo
+  rola a Iniciativa, inclusive quem abriu. Contra quem tem a lição Briga de Rua, o golpe de
+  abertura sai sem a Vantagem.</p>
+  <p>Sem surpresa, não há golpe de abertura. Se os dois lados já se encaram, quem declara o
+  primeiro soco dá esse soco na vez dele, na ordem da Iniciativa.</p>
 
   <p>Uma luta aqui tem um formato que se repete, e vale conhecer antes de entrar nela. Nas
   primeiras rodadas você troca golpes comuns e o Cosmo sobe. Quando ele está alto, você
@@ -2123,8 +2153,8 @@ function rolar(modo) {
     <li><strong>Bloquear.</strong> Com a armadura no corpo, quando um ataque é declarado
       contra você e antes da rolagem: +2 na DEF contra ele.</li>
     <li><strong>Aparar.</strong> Depois de ser acertado e de ver o dano: gaste 1 de
-      Resistência da armadura e sofra metade. Está no <a href="#armadura-na-luta">Capítulo
-      Sete</a>.</li>
+      Resistência da armadura e sofra metade. Dano de figurante não se apara. Está no
+      <a href="#armadura-na-luta">Capítulo Sete</a>.</li>
     <li><strong>Ataque de oportunidade.</strong> Quando alguém ao seu alcance sai dele sem
       Desengajar, você dá um golpe comum.</li>
   </ul>
@@ -2181,8 +2211,12 @@ function rolar(modo) {
   <h3>Figurantes</h3>
   <p>Soldados rasos, guardas do templo, espectros sem nome: são
   <em class="termo">figurantes</em>. Um acerto derruba um figurante, e uma técnica em área
-  derruba todos os que pegar. Eles vêm em bandos, e o bando age como uma criatura só. Os
+  derruba os que pegar, até seis. Eles vêm em bandos, e o bando age como uma criatura só. Os
   números de um bando estão no <a href="#cap10">Capítulo Dez</a>.</p>
+  <p><strong>Figurante não racha armadura.</strong> A lança de um soldado raso quebra na
+  armadura de um Cavaleiro: o dano de figurante não se apara, e o ataque do bando não tem
+  crítico — um 20 natural dele acerta, mas não derruba o Elmo. O bando cobra PV e tempo; a
+  Resistência fica para a luta de verdade.</p>
   <p>Um personagem de jogador nunca é figurante — nem diante de um Ouro, nem diante de um
   deus.</p>
 
@@ -2205,9 +2239,11 @@ function rolar(modo) {
     <li>vai com o Cosmo direto ao Teto;</li>
     <li>e age normalmente.</li>
   </ul>
-  <p>Para um Bronze ou um Prata, levantar assim já reúne as três condições do Sétimo
-  Sentido: o Cosmo está no Teto, levantar é o sacrifício e a Convicção foi dita. Ele
-  levanta desperto. É a cena mais famosa do anime, e aqui ela é uma regra.</p>
+  <p>Para um Bronze ou um Prata do nível 5 em diante, levantar assim já reúne as três
+  condições do Sétimo Sentido: o Cosmo está no Teto, levantar é o sacrifício e a Convicção
+  foi dita. Ele levanta desperto. É a cena mais famosa do anime, e aqui ela é uma regra —
+  mas a primeira vez é um marco, numa luta que importa
+  (<a href="#primeiro-setimo">Capítulo Quatro</a>). Antes disso, levantar é só levantar.</p>
 
   <h4>O preço de levantar</h4>
   <ul>
@@ -2267,7 +2303,8 @@ function rolar(modo) {
       <p class="etiqueta">Uma hora</p>
       <p>Recupera um quarto dos PV máximos. Uma vez entre dois descansos longos. Alguém
       com Medicina pode tratar os ferimentos: teste CD 13, e no sucesso cada pessoa tratada
-      recupera mais <span class="dado">1d8</span>.</p>
+      recupera mais <span class="dado">1d8</span>. Tratar não exige kit; o kit de medicina
+      dá Vantagem no teste e gasta um uso por pessoa tratada.</p>
     </div>
     <div class="cartao">
       <h5>Descanso longo</h5>
@@ -2671,7 +2708,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <tbody>
       <tr><td>Peitoral</td><td>O bônus de armadura na sua DEF.</td></tr>
       <tr><td>Braços</td><td>Bloquear: como reação, +2 na DEF contra um ataque declarado.</td></tr>
-      <tr><td>Elmo</td><td>Uma vez por luta, o primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe.</td></tr>
+      <tr><td>Elmo</td><td>Uma vez por luta, o primeiro crítico que você sofreria vira um acerto normal — e o elmo voa longe. Depois da luta você o recolhe, e na próxima ele está no lugar.</td></tr>
       <tr><td>Pernas</td><td>+3 metros de movimento.</td></tr>
       <tr><td>Acessório</td><td>O que a sua constelação der: veja abaixo.</td></tr>
     </tbody>
@@ -2780,6 +2817,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       além do dano.</li>
     <li>O Elmo é sempre o primeiro a voar: é por isso que, no anime, quase todo Cavaleiro
       termina a luta sem ele.</li>
+    <li>O dano de figurante não se apara (<a href="#cap10">Capítulo Dez</a>): a lança de um
+      soldado raso não racha uma armadura.</li>
   </ul>
 
   <p>Aparar é a escolha mais constante da luta. Cada ponto de Resistência é metade de um
@@ -2874,6 +2913,10 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   bônus do sangue de elite.</p>
   <p>Depois do sangue de um deus não existe sangue mais forte. Se a armadura morrer de novo, é
   para sempre.</p>
+  <p><strong>Pular degraus.</strong> Sangue mais forte serve a qualquer momento: uma Bronze
+  que morre pela primeira vez pode voltar com o sangue de um Ouro. Mas os degraus pulados
+  se perdem. Ela sobe uma Versão só, ganha só o bônus do sangue que recebeu, e dali em
+  diante não aceita mais o sangue mais fraco.</p>
 
   <h4>Cada revivida é uma forma nova</h4>
   <p>Toda vez que revive, a armadura sobe uma <em class="termo">Versão</em>: a V1 é a
@@ -3024,7 +3067,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="rolagem"><table>
     <thead><tr><th>Item</th><th>O que faz</th></tr></thead>
     <tbody>
-      <tr><td>Kit de medicina</td><td>Vantagem em Medicina. Tem 5 usos para tratar ferimentos num descanso curto (cada pessoa tratada recupera mais <span class="dado">1d8</span>).</td></tr>
+      <tr><td>Kit de medicina</td><td>Vantagem em Medicina. Tem 5 usos: tratar os ferimentos de uma pessoa num descanso curto gasta um (e no sucesso ela recupera mais <span class="dado">1d8</span>).</td></tr>
       <tr><td>Ervas medicinais</td><td>Num descanso curto, uma pessoa recupera mais <span class="dado">1d8</span> PV. Um punhado dá três usos.</td></tr>
       <tr><td>Corda de escalada</td><td>Vantagem em Atletismo para escalar e descer; aguenta três pessoas.</td></tr>
       <tr><td>Mapa estelar</td><td>Vantagem em Mitologia para reconhecer uma constelação, uma armadura ou a técnica ligada a ela; à noite, você não se perde.</td></tr>
@@ -3653,8 +3696,10 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li>Um golpe comum que acerta derruba <strong>dois</strong> figurantes — com o Ataque
       Extra, são dois golpes e até quatro no chão.</li>
     <li>Uma técnica de alvo único que acerta derruba <strong>três</strong>. Uma técnica em
-      área derruba o bando inteiro. Rola-se uma vez só, contra a DEF do bando: ninguém rola
-      por figurante.</li>
+      área derruba os que pegar, <strong>até seis</strong>: um bando de doze pede duas.
+      Rola-se uma vez só, contra a DEF do bando: ninguém rola por figurante.</li>
+    <li><strong>Figurante não racha armadura.</strong> O dano do bando não se apara, e o
+      ataque dele não tem crítico: um 20 natural acerta, mas não derruba o Elmo.</li>
     <li>Figurantes não dão Glória, não leem técnicas, não levantam e não usam Sozinho contra
       muitos.</li>
     <li><strong>Medido:</strong> um bando de seis prende um personagem sozinho por três ou
@@ -3662,7 +3707,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       dos PV dele — mais nos primeiros níveis. Com uma técnica em área, uma ou duas rodadas e
       metade do estrago. Quase ninguém cai. É para isso que o bando serve: gastar tempo e PV
       antes da luta de verdade. Um bando de dez já é uma luta: metade dos PV até o nível 8,
-      e às vezes derruba.</li>
+      e às vezes derruba. Um de doze, mesmo contra quem tem técnica em área, leva três ou
+      quatro rodadas e um terço dos PV até o nível 4; depois, duas ou três rodadas e um
+      quarto.</li>
   </ul>
 
   <div class="ornamento">❖ ❖ ❖</div>
@@ -3673,7 +3720,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <div class="rolagem"><table>
     <thead><tr><th>Dificuldade</th><th>Inimigo</th><th>Ele vence</th></tr></thead>
     <tbody>
-      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou um acima</td><td>64% a 99%</td></tr>
+      <tr><td>Fácil</td><td>Nomeado sem Convicção, do mesmo nível ou um acima</td><td>56% a 99%</td></tr>
       <tr><td>Justa</td><td>Mesmo nível e mesmo Posto, com três Convicções, como o personagem</td><td>48% a 52%</td></tr>
       <tr><td>Difícil</td><td>Rival um nível acima, com uma Convicção</td><td>12% a 35%</td></tr>
       <tr><td>Muito difícil</td><td>Rival dois níveis acima, com uma Convicção</td><td>4% a 24%</td></tr>
@@ -3693,8 +3740,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <p>O nível não salta: o dano de cada ponto e os PV sobem um pouco a cada nível, e um
     inimigo um nível acima pesa mais ou menos o mesmo em qualquer ponto da campanha — quem
     está acima vence de 55% a 91% dos duelos, com o pico nos níveis 13 e 14, quando a
-    proficiência e o +2 de atributo chegam juntos. O salto que ficou é o do Posto, e é de
-    propósito: um Bronze de nível 8 vence um Prata de nível 9 com uma Convicção 6% das
+    proficiência e o +2 de atributo chegam juntos. Os saltos que ficaram são de propósito.
+    Um é o do nível 5, quando o Bronze passa a alcançar o Sétimo: quem chegou nele vence
+    quase nove vezes em dez contra quem ainda está no 4. O outro é o do Posto: um Bronze de nível 8 vence um Prata de nível 9 com uma Convicção 6% das
     vezes, e ninguém de nível 14 vence uma elite de nível 15. Quando o inimigo está um Posto
     acima, conte-o como <strong>dois degraus mais difícil</strong> na tabela.</p>
   </div>
@@ -3775,7 +3823,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <ul><li><strong>Punho das Sombras</strong> · 5 de Cosmo · +4 contra a DEF · <span class="dado">5d8 + 7</span>.</li><li><strong>Chama Negra</strong> · 2 de Cosmo · +4 contra a DEF · <span class="dado">2d8 + 4</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Armadura falsa.</strong> A Armadura Negra não se regenera: a Resistência gasta fica gasta até alguém consertá-la.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence um desses sozinho na maioria das vezes.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence um desses sozinho pouco mais da metade das vezes: no começo, levantar ainda não dá o Sétimo.</p>
 </div>
 
   <div class="criatura">
@@ -3788,7 +3836,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <ul><li><strong>Asa do Mundo Inferior</strong> · 5 de Cosmo · +4 contra a DEF · <span class="dado">5d8 + 17</span>.</li><li><strong>Grito Maligno</strong> · 3 de Cosmo · +4 contra a DEF · <span class="dado">3d8 + 11</span>.</li><li><strong>Garra do Cão do Inferno</strong> · 2 de Cosmo · +4 contra a DEF · <span class="dado">2d8 + 8</span>.</li></ul>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Estrela Maligna.</strong> Se morrer, volta em <span class="dado">1d4</span> semanas, enquanto Hades existir.</li></ul>
-<p class="morte"><span class="rotulo-bloco">Quando usar</span>Vem em grupos de dois ou três. Sozinho, perde quase sempre para um Bronze de nível 3; dois juntos já são uma luta difícil para ele (o Bronze vence uma vez em quatro), e três derrubam até um Bronze de nível 4.</p>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>Vem em grupos de dois ou três. Sozinho, perde duas vezes em três para um Bronze de nível 3. Dois juntos derrubam quase sempre um Bronze de nível 3 ou 4; três ainda derrubam um de nível 5 quatro vezes em cinco. Para um Bronze sozinho antes do Sétimo, dois já são demais: é luta para o grupo.</p>
 </div>
 
   <div class="criatura">
@@ -3934,8 +3982,23 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><strong>Diga o que está em jogo.</strong> Passar pela casa, salvar alguém, recuperar
       uma urna. Uma luta com objetivo termina quando o objetivo termina — não precisa de
       alguém a 0 PV.</li>
-    <li><strong>Role a Iniciativa uma vez</strong> e deixe a ordem escrita à vista.</li>
+    <li><strong>Feche a ficha antes.</strong> Todo inimigo nomeado, por menor que seja,
+      entra com a ficha fechada — nível, Posto, PV, DEF, Resistência, Cosmo, técnicas,
+      Convicções — e os números não mudam no meio da luta.</li>
+    <li><strong>Role a Iniciativa uma vez</strong> e deixe a ordem escrita à vista. Se alguém
+      pegou o outro sem ser percebido, o golpe de abertura vem antes
+      (<a href="#surpresa">Capítulo Cinco</a>).</li>
   </ul>
+
+  <h4>Reações sem travar a mesa</h4>
+  <p>Diga a CD ou a DEF antes de o jogador rolar. Quando um inimigo ataca um personagem que
+  ainda tem reação, pare antes de resolver e diga se vem golpe comum ou técnica: Bloquear
+  é antes da rolagem. Para não perguntar a cada golpe, o jogador pode deixar a guarda dita
+  na rodada — <em>guarda alta</em>, bloqueia o primeiro ataque; <em>guarda baixa</em>,
+  guarda a reação para aparar — e ela vale até ele mudar. Contra figurantes não há o que
+  aparar: só Bloquear.</p>
+  <p>Grito não é declaração. "Queime, meu Cosmo!" é a fala do golpe; queimar só vale quando
+  o jogador diz quantos pontos queima, antes de rolar.</p>
 
   <h4>Narrar a técnica</h4>
   <p>Quando um jogador usa uma técnica, peça três coisas, nessa ordem: o nome (em voz alta,
@@ -3948,8 +4011,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <h4>Narrar a queda e o levantar</h4>
   <p>Quando um personagem cai a 0 PV, pare. O inimigo fala — é a hora do discurso. Pergunte
   ao jogador se ele tem uma Convicção para gastar e deixe que ele a diga em voz alta. Então
-  ele levanta. Se for um Bronze, ele levanta desperto: descreva o Cosmo subindo, a armadura
-  brilhando, o inimigo percebendo que alguma coisa mudou.</p>
+  ele levanta. Se for um Bronze que já alcança o Sétimo (<a href="#primeiro-setimo">Capítulo
+  Quatro</a>), ele levanta desperto: descreva o Cosmo subindo, a armadura brilhando, o
+  inimigo percebendo que alguma coisa mudou.</p>
+  <p>É também a hora das Centelhas do Mestre, que são fáceis de esquecer: o deus do
+  exército manda uma por sessão a quem está no pior momento, e quem está numa Convicção do
+  personagem pode mandar a dele, de onde estiver.</p>
 
   <div class="ornamento">❖</div>
 
@@ -4225,6 +4292,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <tr><td class="num">20</td><td>Lenda</td><td>Vida ou Cosmo · técnica nova ou atributo</td><td class="num">—</td></tr>
 </tbody></table></div>
 
+  <p>Ao subir, os PV atuais sobem junto com os máximos: a diferença entra nos dois. As
+  Convicções gastas voltam todas.</p>
   <p>Nenhum atributo passa de 20. Se a Constituição subir, recalcule os PV como se ela sempre
   tivesse sido aquela. A Resistência da CON e da Vida é sua, não da armadura: se você trocar
   de armadura, ela passa para a nova.</p>
@@ -4434,7 +4503,8 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
       <p>Movimento, uma ação, uma interação simples, uma fala breve. Uma reação fora do turno.
       Ações: Golpe, Técnica, Concentrar (+2 Cosmo), Esquivar, Ajudar, Correr, Desengajar,
       Agarrar, Preparar, Chamar a armadura. DEF: 10 + DES ou Atributo do Cosmo (o maior; com
-      a armadura, também FOR ou CON) + armadura.</p>
+      a armadura, também FOR ou CON) + armadura. Quem pega o outro sem ser percebido abre com
+      um golpe comum antes da Iniciativa, com Vantagem.</p>
     </div>
     <div class="cartao">
       <h5>O Cosmo sobe</h5>
@@ -4445,16 +4515,16 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
     </div>
     <div class="cartao">
       <h5>A vida paga · queimar</h5>
-      <p>O que o Cosmo não paga, a vida paga, sem limite: <span class="dado">1d4</span> por
-      ponto, vezes o Grau. Além do custo, queime até a proficiência (+2 no Sétimo) para somar
+      <p>Pague com o Cosmo que tem; o que passar dele, a vida paga, sem limite:
+      <span class="dado">1d4</span> por ponto, vezes o Grau. O Cosmo para no piso. Além do custo, queime até a proficiência (+2 no Sétimo) para somar
       dano. Passou da vida que resta: o golpe sai; derrubou, você fica com 1 PV; não derrubou,
       você cai. Depois, o Cosmo volta ao piso. Ignora Lida.</p>
     </div>
     <div class="cartao">
       <h5>O Sétimo</h5>
-      <p>Elite: quando quiser, dominado (+3 contra quem só despertou). Bronze e Prata: Cosmo no
-      Teto + um sacrifício no turno (queimar, levantar ou perder um sentido) + uma Convicção
-      dita. Um degrau acima: Vantagem contra quem está abaixo, e ele tem Desvantagem contra
+      <p>Elite: quando quiser, dominado (+3 contra quem só despertou). Bronze e Prata, do
+      nível 5 em diante (a primeira vez numa luta que importa): Cosmo no Teto + um sacrifício
+      no turno (queimar, levantar ou perder um sentido) + uma Convicção dita. Um degrau acima: Vantagem contra quem está abaixo, e ele tem Desvantagem contra
       você. +2 no Teto.</p>
     </div>
     <div class="cartao">
@@ -4466,14 +4536,14 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
     <div class="cartao">
       <h5>Cair e levantar</h5>
       <p>A 0 PV: Inconsciente e Caído, sem morrer. Uma vez por luta, gaste uma Convicção:
-      levanta com um quarto dos PV, Cosmo no Teto — e um Bronze levanta desperto. Ganha uma
-      Cicatriz.</p>
+      levanta com um quarto dos PV, Cosmo no Teto — e um Bronze que já alcança o Sétimo
+      levanta desperto. Ganha uma Cicatriz.</p>
     </div>
     <div class="cartao">
       <h5>A armadura</h5>
       <p>Aparar (reação): gaste 1 de Resistência, sofra metade. Bloquear (reação): +2 DEF
-      antes da rolagem. Um dos dois por rodada. Resistência 0: em pedaços, sem nada da
-      armadura. O Elmo segura o primeiro crítico. Prata contra Bronze: +2 e −2. Tudo volta no
+      antes da rolagem. Um dos dois por rodada. Dano de figurante não se apara. Resistência
+      0: em pedaços, sem nada da armadura. O Elmo segura o primeiro crítico. Prata contra Bronze: +2 e −2. Tudo volta no
       descanso longo — menos a morte. Morta, ela é casca: DEF do Posto e Bloquear, sem
       Aparar; um crítico a derruba até o fim da luta.</p>
     </div>
@@ -4540,7 +4610,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
   precisava de dois atributos altos onde os outros precisavam de um, e vencia de 13% a 51%;
   a CON na frente, de 8% a 52%. A guarda (FOR ou CON na DEF, com a armadura no corpo) e a
   Resistência vinda da CON — no lugar do +1 fixo nos níveis 5, 7, 13 e 17 — corrigiram as
-  duas coisas sem mexer na duração das lutas. Com a CON no 8, de 23% a 46%: deixar a CON de
+  duas coisas sem mexer na duração das lutas. Com a CON no 8, de 23% a 44%: deixar a CON de
   lado continua caro.</p>
 
   <h3>Cosmo e Sentidos (Capítulo Quatro)</h3>
@@ -4549,10 +4619,18 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
   vale a pena apanhar de propósito. Jogos de luta tentaram — o modo Rage do Tekken — e os
   próprios jogadores reclamam que ele dá "uma chance grátis de virar a partida mesmo para
   quem perdeu a luta toda". Aqui o Cosmo sobe pelo tempo, pelo golpe que entra e pelo que
-  você perde de verdade. Quem deixa de aparar os golpes com a armadura vence de 12% a 54%
+  você perde de verdade. Quem deixa de aparar os golpes com a armadura vence de 12% a 51%
   dos duelos contra quem apara: no nível 1 quase empata, e dali em diante perde cada vez
   mais.</p>
-  <p><strong>Queimar.</strong> Quem nunca queima nem paga com a vida vence de 34% a 50% dos
+  <p><strong>O primeiro Sétimo</strong> (0.10.0). No playtest, o Bronze de nível 1 caiu na
+  primeira luta séria, levantou com a Convicção e, pela regra, despertou o Sétimo. O marco
+  tinha virado rotina: no nível 1 o Teto é 5, o Cosmo chega nele na terceira ou quarta
+  rodada, e queimar um ponto custa <span class="dado">1d4</span>. Agora a primeira vez vem do
+  nível 5 em diante, numa luta que importa. O preço, medido: nos níveis 1 a 4, levantar
+  deixou de despertar, e o personagem ficou mais fraco contra quem está acima — contra o
+  Cavaleiro Negro de nível 2, o Bronze de nível 1 foi de 84% para 58%, e dois Espectros de
+  nível 4 contra um Bronze de nível 3, de 28% para 5%.</p>
+  <p><strong>Queimar.</strong> Quem nunca queima nem paga com a vida vence de 34% a 55% dos
   duelos contra quem faz isso com juízo: ajuda a fechar a luta, mas não decide sozinho. Numa
   versão anterior o preço era fixo e, nos níveis altos, quem queimava vencia 80% das vezes.
   É por isso que o custo cresce com o Grau. Na 0.7.0 foi testado um preço que crescia com o
@@ -4569,7 +4647,13 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 
   <h3>Combate (Capítulo Cinco)</h3>
   <p><strong>Levantar.</strong> Num duelo em que os dois têm Convicções, quem se recusa a
-  levantar vence de 1% a 14% das vezes.</p>
+  levantar vence de 1% a 19% das vezes (o 19% é no nível 1, onde levantar ainda não desperta
+  o Sétimo).</p>
+  <p><strong>A surpresa</strong> (0.10.0). No playtest, o jogador abriu oito lutas com um
+  golpe antes da Iniciativa, e cada um virava uma ação a mais. Medido num espelho de
+  Bronzes: uma ação inteira antes da Iniciativa, com técnica, vencia de 60% a 81%; só agir
+  primeiro, já de 54% a 69%. O golpe de abertura — só o golpe comum, com Vantagem, e o alvo
+  sem reação — fica em 52% a 66%: pesa, sem decidir.</p>
   <p><strong>Condições.</strong> Sem "o mesmo golpe não funciona duas vezes", e com "ataques
   contra você têm Vantagem" no Atordoado, quem tinha uma técnica de atordoar vencia até 89%
   dos duelos: o alvo perdia turnos seguidos e apanhava com Vantagem. Com as duas mudanças,
@@ -4584,7 +4668,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 
   <h3>Técnicas (Capítulo Seis)</h3>
   <p><strong>Limitações.</strong> Com uma limitação na técnica grande, quem a tem vence de 13%
-  a 48% dos duelos; com duas, de 1% a 48%. O Cosmo economizado nunca paga o que a limitação
+  a 52% dos duelos; com duas, de 1% a 46%. O Cosmo economizado nunca paga o que a limitação
   tira — ainda mais nos níveis altos, onde o Cosmo sobra e a técnica sai quase toda rodada. O
   dano em você cresce com o Grau porque <span class="dado">1d6</span> fixo não fazia
   diferença para quem tem 150 PV.</p>
@@ -4598,7 +4682,9 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
   dois saltavam juntos, e quem tinha um nível a mais vencia até 97% das vezes. Com o bônus do
   ponto e os PV nível a nível, um nível acima vence de 55% a 91%. O pico que sobrou, nos
   níveis 13 e 14, é a proficiência e o +2 de atributo chegando juntos numa luta que já é
-  longa. O salto que ficou é o do Posto, e esse é de propósito.</p>
+  longa. O salto que ficou é o do Posto, e esse é de propósito. Desde a 0.10.0 há um segundo,
+  também de propósito: no nível 5, quando o Bronze passa a alcançar o Sétimo, quem chegou
+  nele vence 88% contra quem ainda está no 4 (antes, 63%).</p>
 
   <h3>Armaduras (Capítulo Sete)</h3>
   <p><strong>Características.</strong> Cada uma, sozinha, vence de 47% a 59% dos duelos contra
@@ -4630,6 +4716,12 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
   <p><strong>Figurantes.</strong> Com a tabela antiga, feita para os PV de outra versão, um
   bando de seis derrubava um personagem de nível 1 em 94% das vezes, e a luta durava 9
   rodadas.</p>
+  <p><strong>Figurante não racha armadura</strong> (0.10.0). O simulador sempre mediu o bando
+  só em PV: sem Aparar, sem crítico. Na mesa do playtest, a armadura de Bronze gastou cinco
+  dos seis pontos de Resistência aparando golpes de 3 de dano, e o Elmo voou num 20 natural de
+  soldado raso. Agora o livro diz o que o simulador já media. E a área derruba até seis: sem o
+  limite, uma técnica de tamanho 3 apagou uns quinze bandos, de até doze soldados, quase
+  sempre na primeira ação; com ele, doze figurantes custam de duas a quatro rodadas.</p>
 
   <h3>Aliados (Capítulo Onze)</h3>
   <p>Um personagem que venceria um rival do mesmo nível metade das vezes vence de 68% a 72%
@@ -4661,13 +4753,17 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
       para o gelo, o fogo e as correntes não virarem a mesma técnica com outra roupa.
       Adiado: é fácil virar balanceamento por elemento.</li>
     <li>Grupo contra grupo, que o simulador ainda não mede.</li>
+    <li><strong>O que o primeiro playtest deixou</strong> (<code>regras/playtest-01.md</code>):
+      jogo com um jogador só e aliados de elite na mesma luta; veneno e ameaças que não são
+      guerreiros; fichas de aprendiz e de Espectros de nível baixo; e o ritmo de uma
+      campanha que não para para o Interlúdio.</li>
   </ul>
 </section>
 
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.9.4</strong>, de 28/09/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.10.0</strong>, de 29/09/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece. O que o

@@ -256,9 +256,12 @@ def nivel_do_aliado(nivel_do_grupo: int) -> int:
 # ---------------------------------------------------------------------------
 
 # Quantos figurantes caem com um acerto: o golpe comum derruba dois; a técnica de
-# alvo único, três; a técnica em área, o bando inteiro.
+# alvo único, três; a técnica em área, os que pegar, até FIGURANTES_POR_AREA.
 FIGURANTES_POR_GOLPE = 2
 FIGURANTES_POR_TECNICA = 3
+# A técnica em área derruba os que pegar, até seis (0.10.0). No playtest, uma área de
+# tamanho 3 apagava bandos de doze de uma vez, turno após turno.
+FIGURANTES_POR_AREA = 6
 
 
 def figurante(nivel: int) -> tuple[int, int, int]:
@@ -337,6 +340,10 @@ def posto_existe(posto: str, nivel: int) -> bool:
 
 DEGRAU = {"sexto": 0, "setimo": 1, "nono": 2}
 TETO_SETIMO = 2
+# O primeiro Sétimo do Bronze e do Prata é um marco (0.10.0): antes deste nível ele
+# não acontece, nem levantando. O simulador mede uma luta de cada vez, então do nível
+# mínimo em diante trata o primeiro despertar como já acontecido.
+NIVEL_SETIMO = 5
 DOMINIO_OURO = 3   # bônus do Sétimo dominado do Ouro contra um Sétimo despertado
 TETO_NONO = 2
 
