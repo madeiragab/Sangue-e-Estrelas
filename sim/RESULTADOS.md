@@ -8,8 +8,8 @@ Espelho de Bronze contra Bronze. *Rodadas* é a duração média da luta; *com C
 
 | Nível | PV | Rodadas, com Convicções | Rodadas, sem | Dano vindo de técnicas | Quem não usa técnica vence |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 16 | 4.7 | 2.9 | 91% | 31% |
-| 4 | 42 | 4.9 | 3.1 | 97% | 15% |
+| 1 | 16 | 4.7 | 3.0 | 90% | 36% |
+| 4 | 42 | 4.7 | 3.1 | 96% | 21% |
 | 5 | 54 | 6.1 | 4.6 | 95% | 14% |
 | 8 | 97 | 6.4 | 4.9 | 94% | 4% |
 | 9 | 114 | 7.6 | 6.0 | 100% | 8% |
@@ -25,19 +25,19 @@ Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%;
 
 | Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 15 | Nível 17 | Nível 20 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Espelho: Bronze contra Bronze | 50% | 51% | 51% | 50% | 50% | 51% | 49% |
-| Quem não apara a armadura | 54% | 45% | 40% | 24% | 16% | 16% | 12% |
-| Quem nunca queima | 47% | 44% | 42% | 34% | 42% | 49% | 50% |
-| Quem nunca levanta | 6% | 8% | 14% | 10% | 3% | 1% | 1% |
+| Espelho: Bronze contra Bronze | 48% | 51% | 51% | 50% | 50% | 51% | 49% |
+| Quem não apara a armadura | 51% | 45% | 40% | 24% | 16% | 16% | 12% |
+| Quem nunca queima | 55% | 44% | 42% | 34% | 42% | 49% | 50% |
+| Quem nunca levanta | 19% | 8% | 14% | 10% | 3% | 1% | 1% |
 | Prata contra Bronze | — | — | 89% | 90% | 91% | 91% | 90% |
 | Bronze contra Prata | — | — | 11% | 11% | 8% | 8% | 6% |
 | Prata contra Ouro | — | — | — | — | 0% | 0% | 0% |
-| Um nível acima | 71% | 73% | 76% | 89% | 71% | 66% | — |
-| Dois níveis acima | 79% | 81% | 88% | 95% | 89% | 78% | — |
+| Um nível acima | 73% | 73% | 76% | 89% | 71% | 66% | — |
+| Dois níveis acima | 81% | 81% | 88% | 95% | 89% | 78% | — |
 | Bronze sozinho contra Ouro | — | — | — | — | 0% | 0% | 0% |
 | Bronze com uma Centelha por rodada contra Ouro | — | — | — | — | 0% | 0% | 0% |
 | Bronze que se cega contra Ouro | — | — | — | — | 0% | 0% | 0% |
-| Armadura revivida três vezes (V4) contra a original | 59% | 65% | 64% | 62% | 66% | 66% | 67% |
+| Armadura revivida três vezes (V4) contra a original | 57% | 65% | 64% | 62% | 66% | 66% | 67% |
 | V4 com a forma de elite contra a original | 65% | 67% | 69% | 67% | 72% | 73% | 74% |
 | Bronze V4 com a forma de elite contra Ouro | — | — | — | — | 1% | 0% | 0% |
 | Bronze com as cinco formas, até a de deus, contra Ouro | — | — | — | — | 3% | 1% | 0% |
@@ -45,7 +45,7 @@ Porcentagem de vitórias do primeiro lutador. O espelho deve ficar perto de 50%;
 | Prata com a escada inteira (quatro, elite, deus) contra Ouro | — | — | — | — | 7% | 2% | 2% (5% emp.) |
 | Ouro revivido seis vezes contra o original | — | — | — | — | 69% (9% emp.) | 71% (11% emp.) | 69% (13% emp.) |
 | Garras contra nenhum acessório | 49% | 50% | 51% | 49% | 48% | 51% | 49% |
-| Escudo contra nenhum acessório | 48% | 49% | 51% | 49% | 48% | 48% | 50% |
+| Escudo contra nenhum acessório | 50% | 49% | 51% | 49% | 48% | 48% | 50% |
 
 ## Guerra dos Mil Dias
 
@@ -54,4 +54,4 @@ Em quantas lutas os Cosmos travam num choque de técnicas.
 | Confronto | Nível 1 | Nível 5 | Nível 9 | Nível 13 | Nível 15 | Nível 17 | Nível 20 |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Ouro contra Ouro | — | — | — | — | 11% | 13% | 17% |
-| Bronze contra Bronze | 1% | 1% | 1% | 1% | 3% | 2% | 2% |
+| Bronze contra Bronze | 0% | 1% | 1% | 1% | 3% | 2% | 2% |

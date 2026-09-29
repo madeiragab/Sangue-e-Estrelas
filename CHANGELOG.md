@@ -3,6 +3,66 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.10.0] - 2026-09-29
+
+O primeiro playtest de campanha (um jogador, com o ChatGPT como Mestre, do humano de
+nível 1 ao Bronze de nível 4) está em `regras/playtest-01.md`. Esta versão muda o que ele
+achou de mais pesado e esclarece o que ele achou de ambíguo.
+
+### Mudado
+
+- **O primeiro Sétimo é um marco** (Capítulos Quatro e Cinco, decisão do usuário): o Bronze
+  e o Prata só alcançam o Sétimo do nível 5 em diante, e a primeira vez vem numa luta que
+  importa — contra alguém de Posto acima ou um nomeado com Convicção. Depois dela, vale a
+  regra de sempre. No playtest, o Bronze de nível 1 levantou na primeira luta séria e, pela
+  regra, despertou; no nível 1 o Teto é 5 e queimar um ponto custa 1d4, então o Sétimo virava
+  rotina. Medido: nos níveis 1 a 4 o personagem ficou mais fraco contra quem está acima (o
+  Cavaleiro Negro de nível 2 contra um Bronze de nível 1: de 84% para 58%; dois Espectros de
+  nível 4 contra um de nível 3: de 28% para 5%), e apareceu um salto no nível 5 (quem chegou
+  nele vence 88% contra quem está no 4; antes, 63%). As fichas prontas e a tabela de
+  dificuldade dizem os números novos.
+- **Figurante não racha armadura** (Capítulos Cinco, Sete e Dez): o dano do bando não se
+  apara, e o ataque dele não tem crítico — o 20 natural acerta, mas não derruba o Elmo. No
+  playtest, cinco dos seis pontos de Resistência da armadura foram gastos aparando golpes de
+  3 de dano. O simulador sempre mediu o bando assim: nenhum número muda.
+- **A área derruba até seis figurantes** (Capítulos Cinco e Dez). Antes, o bando inteiro; no
+  playtest, uma técnica de tamanho 3 apagou uns quinze bandos, de até doze soldados. Medido:
+  doze figurantes, com técnica em área, custam de 2,5 a 4,2 rodadas e de 21% a 38% dos PV.
+
+### Adicionado
+
+- **Surpresa: o golpe de abertura** (Capítulo Cinco): quem pega o outro sem ser percebido dá
+  um golpe comum antes da Iniciativa, com Vantagem, e o alvo fica sem reação até o primeiro
+  turno dele. Sem surpresa, o primeiro soco sai na ordem da Iniciativa. No playtest, oito
+  lutas começaram com um golpe fora da Iniciativa, que virava uma ação a mais. Medido num
+  espelho: 52% a 66% para quem surpreende (uma ação inteira, com técnica, dava 60% a 81%).
+- **Reações sem travar a mesa** (Capítulo Onze): diga a CD ou a DEF antes do dado, pare antes
+  de resolver quando o alvo tem reação, e deixe o jogador declarar a guarda da rodada (alta,
+  bloqueia; baixa, guarda para aparar). Grito não é declaração de queimar. Feche a ficha de
+  todo nomeado antes da luta.
+- `sim/mestre.py` mede a surpresa e o bando de doze; `test.py` confere o nível do primeiro
+  Sétimo, o golpe de abertura e o limite da área.
+
+### Corrigido
+
+- **O piso e a vida paga** (Capítulo Quatro): o livro dizia que o que a técnica custaria
+  abaixo do piso "sai de graça", o que fazia a vida nunca pagar. O texto agora diz o que o
+  simulador sempre fez: paga-se com o Cosmo que se tem, a diferença sai da vida, e o Cosmo
+  para no piso. Com um exemplo.
+- Arredondamento: sem regra dizendo para que lado, arredonde para cima (Capítulo Dois).
+- Empate de Iniciativa entre um personagem e um bando: o personagem age primeiro.
+- Ao subir de nível, os PV atuais sobem junto com os máximos (Capítulo Doze).
+- O Elmo volta na luta seguinte (Capítulo Sete).
+- Pular degraus na escada do sangue: sangue mais forte serve a qualquer momento, mas os
+  degraus pulados se perdem — a armadura sobe uma Versão só, com o bônus do sangue que
+  recebeu (como o simulador já fazia).
+- Medicina: tratar não exige kit; o kit dá Vantagem e gasta um uso por pessoa.
+- Níveis humanos: o Capítulo Três dizia um nível por ano e o Nove, três semanas. Ser
+  escolhido já é o nível 2; no mundo, um nível por ano; com um personagem de jogador como
+  mestre, três semanas de Interlúdio dedicadas valem um nível.
+- O laço da Centelha: os aliados que lutam com você nesta missão contam como companheiros;
+  quem manda precisa ter o Cosmo desperto. O Capítulo Onze lembra das Centelhas do Mestre.
+
 ## [0.9.4] - 2026-09-28
 
 ### Mudado
