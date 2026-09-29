@@ -30,7 +30,8 @@ INIMIGOS = {
         tracos=["<strong>Armadura falsa.</strong> A Armadura Negra não se regenera: a "
                 "Resistência gasta fica gasta até alguém consertá-la."],
         quando="O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence "
-               "um desses sozinho na maioria das vezes."),
+               "um desses sozinho pouco mais da metade das vezes: no começo, levantar "
+               "ainda não dá o Sétimo."),
     "espectro-terrestre": dict(
         nome="Espectro de Estrela Terrestre", nivel=4, posto="bronze", acessorio="asas",
         caracteristicas=("leve",),
@@ -38,9 +39,10 @@ INIMIGOS = {
         tecnicas=("Asa do Mundo Inferior", "Garra do Cão do Inferno", "Grito Maligno"),
         tracos=["<strong>Estrela Maligna.</strong> Se morrer, volta em "
                 "<span class=\"dado\">1d4</span> semanas, enquanto Hades existir."],
-        quando="Vem em grupos de dois ou três. Sozinho, perde quase sempre para um Bronze de "
-               "nível 3; dois juntos já são uma luta difícil para ele (o Bronze vence uma vez "
-               "em quatro), e três derrubam até um Bronze de nível 4."),
+        quando="Vem em grupos de dois ou três. Sozinho, perde duas vezes em três para um "
+               "Bronze de nível 3. Dois juntos derrubam quase sempre um Bronze de nível 3 ou 4; "
+               "três ainda derrubam um de nível 5 quatro vezes em cinco. Para um Bronze "
+               "sozinho antes do Sétimo, dois já são demais: é luta para o grupo."),
     "cavaleiro-de-prata": dict(
         nome="Cavaleiro de Prata", nivel=9, posto="prata", acessorio="correntes",
         caracteristicas=("ressonante", "ofuscante"),

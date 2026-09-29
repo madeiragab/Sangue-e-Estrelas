@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.9.4-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.10.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.9.4 · 28/09/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.10.0 · 29/09/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -42,11 +42,11 @@ build. O livro e o simulador não têm como discordar.
 |---|---|
 | 🎲 **A rolagem** | `1d20 + modificador (+ proficiência)` contra um alvo. Quem causa rola; a defesa é um número fixo. |
 | ✨ **O Cosmo** | Começa baixo e sobe a cada rodada e a cada golpe que entra. Paga as técnicas, e não acaba: quando falta, a vida paga. Perder PV nunca dá Cosmo. |
-| 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção. |
+| 🌌 **Os Sentidos** | O Ouro entra no Sétimo quando quer, e domina. O Bronze só desperta no limite: Cosmo no Teto, um sacrifício e uma Convicção — e a primeira vez é um marco, do nível 5 em diante. |
 | 👁️ **Os cinco sentidos** | Ninguém fecha um sentido porque quer. O inimigo arranca, ou você se mutila — e cada um que vai embora sobe o seu Cosmo. |
 | 🛡️ **A armadura** | DEF e Resistência. Aparar gasta 1 de Resistência e corta o golpe pela metade. Com ela no corpo, a FOR ou a CON também guardam. Ela morre, só revive com sangue, e cada forma nova é mais forte. |
 | 📈 **A progressão** | A cada nível você escolhe: Vida ou Cosmo; técnica nova ou atributo; perícia ou defesa. Tudo sobe um pouco a cada nível, sem salto; o salto é o do Posto. A luta é curta no começo e longa no fim. |
-| 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e um Bronze levanta desperto. |
+| 🔥 **Levantar** | A 0 PV você cai, mas não morre. Uma vez por luta, uma Convicção dita em voz alta te põe de pé — e, do nível 5 em diante, um Bronze levanta desperto. |
 
 ## O que o simulador mediu
 
@@ -56,15 +56,15 @@ completa está em [`sim/RESULTADOS.md`](sim/RESULTADOS.md).
 
 | Confronto | Nível 1 | Nível 9 | Nível 15 | Nível 20 |
 |---|---:|---:|---:|---:|
-| Espelho, Bronze contra Bronze | 50% | 51% | 50% | 49% |
+| Espelho, Bronze contra Bronze | 48% | 51% | 50% | 49% |
 | Duração com Convicções (rodadas) | 4,7 | 7,6 | — | 11,1 |
-| Um nível acima | 70% | 76% | 71% | — |
+| Um nível acima | 73% | 76% | 71% | — |
 | Bronze contra Prata | — | 11% | 8% | 6% |
 | Bronze sozinho contra Ouro | — | — | 0% | 0% |
-| Armadura de Bronze revivida três vezes contra a original | 59% | 64% | 66% | 67% |
+| Armadura de Bronze revivida três vezes contra a original | 57% | 64% | 66% | 67% |
 | Bronze com a escada do sangue inteira contra Ouro | — | — | 3% | 0% |
-| Quem nunca apara a armadura | 54% | 40% | 16% | 12% |
-| Quem nunca levanta do chão | 6% | 14% | 3% | 1% |
+| Quem nunca apara a armadura | 51% | 40% | 16% | 12% |
+| Quem nunca levanta do chão | 19% | 14% | 3% | 1% |
 
 A luta é curta e decisiva no começo e longa no fim, e um nível a mais pesa parecido em
 toda a campanha. O Bronze perde para o Prata e, no duelo justo, não vence o Ouro: o milagre
