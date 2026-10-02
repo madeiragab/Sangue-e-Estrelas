@@ -3,6 +3,17 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.21.0] - 2026-10-02
+
+### Adicionado
+
+- **Fichas prontas dos exércitos dos outros deuses** (Capítulo Dez, pedido do usuário),
+  medidas como as outras, do começo ao fim da campanha: Satélite de Ártemis (nível 6),
+  Palasita de Terceira Classe (7), Marciano (10, Prata), Cavaleiro da Coroa (13, Prata),
+  Anjo Caído (14, Prata, duas Convicções), Cavaleiro Fantasma (16, um Ouro trazido pela
+  força, sem Convicção) e Titã meio desperto (18, mais duro que um Juiz do Inferno). O livro
+  passa a ter dezoito inimigos prontos.
+
 ## [0.20.0] - 2026-10-02
 
 Uma revisão do livro inteiro, depois de dez versões em poucos dias.

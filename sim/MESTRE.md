@@ -235,14 +235,28 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | Comandante sem armadura | Um Bronze de nível 5 | 27% | — |
 | Comandante sem armadura | Um Bronze de nível 9 | 85% | — |
 | Comandante sem armadura | Três Bronzes de nível 5 | 98% | 0.9 |
-| Guerreiro Deus | Quatro Bronzes de nível 12 | 14% | 3.7 |
-| Guerreiro Deus | Quatro Bronzes de nível 15 | 69% | 2.1 |
-| General Marina | Quatro Bronzes de nível 15 | 65% | 2.2 |
+| Satélite de Ártemis | Um Bronze de nível 6 | 50% | — |
+| Satélite de Ártemis | Dois Bronzes de nível 5 | 80% | 0.9 |
+| Palasita de Terceira Classe | Um Bronze de nível 7 | 55% | — |
+| Palasita de Terceira Classe | Um Bronze de nível 6 | 39% | — |
+| Marciano | Um Bronze de nível 10 | 11% | — |
+| Marciano | Três Bronzes de nível 9 | 72% | 1.7 |
+| Cavaleiro da Coroa | Um Bronze de nível 13 | 10% | — |
+| Cavaleiro da Coroa | Três Bronzes de nível 12 | 84% | 1.4 |
+| Anjo Caído | Um Bronze de nível 14 | 12% | — |
+| Anjo Caído | Três Bronzes de nível 13 | 82% | 1.4 |
+| Cavaleiro Fantasma | Um Bronze de nível 16 | 4% | — |
+| Cavaleiro Fantasma | Três Bronzes de nível 15 | 100% | 0.6 |
+| Titã meio desperto | Quatro Bronzes de nível 17 | 26% | 3.4 |
+| Titã meio desperto | Cinco Bronzes de nível 17 | 64% | 2.9 |
+| Guerreiro Deus | Quatro Bronzes de nível 12 | 10% | 3.8 |
+| Guerreiro Deus | Quatro Bronzes de nível 15 | 68% | 2.1 |
+| General Marina | Quatro Bronzes de nível 15 | 60% | 2.3 |
 | Cavaleiro de Ouro | Um Bronze de nível 16 | 0% | — |
-| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 48% | 2.8 |
-| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 72% | 2.5 |
-| Juiz do Inferno | Quatro Bronzes de nível 17 | 51% | 2.7 |
-| Juiz do Inferno | Quatro Bronzes de nível 18 | 63% | 2.4 |
+| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 52% | 2.7 |
+| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 82% | 2.1 |
+| Juiz do Inferno | Quatro Bronzes de nível 17 | 56% | 2.6 |
+| Juiz do Inferno | Quatro Bronzes de nível 18 | 64% | 2.3 |
 
 | Espectros juntos contra um Bronze | O Bronze vence |
 |---|---:|

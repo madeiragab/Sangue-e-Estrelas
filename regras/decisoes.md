@@ -219,6 +219,16 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## As fichas dos outros exércitos (0.21.0)
+
+- **Uma ficha por exército, em níveis espalhados** (6 a 18), para o Mestre ter uma de cada
+  faixa da campanha.
+- **O Cavaleiro da Coroa ficou sem a coroa do sol.** Medido com ela (começando no Sétimo),
+  um Prata de nível 13 virava quase um Ouro: nenhum Bronze do mesmo nível vencia, e três de
+  nível 12 só 28%. A regra é dos três da elite de Apolo, e a ficha é de Prata.
+- **O Cavaleiro Fantasma mostra o preço de voltar pela força:** um Ouro sem Convicção ainda
+  ganha de um Bronze sozinho, mas cai diante de três (99%).
+
 ## Vários contra vários, o milagre e o sangue nas veias (0.19.0)
 
 - **A resposta de Sozinho contra muitos não foi estendida a grupos** (decisão de design, com
