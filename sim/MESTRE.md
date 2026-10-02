@@ -161,6 +161,31 @@ Montados com as peças novas do motor como Golpe do Assento, no lugar do comum. 
 | Ondas do Inferno | 7 · 6 | 30% | 68% |
 | Muralha de Cristal | 5 · 4 | 58% | 61% |
 
+## Vários contra vários
+
+O grupo concentra os golpes no inimigo mais ferido; cada inimigo bate no personagem mais ferido. Sem a resposta de Sozinho contra muitos. Cada célula: quanto o grupo vence, para 2, 3 e 4 personagens.
+
+| Inimigos | Nível 3 | Nível 9 | Nível 15 |
+|---|---|---|---|
+| Nomeados, tantos quanto os personagens, do mesmo nível | 95% · 93% · 96% | 95% · 95% · 98% | 100% · 99% · 99% |
+| Nomeados, um a mais que os personagens, do mesmo nível | 47% · 73% · 78% | 45% · 65% · 82% | 45% · 79% · 95% |
+| Nomeados, tantos quanto, dois níveis acima | 56% · 70% · 74% | 64% · 65% · 66% | 71% · 87% · 82% |
+| Nomeados, tantos quanto, três níveis acima | 21% · 22% · 16% | 48% · 47% · 42% | 42% · 56% · 63% |
+| Rivais (uma Convicção), um a menos que os personagens | 97% · 95% · 90% | 100% · 95% · 93% | 100% · 100% · 99% |
+| Rivais, tantos quanto os personagens | 48% · 48% · 51% | 46% · 51% · 48% | 49% · 54% · 47% |
+| Rivais, tantos quanto, um nível acima | 27% · 27% · 26% | 21% · 14% · 7% | 33% · 27% · 35% |
+| Rivais, um a mais que os personagens | 5% · 10% · 12% | 1% · 7% · 11% | 1% · 2% · 5% |
+
+## O milagre
+
+Um Bronze sozinho contra um Ouro do mesmo nível, os dois com três Convicções: sem e com a Centelha do deus quando ele levanta.
+
+| Nível | Sem | Com o milagre |
+|---:|---:|---:|
+| 15 | 0% | 9% |
+| 17 | 0% | 7% |
+| 20 | 0% | 4% |
+
 ## O aliado de luta
 
 Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho contra muitos.
