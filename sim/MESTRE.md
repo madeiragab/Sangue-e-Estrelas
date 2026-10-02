@@ -186,6 +186,16 @@ Um Bronze sozinho contra um Ouro do mesmo nível, os dois com três Convicções
 | 17 | 0% | 7% |
 | 20 | 0% | 4% |
 
+## O Cosmo de uma luta para a outra
+
+Sem descanso longo, a luta seguinte começa com o Cosmo que sobrou. Um Bronze contra outro descansado, os dois com três Convicções.
+
+| Chega com | 1 | 5 | 9 | 13 | 17 | 20 |
+|---|---:|---:|---:|---:|---:|---:|
+| O Cosmo inicial | 53% | 53% | 50% | 50% | 45% | 49% |
+| O Cosmo no Teto | 56% | 56% | 52% | 50% | 45% | 49% |
+| O Cosmo no piso | 48% | 46% | 45% | 39% | 50% | 51% |
+
 ## O aliado de luta
 
 Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho contra muitos.

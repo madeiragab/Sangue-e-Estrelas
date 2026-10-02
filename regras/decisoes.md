@@ -219,6 +219,17 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## O Cosmo de uma luta para a outra (0.22.0)
+
+- **O Cosmo só volta ao começo no descanso longo** (pedido do usuário). Medido antes de
+  entrar: começar a luta no Teto, em vez do valor inicial, vale de 0 a 3 pontos num duelo; no
+  piso, custa até 11. O Cosmo enche em poucas rodadas, então a regra muda o ritmo das
+  lutas em sequência (as Doze Casas, o bando antes do chefe) sem mudar quem vence.
+- **O Teto da luta acaba com a luta**, e o Cosmo desce junto: sem isso, o Sétimo e as
+  Centelhas ficariam somados para a luta seguinte.
+- **Acalmar o Cosmo fora da luta** existe para a aura não denunciar o personagem até o
+  descanso longo.
+
 ## As fichas dos outros exércitos (0.21.0)
 
 - **Uma ficha por exército, em níveis espalhados** (6 a 18), para o Mestre ter uma de cada

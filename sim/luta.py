@@ -91,6 +91,7 @@ class Lutador:
     defesa_extra: int = 0              # deuses: + na DEF e nas defesas passivas
     deus: str = ""                     # "menor" ou "maior": só o Nono fere por inteiro (0.13.0)
     centelha_do_deus: bool = False     # o milagre (0.19.0): o deus manda a Centelha na pior hora
+    cosmo_comeco: int | None = None    # lutas em sequência (0.22.0): o Cosmo que sobrou da anterior
     oitavo: bool = False               # já despertou o Oitavo
     ao_lado_do_deus: bool = False      # luta ao lado do próprio deus: fere um deus normalmente
 
@@ -142,6 +143,8 @@ class Lutador:
                                 )
         if "ressonante" in car:
             self.cosmo += 1
+        if self.cosmo_comeco is not None:
+            self.cosmo = max(0, min(self.teto, self.cosmo_comeco))
         if self.sentido_inicial in ("setimo", "nono"):
             self.sentido = self.sentido_inicial
             self.teto_extra += R.TETO_SETIMO + (R.TETO_NONO if self.sentido == "nono" else 0)
