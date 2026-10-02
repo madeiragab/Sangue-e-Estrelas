@@ -219,6 +219,22 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## Vários contra vários, o milagre e o sangue nas veias (0.19.0)
+
+- **A resposta de Sozinho contra muitos não foi estendida a grupos** (decisão de design, com
+  autonomia do usuário). Medido com respostas quando os inimigos estão em menor número, quatro
+  contra três rivais ia de 88% a 69% — mas a mesa teria que controlar várias respostas por
+  rodada. Ficou mais simples contar as Convicções: a tabela mostra que número igual de
+  rivais já é justo em qualquer nível.
+- **O milagre vem pela Centelha do deus** (pedido do usuário). Testado: só a Centelha (menos
+  de 1%), sem o domínio (menos de 1%), metade dos PV (3%), Vantagem (3%), metade dos PV com
+  Vantagem e sem o domínio (9% no 15, 4% no 20) e os PV inteiros (37% a 48%: deixava de ser
+  milagre). Ficou o do meio.
+- **Sangue de deus nas veias, só para quem não é humano** (pedido do usuário). Usa o
+  tamanho de divindade menor já medido; não tem número novo.
+- **O princípio da constelação foi descartado** (decisão do usuário): seria difícil de
+  reproduzir nos outros exércitos.
+
 ## Os golpes famosos (0.18.0)
 
 - **Melhorar o motor, não escrever golpes prontos** (pedido do usuário): as peças novas —
@@ -500,10 +516,7 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 ## Pendências
 
 - Grupo contra grupo (hoje: duelo e grupo contra um).
-- Princípio da constelação: um comportamento pequeno por constelação, medido como as
-  características (adiado na 0.8.0).
 - Playtest humano das lutas de grupo contra a elite e do nível alto.
-- Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
 - Do playtest (`regras/playtest-01.md`): tudo entrou na 0.10.0 e na 0.11.0. Falta jogar de novo —
