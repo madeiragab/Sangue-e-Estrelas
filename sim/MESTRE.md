@@ -104,6 +104,20 @@ Personagens de nível 20 no Nono, com a armadura na forma Divina, contra um deus
 | Deus menor | 78% / 18 / 0.2 | 85% / 17 / 0.2 | 99% / 8 / 0.1 | 100% / 5 / 0.0 |
 | Deus maior | 25% / 22 / 0.7 | 40% / 22 / 0.6 | 81% / 15 / 0.7 | 100% / 9 / 0.2 |
 
+Fora do Nono, só uma fração do dano entra na divindade menor (25% no Sétimo, 50% com o Oitavo); no deus maior, nada. Ouros de nível 20 no Sétimo, revividos seis vezes:
+
+| Contra a divindade menor | Um | Três | Cinco |
+|---|---|---|---|
+| Só o Sétimo | 0% / 1.0 caem | 0% / 3.0 caem | 24% / 4.4 caem |
+| Com o Oitavo | 0% / 1.0 caem | 22% / 2.6 caem | 93% / 1.4 caem |
+
+Ao lado do próprio deus, quem está no Sétimo fere um deus normalmente. Ouros de nível 20 no Sétimo, ferindo por inteiro:
+
+| Ao lado do próprio deus | Um | Três | Cinco |
+|---|---|---|---|
+| Contra o deus menor | 1% / 1.0 caem | 51% / 1.9 caem | 98% / 0.6 caem |
+| Contra o deus maior | 0% / 1.0 caem | 2% / 3.0 caem | 40% / 3.7 caem |
+
 ## O sangue doado
 
 Um Bronze que doou sangue contra um Bronze inteiro do mesmo nível, os dois com três Convicções. Cada terço doado tira um terço dos PV máximos.

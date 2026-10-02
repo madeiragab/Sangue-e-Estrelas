@@ -361,6 +361,21 @@ TETO_NONO = 2
 # filhos deles) perde para quem chegou ao Nono com a armadura Divina; o maior (Hades, Atena,
 # Poseidon) ainda está um pouco acima. Medido em sim/mestre.py.
 DEUSES = {"menor": {"pv": 1.5, "def": 2}, "maior": {"pv": 2.0, "def": 4}}
+# Quanto do dano entra num deus, por quem bate (0.13.0, pedido do usuário). No Nono, tudo. A
+# divindade menor ainda sente um pouco de quem está no Sétimo, e um pouco mais de quem tem o
+# Oitavo; o deus maior, só o Nono.
+DANO_CONTRA_DEUS = {"menor": {"setimo": 0.25, "oitavo": 0.5}, "maior": {}}
+
+
+def fracao_contra_deus(tipo: str, degrau: int, oitavo: bool) -> float:
+    if degrau >= 2:
+        return 1.0
+    f = DANO_CONTRA_DEUS[tipo]
+    if degrau >= 1 and oitavo:
+        return f.get("oitavo", 0.0)
+    if degrau >= 1:
+        return f.get("setimo", 0.0)
+    return 0.0
 
 # ---------------------------------------------------------------------------
 # Cosmo
