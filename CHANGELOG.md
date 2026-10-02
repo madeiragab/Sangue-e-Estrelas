@@ -3,6 +3,16 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.16.1] - 2026-10-02
+
+### Mudado
+
+- **Comandante sem armadura** (Capítulo Dez): a ficha é um ponto de partida genérico, sem
+  apontar para nenhum personagem do cânone; o texto diz para montá-lo no nível que a
+  história pedir.
+- **Subir de nível não recupera a armadura** (Capítulo Doze, pedido do usuário): os PV e as
+  Convicções voltam; a Resistência, só no descanso.
+
 ## [0.16.0] - 2026-10-02
 
 O que ainda faltava do segundo trecho do playtest.
