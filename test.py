@@ -140,6 +140,13 @@ def testar_livro() -> None:
     confere(f"do nível {R.NIVEL_SETIMO} em diante" in corrido
             and f"antes do <strong>nível {R.NIVEL_SETIMO}</strong>" in corrido,
             f"o livro dá o nível do primeiro Sétimo ({R.NIVEL_SETIMO}), como o simulador")
+    # A Exclamação de Atena (0.13.0): a soma dos três Golpes do Assento, como o livro diz.
+    for n in (15, 17, 20):
+        o = montar("O", n, "ouro")
+        assento = next(t for t in o.tecnicas if t.nome == "assento")
+        media = round(3 * assento.pontos_de_dano * (4.5 + R.bonus_do_ponto(n)))
+        confere(f"{media} " in corrido and str(o.pv_max) in corrido,
+                f"a Exclamação de Atena no nível {n}: {media} de dano em média, contra {o.pv_max} PV")
     humana = " · ".join(map(str, R.DISTRIBUICAO_HUMANA))
     confere(f"<td>Atributos</td><td>{humana}</td>" in corrido,
             f"o livro dá os atributos do humano: {humana}")
