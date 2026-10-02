@@ -400,6 +400,21 @@ def testar_mestre() -> None:
                 f"({b:.0%} contra Bronze, {pr:.0%} contra Prata)")
     _, o = M.emprestada(17, "ouro", lutas=N)
     confere(o <= 0.05, f"nível 17: nem de armadura de Ouro o Bronze vence um Ouro ({o:.0%})")
+    pe = M.emprestada_prata(9, lutas=N)[1]
+    confere(0.55 <= pe <= 0.80, f"nível 9: a armadura de Prata emprestada ajuda menos que a de Ouro ({pe:.0%})")
+    # Os deuses (0.11.0): no Nono e de armadura Divina, supera o menor e fica perto do maior.
+    me, mo = M.contra_deus("menor", "bronze", lutas=200)["grupo"], M.contra_deus("menor", "ouro", lutas=200)["grupo"]
+    xe, xo = M.contra_deus("maior", "bronze", lutas=200)["grupo"], M.contra_deus("maior", "ouro", lutas=200)["grupo"]
+    confere(me >= 0.65 and mo >= 0.65, f"no Nono, um personagem supera a divindade menor ({me:.0%}, {mo:.0%})")
+    confere(0.10 <= xe <= 0.45 and 0.15 <= xo <= 0.55,
+            f"no Nono, um personagem fica perto do deus maior, abaixo dele ({xe:.0%}, {xo:.0%})")
+    # A raridade do Sétimo (0.11.0): o nomeado Bronze ou Prata sem Convicção não desperta.
+    for posto in ("bronze", "prata"):
+        d = duelos(M.pc(13), M.inimigo(13, posto), n=200, semente=970)
+        confere(d["despertar_b"] == 0, f"o nomeado {posto} sem Convicção não desperta o Sétimo")
+    d = duelos(M.pc(13), M.inimigo(13, "prata", 1), n=200, semente=971)
+    confere(d["despertar_b"] > 0, f"o rival Prata, com Convicção, ainda desperta ({d['despertar_b']:.0%})")
+
     # O sangue doado (0.11.0): Debilitado é quase perder, mais ainda no fim.
     d1, d13 = M.debilitado(1, 1, lutas=N), M.debilitado(13, 1, lutas=N)
     confere(0.28 <= d1 <= 0.48 and d13 <= 0.35 and d13 < d1,
