@@ -254,6 +254,87 @@ def surpresa(n: int, lutas: int = N) -> float:
 
 
 # ---------------------------------------------------------------------------
+# O grupo contra um nomeado acima do nível dele (0.11.0)
+# ---------------------------------------------------------------------------
+
+NIVEIS_ACIMA = (1, 3, 5, 9, 13)
+
+
+def grupo_contra_nomeado(n: int, k: int, acima: int, lutas: int = NG) -> dict:
+    """k personagens do nível n contra um nomeado sem Convicção `acima` níveis acima.
+    Sem Convicção, ele não usa Sozinho contra muitos."""
+    return grupo_contra_um(grupo(n, k), inimigo(n + acima), n=lutas,
+                           semente=1100 + 10 * n + acima + k, sozinho_contra_muitos=False)
+
+
+# ---------------------------------------------------------------------------
+# A armadura de Ouro emprestada (0.11.0)
+# ---------------------------------------------------------------------------
+
+NIVEIS_EMPRESTADA = (5, 9, 13, 17)
+
+
+def emprestada(n: int, posto: str = "bronze", lutas: int = N) -> tuple[float, float]:
+    """Um Bronze contra alguém do mesmo nível: com a armadura dele e com uma de Ouro
+    emprestada (a linha do Ouro, três características, sem as formas da dele)."""
+    conv = {"bronze": 3, "prata": 1, "ouro": 2}[posto]
+
+    def com():
+        return montar("P", n, conviccoes=3, armadura_posto="ouro")
+    sem_ = duelos(pc(n), inimigo(n, posto, conv), n=lutas, semente=1200 + n)["a"]
+    com_ = duelos(com, inimigo(n, posto, conv), n=lutas, semente=1200 + n)["a"]
+    return sem_, com_
+
+
+def emprestada_no_grupo(n: int, lutas: int = NG) -> tuple[float, float]:
+    """Quatro Bronzes contra um Ouro do mesmo nível, e um deles de armadura emprestada."""
+    def quatro():
+        return [montar(f"P{i}", n, armadura_posto="ouro" if i == 0 else "") for i in range(4)]
+    sem_ = grupo_contra_um(grupo(n, 4), inimigo(n, "ouro", 2), n=lutas, semente=1210 + n)["grupo"]
+    com_ = grupo_contra_um(quatro, inimigo(n, "ouro", 2), n=lutas, semente=1210 + n)["grupo"]
+    return sem_, com_
+
+
+# ---------------------------------------------------------------------------
+# O sangue doado (0.11.0)
+# ---------------------------------------------------------------------------
+
+NIVEIS_SANGUE = (1, 5, 9, 13, 17, 20)
+
+
+def debilitado(n: int, tercos: int, lutas: int = N) -> float:
+    """Um Bronze que doou `tercos` terços do sangue contra um Bronze inteiro do mesmo
+    nível: os PV máximos caem um terço por terço doado, arredondado para cima."""
+    def doador():
+        x = montar("P", n, conviccoes=3)
+        x.pv_max -= R.ceil_div(x.pv_max * tercos, 3)
+        x.reiniciar()
+        return x
+    return duelos(doador, inimigo(n, conviccoes=3), n=lutas, semente=1300 + n)["a"]
+
+
+# ---------------------------------------------------------------------------
+# A armadura que se sacrifica (regra opcional, 0.11.0)
+# ---------------------------------------------------------------------------
+
+
+def sacrificio(n: int, resistencia: int | None = None, lutas: int = N) -> tuple[float, float]:
+    """Sem e com a regra, contra um Bronze inteiro do mesmo nível. Com `resistencia`, o
+    personagem começa a luta com a armadura gasta: lutas em sequência, sem descanso."""
+    def quem(pol):
+        def f():
+            x = montar("P", n, conviccoes=3, politica=pol)
+            x.resistencia_inicial = resistencia
+            x.reiniciar()
+            return x
+        return f
+    sem_ = duelos(quem({}), inimigo(n, conviccoes=3), n=lutas, semente=1400 + n)["a"]
+    com_ = duelos(quem({"sacrificar": "cair"}), inimigo(n, conviccoes=3), n=lutas,
+                  semente=1400 + n)["a"]
+    return sem_, com_
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -281,6 +362,10 @@ def aliado_no_grupo(n: int, k: int, lutas: int = NG) -> tuple[float, float]:
 # (ficha, quem enfrenta, nível do personagem, quantos personagens)
 FICHAS = [
     ("cavaleiro-negro", "Um Bronze de nível 1", 1, 1),
+    ("espectro-novato", "Um Bronze de nível 1", 1, 1),
+    ("espectro-novato", "Um Bronze de nível 2", 2, 1),
+    ("espectro-novato", "Dois Bronzes de nível 1", 1, 2),
+    ("espectro-novato", "Três Bronzes de nível 1", 1, 3),
     ("espectro-terrestre", "Um Bronze de nível 3", 3, 1),
     ("espectro-terrestre", "Um Bronze de nível 4", 4, 1),
     ("cavaleiro-de-prata", "Um Bronze de nível 8", 8, 1),
@@ -288,6 +373,11 @@ FICHAS = [
     ("cavaleiro-de-prata", "Um Bronze de nível 13", 13, 1),
     ("cavaleiro-de-prata", "Dois Bronzes de nível 9", 9, 2),
     ("cavaleiro-de-prata", "Três Bronzes de nível 9", 9, 3),
+    ("estrela-celeste", "Um Bronze de nível 11", 11, 1),
+    ("estrela-celeste", "Um Bronze de nível 13", 13, 1),
+    ("estrela-celeste", "Dois Bronzes de nível 11", 11, 2),
+    ("estrela-celeste", "Três Bronzes de nível 9", 9, 3),
+    ("estrela-celeste", "Três Bronzes de nível 11", 11, 3),
     ("guerreiro-deus", "Quatro Bronzes de nível 12", 12, 4),
     ("guerreiro-deus", "Quatro Bronzes de nível 15", 15, 4),
     ("general-marina", "Quatro Bronzes de nível 15", 15, 4),
@@ -374,6 +464,68 @@ def main() -> None:
                "| Quem surpreende vence | "
                + " | ".join(pct(surpresa(n)) for n in NIVEIS_SURPRESA) + " |"]
 
+    print("grupo contra nomeado acima...")
+    linhas += ["", "## O grupo contra um nomeado acima do nível dele", "",
+               "Personagens do mesmo nível contra um nomeado sem Convicção alguns níveis "
+               "acima. Sem Convicção, ele não usa Sozinho contra muitos. Cada célula: quanto "
+               "o grupo vence / quantos personagens caem, em média.", "",
+               "| Nível do grupo | 2 contra +2 | 2 contra +3 | 2 contra +4 | 3 contra +2 "
+               "| 3 contra +3 | 3 contra +4 |", "|---:|---|---|---|---|---|---|"]
+    for n in NIVEIS_ACIMA:
+        cel = []
+        for k in (2, 3):
+            for acima in (2, 3, 4):
+                r = grupo_contra_nomeado(n, k, acima)
+                cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f}")
+        linhas.append(f"| {n} | " + " | ".join(cel) + " |")
+
+    print("armadura emprestada...")
+    linhas += ["", "## A armadura de Ouro emprestada", "",
+               "Um Bronze de armadura de Ouro emprestada: a linha do Ouro na tabela de Posto, "
+               "três características, a Resistência da CON e da Vida, e nada das formas da "
+               "armadura dele. A Hierarquia e o Sétimo continuam os do Bronze.", "",
+               "| Nível | Contra um Bronze (3 Convicções) | Contra um Prata (1) | "
+               "Contra um Ouro (2) |", "|---:|---|---|---|"]
+    for n in NIVEIS_EMPRESTADA:
+        cel = []
+        for posto in ("bronze", "prata", "ouro"):
+            if R.posto_existe(posto, n):
+                sem_, com_ = emprestada(n, posto)
+                cel.append(f"{pct(sem_)} → {pct(com_)}")
+            else:
+                cel.append("—")
+        linhas.append(f"| {n} | " + " | ".join(cel) + " |")
+    linhas += ["", "| Quatro Bronzes contra um Ouro do mesmo nível | Sem | Um de armadura "
+               "emprestada |", "|---|---:|---:|"]
+    for n in (15, 20):
+        sem_, com_ = emprestada_no_grupo(n)
+        linhas.append(f"| Nível {n} | {pct(sem_)} | {pct(com_)} |")
+
+    print("sangue...")
+    linhas += ["", "## O sangue doado", "",
+               "Um Bronze que doou sangue contra um Bronze inteiro do mesmo nível, os dois com "
+               "três Convicções. Cada terço doado tira um terço dos PV máximos.", "",
+               "| Terços doados | " + " | ".join(str(n) for n in NIVEIS_SANGUE) + " |",
+               "|---|" + "---:|" * len(NIVEIS_SANGUE)]
+    for tercos in (0, 1, 2):
+        linhas.append(f"| {tercos} | " + " | ".join(pct(debilitado(n, tercos))
+                                                   for n in NIVEIS_SANGUE) + " |")
+
+    print("sacrifício...")
+    linhas += ["", "## A armadura que se sacrifica (regra opcional)", "",
+               "No último ponto de Resistência, quando a metade do dano ainda derrubaria, a "
+               "armadura segura o golpe inteiro e morre. Sem e com a regra, contra um Bronze "
+               "inteiro do mesmo nível.", "",
+               "| Começa a luta com | " + " | ".join(str(n) for n in NIVEIS_SANGUE) + " |",
+               "|---|" + "---:|" * len(NIVEIS_SANGUE)]
+    for res in (None, 2, 1):
+        nome = "a Resistência cheia" if res is None else f"Resistência {res}"
+        cel = []
+        for n in NIVEIS_SANGUE:
+            sem_, com_ = sacrificio(n, res)
+            cel.append(f"{pct(sem_)} → {pct(com_)}")
+        linhas.append(f"| {nome} | " + " | ".join(cel) + " |")
+
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",
                "Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho "
@@ -409,6 +561,9 @@ def main() -> None:
     for i, (q, n) in enumerate(((2, 3), (2, 4), (3, 4), (3, 5))):
         linhas.append(f"| {q} Espectros contra um Bronze de nível {n} | "
                       f"{pct(varios_contra_um('espectro-terrestre', q, n, semente=900 + i))} |")
+    for i, (q, n) in enumerate(((2, 2), (2, 3), (2, 4))):
+        linhas.append(f"| {q} Espectros Novatos contra um Bronze de nível {n} | "
+                      f"{pct(varios_contra_um('espectro-novato', q, n, semente=910 + i))} |")
 
     print("prova...")
     linhas += ["", "## Antes do Sexto Sentido: a prova da armadura", "",

@@ -145,6 +145,7 @@ def main() -> None:
     s = s.replace("{{TABELA_INIMIGOS}}", inimigos.tabela_rapida())
     s = s.replace("{{TABELA_FIGURANTES}}", inimigos.tabela_figurantes())
     s = re.sub(r"\{\{INIMIGO:([a-z-]+)\}\}", lambda m: inimigos.bloco(m.group(1)), s)
+    s = s.replace("{{APRENDIZ}}", inimigos.bloco_aprendiz())
 
     faltando = set(re.findall(r"\{\{[A-Z_]+(?::[a-z-]+)?\}\}", s))
     if faltando:

@@ -3,6 +3,57 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.11.0] - 2026-10-02
+
+Os pedidos do usuário depois do primeiro playtest e o que o playtest ainda tinha deixado
+pendente (`regras/playtest-01.md`).
+
+### Mudado
+
+- **Levantar só quando faz sentido** (Capítulo Cinco, pedido do usuário): a Convicção é um
+  motivo, não um botão. Quem está Dominado ou sob controle da mente, Selado, Petrificado ou no
+  sono de um veneno não levanta; numa luta que não toca nenhuma Convicção, o Mestre avisa
+  antes. O simulador não tem essas condições: nenhum número muda.
+- **Restaurar não espera o Interlúdio** (Capítulos Sete, Oito e Doze, pedido do usuário):
+  leva os dias do trabalho (um por Versão), e a armadura pode voltar no meio da missão. Buscar
+  o material se conta em dias: Pó de Estrelas 1, Gamânio 3, Oricalco 7, item raro 3.
+- **O sangue doado, em dias e PV** (Capítulo Sete, pedido do usuário): um terço tira um
+  terço dos PV máximos e dá Desvantagem nos testes de FOR e CON; dois terços derrubam por
+  um dia; um terço volta a cada 3 dias (antes, uma semana de Interlúdio). Medido contra um
+  Bronze inteiro do mesmo nível: 40% no nível 1, 23% no 13 e 9% no 20 com um terço doado.
+- **O Interlúdio se conta em dias** (Capítulo Doze): cada ação tem a sua duração; uma
+  Convicção volta a cada 7 dias sem luta. Uma campanha que não para ainda tem Interlúdio.
+- **A técnica nova pode nascer numa luta** (Capítulo Seis): quando você levanta, a técnica
+  escolhida ao subir de nível nasce ali, sem teste, como a assinatura na prova.
+
+### Adicionado
+
+- **A armadura de Ouro emprestada** (Capítulo Sete, pedido do usuário): por uma luta, para
+  quem já despertou o Sétimo; dá a linha do Ouro, o acessório e as três características dela,
+  e não dá as formas da sua armadura, o Golpe do Assento nem o Sétimo dominado. Ela não morre
+  no corpo de quem a pegou. Medido: um Bronze com ela vence 80% a 86% contra um Bronze do
+  mesmo nível, uns 40% contra um Prata (antes, uns 10%) e continua com 1% contra um Ouro.
+- **Feitos do corpo e perigos** (Capítulo Dois, pedido do usuário): todo feito tem um degrau
+  (de gente, de guerreiro, de Sétimo, de deus); abaixo do seu, sem rolar; no seu, CD 13 ou
+  16; um acima, CD 22. Teste de CON, fôlego, queda, desabamento, fogo, frio e água, com o
+  dano em acertos de bando do seu nível.
+- **Veneno e doença** (Capítulo Cinco): um relógio de 6 segmentos, um teste de CON por
+  manhã, Medicina segura, a cura apaga.
+- **Um jogador só** (Capítulo Onze): o aliado de Posto acima fica com outro inimigo e no
+  máximo manda Centelha; se dividir a luta, ela não dá Glória. Centelha para a luta de um
+  personagem do Mestre não dá Glória.
+- **Fichas novas** (Capítulo Dez): o Aprendiz rival (humano de nível 3), o Espectro Novato
+  (nível 3) e o Espectro de Estrela Celeste (o Prata de Hades, nível 11). Mais um molde curto
+  para ameaças que não são guerreiros, com um exemplo, e o grupo contra um nomeado acima do
+  nível dele (vence de 75% a 100%, mas nos níveis 1 a 3 alguém costuma cair).
+- **A prova em torneio e a faísca** (Capítulo Três).
+- **Regra opcional: a armadura que se sacrifica** (Capítulo Sete): no último ponto de
+  Resistência, ela segura o golpe inteiro e morre. Medido: numa luta comum, nada muda; com a
+  armadura gasta de uma luta anterior, de 47% para 64% no nível 1; do 9 em diante, quase
+  nunca aparece.
+- `sim/mestre.py` mede o grupo contra um nomeado acima, a armadura emprestada, o
+  sangue doado e o sacrifício; `test.py` confere as fichas e as regras novas.
+
 ## [0.10.0] - 2026-09-29
 
 O primeiro playtest de campanha (um jogador, com o ChatGPT como Mestre, do humano de
