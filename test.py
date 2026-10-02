@@ -365,6 +365,8 @@ def testar_mestre() -> None:
         ("cavaleiro-de-prata", 13, 1, 0.75, 1.00, "vence com folga"),
         ("cavaleiro-de-prata", 9, 2, 0.45, 0.75, "dois Bronzes vencem seis vezes em dez"),
         ("estrela-celeste", 11, 1, 0.05, 0.28, "um Bronze do mesmo nível, uma vez em sete"),
+        ("comandante-de-hades", 5, 1, 0.15, 0.42, "um Bronze de nível 5, uma vez em três"),
+        ("comandante-de-hades", 9, 1, 0.70, 0.95, "um Bronze do nível dela, quase sempre"),
         ("estrela-celeste", 13, 1, 0.50, 0.80, "um Bronze de nível 13, mais da metade"),
         ("estrela-celeste", 11, 2, 0.55, 0.85, "dois Bronzes de nível 11, sete em dez"),
         ("estrela-celeste", 9, 3, 0.55, 0.88, "três Bronzes de nível 9, sete em dez"),
