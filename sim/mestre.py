@@ -49,13 +49,15 @@ def pc(n: int, posto: str = "bronze"):
 
 
 def inimigo(n: int, posto: str = "bronze", conviccoes: int = 0):
-    return lambda: montar("I", n, posto, conviccoes=conviccoes)
+    """Um inimigo da tabela. Bronze e Prata sem Convicção não despertam o Sétimo."""
+    pol = {"despertar": R.desperta_do_mestre(posto, conviccoes)}
+    return lambda: montar("I", n, posto, conviccoes=conviccoes, politica=pol)
 
 
 def aliado(n: int):
     """O aliado de luta: um inimigo da tabela rápida na metade do nível do grupo, com
     metade dos PV e sem Convicção."""
-    a = montar("Aliado", R.nivel_do_aliado(n), conviccoes=0)
+    a = montar("Aliado", R.nivel_do_aliado(n), conviccoes=0, politica={"despertar": False})
     a.pv_max = round(a.pv_max * R.ALIADO_PV)
     a.aliado = True                 # o chefe não responde ao turno dele
     a.reiniciar()
@@ -295,6 +297,59 @@ def emprestada_no_grupo(n: int, lutas: int = NG) -> tuple[float, float]:
     return sem_, com_
 
 
+def emprestada_prata(n: int, lutas: int = N) -> tuple[float, float]:
+    """Um Bronze contra um Bronze do mesmo nível, com uma armadura de Prata emprestada."""
+    def com():
+        return montar("P", n, conviccoes=3, armadura_posto="prata")
+    sem_ = duelos(pc(n), inimigo(n, "bronze", 3), n=lutas, semente=1220 + n)["a"]
+    com_ = duelos(com, inimigo(n, "bronze", 3), n=lutas, semente=1220 + n)["a"]
+    return sem_, com_
+
+
+# ---------------------------------------------------------------------------
+# Os deuses (0.11.0)
+# ---------------------------------------------------------------------------
+
+SANGUE_DE_DEUS = {"bronze": ("guerreiro",) * 3 + ("elite", "deus"),
+                  "ouro": ("guerreiro",) * 6 + ("deus",)}
+
+
+def no_nono(posto: str = "bronze", nome: str = "H"):
+    """Um personagem de nível 20 no Nono, com a armadura na forma Divina (a escada do sangue
+    inteira, até o de deus)."""
+    def f():
+        x = montar(nome, 20, posto, conviccoes=3, formas=SANGUE_DE_DEUS[posto],
+                   armadura_posto="divina")
+        x.sentido_inicial = "nono"
+        x.reiniciar()
+        return x
+    return f
+
+
+def deus(tipo: str):
+    """O deus do Capítulo Dez: a elite de nível 20, no Nono, com os PV e a defesa da
+    tabela. Apara pelo tamanho do golpe, não pela fração dos PV dele."""
+    t = R.DEUSES[tipo]
+
+    def f():
+        x = montar("Deus", 20, "ouro", conviccoes=0,
+                   politica={"aparar_limiar": 0.20 / t["pv"]})
+        x.pv_max = int(x.pv_max * t["pv"])
+        x.defesa_extra = t["def"]
+        x.sentido_inicial = "nono"
+        x.reiniciar()
+        return x
+    return f
+
+
+def contra_deus(tipo: str, posto: str = "bronze", k: int = 1, lutas: int = NG) -> dict:
+    """k personagens no Nono contra um deus, que responde a cada um como um chefe (Sozinho
+    contra muitos). Sem a Guerra dos Mil Dias: um deus não morre junto."""
+    return grupo_contra_um(lambda: [no_nono(posto, f"H{i}")() for i in range(k)], deus(tipo),
+                           n=lutas, semente=1500 + k + (10 if posto == "ouro" else 0),
+                           sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
+
+
 # ---------------------------------------------------------------------------
 # O sangue doado (0.11.0)
 # ---------------------------------------------------------------------------
@@ -500,6 +555,29 @@ def main() -> None:
     for n in (15, 20):
         sem_, com_ = emprestada_no_grupo(n)
         linhas.append(f"| Nível {n} | {pct(sem_)} | {pct(com_)} |")
+
+    linhas += ["", "| Armadura de Prata emprestada, contra um Bronze do mesmo nível | Sem | Com |",
+               "|---|---:|---:|"]
+    for n in NIVEIS_EMPRESTADA:
+        sem_, com_ = emprestada_prata(n)
+        linhas.append(f"| Nível {n} | {pct(sem_)} | {pct(com_)} |")
+
+    print("deuses...")
+    linhas += ["", "## Os deuses", "",
+               "Personagens de nível 20 no Nono, com a armadura na forma Divina, contra um deus: "
+               "a elite de nível 20 no Nono, com os PV multiplicados e a DEF somada "
+               f"(menor: × {R.DEUSES['menor']['pv']:g} e +{R.DEUSES['menor']['def']}; maior: "
+               f"× {R.DEUSES['maior']['pv']:g} e +{R.DEUSES['maior']['def']}). Só o combate: os "
+               "efeitos de destino ficam de fora. Cada célula: quanto vencem / rodadas / quantos "
+               "caem.", "",
+               "| Contra | Um Bronze | Um Ouro | Dois Bronzes | Três Bronzes |",
+               "|---|---|---|---|---|"]
+    for tipo in ("menor", "maior"):
+        cel = []
+        for posto, k in (("bronze", 1), ("ouro", 1), ("bronze", 2), ("bronze", 3)):
+            r = contra_deus(tipo, posto, k)
+            cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} / {r['caidos_media']:.1f}")
+        linhas.append(f"| Deus {tipo} | " + " | ".join(cel) + " |")
 
     print("sangue...")
     linhas += ["", "## O sangue doado", "",

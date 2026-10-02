@@ -3,6 +3,44 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.12.0] - 2026-10-02
+
+Mais pedidos do usuário: a armadura emprestada, o sangue de deus, os deuses e a raridade dos
+Sentidos.
+
+### Mudado
+
+- **A armadura emprestada** (Capítulo Sete): a de Ouro continua pedindo o Sétimo; a de Prata
+  não pede, e dá a linha da Prata e as duas características dela. O dono pode estar morto —
+  a de Sagitário para o Seiya, a de Aquário para o Hyoga. Medido: com uma de Prata, um Bronze
+  vence 66% a 69% contra um Bronze do mesmo nível.
+- **O Sétimo é raro no mundo** (Capítulos Quatro e Dez): quase impossível entre os Bronzes,
+  só dos veteranos entre os Pratas, padrão na elite; o Oitavo, um ou dois Ouros por geração;
+  o Nono, nem conhecido — os deuses lembram vagamente e não falam disso, por orgulho. Os
+  personagens são a exceção. Do lado do Mestre, um Bronze ou um Prata só desperta se tiver
+  Convicção. Medido: a tabela de dificuldade quase não muda (Fácil vai a 56% a 97%), e do
+  nível 15 em diante o nomeado um nível acima vence uma ou duas vezes em dez — sem gastar
+  vida para despertar, ele dura mais.
+- **Os deuses em dois tamanhos** (Capítulo Dez): a divindade menor (Hypnos, Thanatos, os
+  filhos deles) tem 1½ × os PV da elite de nível 20 e +2 na DEF; o deus maior (Hades, Atena,
+  Poseidon), 2 × e +4. Os dois respondem como chefes, e o destino não pega em quem está no
+  Nono. Medido, no Nono e de armadura Divina: um Bronze de nível 20 vence a divindade menor
+  78% das vezes e o deus maior 25% (um Ouro, 85% e 40%); dois no Nono vencem o maior 81%.
+  Antes: 3 × os PV, +4 e duas ações, e nenhum personagem sozinho vencia.
+
+### Adicionado
+
+- **O sangue de um deus: uma gota** (Capítulo Sete): um restaurador ou o próprio deus
+  derrama a gota e diz "Armaduras de (Posto), recebam o sangue de (deus) e atendam ao meu
+  chamado"; as armaduras ali revivem na hora, sem material, teste nem dias.
+- **Asas no Oitavo e a armadura Divina no Nono** (Capítulos Quatro e Sete): com sangue de
+  deus na armadura e o Oitavo, você atravessa a hiperdimensão até os reinos dos deuses, e as
+  constelações com asas as abrem; no Nono, a armadura vira uma armadura Divina, parecida com
+  as Kamui dos doze do Olimpo.
+- O simulador passou a ter o Nono numa luta, a forma Divina e os deuses; `sim/mestre.py`
+  mede os deuses e a armadura de Prata emprestada, e `test.py` confere os dois e a raridade
+  do Sétimo.
+
 ## [0.11.0] - 2026-10-02
 
 Os pedidos do usuário depois do primeiro playtest e o que o playtest ainda tinha deixado

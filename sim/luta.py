@@ -87,6 +87,8 @@ class Lutador:
     armadura: str = "viva"             # viva · casca (morta, vestida) · nenhuma
     armadura_posto: str = ""           # a armadura emprestada de outro Posto (0.11.0); "" = a sua
     resistencia_inicial: int | None = None   # lutas em sequência: começa com esta Resistência
+    sentido_inicial: str = "sexto"     # quem já começa a luta no Sétimo ou no Nono (deuses, 0.11.0)
+    defesa_extra: int = 0              # deuses: + na DEF e nas defesas passivas
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -121,8 +123,10 @@ class Lutador:
         self.lido_por: set = set()     # nomes das minhas técnicas que o oponente já leu
         self.vantagem_proxima = False  # Centelha: Vantagem no próximo ataque
         bonus, res = R.POSTO[self.posto_da_armadura]
-        if not R.formas_validas(self.posto_da_armadura, self.formas):
-            raise ValueError(f"{self.nome}: a armadura de {self.posto_da_armadura} não aceita {self.formas}")
+        # A forma Divina soma as formas da armadura de sempre: a escada é a do Posto dela.
+        escada = self.posto if self.posto_da_armadura == "divina" else self.posto_da_armadura
+        if not R.formas_validas(escada, self.formas):
+            raise ValueError(f"{self.nome}: a armadura de {escada} não aceita {self.formas}")
         forma = R.bonus_das_formas(self.formas)
         self.armadura_def = bonus + forma["def"]
         self.acerto_forma = forma["acerto"]
@@ -134,6 +138,10 @@ class Lutador:
                                 )
         if "ressonante" in car:
             self.cosmo += 1
+        if self.sentido_inicial in ("setimo", "nono"):
+            self.sentido = self.sentido_inicial
+            self.teto_extra += R.TETO_SETIMO + (R.TETO_NONO if self.sentido == "nono" else 0)
+            self.cosmo = min(self.teto, self.cosmo)
         self.espelho_usado = False
         self.ofuscar_usado = False
         self.espinhos_turno = 0
@@ -183,7 +191,7 @@ class Lutador:
             d_ += R.POSTO[self.posto_da_armadura][0]   # a casca: só a DEF do Posto
         if "visao" in self.sentidos_perdidos:
             d_ -= 2                    # não vê o golpe vindo
-        return d_
+        return d_ + self.defesa_extra
 
     @property
     def degrau(self) -> int:
@@ -244,7 +252,7 @@ class Lutador:
     def defesas_passivas(self) -> dict:
         """14 + atributo, + proficiência nas treinadas (DES e SAB; CON a partir do 10)."""
         treinadas = {"des", "sab"} | ({"con"} if self.defesas_extra else set())
-        return {a: 14 + self.mods[a] + (self.prof if a in treinadas else 0)
+        return {a: 14 + self.mods[a] + (self.prof if a in treinadas else 0) + self.defesa_extra
                 for a in ("con", "des", "sab")}
 
     def perder_sentido(self, qual: str):
@@ -287,7 +295,9 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
     if politica:
         pol.update(politica)
     if caracteristicas is None:     # as típicas do Posto: 1 no Bronze, 2 na Prata, 3 na elite
-        caracteristicas = R.CARACTERISTICAS_PADRAO[:R.CARACTERISTICAS_POR_POSTO[armadura_posto or posto]]
+        # a emprestada traz as dela; a forma Divina guarda as da armadura de sempre
+        quantas = R.CARACTERISTICAS_POR_POSTO.get(armadura_posto, R.CARACTERISTICAS_POR_POSTO[posto])
+        caracteristicas = R.CARACTERISTICAS_PADRAO[:quantas]
     return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio, armadura_posto=armadura_posto,
                    conviccoes=conviccoes, politica=pol, formas=tuple(formas),
                    caracteristicas=tuple(caracteristicas),
@@ -450,11 +460,11 @@ class Luta:
         elif alvo.posto == "prata" and atacante.posto == "bronze":
             bonus -= R.HIERARQUIA
         # O Sétimo dominado do Ouro: diante de um Sétimo recém-despertado,
-        # ele ainda luta um pouco acima.
+        # ele ainda luta um pouco acima. No Nono, quem despertou já passou disso.
         if atacante.degrau >= 1 and alvo.degrau >= 1:
-            if atacante.posto == "ouro" and alvo.posto != "ouro":
+            if atacante.posto == "ouro" and alvo.posto != "ouro" and alvo.degrau == 1:
                 bonus += R.DOMINIO_OURO
-            elif alvo.posto == "ouro" and atacante.posto != "ouro":
+            elif alvo.posto == "ouro" and atacante.posto != "ouro" and atacante.degrau == 1:
                 bonus -= R.DOMINIO_OURO
         nat = d20(self.rng, v)
         self.ultimo_natural = nat

@@ -204,6 +204,20 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   níveis 1 a 5. O preço real é a armadura morta.
 - **Fichas novas:** o Espectro Novato fica no nível 3 (o Cavaleiro Negro já é o 2), e a
   Estrela Celeste no 11, acima do Cavaleiro de Prata (9).
+- **A raridade dos Sentidos** (0.12.0, pedido do usuário): Sétimo quase impossível no Bronze, raro
+  no Prata veterano, padrão na elite; Oitavo, um ou dois Ouros por geração; Nono, nem
+  conhecido. Os personagens são a exceção. Virou regra do Mestre: Bronze e Prata sem
+  Convicção não despertam. Medido, quase nada muda — o nomeado sem Convicção raramente
+  chegava ao Sétimo.
+- **"Se for de Ouro mantém o Sétimo, se for de Prata não"** foi lido como requisito: a
+  armadura de Ouro emprestada continua pedindo o Sétimo, a de Prata não. As emprestadas podem
+  vir de donos mortos (Sagitário para o Seiya, Aquário para o Hyoga).
+- **Os deuses em dois tamanhos** (pedido do usuário: "no Nono e de armadura Divina, supera
+  divindades menores e luta quase no nível de um deus maior"). Medido no simulador, que
+  passou a ter o Nono numa luta e o deus montado sobre a elite de nível 20. O deus apara pelo
+  tamanho do golpe, não pela fração dos PV dele — sem isso, um deus com mais PV aparava menos
+  e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
+  2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
 ## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
 
