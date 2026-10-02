@@ -219,6 +219,19 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## A Exclamação de Atena (0.13.0)
+
+- **Pedido do usuário:** exclusiva de Atena, proibida pela deusa, pede três Ouros; uma
+  contra outra empata e vira um teste longo de resistência; quem despertou ou está perto do
+  Sétimo pode interferir.
+- **O dano é a soma dos três Golpes do Assento, sem rolar.** É o Big Bang: derruba de PV
+  cheio um guerreiro do mesmo nível até o 17, e quase no 20. Não é uma técnica montada pelo
+  motor: é uma regra de exército, e o preço é de história (sem Centelha de Atena, sem
+  Glória), não de Cosmo.
+- **O choque usa a contagem dos Mil Dias**, com testes de CON que endurecem a cada rodada,
+  e **a interferência usa desvios** (três somados), como os quatro Bronzes na casa de Virgem
+  no anime. A preparação de uma rodada existe para dar essa janela.
+
 ## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
 
 - **Pedido do usuário:** para virar guerreiro é preciso ser treinado por uma patente

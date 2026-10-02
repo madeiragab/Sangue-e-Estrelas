@@ -3,6 +3,19 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.13.0] - 2026-10-02
+
+### Adicionado
+
+- **A Exclamação de Atena** (Capítulo Nove, pedido do usuário): a técnica proibida, só do
+  exército de Atena, que pede três Cavaleiros de Ouro juntos. Uma rodada de preparo, e ela
+  sai antes de qualquer turno: a soma dos três Golpes do Assento, sem ataque, sem aparar e
+  atravessando a armadura (em média 333 de dano no nível 15 e 423 no 20 — os PV de um
+  guerreiro do mesmo nível ou mais). É traição: Atena não manda mais Centelha a quem a usa, e
+  a luta não dá Glória. Exclamação contra Exclamação é empate e vira um teste longo de
+  resistência, com seis segmentos e a explosão no fim. Quem despertou o Sétimo ou está com o
+  Cosmo no Teto pode interferir e desviar a energia, como os Bronzes na casa de Virgem.
+
 ## [0.12.0] - 2026-10-02
 
 Mais pedidos do usuário: a armadura emprestada, o sangue de deus, os deuses e a raridade dos
