@@ -32,6 +32,17 @@ INIMIGOS = {
         quando="O primeiro inimigo nomeado de uma campanha. Um Bronze de nível 1 vence "
                "um desses sozinho pouco mais da metade das vezes: no começo, levantar "
                "ainda não dá o Sétimo."),
+    "espectro-novato": dict(
+        nome="Espectro Novato", nivel=3, posto="bronze", acessorio="garras", conviccoes=0,
+        caracteristicas=("leve",), exercito="Hades", armadura="Súplice",
+        tecnicas=("Garra do Estige", "Lamento do Aqueronte", None),
+        tracos=["<strong>Estrela Maligna.</strong> Se morrer, volta em "
+                "<span class=\"dado\">1d4</span> semanas, enquanto Hades existir."],
+        quando="O primeiro Espectro de uma campanha contra Hades: a Súplice acabou de "
+               "escolhê-lo. Um Bronze de nível 1 vence um destes sozinho quase metade das "
+               "vezes; dois Bronzes de nível 1 vencem quase sempre, e um deles cai uma luta "
+               "em três. Dois Novatos juntos ainda derrubam um Bronze sozinho de nível 4 duas "
+               "vezes em três."),
     "espectro-terrestre": dict(
         nome="Espectro de Estrela Terrestre", nivel=4, posto="bronze", acessorio="asas",
         caracteristicas=("leve",),
@@ -54,6 +65,19 @@ INIMIGOS = {
                "mesmo nível vence uma vez em nove; um de nível 8, quase nunca; só um Bronze de "
                "nível 13 vence com folga. É luta para dois Bronzes juntos (vencem seis vezes em "
                "dez) ou para outro Prata; contra três, ele cai depressa."),
+    "estrela-celeste": dict(
+        nome="Espectro de Estrela Celeste", nivel=11, posto="prata", acessorio="asas",
+        caracteristicas=("couraca", "leve"),
+        conviccoes=1, exercito="Hades", armadura="Súplice",
+        tecnicas=("Voo do Abismo", "Pena Negra", "Eclipse do Tártaro"),
+        tracos=["<strong>Estrela Maligna.</strong> Volta em <span class=\"dado\">1d4</span> "
+                "semanas enquanto Hades existir.",
+                "<strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto."],
+        quando="Um dos 36 de Hades, acima das Estrelas Terrestres: o Prata do exército. "
+               "Um Bronze do mesmo nível vence um destes uma vez em sete, e só um de nível 13 "
+               "vence mais da metade das vezes. Dois Bronzes de nível 11 vencem sete vezes em "
+               "dez, e um deles cai; três de nível 9 também vencem sete em dez, mas quase dois "
+               "caem. É a luta da sessão para um grupo pequeno."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -397,3 +421,53 @@ def tabela_figurantes() -> str:
                       f'<td class="num">+{atk}</td><td class="num">{dano}</td></tr>')
     linhas.append("</tbody></table></div>")
     return "\n".join(linhas)
+
+
+# ---------------------------------------------------------------------------
+# O aprendiz rival (0.10.0): um humano, fora do motor dos guerreiros
+# ---------------------------------------------------------------------------
+
+APRENDIZ_NIVEL = R.NIVEL_DA_PROVA
+# DES 12, SAB 11, CON 11, FOR 10, INT 9, CAR 8: a distribuição humana, lutando pela DES
+APRENDIZ = {"des": 12, "sab": 11, "con": 11, "for": 10, "int": 9, "car": 8}
+
+
+def bloco_aprendiz() -> str:
+    """A ficha do aprendiz que disputa a armadura: os números saem de sim/regras.py, os
+    mesmos da prova medida em sim/mestre.py."""
+    m = {k: R.mod(v) for k, v in APRENDIZ.items()}
+    n = APRENDIZ_NIVEL
+    p = R.prof(1)
+    pv = R.pv_humano(n, m["con"])
+    defe = R.HUMANO_DEF + m["des"]
+    fort = R.HUMANO_DEFESA_PASSIVA + m["con"]
+    refl = R.HUMANO_DEFESA_PASSIVA + m["des"] + p
+    vont = R.HUMANO_DEFESA_PASSIVA + m["sab"] + p
+    status = (f"<b>PV</b> {pv} <span class=\"sep\">·</span> <b>DEF</b> {defe} "
+              f"<span class=\"sep\">·</span> <b>Iniciativa</b> +{m['des']}<br>"
+              f"<b>Fortitude</b> {fort} <span class=\"sep\">·</span> <b>Reflexos</b> {refl} "
+              f"<span class=\"sep\">·</span> <b>Vontade</b> {vont}<br>"
+              f"<b>Cosmo</b> nenhum, ainda <span class=\"sep\">·</span> <b>Armadura</b> nenhuma<br>"
+              f"<b>Perícias</b> Acrobacia +{m['des'] + p}, Atletismo +{m['for'] + p}<br>"
+              f"<b>Convicções</b> {R.conviccoes_humanas(n)}")
+    partes = [
+        '<div class="criatura">',
+        f'<h3>Aprendiz rival<span class="kleos">Nível humano {n}</span></h3>',
+        '<p class="tipo">Qualquer exército, antes da armadura</p>',
+        f'<div class="status">{status}</div>',
+        '<p class="rotulo-bloco">Golpe comum</p>',
+        f'<p>+{m["des"] + p} contra a DEF · <span class="dado">1d{R.dado_golpe_humano(n)} + '
+        f'{m["des"]}</span>.</p>',
+        '<p class="rotulo-bloco">Traços</p>',
+        '<ul><li><strong>Uma Convicção.</strong> Na prova da armadura, ele levanta desperto '
+        '(<a href="#antes-do-sexto">Capítulo Três</a>): com um quarto dos PV do nível 1 de '
+        'guerreiro, o Cosmo no Teto e a técnica assinatura nascendo ali.</li>'
+        '<li><strong>Diante de um desperto, é figurante.</strong> Fora da prova, contra quem '
+        'já despertou, ele entra no bando.</li></ul>',
+        '<p class="morte"><span class="rotulo-bloco">Quando usar</span>Na prova e no torneio '
+        'da armadura, e no treino antes dela. Dois aprendizes assim levam umas quatro rodadas '
+        'para um cair, e quase sempre os dois despertam. Anote os PV: com '
+        f'{pv}, ele não aguenta mais que dois ou três golpes.</p>',
+        "</div>",
+    ]
+    return "\n".join(partes)

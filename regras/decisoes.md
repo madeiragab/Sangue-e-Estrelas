@@ -184,6 +184,26 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   simulador sempre cobrou da vida o que passa do Cosmo que se tem), arredondamento para
   cima, empate com bando, PV ao subir de nível, Elmo na luta seguinte, pular degraus da
   escada do sangue, kit de medicina, nível humano por ano × três semanas, laço da Centelha.
+- **Pedidos do usuário depois do playtest (0.11.0):** armaduras de Ouro emprestadas por uma luta;
+  restaurar sem esperar o Interlúdio; o custo do sangue em dias e PV; testes para as
+  "coisas idiotas" (respirar, porta, corrente); levantar só quando faz sentido (quem está
+  controlado não usa a Convicção).
+- **A armadura emprestada pede o Sétimo** (do nível 5 em diante no Bronze): amarra ao
+  marco que o usuário escolheu e é o que a série mostra. Ela dá a linha do Ouro e as
+  características dela, não as formas da armadura do personagem, nem o Assento, nem o
+  domínio: medido, 80% a 86% contra um Bronze do mesmo nível, 1% contra um Ouro.
+- **Os feitos por degrau, não por CD fixa.** Um guerreiro não rola para arrombar uma porta
+  de madeira; um humano não tenta partir uma rocha. O degrau (gente, guerreiro, Sétimo, deus)
+  resolve as duas coisas com uma regra. Os perigos usam o mesmo degrau, e o dano em acertos
+  de bando do nível, para pesar parecido em toda a campanha.
+- **O sangue volta em 3 dias por terço.** Antes, uma semana de Interlúdio — numa campanha
+  sem Interlúdio, nunca. Medido: lutar Debilitado é quase perder (40% no nível 1, 9% no 20),
+  então três dias bastam para o custo pesar.
+- **O sacrifício da armadura é opcional.** Medido, não muda nada numa luta comum (a
+  Resistência quase nunca acaba); com a armadura gasta de uma luta anterior, ajuda muito nos
+  níveis 1 a 5. O preço real é a armadura morta.
+- **Fichas novas:** o Espectro Novato fica no nível 3 (o Cavaleiro Negro já é o 2), e a
+  Estrela Celeste no 11, acima do Cavaleiro de Prata (9).
 
 ## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
 
@@ -378,8 +398,6 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 - Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
-- Do playtest (`regras/playtest-01.md`): jogo com um jogador só e aliados de elite na mesma
-  luta; veneno e ameaças que não são guerreiros; fichas de aprendiz, de Espectro de nível
-  baixo e de Estrela Celeste; a técnica nova que nasce no limite numa campanha sem
-  Interlúdio; prova em forma de torneio; a armadura que se sacrifica.
+- Do playtest (`regras/playtest-01.md`): tudo entrou na 0.10.0 e na 0.11.0. Falta jogar de novo —
+  principalmente o Sétimo no nível 5, o veneno e a armadura emprestada.
 - Nome do sistema: **Sangue e Estrelas** (decidido).
