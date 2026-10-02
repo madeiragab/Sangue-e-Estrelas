@@ -219,6 +219,26 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## O resto do segundo trecho (0.16.0)
+
+- **Queimar num feito** (pedido do usuário: "seria legal demais"). Usa o mesmo preço da
+  técnica, para não virar recurso de graça, e o mesmo teto, a proficiência. O que ele
+  compra é o que a série mostra: um Bronze fazendo por um instante o feito de quem está no
+  Sétimo. Dois degraus acima continua impossível.
+- **Quem rola contra o mundo: o Mestre decide** (decisão do usuário). Quando o perigo
+  ataca, ele usa o ataque do bando do nível: um número que já existe e cresce com a
+  campanha.
+- **O primeiro Sétimo ficou mais largo** (decisão do usuário: "acima do nível ou vida ou
+  morte"). O simulador já tratava o nível 5 como o primeiro despertar acontecido: nada muda
+  nos números.
+- **Os dois jeitos de voltar de Hades** (regra do usuário): pela força, sem Convicção; por
+  um acordo, com Convicções novas e prazo — Saga, Camus, Shura, Máscara da Morte, Afrodite e
+  Shion na Guerra Santa da série.
+- **A comandante sem armadura fica no nível 9, sem Posto e sem Sétimo**: a força de um Prata
+  no máximo, como o usuário pediu para a Pandora, sem a Hierarquia e sem a armadura.
+- **O nível que pareceu dado sem Glória não foi**: o personagem já tinha 3 e ganhou a quarta
+  naquela luta.
+
 ## O segundo trecho do playtest (0.15.0)
 
 - **Companheiros no nível do personagem** (decisão do usuário, na mesa: "coloca os dois como

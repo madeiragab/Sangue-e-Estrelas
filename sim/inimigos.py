@@ -78,6 +78,26 @@ INIMIGOS = {
                "vence mais da metade das vezes. Dois Bronzes de nível 11 vencem sete vezes em "
                "dez, e um deles cai; três de nível 9 também vencem sete em dez, mas quase dois "
                "caem. É a luta da sessão para um grupo pequeno."),
+    "comandante-de-hades": dict(
+        nome="Comandante sem armadura", nivel=9, posto="bronze", acessorio="nenhum",
+        caracteristicas=(), conviccoes=1, sem_armadura=True, desperta=False,
+        posto_nome="Sem Posto", exercito="Hades — a voz do deus na terra",
+        armadura="nenhuma", tecnicas=("Lança do Mundo Inferior", "Sombra que Prende",
+                                       "Ordem de Hades"),
+        tracos=["<strong>Sem armadura.</strong> O poder dela vem do deus e de uma relíquia, "
+                "não do metal: não apara, não bloqueia e não tem Elmo.",
+                "<strong>Recua em vez de cair</strong> (<a href=\"#cap11\">Capítulo Onze</a>). "
+                "A 0 PV, ela some numa fenda negra; a luta conta como vencida.",
+                "<strong>Uma Convicção, e nenhum Sétimo.</strong> Ela levanta, mas não "
+                "desperta: o Cosmo dela é emprestado.",
+                "<strong>Nunca vem sozinha.</strong> Chega com um bando ou um Espectro "
+                "nomeado — é a autoridade dela, não o punho, que pesa."],
+        quando="A que fala por Hades: a irmã do deus, a sacerdotisa, quem manda nos "
+               "Espectros. Perigosa pela autoridade e pela fuga, não pelo punho. Um Bronze de "
+               "nível 5 vence uma luta com ela uma vez em três; de nível 7, seis em dez; do "
+               "nível dela, quase nove em dez. Três Bronzes de nível 5 vencem quase sempre, e "
+               "um deles costuma cair. Ponha um bando e um Espectro ao lado dela, e deixe-a "
+               "recuar: ela volta."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -132,9 +152,12 @@ INIMIGOS = {
 
 def lutador(chave: str) -> Lutador:
     e = INIMIGOS[chave]
+    desperta = e.get("desperta", R.desperta_do_mestre(e["posto"], e["conviccoes"]))
     x = montar(e["nome"], e["nivel"], e["posto"], acessorio=e["acessorio"],
                conviccoes=e["conviccoes"], caracteristicas=e["caracteristicas"],
-               politica={"despertar": R.desperta_do_mestre(e["posto"], e["conviccoes"])})
+               politica={"despertar": desperta})
+    if e.get("sem_armadura"):
+        x.armadura = "nenhuma"
     x.teto_fixo = e.get("teto_extra", 0)
     x.resistencia_extra = e.get("resistencia_extra", 0)
     x.reiniciar()
@@ -201,7 +224,7 @@ def bloco(chave: str) -> str:
            - (2 if "pesada" in x.caracteristicas else 0))
     if x.posto == "ouro":
         sentido = "Sétimo quando quiser"
-    elif R.desperta_do_mestre(x.posto, e["conviccoes"]):
+    elif e.get("desperta", R.desperta_do_mestre(x.posto, e["conviccoes"])):
         sentido = "Sexto; desperta como um personagem"
     else:
         sentido = "Sexto; não desperta"
@@ -222,12 +245,13 @@ def bloco(chave: str) -> str:
         f"<b>Cosmo</b> começa em {x.cosmo}, piso {x.piso}, Teto {teto} "
         f"<span class=\"sep\">·</span> "
         f"<b>Sentido</b> {sentido}<br>"
-        f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{x.armadura_def} · "
-        f"<b>Resistência</b> {x.resistencia_max} · {_acessorio(x)}<br>"
-        f"<b>Características</b> {_caracteristicas(x)}<br>"
+        + (f"<b>Armadura</b> nenhuma<br>" if e.get("sem_armadura") else
+           f"<b>Armadura</b> {html.escape(e['armadura'])}, DEF +{x.armadura_def} · "
+           f"<b>Resistência</b> {x.resistencia_max} · {_acessorio(x)}<br>"
+           f"<b>Características</b> {_caracteristicas(x)}<br>") +
         f"<b>Convicções</b> {e['conviccoes']}"
     )
-    posto_nome = {"bronze": "Bronze", "prata": "Prata", "ouro": "Elite"}[x.posto]
+    posto_nome = e.get("posto_nome") or {"bronze": "Bronze", "prata": "Prata", "ouro": "Elite"}[x.posto]
     partes = [
         '<div class="criatura">',
         f'<h3>{html.escape(e["nome"])}<span class="kleos">Nível {x.nivel} · {posto_nome}</span></h3>',
