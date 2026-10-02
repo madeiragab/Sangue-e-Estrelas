@@ -111,7 +111,7 @@ lutas de grupo contra um só. O relatório completo está em
 | Cada característica de armadura, sozinha | — | 47% a 59% |
 | Quem escolhe só Vida contra quem escolhe só Cosmo | — | 40% a 70% |
 | Um nível acima, no pior nível | 97% | 91% |
-| Um personagem com um aliado de luta, contra um rival que ele venceria na metade | 96% | 68% a 72% |
+| Um personagem com um aliado de luta, contra um rival que ele venceria na metade | 96% | 67% a 72% |
 
 ## O livro
 

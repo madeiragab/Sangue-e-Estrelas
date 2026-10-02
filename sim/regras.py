@@ -344,8 +344,23 @@ TETO_SETIMO = 2
 # não acontece, nem levantando. O simulador mede uma luta de cada vez, então do nível
 # mínimo em diante trata o primeiro despertar como já acontecido.
 NIVEL_SETIMO = 5
+
+
+def desperta_do_mestre(posto: str, conviccoes: int) -> bool:
+    """O Sétimo é raro no mundo (0.11.0, pedido do usuário): quase impossível entre os
+    Bronzes, só dos veteranos entre os Pratas, padrão na elite. Do lado do Mestre, um Bronze
+    ou um Prata só desperta se for um rival, com Convicção — a exceção, como os personagens."""
+    return posto not in ("bronze", "prata") or conviccoes > 0
+
+
 DOMINIO_OURO = 3   # bônus do Sétimo dominado do Ouro contra um Sétimo despertado
 TETO_NONO = 2
+
+# Os deuses (0.11.0, pedido do usuário): estão no Nono, e só o Nono os fere. Montados sobre a
+# elite de nível 20: PV × "pv" e + "def" na DEF e nas defesas. O menor (Hypnos, Thanatos, os
+# filhos deles) perde para quem chegou ao Nono com a armadura Divina; o maior (Hades, Atena,
+# Poseidon) ainda está um pouco acima. Medido em sim/mestre.py.
+DEUSES = {"menor": {"pv": 1.5, "def": 2}, "maior": {"pv": 2.0, "def": 4}}
 
 # ---------------------------------------------------------------------------
 # Cosmo
