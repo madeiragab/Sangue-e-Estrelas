@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.19.0-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.20.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.19.0 · 02/10/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.20.0 · 02/10/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -123,16 +123,16 @@ Um livro só, para jogador e Mestre, com 13 capítulos e um apêndice:
 | I | Antes de tudo | O que é o jogo e o que você precisa |
 | II | Como se joga | O d20, a dificuldade e os cinco números da ficha |
 | III | Criação de personagem | Antes do Sexto Sentido (o humano e a prova da armadura), e nove etapas sem classes: exército, constelação, treino, Convicções |
-| IV | Cosmo e Sentidos | O Cosmo que cresce, queimar, o Sétimo dominado, a Guerra dos Mil Dias, o Oitavo, o Nono, os cinco sentidos e as Centelhas |
-| V | Combate | Ações, reações, "o mesmo golpe não funciona duas vezes", cair e levantar, condições |
-| VI | Técnicas | O motor para criar as suas, evolução e o Golpe do Assento |
-| VII | Armaduras | Características, Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova e a forma Divina |
+| IV | Cosmo e Sentidos | O Cosmo que cresce, queimar, a raridade dos Sentidos, o Sétimo dominado, a Guerra dos Mil Dias, o Oitavo, o Nono, os cinco sentidos e as Centelhas |
+| V | Combate | Ações, surpresa, reações, "o mesmo golpe não funciona duas vezes", cair e levantar, condições, veneno e descanso |
+| VI | Técnicas | O motor para criar as suas, evolução, o Golpe do Assento e os golpes famosos, com as falhas deles |
+| VII | Armaduras | Características, Resistência, a Hierarquia do Prata, a morte, a escada do sangue com o bônus de cada forma nova, a forma Divina e a armadura emprestada |
 | VIII | Itens e relíquias | Raridade, Sintonia, remédios, os três metais, melhorias e relíquias — nenhuma arma |
-| IX | Exércitos | A cadeia de comando, do aprendiz ao deus, o molde e quatro exércitos de exemplo |
-| X | Inimigos | Como montar, a tabela rápida de 1 a 20, figurantes, a dificuldade medida e onze fichas prontas |
-| XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
+| IX | Exércitos | A cadeia de comando, do aprendiz ao deus, o molde, quatro exércitos completos, sete dos outros deuses, a Exclamação de Atena e os que Hades traz de volta |
+| X | Inimigos | Como montar, a tabela rápida de 1 a 20, figurantes, a dificuldade medida, vários contra vários, os deuses e onze fichas prontas |
+| XI | Aliados e a luta na mesa | Companheiros, aliados, mentores, o milagre, um jogador só, duelos em paralelo e a Guerra dos Mil Dias na mesa |
 | XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |
-| XIII | O mundo | Feitos e perigos por degrau, a vida dos objetos, quedas, fôlego, cansaço, fome, sono, ferida e viagem |
+| XIII | O mundo | Feitos e perigos por degrau, queimar num feito, a vida dos objetos, arremessar, quedas, fôlego, cansaço, fome, sono, ferida, viagem, as Doze Casas e o mundo dos mortos |
 | XIV | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
 | Ap. | Notas de design e balanceamento | Por que cada regra é como é, o que o simulador mediu, o que ele não sabe e o que mudou no caminho |
 
