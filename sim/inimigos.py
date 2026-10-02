@@ -92,12 +92,13 @@ INIMIGOS = {
                 "desperta: o Cosmo dela é emprestado.",
                 "<strong>Nunca vem sozinha.</strong> Chega com um bando ou um Espectro "
                 "nomeado — é a autoridade dela, não o punho, que pesa."],
-        quando="A que fala por Hades: a irmã do deus, a sacerdotisa, quem manda nos "
-               "Espectros. Perigosa pela autoridade e pela fuga, não pelo punho. Um Bronze de "
-               "nível 5 vence uma luta com ela uma vez em três; de nível 7, seis em dez; do "
-               "nível dela, quase nove em dez. Três Bronzes de nível 5 vencem quase sempre, e "
-               "um deles costuma cair. Ponha um bando e um Espectro ao lado dela, e deixe-a "
-               "recuar: ela volta."),
+        quando="Quem manda num exército sem lutar nele: a sacerdotisa, a voz do deus, o "
+               "comandante que nunca vestiu armadura. Perigoso pela autoridade e pela fuga, "
+               "não pelo punho. Um Bronze de nível 5 vence uma luta com ele uma vez em três; "
+               "de nível 7, seis em dez; do nível dele, quase nove em dez. Três Bronzes de "
+               "nível 5 vencem quase sempre, e um deles costuma cair. O nível é um ponto de "
+               "partida: o seu comandante pode ser bem mais forte, ou mais fraco — monte-o "
+               "pela tabela rápida no nível que a sua história pedir."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
