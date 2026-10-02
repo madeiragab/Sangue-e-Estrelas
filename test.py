@@ -415,6 +415,13 @@ def testar_mestre() -> None:
     confere(me >= 0.65 and mo >= 0.65, f"no Nono, um personagem supera a divindade menor ({me:.0%}, {mo:.0%})")
     confere(0.10 <= xe <= 0.45 and 0.15 <= xo <= 0.55,
             f"no Nono, um personagem fica perto do deus maior, abaixo dele ({xe:.0%}, {xo:.0%})")
+    # Fora do Nono (0.13.0): o deus maior não sente; o menor sente um pouco.
+    f = R.fracao_contra_deus
+    confere(f("maior", 1, True) == 0 and f("menor", 0, False) == 0
+            and 0 < f("menor", 1, False) < f("menor", 1, True) < 1 == f("maior", 2, False),
+            "contra um deus: Nono inteiro; Sétimo pouco e Oitavo um pouco mais, só no menor")
+    t3 = M.ouros_contra_deus(3, False, lutas=200)["grupo"]
+    confere(t3 <= 0.10, f"três Ouros no Sétimo quase nunca vencem a divindade menor ({t3:.0%})")
     # A raridade do Sétimo (0.11.0): o nomeado Bronze ou Prata sem Convicção não desperta.
     for posto in ("bronze", "prata"):
         d = duelos(M.pc(13), M.inimigo(13, posto), n=200, semente=970)

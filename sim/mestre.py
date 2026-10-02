@@ -337,9 +337,35 @@ def deus(tipo: str):
         x.pv_max = int(x.pv_max * t["pv"])
         x.defesa_extra = t["def"]
         x.sentido_inicial = "nono"
+        x.deus = tipo
         x.reiniciar()
         return x
     return f
+
+
+def no_setimo(oitavo: bool, nome: str):
+    """Um Ouro de nível 20 no Sétimo, revivido seis vezes, com ou sem o Oitavo."""
+    def f():
+        x = montar(nome, 20, "ouro", conviccoes=3, formas=("guerreiro",) * 6)
+        x.sentido_inicial = "setimo"
+        x.oitavo = oitavo
+        x.reiniciar()
+        return x
+    return f
+
+
+def ouros_contra_deus(k: int, oitavo: bool, tipo: str = "menor", lutas: int = NG,
+                      ao_lado: bool = False) -> dict:
+    """k Ouros no Sétimo (com ou sem o Oitavo) contra um deus: fora do Nono, só uma fração
+    do dano entra (R.DANO_CONTRA_DEUS) — a não ser que lutem ao lado do próprio deus."""
+    def grupo_():
+        g = [no_setimo(oitavo, f"O{i}")() for i in range(k)]
+        for x in g:
+            x.ao_lado_do_deus = ao_lado
+        return g
+    return grupo_contra_um(grupo_, deus(tipo),
+                           n=lutas, semente=1600 + k + (50 if oitavo else 0),
+                           sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
 
 
 def contra_deus(tipo: str, posto: str = "bronze", k: int = 1, lutas: int = NG) -> dict:
@@ -578,6 +604,26 @@ def main() -> None:
             r = contra_deus(tipo, posto, k)
             cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} / {r['caidos_media']:.1f}")
         linhas.append(f"| Deus {tipo} | " + " | ".join(cel) + " |")
+    menor = R.DANO_CONTRA_DEUS["menor"]
+    linhas += ["", "Fora do Nono, só uma fração do dano entra na divindade menor "
+               f"({menor['setimo']:.0%} no Sétimo, {menor['oitavo']:.0%} com o Oitavo); no deus "
+               "maior, nada. Ouros de nível 20 no Sétimo, revividos seis vezes:", "",
+               "| Contra a divindade menor | Um | Três | Cinco |", "|---|---|---|---|"]
+    for oit in (False, True):
+        cel = []
+        for k in (1, 3, 5):
+            r = ouros_contra_deus(k, oit)
+            cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f} caem")
+        linhas.append(f"| {'Com o Oitavo' if oit else 'Só o Sétimo'} | " + " | ".join(cel) + " |")
+    linhas += ["", "Ao lado do próprio deus, quem está no Sétimo fere um deus normalmente. Ouros de "
+               "nível 20 no Sétimo, ferindo por inteiro:", "",
+               "| Ao lado do próprio deus | Um | Três | Cinco |", "|---|---|---|---|"]
+    for tipo in ("menor", "maior"):
+        cel = []
+        for k in (1, 3, 5):
+            r = ouros_contra_deus(k, False, tipo, ao_lado=True)
+            cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f} caem")
+        linhas.append(f"| Contra o deus {tipo} | " + " | ".join(cel) + " |")
 
     print("sangue...")
     linhas += ["", "## O sangue doado", "",

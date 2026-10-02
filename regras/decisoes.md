@@ -231,6 +231,23 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 - **O choque usa a contagem dos Mil Dias**, com testes de CON que endurecem a cada rodada,
   e **a interferência usa desvios** (três somados), como os quatro Bronzes na casa de Virgem
   no anime. A preparação de uma rodada existe para dar essa janela.
+- **A divindade menor sente o Sétimo e o Oitavo** (pedido do usuário: "muito pouco" e "um
+  pouco mais"). Ficou um quarto e metade. Testado: um quinto e dois quintos (cinco Ouros no
+  Sétimo, 4%: nem cinco Ouros arranhavam); um terço e metade (cinco Ouros no Sétimo, 66%:
+  deixava de ser "muito pouco").
+- **O mundo ganhou um capítulo** (pedido do usuário: "a vida de uma porta, uma pedra caindo
+  em cima de você, ficar sem respirar, cansaço, dias sem dormir, ferido"). Tudo sai do
+  degrau: o objeto e o perigo abaixo do seu degrau não contam, e o dano no seu degrau é em
+  acertos de bando do seu nível, para pesar igual na campanha toda. Objetos têm PV absolutos:
+  o Cavaleiro de nível alto derruba o templo que o de nível 1 só arranha, como na série. O
+  cansaço é do corpo e o Cosmo não cura: quatro quadrados, o descanso longo tira um.
+- **A Exclamação Zodiacal** (nome do usuário para os doze Ouros contra o Muro das
+  Lamentações). Não é técnica de combate: cria a luz do sol e mata os doze, como no anime.
+  Não é proibida como a de Atena, porque não é três contra um. Os mortos entram em espírito,
+  como Aioros no anime.
+- **A Centelha do seu deus fere um deus por um golpe, e lutar ao lado dele fere sempre**
+  (pedido do usuário, a saga de Poseidon). Ferir não é vencer: o que decide a luta contra um
+  deus maior continua sendo o seu deus, ou o Nono.
 
 ## Antes do Sexto Sentido e a cadeia de comando (0.9.0)
 
