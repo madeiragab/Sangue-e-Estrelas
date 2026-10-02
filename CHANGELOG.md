@@ -3,6 +3,38 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.15.0] - 2026-10-02
+
+O segundo trecho do playtest de campanha.
+
+### Mudado
+
+- **Companheiros** (Capítulo Onze): os colegas da mesma patente que andam com o grupo têm o
+  nível do personagem, ficha completa e Iniciativa própria, e contam como personagens — em
+  Sozinho contra muitos e na tabela de dificuldade. O aliado de luta (metade do nível) fica
+  para quem só ajuda numa luta. Antes, o colega de treino entrava como aliado de luta.
+- **Subir de nível deixa você inteiro** (Capítulo Doze): PV no máximo novo, Convicções e a
+  Resistência da armadura viva de volta. Não cura o cansaço, a ferida, o sangue doado, o
+  veneno nem um sentido mutilado.
+- **A técnica nova nasce no meio de qualquer luta que importa** (Capítulo Seis), não só
+  quando você levanta. Uma por luta.
+- **Aprender a restaurar se conta em dias de oficina** (Capítulo Doze): um teste por dia de
+  trabalho com um mestre restaurador; três sucessos, e você restaura.
+
+### Adicionado
+
+- **Os que Hades traz de volta** (Capítulo Nove): sem Convicção — não levantam, não
+  respondem e não despertam —, e a 0 PV se desfazem em cinza, deixando só a armadura.
+  Medido: três Bronzes de nível 4 vencem um Prata de nível 9 corrompido 63% das vezes, e o
+  mesmo Prata vivo, com uma Convicção, sempre.
+- **O vislumbre do Sétimo** (Capítulo Quatro): um toque de um instante, do nível 5 em
+  diante, que não é o primeiro despertar, não dá o degrau nem Glória e não se repete por
+  vontade.
+- **Recuar em vez de cair** (Capítulo Onze): o inimigo que a história ainda precisa pode
+  fugir a 0 PV; a luta conta como vencida.
+- **A armadura que morre sem quebrar** (Capítulo Sete): o que come Cosmo mata uma armadura
+  por dentro, como um efeito de destino.
+
 ## [0.14.0] - 2026-10-02
 
 ### Adicionado
