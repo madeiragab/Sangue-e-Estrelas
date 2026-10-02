@@ -1009,7 +1009,7 @@ pre.bloco-codigo {
     <li><a href="#cap9"><span class="alg">IX</span><span><span class="tit">Exércitos</span>
       <span class="sub">O molde, os quatro exércitos de exemplo e as vagas de elite</span></span></a></li>
     <li><a href="#cap10"><span class="alg">X</span><span><span class="tit">Inimigos</span>
-      <span class="sub">Para o Mestre: montar, medir e dez fichas prontas</span></span></a></li>
+      <span class="sub">Para o Mestre: montar, medir e onze fichas prontas</span></span></a></li>
     <li><a href="#cap11"><span class="alg">XI</span><span><span class="tit">Aliados e a luta na mesa</span>
       <span class="sub">Para o Mestre: quem ajuda, e como conduzir duelos em paralelo</span></span></a></li>
     <li><a href="#cap12"><span class="alg">XII</span><span><span class="tit">Interlúdio e níveis</span>
@@ -1910,8 +1910,9 @@ function rolar(modo) {
     <span class="rotulo">O primeiro despertar</span>
     <p>O primeiro Sétimo de um Bronze ou de um Prata é um marco, não um acidente. Ele não
     acontece antes do <strong>nível 5</strong>, nem levantando do chão. E a primeira vez vem
-    numa luta que importa: contra alguém de Posto acima do seu, ou contra um nomeado com
-    Convicção, com algo de verdade em jogo. O Mestre diz quando a luta é essa.</p>
+    numa luta que importa: contra alguém de Posto ou de nível acima do seu, contra um nomeado
+    com Convicção, ou quando há uma vida em jogo — a sua, ou a de quem você protege. O Mestre
+    diz quando a luta é essa.</p>
     <p>Depois da primeira vez, o Sétimo fica ao seu alcance em toda luta, com as três
     condições de sempre.</p>
   </div>
@@ -2854,7 +2855,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><strong>Quantas:</strong> 1 no Bronze, 2 na Prata, 3 na elite.</li>
     <li>Quando a armadura sobe de Bronze a Prata, ganha a segunda. A armadura de elite vem
       com as três dela: as da vaga, que o Mestre define.</li>
-    <li>A cada forma nova, você pode trocar uma característica: a armadura voltou diferente.</li>
+    <li>A cada forma nova, você pode trocar uma característica, e também o acessório: a
+      armadura voltou diferente.</li>
     <li>Cada uma entra uma vez só por armadura, e só funciona com a armadura no corpo.</li>
   </ul>
   <div class="rolagem"><table>
@@ -2946,6 +2948,15 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
   peças se remontam. Só uma armadura morta não volta sozinha.</p>
+  <div class="destaque" id="remendo">
+    <span class="rotulo">O remendo</span>
+    <p>Entre uma luta e outra, um restaurador pode adiantar o trabalho que a armadura faria
+    sozinha à noite. Uma hora, com a armadura fora do corpo, e um teste de
+    <strong>Ofício contra CD 13</strong>: no sucesso, ela recupera
+    <span class="dado">1d4</span> de Resistência, e uma armadura em pedaços volta a se
+    montar. Uma vez por armadura entre dois descansos longos; na falha, a hora se perde. Não
+    revive armadura morta.</p>
+  </div>
 
   <h4>A morte da armadura</h4>
   <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela em pedaços,
@@ -3426,8 +3437,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <h5>Rosário de 108 contas</h5>
       <p class="etiqueta">Relíquia · Atena</p>
       <p>Feito com 108 frutos do saboeiro do inferno e abençoado por alguém com o Oitavo
-      Sentido. Cada Espectro abatido na presença de quem o carrega tem a estrela selada numa
-      conta: ele não volta mais.</p>
+      Sentido. Do momento em que fica pronto até o fim daquela Guerra Santa, todo Espectro
+      que um Cavaleiro abate tem a estrela selada numa conta — onde quer que o Rosário
+      esteja: ele não volta mais, e a conta escurece na mão de quem o guarda.</p>
       <div class="poder"><b>Também</b>+2 em Vontade contra técnicas de Espectros.</div>
     </div>
     <div class="cartao">
@@ -3785,7 +3797,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <div class="cartao">
       <h5>Estrela Maligna</h5>
       <p>Enquanto Hades existir, um Espectro que morre volta em <span class="dado">1d4</span>
-      semanas. O Rosário de 108 contas sela a estrela dele, e aí não há volta.</p>
+      semanas. Depois que o Rosário de 108 contas fica pronto, quem cai diante de um
+      Cavaleiro tem a estrela selada até o fim daquela Guerra Santa, e não volta.</p>
     </div>
     <div class="cartao">
       <h5>Súplice sem sangue</h5>
@@ -3797,21 +3810,38 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 
   <h4 id="corrompidos">Os que Hades traz de volta</h4>
   <p>Um guerreiro que morre longe da proteção do seu deus pode voltar a andar, vestindo a
-  armadura de sempre ou uma Súplice, lutando por Hades. Não é ele: é o corpo e o Cosmo
-  dele, sem a vontade.</p>
-  <ul>
-    <li><strong>Sem Convicção.</strong> Não levanta, não usa
+  armadura de sempre ou uma Súplice, lutando por Hades. Ele volta de um de dois jeitos. Nos
+  dois, a ficha é a do nível e do Posto que ele tinha em vida — as técnicas, a armadura, a
+  Hierarquia —, e a 0 PV, sem poder levantar, ele não cai: se desfaz em cinza, e só a
+  armadura fica. Uma armadura de Atena volta sozinha para o Santuário, para esperar outro
+  dono.</p>
+  <div class="grade">
+    <div class="cartao">
+      <h5>Pela força</h5>
+      <p class="etiqueta">O corpo, sem a vontade</p>
+      <p>Hades o arrancou da morte e o põe para lutar. Não é ele: é o corpo e o Cosmo dele.
+      <strong>Sem Convicção</strong>: não levanta, não usa
       <a href="#sozinho-contra-muitos">Sozinho contra muitos</a> e não desperta o Sétimo
-      (<a href="#raridade">Capítulo Quatro</a>) — a não ser que fosse da elite em vida.</li>
-    <li>Fora isso, a ficha é a do nível e do Posto que ele tinha: as técnicas, a armadura,
-      a Hierarquia.</li>
-    <li><strong>Sem corpo.</strong> A 0 PV ele não cai: se desfaz em cinza, e só a armadura
-      fica. Uma armadura de Atena volta sozinha para o Santuário, para esperar outro dono.</li>
-  </ul>
-  <p>Medido: sem Convicção, um Prata de nível 9 é uma luta para três Bronzes de nível 4 —
-  eles vencem 63% das vezes, e uns dois caem. O mesmo Prata vivo, com uma Convicção, vence
-  esses três sempre; só do nível 7 em diante eles o vencem quatro vezes em cinco. O que Hades
-  tira de um guerreiro ao trazê-lo de volta é justamente o que o tornava perigoso.</p>
+      (<a href="#raridade">Capítulo Quatro</a>) — a não ser que fosse da elite em vida.</p>
+    </div>
+    <div class="cartao">
+      <h5>Por um acordo</h5>
+      <p class="etiqueta">Por vontade própria</p>
+      <p>Ele aceitou voltar, e é ele mesmo. Tem Convicções — mas não as de vida: são
+      <strong>Convicções para voltar ao mundo dos vivos</strong>, e por trás delas, às vezes,
+      a de sempre, escondida. Levanta, responde, e a elite entra no Sétimo como entrava. Hades
+      dá um prazo — doze horas, na Guerra Santa que a série mostra —, e quando ele acaba, o
+      corpo vira cinza.</p>
+    </div>
+  </div>
+  <p>Foi por um acordo que seis Cavaleiros de Ouro mortos subiram as escadarias do
+  Santuário vestindo Súplices: fingiam ir matar Atena, e levavam a ela o segredo da
+  armadura dela. Quem luta contra um desses nunca sabe qual Convicção ele está dizendo de
+  verdade.</p>
+  <p>Medido: pela força, sem Convicção, um Prata de nível 9 é uma luta para três Bronzes de
+  nível 4 — eles vencem 63% das vezes, e uns dois caem. Por um acordo, com uma Convicção, o
+  mesmo Prata vence esses três sempre; só do nível 7 em diante eles o vencem quatro vezes em
+  cinco.</p>
 
   <h3>Asgard</h3>
   <p class="etiqueta-livro"><strong>Deus:</strong> Odin · <strong>Guerreiros:</strong>
@@ -4191,7 +4221,7 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     corpo) o apaga de vez.</p>
   </div>
 
-  <h3 id="fichas-inimigos">Dez inimigos prontos</h3>
+  <h3 id="fichas-inimigos">Onze inimigos prontos</h3>
   <p>Montados pela tabela e conferidos pelo simulador. Troque o nome, o exército e o tema
   à vontade: os números continuam valendo.</p>
 
@@ -4273,6 +4303,21 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
 <p class="rotulo-bloco">Traços</p>
 <ul><li><strong>Estrela Maligna.</strong> Volta em <span class="dado">1d4</span> semanas enquanto Hades existir.</li><li><strong>Uma Convicção.</strong> Ele levanta uma vez, e levanta desperto.</li></ul>
 <p class="morte"><span class="rotulo-bloco">Quando usar</span>Um dos 36 de Hades, acima das Estrelas Terrestres: o Prata do exército. Um Bronze do mesmo nível vence um destes uma vez em sete, e só um de nível 13 vence mais da metade das vezes. Dois Bronzes de nível 11 vencem sete vezes em dez, e um deles cai; três de nível 9 também vencem sete em dez, mas quase dois caem. É a luta da sessão para um grupo pequeno.</p>
+</div>
+
+  <div class="criatura">
+<h3>Comandante sem armadura<span class="kleos">Nível 9 · Sem Posto</span></h3>
+<p class="tipo">Hades — a voz do deus na terra</p>
+<div class="status"><b>PV</b> 114 <span class="sep">·</span> <b>DEF</b> 13 <span class="sep">·</span> <b>Iniciativa</b> +3<br><b>Fortitude</b> 16 <span class="sep">·</span> <b>Reflexos</b> 21 <span class="sep">·</span> <b>Vontade</b> 19<br><b>Cosmo</b> começa em 5, piso 3, Teto 11 <span class="sep">·</span> <b>Sentido</b> Sexto; não desperta<br><b>Armadura</b> nenhuma<br><b>Convicções</b> 1</div>
+<p class="rotulo-bloco">Golpe comum</p>
+<p>+7 contra a DEF, <span class="dado">1d8 + 3</span> (dois golpes). Acertou: +1 de Cosmo.</p>
+<p class="rotulo-bloco">Técnicas</p>
+<ul><li><strong>Lança do Mundo Inferior</strong> · 6 de Cosmo · +7 contra a DEF · <span class="dado">6d8 + 51</span>.</li><li><strong>Ordem de Hades</strong> · 4 de Cosmo · +7 contra a DEF · <span class="dado">4d8 + 35</span>.</li><li><strong>Sombra que Prende</strong> · 2 de Cosmo · +7 contra a DEF · <span class="dado">2d8 + 19</span>.</li></ul>
+<p class="rotulo-bloco">Resposta</p>
+<p>Contra dois ou mais personagens, depois do turno de cada um: <strong>Sombra que Prende</strong> contra quem acabou de agir, sem gastar Cosmo · +7 contra a DEF · <span class="dado">2d8 + 19</span>. Só o dano.</p>
+<p class="rotulo-bloco">Traços</p>
+<ul><li><strong>Sem armadura.</strong> O poder dela vem do deus e de uma relíquia, não do metal: não apara, não bloqueia e não tem Elmo.</li><li><strong>Recua em vez de cair</strong> (<a href="#cap11">Capítulo Onze</a>). A 0 PV, ela some numa fenda negra; a luta conta como vencida.</li><li><strong>Uma Convicção, e nenhum Sétimo.</strong> Ela levanta, mas não desperta: o Cosmo dela é emprestado.</li><li><strong>Nunca vem sozinha.</strong> Chega com um bando ou um Espectro nomeado — é a autoridade dela, não o punho, que pesa.</li></ul>
+<p class="morte"><span class="rotulo-bloco">Quando usar</span>A que fala por Hades: a irmã do deus, a sacerdotisa, quem manda nos Espectros. Perigosa pela autoridade e pela fuga, não pelo punho. Um Bronze de nível 5 vence uma luta com ela uma vez em três; de nível 7, seis em dez; do nível dela, quase nove em dez. Três Bronzes de nível 5 vencem quase sempre, e um deles costuma cair. Ponha um bando e um Espectro ao lado dela, e deixe-a recuar: ela volta.</p>
 </div>
 
   <div class="criatura">
@@ -4876,6 +4921,26 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   treinada. Feitos que duram, como segurar uma corrente, pedem um teste por rodada. Ajudar dá
   Vantagem, e duas pessoas fazendo força juntas somam: o feito desce um degrau.</p>
 
+  <div class="destaque" id="queimar-feito">
+    <span class="rotulo">Queimar num feito</span>
+    <p>O Cosmo não é só para técnica. Antes de rolar um feito — ou o teste para escapar de um
+    perigo —, um guerreiro pode queimar, como numa técnica:</p>
+    <ul>
+      <li>até a sua <strong>proficiência</strong> em pontos (+2 no Sétimo);</li>
+      <li>cada ponto custa <span class="dado">1d4</span> de vida, vezes o seu Grau, e soma
+        <strong>+2 no teste</strong>;</li>
+      <li>queimando o máximo, um feito <strong>um degrau acima</strong> do seu deixa de ser
+        lenda: a CD dele é 16, em vez de 22. Dois degraus acima continua impossível;</li>
+      <li>numa luta, depois de queimar, o Cosmo volta ao piso, como numa técnica.</li>
+    </ul>
+    <p>O último golpe vale aqui também: se o preço passar da sua vida, o feito sai assim
+    mesmo. Se der certo, você fica de pé com 1 PV; se não, você cai logo depois.</p>
+  </div>
+  <p><em>Exemplo:</em> um Bronze de nível 5 (proficiência +3, Grau 2) segura a corrente que
+  arrasta a amiga para dentro da montanha. É um feito de Sétimo — um degrau acima dele. Ele
+  queima 3 pontos: paga <span class="dado">3d4</span> × 2 de vida, soma +6 no Atletismo, e a
+  CD cai de 22 para 16.</p>
+
   <div class="ornamento">❖</div>
 
   <h3 id="objetos">A vida de uma porta</h3>
@@ -4924,6 +4989,12 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <tr><td>Fumaça e gás</td><td>Uma casa queimando, um poço</td><td>O vapor de um vulcão, o miasma do Inferno</td><td>Sem ar: conte o fôlego, abaixo</td></tr>
     </tbody>
   </table></div>
+  <p><strong>Quem rola, o Mestre decide pela cena.</strong> Quando você reage ao perigo —
+  pula da viga, segura a respiração, agarra a borda —, o teste é seu, como na tabela. Quando
+  o perigo é que ataca — a lança da armadilha, o gás que procura o rosto, a raiz que tenta
+  entrar pelo braço —, ele rola contra a sua defesa passiva: <span class="dado">1d20</span> +
+  o ataque de um bando do seu nível (<a href="#figurantes">Capítulo Dez</a>), +5 se for um
+  degrau acima do seu.</p>
   <p>Um <strong>acerto de bando</strong> é o dano fixo de um acerto de figurante do seu
   nível, na tabela do <a href="#figurantes">Capítulo Dez</a>: 2 no nível 1, 7 no 5, 17 no
   10. O humano usa a linha do nível 1. Assim o perigo do seu degrau pesa parecido em toda a
@@ -4937,6 +5008,28 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       Sete</a>) tira um perigo da conta: a armadura que ignora o frio da Sibéria ignora o
       frio da Sibéria.</li>
     <li>O veneno e a doença estão no <a href="#veneno">Capítulo Cinco</a>.</li>
+  </ul>
+
+  <h4 id="arremessar">Arremessar</h4>
+  <p>Pegar uma coisa e jogar é a ação Golpe, à distância: <span class="dado">1d20</span> +
+  DES + proficiência contra a DEF do alvo. Coisas pesadas usam FOR.</p>
+  <div class="rolagem"><table>
+    <thead><tr><th>O que voa</th><th>Dano</th><th>Alcance</th></tr></thead>
+    <tbody>
+      <tr><td>Pequeno: uma pedra, um frasco, uma faca</td><td><span class="dado">1d4</span> + o atributo</td><td>10 m · até 30 m com Desvantagem</td></tr>
+      <tr><td>Médio: uma cadeira, uma tora, o escudo de um soldado</td><td><span class="dado">1d8</span> + o atributo</td><td>6 m · até 15 m com Desvantagem</td></tr>
+      <tr><td>Grande: uma rocha do tamanho de um homem, uma coluna, um cavalo</td><td><span class="dado">2d8</span> + FOR</td><td>6 m · só quem ergue (um feito de guerreiro)</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>Conta como golpe comum: o crítico rola os dados duas vezes, e o acerto dá +1 de
+      Cosmo, uma vez por turno. Se o objeto é bem maior que o alvo, um bando perde o dobro
+      de figurantes.</li>
+    <li>Mirar num lugar e não em alguém — o chão aos pés dele, uma corda, um vidro — é contra
+      DEF 10, ou 13 se for pequeno e longe.</li>
+    <li>O que está dentro do frasco acontece quando ele quebra: o veneno, o óleo, o antídoto
+      que respinga no ferido.</li>
+    <li>Quem tem correntes na armadura arremessa a 6 metros sem soltar, e puxa de volta.</li>
   </ul>
 
   <h4 id="folego">Fôlego</h4>
@@ -5437,7 +5530,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.15.0</strong>, de 02/10/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.16.0</strong>, de 02/10/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece. O que o
