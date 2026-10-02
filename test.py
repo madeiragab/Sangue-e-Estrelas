@@ -350,11 +350,17 @@ def testar_mestre() -> None:
             f"nível 15: o aliado não piora o grupo nem vence o Ouro por ele ({sem:.0%} → {com:.0%})")
     fichas = [
         ("cavaleiro-negro", 1, 1, 0.48, 0.72, "pouco mais da metade das vezes"),
+        ("espectro-novato", 1, 1, 0.33, 0.60, "um Bronze de nível 1 vence quase metade das vezes"),
+        ("espectro-novato", 1, 2, 0.90, 1.00, "dois Bronzes de nível 1 vencem quase sempre"),
         ("espectro-terrestre", 3, 1, 0.55, 0.80, "o Espectro perde duas vezes em três"),
         ("cavaleiro-de-prata", 8, 1, 0.00, 0.10, "quase nunca"),
         ("cavaleiro-de-prata", 9, 1, 0.05, 0.20, "uma vez em nove"),
         ("cavaleiro-de-prata", 13, 1, 0.75, 1.00, "vence com folga"),
         ("cavaleiro-de-prata", 9, 2, 0.45, 0.75, "dois Bronzes vencem seis vezes em dez"),
+        ("estrela-celeste", 11, 1, 0.05, 0.28, "um Bronze do mesmo nível, uma vez em sete"),
+        ("estrela-celeste", 13, 1, 0.50, 0.80, "um Bronze de nível 13, mais da metade"),
+        ("estrela-celeste", 11, 2, 0.55, 0.85, "dois Bronzes de nível 11, sete em dez"),
+        ("estrela-celeste", 9, 3, 0.55, 0.88, "três Bronzes de nível 9, sete em dez"),
         ("guerreiro-deus", 12, 4, 0.05, 0.25, "três níveis abaixo, uma vez em sete"),
         ("guerreiro-deus", 15, 4, 0.55, 0.82, "duas vezes em três"),
         ("general-marina", 15, 4, 0.52, 0.80, "duas vezes em três"),
@@ -374,6 +380,38 @@ def testar_mestre() -> None:
     confere(e2 <= 0.20 and e2b <= 0.25 and 0.08 <= e3 <= 0.35,
             f"espectro-terrestre: dois derrubam quase sempre um nível 3 ou 4 "
             f"({e2:.0%}, {e2b:.0%}), três derrubam um nível 5 quatro vezes em cinco ({e3:.0%})")
+
+    n2 = M.varios_contra_um("espectro-novato", 2, 4, lutas=200, semente=953)
+    confere(n2 <= 0.50, f"espectro-novato: dois ainda derrubam um Bronze de nível 4 ({n2:.0%})")
+
+    # O grupo contra um nomeado acima (0.10.0): vence quase sempre, e no começo alguém cai.
+    for n, k, acima in ((1, 3, 3), (3, 2, 4), (9, 2, 4)):
+        r = M.grupo_contra_nomeado(n, k, acima, lutas=200)
+        cai = r["caidos_media"] >= 0.3 if n <= 3 else r["caidos_media"] <= 0.5
+        confere(r["grupo"] >= 0.70 and cai,
+                f"nível {n}: {k} contra um nomeado {acima} níveis acima vencem "
+                f"({r['grupo']:.0%}, {r['caidos_media']:.1f} caem)")
+    # A armadura de Ouro emprestada (0.10.0): pesa, e não faz do Bronze um Ouro.
+    for n in (9, 17):
+        _, b = M.emprestada(n, "bronze", lutas=N)
+        _, pr = M.emprestada(n, "prata", lutas=N)
+        confere(0.70 <= b <= 0.93 and 0.25 <= pr <= 0.60,
+                f"nível {n}: a armadura de Ouro emprestada pesa sem decidir "
+                f"({b:.0%} contra Bronze, {pr:.0%} contra Prata)")
+    _, o = M.emprestada(17, "ouro", lutas=N)
+    confere(o <= 0.05, f"nível 17: nem de armadura de Ouro o Bronze vence um Ouro ({o:.0%})")
+    # O sangue doado (0.10.0): Debilitado é quase perder, mais ainda no fim.
+    d1, d13 = M.debilitado(1, 1, lutas=N), M.debilitado(13, 1, lutas=N)
+    confere(0.28 <= d1 <= 0.48 and d13 <= 0.35 and d13 < d1,
+            f"um terço de sangue doado pesa, e mais nos níveis altos ({d1:.0%} no 1, {d13:.0%} no 13)")
+    # A armadura que se sacrifica (opcional, 0.10.0): só aparece nas lutas em sequência.
+    for n in (5, 13):
+        sem_, com_ = M.sacrificio(n, None, lutas=N)
+        confere(abs(com_ - sem_) <= 0.02,
+                f"nível {n}: com a armadura inteira, o sacrifício não muda a luta ({sem_:.0%} → {com_:.0%})")
+    sem_, com_ = M.sacrificio(1, 2, lutas=N)
+    confere(com_ >= sem_ + 0.08,
+            f"nível 1: com a armadura gasta, o sacrifício salva ({sem_:.0%} → {com_:.0%})")
 
     # O primeiro Sétimo é um marco (0.10.0): antes do nível mínimo, nem levantando.
     for n in (1, R.NIVEL_SETIMO - 1, R.NIVEL_SETIMO):

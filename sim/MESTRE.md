@@ -60,6 +60,54 @@ Dois Bronzes do mesmo nível; o primeiro pegou o outro sem ser percebido e dá o
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Quem surpreende vence | 59% | 66% | 60% | 61% | 63% | 60% | 52% |
 
+## O grupo contra um nomeado acima do nível dele
+
+Personagens do mesmo nível contra um nomeado sem Convicção alguns níveis acima. Sem Convicção, ele não usa Sozinho contra muitos. Cada célula: quanto o grupo vence / quantos personagens caem, em média.
+
+| Nível do grupo | 2 contra +2 | 2 contra +3 | 2 contra +4 | 3 contra +2 | 3 contra +3 | 3 contra +4 |
+|---:|---|---|---|---|---|---|
+| 1 | 97% / 0.4 | 88% / 0.7 | 89% / 0.7 | 100% / 0.4 | 99% / 0.5 | 100% / 0.5 |
+| 3 | 97% / 0.4 | 86% / 0.8 | 75% / 1.0 | 100% / 0.3 | 100% / 0.5 | 99% / 0.8 |
+| 5 | 100% / 0.2 | 99% / 0.3 | 95% / 0.6 | 100% / 0.2 | 100% / 0.2 | 100% / 0.4 |
+| 9 | 100% / 0.2 | 100% / 0.2 | 98% / 0.4 | 100% / 0.1 | 100% / 0.1 | 100% / 0.2 |
+| 13 | 100% / 0.1 | 100% / 0.1 | 100% / 0.0 | 100% / 0.0 | 100% / 0.0 | 100% / 0.0 |
+
+## A armadura de Ouro emprestada
+
+Um Bronze de armadura de Ouro emprestada: a linha do Ouro na tabela de Posto, três características, a Resistência da CON e da Vida, e nada das formas da armadura dele. A Hierarquia e o Sétimo continuam os do Bronze.
+
+| Nível | Contra um Bronze (3 Convicções) | Contra um Prata (1) | Contra um Ouro (2) |
+|---:|---|---|---|
+| 5 | 50% → 80% | — | — |
+| 9 | 50% → 84% | 11% → 44% | — |
+| 13 | 52% → 84% | 12% → 42% | — |
+| 17 | 48% → 86% | 7% → 40% | 0% → 1% |
+
+| Quatro Bronzes contra um Ouro do mesmo nível | Sem | Um de armadura emprestada |
+|---|---:|---:|
+| Nível 15 | 66% | 73% |
+| Nível 20 | 40% | 50% |
+
+## O sangue doado
+
+Um Bronze que doou sangue contra um Bronze inteiro do mesmo nível, os dois com três Convicções. Cada terço doado tira um terço dos PV máximos.
+
+| Terços doados | 1 | 5 | 9 | 13 | 17 | 20 |
+|---|---:|---:|---:|---:|---:|---:|
+| 0 | 52% | 50% | 53% | 48% | 47% | 49% |
+| 1 | 40% | 31% | 28% | 23% | 11% | 9% |
+| 2 | 34% | 17% | 11% | 9% | 4% | 2% |
+
+## A armadura que se sacrifica (regra opcional)
+
+No último ponto de Resistência, quando a metade do dano ainda derrubaria, a armadura segura o golpe inteiro e morre. Sem e com a regra, contra um Bronze inteiro do mesmo nível.
+
+| Começa a luta com | 1 | 5 | 9 | 13 | 17 | 20 |
+|---|---:|---:|---:|---:|---:|---:|
+| a Resistência cheia | 51% → 51% | 47% → 47% | 49% → 49% | 52% → 52% | 48% → 48% | 49% → 49% |
+| Resistência 2 | 47% → 64% | 44% → 65% | 42% → 42% | 17% → 17% | 8% → 8% | 4% → 4% |
+| Resistência 1 | 38% → 49% | 39% → 38% | 20% → 20% | 17% → 17% | 3% → 3% | 4% → 4% |
+
 ## O aliado de luta
 
 Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho contra muitos.
@@ -90,20 +138,29 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | Ficha | Quem enfrenta | Vence | Caem |
 |---|---|---:|---:|
 | Cavaleiro Negro | Um Bronze de nível 1 | 58% | — |
-| Espectro de Estrela Terrestre | Um Bronze de nível 3 | 64% | — |
-| Espectro de Estrela Terrestre | Um Bronze de nível 4 | 78% | — |
+| Espectro Novato | Um Bronze de nível 1 | 46% | — |
+| Espectro Novato | Um Bronze de nível 2 | 67% | — |
+| Espectro Novato | Dois Bronzes de nível 1 | 99% | 0.3 |
+| Espectro Novato | Três Bronzes de nível 1 | 100% | 0.4 |
+| Espectro de Estrela Terrestre | Um Bronze de nível 3 | 65% | — |
+| Espectro de Estrela Terrestre | Um Bronze de nível 4 | 76% | — |
 | Cavaleiro de Prata | Um Bronze de nível 8 | 6% | — |
 | Cavaleiro de Prata | Um Bronze de nível 9 | 11% | — |
-| Cavaleiro de Prata | Um Bronze de nível 13 | 86% | — |
-| Cavaleiro de Prata | Dois Bronzes de nível 9 | 60% | 1.2 |
-| Cavaleiro de Prata | Três Bronzes de nível 9 | 96% | 0.9 |
-| Guerreiro Deus | Quatro Bronzes de nível 12 | 15% | 3.7 |
-| Guerreiro Deus | Quatro Bronzes de nível 15 | 70% | 2.0 |
-| General Marina | Quatro Bronzes de nível 15 | 65% | 2.2 |
+| Cavaleiro de Prata | Um Bronze de nível 13 | 88% | — |
+| Cavaleiro de Prata | Dois Bronzes de nível 9 | 58% | 1.2 |
+| Cavaleiro de Prata | Três Bronzes de nível 9 | 94% | 0.9 |
+| Espectro de Estrela Celeste | Um Bronze de nível 11 | 15% | — |
+| Espectro de Estrela Celeste | Um Bronze de nível 13 | 63% | — |
+| Espectro de Estrela Celeste | Dois Bronzes de nível 11 | 69% | 1.1 |
+| Espectro de Estrela Celeste | Três Bronzes de nível 9 | 72% | 1.7 |
+| Espectro de Estrela Celeste | Três Bronzes de nível 11 | 95% | 0.7 |
+| Guerreiro Deus | Quatro Bronzes de nível 12 | 14% | 3.7 |
+| Guerreiro Deus | Quatro Bronzes de nível 15 | 68% | 2.1 |
+| General Marina | Quatro Bronzes de nível 15 | 63% | 2.2 |
 | Cavaleiro de Ouro | Um Bronze de nível 16 | 0% | — |
-| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 48% | 2.8 |
-| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 77% | 2.2 |
-| Juiz do Inferno | Quatro Bronzes de nível 17 | 54% | 2.6 |
+| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 51% | 2.7 |
+| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 77% | 2.3 |
+| Juiz do Inferno | Quatro Bronzes de nível 17 | 56% | 2.6 |
 | Juiz do Inferno | Quatro Bronzes de nível 18 | 66% | 2.3 |
 
 | Espectros juntos contra um Bronze | O Bronze vence |
@@ -112,6 +169,9 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | 2 Espectros contra um Bronze de nível 4 | 14% |
 | 3 Espectros contra um Bronze de nível 4 | 2% |
 | 3 Espectros contra um Bronze de nível 5 | 20% |
+| 2 Espectros Novatos contra um Bronze de nível 2 | 11% |
+| 2 Espectros Novatos contra um Bronze de nível 3 | 21% |
+| 2 Espectros Novatos contra um Bronze de nível 4 | 33% |
 
 ## Antes do Sexto Sentido: a prova da armadura
 
