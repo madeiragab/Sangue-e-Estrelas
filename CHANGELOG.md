@@ -3,6 +3,36 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.16.0] - 2026-10-02
+
+O que ainda faltava do segundo trecho do playtest.
+
+### Adicionado
+
+- **Queimar num feito** (Capítulo Treze): até a proficiência em pontos, cada um custando
+  1d4 de vida vezes o Grau e somando +2 no teste; queimando o máximo, um feito um degrau
+  acima cai de CD 22 para 16. A regra do último golpe vale.
+- **Quem rola contra o mundo** (Capítulo Treze): o Mestre decide pela cena. Quando o perigo
+  ataca, ele rola 1d20 + o ataque do bando do seu nível contra a sua defesa passiva.
+- **Arremessar** (Capítulo Treze): a ação Golpe à distância, com dano e alcance pelo tamanho
+  do que voa.
+- **O remendo** (Capítulo Sete): um restaurador, uma hora e Ofício CD 13 devolvem 1d4 de
+  Resistência a uma armadura viva, uma vez entre dois descansos longos.
+- **Comandante sem armadura** (Capítulo Dez), a ficha pronta da voz de Hades: nível 9, sem
+  armadura, uma Convicção, sem Sétimo, recua em vez de cair. Medido: um Bronze de nível 5
+  vence uma vez em três; do nível dela, quase nove em dez.
+- **Os que Hades traz de volta, por um acordo** (Capítulo Nove, pedido do usuário): além da
+  força (sem Convicção), o guerreiro que volta por vontade própria, com Convicções novas —
+  para voltar ao mundo dos vivos —, que levanta e desperta como antes, com prazo.
+
+### Mudado
+
+- **O primeiro Sétimo** (Capítulo Quatro): vem também contra alguém de nível acima do seu,
+  ou quando há uma vida em jogo, além de Posto acima e nomeado com Convicção.
+- **O Rosário de 108 contas** (Capítulos Oito e Nove, pedido do usuário): vale para a Guerra
+  Santa inteira, longe ou perto — todo Espectro que um Cavaleiro abate é selado.
+- **A forma nova troca o acessório também** (Capítulo Sete).
+
 ## [0.15.0] - 2026-10-02
 
 O segundo trecho do playtest de campanha.

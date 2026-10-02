@@ -195,14 +195,17 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | Espectro de Estrela Celeste | Dois Bronzes de nível 11 | 69% | 1.1 |
 | Espectro de Estrela Celeste | Três Bronzes de nível 9 | 72% | 1.7 |
 | Espectro de Estrela Celeste | Três Bronzes de nível 11 | 95% | 0.7 |
+| Comandante sem armadura | Um Bronze de nível 5 | 27% | — |
+| Comandante sem armadura | Um Bronze de nível 9 | 85% | — |
+| Comandante sem armadura | Três Bronzes de nível 5 | 98% | 0.9 |
 | Guerreiro Deus | Quatro Bronzes de nível 12 | 14% | 3.7 |
-| Guerreiro Deus | Quatro Bronzes de nível 15 | 68% | 2.1 |
-| General Marina | Quatro Bronzes de nível 15 | 63% | 2.2 |
+| Guerreiro Deus | Quatro Bronzes de nível 15 | 69% | 2.1 |
+| General Marina | Quatro Bronzes de nível 15 | 65% | 2.2 |
 | Cavaleiro de Ouro | Um Bronze de nível 16 | 0% | — |
-| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 51% | 2.7 |
-| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 77% | 2.3 |
-| Juiz do Inferno | Quatro Bronzes de nível 17 | 56% | 2.6 |
-| Juiz do Inferno | Quatro Bronzes de nível 18 | 66% | 2.3 |
+| Cavaleiro de Ouro | Quatro Bronzes de nível 15 | 48% | 2.8 |
+| Cavaleiro de Ouro | Cinco Bronzes de nível 15 | 72% | 2.5 |
+| Juiz do Inferno | Quatro Bronzes de nível 17 | 51% | 2.7 |
+| Juiz do Inferno | Quatro Bronzes de nível 18 | 63% | 2.4 |
 
 | Espectros juntos contra um Bronze | O Bronze vence |
 |---|---:|
