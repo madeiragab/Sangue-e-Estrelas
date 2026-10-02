@@ -3,6 +3,36 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.20.0] - 2026-10-02
+
+Uma revisão do livro inteiro, depois de dez versões em poucos dias.
+
+### Corrigido
+
+- **Regras velhas que sobraram:** a terceira defesa passiva "até o nível 10" (Capítulo
+  Três; ela vem quando você escolhe treiná-la); o descanso curto repetido entre os duelos
+  do torneio (só a primeira pausa cura); o mentor "numa semana de Interlúdio" (agora, na
+  ação); a urna sem dono, que agora segue a regra da armadura emprestada.
+- **O exemplo do Téo** (Capítulo Catorze) aparava com o Elmo; aparar gasta Resistência, e
+  o Elmo só segura crítico.
+- **"Espectros sem nome" como figurantes** contradiziam os Espectros que reencarnam: os
+  figurantes de Hades são os esqueletos.
+- **"O motor não compra destino"** citava o caminho do mundo dos mortos; Banido compra a
+  saída da luta por um tempo, e só o "para sempre" é destino. O Desfecho é a única troca
+  de Ataque por Efeito.
+- **O Nono** era "o único que fere um deus": agora, o único que fere um deus maior.
+- **A Glória da Centelha** vale para a luta de outro personagem; os companheiros sobem de
+  nível junto, sem juntar Glória.
+- **De quem é o sangue que revive:** de alguém que despertou o Sexto Sentido, ou uma gota
+  de deus.
+- **Links e referências:** quem lê quais capítulos, onde estão o levantar e o Sétimo, o
+  milagre na queda, os golpes famosos a partir das vagas de Ouro, cinco contra dois Ouros
+  medido (56% a 77%).
+- **A ficha e a consulta rápida** ganham o cansaço, o ferido, o milagre, queimar num feito
+  e as peças novas do motor; o descanso longo tira 1 de cansaço.
+- **O apêndice** tira das pendências o grupo contra grupo (feito) e o princípio da
+  constelação (descartado), e diz o que o próximo playtest precisa jogar.
+
 ## [0.19.0] - 2026-10-02
 
 ### Adicionado
