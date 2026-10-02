@@ -25,6 +25,7 @@ PESO = {
     "dano": 1, "area": 1, "continuo": 1, "pv_temp": 1, "cura": 1, "defesa": 1,
     "movimento": 1, "empurrar": 1, "teleporte": 2, "vantagem": 1,
     "cond_fraca": 1, "cond_media": 2, "cond_forte": 4,
+    "refletir": 4,      # só como reação: devolve a técnica declarada contra você (0.18.0)
 }
 
 
@@ -89,6 +90,20 @@ class Tecnica:
     @property
     def quebra(self) -> bool:
         return "quebra" in self.mais
+
+    @property
+    def marca(self) -> bool:
+        """Cada acerto deixa uma marca no alvo, até o fim da luta."""
+        return "marca" in self.mais
+
+    @property
+    def desfecho(self) -> bool:
+        """Com marcas bastantes, uma vez por luta, a técnica derruba de vez."""
+        return "desfecho" in self.mais
+
+    @property
+    def reflete(self) -> bool:
+        return bool(self.efeitos.get("refletir"))
 
 
 def tecnica_de_dano(pontos: int, grau: int, natureza: str = "golpe",
