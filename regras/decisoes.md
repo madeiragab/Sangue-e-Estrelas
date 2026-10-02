@@ -515,7 +515,6 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 
 ## Pendências
 
-- Grupo contra grupo (hoje: duelo e grupo contra um).
 - Playtest humano das lutas de grupo contra a elite e do nível alto.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
