@@ -55,6 +55,7 @@ POLITICA_PADRAO = {
     "cegar_se": False,       # Bronze/Prata: se cega para despertar (mutilação)
     "levantar": True,        # gasta Convicção para levantar
     "tecnicas": True,        # usa técnicas
+    "sacrificar": False,     # regra opcional: deixa a armadura morrer no último Aparar
 }
 
 
@@ -84,6 +85,8 @@ class Lutador:
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
     caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
     armadura: str = "viva"             # viva · casca (morta, vestida) · nenhuma
+    armadura_posto: str = ""           # a armadura emprestada de outro Posto (0.10.0); "" = a sua
+    resistencia_inicial: int | None = None   # lutas em sequência: começa com esta Resistência
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -117,9 +120,9 @@ class Lutador:
         self.imune: set = set()        # técnicas cuja condição forte já acabou
         self.lido_por: set = set()     # nomes das minhas técnicas que o oponente já leu
         self.vantagem_proxima = False  # Centelha: Vantagem no próximo ataque
-        bonus, res = R.POSTO[self.posto]
-        if not R.formas_validas(self.posto, self.formas):
-            raise ValueError(f"{self.nome}: a armadura de {self.posto} não aceita {self.formas}")
+        bonus, res = R.POSTO[self.posto_da_armadura]
+        if not R.formas_validas(self.posto_da_armadura, self.formas):
+            raise ValueError(f"{self.nome}: a armadura de {self.posto_da_armadura} não aceita {self.formas}")
         forma = R.bonus_das_formas(self.formas)
         self.armadura_def = bonus + forma["def"]
         self.acerto_forma = forma["acerto"]
@@ -134,7 +137,8 @@ class Lutador:
         self.espelho_usado = False
         self.ofuscar_usado = False
         self.espinhos_turno = 0
-        self.resistencia = self.resistencia_max
+        self.resistencia = (self.resistencia_max if self.resistencia_inicial is None
+                            else min(self.resistencia_inicial, self.resistencia_max))
         self.elmo = True
         self.armadura_morta = self.armadura != "viva"
         self.casca_caiu = False
@@ -149,6 +153,12 @@ class Lutador:
     @property
     def teto(self) -> int:
         return R.teto_base(self.nivel) + self.teto_extra + self.teto_fixo + self.cosmo_escolhas
+
+    @property
+    def posto_da_armadura(self) -> str:
+        """O Posto do metal no corpo: o seu, ou o da armadura emprestada. A Hierarquia,
+        o Sétimo e o Golpe do Assento continuam sendo do Posto do guerreiro."""
+        return self.armadura_posto or self.posto
 
     @property
     def armada(self) -> bool:
@@ -170,7 +180,7 @@ class Lutador:
         if self.armada:
             d_ += self.armadura_def + (1 if "pesada" in self.caracteristicas else 0)
         elif self.vestida:
-            d_ += R.POSTO[self.posto][0]   # a casca: só a DEF do Posto
+            d_ += R.POSTO[self.posto_da_armadura][0]   # a casca: só a DEF do Posto
         if "visao" in self.sentidos_perdidos:
             d_ -= 2                    # não vê o golpe vindo
         return d_
@@ -251,7 +261,7 @@ class Lutador:
 def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "nenhum",
            conviccoes: int | None = None, politica: dict | None = None,
            kit: str = "padrao", formas: tuple = (), caracteristicas: tuple | None = None,
-           escolhas: dict | None = None) -> Lutador:
+           escolhas: dict | None = None, armadura_posto: str = "") -> Lutador:
     """Um lutador de Golpe (DES) com o Cosmo em SAB, construído pelo livro.
 
     Distribuição 15/14/13/12/10/8: DES 15, CON 14, SAB 13, FOR 12, INT 10,
@@ -277,8 +287,8 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
     if politica:
         pol.update(politica)
     if caracteristicas is None:     # as típicas do Posto: 1 no Bronze, 2 na Prata, 3 na elite
-        caracteristicas = R.CARACTERISTICAS_PADRAO[:R.CARACTERISTICAS_POR_POSTO[posto]]
-    return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio,
+        caracteristicas = R.CARACTERISTICAS_PADRAO[:R.CARACTERISTICAS_POR_POSTO[armadura_posto or posto]]
+    return Lutador(nome, nivel, posto, atr, tecs, acessorio=acessorio, armadura_posto=armadura_posto,
                    conviccoes=conviccoes, politica=pol, formas=tuple(formas),
                    caracteristicas=tuple(caracteristicas),
                    vigor=esc["vida_cosmo"].count("v"), cosmo_escolhas=esc["vida_cosmo"].count("c"),
@@ -380,6 +390,12 @@ class Luta:
                 and (dano >= pol["aparar_limiar"] * alvo.pv_max or dano >= alvo.pv)):
             if alvo.armada:
                 alvo.resistencia -= 1
+                if (pol["sacrificar"] and alvo.resistencia == 0 and alvo.armadura == "viva"
+                        and (pol["sacrificar"] == "sempre" or dano // 2 >= alvo.pv)):
+                    # A armadura que se sacrifica (regra opcional, 0.10.0): o último
+                    # ponto não apara, segura o golpe inteiro, e a armadura morre.
+                    dano = 0
+                    alvo.armadura_morta = True
                 dano //= 2
                 if R.APARAR_USA_REACAO:
                     alvo.reacao = False
