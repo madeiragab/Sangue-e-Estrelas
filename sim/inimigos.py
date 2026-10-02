@@ -99,6 +99,88 @@ INIMIGOS = {
                "nível 5 vencem quase sempre, e um deles costuma cair. O nível é um ponto de "
                "partida: o seu comandante pode ser bem mais forte, ou mais fraco — monte-o "
                "pela tabela rápida no nível que a sua história pedir."),
+    "satelite-de-artemis": dict(
+        nome="Satélite de Ártemis", nivel=6, posto="bronze", acessorio="asas", conviccoes=1,
+        caracteristicas=("leve",), exercito="Ártemis", armadura="Veste sagrada",
+        tecnicas=("Flecha de Prata da Lua", "Luz Pálida", "Arco da Caçadora"),
+        tracos=["<strong>A luz da lua.</strong> Sob a lua, +1 no Teto de Cosmo (não somado "
+                "aqui).",
+                "<strong>Uma Convicção.</strong> Levanta uma vez, pela deusa."],
+        quando="A caçadora da lua, quase sempre em par. Um Bronze do mesmo nível "
+               "vence metade das vezes; um de nível 5, uma vez em quatro. Dois Bronzes de "
+               "nível 5 vencem quase oito em dez; de nível 6, quase sempre."),
+    "palasita": dict(
+        nome="Palasita de Terceira Classe", nivel=7, posto="bronze", acessorio="garras",
+        conviccoes=1, caracteristicas=("cortante",), exercito="Palas", armadura="Cronotector",
+        tecnicas=("Corte da Grande Espada", "Golpe do Punho", "Lâmina do Instante"),
+        tracos=["<strong>A Grande Espada.</strong> O acessório é a espada (conta como "
+                "garras): quem a perde, perde o corte.",
+                "<strong>Uma Convicção.</strong> Pela irmã de Atena, que ele ama."],
+        quando="O soldado da espada, que chega em grupo. Um Bronze do mesmo nível "
+               "vence metade das vezes; um de nível 6, uma em três. Dois Bronzes de nível 6 "
+               "vencem quase sempre."),
+    "marciano": dict(
+        nome="Marciano", nivel=10, posto="prata", acessorio="escudo", conviccoes=1,
+        caracteristicas=("pesada", "espinhos"), exercito="Marte", armadura="Veste de Marte",
+        tecnicas=("Lança da Guerra", "Grito de Batalha", "Marcha Vermelha"),
+        tracos=["<strong>Fúria da guerra.</strong> Quando um aliado cai perto dele, +1 de "
+                "Cosmo, uma vez por turno.",
+                "<strong>Não há paz.</strong> Ele nunca dá Glória a quem o convence: com ele, "
+                "só a luta resolve."],
+        quando="O soldado de elite de um deus que só conhece a guerra. Um Bronze do "
+               "mesmo nível vence pouco mais de uma vez em dez; um de nível 12, quatro em "
+               "dez. Três Bronzes de nível 9 vencem sete em dez, e um ou dois caem."),
+    "cavaleiro-da-coroa": dict(
+        nome="Cavaleiro da Coroa", nivel=13, posto="prata", acessorio="nenhum", conviccoes=1,
+        caracteristicas=("ofuscante", "estrelada"), exercito="Apolo",
+        armadura="Armadura da Coroa",
+        tecnicas=("Raio da Coroa", "Calor do Meio-Dia", "Disco Solar"),
+        tracos=["<strong>Ainda sem a coroa.</strong> A coroa do sol é dos três da elite "
+                "(<a href=\"#outros-exercitos\">Capítulo Nove</a>); este ainda luta no "
+                "Sexto e desperta como um rival.",
+                "<strong>Uma Convicção.</strong> Pelo deus do sol — ou, às vezes, uma que ele "
+                "esconde."],
+        quando="O cavaleiro do sol, antes da coroa. Um Bronze do mesmo nível vence uma "
+               "vez em dez; um de nível 15, duas em três. Três Bronzes de nível 12 vencem oito "
+               "em dez."),
+    "anjo-caido": dict(
+        nome="Anjo Caído", nivel=14, posto="prata", acessorio="asas", conviccoes=2,
+        caracteristicas=("couraca", "coracao"), exercito="Lúcifer", armadura="Glória",
+        tecnicas=("Queda do Céu", "Pena de Cinza", "Juízo da Asa Negra"),
+        tracos=["<strong>Asas da queda.</strong> Toda Glória tem asas.",
+                "<strong>Orgulho.</strong> Nunca se rende, nunca recua.",
+                "<strong>Duas Convicções.</strong> Levanta, e levanta de novo."],
+        quando="O anjo que caiu com o mestre dele, e não se arrepende. Um Bronze do "
+               "mesmo nível vence uma vez em nove. Três de nível 13 vencem oito em dez, e um "
+               "ou dois caem."),
+    "cavaleiro-fantasma": dict(
+        nome="Cavaleiro Fantasma", nivel=16, posto="ouro", acessorio="nenhum", conviccoes=0,
+        caracteristicas=("ressonante", "pesada", "espelhada"), exercito="Éris",
+        armadura="Veste fantasma, a sombra de uma armadura de Ouro",
+        tecnicas=("Golpe do Rancor", "Mão Fria", "Lamento de Ouro"),
+        assento="o Golpe do Assento que ele tinha em vida",
+        tracos=["<strong>Trazido pela força.</strong> Era um Ouro; Éris o arrancou da morte. "
+                "Sem Convicção: não levanta e não usa Sozinho contra muitos. A 0 PV, vira "
+                "cinza (<a href=\"#corrompidos\">Capítulo Nove</a>).",
+                SETIMO_DOMINADO],
+        quando="Era um Ouro, e luta como um: um Bronze sozinho quase nunca vence. Mas "
+               "sem Convicção ele não responde a um grupo nem levanta, e três Bronzes de nível "
+               "15 o derrubam quase sempre. É o Ouro da sessão em que o grupo ainda não está "
+               "pronto para um de verdade."),
+    "tita": dict(
+        nome="Titã meio desperto", nivel=18, posto="ouro", acessorio="nenhum", conviccoes=2,
+        caracteristicas=("couraca", "pesada", "ressonante"), exercito="Cronos",
+        armadura="Soma", resistencia_extra=1,
+        tecnicas=("Peso do Céu", "Mão do Tártaro", "Era de Ouro"),
+        assento="o golpe do deus que ainda dorme nele",
+        tracos=["<strong>Meio desperto.</strong> O deus ainda não acordou inteiro no corpo: "
+                "por isso um Ouro o enfrenta. Desperto de vez, é uma divindade menor "
+                "(<a href=\"#deuses\">Capítulo Dez</a>).",
+                "<strong>Soma.</strong> +1 de Resistência (já somada).",
+                SETIMO_DOMINADO],
+        quando="Mais duro que um Juiz do Inferno: quatro Bronzes de nível 17 vencem "
+               "uma vez em quatro, e uns três caem; cinco, seis em dez. É o "
+               "fim de uma campanha — ou o começo de outra, contra o deus inteiro."),
     "guerreiro-deus": dict(
         nome="Guerreiro Deus", nivel=15, posto="ouro", acessorio="nenhum", conviccoes=2,
         caracteristicas=("couraca", "ressonante", "estrelada"),
@@ -159,6 +241,8 @@ def lutador(chave: str) -> Lutador:
                politica={"despertar": desperta})
     if e.get("sem_armadura"):
         x.armadura = "nenhuma"
+    if e.get("sentido_inicial"):
+        x.sentido_inicial = e["sentido_inicial"]
     x.teto_fixo = e.get("teto_extra", 0)
     x.resistencia_extra = e.get("resistencia_extra", 0)
     x.reiniciar()
@@ -223,7 +307,9 @@ def bloco(chave: str) -> str:
     teto = x.teto
     ini = (x.mods["des"] + (2 if "leve" in x.caracteristicas else 0)
            - (2 if "pesada" in x.caracteristicas else 0))
-    if x.posto == "ouro":
+    if e.get("sentido_texto"):
+        sentido = e["sentido_texto"]
+    elif x.posto == "ouro":
         sentido = "Sétimo quando quiser"
     elif e.get("desperta", R.desperta_do_mestre(x.posto, e["conviccoes"])):
         sentido = "Sexto; desperta como um personagem"
