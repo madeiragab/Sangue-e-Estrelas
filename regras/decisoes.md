@@ -219,6 +219,23 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## O segundo trecho do playtest (0.15.0)
+
+- **Companheiros no nível do personagem** (decisão do usuário, na mesa: "coloca os dois como
+  N4 também"). A regra de aliado de luta, de metade do nível, não serve para quem é do
+  grupo. Contando como personagens, eles ativam Sozinho contra muitos: três Bronzes são três
+  respostas do chefe por rodada.
+- **Subir de nível restaura os PV, as Convicções e a armadura, mas não o cansaço, a ferida,
+  o sangue, o veneno ou o sentido mutilado** (decisão do usuário).
+- **Os corrompidos de Hades** (regra do usuário na campanha): sem Convicção e sem corpo.
+  Medido, isso tira deles quase tudo: o Prata de nível 9 vai de invencível para três Bronzes
+  de nível 4 a 63%.
+- **O vislumbre** veio da mesa: o Bronze tocou o Sétimo num treino com a mestra de Ouro, e o
+  usuário decidiu que não era o despertar.
+- **O descanso curto continua um só entre dois descansos longos** (decisão do usuário).
+- **O livro não ganha instruções de condução tiradas desta mesa** (decisão do usuário): o
+  livro é para pessoas.
+
 ## A Exclamação de Atena (0.13.0)
 
 - **Pedido do usuário:** exclusiva de Atena, proibida pela deusa, pede três Ouros; uma
