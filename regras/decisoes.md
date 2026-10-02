@@ -204,7 +204,7 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   níveis 1 a 5. O preço real é a armadura morta.
 - **Fichas novas:** o Espectro Novato fica no nível 3 (o Cavaleiro Negro já é o 2), e a
   Estrela Celeste no 11, acima do Cavaleiro de Prata (9).
-- **A raridade dos Sentidos** (pedido do usuário): Sétimo quase impossível no Bronze, raro
+- **A raridade dos Sentidos** (0.12.0, pedido do usuário): Sétimo quase impossível no Bronze, raro
   no Prata veterano, padrão na elite; Oitavo, um ou dois Ouros por geração; Nono, nem
   conhecido. Os personagens são a exceção. Virou regra do Mestre: Bronze e Prata sem
   Convicção não despertam. Medido, quase nada muda — o nomeado sem Convicção raramente
