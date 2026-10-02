@@ -245,8 +245,9 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   N4 também"). A regra de aliado de luta, de metade do nível, não serve para quem é do
   grupo. Contando como personagens, eles ativam Sozinho contra muitos: três Bronzes são três
   respostas do chefe por rodada.
-- **Subir de nível restaura os PV, as Convicções e a armadura, mas não o cansaço, a ferida,
-  o sangue, o veneno ou o sentido mutilado** (decisão do usuário).
+- **Subir de nível restaura os PV e as Convicções, mas não a armadura, o cansaço, a ferida,
+  o sangue, o veneno ou o sentido mutilado** (decisão do usuário; a armadura saiu na
+  0.16.1).
 - **Os corrompidos de Hades** (regra do usuário na campanha): sem Convicção e sem corpo.
   Medido, isso tira deles quase tudo: o Prata de nível 9 vai de invencível para três Bronzes
   de nível 4 a 63%.
