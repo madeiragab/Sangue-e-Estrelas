@@ -3,6 +3,27 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.17.0] - 2026-10-02
+
+O que a pesquisa na série trouxe, aprovado pelo usuário.
+
+### Adicionado
+
+- **Os exércitos dos outros deuses** (Capítulo Nove), no molde curto: Ártemis (Satélites e
+  Anjos), Apolo (Cavaleiros da Coroa), Éris (Cavaleiros Fantasmas e Dríades, e a maçã
+  dourada), Lúcifer (Anjos Caídos), Cronos (Titãs e Gigantes), Marte (Marcianos) e Palas
+  (Palasitas). As regras próprias deles são empurrões, sem medida.
+- **As Saintias** (Capítulo Nove, Atena): uma vez por luta, recebem no lugar de Atena — ou de
+  quem guardam — o golpe que acertou.
+- **Os Espectros reencarnam** (Capítulo Nove, Hades): as 108 estrelas são sempre as mesmas, e
+  a cada Guerra Santa acordam em corpos novos.
+- **A Armadura de Aço** (Capítulo Oito): a máquina sem Cosmo que tira um humano do bando
+  diante de um Bronze.
+- **A subida das Doze Casas** (Capítulo Treze): o relógio de doze chamas, sem descanso longo,
+  o cansaço a cada três casas.
+- **O mundo dos mortos** (Capítulo Treze): a entrada, o Aqueronte, as oito prisões, o
+  Cocytos, Giudecca, o Muro e o Elísio, com os perigos pelo degrau.
+
 ## [0.16.1] - 2026-10-02
 
 ### Mudado

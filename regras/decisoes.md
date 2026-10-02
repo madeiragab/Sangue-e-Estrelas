@@ -219,6 +219,17 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## A pesquisa na série (0.17.0)
+
+- **Aprovados pelo usuário:** os exércitos dos outros deuses, a subida das Doze Casas, o
+  mundo dos mortos, as Saintias, os Cavaleiros de Aço.
+- **Vetados pelo usuário:** a forma Divina forçada de Soul of Gold (quebraria o poder; os
+  Ouros só fizeram aquilo porque um deus os reviveu e havia uma ligação), e os elementos de
+  Ômega (nem a série manteve).
+- **A Súplice não desperta qualquer um:** os Espectros são sempre as mesmas 108 estrelas,
+  que reencarnam em corpos novos (correção do usuário).
+- **As amazonas e a máscara ficam como estão:** a tradição é escolha de cada Mestre.
+
 ## O resto do segundo trecho (0.16.0)
 
 - **Queimar num feito** (pedido do usuário: "seria legal demais"). Usa o mesmo preço da
