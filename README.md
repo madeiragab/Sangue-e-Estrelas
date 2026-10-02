@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://madeiragab.github.io/Sangue-e-Estrelas/"><img alt="Site no ar" src="https://img.shields.io/badge/site-no%20ar-B8923E?style=flat-square"></a>
   <a href="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml"><img alt="Testes" src="https://github.com/madeiragab/Sangue-e-Estrelas/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.16.1-9B1C2E?style=flat-square">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-0.17.0-9B1C2E?style=flat-square">
   <img alt="Python sem dependências" src="https://img.shields.io/badge/python-stdlib%20pura-1A1922?style=flat-square">
 </p>
 
@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.16.1 · 02/10/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.17.0 · 02/10/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
