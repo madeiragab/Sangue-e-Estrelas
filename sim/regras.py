@@ -279,7 +279,14 @@ CARACTERISTICAS_PADRAO = ("ressonante", "ofuscante", "pesada")
 
 # Uma condição forte, quando acaba, não volta com a mesma técnica no mesmo alvo
 # naquela luta: o mesmo golpe não funciona duas vezes.
-CONDICOES_FORTES = ("atordoado", "paralisado")
+CONDICOES_FORTES = ("atordoado", "paralisado", "banido")
+
+# As peças novas do motor (0.18.0). Marca e Desfecho: com tantas marcas, uma vez por luta,
+# a técnica derruba sem deixar levantar. Refletir: teste contra 10 + o tamanho da técnica
+# que se tenta devolver.
+MARCAS_DESFECHO = 4
+DESFECHO_FINAL = True    # o desfecho derruba sem deixar levantar nesta luta
+REFLETIR_CD_BASE = 10
 
 # A Hierarquia: um Prata diante de um Bronze soma isto nas rolagens contra
 # ele, e o Bronze perde isto nas rolagens contra o Prata. A elite não usa a

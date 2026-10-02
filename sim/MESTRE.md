@@ -149,6 +149,18 @@ Três Bronzes (personagens ou companheiros) contra um Prata de nível 9: vivo, c
 | 7 | 79% / 1.6 | 100% / 0.4 |
 | 9 | 94% / 1.0 | 100% / 0.1 |
 
+## Os golpes famosos
+
+Montados com as peças novas do motor como Golpe do Assento, no lugar do comum. Duelo: um Ouro de nível 16 com o golpe contra outro com o Assento comum. Chefe: quanto quatro Bronzes de nível 15 vencem o Ouro com o golpe.
+
+| Golpe | Tamanho · custo | Duelo | Quatro Bronzes vencem |
+|---|---|---:|---:|
+| Golpe do Assento comum | 7 · 7 | 48% | 62% |
+| Agulha Escarlate | 6 · 6 | 34% | 64% |
+| Caixão de Gelo | 6 · 5 | 38% | 54% |
+| Ondas do Inferno | 7 · 6 | 30% | 68% |
+| Muralha de Cristal | 5 · 4 | 58% | 61% |
+
 ## O aliado de luta
 
 Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho contra muitos.

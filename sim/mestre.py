@@ -428,6 +428,48 @@ def corrompido(n: int = 4, k: int = 3, convicoes: int = 0, lutas: int = NG) -> d
 
 
 # ---------------------------------------------------------------------------
+# Os golpes famosos, montados com as peças novas do motor (0.18.0)
+# ---------------------------------------------------------------------------
+
+
+def golpes_famosos(grau: int = 4) -> dict:
+    """Os exemplos do Capítulo Seis, como Golpe do Assento no Grau 4 (tamanho máximo 7)."""
+    return {
+        "Agulha Escarlate": Tecnica("Agulha Escarlate", "golpe", {"dano": 3}, alcance="curto",
+                                    mais=("marca", "desfecho"), grau=grau, assento=True),
+        "Caixão de Gelo": Tecnica("Caixão de Gelo", "cosmo", {"cond_forte": 1, "dano": 1},
+                                  alcance="medio", limitacoes=1, grau=grau, assento=True,
+                                  condicao="banido"),
+        "Ondas do Inferno": Tecnica("Ondas do Inferno", "cosmo", {"cond_forte": 1},
+                                    alcance="vista", limitacoes=1, grau=grau, assento=True,
+                                    condicao="banido", limites=("puxa",)),
+        "Muralha de Cristal": Tecnica("Muralha de Cristal", "cosmo", {"refletir": 1},
+                                      ativacao="reacao", limitacoes=1, grau=grau, assento=True,
+                                      limites=("uma_vez",)),
+    }
+
+
+def ouro_com(nome: str, golpe: str | None, n: int = 16, conviccoes: int = 3):
+    """Um Ouro do nível n com um dos golpes famosos no lugar do Golpe do Assento comum."""
+    def f():
+        x = montar(nome, n, "ouro", conviccoes=conviccoes)
+        if golpe:
+            x.tecnicas = [t for t in x.tecnicas if t.nome != "assento"] + [golpes_famosos()[golpe]]
+        x.reiniciar()
+        return x
+    return f
+
+
+def golpe_famoso(golpe: str | None, lutas: int = N) -> tuple[float, float]:
+    """Num duelo contra um Ouro de nível 16 com o Assento comum, e como chefe de nível 15
+    contra quatro Bronzes do nível dele: quanto o dono do golpe vence, e quanto o grupo."""
+    d = duelos(ouro_com("A", golpe), ouro_com("B", None), n=lutas, semente=1800)["a"]
+    g = grupo_contra_um(grupo(15, 4), ouro_com("C", golpe, n=15, conviccoes=2), n=NG,
+                        semente=1810)["grupo"]
+    return d, g
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -677,6 +719,18 @@ def main() -> None:
             r = corrompido(n, 3, c)
             cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f}")
         linhas.append(f"| {n} | " + " | ".join(cel) + " |")
+
+    print("golpes famosos...")
+    linhas += ["", "## Os golpes famosos", "",
+               "Montados com as peças novas do motor como Golpe do Assento, no lugar do comum. "
+               "Duelo: um Ouro de nível 16 com o golpe contra outro com o Assento comum. Chefe: "
+               "quanto quatro Bronzes de nível 15 vencem o Ouro com o golpe.", "",
+               "| Golpe | Tamanho · custo | Duelo | Quatro Bronzes vencem |", "|---|---|---:|---:|"]
+    for nome in [None] + list(golpes_famosos()):
+        d, g = golpe_famoso(nome)
+        t = golpes_famosos().get(nome)
+        tc = f"{t.tamanho()} · {t.custo()}" if t else "7 · 7"
+        linhas.append(f"| {nome or 'Golpe do Assento comum'} | {tc} | {pct(d)} | {pct(g)} |")
 
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",

@@ -145,6 +145,9 @@ class Lutador:
             self.sentido = self.sentido_inicial
             self.teto_extra += R.TETO_SETIMO + (R.TETO_NONO if self.sentido == "nono" else 0)
             self.cosmo = min(self.teto, self.cosmo)
+        self.marcas = 0                # Agulha Escarlate (0.18.0)
+        self.perde_turnos = 0          # Ondas do Inferno que voltaram contra quem usou
+        self.muralha_usada = False     # Muralha de Cristal: uma vez por luta
         self.espelho_usado = False
         self.ofuscar_usado = False
         self.espinhos_turno = 0
@@ -312,7 +315,7 @@ def montar(nome: str, nivel: int, posto: str = "bronze", *, acessorio: str = "ne
 # Condições (Capítulo Cinco)
 # ---------------------------------------------------------------------------
 
-PERDE_O_TURNO = ("atordoado", "paralisado")
+PERDE_O_TURNO = ("atordoado", "paralisado", "banido")
 CONTRA_COM_VANTAGEM = ("cego", "preso")
 ATACA_COM_DESVANTAGEM = ("cego", "amedrontado")
 
@@ -549,6 +552,38 @@ class Luta:
             else:
                 x.pv -= preco
         lido = (t.nome in x.lido_por) and not (falta or extra)
+        # O desfecho: com marcas bastantes, uma vez por luta, a técnica derruba de vez
+        if t.desfecho and y.marcas >= R.MARCAS_DESFECHO and "desfecho" not in x.usadas:
+            x.usadas.add("desfecho")
+            if self.rolar_efeito(x, y, t):
+                y.pv = 0
+                y.caido = True
+                if R.DESFECHO_FINAL:
+                    y.levantou = R.LEVANTAR_POR_LUTA   # não levanta nesta luta
+            x.lido_por.add(t.nome)
+            if falta or extra:
+                x.cosmo = x.piso
+            return
+        # Refletir: a técnica bate no reflexo e volta, ou o quebra e passa pela metade
+        metade = False
+        muralha = next((m for m in y.tecnicas if m.reflete), None)
+        if (muralha and t.pontos_de_dano and not t.condicao and not t.atravessa
+                and not y.muralha_usada
+                and y.reacao and y.cosmo >= y.custo(muralha) and not y.caido):
+            y.muralha_usada = True
+            y.reacao = False
+            y.cosmo = max(y.piso, y.cosmo - y.custo(muralha))
+            if d(self.rng, 20) + y.bonus_ataque("cosmo") >= R.REFLETIR_CD_BASE + t.tamanho():
+                pontos = t.pontos_de_dano + extra
+                dados, fixo = R.dano_do_ponto(x.nivel, t.grau)
+                volta = rolar(self.rng, pontos * dados, t.lado) + pontos * fixo
+                self.aplicar_dano(x, volta, atravessa=t.atravessa, fonte="tecnica",
+                                  atacante=y, quebra=False)
+                x.lido_por.add(t.nome)
+                if falta or extra:
+                    x.cosmo = x.piso
+                return
+            metade = True
         if t.condicao:
             acertou = self.rolar_efeito(x, y, t, def_extra=R.BONUS_LIDO if lido else 0)
             crit = False
@@ -567,8 +602,14 @@ class Luta:
             dados, fixo = R.dano_do_ponto(x.nivel, t.grau)
             dano = (rolar(self.rng, pontos * dados, t.lado) + pontos * fixo
                     + x.mods[x.atr_golpe if t.natureza == "golpe" else x.atr_cosmo])
+            if metade:
+                dano //= 2
             self.aplicar_dano(y, dano, atravessa=t.atravessa, fonte="tecnica",
                               atacante=x, quebra=t.quebra)
+            if t.marca:
+                y.marcas += 1
+        if t.condicao == "banido" and "puxa" in t.limites and not acertou:
+            x.perde_turnos = 1                   # as Ondas voltaram: a sua alma vai junto
         if falta or extra:
             x.cosmo = x.piso                     # queimou: o Cosmo volta ao piso, não a zero
         if cai_depois and not y.caido:
@@ -582,8 +623,12 @@ class Luta:
 
     def escolher_e_agir(self, x: Lutador, y: Lutador):
         pol = x.politica
-        tecs = (sorted((t for t in x.tecnicas if not t.condicao), key=lambda t: t.pontos_de_dano,
-                       reverse=True) if pol["tecnicas"] else [])
+        if "banido" in y.condicoes:
+            # ninguém alcança quem está fora da luta: sobra concentrar
+            x.subir_cosmo(R.COSMO_CONCENTRAR)
+            return
+        tecs = (sorted((t for t in x.tecnicas if not t.condicao and t.ativacao != "reacao"),
+                       key=lambda t: t.pontos_de_dano, reverse=True) if pol["tecnicas"] else [])
 
         # 1) a maior técnica que o Cosmo paga (e que as limitações deixam usar)
         tecs = [t for t in tecs if x.pode_usar(t)]
@@ -605,6 +650,13 @@ class Luta:
                         and not y.caido and x.pode_usar(t) and t.nome not in y.imune):
                     self.usar_tecnica(x, y, t, queima=0)
                     return
+
+        # 1c) a técnica que marca, enquanto o desfecho dela ainda não saiu
+        for t in x.tecnicas:
+            if (t.marca and t.desfecho and "desfecho" not in x.usadas and x.pode_usar(t)
+                    and x.custo(t) <= x.cosmo and not y.caido):
+                self.usar_tecnica(x, y, t, queima=0)
+                return
 
         # 2) despertar o Sétimo (Bronze e Prata): Cosmo no Teto + um sacrifício.
         #    Queimar é o sacrifício mais comum; cegar-se é opcional.
@@ -708,7 +760,10 @@ class Luta:
             n -= 1
             if self.travado:
                 self.destravar()         # Cosmo de fora quebra a igualdade
-        if any(c in x.condicoes for c in PERDE_O_TURNO):
+        if x.perde_turnos > 0:
+            x.perde_turnos -= 1                  # a alma foi puxada junto: o turno se perde
+            x.reacao = False
+        elif any(c in x.condicoes for c in PERDE_O_TURNO):
             x.reacao = False
         else:
             self.escolher_e_agir(x, y)
