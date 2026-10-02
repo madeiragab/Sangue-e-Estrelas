@@ -69,6 +69,21 @@ IMPRESSAS = [
              grau=3, assento=True), 7, 7),
     (Tecnica("Garra que Rasga o Céu", "golpe", {"dano": 2}, mais=("quebra",)), 3, 3),
     (Tecnica("Olhos do Lince", "cosmo", {"vantagem": 1}, ativacao="reacao", alcance="curto"), 2, 2),
+    # os golpes famosos (0.18.0), com as peças novas do motor
+    (Tecnica("Agulha Escarlate", "golpe", {"dano": 3}, alcance="curto", mais=("marca", "desfecho"),
+             grau=4, assento=True), 6, 6),
+    (Tecnica("Caixão de Gelo", "cosmo", {"cond_forte": 1, "dano": 1}, alcance="medio", limitacoes=1,
+             grau=4, assento=True), 6, 5),
+    (Tecnica("Ondas do Inferno", "cosmo", {"cond_forte": 1}, alcance="vista", limitacoes=1,
+             grau=4, assento=True), 7, 6),
+    (Tecnica("Muralha de Cristal", "cosmo", {"refletir": 1}, ativacao="reacao", limitacoes=1,
+             grau=4, assento=True), 5, 4),
+    (Tecnica("Satã Imperial", "cosmo", {"cond_forte": 1}, mais=("gatilho",), grau=4, assento=True), 5, 5),
+    (Tecnica("Outra Dimensão", "cosmo", {"cond_forte": 1}, alcance="medio", limitacoes=1,
+             grau=4, assento=True), 5, 4),
+    (Tecnica("Tesouro do Céu", "cosmo", {"cond_forte": 1}, duracao="sustentada", limitacoes=1,
+             grau=4, assento=True), 5, 4),
+    (Tecnica("Ave Fênix", "cosmo", {"cond_media": 1, "dano": 1}), 3, 3),
 ]
 
 
@@ -448,6 +463,14 @@ def testar_mestre() -> None:
     viva, morta = M.corrompido(4, 3, 1, lutas=200)["grupo"], M.corrompido(4, 3, 0, lutas=200)["grupo"]
     confere(viva <= 0.10 and 0.35 <= morta <= 0.75,
             f"três Bronzes de nível 4 contra um Prata de nível 9: vivo {viva:.0%}, corrompido {morta:.0%}")
+
+    # Os golpes famosos (0.18.0): nenhum decide a luta sozinho.
+    base, _ = M.golpe_famoso(None, lutas=N)
+    for nome in M.golpes_famosos():
+        d, g = M.golpe_famoso(nome, lutas=N)
+        confere(0.20 <= d <= 0.65 and 0.40 <= g <= 0.85,
+                f"{nome}: ajuda sem decidir (duelo {d:.0%}, o Assento comum {base:.0%}; "
+                f"quatro Bronzes vencem {g:.0%})")
 
     # O primeiro Sétimo é um marco (0.10.0): antes do nível mínimo, nem levantando.
     for n in (1, R.NIVEL_SETIMO - 1, R.NIVEL_SETIMO):
