@@ -384,14 +384,14 @@ def testar_mestre() -> None:
     n2 = M.varios_contra_um("espectro-novato", 2, 4, lutas=200, semente=953)
     confere(n2 <= 0.50, f"espectro-novato: dois ainda derrubam um Bronze de nível 4 ({n2:.0%})")
 
-    # O grupo contra um nomeado acima (0.10.0): vence quase sempre, e no começo alguém cai.
+    # O grupo contra um nomeado acima (0.11.0): vence quase sempre, e no começo alguém cai.
     for n, k, acima in ((1, 3, 3), (3, 2, 4), (9, 2, 4)):
         r = M.grupo_contra_nomeado(n, k, acima, lutas=200)
         cai = r["caidos_media"] >= 0.3 if n <= 3 else r["caidos_media"] <= 0.5
         confere(r["grupo"] >= 0.70 and cai,
                 f"nível {n}: {k} contra um nomeado {acima} níveis acima vencem "
                 f"({r['grupo']:.0%}, {r['caidos_media']:.1f} caem)")
-    # A armadura de Ouro emprestada (0.10.0): pesa, e não faz do Bronze um Ouro.
+    # A armadura de Ouro emprestada (0.11.0): pesa, e não faz do Bronze um Ouro.
     for n in (9, 17):
         _, b = M.emprestada(n, "bronze", lutas=N)
         _, pr = M.emprestada(n, "prata", lutas=N)
@@ -400,11 +400,11 @@ def testar_mestre() -> None:
                 f"({b:.0%} contra Bronze, {pr:.0%} contra Prata)")
     _, o = M.emprestada(17, "ouro", lutas=N)
     confere(o <= 0.05, f"nível 17: nem de armadura de Ouro o Bronze vence um Ouro ({o:.0%})")
-    # O sangue doado (0.10.0): Debilitado é quase perder, mais ainda no fim.
+    # O sangue doado (0.11.0): Debilitado é quase perder, mais ainda no fim.
     d1, d13 = M.debilitado(1, 1, lutas=N), M.debilitado(13, 1, lutas=N)
     confere(0.28 <= d1 <= 0.48 and d13 <= 0.35 and d13 < d1,
             f"um terço de sangue doado pesa, e mais nos níveis altos ({d1:.0%} no 1, {d13:.0%} no 13)")
-    # A armadura que se sacrifica (opcional, 0.10.0): só aparece nas lutas em sequência.
+    # A armadura que se sacrifica (opcional, 0.11.0): só aparece nas lutas em sequência.
     for n in (5, 13):
         sem_, com_ = M.sacrificio(n, None, lutas=N)
         confere(abs(com_ - sem_) <= 0.02,

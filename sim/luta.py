@@ -85,7 +85,7 @@ class Lutador:
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
     caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
     armadura: str = "viva"             # viva · casca (morta, vestida) · nenhuma
-    armadura_posto: str = ""           # a armadura emprestada de outro Posto (0.10.0); "" = a sua
+    armadura_posto: str = ""           # a armadura emprestada de outro Posto (0.11.0); "" = a sua
     resistencia_inicial: int | None = None   # lutas em sequência: começa com esta Resistência
 
     def __post_init__(self):
@@ -392,7 +392,7 @@ class Luta:
                 alvo.resistencia -= 1
                 if (pol["sacrificar"] and alvo.resistencia == 0 and alvo.armadura == "viva"
                         and (pol["sacrificar"] == "sempre" or dano // 2 >= alvo.pv)):
-                    # A armadura que se sacrifica (regra opcional, 0.10.0): o último
+                    # A armadura que se sacrifica (regra opcional, 0.11.0): o último
                     # ponto não apara, segura o golpe inteiro, e a armadura morre.
                     dano = 0
                     alvo.armadura_morta = True

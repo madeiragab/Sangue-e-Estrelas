@@ -40,7 +40,7 @@ aqui, para as próximas versões.
 
 ## Pendências
 
-Todas entraram na 0.10.0, junto com os pedidos do usuário depois do playtest (armadura de
+Todas entraram na 0.11.0, junto com os pedidos do usuário depois do playtest (armadura de
 Ouro emprestada, restauração em dias, o custo do sangue, feitos e perigos, levantar só
 quando faz sentido). O registro abaixo fica como estava, para mostrar de onde cada regra
 veio.
