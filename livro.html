@@ -1236,7 +1236,8 @@ pre.bloco-codigo {
       <h5>Cosmo</h5>
       <p class="etiqueta">Cresce durante a luta</p>
       <p>Começa baixo, sobe a cada rodada e a cada golpe que entra, e paga as técnicas.
-      Tem um limite, o <em class="termo">Teto</em>. Quando a luta acaba, volta ao começo.</p>
+      Tem um limite, o <em class="termo">Teto</em>. Quando a luta acaba, ele fica onde
+      estava até você gastar; só o descanso longo o devolve ao começo.</p>
     </div>
     <div class="cartao">
       <h5>Os cinco sentidos</h5>
@@ -1769,13 +1770,15 @@ function rolar(modo) {
 
   <h3 id="cosmo">O Cosmo</h3>
   <p>O Cosmo é um número que só existe durante a luta. Ele começa baixo, sobe, e é gasto
-  nas técnicas. Quando a luta acaba, ele volta ao começo. E ele <strong>não acaba</strong>:
+  nas técnicas. Quando a luta acaba, ele não volta ao começo: fica onde estava até você
+  gastar, e só o descanso longo o devolve ao valor inicial. E ele <strong>não acaba</strong>:
   um Cavaleiro quebrado, no chão, ainda solta o golpe dele.</p>
 
   <div class="rolagem"><table>
     <thead><tr><th>Quando</th><th>Cosmo</th></tr></thead>
     <tbody>
-      <tr><td>A luta começa</td><td>Modificador do Atributo do Cosmo, mínimo 1, +1 por escolha de Cosmo (até o Teto)</td></tr>
+      <tr><td>Depois de um descanso longo</td><td>O valor inicial: o modificador do Atributo do Cosmo, mínimo 1, +1 por escolha de Cosmo (até o Teto)</td></tr>
+      <tr><td>A luta começa sem descanso longo antes</td><td>O que sobrou da luta anterior</td></tr>
       <tr><td>Começo de cada turno seu, a partir da segunda rodada</td><td>+1</td></tr>
       <tr><td>Um golpe comum seu acerta (uma vez por turno)</td><td>+1</td></tr>
       <tr><td>Você usa a ação Concentrar</td><td>+2</td></tr>
@@ -1808,6 +1811,14 @@ function rolar(modo) {
     derrubar, você cai logo depois dele.</p>
   </div>
 
+
+    <p id="cosmo-em-sequencia"><strong>De uma luta para a outra.</strong> Sem descanso longo no
+  meio, a próxima luta começa com o Cosmo que sobrou da anterior — alto, se você terminou
+  acumulando; baixo, se gastou. O descanso curto não mexe nele. O que subia o Teto só naquela
+  luta — o Sétimo, as Centelhas — acaba com ela, e o Cosmo desce junto até o Teto de sempre.
+  Fora da luta, você pode acalmar o Cosmo de propósito: ele desce ao valor inicial, e a aura
+  some. Medido: chegar à luta com o Cosmo no Teto vale de 0 a 3 pontos num duelo, e chegar no
+  piso custa até 11 — o Cosmo enche depressa, e o que pesa é o primeiro turno.</p>
 
   <h4>A aura</h4>
   <p>Com o Cosmo no Teto, ele deixa de caber em você. A imagem da sua constelação aparece
@@ -2418,7 +2429,8 @@ function rolar(modo) {
     <div class="cartao">
       <h5>Descanso curto</h5>
       <p class="etiqueta">Uma hora</p>
-      <p>Recupera um quarto dos PV máximos. Uma vez entre dois descansos longos. Alguém
+            <p>Recupera um quarto dos PV máximos; o Cosmo fica como está. Uma vez entre dois
+      descansos longos. Alguém
       com Medicina pode tratar os ferimentos: teste CD 13, e no sucesso cada pessoa tratada
       recupera mais <span class="dado">1d8</span>. Tratar não exige kit; o kit de medicina
       dá Vantagem no teste e gasta um uso por pessoa tratada.</p>
@@ -2426,8 +2438,8 @@ function rolar(modo) {
     <div class="cartao">
       <h5>Descanso longo</h5>
       <p class="etiqueta">Uma noite</p>
-            <p>Recupera metade dos PV máximos, um sentido arrancado e 1 de cansaço, se você comeu
-      e bebeu. A armadura, se estiver viva, se regenera: a Resistência volta toda. As
+                  <p>Recupera metade dos PV máximos, um sentido arrancado e 1 de cansaço, se você comeu
+      e bebeu, e o Cosmo volta ao valor inicial. A armadura, se estiver viva, se regenera: a Resistência volta toda. As
       Cicatrizes somem.</p>
     </div>
     <div class="cartao">
@@ -5517,6 +5529,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <li><strong>Sem descanso longo.</strong> A escadaria não deixa dormir. O descanso curto —
       um só, como sempre — gasta uma chama, e o <a href="#remendo">remendo</a> da armadura
       também.</li>
+        <li><strong>O Cosmo sobe a escada com você:</strong> sem descanso longo, cada casa
+      começa com o Cosmo que sobrou da anterior (<a href="#cosmo-em-sequencia">Capítulo
+      Quatro</a>).</li>
     <li><strong>O corpo cobra:</strong> a cada três casas, um teste de CON contra CD 13, que
       sobe 2 a cada vez; na falha, 1 de cansaço. As Cicatrizes e a ferida ficam até o fim.</li>
     <li><strong>Um fica, os outros sobem.</strong> Dividir o grupo é o normal: quem fica luta
@@ -5724,7 +5739,8 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
     </div>
     <div class="cartao">
       <h5>O Cosmo sobe</h5>
-      <p>Começa no modificador do Atributo do Cosmo, +1 por escolha de Cosmo. +1 no começo do
+            <p>Depois de um descanso longo, começa no modificador do Atributo do Cosmo, +1 por
+      escolha de Cosmo; sem descanso longo, a luta começa com o que sobrou da anterior. +1 no começo do
       seu turno a partir da rodada 2 · +1 quando o golpe comum acerta (uma vez por turno) · +2
       com Concentrar · +1 por sentido perdido · +1 por Centelha. Nunca passa do Teto nem cai
       abaixo do piso. Apanhar não dá nada.</p>
@@ -5999,7 +6015,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.21.0</strong>, de 02/10/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.22.0</strong>, de 02/10/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece. O que o

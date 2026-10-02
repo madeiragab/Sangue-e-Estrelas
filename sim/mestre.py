@@ -513,8 +513,30 @@ def milagre(n: int, lutas: int = N) -> tuple[float, float]:
 
 
 # ---------------------------------------------------------------------------
+# O Cosmo de uma luta para a outra (0.22.0)
+# ---------------------------------------------------------------------------
+
+NIVEIS_SEQUENCIA = (1, 5, 9, 13, 17, 20)
+
+
+def cosmo_que_sobrou(n: int, comeco: str, lutas: int = N) -> float:
+    """Um Bronze que chega à luta com o Cosmo que sobrou da anterior ("teto" ou "piso"),
+    contra um Bronze descansado ("inicial"), os dois com três Convicções."""
+    def f():
+        x = montar("P", n, conviccoes=3)
+        if comeco == "teto":
+            x.cosmo_comeco = x.teto
+        elif comeco == "piso":
+            x.cosmo_comeco = x.piso
+        x.reiniciar()
+        return x
+    return duelos(f, inimigo(n, conviccoes=3), n=lutas, semente=2100 + n)["a"]
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
+
 
 
 def aliado_no_duelo(n: int, lutas: int = NG) -> tuple[float, float]:
@@ -814,6 +836,17 @@ def main() -> None:
     for n in (15, 17, 20):
         sem_, com_ = milagre(n)
         linhas.append(f"| {n} | {pct(sem_)} | {pct(com_)} |")
+
+        print("cosmo em sequência...")
+    linhas += ["", "## O Cosmo de uma luta para a outra", "",
+               "Sem descanso longo, a luta seguinte começa com o Cosmo que sobrou. Um Bronze "
+               "contra outro descansado, os dois com três Convicções.", "",
+               "| Chega com | " + " | ".join(str(n) for n in NIVEIS_SEQUENCIA) + " |",
+               "|---|" + "---:|" * len(NIVEIS_SEQUENCIA)]
+    for comeco, nome in (("inicial", "O Cosmo inicial"), ("teto", "O Cosmo no Teto"),
+                         ("piso", "O Cosmo no piso")):
+        linhas.append(f"| {nome} | " + " | ".join(pct(cosmo_que_sobrou(n, comeco))
+                                                  for n in NIVEIS_SEQUENCIA) + " |")
 
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",
