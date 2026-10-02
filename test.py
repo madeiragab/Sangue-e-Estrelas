@@ -442,6 +442,11 @@ def testar_mestre() -> None:
     confere(com_ >= sem_ + 0.08,
             f"nível 1: com a armadura gasta, o sacrifício salva ({sem_:.0%} → {com_:.0%})")
 
+    # Os que Hades traz de volta (0.15.0): sem Convicção, o Prata vira luta para três Bronzes.
+    viva, morta = M.corrompido(4, 3, 1, lutas=200)["grupo"], M.corrompido(4, 3, 0, lutas=200)["grupo"]
+    confere(viva <= 0.10 and 0.35 <= morta <= 0.75,
+            f"três Bronzes de nível 4 contra um Prata de nível 9: vivo {viva:.0%}, corrompido {morta:.0%}")
+
     # O primeiro Sétimo é um marco (0.10.0): antes do nível mínimo, nem levantando.
     for n in (1, R.NIVEL_SETIMO - 1, R.NIVEL_SETIMO):
         d = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 960 + n)

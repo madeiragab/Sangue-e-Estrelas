@@ -138,6 +138,17 @@ No último ponto de Resistência, quando a metade do dano ainda derrubaria, a ar
 | Resistência 2 | 47% → 64% | 44% → 65% | 42% → 42% | 17% → 17% | 8% → 8% | 4% → 4% |
 | Resistência 1 | 38% → 49% | 39% → 38% | 20% → 20% | 17% → 17% | 3% → 3% | 4% → 4% |
 
+## Os que Hades traz de volta
+
+Três Bronzes (personagens ou companheiros) contra um Prata de nível 9: vivo, com uma Convicção, e corrompido, sem nenhuma. Cada célula: quanto vencem / quantos caem.
+
+| Nível dos três | Contra o Prata vivo | Contra o corrompido |
+|---:|---|---|
+| 4 | 0% / 3.0 | 63% / 2.0 |
+| 5 | 17% / 2.8 | 97% / 1.0 |
+| 7 | 79% / 1.6 | 100% / 0.4 |
+| 9 | 94% / 1.0 | 100% / 0.1 |
+
 ## O aliado de luta
 
 Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozinho contra muitos.

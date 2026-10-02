@@ -416,6 +416,18 @@ def sacrificio(n: int, resistencia: int | None = None, lutas: int = N) -> tuple[
 
 
 # ---------------------------------------------------------------------------
+# Os que Hades traz de volta (0.15.0)
+# ---------------------------------------------------------------------------
+
+
+def corrompido(n: int = 4, k: int = 3, convicoes: int = 0, lutas: int = NG) -> dict:
+    """k personagens (ou companheiros) do nível n contra um Prata de nível 9. Sem Convicção
+    ele é um corrompido: não levanta, não responde e não desperta."""
+    return grupo_contra_um(grupo(n, k), inimigo(9, "prata", convicoes), n=lutas,
+                           semente=1700 + 10 * n + k + convicoes)
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -649,6 +661,19 @@ def main() -> None:
             sem_, com_ = sacrificio(n, res)
             cel.append(f"{pct(sem_)} → {pct(com_)}")
         linhas.append(f"| {nome} | " + " | ".join(cel) + " |")
+
+    print("corrompidos...")
+    linhas += ["", "## Os que Hades traz de volta", "",
+               "Três Bronzes (personagens ou companheiros) contra um Prata de nível 9: vivo, com "
+               "uma Convicção, e corrompido, sem nenhuma. Cada célula: quanto vencem / quantos "
+               "caem.", "",
+               "| Nível dos três | Contra o Prata vivo | Contra o corrompido |", "|---:|---|---|"]
+    for n in (4, 5, 7, 9):
+        cel = []
+        for c in (1, 0):
+            r = corrompido(n, 3, c)
+            cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f}")
+        linhas.append(f"| {n} | " + " | ".join(cel) + " |")
 
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",
