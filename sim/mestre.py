@@ -18,7 +18,7 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 import regras as R  # noqa: E402
-from luta import duelos, grupo_contra_um, montar  # noqa: E402
+from luta import duelos, grupo_contra_um, montar, muitos_contra_muitos  # noqa: E402
 from tecnica import Tecnica  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -470,6 +470,49 @@ def golpe_famoso(golpe: str | None, lutas: int = N) -> tuple[float, float]:
 
 
 # ---------------------------------------------------------------------------
+# Vários contra vários (0.19.0)
+# ---------------------------------------------------------------------------
+
+# (nome, quantos inimigos a mais que personagens, Convicções de cada um, níveis acima)
+MUITOS = [
+    ("Nomeados, tantos quanto os personagens, do mesmo nível", 0, 0, 0),
+    ("Nomeados, um a mais que os personagens, do mesmo nível", 1, 0, 0),
+    ("Nomeados, tantos quanto, dois níveis acima", 0, 0, 2),
+    ("Nomeados, tantos quanto, três níveis acima", 0, 0, 3),
+    ("Rivais (uma Convicção), um a menos que os personagens", -1, 1, 0),
+    ("Rivais, tantos quanto os personagens", 0, 1, 0),
+    ("Rivais, tantos quanto, um nível acima", 0, 1, 1),
+    ("Rivais, um a mais que os personagens", 1, 1, 0),
+]
+
+
+def muitos(n: int, k: int, a_mais: int, conviccoes: int, acima: int, lutas: int = 150) -> dict:
+    """k personagens do nível n contra k + a_mais inimigos do nível n + acima."""
+    pol = {"despertar": R.desperta_do_mestre("bronze", conviccoes)}
+
+    def inimigos():
+        return [montar(f"I{i}", n + acima, conviccoes=conviccoes, politica=pol)
+                for i in range(k + a_mais)]
+    return muitos_contra_muitos(grupo(n, k), inimigos, n=lutas,
+                                semente=1900 + 11 * n + 3 * k + a_mais + acima)
+
+
+def milagre(n: int, lutas: int = N) -> tuple[float, float]:
+    """Um Bronze sozinho contra um Ouro do mesmo nível: sem e com a Centelha do deus na
+    pior hora (o milagre)."""
+    def bronze(m):
+        def f():
+            x = montar("P", n, conviccoes=3)
+            x.centelha_do_deus = m
+            x.reiniciar()
+            return x
+        return f
+    sem = duelos(bronze(False), inimigo(n, "ouro", 3), n=lutas, semente=2000 + n)["a"]
+    com = duelos(bronze(True), inimigo(n, "ouro", 3), n=lutas, semente=2000 + n)["a"]
+    return sem, com
+
+
+# ---------------------------------------------------------------------------
 # O aliado de luta
 # ---------------------------------------------------------------------------
 
@@ -731,6 +774,32 @@ def main() -> None:
         t = golpes_famosos().get(nome)
         tc = f"{t.tamanho()} · {t.custo()}" if t else "7 · 7"
         linhas.append(f"| {nome or 'Golpe do Assento comum'} | {tc} | {pct(d)} | {pct(g)} |")
+
+    print("vários contra vários...")
+    linhas += ["", "## Vários contra vários", "",
+               "O grupo concentra os golpes no inimigo mais ferido; cada inimigo bate no "
+               "personagem mais ferido. Sem a resposta de Sozinho contra muitos. Cada célula: "
+               "quanto o grupo vence, para 2, 3 e 4 personagens.", "",
+               "| Inimigos | Nível 3 | Nível 9 | Nível 15 |", "|---|---|---|---|"]
+    for nome, a_mais, conv, acima in MUITOS:
+        cel = []
+        for n in (3, 9, 15):
+            v = []
+            for k in (2, 3, 4):
+                if k + a_mais < 1 or n + acima > 20:
+                    continue
+                v.append(pct(muitos(n, k, a_mais, conv, acima)["grupo"]))
+            cel.append(" · ".join(v))
+        linhas.append(f"| {nome} | " + " | ".join(cel) + " |")
+
+    print("milagre...")
+    linhas += ["", "## O milagre", "",
+               "Um Bronze sozinho contra um Ouro do mesmo nível, os dois com três Convicções: "
+               "sem e com a Centelha do deus quando ele levanta.", "",
+               "| Nível | Sem | Com o milagre |", "|---:|---:|---:|"]
+    for n in (15, 17, 20):
+        sem_, com_ = milagre(n)
+        linhas.append(f"| {n} | {pct(sem_)} | {pct(com_)} |")
 
     print("aliado...")
     linhas += ["", "## O aliado de luta", "",

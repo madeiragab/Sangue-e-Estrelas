@@ -90,6 +90,7 @@ class Lutador:
     sentido_inicial: str = "sexto"     # quem já começa a luta no Sétimo ou no Nono (deuses, 0.11.0)
     defesa_extra: int = 0              # deuses: + na DEF e nas defesas passivas
     deus: str = ""                     # "menor" ou "maior": só o Nono fere por inteiro (0.13.0)
+    centelha_do_deus: bool = False     # o milagre (0.19.0): o deus manda a Centelha na pior hora
     oitavo: bool = False               # já despertou o Oitavo
     ao_lado_do_deus: bool = False      # luta ao lado do próprio deus: fere um deus normalmente
 
@@ -146,6 +147,7 @@ class Lutador:
             self.teto_extra += R.TETO_SETIMO + (R.TETO_NONO if self.sentido == "nono" else 0)
             self.cosmo = min(self.teto, self.cosmo)
         self.marcas = 0                # Agulha Escarlate (0.18.0)
+        self.milagre = False           # o Cosmo do deus está com ele: o domínio não vale
         self.perde_turnos = 0          # Ondas do Inferno que voltaram contra quem usou
         self.muralha_usada = False     # Muralha de Cristal: uma vez por luta
         self.espelho_usado = False
@@ -356,7 +358,8 @@ class Luta:
     def vantagem(self, atacante: Lutador, alvo: Lutador) -> int:
         dif = atacante.degrau - alvo.degrau
         tem = (dif >= 1 or alvo.desprevenido
-               or any(c in alvo.condicoes for c in CONTRA_COM_VANTAGEM))
+               or any(c in alvo.condicoes for c in CONTRA_COM_VANTAGEM)
+               or (atacante.milagre and R.MILAGRE_VANTAGEM))
         sofre = dif <= -1 or any(c in atacante.condicoes for c in ATACA_COM_DESVANTAGEM)
         if tem and sofre:
             return 0
@@ -473,7 +476,8 @@ class Luta:
             bonus -= R.HIERARQUIA
         # O Sétimo dominado do Ouro: diante de um Sétimo recém-despertado,
         # ele ainda luta um pouco acima. No Nono, quem despertou já passou disso.
-        if atacante.degrau >= 1 and alvo.degrau >= 1:
+        if (atacante.degrau >= 1 and alvo.degrau >= 1
+                and not ((atacante.milagre or alvo.milagre) and R.MILAGRE_SEM_DOMINIO)):
             if atacante.posto == "ouro" and alvo.posto != "ouro" and alvo.degrau == 1:
                 bonus += R.DOMINIO_OURO
             elif alvo.posto == "ouro" and atacante.posto != "ouro" and atacante.degrau == 1:
@@ -745,6 +749,14 @@ class Luta:
             x.cosmo = x.teto
             if x.posto in ("bronze", "prata"):
                 x.entrar_no_setimo(self.rng)     # levantar é o sacrifício; a Convicção foi dita
+            if x.centelha_do_deus and not x.milagre:
+                # O milagre: na pior hora, a Centelha do deus. Ela vale como Centelha, e até
+                # o fim da luta o domínio da elite não vale contra quem a recebeu.
+                x.milagre = True
+                x.pv = max(x.pv, R.ceil_div(int(x.pv_max * R.MILAGRE_PV * 100), 100))
+                x.teto_extra += 1
+                x.subir_cosmo(R.COSMO_CENTELHA)
+                x.vantagem_proxima = True
         if rodada >= 2:
             x.subir_cosmo(R.COSMO_RELOGIO)
         if x.posto == "ouro":
@@ -919,6 +931,75 @@ class LutaGrupo(Luta):
                 if all(z.fora for z in self.grupo):
                     return Resultado(self.chefe.nome, rodada, False, {})
         return Resultado(None, self.max_rodadas, False, {})
+
+
+class LutaMuitos(Luta):
+    """Vários contra vários (0.19.0). O grupo concentra os golpes no inimigo mais ferido
+    de pé; cada inimigo bate no personagem mais ferido de pé. Com `responde`, um inimigo
+    com Convicção responde depois do turno de cada personagem enquanto os personagens de
+    pé forem mais que os inimigos de pé (Sozinho contra muitos, estendido)."""
+
+    def __init__(self, grupo: list, inimigos: list, rng: random.Random,
+                 max_rodadas: int = 40, responde: bool = False):
+        super().__init__(grupo[0], inimigos[0], rng, max_rodadas=max_rodadas)
+        self.grupo, self.inimigos = grupo, inimigos
+        self.centelhas = {z.nome: 0 for z in grupo + inimigos}
+        self.responde = responde
+
+    @staticmethod
+    def _de_pe(lado):
+        return [z for z in lado if not z.fora and not z.caido]
+
+    def oponente(self, x: Lutador) -> Lutador:
+        lado = self.inimigos if x in self.grupo else self.grupo
+        vivos = self._de_pe(lado) or [z for z in lado if not z.fora] or lado
+        return min(vivos, key=lambda z: z.pv)
+
+    def choque(self, x: Lutador, y: Lutador, natural: int):
+        pass
+
+    def lutar(self) -> Resultado:
+        todos = self.grupo + self.inimigos
+        for z in todos:
+            z.reiniciar()
+        ordem = sorted(todos, key=lambda z: (z.iniciativa(self.rng),
+                                             z.mods["des"], self.rng.random()), reverse=True)
+        for rodada in range(1, self.max_rodadas + 1):
+            self.rodada = rodada
+            for x in ordem:
+                if x.fora:
+                    continue
+                self.turno(x, rodada)
+                if self.responde and x in self.grupo:
+                    pes, ies = self._de_pe(self.grupo), self._de_pe(self.inimigos)
+                    if len(pes) > len(ies):
+                        for c in ies:
+                            if (c.conviccoes_max > 0 and not any(k in c.condicoes
+                                                                 for k in PERDE_O_TURNO)):
+                                LutaGrupo.resposta_do_chefe(self, c, x)
+                                break
+                for z in todos:
+                    if z.caido and not z.fora and not LutaGrupo.pode_levantar(z):
+                        z.fora = True
+                if all(z.fora for z in self.inimigos):
+                    return Resultado("grupo", rodada, False, {})
+                if all(z.fora for z in self.grupo):
+                    return Resultado("inimigos", rodada, False, {})
+        return Resultado(None, self.max_rodadas, False, {})
+
+
+def muitos_contra_muitos(fabrica_grupo, fabrica_inimigos, n: int = 300, semente: int = 1,
+                         **kw) -> dict:
+    """Quanto o grupo vence, quantos dele caem, e em quantas rodadas."""
+    rng = random.Random(semente)
+    vit = rodadas = caidos = 0
+    for _ in range(n):
+        g, i = fabrica_grupo(), fabrica_inimigos()
+        r = LutaMuitos(g, i, rng, **kw).lutar()
+        vit += r.vencedor == "grupo"
+        rodadas += r.rodadas
+        caidos += sum(z.fora or z.caido for z in g)
+    return {"grupo": vit / n, "rodadas_media": rodadas / n, "caidos_media": caidos / n}
 
 
 def grupo_contra_um(fabrica_grupo, fabrica_chefe, n: int = 1000, semente: int = 1,

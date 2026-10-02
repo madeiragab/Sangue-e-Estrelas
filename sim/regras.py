@@ -361,6 +361,11 @@ def desperta_do_mestre(posto: str, conviccoes: int) -> bool:
 
 
 DOMINIO_OURO = 3   # bônus do Sétimo dominado do Ouro contra um Sétimo despertado
+# O milagre (0.19.0): quem recebe a Centelha do deus na pior hora.
+MILAGRE_SEM_DOMINIO = True
+MILAGRE_PV = 0.5        # levanta com esta fração dos PV, em vez de um quarto
+MILAGRE_VANTAGEM = True # o Cosmo do deus fica com ele: Vantagem até o fim da luta
+MILAGRE_SEM_DOMINIO = True   # o milagre (0.19.0) anula o domínio contra quem o recebeu   # bônus do Sétimo dominado do Ouro contra um Sétimo despertado
 TETO_NONO = 2
 
 # Os deuses (0.11.0, pedido do usuário): estão no Nono, e só o Nono os fere. Montados sobre a

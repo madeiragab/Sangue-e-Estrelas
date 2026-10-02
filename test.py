@@ -464,6 +464,19 @@ def testar_mestre() -> None:
     confere(viva <= 0.10 and 0.35 <= morta <= 0.75,
             f"três Bronzes de nível 4 contra um Prata de nível 9: vivo {viva:.0%}, corrompido {morta:.0%}")
 
+    # Vários contra vários (0.19.0): conte as Convicções.
+    j = M.muitos(9, 3, 0, 1, 0, lutas=150)["grupo"]
+    m = M.muitos(9, 3, 1, 1, 0, lutas=150)["grupo"]
+    f = M.muitos(9, 3, -1, 1, 0, lutas=150)["grupo"]
+    confere(0.35 <= j <= 0.70 and m <= 0.25 and f >= 0.85,
+            f"vários contra vários: um rival por personagem é justo ({j:.0%}), um a mais é "
+            f"mortal ({m:.0%}), um a menos é fácil ({f:.0%})")
+    # O milagre (0.19.0): possível, raro.
+    for n in (15, 20):
+        sem_, com_ = M.milagre(n, lutas=N)
+        confere(sem_ <= 0.03 and 0.01 <= com_ <= 0.25,
+                f"nível {n}: o milagre faz o Bronze vencer o Ouro às vezes ({sem_:.0%} → {com_:.0%})")
+
     # Os golpes famosos (0.18.0): nenhum decide a luta sozinho.
     base, _ = M.golpe_famoso(None, lutas=N)
     for nome in M.golpes_famosos():

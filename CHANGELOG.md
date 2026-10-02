@@ -3,6 +3,22 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.19.0] - 2026-10-02
+
+### Adicionado
+
+- **Vários contra vários** (Capítulo Dez): uma tabela de dificuldade para grupos contra
+  grupos, medida com uma luta nova no simulador. A lição é contar as Convicções: um rival por
+  personagem é justo (46% a 54%), um a menos é fácil, um a mais é mortal (1% a 12%). Com
+  mais de um inimigo, ninguém usa Sozinho contra muitos; se a escolta cai, a resposta
+  começa.
+- **O milagre** (Capítulo Onze, pedido do usuário): a Centelha do deus que chega para quem
+  está levantando diante de Posto acima faz o guerreiro levantar com metade dos PV, com
+  Vantagem até o fim da luta e sem o domínio da elite contra ele. Medido: um Bronze sozinho
+  vence um Ouro do mesmo nível 9% das vezes no nível 15 e 4% no 20 (sem o milagre, nunca).
+- **Sangue de deus nas veias** (Capítulo Dez, pedido do usuário): só para quem não é humano;
+  sobe ao tamanho de divindade menor. Um humano morre.
+
 ## [0.18.0] - 2026-10-02
 
 ### Adicionado
