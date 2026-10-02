@@ -234,8 +234,8 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 - **Os dois jeitos de voltar de Hades** (regra do usuário): pela força, sem Convicção; por
   um acordo, com Convicções novas e prazo — Saga, Camus, Shura, Máscara da Morte, Afrodite e
   Shion na Guerra Santa da série.
-- **A comandante sem armadura fica no nível 9, sem Posto e sem Sétimo**: a força de um Prata
-  no máximo, como o usuário pediu para a Pandora, sem a Hierarquia e sem a armadura.
+- **O comandante sem armadura é um molde, nível 9, sem Posto e sem Sétimo.** A força de um
+  personagem do cânone não vai para o livro: cada mesa decide a sua (decisão do usuário).
 - **O nível que pareceu dado sem Glória não foi**: o personagem já tinha 3 e ganhou a quarta
   naquela luta.
 
