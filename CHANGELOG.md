@@ -3,6 +3,18 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.22.0] - 2026-10-02
+
+### Mudado
+
+- **O Cosmo fica de uma luta para a outra** (Capítulos Dois, Quatro, Cinco, Treze e
+  Catorze, pedido do usuário). Quando a luta acaba, ele não volta ao começo: fica onde
+  estava até você gastar, e só o descanso longo o devolve ao valor inicial; o descanso curto
+  não mexe nele. O Teto que vinha só da luta (o Sétimo, as Centelhas) acaba com ela, e o
+  Cosmo desce junto. Fora da luta, dá para acalmá-lo de propósito, e a aura some. Medido,
+  não quebra: chegar com o Cosmo no Teto vale de 0 a 3 pontos num duelo, e chegar no piso
+  custa até 11.
+
 ## [0.21.0] - 2026-10-02
 
 ### Adicionado

@@ -494,6 +494,15 @@ def testar_mestre() -> None:
                 f"{nome}: ajuda sem decidir (duelo {d:.0%}, o Assento comum {base:.0%}; "
                 f"quatro Bronzes vencem {g:.0%})")
 
+        # O Cosmo de uma luta para a outra (0.22.0): pesa pouco, e não quebra.
+    for n in (1, 13, 20):
+        base = M.cosmo_que_sobrou(n, "inicial", lutas=N)
+        alto = M.cosmo_que_sobrou(n, "teto", lutas=N)
+        baixo = M.cosmo_que_sobrou(n, "piso", lutas=N)
+        confere(alto <= base + 0.08 and baixo >= base - 0.16,
+                f"nível {n}: chegar com o Cosmo no Teto ou no piso não decide a luta "
+                f"({base:.0%}, no Teto {alto:.0%}, no piso {baixo:.0%})")
+
     # O primeiro Sétimo é um marco (0.10.0): antes do nível mínimo, nem levantando.
     for n in (1, R.NIVEL_SETIMO - 1, R.NIVEL_SETIMO):
         d = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 960 + n)
