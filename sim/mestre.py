@@ -254,7 +254,7 @@ def surpresa(n: int, lutas: int = N) -> float:
 
 
 # ---------------------------------------------------------------------------
-# O grupo contra um nomeado acima do nível dele (0.10.0)
+# O grupo contra um nomeado acima do nível dele (0.11.0)
 # ---------------------------------------------------------------------------
 
 NIVEIS_ACIMA = (1, 3, 5, 9, 13)
@@ -268,7 +268,7 @@ def grupo_contra_nomeado(n: int, k: int, acima: int, lutas: int = NG) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# A armadura de Ouro emprestada (0.10.0)
+# A armadura de Ouro emprestada (0.11.0)
 # ---------------------------------------------------------------------------
 
 NIVEIS_EMPRESTADA = (5, 9, 13, 17)
@@ -296,7 +296,7 @@ def emprestada_no_grupo(n: int, lutas: int = NG) -> tuple[float, float]:
 
 
 # ---------------------------------------------------------------------------
-# O sangue doado (0.10.0)
+# O sangue doado (0.11.0)
 # ---------------------------------------------------------------------------
 
 NIVEIS_SANGUE = (1, 5, 9, 13, 17, 20)
@@ -314,7 +314,7 @@ def debilitado(n: int, tercos: int, lutas: int = N) -> float:
 
 
 # ---------------------------------------------------------------------------
-# A armadura que se sacrifica (regra opcional, 0.10.0)
+# A armadura que se sacrifica (regra opcional, 0.11.0)
 # ---------------------------------------------------------------------------
 
 

@@ -184,7 +184,7 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   simulador sempre cobrou da vida o que passa do Cosmo que se tem), arredondamento para
   cima, empate com bando, PV ao subir de nível, Elmo na luta seguinte, pular degraus da
   escada do sangue, kit de medicina, nível humano por ano × três semanas, laço da Centelha.
-- **Pedidos do usuário depois do playtest:** armaduras de Ouro emprestadas por uma luta;
+- **Pedidos do usuário depois do playtest (0.11.0):** armaduras de Ouro emprestadas por uma luta;
   restaurar sem esperar o Interlúdio; o custo do sangue em dias e PV; testes para as
   "coisas idiotas" (respirar, porta, corrente); levantar só quando faz sentido (quem está
   controlado não usa a Convicção).
@@ -398,6 +398,6 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
 - Um milagre possível para o Bronze contra o Ouro no duelo, se a mesa quiser.
 - Conferir no mangá a mudança de forma da armadura de Pégaso na Ilha da Rainha da
   Morte.
-- Do playtest (`regras/playtest-01.md`): tudo entrou na 0.10.0. Falta jogar de novo —
+- Do playtest (`regras/playtest-01.md`): tudo entrou na 0.10.0 e na 0.11.0. Falta jogar de novo —
   principalmente o Sétimo no nível 5, o veneno e a armadura emprestada.
 - Nome do sistema: **Sangue e Estrelas** (decidido).
