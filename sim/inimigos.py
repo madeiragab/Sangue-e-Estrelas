@@ -133,7 +133,8 @@ INIMIGOS = {
 def lutador(chave: str) -> Lutador:
     e = INIMIGOS[chave]
     x = montar(e["nome"], e["nivel"], e["posto"], acessorio=e["acessorio"],
-               conviccoes=e["conviccoes"], caracteristicas=e["caracteristicas"])
+               conviccoes=e["conviccoes"], caracteristicas=e["caracteristicas"],
+               politica={"despertar": R.desperta_do_mestre(e["posto"], e["conviccoes"])})
     x.teto_fixo = e.get("teto_extra", 0)
     x.resistencia_extra = e.get("resistencia_extra", 0)
     x.reiniciar()
@@ -198,7 +199,12 @@ def bloco(chave: str) -> str:
     teto = x.teto
     ini = (x.mods["des"] + (2 if "leve" in x.caracteristicas else 0)
            - (2 if "pesada" in x.caracteristicas else 0))
-    sentido = "Sétimo quando quiser" if x.posto == "ouro" else "Sexto; desperta como um personagem"
+    if x.posto == "ouro":
+        sentido = "Sétimo quando quiser"
+    elif R.desperta_do_mestre(x.posto, e["conviccoes"]):
+        sentido = "Sexto; desperta como um personagem"
+    else:
+        sentido = "Sexto; não desperta"
     nomes_tec = list(e["tecnicas"])
     tecs = {t.nome: t for t in x.tecnicas}
     itens = []

@@ -6,7 +6,7 @@ Gerado por `python sim/mestre.py`. 800 duelos por célula (400 nas lutas de grup
 
 | Dificuldade | Inimigo | O personagem vence |
 |---|---|---:|
-| Fácil | Nomeado sem Convicção, do mesmo nível ou um acima | 56% a 99% |
+| Fácil | Nomeado sem Convicção, do mesmo nível ou um acima | 56% a 97% |
 | Justa | Mesmo nível e mesmo Posto, com três Convicções, como o personagem | 48% a 52% |
 | Difícil | Rival um nível acima, com uma Convicção | 12% a 35% |
 | Muito difícil | Rival dois níveis acima, com uma Convicção | 4% a 23% |
@@ -16,7 +16,7 @@ Gerado por `python sim/mestre.py`. 800 duelos por célula (400 nas lutas de grup
 
 | Nomeado sem Convicção um nível acima do personagem | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| O inimigo vence | 44% | 29% | 34% | 33% | 19% | 15% | 17% | 26% | 34% | 23% | 21% | 34% | 36% | 19% | 8% | 5% | 3% | 3% | 1% |
+| O inimigo vence | 44% | 29% | 34% | 33% | 19% | 14% | 17% | 26% | 34% | 23% | 21% | 34% | 36% | 19% | 10% | 18% | 10% | 10% | 12% |
 
 | A fronteira do Posto | O personagem vence |
 |---|---:|
@@ -70,7 +70,7 @@ Personagens do mesmo nível contra um nomeado sem Convicção alguns níveis aci
 | 3 | 97% / 0.4 | 86% / 0.8 | 75% / 1.0 | 100% / 0.3 | 100% / 0.5 | 99% / 0.8 |
 | 5 | 100% / 0.2 | 99% / 0.3 | 95% / 0.6 | 100% / 0.2 | 100% / 0.2 | 100% / 0.4 |
 | 9 | 100% / 0.2 | 100% / 0.2 | 98% / 0.4 | 100% / 0.1 | 100% / 0.1 | 100% / 0.2 |
-| 13 | 100% / 0.1 | 100% / 0.1 | 100% / 0.0 | 100% / 0.0 | 100% / 0.0 | 100% / 0.0 |
+| 13 | 100% / 0.1 | 100% / 0.1 | 100% / 0.2 | 100% / 0.0 | 100% / 0.0 | 100% / 0.1 |
 
 ## A armadura de Ouro emprestada
 
@@ -87,6 +87,22 @@ Um Bronze de armadura de Ouro emprestada: a linha do Ouro na tabela de Posto, tr
 |---|---:|---:|
 | Nível 15 | 66% | 73% |
 | Nível 20 | 40% | 50% |
+
+| Armadura de Prata emprestada, contra um Bronze do mesmo nível | Sem | Com |
+|---|---:|---:|
+| Nível 5 | 50% | 66% |
+| Nível 9 | 50% | 66% |
+| Nível 13 | 52% | 69% |
+| Nível 17 | 49% | 69% |
+
+## Os deuses
+
+Personagens de nível 20 no Nono, com a armadura na forma Divina, contra um deus: a elite de nível 20 no Nono, com os PV multiplicados e a DEF somada (menor: × 1.5 e +2; maior: × 2 e +4). Só o combate: os efeitos de destino ficam de fora. Cada célula: quanto vencem / rodadas / quantos caem.
+
+| Contra | Um Bronze | Um Ouro | Dois Bronzes | Três Bronzes |
+|---|---|---|---|---|
+| Deus menor | 78% / 18 / 0.2 | 85% / 17 / 0.2 | 99% / 8 / 0.1 | 100% / 5 / 0.0 |
+| Deus maior | 25% / 22 / 0.7 | 40% / 22 / 0.6 | 81% / 15 / 0.7 | 100% / 9 / 0.2 |
 
 ## O sangue doado
 
@@ -118,14 +134,14 @@ Metade do nível do grupo, metade dos PV, sem Convicção; não conta para Sozin
 | Nível 7 | 49% | 72% |
 | Nível 11 | 48% | 72% |
 | Nível 15 | 51% | 70% |
-| Nível 19 | 52% | 68% |
+| Nível 19 | 52% | 67% |
 
 | Bronzes contra um Ouro do mesmo nível | Sem aliado | Com um aliado |
 |---|---:|---:|
 | 3 Bronzes, nível 15 | 27% | 35% |
 | 4 Bronzes, nível 15 | 59% | 67% |
-| 3 Bronzes, nível 20 | 10% | 16% |
-| 4 Bronzes, nível 20 | 43% | 48% |
+| 3 Bronzes, nível 20 | 10% | 12% |
+| 4 Bronzes, nível 20 | 43% | 44% |
 
 | Quatro Bronzes contra um Ouro do mesmo nível | Vence | Caem | Rodadas |
 |---|---:|---:|---:|

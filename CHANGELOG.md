@@ -25,14 +25,36 @@ pendente (`regras/playtest-01.md`).
   Convicção volta a cada 7 dias sem luta. Uma campanha que não para ainda tem Interlúdio.
 - **A técnica nova pode nascer numa luta** (Capítulo Seis): quando você levanta, a técnica
   escolhida ao subir de nível nasce ali, sem teste, como a assinatura na prova.
+- **O Sétimo é raro no mundo** (Capítulos Quatro e Dez, pedido do usuário): quase impossível
+  entre os Bronzes, só dos veteranos entre os Pratas, padrão na elite; o Oitavo, um ou dois
+  Ouros por geração; o Nono, nem conhecido. Do lado do Mestre, um Bronze ou um Prata só
+  desperta se tiver Convicção. Medido: a tabela de dificuldade quase não muda (Fácil vai a
+  56% a 97%), e do nível 15 em diante o nomeado um nível acima vence uma ou duas vezes em
+  dez — sem gastar vida para despertar, ele dura mais.
+- **Os deuses em dois tamanhos** (Capítulo Dez, pedido do usuário): a divindade menor
+  (Hypnos, Thanatos, os filhos deles) tem 1½ × os PV da elite de nível 20 e +2 na DEF; o deus
+  maior (Hades, Atena, Poseidon), 2 × e +4. Os dois respondem como chefes, e o destino não
+  pega em quem está no Nono. Medido, no Nono e de armadura Divina: um Bronze de nível 20
+  vence a divindade menor 78% das vezes e o deus maior 25% (um Ouro, 85% e 40%); dois no
+  Nono vencem o maior 81%. Antes: 3 × os PV, +4 e duas ações, e nenhum personagem sozinho
+  vencia.
 
 ### Adicionado
 
-- **A armadura de Ouro emprestada** (Capítulo Sete, pedido do usuário): por uma luta, para
-  quem já despertou o Sétimo; dá a linha do Ouro, o acessório e as três características dela,
-  e não dá as formas da sua armadura, o Golpe do Assento nem o Sétimo dominado. Ela não morre
-  no corpo de quem a pegou. Medido: um Bronze com ela vence 80% a 86% contra um Bronze do
-  mesmo nível, uns 40% contra um Prata (antes, uns 10%) e continua com 1% contra um Ouro.
+- **A armadura emprestada** (Capítulo Sete, pedido do usuário): por uma luta, mandada pelo
+  dono — vivo ou morto —, por Atena ou por ela mesma. A de Ouro só vem para quem já despertou
+  o Sétimo; a de Prata, para qualquer Bronze. Dá a linha do Posto dela, o acessório e as
+  características dela, e não dá as formas da sua armadura, o Golpe do Assento nem o Sétimo
+  dominado. Ela não morre no corpo de quem a pegou. Medido: com uma de Ouro, um Bronze vence
+  80% a 86% contra um Bronze do mesmo nível, uns 40% contra um Prata (antes, uns 10%) e
+  continua com 1% contra um Ouro; com uma de Prata, 66% a 69% contra um Bronze.
+- **O sangue de um deus: uma gota** (Capítulo Sete, pedido do usuário): um restaurador ou o
+  próprio deus derrama a gota e diz "Armaduras de (Posto), recebam o sangue de (deus) e
+  atendam ao meu chamado"; as armaduras ali revivem na hora, sem material, teste nem dias.
+- **Asas no Oitavo e a armadura Divina no Nono** (Capítulos Quatro e Sete, pedido do
+  usuário): com sangue de deus na armadura e o Oitavo, você atravessa a hiperdimensão até os
+  reinos dos deuses, e as constelações com asas as abrem; no Nono, a armadura vira uma
+  armadura Divina, parecida com as Kamui dos doze do Olimpo.
 - **Feitos do corpo e perigos** (Capítulo Dois, pedido do usuário): todo feito tem um degrau
   (de gente, de guerreiro, de Sétimo, de deus); abaixo do seu, sem rolar; no seu, CD 13 ou
   16; um acima, CD 22. Teste de CON, fôlego, queda, desabamento, fogo, frio e água, com o
