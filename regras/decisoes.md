@@ -219,6 +219,21 @@ nível 4 (`regras/playtest-01.md`). O que mudou:
   e perdia mais. Testado: 3 × os PV, +4 e duas ações (0% a 1% para um personagem sozinho);
   2 × e +2 com uma ação (42% e 64%: perto demais). Ficou 2 × e +4 (25% e 40%).
 
+## Os golpes famosos (0.18.0)
+
+- **Melhorar o motor, não escrever golpes prontos** (pedido do usuário): as peças novas —
+  Banido, Refletir, Marca, Desfecho, Gatilho e três limitações — servem a qualquer técnica, e
+  os golpes da série são exemplos montados com elas.
+- **Cada golpe famoso tem a falha que a série mostrou** (pedido do usuário: "muitas dessas
+  técnicas são superestimadas"). O Caixão de Gelo quebrado com as armas de Libra; as Ondas do
+  Inferno puxando o próprio Câncer, e o jeito certo, o de Manigoldo; a Muralha que quebra.
+- **O desfecho derruba sem deixar levantar, com 4 marcas.** Testado: derrubar deixando
+  levantar com 5 marcas (29% no duelo: o Ouro do outro lado levantava e vencia); sem levantar
+  com 5 (40%) e com 4 (50%). Com o custo do Desfecho (+1), ficou 34%: a Agulha é forte contra
+  quem não tem Convicção, e um caminho longo contra quem tem.
+- **Refletir não para golpe comum nem técnica que atravessa a armadura**, e quebra ao falhar:
+  mesmo assim, foi a única peça que passou do Assento comum (58% contra 48%).
+
 ## A pesquisa na série (0.17.0)
 
 - **Aprovados pelo usuário:** os exércitos dos outros deuses, a subida das Doze Casas, o

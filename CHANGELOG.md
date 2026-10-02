@@ -3,6 +3,24 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.18.0] - 2026-10-02
+
+### Adicionado
+
+- **Peças novas no motor de técnicas** (Capítulos Cinco e Seis, pedido do usuário), para
+  dar para montar os golpes famosos da série: a condição forte **Banido** (fora da luta até
+  a condição acabar); o efeito **Refletir** (só como reação, devolve a técnica declarada
+  contra você, ou quebra e a deixa passar pela metade); os modificadores **Marca**,
+  **Desfecho** (com 4 marcas, uma vez por luta, derruba a 0 PV sem deixar levantar) e
+  **Gatilho** (a condição só acaba com o gatilho escrito, e não pega em quem luta com você);
+  e as limitações **volta contra você**, **pode ser quebrado** e **quem tem o Sétimo
+  escapa**.
+- **Os golpes famosos, e as falhas deles** (Capítulo Seis): Agulha Escarlate, Caixão de
+  Gelo, Ondas do Inferno, Muralha de Cristal, Satã Imperial, Outra Dimensão, Tesouro do Céu
+  e Ave Fênix, montados com o motor, cada um com a falha que a série mostrou. Medido como
+  Golpe do Assento num duelo entre Ouros de nível 16: o comum vence 48%; a Muralha, 58%; a
+  Agulha, 34%; o Caixão, 38%; as Ondas, 30%. Como chefe, o Caixão é o mais duro.
+
 ## [0.17.0] - 2026-10-02
 
 O que a pesquisa na série trouxe, aprovado pelo usuário.
