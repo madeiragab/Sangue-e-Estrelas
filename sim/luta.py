@@ -89,6 +89,9 @@ class Lutador:
     resistencia_inicial: int | None = None   # lutas em sequência: começa com esta Resistência
     sentido_inicial: str = "sexto"     # quem já começa a luta no Sétimo ou no Nono (deuses, 0.11.0)
     defesa_extra: int = 0              # deuses: + na DEF e nas defesas passivas
+    deus: str = ""                     # "menor" ou "maior": só o Nono fere por inteiro (0.13.0)
+    oitavo: bool = False               # já despertou o Oitavo
+    ao_lado_do_deus: bool = False      # luta ao lado do próprio deus: fere um deus normalmente
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -393,6 +396,12 @@ class Luta:
                 atacante.caido = True
         if fonte == "golpe" and "couraca" in alvo.caracteristicas and alvo.armada:
             dano = max(0, dano - R.grau(alvo.nivel))   # o golpe comum bate na couraça
+        if alvo.deus:
+            # Fora do Nono, um deus quase não sente (Capítulo Dez).
+            if not atacante.ao_lado_do_deus:
+                dano = int(dano * R.fracao_contra_deus(alvo.deus, atacante.degrau, atacante.oitavo))
+            if dano <= 0:
+                return
         antes = dano
         pol = alvo.politica
         reacao_ok = alvo.reacao or not R.APARAR_USA_REACAO

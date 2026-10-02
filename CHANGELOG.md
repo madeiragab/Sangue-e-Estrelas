@@ -3,6 +3,36 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.14.0] - 2026-10-02
+
+### Adicionado
+
+- **Capítulo Treze: O mundo** (pedido do usuário). Os feitos e os perigos saem do Capítulo
+  Dois e ganham um capítulo: o degrau, a vida dos objetos (uma porta de madeira tem DEF 10 e
+  10 PV; o portão de uma das doze casas, DEF 16 e 300 PV, e é de Sétimo), o que cai em cima de
+  você, quedas por altura, fumaça e gás, fôlego, e o corpo — uma trilha de cansaço de quatro
+  quadrados, noites sem dormir, fome e sede, marcha forçada, ferido depois de cair — e a
+  viagem. A Ficha pronta vira o Capítulo Catorze; a ficha ganha a trilha de Cansaço.
+
+- **O Muro das Lamentações e a Exclamação Zodiacal** (Capítulo Nove, pedido do usuário):
+  o muro que separa o Inferno do Elísio não cai com nenhum golpe, só com a luz do sol. Os
+  doze Ouros juntos — vivos ou em espírito — põem o Cosmo inteiro num só golpe e criam essa
+  luz; abrem o muro e morrem. As doze armaduras ficam.
+
+### Mudado
+
+- **A divindade menor sente um pouco de quem está perto do Nono** (Capítulos Quatro e Dez,
+  pedido do usuário): um quarto do dano de quem está no Sétimo, metade se quem bate também
+  tem o Oitavo; o deus maior continua só sentindo o Nono. Medido, Ouros de nível 20 no
+  Sétimo: um sozinho nunca vence, três quase nunca (1%), cinco uma vez em quatro; com o
+  Oitavo, três vencem uma vez em cinco.
+- **O seu deus contra o deus deles** (Capítulos Dez e Onze, pedido do usuário): a Centelha
+  do seu deus faz o próximo golpe ferir um deus inimigo por inteiro, e quem luta ao lado do
+  próprio deus fere um deus inimigo normalmente a luta toda — como no templo de Poseidon.
+  Medido, Ouros de nível 20 no Sétimo ao lado do deus: contra o deus
+  maior, três quase nunca vencem (2%) e cinco vencem 40%; contra o menor, três vencem metade
+  das vezes. Ferir não é vencer: contra um deus maior, quem decide é o seu deus.
+
 ## [0.13.0] - 2026-10-02
 
 ### Adicionado

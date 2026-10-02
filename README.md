@@ -34,7 +34,7 @@ combate do livro passou por milhares de duelos rodados com as próprias regras d
 e as tabelas de níveis, de Posto e as fichas de inimigos são geradas por ele na hora do
 build. O livro e o simulador não têm como discordar.
 
-**Versão atual:** 0.13.0 · 02/10/2026 · [Changelog](CHANGELOG.md)
+**Versão atual:** 0.14.0 · 02/10/2026 · [Changelog](CHANGELOG.md)
 
 ## O jogo em sete linhas
 
@@ -132,7 +132,8 @@ Um livro só, para jogador e Mestre, com 13 capítulos e um apêndice:
 | X | Inimigos | Como montar, a tabela rápida de 1 a 20, figurantes, a dificuldade medida e dez fichas prontas |
 | XI | Aliados e a luta na mesa | Aliados, mentores, duelos em paralelo e a Guerra dos Mil Dias na mesa |
 | XII | Interlúdio e níveis | Glória, as ações de Interlúdio, o Posto, as escolhas de cada nível e a tabela de 1 a 20 |
-| XIII | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
+| XIII | O mundo | Feitos e perigos por degrau, a vida dos objetos, quedas, fôlego, cansaço, fome, sono, ferida e viagem |
+| XIV | Uma ficha pronta | Um personagem inteiro, um modelo de ficha e a consulta rápida |
 | Ap. | Notas de design e balanceamento | Por que cada regra é como é, o que o simulador mediu, o que ele não sabe e o que mudou no caminho |
 
 ## Estrutura do repositório
