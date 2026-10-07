@@ -3,6 +3,15 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.24.0] - 2026-10-07
+
+### Mudado
+
+- **O Oitavo pelo sangue de um deus** (Capítulos Quatro, Sete e Doze, pedido do usuário):
+  com a armadura revivida pelo sangue de um deus, o Oitavo pode despertar sem o treino,
+  numa situação que levaria à morte — cair a 0 PV sem poder levantar, ou morrer de
+  verdade. Quando desperta assim, a armadura fica dourada até o fim daquela luta ou cena.
+
 ## [0.23.1] - 2026-10-07
 
 ### Corrigido
