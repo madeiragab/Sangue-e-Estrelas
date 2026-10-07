@@ -151,6 +151,12 @@ def testar_livro() -> None:
             in corrido and f"soma +{R.DOMINIO_OURO} nos ataques e nas Rolagens de Efeito, e o "
             f"outro soma −{R.DOMINIO_OURO}" in corrido and "+2 no ataque e na DEF" not in corrido,
             f"o Sétimo dominado é +{R.DOMINIO_OURO}/−{R.DOMINIO_OURO} na regra e nas fichas prontas")
+    # Dominar o Sétimo pelo treino e o nível do Oitavo (0.24.0) vêm de sim/regras.py.
+    confere(f"A partir do <strong>nível {R.NIVEL_SETIMO_DOMINADO}</strong>, e depois do primeiro "
+            f"despertar" in corrido and f"<b>Requisito</b> Nível {R.NIVEL_OITAVO}." in corrido
+            and f"você tem o nível {R.NIVEL_OITAVO} e domina o Sétimo" in corrido,
+            f"o livro dá o Sétimo dominado no nível {R.NIVEL_SETIMO_DOMINADO} e o Oitavo no "
+            f"{R.NIVEL_OITAVO}")
     confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
     confere(f"do nível {R.NIVEL_SETIMO} em diante" in corrido
             and f"antes do <strong>nível {R.NIVEL_SETIMO}</strong>" in corrido,
@@ -330,6 +336,20 @@ def testar_extremos() -> None:
                 and (n > 9 or c >= s + 0.05) and (n < 17 or r <= 0.40),
                 f"nível {n}: viva ≥ rachada ≥ casca ≥ nada "
                 f"(rachada {r:.0%}, casca {c:.0%}, sem armadura {s:.0%})")
+
+    # Dominar o Sétimo pelo treino (0.24.0): sem sacrifício nem Convicção, mas ainda no Teto.
+    # Entrar quando quiser, como a elite, levava quatro Bronzes de nível 20 a vencer um Ouro
+    # 96% das vezes; no Teto, a luta não muda.
+    def dominado(k):
+        x = montar("A", k)
+        x.setimo_dominado = True
+        x.reiniciar()
+        return x
+    for n in (9, 17):
+        s = taxa(lambda k: montar("A", k), lambda k: montar("B", k), n, 290 + n)["a"]
+        c = taxa(dominado, lambda k: montar("B", k), n, 290 + n)["a"]
+        confere(abs(c - s) <= 0.05,
+                f"nível {n}: dominar o Sétimo pelo treino não decide a luta ({s:.0%} → {c:.0%})")
 
 
 def testar_mestre() -> None:

@@ -358,6 +358,14 @@ TETO_SETIMO = 2
 # não acontece, nem levantando. O simulador mede uma luta de cada vez, então do nível
 # mínimo em diante trata o primeiro despertar como já acontecido.
 NIVEL_SETIMO = 5
+# Dominar o Sétimo sem ser elite (0.24.0, pedido do usuário): a partir deste nível, com um
+# treino de Interlúdio, o Bronze e o Prata entram no Sétimo sem sacrifício nem Convicção.
+# "quando_quer": no começo de qualquer turno, como a elite; "teto": quando o Cosmo chega
+# ao Teto. O domínio de +3 continua sendo só da elite.
+NIVEL_SETIMO_DOMINADO = 8
+SETIMO_DOMINADO_ENTRA = "teto"
+# O Oitavo (0.24.0): o treino e o caminho do sangue pedem este nível.
+NIVEL_OITAVO = 12
 
 
 def desperta_do_mestre(posto: str, conviccoes: int) -> bool:
