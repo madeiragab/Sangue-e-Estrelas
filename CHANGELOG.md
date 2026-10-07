@@ -3,6 +3,20 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.24.1] - 2026-10-07
+
+### Mudado
+
+- **O Oitavo pede o nível 12** (antes, 9), pelo treino ou pelo sangue (pedido do usuário).
+  O caminho do sangue de um deus pede também o Sétimo dominado.
+- **Dominar o Sétimo** (Capítulos Quatro, Doze e Catorze, pedido do usuário): a partir do
+  nível 8, depois do primeiro despertar, um Bronze ou um Prata domina o Sétimo com treino
+  de Interlúdio (Atributo do Cosmo + proficiência contra CD 18, três sucessos). Dominado,
+  ele entra no Sétimo com o Cosmo no Teto, sem sacrifício nem Convicção. O domínio de +3
+  continua só da elite. Medido: não muda as lutas. Entrar quando quiser, como a elite, foi
+  testado e descartado: o duelo justo ia a 78%–94%, e quatro Bronzes de nível 20 venciam
+  um Ouro 96% das vezes (hoje, 38%).
+
 ## [0.24.0] - 2026-10-07
 
 ### Mudado

@@ -93,6 +93,7 @@ class Lutador:
     centelha_do_deus: bool = False     # o milagre (0.19.0): o deus manda a Centelha na pior hora
     cosmo_comeco: int | None = None    # lutas em sequência (0.22.0): o Cosmo que sobrou da anterior
     oitavo: bool = False               # já despertou o Oitavo
+    setimo_dominado: bool = False      # Bronze ou Prata que dominou o Sétimo pelo treino (0.24.0)
     ao_lado_do_deus: bool = False      # luta ao lado do próprio deus: fere um deus normalmente
     deus_protege: bool = True          # o deus de vocês só protege (0.23.1): cobre a armadura;
                                        # se ele está lutando, não cobre
@@ -804,6 +805,9 @@ class Luta:
             x.subir_cosmo(R.COSMO_RELOGIO)
         if x.posto == "ouro":
             x.entrar_no_setimo(self.rng)
+        elif x.setimo_dominado and (R.SETIMO_DOMINADO_ENTRA == "quando_quer"
+                                    or x.cosmo >= x.teto):
+            x.entrar_no_setimo(self.rng)     # dominou pelo treino: sem sacrifício nem Convicção
         # Centelhas dos aliados
         n = self.centelhas.get(x.nome, 0)
         while n and x.centelhas_recebidas < R.TETO_CENTELHA_MAX:
