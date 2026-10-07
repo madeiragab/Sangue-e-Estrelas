@@ -224,6 +224,13 @@ POSTO = {
     "divina": (7, 6),
 }
 
+
+# A armadura que despedaçou (Resistência 0) não volta naquela luta. No primeiro descanso
+# longo ela se remonta toda rachada, com metade da Resistência; inteira só no descanso
+# seguinte ou com o remendo de um restaurador (0.23.0, pedido do usuário).
+def resistencia_rachada(resistencia_max: int) -> int:
+    return -(-resistencia_max // 2)
+
 # Sozinho contra muitos: um inimigo com Convicções que luta sozinho contra um grupo
 # responde depois do turno de cada personagem, contra quem acabou de agir, com a técnica
 # de dano mais barata dele, sem gastar Cosmo (0.8.0). Os PV não se multiplicam mais: com
@@ -372,11 +379,16 @@ TETO_NONO = 2
 # elite de nível 20: PV × "pv" e + "def" na DEF e nas defesas. O menor (Hypnos, Thanatos, os
 # filhos deles) perde para quem chegou ao Nono com a armadura Divina; o maior (Hades, Atena,
 # Poseidon) ainda está um pouco acima. Medido em sim/mestre.py.
-DEUSES = {"menor": {"pv": 1.5, "def": 2}, "maior": {"pv": 2.0, "def": 4}}
+# O semideus (0.23.0, pedido do usuário) fica um degrau abaixo da divindade menor: quem
+# aguentou o sangue de um deus nas veias, como o Rhadamanthys do Lost Canvas com o sangue de
+# Hades. Está no Sétimo desde o começo da luta, não no Nono.
+DEUSES = {"semideus": {"pv": 2.0, "def": 2, "sentido": "setimo"},
+          "menor": {"pv": 1.5, "def": 2}, "maior": {"pv": 2.0, "def": 4}}
 # Quanto do dano entra num deus, por quem bate (0.13.0, pedido do usuário). No Nono, tudo. A
 # divindade menor ainda sente um pouco de quem está no Sétimo, e um pouco mais de quem tem o
-# Oitavo; o deus maior, só o Nono.
-DANO_CONTRA_DEUS = {"menor": {"setimo": 0.25, "oitavo": 0.5}, "maior": {}}
+# Oitavo; o deus maior, só o Nono. O semideus sente um degrau mais.
+DANO_CONTRA_DEUS = {"semideus": {"sexto": 0.25, "setimo": 0.5, "oitavo": 1.0},
+                    "menor": {"setimo": 0.25, "oitavo": 0.5}, "maior": {}}
 
 
 def fracao_contra_deus(tipo: str, degrau: int, oitavo: bool) -> float:
@@ -387,7 +399,7 @@ def fracao_contra_deus(tipo: str, degrau: int, oitavo: bool) -> float:
         return f.get("oitavo", 0.0)
     if degrau >= 1:
         return f.get("setimo", 0.0)
-    return 0.0
+    return f.get("sexto", 0.0)
 
 # ---------------------------------------------------------------------------
 # Cosmo

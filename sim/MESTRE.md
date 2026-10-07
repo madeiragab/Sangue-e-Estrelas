@@ -102,21 +102,28 @@ Personagens de nível 20 no Nono, com a armadura na forma Divina, contra um deus
 | Contra | Um Bronze | Um Ouro | Dois Bronzes | Três Bronzes |
 |---|---|---|---|---|
 | Deus menor | 78% / 18 / 0.2 | 85% / 17 / 0.2 | 99% / 8 / 0.1 | 100% / 5 / 0.0 |
-| Deus maior | 25% / 22 / 0.7 | 40% / 22 / 0.6 | 81% / 15 / 0.7 | 100% / 9 / 0.2 |
+| Deus maior | 25% / 22 / 0.7 | 40% / 22 / 0.6 | 80% / 15 / 0.7 | 100% / 9 / 0.2 |
 
 Fora do Nono, só uma fração do dano entra na divindade menor (25% no Sétimo, 50% com o Oitavo); no deus maior, nada. Ouros de nível 20 no Sétimo, revividos seis vezes:
 
 | Contra a divindade menor | Um | Três | Cinco |
 |---|---|---|---|
-| Só o Sétimo | 0% / 1.0 caem | 0% / 3.0 caem | 24% / 4.4 caem |
-| Com o Oitavo | 0% / 1.0 caem | 22% / 2.6 caem | 93% / 1.4 caem |
+| Só o Sétimo | 0% / 1.0 caem | 0% / 3.0 caem | 0% / 5.0 caem |
+| Com o Oitavo | 0% / 1.0 caem | 0% / 3.0 caem | 6% / 4.9 caem |
+
+O semideus (0.23.0): a elite de nível 20 no Sétimo, com os PV × 2 e +2 na DEF. Do Sexto entra 25% do dano, do Sétimo 50%, com o Oitavo 100%. Os acertos de técnica dele tiram o Grau de Resistência; os da divindade menor despedaçam a armadura, e os do deus maior, qualquer acerto. A armadura Divina perde só 1.
+
+| Contra o semideus | Um | Três | Cinco |
+|---|---|---|---|
+| Só o Sétimo | 0% / 11 rodadas / 1.0 caem | 62% / 11 rodadas / 1.8 caem | 100% / 6 rodadas / 0.5 caem |
+| Com o Oitavo | 1% / 11 rodadas / 1.0 caem | 88% / 8 rodadas / 0.9 caem | 100% / 4 rodadas / 0.1 caem |
 
 Ao lado do próprio deus, quem está no Sétimo fere um deus normalmente. Ouros de nível 20 no Sétimo, ferindo por inteiro:
 
 | Ao lado do próprio deus | Um | Três | Cinco |
 |---|---|---|---|
-| Contra o deus menor | 1% / 1.0 caem | 51% / 1.9 caem | 98% / 0.6 caem |
-| Contra o deus maior | 0% / 1.0 caem | 2% / 3.0 caem | 40% / 3.7 caem |
+| Contra o deus menor | 0% / 1.0 caem | 2% / 3.0 caem | 23% / 4.2 caem |
+| Contra o deus maior | 0% / 1.0 caem | 0% / 3.0 caem | 0% / 5.0 caem |
 
 ## O sangue doado
 

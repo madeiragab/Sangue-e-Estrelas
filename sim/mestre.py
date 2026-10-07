@@ -327,8 +327,8 @@ def no_nono(posto: str = "bronze", nome: str = "H"):
 
 
 def deus(tipo: str):
-    """O deus do Capítulo Dez: a elite de nível 20, no Nono, com os PV e a defesa da
-    tabela. Apara pelo tamanho do golpe, não pela fração dos PV dele."""
+    """O deus do Capítulo Dez: a elite de nível 20, no Nono (o semideus, no Sétimo), com os
+    PV e a defesa da tabela. Apara pelo tamanho do golpe, não pela fração dos PV dele."""
     t = R.DEUSES[tipo]
 
     def f():
@@ -336,7 +336,7 @@ def deus(tipo: str):
                    politica={"aparar_limiar": 0.20 / t["pv"]})
         x.pv_max = int(x.pv_max * t["pv"])
         x.defesa_extra = t["def"]
-        x.sentido_inicial = "nono"
+        x.sentido_inicial = t.get("sentido", "nono")
         x.deus = tipo
         x.reiniciar()
         return x
@@ -750,6 +750,20 @@ def main() -> None:
         for k in (1, 3, 5):
             r = ouros_contra_deus(k, oit)
             cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f} caem")
+        linhas.append(f"| {'Com o Oitavo' if oit else 'Só o Sétimo'} | " + " | ".join(cel) + " |")
+    semi, ts = R.DANO_CONTRA_DEUS["semideus"], R.DEUSES["semideus"]
+    linhas += ["", "O semideus (0.23.0): a elite de nível 20 no Sétimo, com os PV × "
+               f"{ts['pv']:g} e +{ts['def']} na DEF. Do Sexto entra {semi['sexto']:.0%} do dano, do "
+               f"Sétimo {semi['setimo']:.0%}, com o Oitavo {semi['oitavo']:.0%}. Os acertos de "
+               "técnica dele tiram o Grau de Resistência; os da divindade menor despedaçam a "
+               "armadura, e os do deus maior, qualquer acerto. A armadura Divina perde só 1.", "",
+               "| Contra o semideus | Um | Três | Cinco |", "|---|---|---|---|"]
+    for oit in (False, True):
+        cel = []
+        for k in (1, 3, 5):
+            r = ouros_contra_deus(k, oit, "semideus")
+            cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} rodadas / "
+                       f"{r['caidos_media']:.1f} caem")
         linhas.append(f"| {'Com o Oitavo' if oit else 'Só o Sétimo'} | " + " | ".join(cel) + " |")
     linhas += ["", "Ao lado do próprio deus, quem está no Sétimo fere um deus normalmente. Ouros de "
                "nível 20 no Sétimo, ferindo por inteiro:", "",

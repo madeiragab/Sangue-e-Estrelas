@@ -3,6 +3,36 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.23.0] - 2026-10-07
+
+### Mudado
+
+- **Despedaçou, volta rachada** (Capítulos Cinco, Sete e Catorze, pedido do usuário):
+  com Resistência 0, a armadura despedaça e não volta naquela luta (só com o Unguento de
+  Pó de Estrelas). No primeiro descanso longo ela se remonta toda rachada, com metade da
+  Resistência (para cima); inteira, no descanso longo seguinte. Antes, um descanso longo
+  devolvia tudo. Medido, contra a armadura inteira: rachada vence de 48% a 50% até o nível
+  13, e 21% e 17% nos níveis 17 e 20.
+- **O remendo** conserta a armadura despedaçada ou rachada: Ofício CD 13, uma hora por
+  Versão, e ela volta inteira. O ofício de restaurador serve para mais que a armadura
+  morta.
+- **A casca se quebra a cada golpe**: tantas peças quanto a Resistência do Posto (3, 4 ou
+  5). Cada ataque que acerta ou é bloqueado quebra uma; técnica que quebra a armadura leva
+  mais uma; o crítico leva todas. Sem peças, despedaça até o fim da luta. A armadura morta
+  perde a cor e fica rachada (antes: "cinza e fria"). Medido: casca vence de 3% a 47%; sem
+  armadura, de 2% a 29%.
+- **O semideus** (Capítulo Dez, pedido do usuário): quem aguenta o sangue de um deus nas
+  veias vira semideus, um degrau abaixo da divindade menor — antes, subia a divindade
+  menor. A elite de nível 20 no Sétimo, com o dobro dos PV e +2 na DEF; o Sexto fere um
+  quarto, o Sétimo metade, o Oitavo e o Nono inteiro. Três Ouros de nível 20 no Sétimo
+  vencem 62%, em 11 rodadas; cinco, sempre; um, nunca.
+- **A quebra divina** (Capítulos Sete e Dez, pedido do usuário): o semideus tira o Grau
+  da técnica de Resistência a cada acerto; a divindade menor despedaça a armadura com um
+  acerto de técnica; o deus maior, com qualquer acerto. Vale na Resposta. A armadura
+  Divina só perde 1. Com isso, Ouros sem armadura Divina não vencem mais a divindade menor
+  (cinco no Sétimo: de 25% para 0%; com o Oitavo, de quase sempre para 6%), e ao lado de
+  Atena nem cinco vencem o deus maior (era 40%).
+
 ## [0.22.0] - 2026-10-02
 
 ### Mudado
