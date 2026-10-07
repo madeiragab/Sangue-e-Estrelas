@@ -122,8 +122,15 @@ Ao lado do próprio deus, quem está no Sétimo fere um deus normalmente. Ouros 
 
 | Ao lado do próprio deus | Um | Três | Cinco |
 |---|---|---|---|
-| Contra o deus menor | 0% / 1.0 caem | 2% / 3.0 caem | 23% / 4.2 caem |
-| Contra o deus maior | 0% / 1.0 caem | 0% / 3.0 caem | 0% / 5.0 caem |
+| Contra o deus menor | 1% / 1.0 caem | 52% / 1.9 caem | 98% / 0.6 caem |
+| Contra o deus maior | 0% / 1.0 caem | 2% / 3.0 caem | 40% / 3.7 caem |
+
+Ao lado do próprio deus que só protege, o Cosmo dele cobre as armaduras: contra a quebra divina, perdem só 1 (0.23.1). Se o deus de vocês luta junto, ele está num corpo humano e usa a linha da divindade menor, sem Resposta ao turno dele, e não cobre mais as armaduras; entre deuses, ninguém despedaça a armadura do outro:
+
+| Com o seu deus lutando | Só ele | Mais um Ouro | Mais três | Mais cinco |
+|---|---|---|---|---|
+| Contra o deus menor | 47% / 20 rodadas | 74% / 21 rodadas | 95% / 13 rodadas | 99% / 8 rodadas |
+| Contra o deus maior | 13% / 24 rodadas | 28% / 28 rodadas | 46% / 27 rodadas | 61% / 25 rodadas |
 
 ## O sangue doado
 

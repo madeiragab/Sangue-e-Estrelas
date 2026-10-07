@@ -474,6 +474,20 @@ def testar_mestre() -> None:
             and perdas["semideus", True] == perdas["menor", True] == 1,
             f"a quebra divina: semideus tira o Grau, divindade menor despedaça, a Divina perde 1 "
             f"({perdas})")
+    # Ao lado do próprio deus (0.23.1): o Cosmo dele cobre a armadura, e deus não despedaça deus.
+    ouro.reiniciar()
+    ouro.ao_lado_do_deus = True
+    Luta.quebra_divina(M.deus("maior")(), ouro)
+    outro_deus = M.deus("maior")()
+    Luta.quebra_divina(M.deus("maior")(), outro_deus)
+    confere(ouro.resistencia == ouro.resistencia_max - 1
+            and outro_deus.resistencia == outro_deus.resistencia_max - 1,
+            "ao lado do próprio deus, e entre deuses, a quebra divina tira só 1")
+    a5 = M.ouros_contra_deus(5, False, "maior", lutas=200, ao_lado=True)["grupo"]
+    so, tres = (M.ouros_com_atena(k, "maior", lutas=200)["grupo"] for k in (0, 3))
+    confere(0.25 <= a5 <= 0.55 and so <= 0.30 and 0.30 <= tres <= 0.65,
+            f"ao lado de Atena, cinco Ouros ainda têm chance contra o deus maior ({a5:.0%}); "
+            f"com ela lutando, sem decidir sozinha: sozinha {so:.0%}, com três Ouros {tres:.0%}")
     # A raridade do Sétimo (0.11.0): o nomeado Bronze ou Prata sem Convicção não desperta.
     for posto in ("bronze", "prata"):
         d = duelos(M.pc(13), M.inimigo(13, posto), n=200, semente=970)
