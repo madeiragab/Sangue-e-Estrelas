@@ -3,6 +3,16 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.25.2] - 2026-10-07
+
+### Corrigido
+
+- **O sacrifício do Nono é cair duas vezes** (Capítulo Quatro, pedido do usuário): você
+  cai, levanta (no Sétimo) e cai de novo, a 0 PV de verdade, sem poder levantar outra vez.
+  Aí, dizendo uma Convicção, levanta no Nono com metade dos PV máximos e o Cosmo no Teto.
+  A primeira queda não basta. É a única vez que alguém levanta duas vezes na mesma luta, e
+  vem no lugar do estado de Buda.
+
 ## [0.25.1] - 2026-10-07
 
 ### Mudado
