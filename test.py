@@ -314,7 +314,7 @@ def testar_extremos() -> None:
         r = taxa(lambda k: montar_build("A", k, kit=kit), lambda k: montar_build("B", k), 13, 240)
         confere(r["a"] <= 0.60, f"nível 13: a limitação {kit[7:]} custa de verdade ({r['a']:.0%})")
 
-    # A casca (0.9.4): vestir a armadura morta ajuda, mas não chega à viva.
+    # A casca (0.9.4; peças em 0.23.0) e a rachada (0.23.0): viva ≥ rachada ≥ casca ≥ nada.
     def vestindo(arm):
         def f(k):
             x = montar("A" + arm, k)
@@ -323,11 +323,13 @@ def testar_extremos() -> None:
             return x
         return f
     for n in (1, 9, 17):
+        r = taxa(vestindo("rachada"), lambda k: montar("B", k), n, 280 + n)["a"]
         c = taxa(vestindo("casca"), lambda k: montar("B", k), n, 260 + n)["a"]
         s = taxa(vestindo("nenhuma"), lambda k: montar("B", k), n, 270 + n)["a"]
-        confere(s + 0.05 <= c <= 0.55,
-                f"nível {n}: a casca é melhor que nada e não passa da viva "
-                f"(sem armadura {s:.0%}, casca {c:.0%})")
+        confere(r <= 0.56 and r >= c - 0.05 and c >= s - 0.03
+                and (n > 9 or c >= s + 0.05) and (n < 17 or r <= 0.40),
+                f"nível {n}: viva ≥ rachada ≥ casca ≥ nada "
+                f"(rachada {r:.0%}, casca {c:.0%}, sem armadura {s:.0%})")
 
 
 def testar_mestre() -> None:
@@ -448,6 +450,30 @@ def testar_mestre() -> None:
             "contra um deus: Nono inteiro; Sétimo pouco e Oitavo um pouco mais, só no menor")
     t3 = M.ouros_contra_deus(3, False, lutas=200)["grupo"]
     confere(t3 <= 0.10, f"três Ouros no Sétimo quase nunca vencem a divindade menor ({t3:.0%})")
+    # O semideus (0.23.0): abaixo da divindade menor; a luta de três Ouros no limite.
+    confere(f("semideus", 0, False) == 0.25 and f("semideus", 1, False) == 0.5
+            and f("semideus", 1, True) == 1 == f("semideus", 2, False),
+            "contra o semideus: Sexto um quarto, Sétimo metade, Oitavo e Nono inteiro")
+    s1, s3, s5 = (M.ouros_contra_deus(k, False, "semideus", lutas=200)["grupo"] for k in (1, 3, 5))
+    confere(s1 <= 0.05 and 0.45 <= s3 <= 0.80 and s5 >= 0.90,
+            f"o semideus: um Ouro não vence, três vencem perto de metade, cinco quase sempre "
+            f"({s1:.0%}, {s3:.0%}, {s5:.0%})")
+    # A quebra divina (0.23.0): o semideus tira o Grau, a divindade menor despedaça, e a
+    # armadura Divina só perde 1.
+    from luta import Luta
+    ouro = montar("O", 20, "ouro")
+    divina = M.no_nono("bronze")()
+    perdas = {}
+    for tipo in ("semideus", "menor"):
+        for alvo in (ouro, divina):
+            alvo.reiniciar()
+            antes = alvo.resistencia
+            Luta.quebra_divina(M.deus(tipo)(), alvo)
+            perdas[tipo, alvo is divina] = antes - alvo.resistencia
+    confere(perdas["semideus", False] == R.grau(20) and perdas["menor", False] == ouro.resistencia_max
+            and perdas["semideus", True] == perdas["menor", True] == 1,
+            f"a quebra divina: semideus tira o Grau, divindade menor despedaça, a Divina perde 1 "
+            f"({perdas})")
     # A raridade do Sétimo (0.11.0): o nomeado Bronze ou Prata sem Convicção não desperta.
     for posto in ("bronze", "prata"):
         d = duelos(M.pc(13), M.inimigo(13, posto), n=200, semente=970)

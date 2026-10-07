@@ -2439,8 +2439,9 @@ function rolar(modo) {
       <h5>Descanso longo</h5>
       <p class="etiqueta">Uma noite</p>
                   <p>Recupera metade dos PV máximos, um sentido arrancado e 1 de cansaço, se você comeu
-      e bebeu, e o Cosmo volta ao valor inicial. A armadura, se estiver viva, se regenera: a Resistência volta toda. As
-      Cicatrizes somem.</p>
+      e bebeu, e o Cosmo volta ao valor inicial. A armadura, se estiver viva, se regenera: a
+      Resistência volta toda — ou metade, se ela despedaçou na luta (<a href="#rachada">Capítulo
+      Sete</a>). As Cicatrizes somem.</p>
     </div>
     <div class="cartao">
       <h5>Interlúdio</h5>
@@ -3051,12 +3052,13 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     arredondado para baixo. Você decide depois de ver o dano. Diga qual peça rachou.</p>
   </div>
   <ul>
-    <li><strong>Resistência 0: a armadura está em pedaços.</strong> As peças caem pelo chão
-      e você perde tudo o que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e o acessório —
-      até ela se refazer.</li>
+    <li><strong>Resistência 0: a armadura despedaça.</strong> As peças caem pelo chão e você
+      volta à roupa de baixo, sem nada do que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e
+      o acessório. Naquela luta ela não volta, a não ser com um Unguento de Pó de Estrelas
+      (<a href="#cap8">Capítulo Oito</a>).</li>
     <li>Técnicas que <strong>atravessam a armadura</strong> não podem ser aparadas.
       Técnicas que <strong>quebram a armadura</strong> tiram 1 de Resistência a cada acerto,
-      além do dano.</li>
+      além do dano. Acima do humano é pior: veja a quebra divina, abaixo.</li>
     <li>O Elmo é sempre o primeiro a voar: é por isso que, no anime, quase todo Cavaleiro
       termina a luta sem ele.</li>
     <li>O dano de figurante não se apara (<a href="#cap10">Capítulo Dez</a>): a lança de um
@@ -3068,25 +3070,57 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   Bloquear usam a mesma reação, você só faz um dos dois por rodada: bloquear o golpe comum
   que vem agora ou guardar a reação para aparar a técnica que talvez venha depois.</p>
 
+  <div class="destaque" id="quebra-divina">
+    <span class="rotulo">A quebra divina</span>
+    <p>Contra quem está acima do humano, a armadura dura pouco
+    (<a href="#deuses">Capítulo Dez</a>):</p>
+    <ul>
+      <li><strong>Semideus:</strong> cada acerto de técnica tira Resistência igual ao Grau
+        dela — 5, no nível 20.</li>
+      <li><strong>Divindade menor:</strong> um acerto de técnica despedaça a armadura. Foi
+        assim que Thanatos destroçou armaduras de Ouro inteiras.</li>
+      <li><strong>Deus maior:</strong> qualquer acerto despedaça, até o golpe comum.</li>
+    </ul>
+    <p>Vale também na Resposta. Aparar ainda corta o dano pela metade, mas a armadura quebra
+    do mesmo jeito. <strong>Só a armadura Divina segura:</strong> contra ela, qualquer um
+    desses tira só 1 de Resistência. Numa casca, o semideus leva o Grau em peças, e os deuses
+    levam todas.</p>
+  </div>
+
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
-  peças se remontam. Só uma armadura morta não volta sozinha.</p>
+  rachaduras fecham. Só uma armadura morta não volta sozinha.</p>
+  <div class="destaque" id="rachada">
+    <span class="rotulo">Despedaçou: volta rachada</span>
+    <p>A armadura que despedaçou numa luta se remonta no primeiro descanso longo depois dela,
+    mas <strong>toda rachada, com metade da Resistência</strong> (arredondada para cima). Ela
+    só fica inteira no descanso longo seguinte, ou com o remendo de um restaurador. Rachada,
+    ela ainda apara, bloqueia e dá tudo o mais que dá.</p>
+  </div>
   <div class="destaque" id="remendo">
     <span class="rotulo">O remendo</span>
     <p>Entre uma luta e outra, um restaurador pode adiantar o trabalho que a armadura faria
-    sozinha à noite. Uma hora, com a armadura fora do corpo, e um teste de
-    <strong>Ofício contra CD 13</strong>: no sucesso, ela recupera
-    <span class="dado">1d4</span> de Resistência, e uma armadura em pedaços volta a se
-    montar. Uma vez por armadura entre dois descansos longos; na falha, a hora se perde. Não
+    sozinha à noite: com a armadura fora do corpo, um teste de <strong>Ofício contra CD
+    13</strong>.</p>
+    <ul>
+      <li>Numa armadura que só gastou Resistência, uma hora de trabalho: ela recupera
+        <span class="dado">1d4</span>.</li>
+      <li>Numa armadura despedaçada ou rachada, <strong>uma hora por Versão</strong>: ela volta
+        inteira, com a Resistência toda.</li>
+    </ul>
+    <p>Uma vez por armadura entre dois descansos longos; na falha, as horas se perdem. Não
     revive armadura morta.</p>
   </div>
+  <p>Medido: contra um guerreiro do mesmo nível com a armadura inteira, quem luta com ela
+  rachada quase empata até o nível 13 (48% a 50%), quando as lutas são curtas; nos níveis
+  17 e 20, quando a luta gasta a Resistência inteira, vence só 21% e 17%.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela em pedaços,
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela despedaçada,
   na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
   de um deus, uma relíquia, uma coisa que come Cosmo e suga a vida dela por dentro, mesmo
-  sem quebrar uma peça. Uma armadura morta perde o brilho, fica cinza e fria, e não se
-  regenera. Mas ainda atende ao chamado, e ainda é metal no corpo — como a dos Bronzes no
+  sem quebrar uma peça. Uma armadura morta perde a cor e fica toda rachada e fria, e não se
+  regenera. Mas ainda atende ao chamado, e ainda é metal no corpo — como a do Seiya no
   começo da guerra contra Hades.</p>
 
   <div class="destaque" id="casca">
@@ -3094,17 +3128,22 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     <ul>
       <li>Dá a <strong>DEF do Posto</strong> (+2 no Bronze, +4 na Prata, +6 na elite), e a
         guarda vale: a armadura está no corpo.</li>
-      <li>Deixa <strong>Bloquear</strong> (+2 na DEF), e só isso.</li>
-      <li>Não tem Resistência, então <strong>não apara</strong>. Não dá as características, os
-        bônus das formas, o Elmo, as Pernas nem o acessório.</li>
-      <li><strong>Um crítico derruba a casca</strong> em pedaços até o fim da luta. Ela não
-        morre de novo: já está morta. No descanso, você a veste outra vez.</li>
+      <li>Deixa <strong>Bloquear</strong> (+2 na DEF), e só isso. Ela não apara, e não dá as
+        características, os bônus das formas, o Elmo, as Pernas nem o acessório.</li>
+      <li><strong>Ela se quebra a cada golpe.</strong> A casca tem tantas peças quanto a
+        Resistência do Posto (3 no Bronze, 4 na Prata, 5 na elite): marque na caixa de
+        Resistência. Cada ataque que te acerta ou que você bloqueia quebra uma — mesmo
+        defendendo, ela vai caindo aos pedaços. Técnicas que quebram a armadura levam mais
+        uma. Um crítico leva todas.</li>
+      <li><strong>Sem peças, ela despedaça de novo</strong>, até o fim da luta. Ela não morre
+        outra vez: já está morta. No descanso, as peças voltam e você a veste outra vez.</li>
     </ul>
   </div>
   <p>Medido: contra um guerreiro do mesmo nível com a armadura viva, quem luta de casca vence
-  de 9% a 49% dos duelos, e quem luta sem armadura, de 2% a 29%. Nos níveis baixos, onde a
-  Resistência é pouca, a casca quase empata; do nível 13 em diante, sem Aparar, ela perde
-  quase sempre. Melhor que nada, e longe de uma armadura viva: reviver continua urgente.</p>
+  de 3% a 47% dos duelos, e quem luta sem armadura, de 2% a 29%. Nos níveis baixos a casca
+  segura umas rodadas e faz diferença; do nível 13 em diante, com dois golpes por turno e
+  técnicas maiores, ela despedaça logo. Melhor que nada, e longe de uma armadura viva:
+  reviver continua urgente.</p>
 
   <div class="nota" id="sacrificio">
     <p><strong>Regra opcional: a armadura que se sacrifica.</strong> Quando você apara com o
@@ -4454,6 +4493,8 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
       <tr><td>Técnicas e Cosmo</td><td colspan="2">Os da elite de nível 20, no Nono desde o começo da luta, com um golpe próprio no lugar do Golpe do Assento</td></tr>
       <tr><td>Contra muitos</td><td colspan="2">Responde depois do turno de cada personagem, como um chefe (<a href="#sozinho-contra-muitos">Sozinho contra muitos</a>)</td></tr>
       <tr><td>Destino</td><td>Um efeito de destino por luta</td><td>Quando quiser</td></tr>
+      <tr><td>Contra armaduras</td><td>Um acerto de técnica despedaça a armadura</td><td>Qualquer acerto despedaça, até o golpe comum</td></tr>
+      <tr><td colspan="3">A armadura Divina segura: contra ela, os dois tiram só 1 de Resistência (<a href="#quebra-divina">Capítulo Sete</a>)</td></tr>
     </tbody>
   </table></div>
   <div class="destaque" id="ao-lado-do-deus">
@@ -4468,8 +4509,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
     </ul>
     <p>Foi assim no templo de Poseidon: o Cosmo de Atena ali ao lado, e uma flecha de Bronze
     que feriu um deus. Ferir não é vencer: medido, ao lado do próprio deus e ferindo por
-    inteiro, três Ouros de nível 20 no Sétimo quase nunca vencem um deus maior (2%), e cinco
-    vencem 40%. Contra o deus maior, quem decide é o seu deus — e o item que sela.</p>
+    inteiro, nem cinco Ouros de nível 20 no Sétimo vencem um deus maior — cada acerto dele
+    despedaça uma armadura de Ouro —, e contra uma divindade menor cinco vencem uma vez em
+    quatro. Contra o deus maior, quem decide é o seu deus — e o item que sela.</p>
   </div>
   <ul>
     <li><strong>Efeitos de destino</strong> — selar, petrificar, matar — são anunciados, e os
@@ -4482,22 +4524,35 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   <p>Medido, só o combate, sem os efeitos de destino: com a armadura Divina e no Nono, um
   Bronze de nível 20 vence uma divindade menor 78% das vezes, e um Ouro 85%. Contra
   um deus maior, 25% e 40%: quase no nível dele, mas ainda abaixo. Dois personagens
-  no Nono vencem o deus maior 81% das vezes; três, sempre. Chegar lá é que é difícil: o Nono pede
+  no Nono vencem o deus maior 80% das vezes; três, sempre. Chegar lá é que é difícil: o Nono pede
   o Sétimo, um elo divino, um sacrifício e uma Convicção, na mesma luta.</p>
-  <p>Sem o Nono, a divindade menor é o fim de quase todo mundo. Um Ouro de nível 20 no Sétimo
-  nunca vence uma sozinho; três juntos quase nunca (1%), e cinco, uma vez em quatro, com quase
-  todos no chão. Com o Oitavo, três Ouros vencem uma vez em cinco, e cinco quase sempre — mas
-  o Oitavo é de um ou dois Ouros por geração (<a href="#raridade">Capítulo Quatro</a>).</p>
+  <p>Sem o Nono e a armadura Divina, a divindade menor é o fim de todo mundo: o primeiro
+  acerto de técnica dela despedaça uma armadura de Ouro. Ouros de nível 20 no Sétimo não
+  vencem uma, nem cinco juntos; com o Oitavo, cinco vencem 6% das vezes. O Oitavo é de um
+  ou dois Ouros por geração (<a href="#raridade">Capítulo Quatro</a>), e nem ele basta.</p>
 
   <div class="destaque" id="sangue-nas-veias">
-    <span class="rotulo">Sangue de deus nas veias</span>
+    <span class="rotulo">Sangue de deus nas veias: o semideus</span>
     <p>Um deus pode dar o próprio sangue a um servo — não para uma armadura, mas para o
     corpo. <strong>Um ser humano morre:</strong> o corpo não aguenta. Quem não é só humano
     aguenta — uma criatura, um espírito, um Espectro, que é uma estrela de Hades vestindo um
-    corpo. Quem sobrevive sobe ao tamanho de uma <strong>divindade menor</strong> (acima): os
-    PV, a defesa, o Nono desde o começo da luta, e só o Nono o fere por inteiro. Um Juiz do
-    Inferno com o sangue de Hades nas veias deixa de ser a luta de um grupo de Ouros e passa
-    a ser a luta de quem chegou ao Nono.</p>
+    corpo. Quem sobrevive vira um <strong>semideus</strong>: um degrau abaixo da divindade
+    menor, como o Rhadamanthys do Lost Canvas com o sangue de Hades.</p>
+    <ul>
+      <li><strong>Ele:</strong> a elite de nível 20, no Sétimo desde o começo da luta — não no
+        Nono —, com o dobro dos PV e +2 na DEF e nas defesas. Ele aguenta mais pancada que a
+        divindade menor, mas sente muito mais.</li>
+      <li><strong>O que o fere:</strong> o Nono e o Sétimo com o Oitavo, por inteiro; o
+        Sétimo, metade; o Sexto, um quarto.</li>
+      <li><strong>Contra armaduras:</strong> cada acerto de técnica dele tira Resistência
+        igual ao Grau dela — 5 (<a href="#quebra-divina">Capítulo Sete</a>).</li>
+      <li><strong>Contra muitos:</strong> responde depois do turno de cada personagem, como
+        um chefe.</li>
+    </ul>
+    <p>Medido: um Ouro de nível 20 no Sétimo não vence um semideus; três vencem seis vezes
+    em dez, em umas 11 rodadas, e uns dois caem; cinco vencem sempre. Com o Oitavo, três
+    vencem quase nove vezes em dez. Um Juiz do Inferno com o sangue de Hades nas veias
+    deixa de ser a luta de um grupo de Bronzes e passa a ser a de três Ouros no limite.</p>
     <p>É uma regra para inimigos. Um personagem que tente isso morre.</p>
   </div>
 
@@ -5777,9 +5832,11 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
       <h5>A armadura</h5>
       <p>Aparar (reação): gaste 1 de Resistência, sofra metade. Bloquear (reação): +2 DEF
       antes da rolagem. Um dos dois por rodada. Dano de figurante não se apara. Resistência
-      0: em pedaços, sem nada da armadura. O Elmo segura o primeiro crítico. Prata contra Bronze: +2 e −2. Tudo volta no
-      descanso longo — menos a morte. Morta, ela é casca: DEF do Posto e Bloquear, sem
-      Aparar; um crítico a derruba até o fim da luta.</p>
+      0: despedaça, sem nada da armadura até o fim da luta; no descanso longo volta rachada,
+      com metade, e inteira no seguinte ou com o remendo. O Elmo segura o primeiro crítico.
+      Prata contra Bronze: +2 e −2. Morta, ela é casca: DEF do Posto e Bloquear, sem Aparar;
+      perde uma peça (3/4/5) a cada ataque que acerta ou é bloqueado, e todas num
+      crítico.</p>
     </div>
     <div class="cartao">
       <h5>O mundo e o corpo</h5>
@@ -6015,7 +6072,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.22.0</strong>, de 02/10/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.23.0</strong>, de 07/10/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece. O que o

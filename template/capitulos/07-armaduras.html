@@ -108,12 +108,13 @@
     arredondado para baixo. Você decide depois de ver o dano. Diga qual peça rachou.</p>
   </div>
   <ul>
-    <li><strong>Resistência 0: a armadura está em pedaços.</strong> As peças caem pelo chão
-      e você perde tudo o que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e o acessório —
-      até ela se refazer.</li>
+    <li><strong>Resistência 0: a armadura despedaça.</strong> As peças caem pelo chão e você
+      volta à roupa de baixo, sem nada do que ela dá — a DEF, o Bloquear, o Elmo, as Pernas e
+      o acessório. Naquela luta ela não volta, a não ser com um Unguento de Pó de Estrelas
+      (<a href="#cap8">Capítulo Oito</a>).</li>
     <li>Técnicas que <strong>atravessam a armadura</strong> não podem ser aparadas.
       Técnicas que <strong>quebram a armadura</strong> tiram 1 de Resistência a cada acerto,
-      além do dano.</li>
+      além do dano. Acima do humano é pior: veja a quebra divina, abaixo.</li>
     <li>O Elmo é sempre o primeiro a voar: é por isso que, no anime, quase todo Cavaleiro
       termina a luta sem ele.</li>
     <li>O dano de figurante não se apara (<a href="#cap10">Capítulo Dez</a>): a lança de um
@@ -125,25 +126,57 @@
   Bloquear usam a mesma reação, você só faz um dos dois por rodada: bloquear o golpe comum
   que vem agora ou guardar a reação para aparar a técnica que talvez venha depois.</p>
 
+  <div class="destaque" id="quebra-divina">
+    <span class="rotulo">A quebra divina</span>
+    <p>Contra quem está acima do humano, a armadura dura pouco
+    (<a href="#deuses">Capítulo Dez</a>):</p>
+    <ul>
+      <li><strong>Semideus:</strong> cada acerto de técnica tira Resistência igual ao Grau
+        dela — 5, no nível 20.</li>
+      <li><strong>Divindade menor:</strong> um acerto de técnica despedaça a armadura. Foi
+        assim que Thanatos destroçou armaduras de Ouro inteiras.</li>
+      <li><strong>Deus maior:</strong> qualquer acerto despedaça, até o golpe comum.</li>
+    </ul>
+    <p>Vale também na Resposta. Aparar ainda corta o dano pela metade, mas a armadura quebra
+    do mesmo jeito. <strong>Só a armadura Divina segura:</strong> contra ela, qualquer um
+    desses tira só 1 de Resistência. Numa casca, o semideus leva o Grau em peças, e os deuses
+    levam todas.</p>
+  </div>
+
   <h4>Regeneração</h4>
   <p>A armadura viva se refaz sozinha. Num descanso longo, a Resistência volta toda e as
-  peças se remontam. Só uma armadura morta não volta sozinha.</p>
+  rachaduras fecham. Só uma armadura morta não volta sozinha.</p>
+  <div class="destaque" id="rachada">
+    <span class="rotulo">Despedaçou: volta rachada</span>
+    <p>A armadura que despedaçou numa luta se remonta no primeiro descanso longo depois dela,
+    mas <strong>toda rachada, com metade da Resistência</strong> (arredondada para cima). Ela
+    só fica inteira no descanso longo seguinte, ou com o remendo de um restaurador. Rachada,
+    ela ainda apara, bloqueia e dá tudo o mais que dá.</p>
+  </div>
   <div class="destaque" id="remendo">
     <span class="rotulo">O remendo</span>
     <p>Entre uma luta e outra, um restaurador pode adiantar o trabalho que a armadura faria
-    sozinha à noite. Uma hora, com a armadura fora do corpo, e um teste de
-    <strong>Ofício contra CD 13</strong>: no sucesso, ela recupera
-    <span class="dado">1d4</span> de Resistência, e uma armadura em pedaços volta a se
-    montar. Uma vez por armadura entre dois descansos longos; na falha, a hora se perde. Não
+    sozinha à noite: com a armadura fora do corpo, um teste de <strong>Ofício contra CD
+    13</strong>.</p>
+    <ul>
+      <li>Numa armadura que só gastou Resistência, uma hora de trabalho: ela recupera
+        <span class="dado">1d4</span>.</li>
+      <li>Numa armadura despedaçada ou rachada, <strong>uma hora por Versão</strong>: ela volta
+        inteira, com a Resistência toda.</li>
+    </ul>
+    <p>Uma vez por armadura entre dois descansos longos; na falha, as horas se perdem. Não
     revive armadura morta.</p>
   </div>
+  <p>Medido: contra um guerreiro do mesmo nível com a armadura inteira, quem luta com ela
+  rachada quase empata até o nível 13 (48% a 50%), quando as lutas são curtas; nos níveis
+  17 e 20, quando a luta gasta a Resistência inteira, vence só 21% e 17%.</p>
 
   <h4>A morte da armadura</h4>
-  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela em pedaços,
+  <p>A armadura <strong>morre</strong> quando você cai a 0 PV com ela despedaçada,
   na destruição mútua da Guerra dos Mil Dias, e quando sofre um efeito de destino — o golpe
   de um deus, uma relíquia, uma coisa que come Cosmo e suga a vida dela por dentro, mesmo
-  sem quebrar uma peça. Uma armadura morta perde o brilho, fica cinza e fria, e não se
-  regenera. Mas ainda atende ao chamado, e ainda é metal no corpo — como a dos Bronzes no
+  sem quebrar uma peça. Uma armadura morta perde a cor e fica toda rachada e fria, e não se
+  regenera. Mas ainda atende ao chamado, e ainda é metal no corpo — como a do Seiya no
   começo da guerra contra Hades.</p>
 
   <div class="destaque" id="casca">
@@ -151,17 +184,22 @@
     <ul>
       <li>Dá a <strong>DEF do Posto</strong> (+2 no Bronze, +4 na Prata, +6 na elite), e a
         guarda vale: a armadura está no corpo.</li>
-      <li>Deixa <strong>Bloquear</strong> (+2 na DEF), e só isso.</li>
-      <li>Não tem Resistência, então <strong>não apara</strong>. Não dá as características, os
-        bônus das formas, o Elmo, as Pernas nem o acessório.</li>
-      <li><strong>Um crítico derruba a casca</strong> em pedaços até o fim da luta. Ela não
-        morre de novo: já está morta. No descanso, você a veste outra vez.</li>
+      <li>Deixa <strong>Bloquear</strong> (+2 na DEF), e só isso. Ela não apara, e não dá as
+        características, os bônus das formas, o Elmo, as Pernas nem o acessório.</li>
+      <li><strong>Ela se quebra a cada golpe.</strong> A casca tem tantas peças quanto a
+        Resistência do Posto (3 no Bronze, 4 na Prata, 5 na elite): marque na caixa de
+        Resistência. Cada ataque que te acerta ou que você bloqueia quebra uma — mesmo
+        defendendo, ela vai caindo aos pedaços. Técnicas que quebram a armadura levam mais
+        uma. Um crítico leva todas.</li>
+      <li><strong>Sem peças, ela despedaça de novo</strong>, até o fim da luta. Ela não morre
+        outra vez: já está morta. No descanso, as peças voltam e você a veste outra vez.</li>
     </ul>
   </div>
   <p>Medido: contra um guerreiro do mesmo nível com a armadura viva, quem luta de casca vence
-  de 9% a 49% dos duelos, e quem luta sem armadura, de 2% a 29%. Nos níveis baixos, onde a
-  Resistência é pouca, a casca quase empata; do nível 13 em diante, sem Aparar, ela perde
-  quase sempre. Melhor que nada, e longe de uma armadura viva: reviver continua urgente.</p>
+  de 3% a 47% dos duelos, e quem luta sem armadura, de 2% a 29%. Nos níveis baixos a casca
+  segura umas rodadas e faz diferença; do nível 13 em diante, com dois golpes por turno e
+  técnicas maiores, ela despedaça logo. Melhor que nada, e longe de uma armadura viva:
+  reviver continua urgente.</p>
 
   <div class="nota" id="sacrificio">
     <p><strong>Regra opcional: a armadura que se sacrifica.</strong> Quando você apara com o

@@ -84,12 +84,12 @@ class Lutador:
     defesas_extra: int = 0             # defesas treinadas escolhidas
     formas: tuple = ()                 # o sangue de cada revivida, em ordem
     caracteristicas: tuple = ()        # as características da armadura (Capítulo Sete)
-    armadura: str = "viva"             # viva · casca (morta, vestida) · nenhuma
+    armadura: str = "viva"             # viva · rachada · casca (morta, vestida) · nenhuma
     armadura_posto: str = ""           # a armadura emprestada de outro Posto (0.11.0); "" = a sua
     resistencia_inicial: int | None = None   # lutas em sequência: começa com esta Resistência
     sentido_inicial: str = "sexto"     # quem já começa a luta no Sétimo ou no Nono (deuses, 0.11.0)
     defesa_extra: int = 0              # deuses: + na DEF e nas defesas passivas
-    deus: str = ""                     # "menor" ou "maior": só o Nono fere por inteiro (0.13.0)
+    deus: str = ""                     # "semideus", "menor" ou "maior" (0.13.0; semideus 0.23.0)
     centelha_do_deus: bool = False     # o milagre (0.19.0): o deus manda a Centelha na pior hora
     cosmo_comeco: int | None = None    # lutas em sequência (0.22.0): o Cosmo que sobrou da anterior
     oitavo: bool = False               # já despertou o Oitavo
@@ -158,9 +158,12 @@ class Lutador:
         self.espinhos_turno = 0
         self.resistencia = (self.resistencia_max if self.resistencia_inicial is None
                             else min(self.resistencia_inicial, self.resistencia_max))
+        if self.armadura == "rachada":     # despedaçou e só descansou uma vez (0.23.0)
+            self.resistencia = min(self.resistencia, R.resistencia_rachada(self.resistencia_max))
         self.elmo = True
-        self.armadura_morta = self.armadura != "viva"
-        self.casca_caiu = False
+        self.armadura_morta = self.armadura in ("casca", "nenhuma")
+        # a casca (0.23.0): tantas peças quanto a Resistência do Posto
+        self.casca_pecas = R.POSTO[self.posto_da_armadura][1] if self.armadura == "casca" else 0
         # estatística
         self.dano_golpe = 0
         self.dano_tecnica = 0
@@ -186,9 +189,14 @@ class Lutador:
 
     @property
     def vestida(self) -> bool:
-        """Alguma armadura no corpo: a viva e inteira, ou a casca de uma morta que um
-        crítico ainda não derrubou."""
-        return self.armada or (self.armadura == "casca" and not self.casca_caiu)
+        """Alguma armadura no corpo: a viva e inteira, ou a casca de uma morta que ainda
+        tem peças."""
+        return self.armada or self.casca_pecas > 0
+
+    def quebrar_casca(self, pecas: int = 1):
+        """A casca vai caindo aos pedaços: cada ataque que acerta ou é bloqueado leva uma."""
+        if not self.armada and self.casca_pecas > 0:
+            self.casca_pecas = max(0, self.casca_pecas - pecas)
 
     @property
     def defesa(self) -> int:
@@ -395,6 +403,8 @@ class Luta:
             return                      # Guerra dos Mil Dias: ninguém fere ninguém
         if quebra and alvo.armada:
             alvo.resistencia -= 1
+        elif quebra:
+            alvo.quebrar_casca()
         if fonte == "golpe" and "cortante" in atacante.caracteristicas and atacante.armada:
             atravessa = True            # a lâmina da armadura: o golpe comum não se apara
         if (fonte == "golpe" and "espinhos" in alvo.caracteristicas and alvo.armada
@@ -433,6 +443,8 @@ class Luta:
                     atacante.pv = max(0, atacante.pv - rolar(self.rng, R.grau(alvo.nivel), 6))
                     if atacante.pv == 0:
                         atacante.caido = True
+        if atacante.deus and (fonte != "golpe" or atacante.deus == "maior"):
+            self.quebra_divina(atacante, alvo)
         alvo.pv = max(0, alvo.pv - dano)
         if fonte == "golpe":
             atacante.dano_golpe += dano
@@ -442,6 +454,23 @@ class Luta:
             alvo.caido = True
             if not alvo.armada:
                 alvo.armadura_morta = True
+
+    @staticmethod
+    def quebra_divina(atacante: Lutador, alvo: Lutador):
+        """Acima do humano, a armadura não aguenta (0.23.0): o semideus tira o Grau a cada
+        acerto de técnica; a divindade menor despedaça com técnica; o deus maior, com
+        qualquer acerto. A armadura Divina segura: perde 1."""
+        if alvo.armada:
+            if alvo.posto_da_armadura == "divina":
+                alvo.resistencia -= 1
+            elif atacante.deus == "semideus":
+                alvo.resistencia = max(0, alvo.resistencia - R.grau(atacante.nivel))
+            else:
+                alvo.resistencia = 0
+        elif atacante.deus == "semideus":
+            alvo.quebrar_casca(R.grau(atacante.nivel))
+        else:
+            alvo.quebrar_casca(alvo.casca_pecas)
 
     # ------------------------------------------------------------------
     def rolar_ataque(self, atacante: Lutador, alvo: Lutador, bonus: int,
@@ -488,15 +517,21 @@ class Luta:
         nat = d20(self.rng, v)
         self.ultimo_natural = nat
         dois_degraus = alvo.degrau - atacante.degrau >= 2
-        if nat == 1:
-            return False, False
-        if dois_degraus:
-            return (nat == 20), (nat == 20 and passiva is None)
         if passiva is not None:
+            if nat == 1:
+                return False, False
+            if dois_degraus:
+                return nat == 20, False
             return nat + bonus >= passiva + def_extra, False
-        if nat == 20:
-            return True, True
-        return nat + bonus >= alvo.defesa + bloqueio + def_extra, False
+        if nat == 1:
+            acertou = critico = False
+        elif dois_degraus or nat == 20:
+            acertou = critico = nat == 20
+        else:
+            acertou, critico = nat + bonus >= alvo.defesa + bloqueio + def_extra, False
+        if acertou or bloqueio:
+            alvo.quebrar_casca()       # mesmo defendendo, a casca racha a cada golpe
+        return acertou, critico
 
     def rolar_efeito(self, x: Lutador, y: Lutador, t: Tecnica, def_extra: int = 0) -> bool:
         """Rolagem de Efeito contra a defesa passiva mais fraca do alvo."""
@@ -509,8 +544,8 @@ class Luta:
         if critico and alvo.elmo and alvo.armada:
             alvo.elmo = False
             return False
-        if critico and alvo.vestida and not alvo.armada:
-            alvo.casca_caiu = True     # a casca não segura um crítico: cai até o fim da luta
+        if critico:
+            alvo.quebrar_casca(alvo.casca_pecas)   # a casca não segura um crítico
         return critico
 
     # ------------------------------------------------------------------
