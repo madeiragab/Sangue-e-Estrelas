@@ -3,6 +3,16 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.25.1] - 2026-10-07
+
+### Mudado
+
+- **O Nono pede o mesmo de todo mundo** (Capítulos Quatro e Nove, pedido do usuário): o
+  Oitavo já desperto, uma luta contra um deus, e cair: já no Sétimo, você cai a 0 PV e,
+  quando levanta com uma Convicção dita, levanta no Nono, com metade dos PV máximos (em vez
+  de um quarto) e o Cosmo no Teto. Queimar ou perder um sentido não bastam. O elo divino deixa de ser a porta do Nono: ele só decide se a armadura vira
+  Divina. Cortar o elo de ligação tira a forma Divina, não o Nono.
+
 ## [0.25.0] - 2026-10-07
 
 ### Mudado

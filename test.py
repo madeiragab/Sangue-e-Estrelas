@@ -159,6 +159,9 @@ def testar_livro() -> None:
             f"{R.NIVEL_OITAVO}")
     confere("um 20 natural vale dois sucessos" in corrido and 'id="nono-sem-elo"' in corrido,
             "o livro dá o 20 que vale dois nos treinos e o Nono sem elo")
+    confere("<b>O Oitavo</b> Você já despertou o Oitavo." in corrido
+            and "<b>Um deus</b> Você está numa luta contra um deus." in corrido,
+            "o Nono pede o Oitavo e uma luta contra um deus, com ou sem elo")
     confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
     confere(f"do nível {R.NIVEL_SETIMO} em diante" in corrido
             and f"antes do <strong>nível {R.NIVEL_SETIMO}</strong>" in corrido,
