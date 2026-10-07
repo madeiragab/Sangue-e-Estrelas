@@ -1936,7 +1936,8 @@ function rolar(modo) {
     <span class="rotulo">Dominar o Sétimo</span>
     <p>A partir do <strong>nível 8</strong>, e depois do primeiro despertar, um Bronze ou um
     Prata pode dominar o Sétimo com treino: uma ação de Interlúdio por semana, teste de
-    Atributo do Cosmo + proficiência contra CD 18, três sucessos em semanas diferentes.</p>
+    Atributo do Cosmo + proficiência contra CD 18, três sucessos em semanas diferentes (um
+    20 natural vale dois).</p>
     <p>Dominado, o Sétimo não pede mais sacrifício nem Convicção: no começo de qualquer turno
     seu com o Cosmo no Teto, você entra nele, sem gastar ação, e fica até o fim da luta. Você
     ainda precisa chegar ao limite — só a elite vive no Sétimo desde o primeiro turno —, e o
@@ -2007,7 +2008,8 @@ function rolar(modo) {
   <ol class="passos">
     <li><b>Requisito</b> Nível 12.</li>
     <li><b>O treino</b> Uma ação de Interlúdio por semana: teste de Atributo do Cosmo +
-      proficiência contra CD 18. Junte três sucessos, em semanas diferentes.</li>
+      proficiência contra CD 18. Junte três sucessos, em semanas diferentes; um 20 natural
+      vale dois.</li>
     <li><b>A situação</b> Com o treino completo, na próxima vez em que você cair a 0 PV sem
       poder levantar, você desperta o Oitavo em vez de ficar no chão: entra no estado de
       Buda.</li>
@@ -2038,8 +2040,8 @@ function rolar(modo) {
   </ul>
 
   <h3 id="nono">O Nono Sentido</h3>
-  <p>O Nono é o sentido dos deuses. Um ser humano só chega a ele com algo que veio direto
-  de um deus — um <em class="termo">elo divino</em>. Existem dois:</p>
+  <p>O Nono é o sentido dos deuses. O caminho comum até ele é algo que veio direto de um
+  deus — um <em class="termo">elo divino</em>. Existem dois:</p>
   <div class="grade">
     <div class="cartao">
       <h5>Elo de sangue</h5>
@@ -2071,6 +2073,25 @@ function rolar(modo) {
   ao Sétimo na hora. Tomar o objeto é uma manobra de Agarrar; destruí-lo exige uma técnica
   com condição forte contra a Vontade de quem o carrega. Depois da luta, a armadura volta à
   forma de sempre.</p>
+
+  <div class="destaque" id="nono-sem-elo">
+    <span class="rotulo">Sem elo: o Nono antes do sangue</span>
+    <p>O elo é o caminho comum, não o único. Quem já despertou o Oitavo pode despertar o
+    Nono sem elo — mas só diante de um deus, numa luta contra ele, e com as condições de
+    sempre: já no Sétimo, Cosmo no Teto, um sacrifício e uma Convicção dita. O Nono vale
+    inteiro: o degrau, o Teto, ferir os deuses. Só a armadura não acompanha: sem sangue de
+    deus, ela não vira Divina, e a quebra divina pega nela.</p>
+    <p><strong>O sangue que chega depois.</strong> Quem já despertou o Nono e recebe o sangue
+    de um deus na armadura — uma gota derramada, o sangue que toca o metal — ganha a
+    armadura Divina direto: ela não precisa morrer para receber o sangue, sobe uma Versão com
+    a forma de sangue de deus (se ainda tiver esse degrau na escada) e, se você estiver no
+    Nono, vira Divina ali mesmo, no meio da luta. Foi assim com o Ikki de Fênix: ele chegou
+    ao Nono sem o sangue de Atena na armadura, e a armadura virou Divina quando o sangue a
+    tocou.</p>
+    <p>Medido: sem a armadura Divina, o Nono quase não basta. Um personagem de nível 20
+    sozinho não vence nem a divindade menor; três Bronzes vencem a menor metade das vezes e
+    o deus maior quase nunca (2%). Com a armadura Divina, de 78% a 100%.</p>
+  </div>
 
   <div class="ornamento">❖ ❖ ❖</div>
 
@@ -3337,6 +3358,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </ul>
   <p>Com o Nono e a armadura Divina, um guerreiro supera as divindades menores e luta quase
   no nível de um deus maior (<a href="#deuses">Capítulo Dez</a>).</p>
+  <p>Quem já despertou o Nono antes do sangue não precisa esperar a armadura morrer: o
+  sangue de um deus que toca a armadura viva a faz subir uma Versão e virar Divina na hora,
+  se você estiver no Nono (<a href="#nono-sem-elo">Capítulo Quatro</a>).</p>
   <p>Com um elo de ligação em vez de sangue, a forma Divina aparece do mesmo jeito — mas some
   na hora em que o elo for cortado. Foi o que aconteceu a um Cavaleiro de Pégaso de outra
   era: a armadura dele virou Divina por alguns instantes graças ao rosário que recebeu de
@@ -5169,7 +5193,9 @@ Descrição:         como ela aparece, e o nome que você grita</pre>
   </ul>
   <p>E você faz <strong>ações de Interlúdio</strong>. Cada uma tem a sua duração, escrita no
   cartão; quando uma acaba, você começa outra. Na falha, os dias se perdem, e você pode
-  tentar de novo. Dias de viagem contam para o que volta de graça, mas não para as ações.
+  tentar de novo. Nos treinos que juntam três sucessos — dominar o Sétimo, treinar o Oitavo,
+  aprender a restaurar —, <strong>um 20 natural vale dois sucessos</strong>. Dias de viagem
+  contam para o que volta de graça, mas não para as ações.
   Uma campanha que vai de missão em missão sem parar ainda tem Interlúdio: os dias na
   estrada, a noite no acampamento, os três dias à espera do restaurador.</p>
 
@@ -6116,7 +6142,7 @@ LIDAS POR MIM  (inimigo · técnica dele que eu já vi)
 <!-- ==================== COLOFÃO ==================== -->
 <footer class="colofao">
   <h3>Sobre esta edição</h3>
-  <p>Esta é a versão <strong>0.24.1</strong>, de 07/10/2026. Os números de combate dela
+  <p>Esta é a versão <strong>0.25.0</strong>, de 07/10/2026. Os números de combate dela
   passaram por um simulador que roda milhares de duelos com as regras deste livro — o
   mesmo que monta as fichas de inimigos e as tabelas de níveis e de Posto, que por isso
   não podem discordar do texto. O que foi medido está dito onde a regra aparece. O que o

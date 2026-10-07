@@ -314,12 +314,17 @@ SANGUE_DE_DEUS = {"bronze": ("guerreiro",) * 3 + ("elite", "deus"),
                   "ouro": ("guerreiro",) * 6 + ("deus",)}
 
 
-def no_nono(posto: str = "bronze", nome: str = "H"):
+def no_nono(posto: str = "bronze", nome: str = "H", elo: bool = True):
     """Um personagem de nível 20 no Nono, com a armadura na forma Divina (a escada do sangue
-    inteira, até o de deus)."""
+    inteira, até o de deus). Sem elo (0.25.0): despertou o Nono pelo Oitavo, antes do sangue,
+    e a armadura é a de sempre, sem o degrau de deus."""
     def f():
-        x = montar(nome, 20, posto, conviccoes=3, formas=SANGUE_DE_DEUS[posto],
-                   armadura_posto="divina")
+        if elo:
+            x = montar(nome, 20, posto, conviccoes=3, formas=SANGUE_DE_DEUS[posto],
+                       armadura_posto="divina")
+        else:
+            x = montar(nome, 20, posto, conviccoes=3, formas=SANGUE_DE_DEUS[posto][:-1])
+            x.oitavo = True
         x.sentido_inicial = "nono"
         x.reiniciar()
         return x
@@ -395,10 +400,11 @@ def ouros_com_atena(k: int, tipo: str = "maior", lutas: int = NG) -> dict:
                            sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
 
 
-def contra_deus(tipo: str, posto: str = "bronze", k: int = 1, lutas: int = NG) -> dict:
+def contra_deus(tipo: str, posto: str = "bronze", k: int = 1, lutas: int = NG,
+                elo: bool = True) -> dict:
     """k personagens no Nono contra um deus, que responde a cada um como um chefe (Sozinho
     contra muitos). Sem a Guerra dos Mil Dias: um deus não morre junto."""
-    return grupo_contra_um(lambda: [no_nono(posto, f"H{i}")() for i in range(k)], deus(tipo),
+    return grupo_contra_um(lambda: [no_nono(posto, f"H{i}", elo)() for i in range(k)], deus(tipo),
                            n=lutas, semente=1500 + k + (10 if posto == "ouro" else 0),
                            sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
 
@@ -767,6 +773,13 @@ def main() -> None:
             r = contra_deus(tipo, posto, k)
             cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} / {r['caidos_media']:.1f}")
         linhas.append(f"| Deus {tipo} | " + " | ".join(cel) + " |")
+    for tipo in ("menor", "maior"):
+        cel = []
+        for posto, k in (("bronze", 1), ("ouro", 1), ("bronze", 2), ("bronze", 3)):
+            r = contra_deus(tipo, posto, k, elo=False)
+            cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} / {r['caidos_media']:.1f}")
+        linhas.append(f"| Deus {tipo}, no Nono sem elo (sem a Divina, 0.25.0) | "
+                      + " | ".join(cel) + " |")
     menor = R.DANO_CONTRA_DEUS["menor"]
     linhas += ["", "Fora do Nono, só uma fração do dano entra na divindade menor "
                f"({menor['setimo']:.0%} no Sétimo, {menor['oitavo']:.0%} com o Oitavo); no deus "

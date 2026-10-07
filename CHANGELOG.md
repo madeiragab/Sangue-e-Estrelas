@@ -3,6 +3,22 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.25.0] - 2026-10-07
+
+### Mudado
+
+- **O 20 natural vale dois sucessos** nos treinos de Interlúdio que juntam três (dominar o
+  Sétimo, treinar o Oitavo, aprender a restaurar) — Capítulos Quatro e Doze, pedido do
+  usuário.
+- **O Nono sem elo** (Capítulos Quatro e Sete, pedido do usuário): quem já despertou o
+  Oitavo pode despertar o Nono sem elo divino, só diante de um deus, com as condições de
+  sempre. O Nono vale inteiro, mas a armadura não vira Divina e a quebra divina pega nela.
+  Quem já despertou o Nono e recebe o sangue de um deus na armadura ganha a armadura
+  Divina direto: ela não precisa morrer, sobe uma Versão e, no Nono, vira Divina ali mesmo
+  — como o Ikki de Fênix. Medido: sem a armadura Divina, um personagem de nível 20 no Nono
+  não vence a divindade menor (0%); três Bronzes vencem a menor perto de metade das vezes
+  e o deus maior 2%.
+
 ## [0.24.1] - 2026-10-07
 
 ### Mudado
