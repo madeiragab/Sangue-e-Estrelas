@@ -94,6 +94,8 @@ class Lutador:
     cosmo_comeco: int | None = None    # lutas em sequência (0.22.0): o Cosmo que sobrou da anterior
     oitavo: bool = False               # já despertou o Oitavo
     ao_lado_do_deus: bool = False      # luta ao lado do próprio deus: fere um deus normalmente
+    deus_protege: bool = True          # o deus de vocês só protege (0.23.1): cobre a armadura;
+                                       # se ele está lutando, não cobre
 
     def __post_init__(self):
         self.mods = {k: R.mod(v) for k, v in self.atributos.items()}
@@ -459,9 +461,12 @@ class Luta:
     def quebra_divina(atacante: Lutador, alvo: Lutador):
         """Acima do humano, a armadura não aguenta (0.23.0): o semideus tira o Grau a cada
         acerto de técnica; a divindade menor despedaça com técnica; o deus maior, com
-        qualquer acerto. A armadura Divina segura: perde 1."""
+        qualquer acerto. A armadura Divina segura: perde 1. Ao lado do próprio deus que só
+        protege, o Cosmo dele cobre a armadura (0.23.1), e entre deuses ninguém despedaça o
+        outro: também perde só 1."""
+        coberta = alvo.ao_lado_do_deus and alvo.deus_protege
         if alvo.armada:
-            if alvo.posto_da_armadura == "divina":
+            if alvo.posto_da_armadura == "divina" or coberta or alvo.deus:
                 alvo.resistencia -= 1
             elif atacante.deus == "semideus":
                 alvo.resistencia = max(0, alvo.resistencia - R.grau(atacante.nivel))

@@ -368,6 +368,33 @@ def ouros_contra_deus(k: int, oitavo: bool, tipo: str = "menor", lutas: int = NG
                            sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
 
 
+def deusa_ao_lado(tipo: str = "menor"):
+    """O deus de vocês lutando junto (0.23.1): Atena, encarnada num corpo humano, luta com a
+    linha da divindade menor. Não conta como personagem: o deus inimigo não responde ao
+    turno dela."""
+    base = deus(tipo)
+
+    def f():
+        x = base()
+        x.nome = "Atena"
+        x.aliado = True
+        return x
+    return f
+
+
+def ouros_com_atena(k: int, tipo: str = "maior", lutas: int = NG) -> dict:
+    """k Ouros no Sétimo e Atena lutando, contra um deus inimigo. Lutando, o Cosmo dela não
+    cobre as armaduras deles."""
+    def grupo_():
+        g = [no_setimo(False, f"O{i}")() for i in range(k)]
+        for x in g:
+            x.ao_lado_do_deus = True
+            x.deus_protege = False
+        return g + [deusa_ao_lado()()]
+    return grupo_contra_um(grupo_, deus(tipo), n=lutas, semente=1700 + k,
+                           sozinho_contra_muitos=False, pv_chefe=1.0, acoes_chefe=R.chefe_acoes(k))
+
+
 def contra_deus(tipo: str, posto: str = "bronze", k: int = 1, lutas: int = NG) -> dict:
     """k personagens no Nono contra um deus, que responde a cada um como um chefe (Sozinho
     contra muitos). Sem a Guerra dos Mil Dias: um deus não morre junto."""
@@ -773,6 +800,18 @@ def main() -> None:
         for k in (1, 3, 5):
             r = ouros_contra_deus(k, False, tipo, ao_lado=True)
             cel.append(f"{pct(r['grupo'])} / {r['caidos_media']:.1f} caem")
+        linhas.append(f"| Contra o deus {tipo} | " + " | ".join(cel) + " |")
+    linhas += ["", "Ao lado do próprio deus que só protege, o Cosmo dele cobre as armaduras: contra "
+               "a quebra divina, perdem só 1 (0.23.1). Se o deus de vocês luta junto, ele está num "
+               "corpo humano e usa a linha da divindade menor, sem Resposta ao turno dele, e não "
+               "cobre mais as armaduras; entre deuses, ninguém despedaça a armadura do outro:", "",
+               "| Com o seu deus lutando | Só ele | Mais um Ouro | Mais três | Mais cinco |",
+               "|---|---|---|---|---|"]
+    for tipo in ("menor", "maior"):
+        cel = []
+        for k in (0, 1, 3, 5):
+            r = ouros_com_atena(k, tipo)
+            cel.append(f"{pct(r['grupo'])} / {r['rodadas_media']:.0f} rodadas")
         linhas.append(f"| Contra o deus {tipo} | " + " | ".join(cel) + " |")
 
     print("sangue...")

@@ -3,6 +3,22 @@
 Todas as mudanças que alteram regra ou número ficam registradas aqui. O número
 de versão do livro e do site sai da primeira linha `## [x.y.z]` deste arquivo.
 
+## [0.23.1] - 2026-10-07
+
+### Corrigido
+
+- **Ao lado do seu deus, a armadura aguenta** (Capítulos Sete e Dez, pedido do usuário):
+  na 0.23.0, a quebra divina deixava cinco Ouros ao lado de Atena sem chance contra um
+  deus maior (0%). Agora o Cosmo do seu deus cobre as armaduras de quem luta ao lado dele:
+  contra a quebra divina, elas perdem só 1, como a Divina — enquanto ele só protege. Cinco
+  Ouros voltam a vencer o deus maior 40% das vezes, e a divindade menor quase sempre.
+- **Se o seu deus luta** (Capítulo Dez, pedido do usuário): ele está encarnado num corpo
+  humano e luta com a linha da divindade menor, ferindo o inimigo por inteiro, sem
+  Resposta ao turno dele. Lutando, o Cosmo dele não cobre mais as armaduras do grupo.
+  Entre deuses, ninguém despedaça a armadura do outro. Medido contra um deus maior: Atena
+  sozinha vence 13%; com um Ouro, 28%; com três, 46%; com cinco, 61%, em lutas de umas 25
+  rodadas.
+
 ## [0.23.0] - 2026-10-07
 
 ### Mudado
