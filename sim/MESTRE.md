@@ -103,6 +103,8 @@ Personagens de nível 20 no Nono, com a armadura na forma Divina, contra um deus
 |---|---|---|---|---|
 | Deus menor | 78% / 18 / 0.2 | 85% / 17 / 0.2 | 99% / 8 / 0.1 | 100% / 5 / 0.0 |
 | Deus maior | 25% / 22 / 0.7 | 40% / 22 / 0.6 | 80% / 15 / 0.7 | 100% / 9 / 0.2 |
+| Deus menor, no Nono sem elo (sem a Divina, 0.25.0) | 0% / 6 / 1.0 | 1% / 7 / 1.0 | 3% / 7 / 2.0 | 47% / 8 / 2.0 |
+| Deus maior, no Nono sem elo (sem a Divina, 0.25.0) | 0% / 5 / 1.0 | 0% / 7 / 1.0 | 0% / 6 / 2.0 | 2% / 9 / 3.0 |
 
 Fora do Nono, só uma fração do dano entra na divindade menor (25% no Sétimo, 50% com o Oitavo); no deus maior, nada. Ouros de nível 20 no Sétimo, revividos seis vezes:
 

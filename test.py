@@ -157,6 +157,8 @@ def testar_livro() -> None:
             and f"você tem o nível {R.NIVEL_OITAVO} e domina o Sétimo" in corrido,
             f"o livro dá o Sétimo dominado no nível {R.NIVEL_SETIMO_DOMINADO} e o Oitavo no "
             f"{R.NIVEL_OITAVO}")
+    confere("um 20 natural vale dois sucessos" in corrido and 'id="nono-sem-elo"' in corrido,
+            "o livro dá o 20 que vale dois nos treinos e o Nono sem elo")
     confere("Chifre do Wyvern" not in corrido, "o Juiz não usa o Grande Chifre, que é do Touro")
     confere(f"do nível {R.NIVEL_SETIMO} em diante" in corrido
             and f"antes do <strong>nível {R.NIVEL_SETIMO}</strong>" in corrido,
@@ -508,6 +510,13 @@ def testar_mestre() -> None:
     confere(0.25 <= a5 <= 0.55 and so <= 0.30 and 0.30 <= tres <= 0.65,
             f"ao lado de Atena, cinco Ouros ainda têm chance contra o deus maior ({a5:.0%}); "
             f"com ela lutando, sem decidir sozinha: sozinha {so:.0%}, com três Ouros {tres:.0%}")
+    # O Nono sem elo (0.25.0): sem a armadura Divina, o Nono quase não basta contra um deus.
+    s1 = M.contra_deus("menor", "bronze", 1, lutas=200, elo=False)["grupo"]
+    s3 = M.contra_deus("menor", "bronze", 3, lutas=200, elo=False)["grupo"]
+    x3 = M.contra_deus("maior", "bronze", 3, lutas=200, elo=False)["grupo"]
+    confere(s1 <= 0.05 and 0.25 <= s3 <= 0.70 and x3 <= 0.15,
+            f"no Nono sem a armadura Divina, um não vence a divindade menor ({s1:.0%}), três "
+            f"vencem perto de metade ({s3:.0%}), e o deus maior quase nunca ({x3:.0%})")
     # A raridade do Sétimo (0.11.0): o nomeado Bronze ou Prata sem Convicção não desperta.
     for posto in ("bronze", "prata"):
         d = duelos(M.pc(13), M.inimigo(13, posto), n=200, semente=970)
